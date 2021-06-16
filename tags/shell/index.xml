@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Shell on Heis</title><link>https://huangzhiyi.github.io/tags/shell/</link><description>Recent content in Shell on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 28 Mar 2021 00:44:00 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/tags/shell/index.xml" rel="self" type="application/rss+xml"/><item><title>Hadoop Part 3 - 通过Shell命令访问HDFS</title><link>https://huangzhiyi.github.io/hadoop-c03/</link><pubDate>Sun, 28 Mar 2021 00:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/hadoop-c03/</guid><description>«返回课程汇总页面
+Hadoop Part 3 - 通过Shell命令访问HDFS 【版本】 当前版本号v20210423
+版本 修改说明 v20210423 修正步骤30 文件夹错误 v20210328 初始化版本
+【实验名称】 Hadoop Part 3 - 通过Shell命令访问HDFS
+【实验目的】 掌握 Web Console 访问 HDFS。 掌握常用的 Shell 命令访问 HDFS。 了解如何使用 IDEA 创建 Maven 工程、运行 Maven 工程。 了解通过 Java API 访问 HDFS。 【实验环境】 内存：至少4G 硬盘：至少空余40G 操作系统: CentOS 7.4 【实验资源】 XShell CentOS 7.</description></item></channel></rss>

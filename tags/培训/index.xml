@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>培训 on Heis</title><link>https://huangzhiyi.github.io/tags/%E5%9F%B9%E8%AE%AD/</link><description>Recent content in 培训 on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 14 May 2020 10:42:51 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/tags/%E5%9F%B9%E8%AE%AD/index.xml" rel="self" type="application/rss+xml"/><item><title>Spring Data JPA 培训实战</title><link>https://huangzhiyi.github.io/jpa-training/</link><pubDate>Thu, 14 May 2020 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/jpa-training/</guid><description>往期培训资料汇总
+【版本】 当前版本号v20200514
+版本 修改说明 v20200514 初始化版本
+实验1：JPA 开发前准备 【实验名称】 实验1：实验1：JPA 开发前准备
+【实验目的】 清理数据库，并配置数据库环境 配置项目环境 【实验原理】 略
+【实验环境】 操作系统: Windows系统。 IDEA SpringBoot MySQL 或 Mariadb Maven MySQL 客户端 （Navicat / HeidiSQL / MySQL Workbench 任意一种） 【实验资源】 代码下载 https://pan.baidu.com/s/1wFq6u7PC8q1i0uh31esRbA#提取码luuu
+【实验步骤】 重新创建 test 数据库。使用 MySQL 客户端运行以下语句。 /* 查看 MySQL 版本 */
+select version();
+/* 删除 test 库 */
+drop database if exists test;
+/* 创建 test 库 */
+create database if not exists test default charset utf8mb4 collate utf8mb4_general_ci;
+MySQL v5.</description></item><item><title>前后端分离开发实战</title><link>https://huangzhiyi.github.io/frontback-training/</link><pubDate>Wed, 15 Apr 2020 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/frontback-training/</guid><description>【版本】 当前版本号v20200415
+版本 修改说明 v20200415 初始化版本
+实验1：把项目文件提交到远程 Git 仓库 【实验名称】 实验1：把项目文件提交到远程 Git 仓库
+【实验目的】 联系学习过的 Git 命令，使用 Git 来管理代码。 【实验原理】 注册 Gitee 账号，创建仓库 获取 Git 客户端，通过 Git 访问仓库 【实验环境】 操作系统: Windows系统。 Git 客户端 Cmder 【实验资源】 Git 客户端 cmder.7z：是一个集成 Git 的命令行的终端软件。
+文本编辑器 Notepad++：是一个优秀的文本编辑器。
+https://pan.baidu.com/s/1gukX79FA_Lcg2IFFaW_hzA#提取码:eenh
+【实验步骤】 在Gitee.com，登录你的个人账号，创建一个名字为springboot-demo的仓库。 选择一个本地空目录，例如D:\workspaces\workspace2。打开 cmder，把远程仓库克隆到本地。 cd D:\workspaces\workspace2
+git clone &amp;lt;你的仓库SSH协议地址&amp;gt;
+把项目文件全部拷贝进本地仓库目录。</description></item><item><title>瑞翼工坊2020后端课程</title><link>https://huangzhiyi.github.io/ruiyi2020-summary/</link><pubDate>Wed, 15 Apr 2020 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/ruiyi2020-summary/</guid><description>【课程】 （1）IDEA 和 Maven 基础 主讲老师：陈成高 课程资源下载：下载地址» 回放地址：点击访问课程视频» （2）Git 实战 主讲老师：黄志毅 实验手册：Git 实战实验手册» 回放地址：点击访问课程视频» （3）mysql和navicat的安装和使用 主讲老师：陈成高 课程资源下载：下载地址» 回放地址：点击访问课程视频» （4）前后端分离开发 主讲老师：黄志毅 实验手册：前后端分离开发实验手册» 回放地址：点击访问课程视频» （5）框架的代码结构，mvc开发模型讲解 主讲老师：陈成高 课程资源下载：下载地址» 回放地址：点击访问课程视频» （6）增删改功能实现,多条件查询和分页实现 主讲老师：陈成高 课程资源下载：下载地址» 回放地址：点击访问课程视频» （7）Spring Data JPA 培训实战 主讲老师：黄志毅 实验手册：Spring Data JPA 培训实战» 回放地址：点击访问课程视频» （8）SpringBoot快速入门 主讲老师：陈成高 课程资源下载：下载地址» 回放地址：点击访问课程视频»</description></item><item><title>Git 培训实战</title><link>https://huangzhiyi.github.io/git-training/</link><pubDate>Thu, 02 Apr 2020 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/git-training/</guid><description>往期培训资料汇总
+实验1：注册 Gitee 账号和环境搭建 【版本】 当前版本号v20200405
+版本 修改说明 v20200405 优化部分学生容易误解犯错的地方，增加一些常见问题的解答 v20200402 初始化版本
+【实验名称】 实验1：注册 Gitee 账号和环境搭建
+【实验目的】 注册 Gitee 账号 搭建 Git 客户端和免密登录 【实验原理】 注册 Gitee 账号，创建仓库 获取 Git 客户端，通过 Git 访问仓库 【实验环境】 操作系统: Windows系统。 Git 客户端 Cmder 【实验资源】 Git 客户端 cmder.7z：是一个集成 Git 的命令行的终端软件。
+文本编辑器 Notepad++：是一个优秀的文本编辑器。</description></item></channel></rss>

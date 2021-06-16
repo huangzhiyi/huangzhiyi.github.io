@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>git on Heis</title><link>https://huangzhiyi.github.io/tags/git/</link><description>Recent content in git on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 14 May 2020 10:42:51 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>Spring Data JPA 培训实战</title><link>https://huangzhiyi.github.io/jpa-training/</link><pubDate>Thu, 14 May 2020 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/jpa-training/</guid><description>往期培训资料汇总
+【版本】 当前版本号v20200514
+版本 修改说明 v20200514 初始化版本
+实验1：JPA 开发前准备 【实验名称】 实验1：实验1：JPA 开发前准备
+【实验目的】 清理数据库，并配置数据库环境 配置项目环境 【实验原理】 略
+【实验环境】 操作系统: Windows系统。 IDEA SpringBoot MySQL 或 Mariadb Maven MySQL 客户端 （Navicat / HeidiSQL / MySQL Workbench 任意一种） 【实验资源】 代码下载 https://pan.baidu.com/s/1wFq6u7PC8q1i0uh31esRbA#提取码luuu
+【实验步骤】 重新创建 test 数据库。使用 MySQL 客户端运行以下语句。 /* 查看 MySQL 版本 */
+select version();
+/* 删除 test 库 */
+drop database if exists test;
+/* 创建 test 库 */
+create database if not exists test default charset utf8mb4 collate utf8mb4_general_ci;
+MySQL v5.</description></item><item><title>Git 培训实战</title><link>https://huangzhiyi.github.io/git-training/</link><pubDate>Thu, 02 Apr 2020 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/git-training/</guid><description>往期培训资料汇总
+实验1：注册 Gitee 账号和环境搭建 【版本】 当前版本号v20200405
+版本 修改说明 v20200405 优化部分学生容易误解犯错的地方，增加一些常见问题的解答 v20200402 初始化版本
+【实验名称】 实验1：注册 Gitee 账号和环境搭建
+【实验目的】 注册 Gitee 账号 搭建 Git 客户端和免密登录 【实验原理】 注册 Gitee 账号，创建仓库 获取 Git 客户端，通过 Git 访问仓库 【实验环境】 操作系统: Windows系统。 Git 客户端 Cmder 【实验资源】 Git 客户端 cmder.7z：是一个集成 Git 的命令行的终端软件。
+文本编辑器 Notepad++：是一个优秀的文本编辑器。</description></item><item><title>Git 教程和相关资源</title><link>https://huangzhiyi.github.io/git-tutorials/</link><pubDate>Tue, 10 Sep 2019 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/git-tutorials/</guid><description>Git 是目前世界上使用最广泛的分布式版本控制系统。非常多的项目开发都是使用 Git 来管理代码。
+首先我们下载 Git windows 客户端 Git-Windows-64位.exe
+在 gitee.com注册一个账号，创建一个仓库，然后开始学习 git 吧。
+我认为最值得推荐的 Git 的教程，非常浅显易懂，跟着这篇文章学习三天就可以掌握基本的 git 命令。 https://www.liaoxuefeng.com/wiki/896043488029600</description></item></channel></rss>

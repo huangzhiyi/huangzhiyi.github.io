@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>pyspark on Heis</title><link>https://huangzhiyi.github.io/tags/pyspark/</link><description>Recent content in pyspark on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 14 Feb 2020 10:42:51 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/tags/pyspark/index.xml" rel="self" type="application/rss+xml"/><item><title>Spark 第三章使用 Python 开发 Spark 应用实验手册</title><link>https://huangzhiyi.github.io/spark-exp03/</link><pubDate>Fri, 14 Feb 2020 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/spark-exp03/</guid><description>«返回课程汇总页面
+【实验手册版本】 当前版本号v20200316
+版本 修改说明 v20200316 修改实验3.3中访问 Jupytor Notebook 注意要点。 v20200226 新增选做实验 v20200214 初始化版本
+实验3.1：PySpark 命令行的应用 【实验名称】 实验3.1：PySpark 的应用
+【实验目的】 掌握PySpark 的应用 【实验原理】 pyspark -h 查看用法 Usage: pyspark [options]
+常见的[options] 如下表
+【实验环境】 Ubuntu 16.04 Python 3 PySpark spark 2.4.4 scala 2.12.10 【实验步骤】 1、输入pyspark -h查看各参数的定义
+pyspark -h
+2、查看sc变量 （1）不指定 master 时</description></item></channel></rss>

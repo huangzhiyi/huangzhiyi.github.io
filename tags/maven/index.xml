@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>maven on Heis</title><link>https://huangzhiyi.github.io/tags/maven/</link><description>Recent content in maven on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 23 May 2021 01:40:00 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/tags/maven/index.xml" rel="self" type="application/rss+xml"/><item><title>Hadoop大数据集群部署实战 Part 5 - 使用 MapReduce 和 Hive 进行数据分析</title><link>https://huangzhiyi.github.io/hadoop-training05/</link><pubDate>Sun, 23 May 2021 01:40:00 +0800</pubDate><guid>https://huangzhiyi.github.io/hadoop-training05/</guid><description>«返回课程汇总页面
+Hadoop大数据集群部署实战 Part 5 - 使用 MapReduce 和 Hive 进行数据分析 【版本】 当前版本号v20210521
+版本 修改说明 v20210521 初始化版本
+数据分析实训5.1 - 在电影库中查找我的演员评分最高的5部电影 【实训名称】 数据分析实训5.1 - 在电影库中查找我的演员评分最高的5部电影
+【实训目的】 掌握 MapReduce 的 Mapper 编写 掌握 MapReduce 序列化的使用 掌握 MapReduce 的排序 【实训环境】 Windows 7+ VMWare Workstation Pro CentOS 7 Hadoop 2.7.3 JDK 版本：1.8 或以上版本。 【实训资源】 软件资源 链接：https://pan.baidu.com/s/1xYCO5mT2mxZGkda6j3mtdg 提取码：heis
+项目代码 链接：https://pan.</description></item><item><title>Hadoop大数据集群部署实战 Part 4 - 搭建 Hadoop 开发环境</title><link>https://huangzhiyi.github.io/hadoop-training04/</link><pubDate>Mon, 17 May 2021 01:40:00 +0800</pubDate><guid>https://huangzhiyi.github.io/hadoop-training04/</guid><description>«返回课程汇总页面
+Hadoop大数据集群部署实战 Part 4 - 搭建 Hadoop 开发环境 【版本】 当前版本号v20210416
+版本 修改说明 v20210416 修正一些拼写错误 v20210401 初始化版本
+【实验名称】 Hadoop Part 4 - 搭建 Hadoop 开发环境
+【实验目的】 掌握 JDK 的安装和环境变量的设置 掌握 IDEA 的安装和使用 掌握 Maven 的安装、配置和使用命令 【实验环境】 Windows 7 以上64位操作系统 【实验资源】 软件资源 链接：https://pan.baidu.com/s/1xYCO5mT2mxZGkda6j3mtdg 提取码：heis
+项目代码 链接：https://pan.baidu.com/s/1DcLksXdp_xbqv1fOBeF-UA 提取码：heis
+【实验步骤】 在 Windows 解压jdk8.</description></item><item><title>物联网云平台设计与开发实训 Part 3 - 数据库操作</title><link>https://huangzhiyi.github.io/iot-dev-03/</link><pubDate>Tue, 11 May 2021 21:40:00 +0800</pubDate><guid>https://huangzhiyi.github.io/iot-dev-03/</guid><description>«返回课程汇总页面
+物联网云平台设计与开发实训 Part 3 - 数据库操作 【版本】 当前版本号v20210513
+版本 修改说明 v20210513 修正链接被隐藏的问题 v20210512-1 修改migrations目录为migration，flyway连接使用UTF8编码 v20210512 初始化版本
+实训 3.1 管理数据库脚本 【实验名称】 实训 3.1 管理数据库脚本
+【实验目的】 掌握数据库脚本的管理 【实验环境】 Windows 7 以上64位操作系统 【实验资源】 JDK 8 - Java Development Kit是 Oracle 公司针对Java开发人员发布的免费软件开发工具包，是 Java 开发必备的开发工具。 Intellij IDEA - 业界简称IDEA，是 jetbrains 公司推出的和 Eclipse 齐名的 Java 集成开发环境（IDE）。 Apache Maven - Apache Maven，是一个软件项目管理及自动构建工具，由Apache软件基金会所提供。是 Java 构建打包最广泛使用的工具。 MySQL 世界上最受欢迎的开源关系数据库之一。 HeidiSQL，开源数据库客户端。 Cmder 是一个美化的 Windows 命令行终端，支持 ctrl-V 粘贴。 Notepad++ 是一个开源文本编辑器，支持代码着色等多种功能，比 Windows 原生文本编辑器功能要丰富很多。 Flyway 是一个管理数据库脚本迁移的工具。 Eclipse Mosquitto 是一个开源的 MQTT 服务器。支持5.</description></item><item><title>物联网云平台设计与开发实训 Part 2 - Dependency Injection 依赖注入</title><link>https://huangzhiyi.github.io/iot-dev-02/</link><pubDate>Sun, 09 May 2021 21:40:00 +0800</pubDate><guid>https://huangzhiyi.github.io/iot-dev-02/</guid><description>«返回课程汇总页面
+物联网云平台设计与开发实训 Part 2 - Dependency Injection 依赖注入 【版本】 当前版本号v20210510
+版本 修改说明 v20210510 初始化版本
+实训 2.1 新建 Maven 项目 【实验名称】 实训 2.1 新建 Maven 项目
+【实验目的】 掌握新建 Maven 项目 掌握 Maven 包的管理 【实验环境】 Windows 7 以上64位操作系统 【实验资源】 JDK 8 - Java Development Kit是 Oracle 公司针对Java开发人员发布的免费软件开发工具包，是 Java 开发必备的开发工具。 Intellij IDEA - 业界简称IDEA，是 jetbrains 公司推出的和 Eclipse 齐名的 Java 集成开发环境（IDE）。 Apache Maven - Apache Maven，是一个软件项目管理及自动构建工具，由Apache软件基金会所提供。是 Java 构建打包最广泛使用的工具。 MySQL 世界上最受欢迎的开源关系数据库之一。 HeidiSQL，开源数据库客户端。 Cmder 是一个美化的 Windows 命令行终端，支持 ctrl-V 粘贴。 Notepad++ 是一个开源文本编辑器，支持代码着色等多种功能，比 Windows 原生文本编辑器功能要丰富很多。 Flyway 是一个管理数据库脚本迁移的工具。 Eclipse Mosquitto 是一个开源的 MQTT 服务器。支持5.</description></item><item><title>物联网云平台设计与开发实训 Part 1 - 搭建开发环境</title><link>https://huangzhiyi.github.io/iot-dev-01/</link><pubDate>Sun, 09 May 2021 20:40:00 +0800</pubDate><guid>https://huangzhiyi.github.io/iot-dev-01/</guid><description>«返回课程汇总页面
+物联网云平台设计与开发实训 Part 1 - 搭建开发环境 【版本】 当前版本号v20210510-1
+版本 修改说明 v20210510-1 修改my.ini的路径分隔符为斜杠，避免出现转义字符错误 v20210510 更新maven的JAVA_HOME设置 v20210509 初始化版本
+【实验名称】 物联网云平台设计与开发实训 Part 1 - 搭建开发环境
+【实验目的】 掌握 JDK 的安装和环境变量的设置 掌握 IDEA 的安装和使用 掌握 Maven 的安装、配置和使用命令 【实验环境】 Windows 7 以上64位操作系统 【实验资源】 JDK 8 - Java Development Kit是 Oracle 公司针对Java开发人员发布的免费软件开发工具包，是 Java 开发必备的开发工具。 Intellij IDEA - 业界简称IDEA，是 jetbrains 公司推出的和 Eclipse 齐名的 Java 集成开发环境（IDE）。 Apache Maven - Apache Maven，是一个软件项目管理及自动构建工具，由Apache软件基金会所提供。是 Java 构建打包最广泛使用的工具。 MySQL 世界上最受欢迎的开源关系数据库之一。 HeidiSQL，开源数据库客户端。 Cmder 是一个美化的 Windows 命令行终端，支持 ctrl-V 粘贴。 Notepad++ 是一个开源文本编辑器，支持代码着色等多种功能，比 Windows 原生文本编辑器功能要丰富很多。 Flyway 是一个管理数据库脚本迁移的工具。 Eclipse Mosquitto 是一个开源的 MQTT 服务器。支持5.</description></item><item><title>物联网云平台设计与开发实训 课程资源汇总</title><link>https://huangzhiyi.github.io/iot-dev-summary/</link><pubDate>Sat, 08 May 2021 00:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/iot-dev-summary/</guid><description>实验报告模板资源下载 下载链接：https://pan.baidu.com/s/1UGHLQpBDiyICSerpv3fkAA 提取码：heis
+实验报告要求 必须使用老师提供的实验报告模板。 必须保留封面 实验步骤每一步都有详细的文字操作步骤说明，步骤顺序号，截图。 截图只需要截关键部分信息，不能全屏截图。可以用红色框或箭头标注截图重点信息。推荐使用 Snipaste（官网下载或网盘下载） 进行截图和标记。 课程设计报告提交截止时间和地址 后续会公布链接，请各位同学登录网站 https://heis.gitee.io/iot-dev-summary
+课程设计报告提交 （1）18级物联网1班第一阶段课程设计报告提交，截止日期：2021/5/16（周日） http://xzc.cn/v2G99z9Ju2
+（2）18级物联网1班最终课程设计报告提交，截止日期：2021/5/23（周日） http://xzc.cn/OUrx5x0Cl4</description></item><item><title>Hadoop Part 6 - 编写 MapReduce 程序</title><link>https://huangzhiyi.github.io/hadoop-c06/</link><pubDate>Sun, 11 Apr 2021 23:20:00 +0800</pubDate><guid>https://huangzhiyi.github.io/hadoop-c06/</guid><description>«返回课程汇总页面
+【版本】 当前版本号v20210411
+版本 修改说明 v20210411 初始化版本
+实验6.1 - 编写 MapReduce wordcount 程序 【实验名称】 实验6.1 - 编写 MapReduce wordcount 程序
+【实验目的】 分析和编写 WordCount 程序 【实验环境】 Windows 7 以上64位操作系统 JDK8 IDEA Hadoop 2.7.3 CentOS 7 【实验资源】 Hadoop JDK 8 - Java Development Kit是 Oracle 公司针对Java开发人员发布的免费软件开发工具包，是 Java 开发必备的开发工具。 Intellij IDEA - 业界简称IDEA，是 jetbrains 公司推出的和 Eclipse 齐名的 Java 集成开发环境（IDE）。 Apache Maven - Apache Maven，是一个软件项目管理及自动构建工具，由Apache软件基金会所提供。是 Java 构建打包最广泛使用的工具。 下载链接：https://pan.</description></item><item><title>Hadoop Part 5 - HDFS Java 编程访问</title><link>https://huangzhiyi.github.io/hadoop-c05/</link><pubDate>Sat, 03 Apr 2021 23:20:00 +0800</pubDate><guid>https://huangzhiyi.github.io/hadoop-c05/</guid><description>«返回课程汇总页面
+Hadoop Part 5 - HDFS Java 编程访问 【版本】 当前版本号v20210430
+版本 修改说明 v20210430 修正 HdfsUtils 类名错误 v20210404 增加常见问题 v20210403 初始化版本
+【实验名称】 Hadoop Part 5 - HDFS Java 编程访问
+【实验目的】 掌握 HDFS 文件系统的 Java 编程接口的调用和编程 【实验环境】 Windows 7 以上64位操作系统 【实验资源】 Hadoop JDK 8 - Java Development Kit是 Oracle 公司针对Java开发人员发布的免费软件开发工具包，是 Java 开发必备的开发工具。 Intellij IDEA - 业界简称IDEA，是 jetbrains 公司推出的和 Eclipse 齐名的 Java 集成开发环境（IDE）。 Apache Maven - Apache Maven，是一个软件项目管理及自动构建工具，由Apache软件基金会所提供。是 Java 构建打包最广泛使用的工具。 下载链接：https://pan.</description></item><item><title>Hadoop Part 4 - 搭建 Hadoop 开发环境</title><link>https://huangzhiyi.github.io/hadoop-c04/</link><pubDate>Thu, 01 Apr 2021 23:40:00 +0800</pubDate><guid>https://huangzhiyi.github.io/hadoop-c04/</guid><description>«返回课程汇总页面
+Hadoop Part 4 - 搭建 Hadoop 开发环境 【版本】 当前版本号v20210416
+版本 修改说明 v20210416 修正一些拼写错误 v20210401 初始化版本
+【实验名称】 Hadoop Part 4 - 搭建 Hadoop 开发环境
+【实验目的】 掌握 JDK 的安装和环境变量的设置 掌握 IDEA 的安装和使用 掌握 Maven 的安装、配置和使用命令 【实验环境】 Windows 7 以上64位操作系统 【实验资源】 Hadoop JDK 8 - Java Development Kit是 Oracle 公司针对Java开发人员发布的免费软件开发工具包，是 Java 开发必备的开发工具。 Intellij IDEA - 业界简称IDEA，是 jetbrains 公司推出的和 Eclipse 齐名的 Java 集成开发环境（IDE）。 Apache Maven - Apache Maven，是一个软件项目管理及自动构建工具，由Apache软件基金会所提供。是 Java 构建打包最广泛使用的工具。 下载链接：https://pan.</description></item><item><title>Maven 教程</title><link>https://huangzhiyi.github.io/maven-tutorials/</link><pubDate>Thu, 10 Oct 2019 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/maven-tutorials/</guid><description>https://www.runoob.com/maven/maven-tutorial.html</description></item></channel></rss>

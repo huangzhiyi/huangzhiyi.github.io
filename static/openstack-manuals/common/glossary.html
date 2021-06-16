@@ -1,0 +1,2729 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <title>OpenStack Docs: 词汇表</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="../_static/css/bootstrap.css" rel="stylesheet">
+
+<!-- Pygments CSS -->
+<link href="../_static/css/native.css" rel="stylesheet">
+
+<!-- Fonts -->
+<link href="../_static/css/font-awesome.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+
+<!-- Custom CSS -->
+<link href="../_static/css/combined.css" rel="stylesheet">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="../_static/sphinxmark.css" type="text/css" />
+  
+
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-17511903-1', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+  </head>
+  <body>
+ <script type="text/javascript">
+    (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+                (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+    })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+    _st('install','aDn5L_vgZ2yzRcE893kK','2.0.0');
+</script>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="brand-wrapper">
+        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+      </div>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="search-container tiny">
+         <form class="docs-main-search-form">
+    <input type="text" class="st-default-search-input custom-search-box" placeholder="Search OpenStack">
+</form>
+        <i class="fa fa-times close-search"></i>
+      </div>
+      <ul class="nav navbar-nav navbar-main show">
+        <li>
+           <li>
+    <input type="text" class="st-default-search-input custom-search-box-mobile" placeholder="Search OpenStack">
+</li>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/project-navigator/">Project Navigator</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sample-configs/">Sample Configs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/security/">Security</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/start/">Get Started</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/roadmap/">Roadmap</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/latest-release/">Latest Release</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/software/sourcecode/">Source Code</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/user-stories/" class="drop" id="dropdownMenuUsers">Users <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/user-stories/">Overview</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/telecoms-and-nfv/">Telecoms and NFV</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/enterprise/">OpenStack in the Enterprise</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/appdev/">Application Developers & ISVs</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org/">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/surveys/landing">User Survey</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/">Welcome! Start Here</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/">OpenStack Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://groups.openstack.org">User Groups</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/speakers/">Speakers Bureau</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation/companies/">Supporting Companies</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/jobs/">Jobs</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/">Join The Community</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/marketplace/">Marketplace</a>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/events/" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">Overview</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/summit/">The OpenStack Summit</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//www.openstack.org/community/events/">More OpenStack Events</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/community/events/#openstack_days">OpenStack Days</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.openstack.org/learn/" class="drop" id="dropdownMenuLearn">Learn <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/training/">Training</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/marketplace/coa/">Get Certified</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//ask.openstack.org">Ask a Technical Question</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="//superuser.openstack.org">Superuser Magazine</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/videos/">Summit Videos</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/analysts/">Analyst Reports</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/news/">News</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/blog/">Blog</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://docs.openstack.org/">Docs</a>
+        </li>
+        <li>
+
+</li>
+
+
+            <li>
+
+                <li class="join-nav-section">
+                    <a href="https://www.openstack.org/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/register/?membership-type=foundation">Sign up for Foundation Membership</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/join/#sponsor">Sponsor the Foundation</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.openstack.org/foundation">More about the Foundation</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
+                </li>
+
+            </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.container -->
+</nav>
+    <div class="container docs-book-wrapper">
+      <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+<div class="row">
+  <div class="col-lg-8">
+      <h2>词汇表</h2>
+    
+  </div>
+  <div class="docs-actions">
+    
+    <a href="app_support.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: 社区支持"></i></a>
+    
+    
+    <a id="logABugLink1" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+    
+  </div>
+</div>
+          <div class="row docs-byline">
+            <div class="docs-updated">updated: 2017-07-17 22:23</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="docs-top-contents">
+
+<h5><a href="../index.html">Contents</a></h5>
+<ul>
+<li><a class="reference internal" href="#">词汇表</a><ul>
+<li><a class="reference internal" href="#id1">0-9</a></li>
+<li><a class="reference internal" href="#a">A</a></li>
+<li><a class="reference internal" href="#b">B</a></li>
+<li><a class="reference internal" href="#c">C</a></li>
+<li><a class="reference internal" href="#d">D</a></li>
+<li><a class="reference internal" href="#e">E</a></li>
+<li><a class="reference internal" href="#f">F</a></li>
+<li><a class="reference internal" href="#g">G</a></li>
+<li><a class="reference internal" href="#h">H</a></li>
+<li><a class="reference internal" href="#i">I</a></li>
+<li><a class="reference internal" href="#j">J</a></li>
+<li><a class="reference internal" href="#k">K</a></li>
+<li><a class="reference internal" href="#l">L</a></li>
+<li><a class="reference internal" href="#m">M</a></li>
+<li><a class="reference internal" href="#n">N</a></li>
+<li><a class="reference internal" href="#o">O</a></li>
+<li><a class="reference internal" href="#p">P</a></li>
+<li><a class="reference internal" href="#q">Q</a></li>
+<li><a class="reference internal" href="#r">R</a></li>
+<li><a class="reference internal" href="#s">S</a></li>
+<li><a class="reference internal" href="#t">T</a></li>
+<li><a class="reference internal" href="#u">U</a></li>
+<li><a class="reference internal" href="#v">V</a></li>
+<li><a class="reference internal" href="#w">W</a></li>
+<li><a class="reference internal" href="#x">X</a></li>
+<li><a class="reference internal" href="#z">Z</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="docs-body">
+
+  <div class="section" id="glossary">
+<h1>词汇表<a class="headerlink" href="#glossary" title="永久链接至标题">¶</a></h1>
+<p>此词汇表列出了OpenStack相关的术语和定义词汇。</p>
+<p>添加OpenStack术语，复制`openstack/openstack-manuals 仓库 &lt;<a class="reference external" href="https://git.openstack.org/cgit/openstack/openstack-manuals">https://git.openstack.org/cgit/openstack/openstack-manuals</a>&gt;`__ ，通过OpenStack贡献流程更新``doc/common/glossary.rst``源文件。</p>
+<div class="section" id="id1">
+<h2>0-9<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-to4">6to4</dt>
+<dd><p class="first last">一种可以在IPv4的网络中传输IPv6包的机制，提供了一种迁移到IPv6的策略。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="a">
+<h2>A<a class="headerlink" href="#a" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-absolute-limit">绝对限制</dt>
+<dd><p class="first last">客户虚拟机的硬性限制，设置包括总的内存大小，vCPU的最大数，以及最大虚拟磁盘大小。</p>
+</dd>
+<dt id="term-access-control-list">访问控制列表</dt>
+<dd><p class="first last">绑定到一个对象的权限列表。ACL指定那个用户或系统进程能够访问对象。它也定义了那些操作可以在指定对象上执行。在一个典型的ACL中，每个条目指定一个主体和一个操作。对于实例，文件的ACL条目``(Alice, delete)``给Alice删除这个文件权限。</p>
+</dd>
+<dt id="term-access-key">访问密钥</dt>
+<dd><p class="first last">从Amazon EC2的访问密钥学过来的，详细请看EC2访问密钥。</p>
+</dd>
+<dt id="term-account">账户</dt>
+<dd><p class="first last">一个账号的对象存储上下文。不要与认证服务中的一个用户账号混淆，比如活动目录AD， /etc/passwd, OpenLDAP, OpenStack认证，等等。</p>
+</dd>
+<dt id="term-account-auditor">账户审计</dt>
+<dd><p class="first last">为指定的对象存储账户检查诸如丢失的副本，错误的或损坏的对象，支撑它的后端是SQLite数据库。</p>
+</dd>
+<dt id="term-account-database">账户数据库</dt>
+<dd><p class="first last">基于SQLite的数据库，存储着对象存储账户及其相关的元数据信息，并支持账户服务的访问。</p>
+</dd>
+<dt id="term-account-reaper">账户回收</dt>
+<dd><p class="first last">对象存储维护者从数据库中查找并删除账户，账户的服务器标注已删除。</p>
+</dd>
+<dt id="term-account-server">账户服务器</dt>
+<dd><p class="first last">列出对象存储的容器，且保存容器信息到账户数据库。</p>
+</dd>
+<dt id="term-account-service">账户服务</dt>
+<dd><p class="first last">对象存储组件提供账号服务，比如查询、创建、修改和审计。不要与OpenStack认证服务、OpenLDAP或者相似的用户服务混淆。</p>
+</dd>
+<dt id="term-accounting">账单</dt>
+<dd><p class="first last">计算服务通过事件通知和系统使用量数据提供账单信息。</p>
+</dd>
+<dt id="term-acl">ACL</dt>
+<dd><p class="first last">参考访问控制列表。</p>
+</dd>
+<dt id="term-active-active-configuration">双激活配置</dt>
+<dd><p class="first last">在高可用步骤中配置双激活，多个系统共同承担负载，如果其中一个失效，负载会自动分发到仍然正常运行的系统。</p>
+</dd>
+<dt id="term-active-directory">活动目录</dt>
+<dd><p class="first last">由微软提供的认证和验证服务，基于LDAP，支持OpenStack。</p>
+</dd>
+<dt id="term-active-passive-configuration">主动/被动配置</dt>
+<dd><p class="first last">在高可用设置主动/被动配置，系统会启动额外的资源来代替失效的节点。</p>
+</dd>
+<dt id="term-address-pool">地址池</dt>
+<dd><p class="first last">一组可用的浮动IP地址，可被分配到项目中，即为项目中的虚拟机实例分配。</p>
+</dd>
+<dt id="term-admin-api">管理 API</dt>
+<dd><p class="first last">一组可被经过认证的管理员访问的API调用，且不能被最终用户访问到，也不可在公网中被访问。它以分离的服务(keystone)存在，或者是其他API(nova)的子集。</p>
+</dd>
+<dt id="term-administrator">管理员</dt>
+<dd><p class="first last">负责安装、维护和管理 OpenStack云的人。</p>
+</dd>
+<dt id="term-admin-server">管理服务</dt>
+<dd><p class="first last">在认证服务上下文中，工作者进程提供管理API的访问。</p>
+</dd>
+<dt id="term-advanced-message-queuing-protocol-amqp">高级消息队列协议(AMQP)</dt>
+<dd><p class="first last">用于OpenStack组件的内部服务通信的开放标准消息协议，由RabbitMQ,Qpid或ZeroMQ提供。</p>
+</dd>
+<dt id="term-advanced-risc-machine-arm">先进精简指令集机器(ARM)</dt>
+<dd><p class="first last">以低能耗著称的CPU，常用在移动电话或嵌入式设备中。OpenStack支持此类CPU。</p>
+</dd>
+<dt id="term-alert">警告</dt>
+<dd><p class="first last">计算服务可通过它的通知系统发送警告，包括自定义的通知。警告被发送并显示到horizon仪表盘。</p>
+</dd>
+<dt id="term-allocate">分配</dt>
+<dd><p class="first last">将浮动IP从地址池中取出分配给客户虚拟机实例的进程。</p>
+</dd>
+<dt id="term-amazon-kernel-image-aki">Amazon内核镜像(AKI)</dt>
+<dd><p class="first last">虚拟机的容器格式和磁盘格式都被镜像服务支持。</p>
+</dd>
+<dt id="term-amazon-machine-image-ami">亚马逊机器镜像(AMI)</dt>
+<dd><p class="first last">虚拟机的容器格式和磁盘格式都被镜像服务支持。</p>
+</dd>
+<dt id="term-amazon-ramdisk-image-ari">亚马逊内存盘镜像(ARI)</dt>
+<dd><p class="first last">虚拟机的容器格式和磁盘格式都被镜像服务支持。</p>
+</dd>
+<dt id="term-anvil">Anvil</dt>
+<dd><p class="first last">一个项目，将DevStack从shell脚本移植到Python。</p>
+</dd>
+<dt id="term-apache">Apache</dt>
+<dd><p class="first last">Apache软件基金会支持的Apache社区开源软件项目。这些项目提供软件产品并提倡公开。</p>
+</dd>
+<dt id="term-apache-license-2-0">Apache许可证 2.0</dt>
+<dd><p class="first last">所有的OpenStack核心项目均在Apache许可证2.0下提供。</p>
+</dd>
+<dt id="term-apache-web-server">Apache Web服务器</dt>
+<dd><p class="first last">在当下互联网上最常见的web服务器软件。</p>
+</dd>
+<dt id="term-api-endpoint">API 断点</dt>
+<dd><p class="first last">守护工作者或者服务，客户端与这个服务交互访问API。API端点提供任意数量的服务，比如认证，销售数据、性能计量、计算虚拟机命令、统计数据等等。</p>
+</dd>
+<dt id="term-api-extension">API扩展</dt>
+<dd><p class="first last">扩展OpenStack核心API的自定义模块。</p>
+</dd>
+<dt id="term-api-extension-plug-in">API扩展插件</dt>
+<dd><p class="first last">和网络插件或网络API扩展相关的术语。</p>
+</dd>
+<dt id="term-api-key">API键值</dt>
+<dd><p class="first last">API令牌相关的术语。</p>
+</dd>
+<dt id="term-api-server">API服务器</dt>
+<dd><p class="first last">任何提供API断点的运行着守护进程或任务的节点。</p>
+</dd>
+<dt id="term-api-token">API令牌</dt>
+<dd><p class="first last">用于API请求通过，以及OpenStack用于验证客户端要运行请求操作的认证。</p>
+</dd>
+<dt id="term-api-version">API版本</dt>
+<dd><p class="first last">在OpenStack项目中，API版本是URL的一部分。例如``example.com/nova/v1/foobar``。</p>
+</dd>
+<dt id="term-applet">applet</dt>
+<dd><p class="first last">嵌入到web页面中的Java程序</p>
+</dd>
+<dt id="term-application-programming-interface-api">应用程序接口(API)</dt>
+<dd><p class="first last">用于访问服务、应用或程序的规范的集合，包括服务调用，每个调用返回的参数，以及预料中的返回值。</p>
+</dd>
+<dt id="term-application-catalog-service">应用程序目录服务</dt>
+<dd><p class="first last">提供应用程序目录服务的 OpenStack 项目为用户提供了在管理应用程序生命周期的同时，在应用程序抽象层上组合并部署复合型环境的功能。这个项目的代码名称是 murano。</p>
+</dd>
+<dt id="term-application-server">应用服务器</dt>
+<dd><p class="first last">一部分软件通过网络可用于另外一部分软件。</p>
+</dd>
+<dt id="term-application-service-provider-asp">应用服务提供商(ASP)</dt>
+<dd><p class="first last">公司租用特定的应用程序，以低成本的方式，为业务和组织提供增值服务。</p>
+</dd>
+<dt id="term-address-resolution-protocol-arp">地址解析协议(ARP)</dt>
+<dd><p class="first last">将三层IP地址解析为二层链路地址的协议。</p>
+</dd>
+<dt id="term-arptables">ARP表</dt>
+<dd><p class="first last">在Linux内核防火墙模块用于维护地址解析协议包过滤的工具。在计算服务中使用iptables,ebtables,ip6tables为虚拟机提供防火墙服务。</p>
+</dd>
+<dt id="term-associate">关联</dt>
+<dd><p class="first last">将计算的浮动IP地址关联到固定IP地址的进程。</p>
+</dd>
+<dt id="term-asynchronous-javascript-and-xml-ajax">异步JavaScript和XML(AJAX)</dt>
+<dd><p class="first last">用于客户端建立异步web应用的web开发技术。在Horizon项目中用到。</p>
+</dd>
+<dt id="term-ata-over-ethernet-aoe">ATA以太网(AoE)</dt>
+<dd><p class="first last">基于以太网实现的磁盘存储协议。</p>
+</dd>
+<dt id="term-attach">附加</dt>
+<dd><p class="first last">在网络中，是连接虚拟网卡或虚拟网络接口到2层网络的过程。在计算的上下文中，此过程变为将存储卷给虚拟机实例。</p>
+</dd>
+<dt id="term-attachment-network">附加(网络)</dt>
+<dd><p class="first last">将接口ID和逻辑端口关联起来。即将接口插入到端口。</p>
+</dd>
+<dt id="term-auditing">审计</dt>
+<dd><p class="first last">由系统数据使用设备在计算服务中提供。</p>
+</dd>
+<dt id="term-auditor">审计</dt>
+<dd><p class="first last">用来验证对象存储对象、容器和帐号的完整性的 worker 进程。在这里，审计是对 Object Storage 的帐号审计、容器审计和对象审计的总称。</p>
+</dd>
+<dt id="term-austin">Austin</dt>
+<dd><p class="first last">OpenStack第一个发行版的代号。首次设计峰会在美国德州奥斯汀举行。</p>
+</dd>
+<dt id="term-auth-node">auth节点</dt>
+<dd><p class="first last">对象存储授权节点的别称。</p>
+</dd>
+<dt id="term-authentication">认证</dt>
+<dd><p class="first last">用来确认用户、进程和客户端身份的进程。它使用私人密钥、秘密令牌、密码、指纹或其它类似的方法进行验证。</p>
+</dd>
+<dt id="term-authentication-token">身份验证令牌</dt>
+<dd><p class="first last">在进行完身份验证后，提供给客户端的一串文本。它必须由用户或进程在请求 API 端点后提供。</p>
+</dd>
+<dt id="term-authn">AuthN</dt>
+<dd><p class="first last">提供认证服务的身份认证服务部件。</p>
+</dd>
+<dt id="term-authorization">授权</dt>
+<dd><p class="first last">验证用户、进程或客户端有权利进行某个操作的行为。</p>
+</dd>
+<dt id="term-authorization-node">授权节点</dt>
+<dd><p class="first last">提供授权服务的对象存储节点。</p>
+</dd>
+<dt id="term-authz">AuthZ</dt>
+<dd><p class="first last">身份认证组件提供高水准的认证服务</p>
+</dd>
+<dt id="term-auto-ack">自动应答</dt>
+<dd><p class="first last">RabbitMQ内启用或禁用消息确认功能的参数设置。默认启用。</p>
+</dd>
+<dt id="term-auto-declare">自动声明</dt>
+<dd><p class="first last">一个计算服务的RabbitMQ 设置，用来指示在程序启动时，是否自动创建一个消息交换。</p>
+</dd>
+<dt id="term-availability-zone">可用区域</dt>
+<dd><p class="first last">Amazon EC2 概念里的一个隔离区域，被用于容错。请不要和  OpenStack Compute zone 或 cell 混淆。</p>
+</dd>
+<dt id="term-aws">AWS</dt>
+<dd><p class="first last">亚马逊网络服务。</p>
+</dd>
+<dt id="term-aws-cloudformation-template">AWS CloudFormation 模板</dt>
+<dd><p class="first last">AWS CloudFormation 允许 AWS 用户创建并管理一个相关资源的集合。Orchestration 服务支持 CloudFormation 兼容格式（CFN）。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="b">
+<h2>B<a class="headerlink" href="#b" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-back-end">后端</dt>
+<dd><p class="first last">用户常混肴交互和进程，如挂载计算卷，向守护进程目标的数据传输，或对象存储中的寸处对象完整性检查。</p>
+</dd>
+<dt id="term-back-end-catalog">后端目录</dt>
+<dd><p class="first last">Identity 服务的目录服务用来存储并获取客户端可用的 API 端点信息的存储方法。例如，一个 SQL 数据库、LDAP 数据库或 KVS 后端。</p>
+</dd>
+<dt id="term-back-end-store">后端存储</dt>
+<dd><p class="first last">持久数据存储用来保存和获取服务信息，比如对象存储对象列表，客户虚拟机当前状态，用户名字列表等等。同样，镜像服务用来获取和存储虚拟机镜像的方法。可选支持对象存储、本地文件系统、S3和HTTP。</p>
+</dd>
+<dt id="term-backup-restore-and-disaster-recovery-as-a-service">备份恢复和灾难恢复作为服务</dt>
+<dd><p class="first last">OpenStack 的一个项目。它提供了一组集成的工具，用来对文件系统、实例和数据库备份进行备份、恢复、灾难恢复操作。这个项目的代号是 freezer。</p>
+</dd>
+<dt id="term-bandwidth">带宽</dt>
+<dd><p class="first last">网络资源（如 Internet）可以使用的数据量。它代表了用于下载操作的数据量，或可以被下载的数据量。</p>
+</dd>
+<dt id="term-barbican">barbican</dt>
+<dd><p class="first last">OpenStack 密钥管理服务的代码名。</p>
+</dd>
+<dt id="term-bare">裸</dt>
+<dd><p class="first last">镜像服务容器格式表明对于虚拟机镜像没有容器存在。</p>
+</dd>
+<dt id="term-bare-metal-service">裸机服务</dt>
+<dd><p class="first last">用来部署裸机（和虚拟机相反）的 OpenStack 项目。这个项目的代码名是 ironic。</p>
+</dd>
+<dt id="term-base-image">基础镜像</dt>
+<dd><p class="first last">OpenStack 提供的镜像。</p>
+</dd>
+<dt id="term-bell-lapadula-model">Bell-LaPadula模型</dt>
+<dd><p class="first last">安全模型</p>
+</dd>
+<dt id="term-benchmark-service">Benchmark服务</dt>
+<dd><p class="first last">OpenStack项目提供一个框架，这个框架用来做性能分析和OpenStack独立组件基准测试，和完整的生产OpenStack云部署一样。项目代号是rally。</p>
+</dd>
+<dt id="term-bexar">Bexar</dt>
+<dd><p class="first last">OpenStack的一组发行版本诞生于2011年2月。包括计算(nova)和对象存储(swift)。Bexar是第二个发行版本的代号。首次设计峰会在美国德州奥斯汀举行。</p>
+</dd>
+<dt id="term-binary">二进制</dt>
+<dd><p class="first last">计算机语言中，信息用0和1表示。</p>
+</dd>
+<dt id="term-bit">比特</dt>
+<dd><p class="first last">一比特就是2进制（1或者0）中的单个数字。带宽使用量的单位是比特每秒。</p>
+</dd>
+<dt id="term-bits-per-second-bps">比特每秒(BPS)</dt>
+<dd><p class="first last">测试数据传输速度的通用方法是将数据从一个地方传到另外一个地方。</p>
+</dd>
+<dt id="term-block-device">块设备</dt>
+<dd><p class="first last">以块的形式移动数据的设备。这些节点与设备联系，比如硬盘、CD-ROM驱动、闪盘和其它地址访问的内存区域。</p>
+</dd>
+<dt id="term-block-migration">块迁移</dt>
+<dd><p class="first last">KVM使用的虚拟机在线迁移方法，在用户发起切换时这个方法用很少的停机时间把虚拟机从一台主机移动到另一台主机。不需要共享存储，计算Compute支持。</p>
+</dd>
+<dt id="term-block-storage-service">块存储服务</dt>
+<dd><p class="first last">OpenStack核心项目，它管理卷、卷快照，以及卷类型。块存储的项目名称叫做cinder。</p>
+</dd>
+<dt id="term-block-storage-api">块存储API</dt>
+<dd><p class="first last">独立端点上用于为计算虚机附加，卸载和创建块存储的API。</p>
+</dd>
+<dt id="term-bmc">BMC</dt>
+<dd><p class="first last">底板管理控制器。智能平台控制接口架构中的智能，是一个嵌入计算机母版中的专用微型控制器且用作服务器。管理系统管理软件和平台硬件中的接口。</p>
+</dd>
+<dt id="term-bootable-disk-image">可启动磁盘镜像</dt>
+<dd><p class="first last">一种存在于单个可启动文件中的虚拟机镜像。</p>
+</dd>
+<dt id="term-bootstrap-protocol-bootp">Bootstrap协议(BOOTP)</dt>
+<dd><p class="first last">一个被网络客户端用于从配置服务器中获取IP地址的网络协议。由dnsmasq守护进程在使用FlatDHCP manager或VLAN manager network manager时在计算（Compute）中提供。</p>
+</dd>
+<dt id="term-border-gateway-protocol-bgp">边界网关协议(BGP)</dt>
+<dd><p class="first last">边界网关协议是一个连接自治系统的动态路由协议。被认作因特网的骨干，该协议通过连接完全不同的网络来形成一个更大的网络。</p>
+</dd>
+<dt id="term-browser">浏览器</dt>
+<dd><p class="first last">任何可以使计算机或设备访问因特网的客户端软件。</p>
+</dd>
+<dt id="term-builder-file">生成器</dt>
+<dd><p class="first last">含有对象存储用来配置或在严重故障后重新创建环链的配置信息。</p>
+</dd>
+<dt id="term-bursting">暴发</dt>
+<dd><p class="first last">当主要环境的资源出现瓶颈时，第二环境按照需求动态构建实例。</p>
+</dd>
+<dt id="term-button-class">按钮类</dt>
+<dd><p class="first last">控制面板中有一组相关按钮类型。用于启动，终止和暂停虚机的按钮在一类。用于关联和解绑浮动IP地址的在另一类，以此类推。</p>
+</dd>
+<dt id="term-byte">字节</dt>
+<dd><p class="first last">单字符由一组位（bits）组成，一个字节中通常有8位。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="c">
+<h2>C<a class="headerlink" href="#c" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-ca">CA</dt>
+<dd><p class="first last">证书授权中心（Certificate Authority 或 Certification Authority）。在密码学中，是一个发行电子证书的实体。数字证书通过证书学证明公钥的所有权。这使其它（信赖凭证者）依赖于已响应认证公钥的密钥所生成的签名和断言。在此信赖关系模型中，CA是一个对于证书主体（所有者）和其他依赖于此证书方都可信赖的第三方。CAs为很多公钥基础设施方案所特有。</p>
+</dd>
+<dt id="term-cache-pruner">缓存修整器</dt>
+<dd><p class="first last">一个用户使镜像服务虚机的镜像缓存不高于其配置最大值的程序。</p>
+</dd>
+<dt id="term-cactus">Cactus</dt>
+<dd><p class="first last">在 2011 年春发布的一组包括多个项目的 OpenStack 版本。它包括 Compute（nova）、Object Storage（swift）和 Image 服务（glance）。Cactus 是位于美国德克萨斯州的一个城市，它被用来作为 OpenStack 第三个发行版本的代码。在 OpenStack 的发行周期从三个月增加到六个月的同时，发行版本的代码也改为使用举行前一次峰会的城市名。</p>
+</dd>
+<dt id="term-cadf">CADF</dt>
+<dd><p class="first last">云计算审计数据联盟（Cloud Auditing Data Federation，简称 CADF）是一个审计事件数据的规格标准。OpenStack Identity 支持 CADF。</p>
+</dd>
+<dt id="term-call">CALL</dt>
+<dd><p class="first last">一种RPC原语被OpenStack消息队列软件所使用。发送消息并且等待回应。</p>
+</dd>
+<dt id="term-capability">能力</dt>
+<dd><p class="first last">定义一个 cell 的资源，包括 CPU、存储和网络。可以被应用到一个 cell 中的特定服务，也可以在整个 cell 中起作用。</p>
+</dd>
+<dt id="term-capacity-cache">容量缓存</dt>
+<dd><p class="first last">一张计算后台数据库表，包含了当前工作负载，内容剩余空间，每个主机运行的虚机数量。被用来决定在哪个主机上启动虚机。</p>
+</dd>
+<dt id="term-capacity-updater">容量升级</dt>
+<dd><p class="first last">一个通知驱动管理虚机实例，并且根据需要更新缓存。</p>
+</dd>
+<dt id="term-cast">CAST</dt>
+<dd><p class="first last">一种RPC原语被OpenStack消息队列软件所使用。发送消息并且等待回应。</p>
+</dd>
+<dt id="term-catalog">目录</dt>
+<dd><p class="first last">完成身份认证服务认证后，用户可以查询api endpoints列表。</p>
+</dd>
+<dt id="term-catalog-service">目录服务</dt>
+<dd><p class="first last">在身份服务认证之后，身份服务列出对用户可用的API访问端点。</p>
+</dd>
+<dt id="term-ceilometer">ceilometer</dt>
+<dd><p class="first last">是遥测服务的项目名称，此服务整合OpenStack中提供计量和测量的项目。</p>
+</dd>
+<dt id="term-cell">单元</dt>
+<dd><p class="first last">提供父子关系式的计算资源逻辑分区。如果父cell无法提供所需资源那么请求会从父cell传递到子cell。</p>
+</dd>
+<dt id="term-cell-forwarding">cell转发</dt>
+<dd><p class="first last">一个可让父cell在无法提供所需资源的情况下传递请求到子cell的计算选项。</p>
+</dd>
+<dt id="term-cell-manager">cell管理器</dt>
+<dd><p class="first last">在cell中包含当前每个宿主机的容量列表和路由的计算组件会酌情的发出请求。</p>
+</dd>
+<dt id="term-centos">CentOS</dt>
+<dd><p class="first last">OpenStack兼容的一个Linux发行版。</p>
+</dd>
+<dt id="term-ceph">Ceph</dt>
+<dd><p class="first last">可大规模进行扩展的分布式存储系统。它包括一个对象存储、块存储以及 POSIX 兼容的分布式文件系统。其与OpenStack 兼容。</p>
+</dd>
+<dt id="term-cephfs">CephFS</dt>
+<dd><p class="first last">Ceph 提供的 POSIX 兼容文件系统。</p>
+</dd>
+<dt id="term-certificate-authority">证书授权中心</dt>
+<dd><p class="first last">一个由计算服务为cloudpipe VPNs和虚机镜像解密所提供的简单的认证授权中心。</p>
+</dd>
+<dt id="term-challenge-handshake-authentication-protocol-chap">询问握手认证协议（CHAP）</dt>
+<dd><p class="first last">一个由计算服务支持的iSCSI认证方式。</p>
+</dd>
+<dt id="term-chance-scheduler">chance scheduler</dt>
+<dd><p class="first last">一个被计算服务用来从宿主机池中随机选择可用宿主机的调度方式。</p>
+</dd>
+<dt id="term-changes-since">改变于</dt>
+<dd><p class="first last">一个下载自上次请求后的所有变更到所请求项目内的计算服务API参数，而非下载一个全新的数据集再将其与旧的数据进行比较。</p>
+</dd>
+<dt id="term-chef">Chef</dt>
+<dd><p class="first last">操作系统配置管理工具，支持OpenStack的部署。</p>
+</dd>
+<dt id="term-child-cell">子cell</dt>
+<dd><p class="first last">如果一个所请求资源，如CPU时间，磁盘存储，或内存，在父cell中不可用，请求会被转发到其相关联的子cells。如果子cell可以完成请求，那请求即被完成。否则，它会试着船体请求到其任何一个子cells。</p>
+</dd>
+<dt id="term-cinder">cinder</dt>
+<dd><p class="first last">OpenStack核心项目，为虚拟机提供块存储服务。</p>
+</dd>
+<dt id="term-cirros">CirrOS</dt>
+<dd><p class="first last">在云环境（例如OpenStack）中用于测试镜像,按照最小的Linux发行版来设计。</p>
+</dd>
+<dt id="term-cisco-neutron-plug-in">Cisco neutron 插件</dt>
+<dd><p class="first last">支持 Cisco 设备和技术的网络插件，包括 UCS 和 Nexus。</p>
+</dd>
+<dt id="term-cloud-architect">云架构师</dt>
+<dd><p class="first last">对创建云环境进行规划、设计、监督的人。</p>
+</dd>
+<dt id="term-cloud-computing">云计算</dt>
+<dd><p class="first last">一个让可配置计算资源，如网络，服务器，存储，应用，和服务，的可在最小管理成本下被快速生成和释放的共享池能被访问以及与服务提供者进行交互的模型。</p>
+</dd>
+<dt id="term-cloud-controller">云控制器</dt>
+<dd><p class="first last">代表云全局状态的 Compute 组件的集合。它会通过队列和其它服务（如 Identity 验证、对象计算、节点/存储 worker）进行交流。</p>
+</dd>
+<dt id="term-cloud-controller-node">云控制器节点</dt>
+<dd><p class="first last">运行网络、卷、API 和镜像服务的节点。为了实现可扩展性或高可用性，每个服务可能会被分配到相互独立的节点上。</p>
+</dd>
+<dt id="term-cloud-data-management-interface-cdmi">云数据管理接口（CDMI）</dt>
+<dd><p class="first last">定义了用于管理云中对象的RESTful API的SNIA标准，目前在OpenStack中未被支持。</p>
+</dd>
+<dt id="term-cloud-infrastructure-management-interface-cimi">云基础设施管理接口（CIMI）</dt>
+<dd><p class="first last">一个在进行中的云管理规格。目前在OpenStack中未被支持。</p>
+</dd>
+<dt id="term-cloud-init">cloud-init</dt>
+<dd><p class="first last">一个在虚机镜像中被广泛安装的用于在实例启动后使用其从metadata服务，如SSH公钥和用户数据，检索到的信息初始化实例的包。</p>
+</dd>
+<dt id="term-cloudadmin">cloudadmin</dt>
+<dd><p class="first last">一个在计算RBAC系统的默认角色。赋予完全系统访问的权限。</p>
+</dd>
+<dt id="term-cloudbase-init">Cloudbase-Init</dt>
+<dd><p class="first last">一个Windows项目提供来宾初始化功能，这跟云的初始化类似。</p>
+</dd>
+<dt id="term-cloudpipe">cloudpipe</dt>
+<dd><p class="first last">一个计算服务在每个基础项目中创建VPN。</p>
+</dd>
+<dt id="term-cloudpipe-image">cloudpipe镜像</dt>
+<dd><p class="first last">一个充当cloudpipe服务器的现成的虚机镜像，OpenVPN在Linux上运行。</p>
+</dd>
+<dt id="term-clustering-service">集群服务</dt>
+<dd><p class="first last">用于实现集群服务和管理其他OpenStack服务暴露出的同类对象群的OpenStack项目。集群服务的项目名是senlin。</p>
+</dd>
+<dt id="term-cmdb">CMDB</dt>
+<dd><p class="first last">配置管理数据库。</p>
+</dd>
+<dt id="term-congress">congress</dt>
+<dd><p class="first last">提供管治（Governance）服务的OpenStack项目。</p>
+</dd>
+<dt id="term-command-filter">命令过滤</dt>
+<dd><p class="first last">列出计算服务rootwrap内的被允许命令。</p>
+</dd>
+<dt id="term-common-internet-file-system-cifs">通用Internet文件系统</dt>
+<dd><p class="first last">一个文件共享协议。是最初由微软研发和使用的服务器信息块协议（SMB）的公共或开放的变种。就像SMB协议，CIFS在更高水平运行并使用TCP/IP协议。</p>
+</dd>
+<dt id="term-community-project">社区项目（community project）</dt>
+<dd><p class="first last">一个尚未被OpenStack 基金会正式认可的项目。如果项目足够成功，它可能会被提升到一个孵化项目并接着成为一个核心项目，或者它也可能被合并到主要代码主干。</p>
+</dd>
+<dt id="term-compression">压缩</dt>
+<dd><p class="first last">通过特殊的编码方式减少文件大小，文件可被解压到其原本内容。OpenStack支持Linux文件系统等级的压缩但是不支持如对象存储中的存储对象或镜像服务虚机镜像的压缩。</p>
+</dd>
+<dt id="term-compute-service">计算服务</dt>
+<dd><p class="first last">OpenStack核心项目，提供计算服务。项目名称为nova。</p>
+</dd>
+<dt id="term-compute-api">计算服务API</dt>
+<dd><p class="first last">nova-api守护进程提供对nova服务的访问。可与其他APIs通信，如Amazon EC2 API。</p>
+</dd>
+<dt id="term-compute-controller">计算控制器</dt>
+<dd><p class="first last">选择在哪一个合适的宿主机启动虚机实例的计算服务组件。</p>
+</dd>
+<dt id="term-compute-host">计算主机</dt>
+<dd><p class="first last">专用于运行计算节点的物理宿主机。</p>
+</dd>
+<dt id="term-compute-node">计算节点</dt>
+<dd><p class="first last">运行管理可提供广泛服务，如web应用和分析，的虚机实例的nova-compute守护进程的节点。</p>
+</dd>
+<dt id="term-142">计算服务</dt>
+<dd><p class="first last">管理虚机的计算服务组件的名称。</p>
+</dd>
+<dt id="term-compute-worker">compute worker</dt>
+<dd><p class="first last">在每个计算节点上运行的计算组件，提供了管理虚拟机生命周期，包括运行，重启，销毁，加载/卸载存储卷等等功能。被nova-compute进程所提供。</p>
+</dd>
+<dt id="term-concatenated-object">连接对象</dt>
+<dd><p class="first last">一组由对象存储服务结合并发送给客户端的存储对象段。</p>
+</dd>
+<dt id="term-conductor">conductor</dt>
+<dd><p class="first last">在控制节点的计算组件中，conductor是一个通过代理数据库请求的计算进程。使用conductor可以提高安全性，因为计算节点再也不用直接跟数据库交互了。</p>
+</dd>
+<dt id="term-consistency-window">一致性窗口</dt>
+<dd><p class="first last">一个新的对象存储的存储对象变得可被所有客户端访问所需时间。</p>
+</dd>
+<dt id="term-console-log">控制台日志</dt>
+<dd><p class="first last">包含Linux虚拟机控制台的输出。</p>
+</dd>
+<dt id="term-container">容器</dt>
+<dd><p class="first last">组织和对象存储中存储的对象。类似于Linux中目录的概念但它不能被嵌套。用于镜像服务容器格式的替代。</p>
+</dd>
+<dt id="term-container-auditor">容器审计器</dt>
+<dd><p class="first last">通过对SQLite后端数据库查询来检查特定对象存储容器中的丢失副本或错误的存储对象。</p>
+</dd>
+<dt id="term-container-database">容器数据库（container database）</dt>
+<dd><p class="first last">一个SQLite数据库存储对象存储容器和容器的元数据。容器服务器访问此数据库。</p>
+</dd>
+<dt id="term-container-format">容器格式（container format）</dt>
+<dd><p class="first last">镜像服务使用一个含有虚机镜像及其相关元数据（如机器状态，系统磁盘大小等）的封装器。</p>
+</dd>
+<dt id="term-container-server">容器服务器（container server）</dt>
+<dd><p class="first last">一个管理容器的对象存储服务器。</p>
+</dd>
+<dt id="term-containers-service">容器服务（Containers service）</dt>
+<dd><p class="first last">OpenStack提供了一组用于在多租户云环境中的管理应用容器的服务。项目名称的代号是magnum。</p>
+</dd>
+<dt id="term-container-service">容器服务（container service）</dt>
+<dd><p class="first last">对象存储组件提供了容器服务，例如创建，删除，列表等等。</p>
+</dd>
+<dt id="term-content-delivery-network-cdn">内容分发网络（CND）</dt>
+<dd><p class="first last">内容分发网络是一个用于分布内容到客户端的专用网络，通常位于临近客户端处以寻求性能的提升。</p>
+</dd>
+<dt id="term-controller-node">控制节点</dt>
+<dd><p class="first last">云控制节点的替代项。</p>
+</dd>
+<dt id="term-core-api">核心API</dt>
+<dd><p class="first last">取决于上下文，核心API指的是OpenStack API或某个特定核心项目，如计算，网络，镜像服务等，中的主要API二者之一。</p>
+</dd>
+<dt id="term-core-service">核心服务</dt>
+<dd><p class="first last">一个官方的OpenStack服务被定义为核心DefCore委员会。目前，包括块存储（cinder），认证服务（keystone），镜像服务（glance），网络服务（neutron），对象存储服务（swift）。</p>
+</dd>
+<dt id="term-cost">成本</dt>
+<dd><p class="first last">在计算服务分布式调度程序之下，通过查看相对于被请求虚机实例的云主机类型的每个宿主机的容量计算得出。</p>
+</dd>
+<dt id="term-credentials">凭证</dt>
+<dd><p class="first last">仅可被用户知悉或访问且用于验证用户身份的数据。凭证在验证时被提供给服务器。例如密码，密钥，数字证书，和指纹。</p>
+</dd>
+<dt id="term-cross-origin-resource-sharing-cors">跨来源的资源共享（CORS）</dt>
+<dd><p class="first last">一个允许网页上的很多资源（如字体，JavaScript）可被非资源起源域的另一个域请求的机制。特别是，JavaScript的AJAX调用可使用XMLHttpRequest机制。</p>
+</dd>
+<dt id="term-crowbar">Crowbar</dt>
+<dd><p class="first last">一个Dell的致力于提供所有必要服务来快速部署云的开源社区项目。</p>
+</dd>
+<dt id="term-current-workload">当前负载</dt>
+<dd><p class="first last">一个计算服务容量缓存的要素，容量缓存基于某个宿主机中当前在进行中的创建，快照，迁移和大小调整操作数量计算出。</p>
+</dd>
+<dt id="term-customer">customer</dt>
+<dd><p class="first last">租户（tenant）的别称。</p>
+</dd>
+<dt id="term-customization-module">定制模块</dt>
+<dd><p class="first last">一个用户创建位于horizon的用于改变dashboard外观和感觉的Python模块。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="d">
+<h2>D<a class="headerlink" href="#d" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-daemon">守护进程</dt>
+<dd><p class="first last">一个在后台运行并等待请求的进程。不一定监听着TCP或UDP端口。不要与worker概念混淆。</p>
+</dd>
+<dt id="term-dac">DAC</dt>
+<dd><p class="first last">自主访问控制。管治主体访问对象的能力，同时使用户可以做政策决定和分配安全属性。传统UNIX系统的用户，群组和读写执行权限便是DAC的案例。</p>
+</dd>
+<dt id="term-dashboard">Dashboard</dt>
+<dd><p class="first last">OpenStack基于web的管理接口。项目名称为horizon。</p>
+</dd>
+<dt id="term-data-encryption">数据加密</dt>
+<dd><p class="first last">镜像服务和计算服务都支持被加密的虚机镜像（但不支持实例）。传输中数据加密在OpenStack中通过使用如HTTPS，SSL，TLS，和SSH被支持。对象存储服务不支持应用级别的存储对象加密但是可能支持使用磁盘加密的存储。</p>
+</dd>
+<dt id="term-database-id">数据库ID</dt>
+<dd><p class="first last">每个对象存储数据库副本的唯一ID。</p>
+</dd>
+<dt id="term-database-replicator">数据库复制器</dt>
+<dd><p class="first last">一个复制账户，容器，和对象数据库中改变到其他节点的对象存储组件。</p>
+</dd>
+<dt id="term-database-service">数据库服务</dt>
+<dd><p class="first last">一个可为关系型和非关系型数据库引擎提供可伸缩和可靠的数据库即服务功能的整合项目。该项目名称是trove。</p>
+</dd>
+<dt id="term-data-processing-service">数据处理服务</dt>
+<dd><p class="first last">提供可伸缩数据处理栈和关联管理接口的OpenStack项目。项目代号是sahara。</p>
+</dd>
+<dt id="term-data-store">数据存储</dt>
+<dd><p class="first last">一个被数据库服务所支持的数据库引擎。</p>
+</dd>
+<dt id="term-deallocate">释放</dt>
+<dd><p class="first last">进程移除浮动IP地址和固定IP地址的关联。一旦这个关联被移除，浮动IP将会返还到地址池中。</p>
+</dd>
+<dt id="term-debian">Debian</dt>
+<dd><p class="first last">OpenStack兼容的一个Linux发行版。</p>
+</dd>
+<dt id="term-deduplication">重复数据删除</dt>
+<dd><p class="first last">在磁盘块，文件，和/或存储对象级别下发现重复数据来降低存储使用率的进程—目前在OpenStack中未被支持。</p>
+</dd>
+<dt id="term-default-panel">默认面板</dt>
+<dd><p class="first last">当用户访问horizon时，一个默认面板展示出来。</p>
+</dd>
+<dt id="term-default-tenant">默认租户（default tenant）</dt>
+<dd><p class="first last">如果没有租户被定义当一个用户被创建时，新的用户被分配到这个租户。</p>
+</dd>
+<dt id="term-default-token">默认令牌（default token）</dt>
+<dd><p class="first last">一个不与特定租户关联且用于交换域内令牌的身份认证服务令牌。</p>
+</dd>
+<dt id="term-delayed-delete">延迟删除（delayed delete）</dt>
+<dd><p class="first last">一个镜像服务中的选项，为了让镜像在预设秒数后被删除而非立刻删除。</p>
+</dd>
+<dt id="term-delivery-mode">传递模式（delivery mode）</dt>
+<dd><p class="first last">用于计算RabbiMQ消息传递模式设置。可以被设置为短暂或持续。</p>
+</dd>
+<dt id="term-denial-of-service-dos">拒绝服务(DoS)</dt>
+<dd><p class="first last">拒绝服务(DoS)是拒绝服务攻击的缩写。这是一个恶意的企图阻止合法用户使用服务。</p>
+</dd>
+<dt id="term-deprecated-auth">作废的认证</dt>
+<dd><p class="first last">计算服务中可让管理员通过“nova-manage”命令而非使用身份认证服务来创建和管理用户的一个选项。</p>
+</dd>
+<dt id="term-designate">designate</dt>
+<dd><p class="first last">OpenStack中DNS服务项目的代号。</p>
+</dd>
+<dt id="term-desktop-as-a-service">桌面即服务</dt>
+<dd><p class="first last">一个平台提供了一套桌面环境，用户在任何地理位置都能访问并且得到桌面体验。这可能提供通用的使用，开发，或者是测试环境。</p>
+</dd>
+<dt id="term-developer">开发者</dt>
+<dd><p class="first last">基于角色访问控制系统的一个默认角色并且该默认角色会被分配给新用户。</p>
+</dd>
+<dt id="term-device-id">设备ID</dt>
+<dd><p class="first last">将对象存储分区映射到物理存储设备。</p>
+</dd>
+<dt id="term-device-weight">设备重量（device weight）</dt>
+<dd><p class="first last">依照每个设备的存储能力按比例的分配对象存储的分区</p>
+</dd>
+<dt id="term-devstack">DevStack</dt>
+<dd><p class="first last">使用shell脚本快速搭建完整OpenStack开发环境的社区项目。</p>
+</dd>
+<dt id="term-dhcp">DHCP</dt>
+<dd><p class="first last">动态主机配置协议（DHCP）。一个对已连接到网络以便使用IP协议通信的设备进行配置的网络协议。该协议在客户端-服务端模型实现，DHCP客户端在该模型下请求配置数据，如IP地址，默认路由，和来自DHCP服务器中的一个或多个DNS服务器地址。</p>
+</dd>
+<dt id="term-dhcp-agent">DHCP代理</dt>
+<dd><p class="first last">为虚拟网络提供DHCP服务的OpenStack网络服务代理。</p>
+</dd>
+<dt id="term-diablo">Diablo</dt>
+<dd><p class="first last">一组OpenStack相关项目于2011年秋季发行，这是OpenStack的第四个发行版。其包括计算服务（nova 2011.3），对象存储（swift 1.4.3），和镜像服务（glance）。Diablo是OpenStack第四发行版的代号。其设计峰会于美国加利福尼亚州圣克拉拉附近湾区举行，Diablo是附近的城市。</p>
+</dd>
+<dt id="term-direct-consumer">直接消费者</dt>
+<dd><p class="first last">计算服务中RabbitMQ的一个，当RPC调用执行时激活的要素。其通过一个特有专用队列连接到直连交换机，发送消息，并终止。</p>
+</dd>
+<dt id="term-direct-exchange">直接交换</dt>
+<dd><p class="first last">一个在RPC调用期间创建于计算服务RabbitMQ中的路由表；会为每一个被调用的RPC调用创建一个。</p>
+</dd>
+<dt id="term-direct-publisher">直接发布者</dt>
+<dd><p class="first last">为正在传入MQ消息提供响应的RabbitMQ要素。</p>
+</dd>
+<dt id="term-disassociate">解除绑定（disassociate）</dt>
+<dd><p class="first last">移除一个浮动IP地址和一个固定IP地址间关联于是释放浮动IP地址到地址池的进程。</p>
+</dd>
+<dt id="term-disk-encryption">磁盘加密（disk encryption）</dt>
+<dd><p class="first last">在文件系统，磁盘分区，或整个磁盘水平加密数据的能力。在计算服务虚机中被支持。</p>
+</dd>
+<dt id="term-disk-format">磁盘格式（disk format）</dt>
+<dd><p class="first last">镜像服务后端存储中虚机的磁盘镜像被储存为潜在格式。例如，AMI，ISO，QCOW2，VMDK等。</p>
+</dd>
+<dt id="term-dispersion">分散</dt>
+<dd><p class="first last">在对象存储中，用于测试和保证存储对象和容器的分散性从而保证容错能力的工具。</p>
+</dd>
+<dt id="term-distributed-virtual-router-dvr">分布式虚拟路由器（DVR）</dt>
+<dd><p class="first last">使用OpenStack网络服务（neutron）时保证高可用和多宿主机路由的机制。</p>
+</dd>
+<dt id="term-django">Django</dt>
+<dd><p class="first last">一个horizon中广泛使用的web框架。</p>
+</dd>
+<dt id="term-dns">DNS</dt>
+<dd><p class="first last">域名服务器（Domain Name Server）。一个分级且分布的针对连接到因特网或私有网络的计算机，服务和资源的命名系统。将一个人性化的名称关联到IP地址。</p>
+</dd>
+<dt id="term-dns-record">DNS record</dt>
+<dd><p class="first last">一个具体说明特定域信息且属于该域的记录。</p>
+</dd>
+<dt id="term-dns-service">DNS服务</dt>
+<dd><p class="first last">以技术不可知方式向权威DNS服务提供按需可伸缩自服务访问的OpenStack项目。项目代号为designate。</p>
+</dd>
+<dt id="term-dnsmasq">dnsmasq</dt>
+<dd><p class="first last">为虚拟网络提供DNS，DHCP，BOOTP和TFTP服务的守护进程。</p>
+</dd>
+<dt id="term-domain">域（domain）</dt>
+<dd><p class="first last">一个身份验证服务API v3 实体。代表定义了管理OpenStack身份验证实体的管理边界的一组项目，群组和用户的集合。在互联网中，将一个网站和其他网站区分开。通常，域名有两个或更多由点区分的部分。例如，yahoo.com，usa.gov，harvard.edu，或mail.yahoo.com。一个域也是一个有所有DNS相关信息且包含一个或更多记录的实体或容器。</p>
+</dd>
+<dt id="term-domain-name-system-dns">域名系统（DNS）</dt>
+<dd><p class="first last">通过该系统因特网域名称到地址和地址到名称解决方案被确定。DNS通过将IP地址转换成一个更易记住的地址帮助导向因特网。例如，将111.111.111.1转换成www.yahoo.com。所有域和他们的组件，如邮件服务器，都利用DNS来解析向适当位置。DNS服务器通常用主从关系建立以满足主服务器的故障启动从服务器的条件。DNS服务器也许会被类聚或复制以保证对一个DNS服务器的改动会自动传递到其他激活中的服务器。在计算服务中，对于可将DNS条目与浮动IP地址，节点，或cells关联以保证重启后主机名一致的支持。</p>
+</dd>
+<dt id="term-download">下载</dt>
+<dd><p class="first last">从一台计算机到另一台的数据转换，通常以文件形式。</p>
+</dd>
+<dt id="term-drtm">DRTM</dt>
+<dd><p class="first last">动态根的信任机制</p>
+</dd>
+<dt id="term-durable-exchange">耐久交换（durable exchange）</dt>
+<dd><p class="first last">当服务器重启时计算服务RabbitMQ消息交换保持激活状态。</p>
+</dd>
+<dt id="term-durable-queue">耐久队列（durable queue）</dt>
+<dd><p class="first last">当服务器重启时计算服务RabbitMQ消息队列保持激活状态。</p>
+</dd>
+<dt id="term-dynamic-host-configuration-protocol-dhcp">动态主机配置协议（DHCP）</dt>
+<dd><p class="first last">自动在开机时间配置宿主机网络的方法。网络服务和计算服务都提供。</p>
+</dd>
+<dt id="term-dynamic-hypertext-markup-language-dhtml">动态超文本标记语言（DHTML）</dt>
+<dd><p class="first last">页面使用HTML，JavaScript和层叠样式表以使用户可以和web交互或展示一个简单动画。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="e">
+<h2>E<a class="headerlink" href="#e" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-east-west-traffic">东西向流量</dt>
+<dd><p class="first last">在同一云环境或数据中心中服务器间的网络流量。参照南北流量。</p>
+</dd>
+<dt id="term-ebs-boot-volume">弹性块存储启动卷（EBS boot volume）</dt>
+<dd><p class="first last">一个含有可启动虚机镜像的亚马逊弹性块存储（EBS）存储卷，目前在OpenStack中无法支持。</p>
+</dd>
+<dt id="term-ebtables">ebtables</dt>
+<dd><p class="first last">Linux桥防火墙的过滤工具，能通过Linux网桥传输过滤网络流量。在计算服务中和arptables，iptables和ip6tables一起使用保证网络通信的隔离性。</p>
+</dd>
+<dt id="term-ec2">EC2</dt>
+<dd><p class="first last">亚马逊商用计算产品，类似于OpenStack的计算服务。</p>
+</dd>
+<dt id="term-ec2-access-key">EC2访问键（access key）</dt>
+<dd><p class="first last">和EC2密钥一起使用来访问计算服务EC2 API。</p>
+</dd>
+<dt id="term-ec2-api">EC2 API</dt>
+<dd><p class="first last">OpenStack支持通过计算服务访问亚马逊EC2 API。</p>
+</dd>
+<dt id="term-ec2-compatibility-api">EC2兼容性API</dt>
+<dd><p class="first last">一个使OpenStack可与亚马逊EC2通信的计算服务组件。</p>
+</dd>
+<dt id="term-ec2-secret-key">EC2 密钥（secret key）</dt>
+<dd><p class="first last">当与计算服务EC2 API通信时和EC2访问键一起使用；用来数字签署每个请求。</p>
+</dd>
+<dt id="term-elastic-block-storage-ebs">弹性块存储（EBS）</dt>
+<dd><p class="first last">亚马逊商用块存储产品。</p>
+</dd>
+<dt id="term-encryption">加密（encryption）</dt>
+<dd><p class="first last">OpenStack支持如HTTPS，SSH，TLS，电子证书和数据加密等加密技术。</p>
+</dd>
+<dt id="term-endpoint">端点</dt>
+<dd><p class="first last">参照API端点。</p>
+</dd>
+<dt id="term-endpoint-registry">endpoint注册</dt>
+<dd><p class="first last">身份验证服务目录的别称。</p>
+</dd>
+<dt id="term-encapsulation">封装</dt>
+<dd><p class="first last">将一类封包放在另一类中以提取或保护数据的做法。例如GRE，MPLS，或IPsec。</p>
+</dd>
+<dt id="term-endpoint-template">endpoint模板</dt>
+<dd><p class="first last">表明一个服务，如对象存储，计算，身份验证等，在哪可被访问的URL和端口号端点的列表。</p>
+</dd>
+<dt id="term-entity">实体</dt>
+<dd><p class="first last">需要连接到网络服务的所有硬件和软件都由 Networking 服务，即网络连接服务提供。一个实体可以通过实施 VIF 来使用 Networking 服务。</p>
+</dd>
+<dt id="term-ephemeral-image">临时镜像（ephemeral image）</dt>
+<dd><p class="first last">一个不保存对其卷改变并在实例终结后将其回复到初始状态的虚机镜像。</p>
+</dd>
+<dt id="term-ephemeral-volume">临时卷</dt>
+<dd><p class="first last">不保存对其改变并在当前用户结束对其控制时回复到初始状态的卷。</p>
+</dd>
+<dt id="term-essex">Essex</dt>
+<dd><p class="first last">一组OpenStack相关项目于2012年四月发行，这是OpenStack的第五个发行版。其包括计算服务（nova 2012.1），对象存储（swift 1.4.8），镜像服务（glance），身份验证服务（keystone），和控制面板（horizon）。Essex是OpenStack第五发行版的代号。其设计峰会于美国马萨诸塞州波士顿举行，Essex是附近的城市。</p>
+</dd>
+<dt id="term-esxi">ESXi</dt>
+<dd><p class="first last">一个OpenStack支持的hypervisor。</p>
+</dd>
+<dt id="term-etag">电子标签</dt>
+<dd><p class="first last">对象存储中一个对象的MD5哈希，用来确保数据完整性。</p>
+</dd>
+<dt id="term-euca2ools">euca2ools</dt>
+<dd><p class="first last">一批用以管理虚机的命令行工具；大多数和OpenStack兼容。</p>
+</dd>
+<dt id="term-eucalyptus-kernel-image-eki">Eucalyptus内核镜像(EKI)</dt>
+<dd><p class="first last">与ERI一起使用来创建EMI。</p>
+</dd>
+<dt id="term-eucalyptus-machine-image-emi">Eucalyptus机器镜像(EMI)</dt>
+<dd><p class="first last">由镜像服务所支持的虚机镜像容器格式。</p>
+</dd>
+<dt id="term-eucalyptus-ramdisk-image-eri">Eucalyptus内存盘镜像(ERI)</dt>
+<dd><p class="first last">与EKI一起使用来创建EMI。</p>
+</dd>
+<dt id="term-evacuate">疏散</dt>
+<dd><p class="first last">将一个或所有虚机（VM）实例从一个宿主机迁移到另一个的过程，与共享存储热迁移和块迁移都兼容。</p>
+</dd>
+<dt id="term-exchange">交换</dt>
+<dd><p class="first last">RabbitMQ消息交换的别称。</p>
+</dd>
+<dt id="term-exchange-type">交换类型</dt>
+<dd><p class="first last">一个计算服务RabbitMQ的路由算法。</p>
+</dd>
+<dt id="term-exclusive-queue">专用队列</dt>
+<dd><p class="first last">被一个计算服务RabbitMQ中的直接消费者连接，信息仅可通过当前连接被使用。</p>
+</dd>
+<dt id="term-extended-attributes-xattr">扩展属性（xattr）</dt>
+<dd><p class="first last">激活存储所有者，群组，权限，修改时间等外的额外信息的文件系统选项。潜在的对象存储文件系统一定支持扩展属性。</p>
+</dd>
+<dt id="term-extension">扩展</dt>
+<dd><p class="first last">API扩展或插件的别称。在身份验证服务的语境下，这是一个特指实施的称呼，如加入对OpenID的支持。</p>
+</dd>
+<dt id="term-external-network">外部网络（external network）</dt>
+<dd><p class="first last">专用于实例因特网访问的网络段。</p>
+</dd>
+<dt id="term-extra-specs">额外规格</dt>
+<dd><p class="first last">指定当计算服务决定从何处启动一个新实例时的额外要求。例如网络宽带最小值或GPU。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="f">
+<h2>F<a class="headerlink" href="#f" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-fakeldap">伪LDAP</dt>
+<dd><p class="first last">创建本地LDAP目录来测试身份验证服务和计算服务的简单方式。需要Redis。</p>
+</dd>
+<dt id="term-fan-out-exchange">扇出交换</dt>
+<dd><p class="first last">是scheduler服务用来接受计算，卷和网络节点容量信息的消息接口，存在于RabbitMQ和计算服务中。</p>
+</dd>
+<dt id="term-federated-identity">联合身份(federated identity)</dt>
+<dd><p class="first last">一个在身份提供者和 OpenStack云间建立信任的方法。</p>
+</dd>
+<dt id="term-fedora">Fedora</dt>
+<dd><p class="first last">一个与OpenStack兼容的Linux发行版。</p>
+</dd>
+<dt id="term-fibre-channel">光纤通道</dt>
+<dd><p class="first last">与TCP/IP相似的存储协议；用于封装SCSI命令和数据。</p>
+</dd>
+<dt id="term-fibre-channel-over-ethernet-fcoe">以太网光纤通道（FCoE）</dt>
+<dd><p class="first last">基于以太网隧道化的光纤通道协议</p>
+</dd>
+<dt id="term-fill-first-scheduler">优先填充的调度器(fill-first scheduler)</dt>
+<dd><p class="first last">一个计算服务的调度方法，它会尽量在一个主机上运行虚拟机，而不是在不同的主机上启动新虚拟机。</p>
+</dd>
+<dt id="term-filter">过滤</dt>
+<dd><p class="first last">Compute 调度过程中的一步，它会在已淘汰掉无法运行虚拟机的主机后执行。</p>
+</dd>
+<dt id="term-firewall">防火墙</dt>
+<dd><p class="first last">用来限制主机和（或）节点间的网络通讯。它的功能通过使用 iptables、arptables、ip6tables 和 ebtables 在 Compute 上实现。</p>
+</dd>
+<dt id="term-fwaas">FWaaS</dt>
+<dd><p class="first last">提供外围防火墙功能的一个网络扩展。</p>
+</dd>
+<dt id="term-fixed-ip-address">固定IP地址</dt>
+<dd><p class="first last">在一个实例每次引导时都和它相关联的一个 IP 地址。它通常不能被最终用户或公共互联网访问，而是用于对实例进行管理。</p>
+</dd>
+<dt id="term-flat-manager">扁平化网络管理器</dt>
+<dd><p class="first last">Compute 的一个组件，用来为授权的节点提供 IP 地址。它假定 DHCP、DNS 以及路由配置和服务由其它组件提供。</p>
+</dd>
+<dt id="term-flat-mode-injection">扁平网络模式注入</dt>
+<dd><p class="first last">一个操作系统网络配置信息在实例启动前被注射进虚机镜像的计算服务网络方式。</p>
+</dd>
+<dt id="term-flat-network">扁平化网络</dt>
+<dd><p class="first last">不使用 VLAN 和隧道技术进行租户网络分离的一个虚拟网络类型。每个扁平化网络通常都需要一个由网桥映射定义的独立的底层物理接口。但是，一个扁平化网络也可以包括多个子网。</p>
+</dd>
+<dt id="term-flatdhcp-manager">FlatDHCP管理器</dt>
+<dd><p class="first last">提供 dnsmasq（DHCP、DNS、BOOTP、TFTP）和 radvd（routing）服务的计算组件。</p>
+</dd>
+<dt id="term-flavor">flavor</dt>
+<dd><p class="first last">虚拟机实例类型的另外一个名称</p>
+</dd>
+<dt id="term-flavor-id">flavor ID</dt>
+<dd><p class="first last">每个计算服务或镜像服务虚机配置或云主机类型的UUID。</p>
+</dd>
+<dt id="term-floating-ip-address">浮动 IP 地址</dt>
+<dd><p class="first last">一个可被项目将其与虚机关联的IP地址，这样每次云主机启动都会有着一样的公共IP地址。你创建了浮动IP地址池并在云主机启动时将他们分配给它们以位置一致的IP地址从而维护DNS分配。</p>
+</dd>
+<dt id="term-folsom">Folsom</dt>
+<dd><p class="first last">OpenStack的第六个版本在2012年的秋季问世。它包含计算（nova），对象存储（swift），身份认证（keystone），网络（neutron），镜像服务（glance），以及块存储（cinder）项目。Folsom是OpenStack第六版的代号。这次设计峰会在美国的旧金山，加利福尼亚举行，而Folsom正是附近的一个城市。</p>
+</dd>
+<dt id="term-formpost">邮件表单（FormPost）</dt>
+<dd><p class="first last">对象存储服务中通过web页面上的表单上传（发布）镜像的中间件。</p>
+</dd>
+<dt id="term-freezer">freezer</dt>
+<dd><p class="first last">提供备份存储和灾难恢复即服务的OpenStack项目。</p>
+</dd>
+<dt id="term-front-end">前端（front end）</dt>
+<dd><p class="first last">用户在此点与服务进行交互；可以是一个API端点，horizon控制面板，或命令行工具。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="g">
+<h2>G<a class="headerlink" href="#g" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-gateway">网关</dt>
+<dd><p class="first last">一个在不同网络间传递网络流量的IP地址，尤指分配给路由器的IP地址。</p>
+</dd>
+<dt id="term-generic-receive-offload-gro">通用接收卸载（GRO）</dt>
+<dd><p class="first last">某些在向核心IP栈传递封包前将很多接收到的较小封包合并成一个大封包的网络接口驱动器的特性。</p>
+</dd>
+<dt id="term-generic-routing-encapsulation-gre">通用路由封装（GRE）</dt>
+<dd><p class="first last">将点对点链接中的大多数种类网络层协议封装的协议。</p>
+</dd>
+<dt id="term-glance">glance</dt>
+<dd><p class="first last">一个提供OpenStack镜像服务的核心项目。</p>
+</dd>
+<dt id="term-glance-api-server">glance API 服务器</dt>
+<dd><p class="first last">处理客户端对虚机请求，在注册服务器上更新镜像服务元数据，与存储适配器通信以从后端存储中上传虚机镜像。</p>
+</dd>
+<dt id="term-glance-registry">glance 注册</dt>
+<dd><p class="first last">镜像服务镜像注册的别称。</p>
+</dd>
+<dt id="term-global-endpoint-template">全局endpoint模板</dt>
+<dd><p class="first last">Identity 服务端点模板，它包括了对所有租户有效的服务。</p>
+</dd>
+<dt id="term-glusterfs">GlusterFS</dt>
+<dd><p class="first last">一种设计为聚合NAS主机的文件系统，兼容于OpenStack。</p>
+</dd>
+<dt id="term-golden-image">金镜像</dt>
+<dd><p class="first last">一个最终确定磁盘镜像被创建并被所有节点在无需修改情况下使用的操作系统安装的方式。</p>
+</dd>
+<dt id="term-governance-service">管治服务（Governance service）</dt>
+<dd><p class="first last">在任何云服务集合中提供管治即服务来在动态基础架构上监控，加强，和审计策略。项目代号为congress。</p>
+</dd>
+<dt id="term-graphic-interchange-format-gif">图形交换格式（GIF）</dt>
+<dd><p class="first last">一种常用于web页面上的动态图象的图象格式。</p>
+</dd>
+<dt id="term-graphics-processing-unit-gpu">图形处理单元（GPU）</dt>
+<dd><p class="first last">基于GPU的存在选择宿主机目前在OpenStack不被支持。</p>
+</dd>
+<dt id="term-green-threads">绿色线程</dt>
+<dd><p class="first last">Python使用的合作线程模型；当关于某具体库调用产生时减少竞争条件和仅上下文转换。每个OpenStack服务都是其自身线程。</p>
+</dd>
+<dt id="term-grizzly">Grizzly</dt>
+<dd><p class="first last">OpenStack第七发行版的代号。其设计峰会于美国加利福尼亚州圣迭戈举行，Grizzly是加利福尼亚州州旗上的元素。</p>
+</dd>
+<dt id="term-group">组</dt>
+<dd><p class="first last">一个身份验证服务v3 API实体。代表所属某域的一个用户集合。</p>
+</dd>
+<dt id="term-guest-os">客户机操作系统</dt>
+<dd><p class="first last">运行于hypervisor控制下的操作系统云主机。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="h">
+<h2>H<a class="headerlink" href="#h" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-hadoop">Hadoop</dt>
+<dd><p class="first last">一个开源软件框架，支持数据密集分布式处理。</p>
+</dd>
+<dt id="term-hadoop-distributed-file-system-hdfs">Hadoop Distributed File System (HDFS)</dt>
+<dd><p class="first last">一个被设计于低成本商用硬件上运行的分布式的，高容错的文件系统。</p>
+</dd>
+<dt id="term-handover">移交（handover）</dt>
+<dd><p class="first last">对象存储中当驱动故障时一个新的存储对象的副本被自动创建的存储对象的状态。</p>
+</dd>
+<dt id="term-hard-reboot">硬重启（hard reboot）</dt>
+<dd><p class="first last">是一种与得体，合适的操作系统关闭相反的，通过按下物理或虚拟的电源按钮进行重启的方式。</p>
+</dd>
+<dt id="term-havana">Havana</dt>
+<dd><p class="first last">OpenStack第八发行版的代号。其设计峰会于美国俄勒冈州波特兰市举行，Havana是俄勒冈州的一个未建制社区。</p>
+</dd>
+<dt id="term-heat">heat</dt>
+<dd><p class="first last">一个集成的项目，目标是为OpenStack编排多种云应用。</p>
+</dd>
+<dt id="term-heat-orchestration-template-hot">Heat编排模板(HOT)</dt>
+<dd><p class="first last">OpenStack本地格式，用于Heat的输入。</p>
+</dd>
+<dt id="term-health-monitor">健康监视器（health monitor）</dt>
+<dd><p class="first last">决定一个VIP池的后端成员是否可以处理一个请求。一个池可由多个健康监测器与其关联。当一个池有多个健康监测器与其关联，所有的检测器都会检查池中每个成员。一个成员为了保持激活状态必须被所有检测器宣布其状态为健康。</p>
+</dd>
+<dt id="term-high-availability-ha">高可用(HA)</dt>
+<dd><p class="first last">高可用系统寻找最小系统宕机时间和数据丢失。高可用系统的设计方法和相关的服务实现确保了经营业绩预先安排的水平将在合同测量期间得到满足。</p>
+</dd>
+<dt id="term-horizon">horizon</dt>
+<dd><p class="first last">提供web接口的仪表盘的OpenStack项目。</p>
+</dd>
+<dt id="term-horizon-plug-in">horizon 插件</dt>
+<dd><p class="first last">OpenStack控制面板（horizon）的插件。</p>
+</dd>
+<dt id="term-host">主机</dt>
+<dd><p class="first last">一个物理计算机，非虚拟机云主机（节点）。</p>
+</dd>
+<dt id="term-host-aggregate">宿主机聚合（host aggregate）</dt>
+<dd><p class="first last">一个方法将可用区域再分割为hypervisor池，即一个常用宿主机的集合。</p>
+</dd>
+<dt id="term-host-bus-adapter-hba">主机总线适配器(HBA)</dt>
+<dd><p class="first last">设备插进PCI槽，跟光纤或者网卡一样</p>
+</dd>
+<dt id="term-hybrid-cloud">混合云</dt>
+<dd><p class="first last">混合云由两个或多个云（私有云，社区云或公有云）组成，它们虽然绑定在一起但是都是保持自身特性的实体，同时带来了多部署模式的好处。混合云也指使用云资源连接托管，管理，和/或专属服务的能力。</p>
+</dd>
+<dt id="term-hyper-v">Hyper-V</dt>
+<dd><p class="first last">OpenStack支持的其中一个hypervisor。</p>
+</dd>
+<dt id="term-hyperlink">超链接</dt>
+<dd><p class="first last">指含有指向其他网站链接的任何种类文本，通常可在点击一个单词或一句话就可以打开一个不同网站的文档中。</p>
+</dd>
+<dt id="term-hypertext-transfer-protocol-http">超文本传输协议（HTTP）</dt>
+<dd><p class="first last">HTTP 是一个用于分布的，协作的，超媒体信息系统的应用层协议。它是环球信息网数据通信的基础。超文本是在节点之间使用逻辑链接（超链接）传输结构化的文本。HTTP是交换或者传输超文本的协议。</p>
+</dd>
+<dt id="term-hypertext-transfer-protocol-secure-https">安全超文本传输协议（HTTPS）</dt>
+<dd><p class="first last">一个加密通讯协议是一个在因特网广泛部署的，计算机网络安全通信的通信协议。严格来说，其本身不是协议；而是说，它是简单的将超文本传输协议（HTTP）放在TLS或SSL协议上的结果，从而将TLS或SSL的安全能力加到了标准HTTP通信中。大多数OpenStack API端点和很多内部组件通讯支持HTTPS通讯。</p>
+</dd>
+<dt id="term-hypervisor">hypervisor</dt>
+<dd><p class="first last">用来仲裁和控制虚拟机访问实际底层硬件的软件。</p>
+</dd>
+<dt id="term-hypervisor-pool">hypervisor池</dt>
+<dd><p class="first last">通过主机聚合现实的一组hypervisor集合。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="i">
+<h2>I<a class="headerlink" href="#i" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-iaas">IaaS</dt>
+<dd><p class="first last">基础设施即服务。IaaS是一种配置模式，将数据中心的物理组件，如存储、硬件、服务器以及网络等以组织外包的方式提供。服务运营商提供设备，负责机房以及操作和维护。用户只需要按需使用并付费即可。IaaS是云服务模式的一种。</p>
+</dd>
+<dt id="term-icehouse">Icehouse</dt>
+<dd><p class="first last">OpenStack 第九个发行版本的代码。相关的设计峰会是在香港进行的，Ice House 是香港的一个街道名。</p>
+</dd>
+<dt id="term-icmp">ICMP</dt>
+<dd><p class="first last">Internet Control Message Protocol，网络设备使用它控制消息数据。例如，<strong class="command">ping</strong> 使用 ICMP 测试连接。</p>
+</dd>
+<dt id="term-id-number">ID 号</dt>
+<dd><p class="first last">与认证服务中的每个用户相关联的唯一的数字 ID，这个概念与 Linux 或 LDAP 中的 UID 相似。</p>
+</dd>
+<dt id="term-identity-api">认证API</dt>
+<dd><p class="first last">认证服务 API 的别称。</p>
+</dd>
+<dt id="term-identity-back-end">认证服务后端</dt>
+<dd>The source used by Identity service to retrieve user
+information; an OpenLDAP server, for example.</dd>
+<dt id="term-identity-provider">身份提供者（identity provider）</dt>
+<dd><p class="first last">一个目录服务，允许用户通过用户名和密码登陆。是认证令牌的典型源。</p>
+</dd>
+<dt id="term-identity-service">认证服务</dt>
+<dd><p class="first last">提供可被访问的用户被映射到OpenStack服务的用户中央目录的OpenStack核心项目。它也为OpenStack服务注册端点。其充当一个通用认证系统。项目代号是keystone。</p>
+</dd>
+<dt id="term-identity-service-api">认证服务API</dt>
+<dd><p class="first last">用来访问通过 keystone 提供的 OpenStack Identity 服务的 API。</p>
+</dd>
+<dt id="term-ids">入侵检测系统</dt>
+<dd><p class="first last">入侵检测系统</p>
+</dd>
+<dt id="term-image">镜像</dt>
+<dd><p class="first last">一个特定操作系统（OS）的文件集，它被用来创建或重新构建一个服务器。OpenStack 提供了预构建的镜像，您也可以使用已启用的服务器创建定制的镜像。定制的镜像可以用来进行数据备份，或作为额外服务器的 &#8220;gold&#8221; 镜像。</p>
+</dd>
+<dt id="term-image-api">镜像服务 API</dt>
+<dd><p class="first last">用来管理虚拟机镜像的镜像服务的 API 端点。</p>
+</dd>
+<dt id="term-image-cache">镜像缓存</dt>
+<dd><p class="first last">被 Image 服务用来从本地主机获取镜像，而不需要在每次请求镜像时都从镜像服务器中重新下载。</p>
+</dd>
+<dt id="term-image-id">镜像ID</dt>
+<dd><p class="first last">通过镜像 API 访问 Image 服务的虚拟机镜像时使用的一个 URI 和 UUID 的组合。</p>
+</dd>
+<dt id="term-image-membership">镜像的组成员</dt>
+<dd><p class="first last">可以访问镜像服务中的特定虚拟机镜像的租户列表。</p>
+</dd>
+<dt id="term-image-owner">镜像所有者</dt>
+<dd><p class="first last">拥有镜像服务中的虚拟机镜像的租户。</p>
+</dd>
+<dt id="term-image-registry">镜像注册</dt>
+<dd><p class="first last">镜像服务可以提供的一组虚拟机镜像列表。</p>
+</dd>
+<dt id="term-image-service">镜像服务</dt>
+<dd><p class="first last">OpenStack 的一个核心项目，用来为磁盘和服务器镜像提供发现、注册和分发的功能。镜像服务的项目名是 glance。</p>
+</dd>
+<dt id="term-image-service-api">镜像服务 API</dt>
+<dd><p class="first last">镜像服务 API的别称。</p>
+</dd>
+<dt id="term-image-status">镜像状态</dt>
+<dd><p class="first last">镜像服务中的虚拟机镜像的当前状态，请不要和一个运行的云主机状态相混淆。</p>
+</dd>
+<dt id="term-image-store">镜像存储</dt>
+<dd><p class="first last">镜像服务用来存储虚拟机镜像的后端存储，有效选择包括对象存储、本地文件系统、S3 或 HTTP。</p>
+</dd>
+<dt id="term-image-uuid">镜像UUID</dt>
+<dd><p class="first last">镜像服务用来区分每个虚拟机镜像的 UUID。</p>
+</dd>
+<dt id="term-incubated-project">孵化项目</dt>
+<dd><p class="first last">一个社区项目可能会先被升级到这个状态，然后再被升级到一个核心项目。</p>
+</dd>
+<dt id="term-ingress-filtering">入口过滤</dt>
+<dd><p class="first last">用来过滤入口网络数据的过程。它被 Compute 支持。</p>
+</dd>
+<dt id="term-ini">INI</dt>
+<dd><p class="first last">OpenStack 配置文件使用 INI 格式来描述选项以及它们的值。它由配置段和“键/值”对组成。</p>
+</dd>
+<dt id="term-injection">注入</dt>
+<dd><p class="first last">在云主机启动前把一个文件加入虚拟机镜像。</p>
+</dd>
+<dt id="term-instance">云主机</dt>
+<dd><p class="first last">一个运行中，或状态已知如已暂停的，可被用作硬件服务器的虚机。</p>
+</dd>
+<dt id="term-instance-id">实例ID</dt>
+<dd><p class="first last">云主机UUID的别称。</p>
+</dd>
+<dt id="term-instance-state">云主机状态</dt>
+<dd><p class="first last">客户虚拟机镜像的当前状态</p>
+</dd>
+<dt id="term-instance-tunnels-network">实例隧道网络</dt>
+<dd><p class="first last">用于计算节点和网络节点间实例网络隧道的网络段。</p>
+</dd>
+<dt id="term-instance-type">云主机类型</dt>
+<dd><p class="first last">描述多种对用户可用的虚机镜像的参数；参数包括CPU，存储，和内存。该参数是云主机类型的别称。</p>
+</dd>
+<dt id="term-instance-type-id">云主机类型ID</dt>
+<dd><p class="first last">云主机类型（flavor）ID的别称。</p>
+</dd>
+<dt id="term-instance-uuid">实例 UUID</dt>
+<dd><p class="first last">分配给每个虚机实例的ID</p>
+</dd>
+<dt id="term-interface">接口</dt>
+<dd><p class="first last">为其它设备或介质提供连接功能的一个物理或虚拟设备。</p>
+</dd>
+<dt id="term-interface-id">接口 ID</dt>
+<dd><p class="first last">网络服务的VIF 或 vNIC 的唯一的 ID，该ID是UUID的格式。</p>
+</dd>
+<dt id="term-internet-protocol-ip">互联网协议（IP）</dt>
+<dd><p class="first last">互联网协议族中于网络边界间转发数据报文的首要通信协议。</p>
+</dd>
+<dt id="term-internet-service-provider-isp">互联网服务提供商（ISP）</dt>
+<dd><p class="first last">任何向个人或商业单位提供因特网访问的运营商。</p>
+</dd>
+<dt id="term-internet-small-computer-system-interface-iscsi">互联网小型计算机系统接口（iSCSI）</dt>
+<dd><p class="first last">封装SCSI帧并通过IP网络传输的存储协议。</p>
+</dd>
+<dt id="term-ironic">ironic</dt>
+<dd><p class="first last">用来部署裸机（和部署虚拟机相对照）的OpenStack的一个项目。</p>
+</dd>
+<dt id="term-iops">IOPS</dt>
+<dd><p class="first last">IOPS(每秒输入/输出操作)是一种常见的性能测量基准，针对于计算机存储设备，例如硬盘，固态硬盘，存储区域网络等。</p>
+</dd>
+<dt id="term-ip-address">IP地址:</dt>
+<dd><p class="first last">互联网中的每个计算机系统都具有的一个唯一的号码。现在，IP 有两个版本在作为地址使用：IPv4 和 IPv6。</p>
+</dd>
+<dt id="term-ip-address-management-ipam">IP地址管理（IPAM）</dt>
+<dd><p class="first last">自动化IP地址分配，释放，和管理的进程。目前由计算服务，melange和网络服务提供。</p>
+</dd>
+<dt id="term-ipl">IPL</dt>
+<dd><p class="first last">初始程序加载器（Initial Program Loader）。</p>
+</dd>
+<dt id="term-ipmi">IPMI</dt>
+<dd><p class="first last">Intelligent Platform Management Interface（智能平台管理接口）。IPMI 是一个标准化的计算机系统接口，它被系统管理员用来对计算机系统进行带外（out-of-band）管理，并监控它们的操作。以通俗的话讲，就是使用一个直接的网络连接，而不是通过操作系统或登录 shell，来管理一个计算机系统（无论这个系统是否在运行，还是已关闭）。</p>
+</dd>
+<dt id="term-ip6tables">ip6tables</dt>
+<dd><p class="first last">用来设置、维护和检查 Linux 内核中的  IPv6 数据包过滤规则表的工具。在 OpenStack Compute 中，ip6tables 和 arptables、ebtables 和 iptables 一起使用来为节点和虚拟机创建防火墙。</p>
+</dd>
+<dt id="term-ipset">ipset</dt>
+<dd><p class="first last">iptables 的一个扩展，它允许创建同时匹配整个 IP 地址“集（sets）”的防火墙规则。这些地址集存在于已进行了索引的数据结构中，从而可以提高效率，特别是在有大量规则的系统中。</p>
+</dd>
+<dt id="term-iptables">iptables</dt>
+<dd><p class="first last">和arptables和ebtables一起使用，iptables在减速服务中创建防火墙。iptables由Linux内核防火墙（作为不同的Netfilter模块实现）和其存储的链和规则提供。目前不同的内核模块和程序为不同的协议使用：iptables用于IPv4，ip6tables用于IPv6，arptables用于ARP，以及ebtables用于以太网帧。操作需要root权限。</p>
+</dd>
+<dt id="term-iqn">IQN</dt>
+<dd><p class="first last">iSCSI许可名称（IQN）是最常用的iSCSI名称格式，它能够唯一的标识一个在iSCSI网络中的节点。所有的IQN遵循这样的格式命名“iqn.yyyy-mm.domain:identifier”，其中“yyyy-mm”代表域中注册的年和月，“domain”是域名发行机构，“identifier”是一个可选的字符串，这个字符串让每个在同一域名下的IQN唯一。举例，&#8217;iqn.2015-10.org.openstack.408ae959bce1&#8217;。</p>
+</dd>
+<dt id="term-iscsi">iSCSI</dt>
+<dd><p class="first last">以太网内隧道化的SCSI磁盘协议，由计算服务，对象存储和镜像服务支持。</p>
+</dd>
+<dt id="term-iso9660">ISO9660</dt>
+<dd><p class="first last">由镜像服务支持的虚机镜像磁盘格式之一。</p>
+</dd>
+<dt id="term-itsec">itsec</dt>
+<dd><p class="first last">计算服务RBAC系统中的一个可以隔离任一项目中实例的默认角色。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="j">
+<h2>J<a class="headerlink" href="#j" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-java">Java</dt>
+<dd><p class="first last">用来创建通过网络连接多个计算机的系统的编程语言。</p>
+</dd>
+<dt id="term-javascript">JavaScript</dt>
+<dd><p class="first last">用来搭建web页面的脚本语言。</p>
+</dd>
+<dt id="term-javascript-object-notation-json">JavaScript 对象表示法（JSON）</dt>
+<dd><p class="first last">OpenStack支持的响应格式之一。</p>
+</dd>
+<dt id="term-jenkins">Jenkins</dt>
+<dd><p class="first last">用以自动为OpenStack开发运行作业的工具。</p>
+</dd>
+<dt id="term-jumbo-frame">巨型帧</dt>
+<dd><p class="first last">现代以太网网络中支持高达约9000字节帧数的特性。</p>
+</dd>
+<dt id="term-juno">Juno</dt>
+<dd><p class="first last">OpenStack第十发行版的代号。设计峰会于美国乔治亚州亚特兰大举行，Juno是乔治亚州的一个未建制社区。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="k">
+<h2>K<a class="headerlink" href="#k" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-kerberos">Kerberos</dt>
+<dd><p class="first last">一个依据tickets工作的网络认证协议。Kerberos允许节点通过非安全网络通信，且允许节点向其它节点以安全方式证明其身份信息。</p>
+</dd>
+<dt id="term-kernel-based-vm-kvm">基于内核的虚拟机(KVM)</dt>
+<dd><p class="first last">一种被OpenStack所支持的hypervisor。KVM是在linux实现的全虚拟话解决方案，在x86下有CPU虚拟扩展 (Intel VT or AMD-V)所支持，其他平台诸如ARM,IBM Power，IBM zSeries也支持KVM。它以模块的方式可被内核动态加载，提供了虚拟化基础设施的核心和处理器特定的模块。</p>
+</dd>
+<dt id="term-key-manager-service">秘钥管理器服务</dt>
+<dd><p class="first last">产生能为希望启动加密特性的服务提供键管理的秘密存储区和生成系统的OpenStack项目。项目代码是barbican。</p>
+</dd>
+<dt id="term-keystone">keystone</dt>
+<dd><p class="first last">OpenStack验证服务的项目。</p>
+</dd>
+<dt id="term-kickstart">Kickstart</dt>
+<dd><p class="first last">一个在基于Red Hat，Fedora，和CentOS的Linux发行版中自动进行系统配置和安装的工具。</p>
+</dd>
+<dt id="term-kilo">Kilo</dt>
+<dd><p class="first last">OpenStack第十一发行版的代号。设计峰会于法国巴黎举行。由于命名选举的推迟，发行版仅被称为K。因为&#8217;k &#8216;是kilo的单位符号并且其所指人工制品被存储于巴黎附近的塞夫勒省布雷特依宫，社区选择了Kilo作为发行版代号。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="l">
+<h2>L<a class="headerlink" href="#l" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-large-object">大型对象</dt>
+<dd><p class="first last">对象存储服务中大于5GB的存储对象。</p>
+</dd>
+<dt id="term-launchpad">Launchpad</dt>
+<dd><p class="first last">OpenStack的合作站点。</p>
+</dd>
+<dt id="term-layer-2-network">2层网络</dt>
+<dd><p class="first last">OSI网络架构中数据链路层的称呼。数据链路层负责媒介访问控制，流量控制和检测以及改正可能在物理层中发生的错误。</p>
+</dd>
+<dt id="term-layer-3-network">三层网络</dt>
+<dd><p class="first last">来自OSI网络架构的术语，即网络层。网络层响应报文转发，包括从一个节点到其它节点的路由。</p>
+</dd>
+<dt id="term-layer-2-l2-agent">2层 (L2) 代理服务</dt>
+<dd><p class="first last">OpenStack网络服务中为虚拟网络提供2层连接的代理服务。</p>
+</dd>
+<dt id="term-layer-3-l3-agent">3层 (L3) 代理服务</dt>
+<dd><p class="first last">OpenStack网络服务中为虚拟网络提供3层连接的代理服务。</p>
+</dd>
+<dt id="term-liberty">Liberty</dt>
+<dd><p class="first last">OpenStack第十二发行版的代号。其设计峰会于加拿大温哥华举行，Liberty是萨斯喀彻温省村庄的名称。</p>
+</dd>
+<dt id="term-libvirt">libvirt</dt>
+<dd><p class="first last">OpenStack用来和多种其支持的虚拟机管理程序交互的虚拟化API库。</p>
+</dd>
+<dt id="term-lightweight-directory-access-protocol-ldap">轻量目录访问协议（LDAP）</dt>
+<dd><p class="first last">一个用于通过IP网络访问和维护分布式目录信息服务的应用协议。</p>
+</dd>
+<dt id="term-linux-bridge">Linux bridge</dt>
+<dd><p class="first last">使多个虚机共享一个计算服务中的物理NIC的软件。</p>
+</dd>
+<dt id="term-linux-bridge-neutron-plug-in">Linux Bridge neutron插件</dt>
+<dd><p class="first last">使能Linux桥以理解网络服务端口，加载接口，和其他抽象概念。</p>
+</dd>
+<dt id="term-linux-containers-lxc">Linux容器（LXC）</dt>
+<dd><p class="first last">一个OpenStack支持的hypervisor。</p>
+</dd>
+<dt id="term-live-migration">热迁移（live migration）</dt>
+<dd><p class="first last">计算服务中将运行中虚机实例从一个宿主机迁移到另一个仅在转换时伴随很小的服务中断的能力。</p>
+</dd>
+<dt id="term-load-balancer">负载均衡器（load balancer）</dt>
+<dd><p class="first last">负载均衡器是一个属于云账户的逻辑设备。用于在多后端系统或服务间分布工作负载，基于标准定义它的部分配置。</p>
+</dd>
+<dt id="term-load-balancing">负载均衡（load balancing）</dt>
+<dd><p class="first last">将客户端请求分散到两个或多个节点来改善性能和可用性的进程。</p>
+</dd>
+<dt id="term-lbaas">负载均衡即服务（LBaaS）</dt>
+<dd><p class="first last">启动网络服务来在指定实例间平均分发正在进入请求。</p>
+</dd>
+<dt id="term-logical-volume-manager-lvm">逻辑卷管理器（LVM）</dt>
+<dd><p class="first last">提供在大存储设备分配空间的比传统分区方案更灵活的方法。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="m">
+<h2>M<a class="headerlink" href="#m" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-magnum">magnum</dt>
+<dd><p class="first last">OpenStack容器服务项目代号。</p>
+</dd>
+<dt id="term-management-api">管理API</dt>
+<dd><p class="first last">管理员API的别称。</p>
+</dd>
+<dt id="term-management-network">管理网络</dt>
+<dd><p class="first last">用于管理的网段，不可被公共因特网访问。</p>
+</dd>
+<dt id="term-manager">管理器</dt>
+<dd><p class="first last">相关代码的逻辑分组，如块存储服务卷管理器或我尼格罗管理器。</p>
+</dd>
+<dt id="term-manifest">manifest</dt>
+<dd><p class="first last">用于追踪对象存储服务中大型存储对象段。</p>
+</dd>
+<dt id="term-manifest-object">manifest 存储对象（object）</dt>
+<dd><p class="first last">对象存储服务中一个特殊的含有用于大型存储对象的manifest的存储对象。</p>
+</dd>
+<dt id="term-manila">manila</dt>
+<dd><p class="first last">为应用程序提供共享文件系统即服务的OpenStack项目。</p>
+</dd>
+<dt id="term-maximum-transmission-unit-mtu">最大传输单元（MTU）</dt>
+<dd><p class="first last">对于特定网络介质其最大的帧或封包大小。对于以太网网络来说是1500字节。</p>
+</dd>
+<dt id="term-mechanism-driver">装置驱动</dt>
+<dd><p class="first last">为虚拟实例提供2层连接的Modular Layer 2 (ML2) neutron插件的驱动器。单次OpenStack安装可使用多个装置驱动器。</p>
+</dd>
+<dt id="term-melange">melange</dt>
+<dd><p class="first last">OpenStack网络信息服务的代号。即将合并到网络服务。</p>
+</dd>
+<dt id="term-membership">成员资格（membership）</dt>
+<dd><p class="first last">镜像服务虚机镜像和租户间的关联。使镜像可被特定租户们共享。</p>
+</dd>
+<dt id="term-membership-list">成员资格列表（membership list）</dt>
+<dd><p class="first last">可以访问镜像服务中的特定虚拟机镜像的租户列表。</p>
+</dd>
+<dt id="term-memcached">memcached</dt>
+<dd><p class="first last">对象存储服务用于缓存的一种分布式内存对象缓存系统。</p>
+</dd>
+<dt id="term-memory-overcommit">内存溢出</dt>
+<dd><p class="first last">基于宿主机实际内存使用量来启动新虚机实例的能力，与基于每个运行实例认为其可用RAM量来决定相反。也被称为RAM溢出。</p>
+</dd>
+<dt id="term-message-broker">message broker</dt>
+<dd><p class="first last">计算服务中用于提供AMQP消息能力的软件包。默认包是RabbitMQ。</p>
+</dd>
+<dt id="term-message-bus">消息总线</dt>
+<dd><p class="first last">所有AMQP消息所使用的用于计算服务中云间通信的主要虚拟传输线路。</p>
+</dd>
+<dt id="term-message-queue">消息队列</dt>
+<dd><p class="first last">将请求从客户端传递至合适的工作器并在工作完成后将输出返回至客户端。</p>
+</dd>
+<dt id="term-message-service">消息服务（Message service）</dt>
+<dd><p class="first last">致力于生产以一个有效，可伸缩且高可用的方式承担多种分布的应用模式，且创建和维护相关Python库和文档的OpenStack消息服务的OpenStack项目。项目代号是zaqar。</p>
+</dd>
+<dt id="term-metadata-agent">元数据代理</dt>
+<dd><p class="first last">用来为云主机提供元数据的OpenStack网络服务代理。</p>
+</dd>
+<dt id="term-meta-data-server-mds">元数据服务器（MDS）</dt>
+<dd><p class="first last">存储 CephFS 元数据。</p>
+</dd>
+<dt id="term-migration">迁移</dt>
+<dd><p class="first last">把一个虚拟机从一个主机移到另外一个主机上的过程。</p>
+</dd>
+<dt id="term-mistral">mistral</dt>
+<dd><p class="first last">提供工作流服务的 OpenStack 项目。</p>
+</dd>
+<dt id="term-mitaka">Mitaka</dt>
+<dd><p class="first last">OpenStack第十三发行版的代号。设计峰会在日本东京举行，Mitaka是东京的一个城市。</p>
+</dd>
+<dt id="term-monasca">monasca</dt>
+<dd><p class="first last">提供监控服务的OpenStack项目。</p>
+</dd>
+<dt id="term-multi-host">多宿主机</dt>
+<dd><p class="first last">传统网络服务（nova）的高可用模式。每个计算节点都处理NAT和DHCP且作为其上所有虚机的网管。</p>
+</dd>
+<dt id="term-multinic">多网卡</dt>
+<dd><p class="first last">计算服务中允许每个虚机实例都连接到多个VIF的设备。</p>
+</dd>
+<dt id="term-murano">murano</dt>
+<dd><p class="first last">提供应用目录的OpenStack项目。</p>
+</dd>
+<dt id="term-modular-layer-2-ml2-neutron-plug-in">Modular Layer 2 (ML2) neutron 插件</dt>
+<dd><p class="first last">在网络服务中可以同时使用多个2层网络技术，如802.1Q和VXLAN。</p>
+</dd>
+<dt id="term-monitor-lbaas">监控 (负载均衡即服务)</dt>
+<dd><p class="first last">负载均衡即服务中使用``ping``命令，TCP和HTTP/HTTPS GET来提供高可用监控的特性。</p>
+</dd>
+<dt id="term-monitor-mon">监控 (Mon)</dt>
+<dd><p class="first last">与外部客户端通信，检查数据状态和一致性，且执行quorum功能的Ceph组件。</p>
+</dd>
+<dt id="term-monitoring">监控（Monitoring）</dt>
+<dd><p class="first last">为计量，复杂事件和处理和日志记录提供多租户，高伸缩性，性能，容错性的监控即服务解决方案的OpenStack项目。其搭建了一个可扩展平台，用于可被操作者和租户共同使用以获取操作性理解和可见性的高级监控服务，以保证可用性和稳定性。项目代号是monasca。</p>
+</dd>
+<dt id="term-multi-factor-authentication">多因子认证</dt>
+<dd><p class="first last">使用两个或多个凭证，如密码和密钥，的认证方式。目前在身份验证服务中不被支持。</p>
+</dd>
+<dt id="term-418">多网卡</dt>
+<dd><p class="first last">计算服务中使每个虚机云主机都可以连接到多个VIF的设备。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="n">
+<h2>N<a class="headerlink" href="#n" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-nebula">Nebula</dt>
+<dd><p class="first last">由NASA于2010年作为开源项目发布且是OpenStack计算服务的基础。</p>
+</dd>
+<dt id="term-netadmin">网络管理者</dt>
+<dd><p class="first last">一个在计算服务基于角色控制系统中默认的角色。角色授予用户分配公共可访问的IP地址给实例和改变防火墙规则的权限。</p>
+</dd>
+<dt id="term-netapp-volume-driver">二层模块（ML2）neutron插件</dt>
+<dd><p class="first last">使计算服务通过网域按需资源调配管理器与网域存储设备通信。</p>
+</dd>
+<dt id="term-network">网络</dt>
+<dd><p class="first last">提供实体间连接的虚拟网络。例如，一组共享网络连接的虚拟端口集合。在网络服务拓扑中，网络永远是2层网络。</p>
+</dd>
+<dt id="term-nat">NAT</dt>
+<dd><p class="first last">网络地址转换；在传输中修改IP地址信息的过程。于计算服务和网络服务中被支持。</p>
+</dd>
+<dt id="term-network-controller">网络控制器（network controller）</dt>
+<dd><p class="first last">一个计算节点守护进程编排节点的网络配置，包括IP地址，VLANs，和桥接。也管理公共和私有网络的路由。</p>
+</dd>
+<dt id="term-network-file-system-nfs">网络文件系统 (NFS)</dt>
+<dd><p class="first last">使文件系统在网络可用的方法。被OpenStack所支持。</p>
+</dd>
+<dt id="term-network-id">网络ID</dt>
+<dd><p class="first last">网络服务中分配给每个网段的唯一ID。和网络UUID相同。</p>
+</dd>
+<dt id="term-network-manager">网络管理器（network manager）</dt>
+<dd><p class="first last">管理多种网络组件，如防火墙规则，IP地址分配等的计算服务组件。</p>
+</dd>
+<dt id="term-network-namespace">网络命名空间（network namespace）</dt>
+<dd><p class="first last">在单宿主机上以分离路由表和接口提供独立虚拟网络实例的Linux内核特性。与虚拟路由和转发（VRF）服务在物理网络需求上类似。</p>
+</dd>
+<dt id="term-network-node">网络节点（network node）</dt>
+<dd><p class="first last">任何运行着网络工作守护进程的计算节点。</p>
+</dd>
+<dt id="term-network-segment">网段（network segment）</dt>
+<dd><p class="first last">在网络服务中代表一个虚拟，隔离的OSI2层子网。</p>
+</dd>
+<dt id="term-newton">Newton</dt>
+<dd><p class="first last">OpenStack第十四个发行版的代号。其设计峰会在美国德州奥斯汀举行。该版本以德州奥斯汀第九大道西1013号的&#8221;Newton House&#8221;命名，该&#8221;Newton House&#8221;被列入了国家史迹名录。</p>
+</dd>
+<dt id="term-ntp">NTP</dt>
+<dd><p class="first last">网络时间协议；通过与一个可信赖，准确的时间源通信来保持主机或节点时间正确的方法。</p>
+</dd>
+<dt id="term-network-uuid">网络 UUID</dt>
+<dd><p class="first last">网络服务网段的唯一 ID。</p>
+</dd>
+<dt id="term-network-worker">网络工作器（network worker）</dt>
+<dd><p class="first last"><a href="#id1"><span class="problematic" id="id2">``</span></a>nova-network``工作器守护进程; 提供如将一个IP地址分配给正在启动nova实例等服务。</p>
+</dd>
+<dt id="term-networking-service">Networking 服务</dt>
+<dd><p class="first last">为OpenStack计算服务提供网络连接抽象层的OpenStack核心服务。</p>
+</dd>
+<dt id="term-networking-api">网络应用程序接口</dt>
+<dd><p class="first last">用于访问OpenStack网络服务的API。提供启动客户界面插件创建的可拓展架构。</p>
+</dd>
+<dt id="term-neutron">neutron</dt>
+<dd><p class="first last">OpenStack核心项目之一，为OpenStack计算提供网络连接抽象层。</p>
+</dd>
+<dt id="term-neutron-api">neutron API</dt>
+<dd><p class="first last">网络服务 API 的别称。</p>
+</dd>
+<dt id="term-neutron-manager">neutron 管理器</dt>
+<dd><p class="first last">启动计算服务和网络服务的整合，使得网络服务可以为客户虚机提供网络管理。</p>
+</dd>
+<dt id="term-neutron-plug-in">neutron 插件</dt>
+<dd><p class="first last">网络服务中可使组织创建客户界面插件来实现高级功能，如QoS，ACLs或IDS的接口。</p>
+</dd>
+<dt id="term-nexenta-volume-driver">Nexenta 卷驱动器</dt>
+<dd><p class="first last">对计算服务中的 NexentaStor 设备提供支持。</p>
+</dd>
+<dt id="term-no-ack">无应答</dt>
+<dd><p class="first last">禁用计算服务 RabbitMQ 中服务器端消息确认功能。这增强了性能但是降低了可靠性。</p>
+</dd>
+<dt id="term-node">节点</dt>
+<dd><p class="first last">在一个宿主机上运行的一个虚机实例。</p>
+</dd>
+<dt id="term-non-durable-exchange">非耐久交换</dt>
+<dd><p class="first last">当服务重启消息交换被清除。其数据没有被写入持久化存储。</p>
+</dd>
+<dt id="term-non-durable-queue">非持久队列</dt>
+<dd><p class="first last">当服务重启消息队列被清除。其数据没有被写入持久化存储中。</p>
+</dd>
+<dt id="term-non-persistent-volume">非持久化卷</dt>
+<dd><p class="first last">临时卷的别称。</p>
+</dd>
+<dt id="term-north-south-traffic">南北向流量</dt>
+<dd><p class="first last">一个用户或客户端（北向）与服务器（南向）间的网络流量，或进入云（南向）和离开云（北向）之间的流量。参照东西向流量（east-west traffic）。</p>
+</dd>
+<dt id="term-nova">nova</dt>
+<dd><p class="first last">OpenStack核心项目之一，提供计算服务。</p>
+</dd>
+<dt id="term-nova-api">Nova API</dt>
+<dd><p class="first last">计算服务 API 的别称。</p>
+</dd>
+<dt id="term-nova-network">nova-network</dt>
+<dd><p class="first last">一个管理IP地址分配，防火墙，和其他网络相关任务的计算服务组件。这是一个旧的且对于网络服务可选的网络选项。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="o">
+<h2>O<a class="headerlink" href="#o" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-object">对象</dt>
+<dd><p class="first last">对象存储服务持有的二进制大对象（BLOB）数据；可以是任何格式。</p>
+</dd>
+<dt id="term-object-auditor">对象审计</dt>
+<dd><p class="first last">打开一个对象服务器的所有对象并为每个对象验证 MD5 哈希，大小，和元数据。</p>
+</dd>
+<dt id="term-object-expiration">对象过期</dt>
+<dd><p class="first last">对象存储中用于在一定时间后或到达特定日期后自动删除对象的配置选项。</p>
+</dd>
+<dt id="term-object-hash">对象哈希</dt>
+<dd><p class="first last">对象存储中存储对象的唯一ID。</p>
+</dd>
+<dt id="term-object-path-hash">对象路径哈希</dt>
+<dd><p class="first last">被对象存储服务用于判断环链中对象的位置。将对象映射到分区。</p>
+</dd>
+<dt id="term-object-replicator">对象复制器</dt>
+<dd><p class="first last">为了容错性而将对象复制到远程分区的对象存储服务组件。</p>
+</dd>
+<dt id="term-object-server">对象服务器</dt>
+<dd><p class="first last">负责管理对象的对象存储组件。</p>
+</dd>
+<dt id="term-object-storage-service">对象存储服务</dt>
+<dd><p class="first last">OpenStack核心项目之一，提供一致性的、冗余的存储、可恢复的数字内容。OpenStack对象存储的项目名称是swift。</p>
+</dd>
+<dt id="term-object-storage-api">对象存储 API</dt>
+<dd><p class="first last">用于访问OpenStack对象存储服务的API。</p>
+</dd>
+<dt id="term-object-storage-device-osd">对象存储设备 （OSD）</dt>
+<dd><p class="first last">Ceph存储守护进程。</p>
+</dd>
+<dt id="term-object-versioning">对象版本控制</dt>
+<dd><p class="first last">允许用户对对象存储服务容器进行标记从而对容器内所有存储对象版本化。</p>
+</dd>
+<dt id="term-ocata">Ocata</dt>
+<dd><p class="first last">OpenStack第十五个发行版的代号。其设计峰会于西班牙巴塞罗拉举行，Ocata是巴塞罗拉北部的一个海滩。</p>
+</dd>
+<dt id="term-oldie">Oldie</dt>
+<dd><p class="first last">对象存储服务中运行很长时间的进程的术语。可能指的是一个挂起进程。</p>
+</dd>
+<dt id="term-open-cloud-computing-interface-occi">开放云计算接口（OCCI）</dt>
+<dd><p class="first last">用于管理计算，数据和网络资源的标准化接口，目前在OpenStack中不被支持。</p>
+</dd>
+<dt id="term-open-virtualization-format-ovf">开放虚拟化格式（OVF）</dt>
+<dd><p class="first last">打包虚机镜像的标准。在OpenStack中支持。</p>
+</dd>
+<dt id="term-open-vswitch">Open vSwitch</dt>
+<dd><p class="first last">Open vSwitch是一款产品级的，多层的虚拟交换机，基于开源Apache2.0许可证分发。被设计用于基于可编程扩展的大规模网络自动化，支持标准的管理接口和协议(例如NetFlow, sFlow, SPAN, RSPAN, CLI, LACP, 802.1ag)。</p>
+</dd>
+<dt id="term-open-vswitch-ovs-agent">OVS代理（Open vSwitch agent）</dt>
+<dd><p class="first last">为网络服务插件提供潜在Open vSwitch服务接口。</p>
+</dd>
+<dt id="term-open-vswitch-neutron-plug-in">Open vSwitch neutron插件</dt>
+<dd><p class="first last">为网络服务Open vSwitch提供支持。</p>
+</dd>
+<dt id="term-openldap">OpenLDAP</dt>
+<dd><p class="first last">一个开源DLAP服务器。计算服务和身份验证服务均支持。</p>
+</dd>
+<dt id="term-openstack">OpenStack</dt>
+<dd><p class="first last">OpenStack是一个云操作系统，通过数据中心可控制大型的计算、存储、网络等资源池。所有的管理通过前端界面管理员就可以完成，同样也可以通过web接口让最终用户部署资源。OpenStack是一个开放源代码的项目，基于Apeche许可证2.0发布。</p>
+</dd>
+<dt id="term-openstack-code-name">OpenStack代号(OpenStack code name)</dt>
+<dd><p class="first last">每个OpenStack发行版都有一个代号。代号按照字母顺序排序分为：Austin, Bexar, Cactus, Diablo, Essex, Folsom, Grizzly, Havana, Icehouse, Juno, Kilo, Liberty, and Mitaka.代号是举行OpenStack峰会附近的城市或县城名。有一个例外，被叫做Waldon的例外，它被赋予国旗的元素听起来十分酷。代号通常是以投票的方式选择。</p>
+</dd>
+<dt id="term-opensuse">openSUSE</dt>
+<dd><p class="first last">OpenStack兼容的一个Linux发行版。</p>
+</dd>
+<dt id="term-operator">操作者</dt>
+<dd><p class="first last">负责策划和维护 OpenStack 安装的人。</p>
+</dd>
+<dt id="term-optional-service">可选的服务</dt>
+<dd><p class="first last">官方的OpenStack服务被DefCore委员会所定义。目前，包含仪表盘（horizon），用量统计服务（Telemetry），编排服务（heat），数据库服务（trove），裸金属服务（ironic）等等组件。</p>
+</dd>
+<dt id="term-orchestration-service">编排服务</dt>
+<dd><p class="first last">为OpenStack编排多个云应用的整合项目。Orchestration的项目名是heat。</p>
+</dd>
+<dt id="term-orphan">孤儿</dt>
+<dd><p class="first last">在对象存储服务语境中，指一个在服务升级，重启，或重新加载后不被终止的进程。</p>
+</dd>
+<dt id="term-oslo">Oslo</dt>
+<dd><p class="first last">产生一组含有OpenStack项目共享代码的Python库的OpenStack项目。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="p">
+<h2>P<a class="headerlink" href="#p" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-parent-cell">父cell</dt>
+<dd><p class="first last">如果一个被请求资源，如CPU时间，磁盘存储，或内存，在父cell中不可用时，请求被转发到关联的子cell中。</p>
+</dd>
+<dt id="term-partition">分区</dt>
+<dd><p class="first last">对象存储中用于存储对象的存储单元。其存在于设备之上且为了容错性被复制。</p>
+</dd>
+<dt id="term-partition-index">分区索引</dt>
+<dd><p class="first last">包含着环链中所有对象存储分区的位置。</p>
+</dd>
+<dt id="term-partition-shift-value">分区价值转变（partition shift value）</dt>
+<dd><p class="first last">被对象存储服务用于决定数据应该保存在哪块分区。</p>
+</dd>
+<dt id="term-path-mtu-discovery-pmtud">路径MTU探测（PMTU）</dt>
+<dd><p class="first last">IP网络中检测端对端最大传输信元并相应的调试包大小的机制。</p>
+</dd>
+<dt id="term-pause">暂停</dt>
+<dd><p class="first last">虚机无改变发生的状态（内存无变化，网络通信停止等）；虚机被冻结但未关闭。</p>
+</dd>
+<dt id="term-pci-passthrough">PCI 穿透</dt>
+<dd><p class="first last">给予客户虚拟机专用的PCI设备访问方式。目前在OpenStack Havana和后续发行版中支持。</p>
+</dd>
+<dt id="term-persistent-message">持续消息</dt>
+<dd><p class="first last">在内存和磁盘中均被储存的消息。消息在故障和重启后不会丢失。</p>
+</dd>
+<dt id="term-persistent-volume">持久卷</dt>
+<dd><p class="first last">这类卷的改变会被保存。</p>
+</dd>
+<dt id="term-personality-file">个性化文件</dt>
+<dd><p class="first last">用于定制计算服务实例的文件。它可被用于注射SSH密钥或特定网络配置。</p>
+</dd>
+<dt id="term-platform-as-a-service-paas">平台即服务(PaaS)</dt>
+<dd><p class="first last">提供给客户通过编程语言或云平台提供者支持的工具来部署应用的能力。一个平台即服务的例子就是Eclipse/Java编程平台无需下载即可使用。</p>
+</dd>
+<dt id="term-plug-in">插件</dt>
+<dd><p class="first last">为网络服务APIs，或计算服务APIs提供实际实现的软件组件，视上下文而定。</p>
+</dd>
+<dt id="term-policy-service">策略服务</dt>
+<dd><p class="first last">身份验证服务中提供规则管理接口和基于规则的认证引擎的组件。</p>
+</dd>
+<dt id="term-pool">池</dt>
+<dd><p class="first last">你组合在一起来接受和处理流量的，一组设备的逻辑集合，如web服务器。负载均衡功能选择池中哪个成员来处理VIP地址上接受的新请求或连接。每个VIP都有一个池。</p>
+</dd>
+<dt id="term-pool-member">池成员</dt>
+<dd><p class="first last">运行于负载均衡系统中的后端服务器上的应用程序。</p>
+</dd>
+<dt id="term-port">端口</dt>
+<dd><p class="first last">一个网络服务中的虚拟网络端口；VIFs/vNICs 都连接到这个端口。</p>
+</dd>
+<dt id="term-port-uuid">端口 UUID</dt>
+<dd><p class="first last">网络服务端口的唯一 ID 。</p>
+</dd>
+<dt id="term-preseed">preseed</dt>
+<dd><p class="first last">在基于 Debian 的 Linux 发行版上进行自动化系统配置和安装的工具。</p>
+</dd>
+<dt id="term-private-image">私有镜像</dt>
+<dd><p class="first last">仅对于特定租户可用的镜像服务中虚机镜像。</p>
+</dd>
+<dt id="term-private-ip-address">私有 IP 地址</dt>
+<dd><p class="first last">用于管理和维护的 IP 地址，在公共网络中不可用。</p>
+</dd>
+<dt id="term-private-network">私有网络</dt>
+<dd><p class="first last">网络服务控制器提供虚拟网络来使计算服务器可以和彼此以及公共网络交互。所有机器都必须有一个公有和私有网络接口。一个私有网络接口可以是一个扁平化网络或VLAN网络接口。一个扁平化网络接口由flat_interface用flat管理器控制。一个VLAN网络接口由``vlan_interface``选项用VLAN管理器控制。</p>
+</dd>
+<dt id="term-project">项目</dt>
+<dd><p class="first last">项目表示OpenStack中“所有权”的基本单元，因此OpenStack中的所有资源都必须由一个特定项目拥有。在OpenStack身份验证服务中，一个项目必须由一个域所拥有。</p>
+</dd>
+<dt id="term-project-id">项目ID</dt>
+<dd><p class="first last">计算服务中用户自定义的字母数字组成的字符串；项目的名称。</p>
+</dd>
+<dt id="term-project-vpn">项目 VPN</dt>
+<dd><p class="first last">cloudpipe的别称。</p>
+</dd>
+<dt id="term-promiscuous-mode">混杂模式</dt>
+<dd><p class="first last">引发网络接口传递所有其接受的流量到宿主机而非仅向其传递帧地址。</p>
+</dd>
+<dt id="term-protected-property">受保护属性</dt>
+<dd><p class="first last">一般来说，指镜像服务中仅管理员有权访问的镜像上的额外的属性。限制哪些用户角色在这些属性上可以执行CRUD操作。晕管理者可以将任何镜像属性配置为受保护的。</p>
+</dd>
+<dt id="term-provider">提供者</dt>
+<dd><p class="first last">有所有宿主机和实例访问权限的管理员。</p>
+</dd>
+<dt id="term-proxy-node">代理节点</dt>
+<dd><p class="first last">提供对象存储转发服务的节点。</p>
+</dd>
+<dt id="term-proxy-server">代理服务器</dt>
+<dd><p class="first last">对象存储服务的用户通过转发服务器与服务互动，转发服务器依次查找环链中被请求数据地址并将结果返回给用户。</p>
+</dd>
+<dt id="term-public-api">公共 API</dt>
+<dd><p class="first last">用于服务到服务间通信和端用户互动的 API 端点。</p>
+</dd>
+<dt id="term-public-image">公共镜像（public image）</dt>
+<dd><p class="first last">对所有租户均可用的镜像服务虚机镜像。</p>
+</dd>
+<dt id="term-public-ip-address">公共IP地址（public IP address）</dt>
+<dd><p class="first last">对端用户可访问的IP地址。</p>
+</dd>
+<dt id="term-public-key-authentication">公钥认证（public key authentication）</dt>
+<dd><p class="first last">使用密钥而非密码的认证方法。</p>
+</dd>
+<dt id="term-public-network">公共网络（public network）</dt>
+<dd><p class="first last">网络控制器提供虚拟网络，使计算服务器和公共网络互联。所有的机器都必须有一个公网和一个私网接口。公网接口是由公网接口选项控制的。</p>
+</dd>
+<dt id="term-puppet">Puppet</dt>
+<dd><p class="first last">一个OpenStack支持的操作系统配置管理工具。</p>
+</dd>
+<dt id="term-python">Python</dt>
+<dd><p class="first last">OpenStack中大量使用的编程语言。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="q">
+<h2>Q<a class="headerlink" href="#q" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-qemu-copy-on-write-2-qcow2">QEMU Copy On Write 2 (QCOW2)</dt>
+<dd><p class="first last">由镜像服务支持的虚机镜像磁盘格式之一。</p>
+</dd>
+<dt id="term-qpid">Qpid</dt>
+<dd><p class="first last">OpenStack支持的消息队列软件；RabbitMQ的替代软件。</p>
+</dd>
+<dt id="term-quarantine">隔离</dt>
+<dd><p class="first last">如对象存储服务发现存储对象，容器，或账号有损坏，他们会被放置在隔离状态，无法被复制，无法被客户端读取，且一个正确的副本会被再复制。</p>
+</dd>
+<dt id="term-quick-emulator-qemu">Quick EMUlator (QEMU)</dt>
+<dd><p class="first last">QEMU是一个通用且开源的机器仿真器和虚拟器。是OpenStack所支持的hypervisor之一，通常用于研发目的。</p>
+</dd>
+<dt id="term-quota">配额</dt>
+<dd><p class="first last">在计算服务和块存储服务中，按每个项目来设置资源限制的能力。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="r">
+<h2>R<a class="headerlink" href="#r" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-rabbitmq">RabbitMQ</dt>
+<dd>The default message queue software used by OpenStack.</dd>
+<dt id="term-rackspace-cloud-files">Rackspace云文件</dt>
+<dd><p class="first last">由Rackspace正在2010年作为开源项目发布且是OpenStack对象存储服务的基础。</p>
+</dd>
+<dt id="term-rados-block-device-rbd">RADOS 块设备 (RBD)</dt>
+<dd><p class="first last">使Linux块设备在多分布数据存储上采用带状设置的Ceph组件。</p>
+</dd>
+<dt id="term-radvd">radvd</dt>
+<dd><p class="first last">路由广告守护进程，被计算服务中VLAN管理器和FlatDHCP管理器用来为虚机实例提供路由服务。</p>
+</dd>
+<dt id="term-rally">rally</dt>
+<dd><p class="first last">提供基准服务的 OpenStack 项目。</p>
+</dd>
+<dt id="term-ram-filter">RAM过滤器</dt>
+<dd><p class="first last">启动和禁止RAM溢出的计算服务设置。</p>
+</dd>
+<dt id="term-ram-overcommit">内存溢出</dt>
+<dd><p class="first last">基于宿主机实际内存使用量来启动新虚机实例的能力，与基于每个运行实例认为其可用RAM量来决定相反。也被称为内存溢出。</p>
+</dd>
+<dt id="term-rate-limit">rate limit</dt>
+<dd><p class="first last">对象存储服务中按每个账户和/或每个容器来限制数据库写入的可配置选项。</p>
+</dd>
+<dt id="term-raw">raw</dt>
+<dd><p class="first last">镜像服务所支持的虚机镜像磁盘格式之一是一个非结构化磁盘镜像。</p>
+</dd>
+<dt id="term-rebalance">重平衡（rebalance）</dt>
+<dd><p class="first last">将对象存储服务分区分布到环链中所有驱动的进程；在环链初始创建和重配置之后被使用。</p>
+</dd>
+<dt id="term-reboot">重启（reboot）</dt>
+<dd><p class="first last">服务器的软重启和硬重启。通过软重启，操作系统发出信号重新启动，从而使得所有进程优雅的关闭。硬重启等效于对服务器的反复开关机。该虚拟化平台应该确保重启操作成功完成，即使底层的域或虚机正处于暂停或关闭，操作依然成功完成。</p>
+</dd>
+<dt id="term-rebuild">重建（rebuild）</dt>
+<dd><p class="first last">清除服务器上所有数据并用特定镜像替代。服务器ID和IP地址不变。</p>
+</dd>
+<dt id="term-recon">Recon</dt>
+<dd><p class="first last">一个收集计量的对象存储组件。</p>
+</dd>
+<dt id="term-record">记录（record）</dt>
+<dd><p class="first last">属于特定域并用来详细描述域的相关信息。有几种DNS记录。每一种都含有用来描述记录用途的特定信息。例如邮件交换（MX）记录，详细描述了特定域的邮件服务器；和命名服务器（NS）记录，详细描述了域的权威域名服务器。</p>
+</dd>
+<dt id="term-record-id">记录ID（record ID）</dt>
+<dd><p class="first last">数据库中每当改变发生便累加的数字。对象存储服务器复制时使用。</p>
+</dd>
+<dt id="term-red-hat-enterprise-linux-rhel">红帽企业Linux(RHEL)</dt>
+<dd><p class="first last">OpenStack兼容的一个Linux发行版。</p>
+</dd>
+<dt id="term-reference-architecture">参考架构（reference architecture）</dt>
+<dd><p class="first last">OpenStack云的推荐架构。</p>
+</dd>
+<dt id="term-region">区域（region）</dt>
+<dd><p class="first last">一个有着专门用来与其他区域仅共享身份验证服务（Keystone）的专用API端点离散的OpenStack环境。</p>
+</dd>
+<dt id="term-registry">注册（registry)</dt>
+<dd><p class="first last">镜像服务注册的别称。</p>
+</dd>
+<dt id="term-registry-server">注册服务器（registry server）</dt>
+<dd><p class="first last">一个提供虚机镜像元数据信息给客户端的镜像服务。</p>
+</dd>
+<dt id="term-reliable-autonomic-distributed-object-store">可靠自主分布式对象存储</dt>
+<dd><p class="first">(RADOS)</p>
+<p class="last">在Ceph中提供对象存储的组件集合。与OpenStack对象存储服务类似。</p>
+</dd>
+<dt id="term-remote-procedure-call-rpc">远程过程调用（RPC）</dt>
+<dd><p class="first last">计算服务RabbitMQ是基础设施服务（intra-service ）间通信的方法。</p>
+</dd>
+<dt id="term-replica">副本（replica）</dt>
+<dd><p class="first last">通过创建对象存储服务中的存储对象，账户，和容器副本的方法提供数据冗余和容错性，这样当底层存储故障时他们不会丢失。</p>
+</dd>
+<dt id="term-replica-count">副本计数（replica count）</dt>
+<dd><p class="first last">对象存储环链中数据副本的数量。</p>
+</dd>
+<dt id="term-replication">复制（replication）</dt>
+<dd><p class="first last">为了容错性和性能将数据复制到单独的物理设备的进程。</p>
+</dd>
+<dt id="term-replicator">复制器（replicator）</dt>
+<dd><p class="first last">创造和管理对象副本的对象存储后端进程。</p>
+</dd>
+<dt id="term-request-id">请求ID（request ID）</dt>
+<dd><p class="first last">分配给每个发送给计算服务的请求的唯一ID。</p>
+</dd>
+<dt id="term-rescue-image">救援镜像（rescue image）</dt>
+<dd><p class="first last">一个当实例被置入救援模式时启动的特殊种类的虚机镜像。允许管理员为实例挂载文件系统来改正问题。</p>
+</dd>
+<dt id="term-resize">调整大小（resize）</dt>
+<dd><p class="first last">将已存在服务器转换为不同配置，其将服务器规模扩大或缩小。初始服务器被保存以便问题发生时回滚。所有调整大小操作都必须经过测试和明确确认，在此之后原本服务器会被删除。</p>
+</dd>
+<dt id="term-restful">RESTful</dt>
+<dd><p class="first last">使用REST，或表述性状态转移的web服务API。REST是用于万维网的超媒体系统的架构风格。</p>
+</dd>
+<dt id="term-ring">环链（ring）</dt>
+<dd><p class="first last">将对象存储数据映射到分区的实体。每个服务都有其独立的环链存在，如账户，对象，和容器。</p>
+</dd>
+<dt id="term-ring-builder">环链制造器(ring builder)</dt>
+<dd><p class="first last">建造和管理对象存储服务中的环链，将分区分配给设备，并将配置推送给其他存储节点。</p>
+</dd>
+<dt id="term-role-based-access-control-rbac">基于角色访问控制(RBAC)</dt>
+<dd><p class="first last">提供预定义的用户可操作列表，如开启或停止虚机，重置密码等。在身份验证服务和计算服务中均被支持并且可以通过horizon控制面板配置。</p>
+</dd>
+<dt id="term-role">角色</dt>
+<dd><p class="first last">用户预设会进行具体操作的个性。一个角色包括一组权利和特权。一个用户预设角色会继承这些权利和特权。</p>
+</dd>
+<dt id="term-role-id">角色ID</dt>
+<dd><p class="first last">分配给每个身份验证服务角色的数字字母组成的ID。</p>
+</dd>
+<dt id="term-rootwrap">rootwrap</dt>
+<dd><p class="first last">允许无特权的 &#8220;nova&#8221;用户以Linux root用户身份运行一列特定命令的计算服务特性。</p>
+</dd>
+<dt id="term-round-robin-scheduler">轮询调度器</dt>
+<dd><p class="first last">将实例平均分配到可用宿主机的计算服务排程器种类。</p>
+</dd>
+<dt id="term-router">路由</dt>
+<dd><p class="first last">一个物理或虚拟的在不同网络间传递网络流量的网络设备。</p>
+</dd>
+<dt id="term-routing-key">路由健(routing key)</dt>
+<dd><p class="first last">计算服务中的直接交换，扇出交换，和主题交换使用该键来决定如何处理消息；处理方式根据交换类型而改变。</p>
+</dd>
+<dt id="term-rpc-driver">远程过程调用驱动器（RPC driver）</dt>
+<dd><p class="first last">允许计算服务中的底层消息队列软件可被改变的模块系统。例如，从RabbitMQ到ZeroMQ或Qpid。</p>
+</dd>
+<dt id="term-rsync">rsync</dt>
+<dd><p class="first last">被对象存储服务用来推送存储对象副本。</p>
+</dd>
+<dt id="term-rxtx-cap">RXTX封顶</dt>
+<dd><p class="first last">一个计算服务虚机实例可以发送和接受的网络流量的绝对限制值。</p>
+</dd>
+<dt id="term-rxtx-quota">RXTX配额</dt>
+<dd><p class="first last">一个计算服务虚机实例可以发送和接受的网络流量的软限制值。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="s">
+<h2>S<a class="headerlink" href="#s" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-s3">S3</dt>
+<dd><p class="first last">亚马逊的对象存储服务；与OpenStack对象存储功能类似，其可以作为镜像服务虚机镜像的后端存储。</p>
+</dd>
+<dt id="term-sahara">sahara</dt>
+<dd><p class="first last">提供可伸缩数据处理栈和关联管理接口的OpenStack项目。</p>
+</dd>
+<dt id="term-saml-assertion">SAML断言（SAML assertion）</dt>
+<dd><p class="first last">含有身份提供者（identity provider）所提供的用户信息。其是用户已被验证的标示。</p>
+</dd>
+<dt id="term-scheduler-manager">调度管理器（scheduler manager）</dt>
+<dd><p class="first last">聚丁虚机实例从何处启动的计算服务组件。使用模块设计来支持多种调度类型。</p>
+</dd>
+<dt id="term-scoped-token">域内令牌（scoped token）</dt>
+<dd><p class="first last">一个与特定租户关联的身份验证服务API访问令牌。</p>
+</dd>
+<dt id="term-scrubber">洗涤器（scrubber）</dt>
+<dd><p class="first last">检查并删除空闲虚机；镜像服务中实现延迟删除的组件。</p>
+</dd>
+<dt id="term-secret-key">密钥（secret key）</dt>
+<dd><p class="first last">仅用户知道的文本字符串；与访问键一起使用向计算服务API发送请求。</p>
+</dd>
+<dt id="term-secure-shell-ssh">安全shell（SSH）</dt>
+<dd><p class="first last">用于通过加密通信通道访问远端宿主机的开源工具，SSH键注射被计算服务所支持。</p>
+</dd>
+<dt id="term-security-group">安全组（security group）</dt>
+<dd><p class="first last">适用于计算服务实例的一组网络流量过滤规则。</p>
+</dd>
+<dt id="term-segmented-object">分段对象（segmented object）</dt>
+<dd><p class="first last">一个对象存储服务中的已被打碎的存储对象。重组装对象被叫做连接对象（concatenated object）。</p>
+</dd>
+<dt id="term-self-service">自服务（self-service）</dt>
+<dd><p class="first last">对于IaaS，指普通（非特权）账户无需引入管理员而管理虚拟基础设施组件（如网络）的能力。</p>
+</dd>
+<dt id="term-selinux">SELinux</dt>
+<dd><p class="first last">提供支持访问控制政策机制的Linux内核安全模块。</p>
+</dd>
+<dt id="term-senlin">senlin</dt>
+<dd><p class="first last">提供集群（Clustering）服务的OpenStack项目。</p>
+</dd>
+<dt id="term-server">服务器</dt>
+<dd><p class="first last">为运行在该系统上的客户端软件提供明确服务的计算服务，通常管理多种计算机操作。一个服务器指计算服务系统中的虚机实例。当创建服务器时云主机类型和镜像是必要元素。</p>
+</dd>
+<dt id="term-server-image">服务器镜像（server image）</dt>
+<dd><p class="first last">虚机镜像的别称。</p>
+</dd>
+<dt id="term-server-uuid">服务器UUID（server UUID）</dt>
+<dd><p class="first last">分配给每个虚机实例的ID</p>
+</dd>
+<dt id="term-service">服务</dt>
+<dd><p class="first last">一个OpenStack服务，如计算服务，对象存储，或镜像服务。提供一个或多个用户可以通过其访问资源并执行操作的端点。</p>
+</dd>
+<dt id="term-service-catalog">服务目录</dt>
+<dd><p class="first last">身份验证服务目录的别称。</p>
+</dd>
+<dt id="term-service-id">服务ID（service ID）</dt>
+<dd><p class="first last">分配给每个身份验证服务目录中可用服务的唯一ID。</p>
+</dd>
+<dt id="term-service-provider">服务提供者（service provider）</dt>
+<dd><p class="first last">为其他系统实体提供服务的系统。如是联合身份的方式，那么OpenStack身份验证服务是服务提供者。</p>
+</dd>
+<dt id="term-service-registration">服务注册（service registration）</dt>
+<dd><p class="first last">一个使服务可以，如计算服务，自动登记目录的注册身份验证服务特性。</p>
+</dd>
+<dt id="term-service-tenant">服务租户（service tenant）</dt>
+<dd><p class="first last">含有所有目录所列服务的特殊租户。</p>
+</dd>
+<dt id="term-service-token">服务令牌（service token）</dt>
+<dd><p class="first last">一个计算服务用来与身份验证服务安全通信的管理员定义令牌。</p>
+</dd>
+<dt id="term-session-back-end">会话后端（session back end）</dt>
+<dd><p class="first last">horizon用来跟踪客户端会话，如本地内存，cookies，一个数据库，或memcached的存储方式。</p>
+</dd>
+<dt id="term-session-persistence">会话持久性（session persistence）</dt>
+<dd><p class="first last">负载均衡服务的特性。只要它在线便会试图将后续服务连接重定向到与先前同一节点。</p>
+</dd>
+<dt id="term-session-storage">会话存储（session storage）</dt>
+<dd><p class="first last">一个存储和跟踪客户端会话信息的horizon组件。通过Django会话框架实现。</p>
+</dd>
+<dt id="term-share">共享系统（share）</dt>
+<dd><p class="first last">在文件共享系统的背景下，指一个远程，可挂载文件系统。多个用户可在同一时间将其挂载到多个宿主机和从多个宿主机对其进行访问。</p>
+</dd>
+<dt id="term-share-network">共享网络（share network）</dt>
+<dd><p class="first last">在文件共享系统的背景下，一个用网络服务封装交互的实体。如果你所选的驱动器的运行模式需要这种交互，你需要制定共享网络来创建共享系统。</p>
+</dd>
+<dt id="term-shared-file-systems-api">文件共享系统API（Shared File Systems API）</dt>
+<dd><p class="first last">一个提供稳定RESTful API的文件共享系统。服务通过文件共享系统服务来认证和路由请求。python-manilaclient可与API交互。</p>
+</dd>
+<dt id="term-shared-file-systems-service">文件共享系统服务</dt>
+<dd><p class="first last">在多租户云环境中提供一组管理文件共享系统的OpenStack服务。该服务与OpenStack如何通过OpenStack块存储服务项目提供基于块的存储管理类似。利用文件共享系统服务，你可以创建一个远程文件系统并在你的实例上挂载该文件系统。你也可以在实例和文件系统间来回读写数据。文件共享系统服务的项目名是manila。</p>
+</dd>
+<dt id="term-shared-ip-address">共享IP地址（shared IP address）</dt>
+<dd><p class="first last">可以被分配给共享的IP组内的虚拟机实例的IP地址。公共IP地址可以在多个服务器上共享，用于各种高可用性的场景下。当一个IP地址共享到另一个服务器时，修改了云网络的约束，使每个服务器能够在这个IP地址上监听和响应。你可以选择指定要修改网络配置的目标服务器。许多标准心跳工具都使用共享IP，例如保持存活，发生故障时的监控和管理IP的切换。</p>
+</dd>
+<dt id="term-shared-ip-group">共享IP群组（shared IP group）</dt>
+<dd><p class="first last">可与组内其他成员共享IP的服务器集合。组内任何服务器都可与组内其他服务器共享一个或多个IPs。除了共享IP组内的第一个服务器，服务器必须被发射到共享IP组。一个服务器可能只是一个共享IP组的成员。</p>
+</dd>
+<dt id="term-shared-storage">共享存储</dt>
+<dd><p class="first last">可被多客户端同时访问的块存储系统，例如NFS。</p>
+</dd>
+<dt id="term-sheepdog">Sheepdog</dt>
+<dd><p class="first last">QEMU 的分布式块存储系统，该系统在 OpenStack 中被支持。</p>
+</dd>
+<dt id="term-simple-cloud-identity-management-scim">简单云身份管理</dt>
+<dd><p class="first last">云身份管理的规范，目前还未被 OpenStack 支持。</p>
+</dd>
+<dt id="term-single-root-i-o-virtualization-sr-iov">单 root I/O 虚拟化  (SR-IOV)</dt>
+<dd><p class="first last">当通过物理 PCIe 设备实现时，使其呈现出多个独立 PCIe 设备的规范。该规范使得多个虚拟化客户机共享对物理设备的直接访问并提供了等量虚拟设备的性能改善。目前该规范在 OpenStack Havana 版本和后续发行版中被支持。</p>
+</dd>
+<dt id="term-service-level-agreement-sla">服务等级协议 （SLA）</dt>
+<dd><p class="first last">确保服务可用性的合同义务。</p>
+</dd>
+<dt id="term-smokestack">SmokeStack</dt>
+<dd><p class="first last">对OpenStack核心API运行自动化测试；写入Rails中。</p>
+</dd>
+<dt id="term-snapshot">快照</dt>
+<dd><p class="first last">对OpenStack存储卷或镜像的定点拷贝。使用存储卷快照备份卷。使用镜像快照备份数据，或作为额外服务器的“金”镜像（ &#8220;gold&#8221; images）</p>
+</dd>
+<dt id="term-soft-reboot">软重启</dt>
+<dd><p class="first last">一次虚机实例通过操作系统命令正确重启的控制重启。</p>
+</dd>
+<dt id="term-software-development-lifecycle-automation-service">软件开发生命周期自动化服务</dt>
+<dd><p class="first last">旨在通过自动化资源到镜像进程，和简化以应用为中心开发，来使云服务更易于消化和整合应用程序开发进程的OpenStack项目。项目名是solum。</p>
+</dd>
+<dt id="term-solidfire-volume-driver">SolidFire卷驱动器（SolidFire Volume Driver）</dt>
+<dd><p class="first last">用于SolidFire iSCSI存储设备的块存储驱动器。</p>
+</dd>
+<dt id="term-solum">solum</dt>
+<dd><p class="first last">提供软件开发生命周期自动化服务的OpenStack项目。</p>
+</dd>
+<dt id="term-spice">SPICE</dt>
+<dd><p class="first last">自主计算环境简单协议(SPICE）提供对访客虚机的远程桌面访问。VNC的别称。SPICE被OpenStack所支持。</p>
+</dd>
+<dt id="term-spread-first-scheduler">spread-first scheduler</dt>
+<dd><p class="first last">计算服务中试图在最小负载宿主机上启动新虚机的虚机调度算法。</p>
+</dd>
+<dt id="term-sql-alchemy">SQL-Alchemy</dt>
+<dd><p class="first last">Python的开源SQL数据包，在OpenStack中被使用。</p>
+</dd>
+<dt id="term-sqlite">SQLite</dt>
+<dd><p class="first last">一个轻量SQL数据库，被很多OpenStack服务用作默认持续化存储方法。</p>
+</dd>
+<dt id="term-stack">栈</dt>
+<dd><p class="first last">一组由编排服务根据特定样板（AWS CloudFormation样板或Heat Orchestration样板（HOT）二者其一）创建并管理的OpenStack资源。</p>
+</dd>
+<dt id="term-stacktach">StackTach</dt>
+<dd><p class="first last">抓取计算服务AMQP通信的社区项目；对调试有用。</p>
+</dd>
+<dt id="term-static-ip-address">静态IP 地址</dt>
+<dd><p class="first last">固定 IP 地址的别称。</p>
+</dd>
+<dt id="term-staticweb">StaticWeb</dt>
+<dd><p class="first last">对象存储服务中将容器数据用作静态网页的WSGI中间件组件。</p>
+</dd>
+<dt id="term-storage-back-end">存储后端</dt>
+<dd><p class="first last">一个服务用于持续化存储的方法，如 iSCSI，NFS 或本地磁盘。</p>
+</dd>
+<dt id="term-storage-node">存储节点</dt>
+<dd><p class="first last">一个提供容器服务，账户服务以及对象服务的对象存储节点；控制账户数据库，容器数据库和对象数据库。</p>
+</dd>
+<dt id="term-storage-manager">存储管理器</dt>
+<dd><p class="first last">一个为支持多种持续化存储后端提供插件式接口的XenAPI组件。</p>
+</dd>
+<dt id="term-storage-manager-back-end">存储管理器后端</dt>
+<dd><p class="first last">由 XenAPI 支持的持久化存储方法，如 iSCSI 和 NFS。</p>
+</dd>
+<dt id="term-storage-services">存储服务</dt>
+<dd><p class="first last">对象存储中的对象服务，容器服务以及账户服务的集合名称。</p>
+</dd>
+<dt id="term-strategy">策略</dt>
+<dd><p class="first last">具体说明镜像服务或身份验证服务使用的认证资源。在数据库服务中，它是指为数据存储区实现的扩展。</p>
+</dd>
+<dt id="term-subdomain">子域</dt>
+<dd><p class="first last">在父域内的域。子域无法被注册。子域使你可以委托域。子域自身可再有子域，所以三层，四层，五层或更深层的嵌套是可能的。</p>
+</dd>
+<dt id="term-subnet">子网</dt>
+<dd><p class="first last">IP 网络的逻辑子域。</p>
+</dd>
+<dt id="term-suse-linux-enterprise-server-sles">SUSE Linux Enterprise Server (SLES)</dt>
+<dd><p class="first last">OpenStack兼容的一个Linux发行版。</p>
+</dd>
+<dt id="term-suspend">挂起</dt>
+<dd><p class="first last">一个已暂停虚机实例的别称。</p>
+</dd>
+<dt id="term-swap">swap</dt>
+<dd><p class="first last">被操作系统用来提供比系统实际可用更多内存的基于磁盘的虚拟内存。</p>
+</dd>
+<dt id="term-swauth">swauth</dt>
+<dd><p class="first last">对象存储服务的认证和授权服务，该服务通过 WSGI 中间件实现；并将对象存储服务自身用作持续化备份存储。</p>
+</dd>
+<dt id="term-swift">swift</dt>
+<dd><p class="first last">OpenStack核心项目之一，提供对象存储服务。</p>
+</dd>
+<dt id="term-swift-all-in-one-saio">swift 合一  (SAIO)</dt>
+<dd><p class="first last">在一个虚机内创建一个完全的对象存储开发环境。</p>
+</dd>
+<dt id="term-swift-middleware">swift 中间件</dt>
+<dd><p class="first last">提供额外功能的对象存储组件的集合名词。</p>
+</dd>
+<dt id="term-swift-proxy-server">swift 代理服务器</dt>
+<dd><p class="first last">用作对象存储服务网守且负责认证用户。</p>
+</dd>
+<dt id="term-swift-storage-node">swift 存储节点</dt>
+<dd><p class="first last">运行对象存储账户，容器和对象服务的节点。</p>
+</dd>
+<dt id="term-sync-point">同步点</dt>
+<dd><p class="first last">对象存储服务容器和账户数据库在各节点间的最后一次同步的时间点。</p>
+</dd>
+<dt id="term-sysadmin">系统管理员</dt>
+<dd><p class="first last">计算服务 RBAC 系统中的一个默认角色之一。该角色可使一个用户将其他用户加入一个项目，与和项目关联的虚机镜像交互并启动和终止虚机实例。</p>
+</dd>
+<dt id="term-system-usage">系统使用量</dt>
+<dd><p class="first last">和通知系统一起，收集计量和使用信息的计算服务组件。这些信息被可用于计费。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="t">
+<h2>T<a class="headerlink" href="#t" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-telemetry-service">Telemetry服务</dt>
+<dd><p class="first last">提供OpenStack的计量和测量设备的整合项目。项目名称是ceilometer。</p>
+</dd>
+<dt id="term-tempauth">TempAuth</dt>
+<dd><p class="first last">对象存储服务中使得对象存储服务自身执行认证和授权操作的认证设备。在测试和开发中经常使用。</p>
+</dd>
+<dt id="term-tempest">Tempest</dt>
+<dd><p class="first last">旨在对OpenStack核心项目主干运行的自动化软件测试套件。</p>
+</dd>
+<dt id="term-tempurl">TempURL</dt>
+<dd><p class="first last">可为暂时的对象访问创建 URLs 的对象存储服务中间件组件。</p>
+</dd>
+<dt id="term-tenant">租户</dt>
+<dd><p class="first last">一组用户；用于隔离对计算服务资源的访问。一个项目的别称。</p>
+</dd>
+<dt id="term-tenant-api">租户 API</dt>
+<dd><p class="first last">可被所有租户访问的 API。</p>
+</dd>
+<dt id="term-tenant-endpoint">租户端点</dt>
+<dd><p class="first last">与一个或多个租户关联的身份验证服务 API 端点。</p>
+</dd>
+<dt id="term-tenant-id">租户 ID</dt>
+<dd><p class="first last">在身份验证服务中被分配给每个租户的唯一 ID。项目 IDs 映射到租户 IDs。</p>
+</dd>
+<dt id="term-token">token</dt>
+<dd><p class="first last">用于访问OpenStack APIs和资源的数字字母文本字符串。</p>
+</dd>
+<dt id="term-token-services">令牌服务</dt>
+<dd><p class="first last">在用户或租户被认证后管理和确认令牌的身份验证服务组件。</p>
+</dd>
+<dt id="term-tombstone">墓碑</dt>
+<dd><p class="first last">用于标记对象存储服务中已被删除对象；确保对象删除后在另一节点不能被更新。</p>
+</dd>
+<dt id="term-topic-publisher">主题发布者</dt>
+<dd><p class="first last">当RPC调用执行时创建的进程；用于将消息推送到主题交换（topic exchange）。</p>
+</dd>
+<dt id="term-torpedo">Torpedo</dt>
+<dd><p class="first last">对OpenStack API运行自动化测试的社区项目。</p>
+</dd>
+<dt id="term-transaction-id">事务 ID</dt>
+<dd><p class="first last">分配给每个对象存储服务请求的唯一ID；用于调试和跟踪。</p>
+</dd>
+<dt id="term-transient">瞬态</dt>
+<dd><p class="first last">非持久的别称。</p>
+</dd>
+<dt id="term-transient-exchange">瞬态交换</dt>
+<dd><p class="first last">非持久交换的别称。</p>
+</dd>
+<dt id="term-transient-message">瞬态消息</dt>
+<dd><p class="first last">存储于内存且在服务器重启后丢失的消息。</p>
+</dd>
+<dt id="term-transient-queue">瞬态队列（transient queue）</dt>
+<dd><p class="first last">非耐久队列（non-durable queue）的别称。</p>
+</dd>
+<dt id="term-tripleo">TripleO</dt>
+<dd><p class="first last">OpenStack-on-OpenStack程序，为OpenStack开发程序使用的项目。</p>
+</dd>
+<dt id="term-trove">trove</dt>
+<dd><p class="first last">OpenStack为提供数据库服务的应用程序项目。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="u">
+<h2>U<a class="headerlink" href="#u" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-ubuntu">Ubuntu</dt>
+<dd><p class="first last">基于Debian的Linux发行版。</p>
+</dd>
+<dt id="term-unscoped-token">unscoped token</dt>
+<dd><p class="first last">身份验证服务默认令牌的别称。</p>
+</dd>
+<dt id="term-updater">升级器（updater）</dt>
+<dd><p class="first last">处理容器和对象的升级队列中和失败情况的对象存储组件群组的集合名词。</p>
+</dd>
+<dt id="term-user">用户</dt>
+<dd><p class="first last">在OpenStack身份验证服务中，代表独立API消费者的实体由特定域所有。在OpenStack计算服务中，一个用户可与角色，项目或两者同时关联。</p>
+</dd>
+<dt id="term-user-data">用户数据（user data）</dt>
+<dd><p class="first last">当启动一个实例时用户可具体说明的blob数据。实例可以通过元数据服务或配置驱动来访问这些数据。通常用于传递实例启动时运行的shell脚本。</p>
+</dd>
+<dt id="term-user-mode-linux-uml">用户模式Linux (UML)</dt>
+<dd><p class="first last">一个OpenStack支持的hypervisor。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="v">
+<h2>V<a class="headerlink" href="#v" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-vif-uuid">VIF UUID</dt>
+<dd><p class="first last">分配给每个网络服务VIF的唯一ID。</p>
+</dd>
+<dt id="term-vip">vip</dt>
+<dd><p class="first last">首要的负载均衡配置对象。具体说明接受客户端流量的虚拟IP地址和端口。也定义其他细节，如要使用的负载均衡方法，协议等。该实体在负载均衡产品中有时也被叫做虚拟服务器，虚拟伺服器，或监听器。</p>
+</dd>
+<dt id="term-virtual-central-processing-unit-vcpu">虚拟中心处理单元（vCPU）</dt>
+<dd><p class="first last">再分割物理CPUs。实例之后便可使用这些分割部分。</p>
+</dd>
+<dt id="term-virtual-disk-image-vdi">虚拟磁盘镜像（VDI）</dt>
+<dd><p class="first last">由镜像服务支持的虚机镜像磁盘格式之一。</p>
+</dd>
+<dt id="term-vxlan">VXLAN</dt>
+<dd><p class="first last">试图减少大型云计算部署相关的伸缩性问题的网络虚拟化技术。它使用了一个类VLAN封装技术来讲以太网框架封装进UDP包。</p>
+</dd>
+<dt id="term-virtual-hard-disk-vhd">虚拟硬盘（VHD）</dt>
+<dd><p class="first last">由镜像服务支持的虚机镜像磁盘格式之一。</p>
+</dd>
+<dt id="term-virtual-ip">虚拟IP</dt>
+<dd><p class="first last">一个客户端用于连接到负载均衡后的服务的配置于负载均衡器的因特网协议（IP）地址。即将到来的连接被分布到基于负载均衡器配置的后端节点。</p>
+</dd>
+<dt id="term-virtual-machine-vm">虚拟机（VM）</dt>
+<dd><p class="first last">一个运行于虚拟机管理程序之上的操作系统实例。多虚机可同时在同一物理宿主机上运行。</p>
+</dd>
+<dt id="term-virtual-network">虚拟网络</dt>
+<dd><p class="first last">网络服务中的一个L2网段。</p>
+</dd>
+<dt id="term-virtual-networking">虚拟网络</dt>
+<dd><p class="first last">使用多个虚机组合并覆盖于物理网络基础设施上的网络功能虚拟化的通称，如转换，路由，负载均衡，和网络安全。</p>
+</dd>
+<dt id="term-virtual-network-computing-vnc">虚拟网络计算（VNC）</dt>
+<dd><p class="first last">用于远程控制台访问虚机的开源GUI和CLI工具。被计算服务支持。</p>
+</dd>
+<dt id="term-virtual-network-interface-vif">虚拟网络接口（VIF）</dt>
+<dd><p class="first last">插入网络服务网络端口中的借口。通常一个虚拟网络接口属于虚机。</p>
+</dd>
+<dt id="term-virtual-port">虚拟端口</dt>
+<dd><p class="first last">虚拟接口连接虚拟网络的连接点。</p>
+</dd>
+<dt id="term-virtual-private-network-vpn">虚拟私有网络（VPN）</dt>
+<dd><p class="first last">由计算服务以cloudpipes形式提供，用于按每个项目来创建VPN专用实例。</p>
+</dd>
+<dt id="term-virtual-server">虚拟服务器</dt>
+<dd><p class="first last">虚机或客户机的别称。</p>
+</dd>
+<dt id="term-virtual-switch-vswitch">虚拟交换机（vSwitch）</dt>
+<dd><p class="first last">运行于一个宿主机或节点并提供基于硬件网络交换器特性和功能的软件。</p>
+</dd>
+<dt id="term-virtual-vlan">虚拟VLAN（virtual VLAN）</dt>
+<dd><p class="first last">虚拟网络的别称。</p>
+</dd>
+<dt id="term-virtualbox">VirtualBox</dt>
+<dd><p class="first last">一个OpenStack支持的hypervisor。</p>
+</dd>
+<dt id="term-vlan-manager">VLAN管理器</dt>
+<dd><p class="first last">提供dnsmasq和radvd并创建到和从clouudpipe实例的转发的计算服务组件。</p>
+</dd>
+<dt id="term-vlan-network">VLAN 网络</dt>
+<dd><p class="first last">网络服务控制器提供虚拟网络来使计算服务器之间和计算服务器与公共网络间交互。所有机器必须有一个公共或私有网络接口。一个VLAN网络是一个私有网络接口，由``vlan_interface``选项用VLAN管理器控制。</p>
+</dd>
+<dt id="term-vm-disk-vmdk">虚拟机磁盘（VMDK）</dt>
+<dd><p class="first last">由镜像服务支持的虚机镜像磁盘格式之一。</p>
+</dd>
+<dt id="term-vm-image">虚拟机镜像</dt>
+<dd><p class="first last">镜像的别称。</p>
+</dd>
+<dt id="term-vm-remote-control-vmrc">虚拟机远程控制（VMRC）</dt>
+<dd><p class="first last">使用web浏览器访问虚机实例控制台的方法。由计算服务支持。</p>
+</dd>
+<dt id="term-vmware-api">VMware API</dt>
+<dd><p class="first last">在计算服务中支持与VMware产品的交互。</p>
+</dd>
+<dt id="term-vmware-nsx-neutron-plug-in">VMware NSX Neutron插件</dt>
+<dd><p class="first last">提供对 VMware NSX in Neutron 的支持。</p>
+</dd>
+<dt id="term-vnc-proxy">VNC 代理</dt>
+<dd><p class="first last">一个 Compute 组件，用来为用户提供通过 VNC 或 VMRC 访问虚拟机实例控制台的功能。</p>
+</dd>
+<dt id="term-volume">卷</dt>
+<dd><p class="first last">通常用支持可拓展属性的文件系统表示为iSCSI目标的基于磁盘数据存储；可以是持续化的或临时的。</p>
+</dd>
+<dt id="term-volume-api">卷 API</dt>
+<dd><p class="first last">Block Storage API 的别称。</p>
+</dd>
+<dt id="term-volume-controller">卷控制器</dt>
+<dd><p class="first last">一个 Block Storage 组件，用来监督和协调存储卷的操作。</p>
+</dd>
+<dt id="term-volume-driver">卷驱动</dt>
+<dd><p class="first last">卷插件的别称。</p>
+</dd>
+<dt id="term-volume-id">卷 ID</dt>
+<dd><p class="first last">块存储控制下的每个存储卷唯一的 ID。</p>
+</dd>
+<dt id="term-volume-manager">卷管理器</dt>
+<dd><p class="first last">块存储组件，用来创建、附加和取消附加具有持久性的存储卷。</p>
+</dd>
+<dt id="term-volume-node">卷节点</dt>
+<dd><p class="first last">一个 Block Storage 节点，用来运行 cinder-volume 守护进程。</p>
+</dd>
+<dt id="term-volume-plug-in">卷插件</dt>
+<dd><p class="first last">为块存储卷管理器提供新的、特殊类型的后端存储支持。</p>
+</dd>
+<dt id="term-volume-worker">volume worker</dt>
+<dd><p class="first last">与后端存储交互来管理创建和删除卷以及创建计算卷的cinder组件，由cinder-volume守护进程提供。</p>
+</dd>
+<dt id="term-vsphere">vSphere</dt>
+<dd><p class="first last">一个OpenStack支持的hypervisor。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="w">
+<h2>W<a class="headerlink" href="#w" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-weighting">赋权重</dt>
+<dd><p class="first last">一个决定虚机实例是否适合一个任务或替丁宿主机的计算服务进程。例如，宿主机上无足够RAM但是有很多CPU等。</p>
+</dd>
+<dt id="term-weight">权重</dt>
+<dd><p class="first last">被对象存储服务设备用来决定哪个存储设备合适该工作。设备按大小加权。</p>
+</dd>
+<dt id="term-weighted-cost">加权的成本</dt>
+<dd><p class="first last">计算服务中每次决定从何处启动一个新的虚机实例所消耗成本的总和。</p>
+</dd>
+<dt id="term-worker">worker</dt>
+<dd><p class="first last">用来监听消息队列，并对消息做出响应的一个守护进程。例如，cinder-volume worker 负责管理在存储阵列中创建和删除卷。</p>
+</dd>
+<dt id="term-workflow-service">工作流服务</dt>
+<dd><p class="first last">提供一个简单的基于YAML语言来写工作流，任务和转换规则，并提供一个允许上传，修改，和大规模并高可用的运行它们，管理并监控工作流执行状态和每个任务状态的OpenStack项目。项目代号是mistral。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="x">
+<h2>X<a class="headerlink" href="#x" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-xen">Xen</dt>
+<dd><p class="first last">Xen是一种hypervisor,使用微内核设计，提供在同一台硬件计算机并行的运行多个计算机操作系统的服务。</p>
+</dd>
+<dt id="term-xen-api">Xen API</dt>
+<dd><p class="first last">Xen 管理的 API，由 Compute 提供。</p>
+</dd>
+<dt id="term-xen-cloud-platform-xcp">Xen 云平台(XCP)</dt>
+<dd><p class="first last">一个OpenStack支持的hypervisor。</p>
+</dd>
+<dt id="term-xen-storage-manager-volume-driver">Xen存储管理器卷驱动</dt>
+<dd><p class="first last">一个 Block Storage 卷插件，用来启用和 Xen Storage Manager API 的交流。</p>
+</dd>
+<dt id="term-xenserver">XenServer</dt>
+<dd><p class="first last">一个OpenStack支持的hypervisor。</p>
+</dd>
+<dt id="term-xfs">XFS</dt>
+<dd><p class="first last">Silicon Graphics 创建的高性能 64 位文件系统。适用于并行 I/O 操作和数据一致性。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="z">
+<h2>Z<a class="headerlink" href="#z" title="永久链接至标题">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-zaqar">zaqar</dt>
+<dd><p class="first last">为应用程序提供消息服务的 OpenStack 项目。</p>
+</dd>
+<dt id="term-zeromq">ZeroMQ</dt>
+<dd><p class="first last">OpenStack 支持的消息队列软件。它可以作为 RabbitMQ 的替代软件。也被拼写为 0MQ。</p>
+</dd>
+<dt id="term-zuul">Zuul</dt>
+<dd><p class="first last">在OpenStack开发中用于保证并行改变的测试顺序正确的工具。</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="docs-actions">
+          
+            <a href="app_support.html"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: 社区支持"></i></a>
+          
+          
+            <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          
+          </div>
+          <div class="row docs-byline bottom">
+            <div class="docs-updated">updated: 2017-07-17 22:23</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+<a href="https://creativecommons.org/licenses/by/3.0/">
+ <img src="../_static/images/docs/license.png" alt="Creative Commons Attribution 3.0 License"/>
+</a>
+<p>
+ Except where otherwise noted, this document is licensed under
+ <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons
+ Attribution 3.0 License</a>. See all <a href="http://www.openstack.org/legal">
+ OpenStack Legal Documents</a>.
+</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+            <!-- ID buglinkbottom added so that pre-filled doc bugs
+                 are sent to Launchpad projects related to the
+                 document -->
+              <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
+            </div>
+          </div>
+        </div>
+<div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
+  <div class="btn-group docs-sidebar-releases">
+    <button onclick="location.href='/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
+<button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">OpenStack Documentation<i class="fa fa-caret-down"></i></button>
+    <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+      <li role="presentation" class="dropdown-header">Guides</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations and Administration Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
+      <li role="presentation" class="dropdown-header">Languages</li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ja/">日本語 (Japanese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/de/">Deutsch (German)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/fr/">Français (French)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/pt_BR/">Português (Portuguese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/zh_CN/">简体中文 (Simplified Chinese)</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/ko_KR/">한국어 (Korean)</a></li>
+    </ul>
+  </div>
+  <div class="docs-sidebar-toc">
+    <div class="docs-sidebar-section" id="table-of-contents">
+      <a href="../index.html" class="docs-sidebar-section-title"><h4>Project home page</h4></a>
+      <ul>
+<li class="toctree-l1"><a class="reference internal" href="conventions.html">约定</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">概况</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../environment.html">环境</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../keystone.html">认证服务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glance.html">镜像服务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nova.html">计算服务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../neutron.html">Networking 服务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../horizon.html">Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cinder.html">块存储服务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../manila.html">文件共享系统服务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../swift.html">对象存储服务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../heat.html">编排服务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ceilometer.html">Telemetry服务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trove.html">数据库服务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../launch-instance.html">启动一个实例</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="app_support.html">社区支持</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">词汇表</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">0-9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a">A</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#b">B</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c">C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#d">D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e">E</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#f">F</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#g">G</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#h">H</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i">I</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#j">J</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k">K</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#l">L</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#m">M</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#n">N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#o">O</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#p">P</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#q">Q</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#r">R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#s">S</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#t">T</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#u">U</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v">V</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#w">W</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#x">X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#z">Z</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+<footer>
+  <div class="container">
+    <div class="row footer-links">
+      <div class="col-lg-2 col-sm-2">
+        <h3>OpenStack</h3>
+        <ul>
+          <li><a href="http://openstack.org/projects/">Projects</a></li>
+          <li><a href="http://openstack.org/projects/openstack-security/">OpenStack Security</a></li>
+          <li><a href="http://openstack.org/projects/openstack-faq/">Common Questions</a></li>
+          <li><a href="http://openstack.org/blog/">Blog</a></li>
+          <li><a href="http://openstack.org/news/">News</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="http://openstack.org/community/">User Groups</a></li>
+          <li><a href="http://openstack.org/community/events/">Events</a></li>
+          <li><a href="http://openstack.org/community/jobs/">Jobs</a></li>
+          <li><a href="http://openstack.org/foundation/companies/">Companies</a></li>
+          <li><a href="http://docs.openstack.org/infra/manual/developers.html">Contribute</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="http://docs.openstack.org">OpenStack Manuals</a></li>
+          <li><a href="http://openstack.org/software/start/">Getting Started</a></li>
+          <li><a href="http://developer.openstack.org">API Documentation</a></li>
+          <li><a href="https://wiki.openstack.org">Wiki</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-sm-2">
+        <h3>Branding & Legal</h3>
+        <ul>
+          <li><a href="http://openstack.org/brand/">Logos & Guidelines</a></li>
+          <li><a href="http://openstack.org/brand/openstack-trademark-policy/">Trademark Policy</a></li>
+          <li><a href="http://openstack.org/privacy/">Privacy Policy</a></li>
+          <li><a href="https://wiki.openstack.org/wiki/How_To_Contribute#Contributor_License_Agreement">OpenStack CLA</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h3>Stay In Touch</h3>
+        <a href="https://twitter.com/OpenStack" target="_blank" class="social-icons footer-twitter"></a>
+        <a href="https://www.facebook.com/openstack" target="_blank" class="social-icons footer-facebook"></a>
+        <a href="https://www.linkedin.com/company/openstack" target="_blank" class="social-icons footer-linkedin"></a>
+        <a href="https://www.youtube.com/user/OpenStackFoundation" target="_blank" class="social-icons footer-youtube"></a>
+        <p class="fine-print">
+          The OpenStack project is provided under the
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>. Openstack.org is powered by
+          <a href="http://rackspace.com" target="_blank">Rackspace Cloud Computing</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery -->
+<script type="text/javascript" src="../_static/js/jquery-3.1.1.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script type="text/javascript" src="../_static/js/bootstrap.js"></script>
+
+<!-- The rest of the JS -->
+<script type="text/javascript" src="../_static/js/navigation.js"></script>
+
+<!-- Docs JS -->
+<script type="text/javascript" src="../_static/js/docs.js"></script>
+
+<!-- Popovers -->
+<script type="text/javascript" src="../_static/js/webui-popover.js"></script>
+
+<!-- Javascript for page -->
+<script language="JavaScript">
+/* build a description of this page including SHA, source location on git repo,
+   build time and the project's launchpad bug tag. Set the HREF of the bug
+   buttons */
+
+    var lineFeed = "%0A";
+    var gitURL = "Source: Can't derive source file URL";
+
+    /* there have been cases where "pagename" wasn't set; better check for it */
+        /* The URL of the source file on Git is based on the giturl variable
+           in conf.py, which must be manually initialized to the source file
+           URL in Git.
+           "pagename" is a standard sphinx parameter containing the name of
+           the source file, without extension.                             */
+
+        var sourceFile = "common/glossary" + ".rst";
+        gitURL = "Source: http://git.openstack.org/cgit/openstack/openstack-manuals/tree/doc/install-guide/source" + "/" + sourceFile;
+
+    /* gitsha, project and bug_tag rely on variables in conf.py */
+    var gitSha = "SHA: 1865f28305fdb1eb6b5e1a434ac7e292c3421513";
+        var bugProject = "openstack-i18n";
+        var bugTitle = "词汇表 in Installation Guide";
+    var fieldTags = "install-guide";
+        var useStoryboard = "";
+
+
+    /* "last_updated" is the build date and time. It relies on the
+       conf.py variable "html_last_updated_fmt", which should include
+       year/month/day as well as hours and minutes                   */
+    var buildstring = "Release: 0.1 on 2017-07-17 22:23";
+
+    var fieldComment = encodeURI(buildstring) +
+                       lineFeed + encodeURI(gitSha) +
+                       lineFeed + encodeURI(gitURL) ;
+
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
+</script>
+
+<script src="../_static/translations.js" type="text/javascript"></script>
+  </body>
+</html>

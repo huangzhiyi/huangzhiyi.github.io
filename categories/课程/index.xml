@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>课程 on Heis</title><link>https://huangzhiyi.github.io/categories/%E8%AF%BE%E7%A8%8B/</link><description>Recent content in 课程 on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 15 Jun 2020 11:42:51 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/categories/%E8%AF%BE%E7%A8%8B/index.xml" rel="self" type="application/rss+xml"/><item><title>商务智能方法与应用综合实验2</title><link>https://huangzhiyi.github.io/bi-training2/</link><pubDate>Mon, 15 Jun 2020 11:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/bi-training2/</guid><description>«返回课程汇总页面
+【实验手册版本】 当前版本号v20200615
+版本 修改说明 v20200615 初始化版本 综合练习2 【实验名称】 综合练习2
+【实验目的】 针对教育应用场景，练习使用关系数据库分析解决问题
+【实验数据说明】 请从下面链接下载练习数据： https://pan.baidu.com/s/1Q3kheymJorKGTxU4pChd3w#提取码kwvi
+stu.sql 中包含了3个表，分别是学生信息表stu，家长信息表parents,学生成绩表score。 学生信息表stu 列 备注 id 主键 stuid 学号 name 姓名 gender 性别 clazz 班级 家长信息表parents 列 备注 id 主键 stuid 学号 fname 父亲姓名 fphone 父亲手机号 fname 母亲姓名 fphone 母亲手机号 学生成绩表score 列 备注 id 主键 testid 考试ID stuid 学号 chn 语文成绩 math 数学成绩 eng 英语成绩 tot 总分 【实验环境】 操作系统：Windows MySQL MySQL Workbench/Navicat/HeidiSQL 【实验原理】 SQL 常用语法模板 select 表名1.</description></item><item><title>Spark 第八章 GraphFrames 图计算实验手册</title><link>https://huangzhiyi.github.io/spark-exp08/</link><pubDate>Sun, 24 May 2020 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/spark-exp08/</guid><description>«返回课程汇总页面
+【实验手册版本】 当前版本号v20200524
+版本 修改说明 v20200524 初始化版本
+实验8.1 ：基于 GraphFrames 的 PageRank 网页排名 【实验名称】 实验8.1 ：基于 GraphFrames 的 PageRank 网页排名 【实验目的】 理解本地向量、转换器、评估器、参数
+【实验原理】 调用 GraphFrame.pageRank 进行网页排名 【实验环境】 操作系统：Ubuntu 16.04 Spark：Spark2.x 开发环境：PyCharm 或 Jupyter Notebook graphframes:graphframes:0.8.0-spark2.4-s_2.11 【实验资源】 实验数据下载
+https://pan.baidu.com/s/1JbaD95ObxiNXyz34KaP1Hg#提取码vkb5
+【实验步骤】 确保虚拟机可以联网。
+运行以下命令，安装 GraphFrames 库依赖。
+spark-submit --packages graphframes:graphframes:0.8.0-spark2.4-s_2.11 hello.py
+启用开发环境。 （1）如果使用 Jupyter Notebook 启动，需要加上 packages 选项和指定 graphframes 库版本。</description></item><item><title>数据仓库与挖掘技术课程资源汇总</title><link>https://huangzhiyi.github.io/datamining-summary/</link><pubDate>Fri, 15 May 2020 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/datamining-summary/</guid><description>实验报告模板下载 https://pan.baidu.com/s/1qqhcPcQotylS3PNP4f-edg#提取码vidt
+实验报告要求 必须使用老师提供的实验报告模板。 实验步骤每一步都有详细的操作步骤说明，步骤顺序号，截图。 截图只截关键部分信息，不要全屏截图，如果截图信息太多需要标记截图关键信息。推荐使用 Snipaste（官网下载或网盘下载） 进行截图和标记。 作业提交 除了特殊原因申请延后提交实验报告的同学，其他同学请按照时间提交实验报告
+第三章实验报告 数学17，2020年6月6日（周六）前提交 http://xzc.cn/TKZbTede44 第四章实验报告 数学17，2020年6月6日（周六）前提交 http://xzc.cn/tEe7tHesA6 第五章实验报告 数学17，2020年5月30日（周五）前提交 http://xzc.cn/PjIc3tMWwJ 第六章实验报告 数学17，2020年6月10日（周三）前提交 http://xzc.cn/HTikQAezeZ 第七章实验报告 数学17，2020年6月17日（周三）前提交 http://xzc.cn/xyLgG91k1w</description></item><item><title>商务智能方法与应用第六章实验手册</title><link>https://huangzhiyi.github.io/bi-exp06/</link><pubDate>Wed, 13 May 2020 11:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/bi-exp06/</guid><description>«返回课程汇总页面
+【实验手册版本】 当前版本号v20200605
+版本 修改说明 v20200605 实验6.1新增了校验测试结果的步骤 v20200527 修正了数据库连接的问题，修正航空里程列SEG_KM_COUNT为SEG_KM_SUM v20200513 初始化版本
+实验6.1：超市客户信息分类预测 【实验名称】 实验6.1：超市客户信息分类预测
+【实验目的】 根据现有超市客户数据构造客户分类模型
+使用分类模型对客户数据进行预测
+熟悉并学会使用weka智能分析环境；
+【实验内容】 使用 Weka 的分类模型对现有 foodmart 数据库客户信息进行建模，获取到建模以后，使用模型对数据进行预测。
+【实验环境】 Windows 操作系统。 JDK MySQL Foodmart 数据集 Weka：Weka 的全名是怀卡托智能分析环境（Waikato Environment for Knowledge Analysis），是一款免费的，非商业化（与之对应的是SPSS公司商业数据挖掘产品&amp;ndash;Clementine ）的，基于JAVA环境下开源的机器学习（machine learning）以及数据挖掘（data mining）软件。Weka 作为一个公开的数据挖掘工作平台，集合了大量能承担数据挖掘任务的机器学习算法，包括对数据进行预处理，分类，回归、聚类、关联规则以及在新的交互式界面上的可视化。 【实验资源】 实验报告模板下载
+https://pan.baidu.com/s/1qqhcPcQotylS3PNP4f-edg#提取码vidt
+实验数据下载</description></item><item><title>Spark 第七章 Spark 机器学习库实验手册</title><link>https://huangzhiyi.github.io/spark-exp07/</link><pubDate>Sat, 09 May 2020 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/spark-exp07/</guid><description>«返回课程汇总页面
+【实验手册版本】 当前版本号v20200509
+版本 修改说明 v20200509 初始化版本
+实验前准备 确保虚拟机连上网络，安装 Python 依赖库 numpy sudo pip3 install numpy
+实验7.1：基本概念-本地向量、转换器、评估器、参数 【实验名称】 实验7.1：基本概念-本地向量、转换器、评估器、参数 【实验目的】 理解本地向量、转换器、评估器、参数
+【实验原理】 （1）本地向量：Mllib支持两种类型的本地向量:密集向量(dense)和稀疏向量(sparse)。密集向量只有一个浮点数组组成，而一个稀疏向量必须有索引和一个浮点向量组成。例如，(2.1,3.2,4.3)代表一个密集向量。(3，[1.1,2.3],[5.6,4.3,4.4])代表一个稀疏向量。
+（2）Transformer：翻译成转换器，是一种可以将一个DataFrame转换为另一个DataFrame的算法。比如一个模型就是一个 Transformer。它可以把一个不包含预测标签的测试数据集 DataFrame 打上标签，转化成另一个包含预测标签的 DataFrame。 技术上，Transformer实现了一个方法transform()，它通过附加一个或多个列将一个DataFrame转换为另一个DataFrame
+（3）Estimator：翻译成估计器或评估器，它是学习算法或在训练数据上的训练方法的概念抽象。在 Pipeline 里通常是被用来操作 DataFrame 数据并生成一个 Transformer。从技术上讲，Estimator实现了一个方法fit()，它接受一个DataFrame并产生一个转换器。比如，一个随机森林算法就是一个 Estimator，它可以调用fit()，通过训练特征数据而得到一个随机森林模型。
+（4）Parameter：所有Transformers和Estimators现在共享一个用于指定参数的通用API
+【实验环境】 操作系统：Ubuntu 16.04 Spark：Spark2.x 开发环境：PyCharm或pyspark交互命令 【实验资源】 实验数据下载</description></item><item><title>Spark 第六章 Spark Streaming 实验手册</title><link>https://huangzhiyi.github.io/spark-exp06/</link><pubDate>Sun, 19 Apr 2020 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/spark-exp06/</guid><description>«返回课程汇总页面
+【实验手册版本】 当前版本号v20200424
+版本 修改说明 v20200424 新增修改日志级别的步骤 v20200419 初始化版本
+实验6.1 ：运行网络版的WordCount 【实验名称】 实验6.1 ：运行网络版的WordCount 【实验目的】 了解NetCat工具的使用。 初步了解Streaming运行的方式。 【实验原理】 运行Spark自带的StreamingWordCount程序，
+【实验环境】 操作系统：Ubuntu 16.04 （确保机器cpu核数大于接收器的数量，或Local模式线程数大于接收器数量） Spark：Spark2.x Pyspark 【实验步骤】 一、基于netcat的聊天室
+启动 NetCat 服务端，并在1234端口监听 nc -lk 1234
+使用xshell 打开一个新的选项卡，连接虚拟机。启动NetCat客户端，并连接Netcat服务端 nc localhost 1234
+注意：如果客户端和服务端不在同一台机器，localhost 可以换成实际IP。
+在服务端输入以下字符串，并按回车，可以在客户端收到消息，并打印出来。这里注意替换学号为你个人学号。 hello 你的学号
+在客户端输入字符串，并按回车，可以在服务端收到消息，并打印出来。这里注意替换学号为你个人学号。 你好 你的学号
+在 NetCat 客户端的选项卡使用ctrl+c终止客户端进程。</description></item><item><title>商务智能方法与应用综合实验1</title><link>https://huangzhiyi.github.io/bi-training1/</link><pubDate>Sun, 12 Apr 2020 11:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/bi-training1/</guid><description>«返回课程汇总页面
+【实验手册版本】 当前版本号v20200412
+版本 修改说明 v20200506 修改导入csv脚本的字符，utf8改为utf8mb4；新增常见问题解答 v20200412 初始化版本
+综合练习1 【实验名称】 综合练习1
+【实验目的】 综合前四章学习的知识，完成对数据的清洗，提取，维度建模和 OLAP 分析。
+【实验数据说明】 请从下面链接下载练习数据： https://pan.baidu.com/s/1Xj6s2evPcx8TpzpHkvjBDA#提取码u0jg people.csv 中的数据是中国第五次人口普查（2000年）和第六次人口普查（2010年）的数据。以下为数据列的说明
+列序号 说明 1 地区名称 2 户口地区类型，分别为 城市/镇/乡村 3 户口集体类型，分别为 家庭户/集体户 4 统计年份 5 性别 6 人数
+其中户口地区类型分为三种，即城市、镇和乡村。每个地区类型下，又按集体类型分为两种，家庭户和集体户。</description></item><item><title>商务智能方法与应用综合实验1参考解决方法</title><link>https://huangzhiyi.github.io/bi-training1-rs/</link><pubDate>Sun, 12 Apr 2020 11:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/bi-training1-rs/</guid><description>«返回课程汇总页面
+【实验手册版本】 当前版本号v20200412
+版本 修改说明 v20200412 初始化版本
+综合练习1 【实验名称】 综合练习1
+【实验目的】 综合前四章学习的知识，完成对数据的清洗，提取，维度建模和 OLAP 分析。
+【实验数据说明】 请从下面链接下载练习数据： https://pan.baidu.com/s/1Xj6s2evPcx8TpzpHkvjBDA#提取码u0jg people.csv 中的数据是中国第五次人口普查（2000年）和第六次人口普查（2010年）的数据。以下为数据列的说明
+列序号 说明 1 地区名称 2 户口地区类型，分别为 城市/镇/乡村 3 户口集体类型，分别为 家庭户/集体户 4 统计年份 5 性别 6 人数
+其中户口地区类型分为三种，即城市、镇和乡村。每个地区类型下，又按集体类型分为两种，家庭户和集体户。</description></item><item><title>Spark 综合实验1</title><link>https://huangzhiyi.github.io/spark-training1/</link><pubDate>Sun, 12 Apr 2020 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/spark-training1/</guid><description>«返回课程汇总页面
+【版本】 当前版本号v20200412
+版本 修改说明 v20200412 初始化版本
+Spark 综合实验1 【实验名称】 Spark 综合练习 【实验目的】 测试同学们对 Spark RDD 和 Spark SQL的掌握能力
+【实验数据说明】 请从下面链接下载练习数据： https://pan.baidu.com/s/1Xj6s2evPcx8TpzpHkvjBDA#提取码u0jg people.csv 中的数据是中国第五次人口普查（2000年）和第六次人口普查（2010年）的数据。以下为数据列的说明
+列序号 说明 1 地区名称 2 户口地区类型，分别为 城市/镇/乡村 3 户口集体类型，分别为 家庭户/集体户 4 统计年份 5 性别 6 人数
+其中户口地区类型分为三种，即城市、镇和乡村。每个地区类型下，又按集体类型分为两种，家庭户和集体户。 【实验环境】 操作系统：Ubuntu 16.</description></item><item><title>商务智能课程资源汇总</title><link>https://huangzhiyi.github.io/bi-summary/</link><pubDate>Sat, 22 Feb 2020 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/bi-summary/</guid><description>实验报告模板下载 https://pan.baidu.com/s/1qqhcPcQotylS3PNP4f-edg#提取码vidt
+实验报告要求 必须使用老师提供的实验报告模板。 实验步骤每一步都有详细的操作步骤说明，步骤顺序号，截图。 截图只截关键部分信息，不要全屏截图，如果截图信息太多需要标记截图关键信息。推荐使用 Snipaste（官网下载或网盘下载） 进行截图和标记。 实验手册 第一章实验手册
+第二章实验手册
+第三章实验手册
+第四章实验手册
+第五章实验手册
+第六章实验手册
+课程课件资源 https://pan.baidu.com/s/1zSmrVAKFaccUc4cZXcQGxA#提取码vhwc
+作业提交 除了特殊原因申请延后提交实验报告的同学，其他同学请按照时间提交实验报告
+第一章实验报告 数学17，2020年3月25日（周三）前提交 http://xzc.cn/rxtzGWLsZF 第二章实验报告 数学17，2020年4月6日（周一）前提交 http://xzc.cn/S4gbh6W2bb 第三章实验报告 数学17，2020年4月17日（周五）前提交 http://xzc.cn/n87885OAAP 第四章实验报告 数学17，2020年5月23日（周六）前提交 http://xzc.cn/eNaRinnGkt 第五章实验报告 数学17，2020年6月7日（周日）前提交 http://xzc.cn/B9uqzU44EE 第六章实验报告 数学17，2020年6月14日（周日）前提交 http://xzc.cn/NZT4LY09a5</description></item><item><title>Spark 课程资源汇总</title><link>https://huangzhiyi.github.io/spark-summary/</link><pubDate>Fri, 21 Feb 2020 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/spark-summary/</guid><description>实验报告模板下载 https://pan.baidu.com/s/1YGpTcPXnlht6Hb46YJpo-A#提取码mwum
+实验报告要求 必须使用老师提供的实验报告模板。 实验步骤每一步都有详细的操作步骤说明，步骤顺序号，截图。 截图只截关键部分信息，不要全屏截图，如果截图信息太多需要标记截图关键信息。推荐使用 Snipaste（官网下载或网盘下载） 进行截图和标记。 实验手册 第二章实验手册
+第三章实验手册
+第四章实验手册
+第五章实验手册
+第六章实验手册
+第七章实验手册
+第八章实验手册
+综合实验 综合实验1 课程课件资源 https://pan.baidu.com/s/1zSmrVAKFaccUc4cZXcQGxA#提取码vhwc
+Spark Python API 文档 在线文档（官网英文）
+RDD API 查询
+DataFrame 查询
+DStream API 查询
+GraphFrame API 查询
+作业提交 除了特殊原因申请延后提交实验报告的同学，其他同学请按照时间提交实验报告</description></item><item><title>Spark 第三章使用 Python 开发 Spark 应用实验手册</title><link>https://huangzhiyi.github.io/spark-exp03/</link><pubDate>Fri, 14 Feb 2020 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/spark-exp03/</guid><description>«返回课程汇总页面
+【实验手册版本】 当前版本号v20200316
+版本 修改说明 v20200316 修改实验3.3中访问 Jupytor Notebook 注意要点。 v20200226 新增选做实验 v20200214 初始化版本
+实验3.1：PySpark 命令行的应用 【实验名称】 实验3.1：PySpark 的应用
+【实验目的】 掌握PySpark 的应用 【实验原理】 pyspark -h 查看用法 Usage: pyspark [options]
+常见的[options] 如下表
+【实验环境】 Ubuntu 16.04 Python 3 PySpark spark 2.4.4 scala 2.12.10 【实验步骤】 1、输入pyspark -h查看各参数的定义
+pyspark -h
+2、查看sc变量 （1）不指定 master 时</description></item><item><title>Spark 第五章 SparkSQL 实验手册</title><link>https://huangzhiyi.github.io/spark-exp05/</link><pubDate>Fri, 14 Feb 2020 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/spark-exp05/</guid><description>«返回课程汇总页面
+【实验手册版本】 当前版本号v20200418
+版本 修改说明 v20200418 修改 hosts 的说明，增加常见问题解答 v20200408 加入hosts的检查 v20200407 修正实验5.3一处描述错误 v20200406 修复实验5.3复制命令为cp v20200322 初始化版本
+实验5.1：RDD DataFrame API 练习 【实验名称】 RDD DataFrame API 练习 【实验目的】 掌握RDD DataFrame 的相关 API
+【实验原理】 DataFrame 是一种以 RDD 为基础的分布式数据集，类似于传统数据库中的二维 表 格。 DataFrame 与 RDD 的 主 要区 别在 于， 前 者带 有 schema 元信 息 ，即 DataFrame 所表示的二维表数据集的每一列都带有名称和类型。采用RDD的toDF()算子将RDD转为DataFrame。</description></item><item><title>Spark 第四章 Spark RDD 实验手册</title><link>https://huangzhiyi.github.io/spark-exp04/</link><pubDate>Fri, 14 Feb 2020 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/spark-exp04/</guid><description>«返回课程汇总页面
+【实验手册版本】 当前版本号v20200317
+版本 修改说明 v20200317 实验4.2，修正练习（8），应该是求交集 v20200310 初始化版本
+实验4.1：RDD 的创建 【实验名称】 实验4.1：RDD 的创建
+【实验目的】 掌握RDD的创建的方式 【实验原理】 略
+【实验环境】 Ubuntu 16.04 Python 3 PySpark spark 2.4.4 Hadoop 2.7.3 【实验步骤】 在/home/hadoop路径下创建一个文本文件，并命名为123.txt（注意替换123为你学号的后三位）。并输入以下内容，注意替换其中汉字为你个人学号后三位。 你学号后三位,997,953,932,877,453
+启动 hadoop，并把第一步创建的文本文件上传到 HDFS。 （1）启动 Hadoop
+start-hdp.sh
+（2）上传文本文件
+hdfs dfs -mkdir -p /spark-exp4
+hdfs dfs -put /home/hadoop/123.txt /spark-exp4/
+（3）查看是否上传成功</description></item><item><title>商务智能方法与应用第三章实验手册</title><link>https://huangzhiyi.github.io/bi-exp03/</link><pubDate>Mon, 10 Feb 2020 11:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/bi-exp03/</guid><description>«返回课程汇总页面
+【实验手册版本】 当前版本号v20200331
+版本 修改说明 v20200331 修正关于my-huge.ini步骤的说明 v20200315 修正了度量的 aggregator 为 sum v20200314 增加了MySQL相关配置，提高数据库查询性能；同时增加了foodmart表格说明； v20200304 初始化版本
+实验3.1：使用 Schema Workbench 创建 Cube 【实验名称】 使用 Schema Workbench 创建 Cube
+【实验目的】 1．熟悉 Schema Workbench 并学会使用； 2．学会创建 Cube。 【实验原理】 数据仓库（Data Warehouse）是一个面向主题的（Subject Oriented）、集成的（Integrated）、相对稳定的（Non-Volatile）、反映历史变化（Time Variant）的数据集合，用于支持管理决策。
+Hive 是一个构建于 Hadoop 顶层的数据仓库工具，支持大规模数据存储、分析，具有良好的可扩展性。某种程度上可以将 Hive 看作是用户编程接口。Hive 本身不存储和处理数据，依赖分布式文件系统 HDFS 存储数据，依赖分布式并行计算模型MapReduce 处理数据。Hive 定义了简单的类似 SQL 的查询语言——HiveQL。用户可以通过编写的 HiveQL 语句运行 MapReduce 任务，可以很容易把原来构建在关系数据库上的数据仓库应用程序移植到 Hadoop 平台上。Hive 是一个可以有效、合理、直观的数据分析工具。</description></item><item><title>商务智能方法与应用第五章实验手册</title><link>https://huangzhiyi.github.io/bi-exp05/</link><pubDate>Mon, 10 Feb 2020 11:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/bi-exp05/</guid><description>«返回课程汇总页面
+【实验手册版本】 当前版本号v20200331
+版本 修改说明 v20200331 修正分析结果 v20200327 初始化版本
+实验5.1：购物篮关联性推荐 【实验名称】 实验5.1：购物篮关联性推荐
+【实验目的】 熟悉并学会使用weka智能分析环境；
+根据数据源建立数据模型；
+根据数据模型对购物篮数据进行关联性分析；
+【实验内容】 本实验利用weka智能分析软件，对购物篮销售数据进行关联性分析，从而得出超市如何摆放产品将有利于提高我们的销售额度。
+【实验相关知识解读】 Apriori 算法是一种最有影响力的挖掘布尔关联规则的频繁项集的 算法，它是由Rakesh Agrawal 和RamakrishnanSkrikant 提出的。了解更多信息可以参考这篇文章
+机器学习领域经典的 FP-growth（Frequent Pattern Growth）模型，它是目前业界经典的频繁项集和关联规则挖掘的算法。相比于 Apriori 模型，FP-growth 模型只需要扫描数据库两次，极大得减少了数据读取次数并显著得提升了算法效率。了解更多信息可以参考这篇文章
+ARFF 格式指的是 Attribute-Relation File Format。可以理解为增加了列描述的 CSV 格式。文件主要分为头部（Head）信息和数据信息（Data)。头部信息定义了 Relation 和各列的 Attribute 的类型。数据部分内容和CSV一样，每列内容使用英文逗号隔开。例如下图就是一个 ARFF 格式数据。更多信息可以参考这篇文章。 【实验环境】 Windows 操作系统。 JDK Weka：Weka 的全名是怀卡托智能分析环境（Waikato Environment for Knowledge Analysis），是一款免费的，非商业化（与之对应的是SPSS公司商业数据挖掘产品&amp;ndash;Clementine ）的，基于JAVA环境下开源的机器学习（machine learning）以及数据挖掘（data mining）软件。Weka 作为一个公开的数据挖掘工作平台，集合了大量能承担数据挖掘任务的机器学习算法，包括对数据进行预处理，分类，回归、聚类、关联规则以及在新的交互式界面上的可视化。 【实验资源】 实验报告模板下载</description></item><item><title>商务智能方法与应用第四章实验手册</title><link>https://huangzhiyi.github.io/bi-exp04/</link><pubDate>Mon, 10 Feb 2020 11:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/bi-exp04/</guid><description>«返回课程汇总页面
+【实验手册版本】 当前版本号v20200415
+版本 修改说明 v20200415 增加了常见问题解答 v20200413 增加了授权文件的说明 v20200408 更正了几个截图 v20200329 更正了几个截图和加入更换驱动的步骤 v20200313 初始化版本
+实验4.1：使用 Saiku 进行联机分析（OLAP） 【实验名称】 实验4.1：使用 Saiku 进行联机分析（OLAP）
+【实验目的】 1．熟悉 Linux 系统、Saiku等系统和软件的安装和使用； 2．了解联机分析的基本流程； 3．熟悉利用可视化工具 Saiku 对联机分析模型的查询。 【实验原理】 本实验利用 Saiku v3.6 平台来对联机分析模型进行查询。 预先准备好实验3.1完成的 Cube Schema文件 准备加载了 foodmart 库的 MySQL 数据库。 【实验环境】 Windows 操作系统。 MySQL 数据库 JDK8 Saiku CE v3.</description></item><item><title>Spark 第二章搭建 Spark 实验手册</title><link>https://huangzhiyi.github.io/spark-exp02/</link><pubDate>Mon, 10 Feb 2020 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/spark-exp02/</guid><description>«返回课程汇总页面
+实验2.1：搭建 Spark Standalone 模式 【版本】 当前版本号v20200318
+版本 修改说明 v20200318 修改了第16步脚本路径 v20200229 增加了hosts的设置 v20200210 初始化版本
+### 【实验名称】
+实验2.1：搭建 Spark Standalone 模式 【实验目的】 掌握搭建 Spark Standalone 模式 熟练掌握Linux命令（vi、tar、环境变量修改等等）的使用 掌握VMWare、XShell、Xftp等客户端的使用 【实验原理】 Spark支持多种分布式部署方式，至少包括：
+Standalone单独部署（伪分布或全分布），不需要有依赖资源管理器。 Hadoop YARN（也即Spark On Yarn），部署到Hadoop YARN资源管理器。 Apache Mesos，部署到Apache Mesos资源管理器。 Amazon EC2，部署到Amazon EC2资源管理器。 这里主要学习单独（Standalone）部署中的伪分布模式的搭建。
+【实验环境】 内存：至少4G 硬盘：至少空余40G 操作系统: 64位 Windows系统。 【实验资源】 以下非网盘实验资源推荐复制链接到迅雷下载。</description></item><item><title>商务智能方法与应用第一章实验手册</title><link>https://huangzhiyi.github.io/bi-exp01/</link><pubDate>Mon, 10 Feb 2020 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/bi-exp01/</guid><description>«返回课程汇总页面
+【实验手册版本】 当前版本号v20200407
+版本 修改说明 v20200407 修改MySql 的版本为5.x，因为8.x的版本存在兼容问题 v20200325 修改步骤4的相关描述，去掉查看test库的要求 v20200318 修改了MySQL驱动的版本，避免出现驱动不兼容情况 v20200313 增加了 Kettle 网盘下载链接 v20200312 更新了 Kettle 下载链接 v20200210 初始化版本
+实验1：销售数据预处理 【实验名称】 销售数据预处理
+【实验目的】 熟悉 Linux、MySQL、Insight 等系统和软件的安装与使用。 了解大数据处理的基本流程。 熟悉数据抽取、转换、加载的方法。 熟悉在不同类型数据库之间进行数据的导入与导出。 【实验原理】 本实验将使用 MySQL Workbench （MySQL 连接客户端软件）以及 Pantaho Data Integration（也叫 Kettle，是一个ETL工具）。
+首先将销售数据和员工数据导入 MySQL，通过 Kettle 和 MySQL Workbench 连接，将两个数据源利用员工信息号进行整合，最终将生成的一张新表格 写入数据库，达到可在一张表格中查看员工信息和对应销售情况的目的。</description></item><item><title>商务智能方法与应用第二章实验手册</title><link>https://huangzhiyi.github.io/bi-exp02/</link><pubDate>Mon, 10 Feb 2020 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/bi-exp02/</guid><description>«返回课程汇总页面
+【实验手册版本】 当前版本号v20200330
+版本 修改说明 v20200330 增加了 Hive 优化参数 v20200325 第10步第（4）小题增加了提示 v20200323 更正实验第10步第（3）小题错误 v20200228 初始化版本
+实验2.1：Hive 数据仓库的建立和分析 【实验名称】 Hive 数据仓库的建立
+【实验目的】 1．熟悉 Linux、MySQL、Hive、HDFS 等系统和软件的安装和使用。 2．了解建立数据仓库的基本流程。 3．熟悉数据预处理方法。 【实验原理】 数据仓库（Data Warehouse）是一个面向主题的（Subject Oriented）、集成的（Integrated）、相对稳定的（Non-Volatile）、反映历史变化（Time Variant）的数据集合，用于支持管理决策。
+Hive 是一个构建于 Hadoop 顶层的数据仓库工具，支持大规模数据存储、分析，具有良好的可扩展性。某种程度上可以将 Hive 看作是用户编程接口。Hive 本身不存储和处理数据，依赖分布式文件系统 HDFS 存储数据，依赖分布式并行计算模型MapReduce 处理数据。Hive 定义了简单的类似 SQL 的查询语言——HiveQL。用户可以通过编写的 HiveQL 语句运行 MapReduce 任务，可以很容易把原来构建在关系数据库上的数据仓库应用程序移植到 Hadoop 平台上。Hive 是一个可以有效、合理、直观的数据分析工具。</description></item><item><title>16级实训相关技术文档和教程</title><link>https://huangzhiyi.github.io/16-training-docs/</link><pubDate>Fri, 22 Nov 2019 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/16-training-docs/</guid><description>Guns开源版 最新6.0更新内容如下(更新日期2019.10.25) 前端框架升级easyweb 3.1.5，layui升级2.5.5。 优化整体前端UI界面，更加简洁，大气。 抽象出一套权限模型，利用接口进行权限控制和调用规则，方便在权限控制方面进行拓展。 替换掉了以往的ShiroKit，采用LoginContextHolder.getContext().getUser()获取当前登录用户。 权限框架替换为spring security + jwt，采用令牌登录方式，更加灵活可拓展，同时方便对接多系统SSO。 新增常量容器模型，对系统变量，常量，以及用户自定义的一些参数进行在线维护，在线刷新参数值，无需重启。 系统的验证码开关，顶部导航栏开关，系统默认密码等在常量容器进行维护，极大方便了系统使用。 所有页面加载的css和js进行版本控制，当升级项目时，更新对应版本号，可控制浏览器对缓存js和css的刷新。 增加用户的职务管理，可对用户进行职务绑定。 Guns 采用的开源技术框架 SpringBoot——Web 开发框架 Mybatis——ORM框架 EasyWeb——前端框架 LayUI——前端框架 Guns的技术文档 Guns 开源代码主页： https://gitee.com/stylefeng/guns 技术文档： https://blog.csdn.net/Newtaylor/article/details/89227537 SpringBoot 教程: https://www.yiibai.com/spring-boot/ Mybatis 技术文档： https://mybatis.org/mybatis-3/zh/index.html EasyWeb 文档： https://easyweb.vip/doc/ LayUI 文档： https://www.layui.com/doc/ 示例： https://www.layui.com/demo/</description></item><item><title>16级大实训课程要求</title><link>https://huangzhiyi.github.io/16-training/</link><pubDate>Sun, 17 Nov 2019 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/16-training/</guid><description>课程分组 校内实训分组 D2组：吴彪坤（组长）、蔡展、田招健 https://gitee.com/dong_chao_jian/BigData_NightWeekProj_D2
+D3组：林松威（组长）、王啟贤、何自高、欧祥祥 https://gitee.com/welsonlin/d03
+D5组：冯思瑜（组长）、陈淑婷、李芷晴、游晨昌 https://gitee.com/fengsyu/scheduleSharing
+D8组：曾庆念（组长）
+校外实习组 李祺帆、庄沐林、郑景瑶、洪佩谦、徐鸿涛、梁鑫、林国来、邓志豪、董超健、苏欣玲、郭家华、姚秋全
+课程资料提交要求 第一阶段 需求理解和原型设计 提交需求分析说明书和原型设计文件。 提交周报。内容包括：项目需求完成情况、项目遇到的问题、问题解决的状态和解决方法、下周项目计划。 提交截止日期：2019年11月25日 提交链接： http://xzc.cn/wJ25N24hrj 第二阶段 环境搭建和数据库设计 安装JDK、IDEA、Maven、Mariadb、Git 下载框架Guns开源版，能够运行起框架。 所有代码需要提交到个人的 Gitee 开源开放仓库。 使用 PDMan 完成数据库的初步设计，包括用户，日程框架，日程框架项，日程等表的设计。 提交周报，内容包括：项目需求完成情况、项目遇到的问题、问题解决的状态和解决方法、下周项目计划。 提交截止日期：2019年12月2日 提交链接： http://xzc.cn/Or9z3oxv91 第三阶段 完成用户登录、注册和通知模块 提交周报，内容包括：项目需求完成情况、项目遇到的问题、问题解决的状态和解决方法、下周项目计划。 提交截止日期：2019年12月10日 提交链接： http://xzc.cn/zwSDrYjyyi 第四阶段 完成日程框架相关功能 完成日程框架的相关功能，包括周视图，创建，查询，修改，发布，共享。 提交周报，内容包括：项目需求完成情况、项目遇到的问题、问题解决的状态和解决方法、下周项目计划。 提交链接： http://xzc.cn/GVKpnKcKiI 第五阶段 完成日程表相关功能 完成日程表的相关功能，包括创建，查询，修改，删除，共享。 提交周报，内容包括：项目需求完成情况、项目遇到的问题、问题解决的状态和解决方法、下周项目计划。 提交链接： http://xzc.</description></item></channel></rss>

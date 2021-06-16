@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>数据库 on Heis</title><link>https://huangzhiyi.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</link><description>Recent content in 数据库 on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 26 Apr 2021 00:44:00 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml"/><item><title>SQL 练习 1</title><link>https://huangzhiyi.github.io/sql-training1/</link><pubDate>Mon, 26 Apr 2021 00:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/sql-training1/</guid><description>SQL 练习 1 【版本】 当前版本号v20210515
+版本 修改说明 v20210515 新增题目9-12 v20210429 初始化
+【实验名称】 SQL 练习 1
+【实验目的】 熟练 SQL 的使用 【实验环境】 Chrome 等现代浏览器 【实验数据】 表 gdp 包含国内（不含港澳台）2018年和2019年的 GDP 数据。
+列 说明 dist 省市地区 n2018 2018年GDP（单位：亿） n2019 2019年GDP（单位：亿）
+表 population 包含国内（不含港澳台）2018年和2019年的常住人口数量数据。
+列 说明 dist 省市地区 n2018 2018年人口数量（单位：万） n2019 2019年人口数量（单位：万）
+表 ecodist 是国内各省市（不含港澳台）经济区域划分。
+列 说明 dist 省市地区 ecogrp 经济区域
+【实验步骤】 查找广东2019年的 GDP。需要展示列（dist,n2019）。 关键字：where
+执行(Ctrl+Enter)
+清除
+查找2019年的 GDP 排名前5名，按降序排列。需要展示列（dist,n2019）。 关键字：order by limit
+执行(Ctrl+Enter)
+清除
+查找2019年相对于2018年的 GDP 增长率排名前5名，按降序排列。需要展示列 dist、growth（增长率百分比，精确到小数点后1位，例如北京增长16.</description></item></channel></rss>

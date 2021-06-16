@@ -1,0 +1,96 @@
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=zh-CN lang=zh-cn><head><link href=//gmpg.org/xfn/11 rel=profile><meta charset=utf-8><meta name=generator content="Hugo 0.80.0"><meta name=viewport content="width=device-width,initial-scale=1"><title>商务智能方法与应用第六章实验手册 &#183; Heis</title><link type=text/css rel=stylesheet href=https://huangzhiyi.github.io/css/heis-min.css?20210401-3><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?f58b6a2675cf52000232edb4d109eccc";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><link rel=apple-touch-icon-precomposed sizes=144x144 href=/apple-touch-icon-144-precomposed2.png><link rel="shortcut icon" href=/favicon2.png></head><body><aside class=sidebar id=bsidebar><button id=hide-sb-btn onclick=hideSidebar()></button><div class="container sidebar-sticky"><div class=sidebar-about><a href=https://huangzhiyi.github.io/><h1 id=side-title>Heis</h1></a><p class=lead>Long live MAMBA</p><p><a href=https://wj.qq.com/s2/8270903/0413/ target=_blank><img class=feedbackqr src=/feedback.png></a></p><p class=ac><a href=https://wj.qq.com/s2/8270903/0413/ target=_blank>扫码给老师建议</a></p><p class=ac><script>document.write("heis"+"huangzy"+"@"+"qq"+".com")</script></p></div><nav><ul class=sidebar-nav><li><a href=https://huangzhiyi.github.io/>首页</a></li><li><a href=https://huangzhiyi.github.io/categories/hadoop/>Hadoop 部署与开发</a></li><li><a href=https://huangzhiyi.github.io/categories/iotdev/>物联网云平台开发相关»</a></li><li><a href=https://huangzhiyi.github.io/categories/hadoop-training/>Hadoop 实战»</a></li><li><a href=https://huangzhiyi.github.io/categories/spark/>Spark课程相关»</a></li><li><a href=https://huangzhiyi.github.io/categories>文章分类»</a></li><li><a href=https://huangzhiyi.github.io/tags>文章标签»</a></li></ul></nav><p>&copy; 2021. All rights reserved.</p></div></aside><main class="content container" id=mainpanel><button id=show-sb-btn onclick=showSidebar()></button>
+<script src=https://huangzhiyi.github.io/js/jquery-min.js></script><div class=post><h1>商务智能方法与应用第六章实验手册</h1><time datetime=2020-05-13T11:42:51+0800 class=post-date>2020-05-13</time><blockquote><h2>文章导航</h2><aside><nav id=TableOfContents><ul><li><a href=#实验手册版本>【实验手册版本】</a></li><li><a href=#实验61超市客户信息分类预测>实验6.1：超市客户信息分类预测</a><ul><li><a href=#实验名称>【实验名称】</a></li><li><a href=#实验目的>【实验目的】</a></li><li><a href=#实验内容>【实验内容】</a></li><li><a href=#实验环境>【实验环境】</a></li><li><a href=#实验资源>【实验资源】</a></li><li><a href=#实验步骤>【实验步骤】</a></li></ul></li><li><a href=#实验62航空客运信息挖掘>实验6.2：航空客运信息挖掘</a><ul><li><a href=#实验名称-1>【实验名称】</a></li><li><a href=#实验目的-1>【实验目的】</a></li><li><a href=#实验内容-1>【实验内容】</a></li><li><a href=#数据准备>【数据准备】</a></li><li><a href=#实验环境-1>【实验环境】</a></li><li><a href=#实验资源-1>【实验资源】</a></li><li><a href=#实验步骤-1>【实验步骤】</a></li></ul></li></ul></nav></aside></blockquote><p><a href=/bi-summary/>«返回课程汇总页面</a></p><h2 id=实验手册版本>【实验手册版本】</h2><p>当前版本号<code>v20200605</code></p><div class=tbl-start></div><table><thead><tr><th>版本</th><th>修改说明</th></tr></thead><tbody><tr><td>v20200605</td><td>实验6.1新增了校验测试结果的步骤</td></tr><tr><td>v20200527</td><td>修正了数据库连接的问题，修正航空里程列SEG_KM_COUNT为SEG_KM_SUM</td></tr><tr><td>v20200513</td><td>初始化版本</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h2 id=实验61超市客户信息分类预测>实验6.1：超市客户信息分类预测</h2><h3 id=实验名称>【实验名称】</h3><p>实验6.1：超市客户信息分类预测</p><h3 id=实验目的>【实验目的】</h3><ul><li><p>根据现有超市客户数据构造客户分类模型</p></li><li><p>使用分类模型对客户数据进行预测</p></li><li><p>熟悉并学会使用weka智能分析环境；</p></li></ul><h3 id=实验内容>【实验内容】</h3><p>使用 Weka 的分类模型对现有 foodmart 数据库客户信息进行建模，获取到建模以后，使用模型对数据进行预测。</p><h3 id=实验环境>【实验环境】</h3><ul><li>Windows 操作系统。</li><li>JDK</li><li>MySQL</li><li>Foodmart 数据集</li><li>Weka：Weka 的全名是怀卡托智能分析环境（Waikato Environment for Knowledge Analysis），是一款免费的，非商业化（与之对应的是SPSS公司商业数据挖掘产品&ndash;Clementine ）的，基于JAVA环境下开源的机器学习（machine learning）以及数据挖掘（data mining）软件。Weka 作为一个公开的数据挖掘工作平台，集合了大量能承担数据挖掘任务的机器学习算法，包括对数据进行预处理，分类，回归、聚类、关联规则以及在新的交互式界面上的可视化。</li></ul><h3 id=实验资源>【实验资源】</h3><p>实验报告模板下载</p><pre><code>https://pan.baidu.com/s/1qqhcPcQotylS3PNP4f-edg#提取码vidt
+</code></pre><p>实验数据下载</p><pre><code>https://pan.baidu.com/s/12iBkrHWzt20QJg7OlwPkrQ#提取码e6rx
+</code></pre><p>Weka 网盘下载：</p><pre><code>https://pan.baidu.com/s/1dQEeVmqbyt11mZV7Uge_kQ#提取码2oev
+</code></pre><p>如果网盘下载速度过慢，可以尝试从 Weka 官网下载：</p><pre><code>https://sourceforge.net/projects/weka/files/weka-3-9/3.9.4/weka-3-9-4-azul-zulu-windows.exe/download
+</code></pre><h3 id=实验步骤>【实验步骤】</h3><p>1．获取实验资源提供的 weka.jar，替换掉 Weka 安装目录下的 weka.jar。</p><blockquote><p>原有的 weka.jar 对于MySQL数据库的链接有兼容性问题。因此修改了包内的 weka/experiment/DatabaseUtils.props 来解决这个问题。</p></blockquote><ol start=2><li>修改 Weka 安装目录下的<code>RunWeka.ini</code>，修改<code>cp=</code>这行，在%CLASSPATH% 后面加入 MySQL JDBC 驱动包的路径。这一步是为了Weka 启动以后引用到 MySQL 驱动包，否则无法连接 MySQL。</li></ol><p>注意：</p><ul><li>驱动包的路径与%CLASSPATH% 之间使用英文分号隔开</li><li>路径的<code>\</code> 需要替换为 <code>/</code></li><li>存放驱动包的路径不能出现空格或者中文字符</li></ul><pre><code>#修改为你的驱动包所在路径
+cp=%CLASSPATH%;F:/mysql-connector-java-5.1.48-bin.jar
+</code></pre><ol start=3><li><p>运行 Weka，启动<code>Explorer</code>.
+<img src=/static/img/bi/Snipaste_2020-05-13_08-58-18.png alt></p></li><li><p>点击<code>OpenDB</code>，设置数据库连接。
+<img src=/static/img/bi/Snipaste_2020-05-13_09-30-25.png alt></p></li><li><p>这次使用到的是foodmart数据库，是我们第三章实验创建的。配置数据库的连接，用户名和密码。</p></li></ol><pre><code>URL 连接：jdbc:mysql://localhost:3306/foodmart?characterEncoding=UTF-8&amp;charactSetResults=UTF-8&amp;zeroDateTimeBehavior=convertToNull
+用户名：foodmart
+密码：foodmart
+</code></pre><p><img src=/static/img/bi/Snipaste_2020-05-13_09-34-42.png alt></p><ol start=6><li>连接数据库，并输入以下 SQL 查询客户信息。
+<img src=/static/img/bi/Snipaste_2020-05-19_10-16-18.png alt></li></ol><pre><code>select * from customer;
+</code></pre><p><img src=/static/img/bi/Snipaste_2020-05-19_10-17-28.png alt></p><ol start=7><li>在列出的列中，我们并不需要全部的列，可以勾选其中的列进行删除。注意以下的列式需要保留的。</li></ol><pre><code>#请保留以下列
+customer_id
+city
+state_province
+country
+marital_status
+yearly_income
+gender
+total_children
+num_children_at_home
+education
+member_card
+occupation
+houseowner
+num_cars_owned
+</code></pre><p><img src=/static/img/bi/Snipaste_2020-05-19_10-24-25.png alt></p><ol start=8><li>我们需要对数据进行预处理转换。这里把 numberic 类型转换为 nominal 类型。</li></ol><blockquote><p>numberic 类型:数字类型，可以排序，但是无法分类。
+nominal 类型:可以分类，但不能排序的变量，比如血型，性别，职业等。</p></blockquote><p>Choose 弹窗中选择 NumericToNominal</p><pre><code>weka
+  |- filters
+    |- unsupervised
+	  |- attribute
+	    |- NumericToNominal
+</code></pre><p><img src=/static/img/bi/Snipaste_2020-05-19_11-01-25.png alt></p><ol start=9><li>接下来进行建模（Build Model）操作，选择的聚类的方式，选择上方的 Classify 选项卡，在此界面中点击 choose，选择相应的算法，这里我选择的是 j48 决策树，Test options 中选择的第一项，需要分类的列选择的 member_card。</li></ol><p><img src=/static/img/bi/Snipaste_2020-05-19_10-28-23.png alt></p><p><img src=/static/img/bi/Snipaste_2020-05-19_10-29-15.png alt></p><ol start=10><li>在右侧输出的数据中，我们可以观察到分类结果数据。</li></ol><p>（1）其中我们可以观察到分类的正确率为82.8519%。
+<img src=/static/img/bi/Snipaste_2020-05-19_11-31-41.png alt></p><p>（2）从下面的混淆矩阵（Confusion Matrix）中可以查看分类的结果。例如第一行中，a/b/c/d分别表示Golden（金牌会员）/铜牌会员（Bronze）/普通会员（Normal）/银牌会员（Silver）；</p><p>混淆矩阵第1行表示：实际金牌会员中，有842条分类结果正确；311条别错误识别为铜牌会员（b=Bronze)；43条被识别为普通会员（c=Normal）；2条被错误识别为银牌会员（d=Silver)。</p><p>因此金牌会员的TP计算公式</p><p>TP=分类正确金牌会员数量/实际金牌会员数量=842/(842+311+43+2)=0.703</p><p><img src=/static/img/bi/Snipaste_2020-05-19_11-43-38.png alt></p><p><img src=/static/img/bi/Snipaste_2020-05-19_15-04-30.png alt></p><p>（3）观察 J48 pruned tree，可以看到树状的分类结构分为了以下几级。</p><pre><code>家庭年收入（yearly_income）
+  |- 家庭孩子数量（num_children_at_home）
+    |- 拥有房产（houseowner）
+</code></pre><p>以年收入110K - 130K为例，家庭孩子数量（num_children_at_home）是0的客户中，总共有293人，其中227人（293-66）是铜牌会员（Bronze）。则模型会使用年收入，家庭孩子数量这2个特征作为预测。</p><pre><code>yearly_income = $110K - $130K
+|   num_children_at_home = 0: Bronze (293.0/66.0)
+|   num_children_at_home = 1: Bronze (82.0/20.0)
+|   num_children_at_home = 2: Bronze (47.0/8.0)
+|   num_children_at_home = 3: Golden (35.0/10.0)
+|   num_children_at_home = 4: Golden (25.0/11.0)
+|   num_children_at_home = 5
+|   |   houseowner = Y: Golden (9.0/1.0)
+|   |   houseowner = N: Normal (2.0/1.0)
+</code></pre><p>同学们可以使用以下SQL 查询数据库 foodmart 进行验证。</p><pre><code>SELECT member_card,COUNT(*) as n FROM customer WHERE yearly_income='$110K - $130K' AND num_children_at_home=0 group by member_card
+union
+select 'total',count(*) as n FROM customer WHERE yearly_income='$110K - $130K' AND num_children_at_home=0; 
+</code></pre><ol start=11><li>对分类树进行可视化。
+（1）右键点击结果集，选择“Visualize tree”，查看可视化树状图。
+<img src=/static/img/bi/Snipaste_2020-05-19_15-24-27.png alt></li></ol><p>（2）右键点击树状图，点击“Auto Scale” 展开查看。
+<img src=/static/img/bi/Snipaste_2020-05-19_15-25-57.png alt></p><p>（3）这里展开的树状图实际上就是“J48分类的剪枝树”（J48 pruned tree）。
+<img src=/static/img/bi/Snipaste_2020-05-19_15-51-44.png alt></p><ol start=12><li><p>查看分类特征的重要程度。点击“Select attributes”，按下图步骤操作，查看分类特征重要程度排列。
+<img src=/static/img/bi/Snipaste_2020-05-19_15-20-47.png alt></p></li><li><p>应用模型到测试数据，查看预测结果。</p></li></ol><p>（1）勾选“Supplied test set”，点击“Set&mldr;”
+<img src=/static/img/bi/Snipaste_2020-05-19_17-36-04.png alt></p><p>（2）“Open file”选中测试数据集<code>foodmart2008_predict_data.arff</code>;Class选择 “member_card”，然后点击close关闭。</p><p><img src=/static/img/bi/Snipaste_2020-05-19_17-36-50.png alt></p><p>（3）点击“More options”，去掉全部的选项的勾选，输出预测格式（Output predictions）这里选择PlainText。</p><p><img src=/static/img/bi/Snipaste_2020-05-19_17-41-20.png alt></p><p>（4）点击“Start”，弹窗会提示数据转换，点击“是”。
+<img src=/static/img/bi/Snipaste_2020-05-19_17-44-12.png alt></p><p><img src=/static/img/bi/Snipaste_2020-05-19_17-43-49.png alt></p><p>（5）请观测输出的预测结果，并与原训练数据进行对比（参考以下SQL查询出来的数据），计算出四种会员的混淆矩阵。</p><p>预测值</p><p><img src=/static/img/bi/Snipaste_2020-05-19_17-47-59.png alt></p><p>训练数据真实值</p><pre><code>SELECT customer_id,city,state_province,country,marital_status,yearly_income,gender,total_children,num_children_at_home,education,member_card,occupation,houseowner,num_cars_owned FROM customer where customer_id &gt;=1729 and customer_id &lt;=1740 
+</code></pre><p>完成下面的混淆矩阵表</p><div class=tbl-start></div><table><thead><tr><th>真实值\预测值</th><th>Golden</th><th>Silver</th><th>Bronze</th><th>Normal</th></tr></thead><tbody><tr><td>Golden</td><td></td><td></td><td></td><td></td></tr><tr><td>Silver</td><td></td><td></td><td></td><td></td></tr><tr><td>Bronze</td><td></td><td></td><td></td><td></td></tr><tr><td>Normal</td><td></td><td></td><td></td><td></td></tr></tbody></table><div class=tbl-end style=height:10px></div><ol start=14><li>测试结果核对。</li></ol><p>（1）获取实验资源中的<code>foodmart2008_predict_data_label.arff</code>数据。</p><p>（2）勾选“Supplied test set”，点击“Set&mldr;”
+<img src=/static/img/bi/Snipaste_2020-05-19_17-36-04.png alt></p><p>（3）“Open file”选中测试数据集<code>foodmart2008_predict_data_label.arff</code>;Class选择 “member_card”，然后点击close关闭。</p><p>（4）点击“More options”，勾选<code>Output confusion matrix</code>，输出预测格式（Output predictions）选择PlainText。</p><p><img src=/static/img/bi/Snipaste_2020-06-05_11-43-53.jpg alt></p><p>（5）点击“Start”，弹窗会提示数据转换，点击“是”。</p><p>（6）观察以下2个部分的数据，核对你的混淆矩阵是否正确。</p><pre><code>=== Predictions on test set ===
+
+=== Confusion Matrix ===
+</code></pre><hr><h2 id=实验62航空客运信息挖掘>实验6.2：航空客运信息挖掘</h2><h3 id=实验名称-1>【实验名称】</h3><p>实验6.2：航空客运信息挖掘</p><h3 id=实验目的-1>【实验目的】</h3><ul><li><p>熟悉并学会使用weka智能分析环境；</p></li><li><p>根据数据源建立数据模型；</p></li><li><p>根据业务逻辑，按照 LRFMC 模型进行数据变换；</p></li><li><p>使用数据来进行分类预测客户的流失率；</p></li></ul><h3 id=实验内容-1>【实验内容】</h3><p>本实验的目标是客户价值识别，即对客户进行分类。识别客户价值最广泛的模型是通过RFM指标来对客户进行细分，识别出高价值的客户：<br>-Recency 最近消费时间间隔<br>-Frequency 消费频率<br>-Monetary 消费金额</p><p>在RFM模型中，消费金额表示在一段时间内，客户购买该企业产品金额的总和。但在本实验中，基于航空机票价格的多变性，同样消费金额的不同旅客对航空公司的价值是不同的。例如，一位购买长航线、低等级舱位票的旅客与一位购买短航线、高等级舱位票的旅客相比，自然是后者对于航空公司而言价值更高。</p><p>因此，在本实验中，我们将消费金额指标使用“客户在一定时间内累积的飞行里程M”和“客户在一定时间内乘坐舱位所对应的折扣系数的平均值C”来代替。由于航空公司会员入会时间的长短在一定程度上能够影响客户价值，我们在模型中增加客户关系长度L这一个指标。</p><p>本实验将客户关系长度L、消费时间间隔R、消费频率F、飞行里程M和折扣系数的平均值C五个指标作为航空公司识别客户价值指标，记为LRFMC模型。</p><h3 id=数据准备>【数据准备】</h3><ul><li><p>（1）数据清理：数据中存在缺失值、折扣率为0、票价为零而总飞行公里数大于0的情况，使用Kettle对其进行清理</p></li><li><p>（2）数据转换：计算LRFMC,并将结果保存为CSV文件</p></li><li><p>L（入会时长） = LOAD_TIME - FFP_DATE (观测窗口的结束时间 - 入会时间 )</p></li><li><p>R（最近一次乘坐的时长） = DAYS_FROM_LAST_TO_END</p></li><li><p>F（乘坐频率） = FLIGHT_COUNT</p></li><li><p>M（累积里程） = SEG_KM_SUM</p></li><li><p>C（平均折扣率） = AVG_DISCOUNT</p></li></ul><h3 id=实验环境-1>【实验环境】</h3><ul><li>Windows 操作系统。</li><li>JDK</li><li>Weka：Weka 的全名是怀卡托智能分析环境（Waikato Environment for Knowledge Analysis），是一款免费的，非商业化（与之对应的是SPSS公司商业数据挖掘产品&ndash;Clementine ）的，基于JAVA环境下开源的机器学习（machine learning）以及数据挖掘（data mining）软件。Weka 作为一个公开的数据挖掘工作平台，集合了大量能承担数据挖掘任务的机器学习算法，包括对数据进行预处理，分类，回归、聚类、关联规则以及在新的交互式界面上的可视化。</li></ul><h3 id=实验资源-1>【实验资源】</h3><p>实验报告模板下载</p><pre><code>https://pan.baidu.com/s/1qqhcPcQotylS3PNP4f-edg#提取码vidt
+</code></pre><p>实验数据下载</p><pre><code>https://pan.baidu.com/s/12iBkrHWzt20QJg7OlwPkrQ#提取码e6rx
+</code></pre><p>Weka 网盘下载：</p><pre><code>https://pan.baidu.com/s/1dQEeVmqbyt11mZV7Uge_kQ#提取码2oev
+</code></pre><p>如果网盘下载速度过慢，可以尝试从 Weka 官网下载：</p><pre><code>https://sourceforge.net/projects/weka/files/weka-3-9/3.9.4/weka-3-9-4-azul-zulu-windows.exe/download
+</code></pre><h3 id=实验步骤-1>【实验步骤】</h3><p>一、 因为我们的目标数据是获取票价不为空，而且折扣率大于0，而且用户不是单纯使用积分兑换里程，因此我们要使用 Kettle 对 Excel 数据进行清洗。我们获取目标数据列分别是</p><ul><li>L（入会时长） = LOAD_TIME - FFP_DATE (观测窗口的结束时间 - 入会时间 )</li><li>R（最近一次乘坐的时长） = DAYS_FROM_LAST_TO_END</li><li>F（乘坐频率） = FLIGHT_COUNT</li><li>M（累积里程） = SEG_KM_SUM</li><li>C（平均折扣率） = AVG_DISCOUNT</li></ul><ol><li>打开Kettle，建立如下图的清洗步骤。</li></ol><p><img src=/static/img/bi/Snipaste_2020-05-20_08-19-07.png alt></p><ul><li>（1）Excel 输入（Microsoft Excel Input）：</li></ul><pre><code>文件：航空客运信息挖掘.xls
+工作表（Sheet）：航空公司客户数据
+</code></pre><p><img src=/static/img/bi/Snipaste_2020-05-20_09-36-36.png alt></p><ul><li>（2）过滤记录1（Filter Rows）：过滤出总票价不为空，而且折扣率大于0的数据。</li></ul><pre><code>#第一年总票价不为空 而且 第二年总票价不为空 而且 平均折扣率大于0
+EXPENSE_SUM_YR_1  IS NOT NULL
+AND
+EXPENSE_SUM_YR_2  IS NOT NULL
+AND
+AVG_DISCOUNT &gt; 0
+</code></pre><p><img src=/static/img/bi/Snipaste_2020-05-20_09-42-04.png alt></p><ul><li>（3）过滤记录2（Filter Rows）：过滤出不单纯使用积分兑换里程的用户。</li></ul><pre><code># 两年总票价都是0，但是里程数不为0的用户要清洗掉。
+NOT
+(EXPENSE_SUM_YR_1 = 0
+AND 
+EXPENSE_SUM_YR_2 = 0
+AND
+SEG_KM_SUM&gt;0)
+</code></pre><p><img src=/static/img/bi/Snipaste_2020-05-20_09-17-33.png alt></p><ul><li>（4）计算器（Calculator）：计算入会时间并赋值给新的列 L，使用“观测窗口的结束时间”（LOAD_TIME）减去“入会时间”（FFP_DATE）</li></ul><pre><code>新字段（New field）:L
+计算（Calculate）：Date A -  Date B (in days)
+字段A（Field A）：LOAD_TIME
+字段B（Field B）：FFP_DATE
+</code></pre><p><img src=/static/img/bi/Snipaste_2020-05-20_09-20-54.png alt></p><ul><li>（5）字段选择（Select Values）：选择要输出的字段，并重命名</li></ul><pre><code>#字段名-&gt;重命名为
+L -&gt; L
+DAYS_FROM_LAST_TO_END -&gt; R
+FLIGHT_COUNT -&gt; F
+SEG_KM_SUM -&gt; M
+AVG_DISCOUNT -&gt; C
+</code></pre><ul><li>（6）文本文件输出（Text File Output）：输出为CSV文件</li></ul><p><img src=/static/img/bi/Snipaste_2020-05-20_09-30-41.png alt></p><p><img src=/static/img/bi/Snipaste_2020-05-20_09-30-59.png alt></p><p><img src=/static/img/bi/Snipaste_2020-05-20_09-31-19.png alt></p><ol start=2><li>执行Kettle程序，查看输出，此时output.csv 内有62044条数据。
+<img src=/static/img/bi/Snipaste_2020-05-20_09-47-41.png alt></li></ol><p>二、使用 Weka 对数据做聚类分析。</p><ol start=3><li><p>打开 Weka 的 Explorer
+<img src=/static/img/bi/Snipaste_2020-05-20_16-12-29.png alt></p></li><li><p>打开 output.csv，导入数据。
+<img src=/static/img/bi/Snipaste_2020-05-20_16-21-47.png alt></p></li></ol><p><img src=/static/img/bi/Snipaste_2020-05-20_16-24-09.png alt></p><ol start=5><li>打开“Cluster”选项卡，Choose按钮选择“Simple KMeans”算法，做聚类分析。</li></ol><p><img src=/static/img/bi/Snipaste_2020-05-20_16-25-10.png alt></p><ol start=6><li>点击“SimpleKMeans”，簇的数量（numClusters）选择5。</li></ol><p><img src=/static/img/bi/Snipaste_2020-05-20_16-26-01.png alt></p><ol start=7><li>点击“Start”按钮，计算并查看结果。</li></ol><p><img src=/static/img/bi/Snipaste_2020-05-20_16-43-21.png alt></p><ol start=8><li>右键点击运行结果，选择“Visualized Cluster Assignment”</li></ol><p><img src=/static/img/bi/Snipaste_2020-05-20_16-43-59.png alt></p><ol start=9><li>保存聚类结果为<code>airline-cust-clusters.arff</code>文件。</li></ol><p><img src=/static/img/bi/Snipaste_2020-05-20_16-39-33.png alt></p><ol start=10><li>打开<code>airline-cust-clusters.arff</code>文件，查看聚类结果。</li></ol><p><img src=/static/img/bi/Snipaste_2020-05-20_16-48-37.png alt></p></div><button id=scroll-top-btn>↑顶部</button><div id=outerdiv style=position:fixed;top:0;left:0;background:rgba(0,0,0,.7);z-index:2;width:100%;height:100%;display:none><div id=innerdiv style=position:absolute><img id=bigimg style="border:5px solid #fff" src></div><script src=https://huangzhiyi.github.io/js/highlight.pack.js></script><script src=https://huangzhiyi.github.io/js/clipboard.min.js></script><script src=https://huangzhiyi.github.io/js/highlightjs-line-numbers.min.js></script><script>hljs.initHighlightingOnLoad();hljs.initLineNumbersOnLoad();$(function(){$('div.tbl-start').nextUntil('div.tbl-end','table').addClass('tbl');$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});$("#scroll-top-btn").click(function(){document.body.scrollTop=document.documentElement.scrollTop=0;});});</script></main><script src=https://huangzhiyi.github.io/js/jquery-min.js></script><script src=https://huangzhiyi.github.io/js/heis-custom-min.js?210610></script></body></html>
