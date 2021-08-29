@@ -32,17 +32,7 @@ https://pan.baidu.com/s/1qqhcPcQotylS3PNP4f-edg#提取码vidt
 版本 修改说明 v20200331 修正关于my-huge.ini步骤的说明 v20200315 修正了度量的 aggregator 为 sum v20200314 增加了MySQL相关配置，提高数据库查询性能；同时增加了foodmart表格说明； v20200304 初始化版本
 实验3.1：使用 Schema Workbench 创建 Cube 【实验名称】 使用 Schema Workbench 创建 Cube
 【实验目的】 1．熟悉 Schema Workbench 并学会使用； 2．学会创建 Cube。 【实验原理】 数据仓库（Data Warehouse）是一个面向主题的（Subject Oriented）、集成的（Integrated）、相对稳定的（Non-Volatile）、反映历史变化（Time Variant）的数据集合，用于支持管理决策。
-Hive 是一个构建于 Hadoop 顶层的数据仓库工具，支持大规模数据存储、分析，具有良好的可扩展性。某种程度上可以将 Hive 看作是用户编程接口。Hive 本身不存储和处理数据，依赖分布式文件系统 HDFS 存储数据，依赖分布式并行计算模型MapReduce 处理数据。Hive 定义了简单的类似 SQL 的查询语言——HiveQL。用户可以通过编写的 HiveQL 语句运行 MapReduce 任务，可以很容易把原来构建在关系数据库上的数据仓库应用程序移植到 Hadoop 平台上。Hive 是一个可以有效、合理、直观的数据分析工具。</description></item><item><title>商务智能方法与应用第五章实验手册</title><link>https://huangzhiyi.github.io/bi-exp05/</link><pubDate>Mon, 10 Feb 2020 11:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/bi-exp05/</guid><description>«返回课程汇总页面
-【实验手册版本】 当前版本号v20200824
-版本 修改说明 v20200824 修正敏感词 v20200331 修正分析结果 v20200327 初始化版本
-实验5.1：购物篮关联性推荐 【实验名称】 实验5.1：购物篮关联性推荐
-【实验目的】 熟悉并学会使用weka智能分析环境；
-根据数据源建立数据模型；
-根据数据模型对购物篮数据进行关联性分析；
-【实验内容】 本实验利用weka智能分析软件，对购物篮销售数据进行关联性分析，从而得出商店如何摆放产品将有利于提高我们的销售额度。
-【实验相关知识解读】 Apriori 算法是一种最有影响力的挖掘布尔关联规则的频繁项集的 算法，它是由Rakesh Agrawal 和RamakrishnanSkrikant 提出的。了解更多信息可以参考这篇文章
-机器学习领域经典的 FP-growth（Frequent Pattern Growth）模型，它是目前业界经典的频繁项集和关联规则挖掘的算法。相比于 Apriori 模型，FP-growth 模型只需要扫描数据库两次，极大得减少了数据读取次数并显著得提升了算法效率。了解更多信息可以参考这篇文章
-ARFF 格式指的是 Attribute-Relation File Format。可以理解为增加了列描述的 CSV 格式。文件主要分为头部（Head）信息和数据信息（Data)。头部信息定义了 Relation 和各列的 Attribute 的类型。数据部分内容和CSV一样，每列内容使用英文逗号隔开。例如下图就是一个 ARFF 格式数据。更多信息可以参考这篇文章。 【实验环境】 Windows 操作系统。 JDK Weka：Weka 的全名是怀卡托智能分析环境（Waikato Environment for Knowledge Analysis），是一款免费的，非商业化（与之对应的是SPSS公司商业数据挖掘产品&amp;ndash;Clementine ）的，基于JAVA环境下开源的机器学习（machine learning）以及数据挖掘（data mining）软件。Weka 作为一个公开的数据挖掘工作平台,汇聚了大量能承担数据挖掘任务的机器学习算法，包括对数据进行预处理，分类，回归、聚类、关联规则以及在新的交互式界面上的可视化。 【实验资源】 实验报告模板下载</description></item><item><title>商务智能方法与应用第四章实验手册</title><link>https://huangzhiyi.github.io/bi-exp04/</link><pubDate>Mon, 10 Feb 2020 11:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/bi-exp04/</guid><description>«返回课程汇总页面
+Hive 是一个构建于 Hadoop 顶层的数据仓库工具，支持大规模数据存储、分析，具有良好的可扩展性。某种程度上可以将 Hive 看作是用户编程接口。Hive 本身不存储和处理数据，依赖分布式文件系统 HDFS 存储数据，依赖分布式并行计算模型MapReduce 处理数据。Hive 定义了简单的类似 SQL 的查询语言——HiveQL。用户可以通过编写的 HiveQL 语句运行 MapReduce 任务，可以很容易把原来构建在关系数据库上的数据仓库应用程序移植到 Hadoop 平台上。Hive 是一个可以有效、合理、直观的数据分析工具。</description></item><item><title>商务智能方法与应用第四章实验手册</title><link>https://huangzhiyi.github.io/bi-exp04/</link><pubDate>Mon, 10 Feb 2020 11:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/bi-exp04/</guid><description>«返回课程汇总页面
 【实验手册版本】 当前版本号v20200415
 版本 修改说明 v20200415 增加了常见问题解答 v20200413 增加了授权文件的说明 v20200408 更正了几个截图 v20200329 更正了几个截图和加入更换驱动的步骤 v20200313 初始化版本
 实验4.1：使用 Saiku 进行联机分析（OLAP） 【实验名称】 实验4.1：使用 Saiku 进行联机分析（OLAP）
