@@ -41,7 +41,7 @@ Hadoop大数据集群部署实战 Part 4 - 搭建 Hadoop 开发环境 【版本�
 【版本】 当前版本号v20210527
 版本 修改说明 v20210527 修改hive-site.xml的配置 v20210416 初始化版本
 实验7.1 - 部署 Hive 【实验名称】 实验7.1 - 部署 Hive
-【实验目的】 部署 Hive 【实验环境】 Windows 7 以上64位操作系统 JDK8 IDEA Hadoop 2.7.3 CentOS 7 MariaDB/MySQL 【实验资源】 Hadoop 下载链接：https://pan.baidu.com/s/1ghde86wcK6pwg1fdSSWg0w 提取码：v3wv 【实验步骤】 使用 hadoop 登录NodeA节点。 su hadoop
+【实验目的】 掌握部署 Hive 【实验环境】 Windows 7 以上64位操作系统 JDK8 IDEA Hadoop 2.7.3 CentOS 7 MariaDB/MySQL 【实验资源】 Hadoop 下载链接：https://pan.baidu.com/s/1ghde86wcK6pwg1fdSSWg0w 提取码：v3wv 【实验步骤】 使用 hadoop 登录NodeA节点。 su hadoop
 Hive 的安装需要依赖 MySQL 或 MariaDB，这里我们选择 MariaDB。这里需要提权安装，如果安装失败请检查源配置文件/etc/yum.repos.d/local.repo或者光盘是否挂载成功。 sudo yum install mariadb mariadb-server
 启动 MariaDB 并设置为开机启动。 sudo systemctl start mariadb sudo systemctl enable mariadb
 使用 MariaDB 的安全安装选项。 mysql_secure_installation

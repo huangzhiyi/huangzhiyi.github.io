@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>镜像 on Heis</title><link>https://huangzhiyi.github.io/tags/%E9%95%9C%E5%83%8F/</link><description>Recent content in 镜像 on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 08 Mar 2021 16:42:51 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/tags/%E9%95%9C%E5%83%8F/index.xml" rel="self" type="application/rss+xml"/><item><title>云计算部署实战Part8 - 启动一个镜像实例</title><link>https://huangzhiyi.github.io/openstack-exp8/</link><pubDate>Mon, 08 Mar 2021 16:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/openstack-exp8/</guid><description>«返回课程汇总页面
-云计算部署实战Part8 - 启动一个镜像实例 【版本】 当前版本号v20210309
+云计算部署实战 Part8 - 启动一个镜像实例 【版本】 当前版本号v20210309
 版本 修改说明 v20210309 修改步骤9的描述 v20210308 初始化版本
 【实验名称】 云计算部署实战Part7 - 启动一个镜像实例
 【实验目的】 掌握搭建计算节点软件和环境 熟练掌握Linux命令（vi、tar、mv等等）的使用 掌握VMWare、XShell等客户端的使用 启动一个 Cirros 镜像实例 【实验环境】 内存：至少4G 硬盘：至少空余40G 操作系统: 64位 Windows系统。 【实验资源】 XShell CentOS 7.4系统镜像 VMWare WorkStation Pro Openstack源 【实验步骤】 使用Root用户登录控制节点（Controller）。输出 Hostname ，确认所在节点是控制节点。 hostname

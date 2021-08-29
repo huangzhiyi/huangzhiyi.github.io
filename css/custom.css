@@ -1,3 +1,8 @@
+@media print {
+ #scroll-top-btn{ display:none;}
+ #show-sb-btn{ display:none;}
+ #bsidebar{ display:none;}
+}
 #side-title{
 	color: #F9D342;
 }
@@ -145,6 +150,7 @@ table.tbl tr:nth-child(even)
 	border:0;
 	background-color: #F9D342;
 }
+
 
 .ac{
 	text-align:center;

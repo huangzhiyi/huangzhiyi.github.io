@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>web on Heis</title><link>https://huangzhiyi.github.io/tags/web/</link><description>Recent content in web on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 24 Aug 2021 00:44:00 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/tags/web/index.xml" rel="self" type="application/rss+xml"/><item><title>Java后台应用项目开发 Part 1 - Web开发基础</title><link>https://huangzhiyi.github.io/javawebdev-01/</link><pubDate>Tue, 24 Aug 2021 00:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/javawebdev-01/</guid><description>«返回课程汇总页面
+Java后台应用项目开发 Part 1 - Web开发基础 【版本】 当前版本号v20210824
+版本 修改说明 v20210824 初始化版本
+【实验名称】 实验1.1 编写简单的 HTML 网页 【实验目的】 掌握 HTML 网页的编写 【实验环境】 内存：至少4G 硬盘：至少空余10G 操作系统: 64位 Windows系统。 【实验资源】 浏览器 文本编辑器 【实验要求】 以下为一个的html网页实例，它的效果如下图所示。 &amp;lt;html xmlns=&amp;quot;http://www.w3.org/1999/xhtml&amp;quot; id=&amp;quot;sixapart-standard&amp;quot;&amp;gt;
+&amp;lt;head&amp;gt;
+&amp;lt;meta http-equiv=&amp;quot;Content-Type&amp;quot; content=&amp;quot;text/html; charset=UTF-8&amp;quot; /&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;h1&amp;gt;这是个标题&amp;lt;/h1&amp;gt;
+&amp;lt;p&amp;gt;这是一个段落 &amp;lt;/p&amp;gt;
+&amp;lt;h1&amp;gt;表单&amp;lt;/h1&amp;gt;
+&amp;lt;form&amp;gt;
+用户名： &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;username&amp;quot;&amp;gt;&amp;lt;br&amp;gt;
+密码： &amp;lt;input type=&amp;quot;password&amp;quot; name=&amp;quot;pwd&amp;quot;&amp;gt;&amp;lt;br&amp;gt;
+性别：&amp;lt;input type=&amp;quot;radio&amp;quot; name=&amp;quot;sex&amp;quot; value=&amp;quot;male&amp;quot;&amp;gt;男
+&amp;lt;input type=&amp;quot;radio&amp;quot; name=&amp;quot;sex&amp;quot; value=&amp;quot;female&amp;quot;&amp;gt;女&amp;lt;br&amp;gt;
+爱好：&amp;lt;input type=&amp;quot;checkbox&amp;quot; name=&amp;quot;like&amp;quot; value=&amp;quot;sing&amp;quot;&amp;gt;唱
+&amp;lt;input type=&amp;quot;checkbox&amp;quot; name=&amp;quot;like&amp;quot; value=&amp;quot;dance&amp;quot;&amp;gt;跳
+&amp;lt;input type=&amp;quot;checkbox&amp;quot; name=&amp;quot;like&amp;quot; value=&amp;quot;rap&amp;quot;&amp;gt;Rap
+&amp;lt;input type=&amp;quot;checkbox&amp;quot; name=&amp;quot;like&amp;quot; value=&amp;quot;bskball&amp;quot;&amp;gt;篮球&amp;lt;br&amp;gt;
+&amp;lt;/form&amp;gt;
+&amp;lt;h1&amp;gt;图像&amp;lt;/h1&amp;gt;
+&amp;lt;img src=&amp;quot;/static/img/javawebdev_01/Snipaste_2021-08-24_14-01-27.</description></item></channel></rss>
