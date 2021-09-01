@@ -1,0 +1,77 @@
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=zh-CN lang=zh-cn><head><link href=//gmpg.org/xfn/11 rel=profile><meta charset=utf-8><meta name=generator content="Hugo 0.80.0"><meta name=viewport content="width=device-width,initial-scale=1"><title>云数据中心基础 Part 2 - Linux 虚拟化常用命令 &#183; Heis</title><link type=text/css rel=stylesheet href=https://huangzhiyi.github.io/css/heis-min.css?20210716><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?f58b6a2675cf52000232edb4d109eccc";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><link rel=apple-touch-icon-precomposed sizes=144x144 href=/apple-touch-icon-144-precomposed2.png><link rel="shortcut icon" href=/favicon2.png></head><body><style>.tooltip{position:relative;display:inline-block;border-bottom:1px dotted #000}.tooltip .tooltiptext{visibility:hidden;width:auto;max-width:200px;background-color:#000;color:#fff;text-align:center;position:absolute;z-index:1}.tooltip:hover .tooltiptext{visibility:visible;position:absolute;top:2rem;left:0;z-index:1000}</style><aside class=sidebar id=bsidebar><button id=hide-sb-btn onclick=hideSidebar()></button><div class="container sidebar-sticky"><div class=sidebar-about><a href=https://huangzhiyi.github.io/><h1 id=side-title>Heis</h1></a><p class=lead>Long live MAMBA</p><p class=ac><a href=https://support.qq.com/products/332688 class=tooltip target=_blank><img class=tooltiptext src=https://huangzhiyi.github.io/feedback.png?20210617>
+提点意见和建议»</a></p></div><nav><ul class=sidebar-nav><li><a href=https://huangzhiyi.github.io/>首页</a></li><li><a href=http://go.heisun.xyz/ target=_blank>课程导航»</a></li><li><a href=https://huangzhiyi.github.io/categories/javaweb/>Java后台应用项目开发»</a></li><li><a href=https://huangzhiyi.github.io/categories/clouddc/>云数据中心基础»</a></li><li><a href=https://huangzhiyi.github.io/categories>文章分类»</a></li><li><a href=https://huangzhiyi.github.io/tags>文章标签»</a></li><li><a href=https://heis.gitee.io/ target=_blank>镜像0：heis.gitee.io</a></li><li><a href=http://heisun.xyz/ target=_blank>镜像1：heisun.xyz</a></li><li><a href=https://huangzhiyi.github.io/ target=_blank>镜像2：huangzhiyi.github.io</a></li></ul></nav><p>&copy; 2021. All rights reserved.</p><p></p></div></aside><main class="content container" id=mainpanel><button id=show-sb-btn onclick=showSidebar()></button>
+<script src=https://huangzhiyi.github.io/js/jquery-min.js></script><div class=post><h1>云数据中心基础 Part 2 - Linux 虚拟化常用命令</h1><time datetime=2021-09-01T00:44:00+0800 class=post-date>2021-09-01</time><blockquote><h2>文章导航</h2><aside><nav id=TableOfContents><ul><li><a href=#云数据中心基础-part-2---linux-虚拟化常用命令>云数据中心基础 Part 2 - Linux 虚拟化常用命令</a><ul><li><a href=#版本>【版本】</a></li><li><a href=#实验名称-实验21-目录管理命令>【实验名称】 实验2.1 目录管理命令</a></li><li><a href=#实验目的>【实验目的】</a></li><li><a href=#实验环境>【实验环境】</a></li><li><a href=#实验实例>【实验实例】</a></li><li><a href=#实验要求>【实验要求】</a></li><li><a href=#实验名称-实验22-相对路径和绝对路径>【实验名称】 实验2.2 相对路径和绝对路径</a></li><li><a href=#实验目的-1>【实验目的】</a></li><li><a href=#实验环境-1>【实验环境】</a></li><li><a href=#实验实例-1>【实验实例】</a></li><li><a href=#实验要求-1>【实验要求】</a></li><li><a href=#实验名称-实验23-文件创建复制删除与移动>【实验名称】 实验2.3 文件创建、复制、删除与移动</a></li><li><a href=#实验目的-2>【实验目的】</a></li><li><a href=#实验环境-2>【实验环境】</a></li><li><a href=#实验实例-2>【实验实例】</a></li><li><a href=#实验要求-2>【实验要求】</a></li><li><a href=#实验名称-实验24-文件内容的编辑和查看>【实验名称】 实验2.4 文件内容的编辑和查看</a></li><li><a href=#实验目的-3>【实验目的】</a></li><li><a href=#实验环境-3>【实验环境】</a></li><li><a href=#实验实例-3>【实验实例】</a></li><li><a href=#实验要求-3>【实验要求】</a></li><li><a href=#实验名称-实验25-软件的安装与卸载>【实验名称】 实验2.5 软件的安装与卸载</a></li><li><a href=#实验目的-4>【实验目的】</a></li><li><a href=#实验环境-4>【实验环境】</a></li><li><a href=#实验实例-4>【实验实例】</a></li><li><a href=#实验要求-4>【实验要求】</a></li><li><a href=#实验名称-实验26-端口和进程的查看>【实验名称】 实验2.6 端口和进程的查看</a></li><li><a href=#实验目的-5>【实验目的】</a></li><li><a href=#实验环境-5>【实验环境】</a></li><li><a href=#实验要求-5>【实验要求】</a></li></ul></li></ul></nav></aside></blockquote><p><a href=/cloud-data-center-summary/>«返回课程汇总页面</a></p><h2 id=云数据中心基础-part-2---linux-虚拟化常用命令>云数据中心基础 Part 2 - Linux 虚拟化常用命令</h2><h3 id=版本>【版本】</h3><p>当前版本号<code>v20210901</code></p><div class=tbl-start></div><table><thead><tr><th>版本</th><th>修改说明</th></tr></thead><tbody><tr><td>v20210901</td><td>初始化版本</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h3 id=实验名称-实验21-目录管理命令>【实验名称】 实验2.1 目录管理命令</h3><h3 id=实验目的>【实验目的】</h3><ul><li>掌握目录相关的 Linux 命令的使用</li></ul><h3 id=实验环境>【实验环境】</h3><ul><li>CentOS 7.X</li></ul><h3 id=实验实例>【实验实例】</h3><ol><li><p>启动实验1制作的虚拟机。</p></li><li><p>使用 Final Shell 连接虚拟机，并使用 cdc 用户登录。</p></li><li><p>登录以后，查看当前所在路径。</p></li></ol><pre><code>pwd
+</code></pre><blockquote><p>一般用户登录以后都默认进入当前用户的主目录 /home/用户名</p></blockquote><ol start=4><li>创建一个新的目录</li></ol><pre><code>mkdir dir1
+</code></pre><ol start=5><li>进入 dir1 目录</li></ol><pre><code>cd dir1
+</code></pre><ol start=6><li>进入 dir1 目录</li></ol><pre><code>cd dir1
+</code></pre><ol start=7><li>返回上一级目录。</li></ol><pre><code>cd ..
+</code></pre><ol start=8><li>删除 dir1 这个空目录</li></ol><pre><code>rmdir dir1
+</code></pre><h3 id=实验要求>【实验要求】</h3><ol><li>在 cdc 用户的主目录下创建以下结构的目录。</li></ol><pre><code>/
+|-home
+  |-cdc
+    |-dir2
+       |-dir21
+         |-dir211
+</code></pre><ol start=2><li><p>请把 <code>/home/cdc</code> 下的所有空目录删除</p></li><li><p>请在实验报告详细记录你的每一步的命令和结果。</p></li></ol><blockquote><p>提示：可以了解 mkdir -p</p></blockquote><hr><h3 id=实验名称-实验22-相对路径和绝对路径>【实验名称】 实验2.2 相对路径和绝对路径</h3><h3 id=实验目的-1>【实验目的】</h3><ul><li>掌握 Linux 的相对路径和绝对路径访问方式</li></ul><h3 id=实验环境-1>【实验环境】</h3><ul><li>CentOS 7.X</li></ul><h3 id=实验实例-1>【实验实例】</h3><ol><li>以下为一些特殊目录</li></ol><pre><code>. 代表此层目录
+.. 代表上一层目录
+- 代表前一个工作目录
+~ 代表 “ 目前使用者身份 ” 所在的主文件夹
+</code></pre><ol start=2><li>进入根目录，查看根目录下所有目录。</li></ol><pre><code>cd /
+ls
+</code></pre><ol start=3><li>进入相对路径目录</li></ol><pre><code>cd var/tmp
+</code></pre><ol start=4><li>查看当前目录</li></ol><pre><code>pwd
+</code></pre><ol start=5><li>进入前一个访问过的目录，并查看当前目录。</li></ol><pre><code>cd -
+pwd
+</code></pre><ol start=6><li>直接通过绝对路径进入目录。</li></ol><pre><code>cd /var/tmp
+pwd
+</code></pre><h3 id=实验要求-1>【实验要求】</h3><ol><li>在 cdc 用户的主目录下创建以下结构的目录。</li></ol><pre><code>/
+|-home
+  |-cdc
+    |-dir3
+       |-dir31
+       |-dir32
+</code></pre><ol start=2><li><p>进入工作目录<code>/home/cdc/dir3/dir32</code>，使用相对路径删除空目录<code>dir31</code>。</p></li><li><p>使用绝对路径删除空目录<code>dir32</code>。</p></li><li><p>请在实验报告详细记录你的每一步的命令和结果。</p></li></ol><hr><h3 id=实验名称-实验23-文件创建复制删除与移动>【实验名称】 实验2.3 文件创建、复制、删除与移动</h3><h3 id=实验目的-2>【实验目的】</h3><ul><li>掌握 Linux 文件复制、删除与移动相关命令</li></ul><h3 id=实验环境-2>【实验环境】</h3><ul><li>CentOS 7.X</li></ul><h3 id=实验实例-2>【实验实例】</h3><ol><li>在 cdc 用户的主目录下创建文件<code>file1</code></li></ol><pre><code>cd ~
+</code></pre><pre><code>touch file1
+</code></pre><ol start=2><li>复制文件<code>file1</code>为<code>file2</code>。并查看是否复制成功</li></ol><pre><code>cp file1 file2
+ls
+</code></pre><ol start=3><li>移动（重命名）<code>file1</code> 为 <code>file1.txt</code></li></ol><pre><code>mv file1 file1.txt
+</code></pre><ol start=4><li>删除<code>file2</code>，按下y确认删除。</li></ol><pre><code>rm file2
+</code></pre><h3 id=实验要求-2>【实验要求】</h3><ol><li>在 cdc 用户的主目录下创建文件<code>file3</code>。</li><li>复制<code>file3</code> 到 <code>/var/tmp</code> 目录下，并改名为<code>file4</code>。</li><li>删除<code>file4</code>。</li><li>请在实验报告详细记录你的每一步的命令和结果。</li></ol><hr><h3 id=实验名称-实验24-文件内容的编辑和查看>【实验名称】 实验2.4 文件内容的编辑和查看</h3><h3 id=实验目的-3>【实验目的】</h3><ul><li>掌握 Linux 文件内容的编辑的相关命令</li></ul><h3 id=实验环境-3>【实验环境】</h3><ul><li>CentOS 7.X</li></ul><h3 id=实验实例-3>【实验实例】</h3><ol><li>在 cdc 用户的主目录下创建一个文件，并同时写入内容。</li></ol><pre><code>cd ~
+echo 'life is like a box of chocolates' &gt; life.txt
+</code></pre><ol start=2><li>使用cat 命令输出<code>life.txt</code>内容。</li></ol><pre><code>cat life.txt
+</code></pre><h3 id=实验要求-3>【实验要求】</h3><ol><li>承接上面实例，使用<code>vi</code>修改<code>life.txt</code>，在文件第2行加如以下内容。</li></ol><pre><code>You never know what gonna get.
+</code></pre><ol start=2><li>请在实验报告详细记录你的每一步的命令和结果。</li></ol><hr><h3 id=实验名称-实验25-软件的安装与卸载>【实验名称】 实验2.5 软件的安装与卸载</h3><h3 id=实验目的-4>【实验目的】</h3><ul><li>掌握 CentOS 的软件的安装与卸载</li></ul><h3 id=实验环境-4>【实验环境】</h3><ul><li>CentOS 7.X</li></ul><h3 id=实验实例-4>【实验实例】</h3><ol><li>提升到 root 权限，输入 root 的密码。</li></ol><pre><code>su
+</code></pre><ol start=2><li>安装配置 MariaDB</li></ol><pre><code>yum install mariadb mariadb-server -y
+</code></pre><ol start=3><li>新建 MariaDB 的配置文件。</li></ol><pre><code>echo '[mysqld]
+bind-address = 10.0.0.70
+default-storage-engine = innodb
+innodb_file_per_table
+max_connections = 4096
+collation-server = utf8_general_ci
+character-set-server = utf8'  &gt;/etc/my.cnf.d/cdc.cnf
+</code></pre><ol start=4><li>设置 MariaDB 为开机启动</li></ol><pre><code>systemctl enable mariadb
+</code></pre><ol start=5><li>启动<code>MariaDB</code></li></ol><pre><code>systemctl start mariadb
+</code></pre><ol start=6><li>开始 MariaDB 安全配置和初始化。</li></ol><pre><code>mysql_secure_installation
+</code></pre><ol start=7><li>根据以下提示进行输入，修改 MariaDB 的 root 用户密码为123456。</li></ol><pre><code>Enter current password for root (enter for none): -&gt; 直接回车
+Set root password? [Y/n] -&gt; 输入y
+New password:   -&gt; 输入123456
+Re-enter new password:  -&gt; 输入123456
+Remove anonymous users? [Y/n] -&gt; 输入y
+Disallow root login remotely? [Y/n]  -&gt; 输入y
+Remove test database and access to it? [Y/n] -&gt; 输入y
+Reload privilege tables now? [Y/n] -&gt; 输入y
+</code></pre><ol start=8><li>重新启动<code>MariaDB</code></li></ol><pre><code>systemctl restart mariadb
+</code></pre><ol start=9><li>查看<code>MariaDB</code>状态是否为active</li></ol><pre><code>systemctl status mariadb
+</code></pre><ol start=10><li>使用root连接<code>MariaDB</code>，输入密码123456。</li></ol><pre><code>mysql -u root -p
+</code></pre><ol start=11><li>使用<code>exit</code>命令退出<code>MariaDB</code>命令行。</li></ol><pre><code>MariaDB [(none)]&gt; exit;
+</code></pre><h3 id=实验要求-4>【实验要求】</h3><ol><li><p>使用<code>systemctl stop</code>命令停止<code>MariaDB</code>进程。</p></li><li><p>使用<code>yum remove</code>命令移除<code>MariaDB</code>相关组件。</p></li><li><p>移除<code>/etc/my.cnf.d/cdc.cnf</code>配置文件。</p></li><li><p>请在实验报告详细记录你的每一步的命令和结果。</p></li></ol><hr><h3 id=实验名称-实验26-端口和进程的查看>【实验名称】 实验2.6 端口和进程的查看</h3><h3 id=实验目的-5>【实验目的】</h3><ul><li>掌握 CentOS 查看端口和进程的命令</li></ul><h3 id=实验环境-5>【实验环境】</h3><ul><li>CentOS 7.X</li></ul><h3 id=实验要求-5>【实验要求】</h3><ol><li><p>使用<code>yum</code>命令重新安装<code>MariaDB</code>。</p></li><li><p>使用<code>yum</code>命令安装命令<code>lsof</code>、<code>vim</code>。</p></li><li><p>使用cp命令备份<code>/etc/my.cnf.d/cdc.cnf</code>到<code>/etc/my.cnf.d/cdc.cnf.bak</code></p></li><li><p>使用vim 修改<code>/etc/my.cnf.d/cdc.cnf</code>为以下内容。</p></li></ol><pre><code>[mysql]
+default-character-set = utf8mb4
+
+[mysqld]
+bind-address = 10.0.0.70
+default-storage-engine = innodb
+innodb_file_per_table
+max_connections = 4096
+collation-server = utf8mb4_unicode_ci
+character-set-server = utf8mb4
+</code></pre><ol start=5><li><p>重启<code>MariaDB</code>。</p></li><li><p>使用<code>lsof -i:3306</code>命令查看3306端口的进程是否存在。</p></li><li><p>使用<code>netstat -tulpn|grep 3306</code>命令查看3306端口的进程是否存在。</p></li><li><p>使用 <code>MariaDB</code> 的root 用户进行登录。</p></li><li><p>请在实验报告详细记录你的每一步的命令和结果。</p></li></ol></div><button id=scroll-top-btn>↑顶部</button><div id=outerdiv style=position:fixed;top:0;left:0;background:rgba(0,0,0,.7);z-index:2;width:100%;height:100%;display:none><div id=innerdiv style=position:absolute><img id=bigimg style="border:5px solid #fff" src></div><script src=https://huangzhiyi.github.io/js/highlight.pack.js></script><script src=https://huangzhiyi.github.io/js/highlightjs-line-numbers.min.js></script><script>hljs.initHighlightingOnLoad();hljs.initLineNumbersOnLoad();$(function(){$('div.tbl-start').nextUntil('div.tbl-end','table').addClass('tbl');$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});$("#scroll-top-btn").click(function(){document.body.scrollTop=document.documentElement.scrollTop=0;});});</script><script>const clipboardItems=[];document.addEventListener('copy',async(e)=>{e.preventDefault();try{let clipboardItems=[];for(const item of e.clipboardData.items){if(item.type.startsWith('text/plain')){const blob=new Blob([e.clipboardData.getData('text/plain')+"\n\r温馨提示：复制使人懒惰，请尽量自己输入代码"],{'type':'text/plain'});clipboardItems.push(new ClipboardItem({[item.type]:blob,}));await navigator.clipboard.write(clipboardItems);console.log('Text copied.');}}}catch(err){console.error(err.name,err.message);}});</script></main><script src=https://huangzhiyi.github.io/js/jquery-min.js></script><script src=https://huangzhiyi.github.io/js/heis-custom-min.js?210610></script></body></html>
