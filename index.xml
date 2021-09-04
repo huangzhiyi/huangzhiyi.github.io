@@ -10,9 +10,9 @@ pwd
 进入 dir1 目录 cd dir1
 进入 dir1 目录 cd dir1
 返回上一级目录。 cd .</description></item><item><title>Java后台应用项目开发 Part 1 - 搭建 Java EE 开发环境</title><link>https://huangzhiyi.github.io/javawebdev-01/</link><pubDate>Tue, 24 Aug 2021 00:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/javawebdev-01/</guid><description>«返回课程汇总页面
-Java后台应用项目开发 Part 1 - 搭建 Java EE 开发环境 【版本】 当前版本号v20210824
-版本 修改说明 v20210824 初始化版本
-【实验名称】 实验1.1 编写简单的 HTML 网页 【实验目的】 掌握 HTML 网页的编写 【实验环境】 内存：至少4G 硬盘：至少空余10G 操作系统: 64位 Windows系统。 【实验资源】 Edge 浏览器或 Chrome 浏览器 文本编辑器 【实验要求】 以下为一个的html网页实例，它的效果如下图所示。 &amp;lt;html xmlns=&amp;quot;http://www.w3.org/1999/xhtml&amp;quot; id=&amp;quot;sixapart-standard&amp;quot;&amp;gt;
+Java后台应用项目开发 Part 1 - 搭建 Java EE 开发环境 【版本】 当前版本号v20210904
+版本 修改说明 v20210904 优化了HTML实例页面的内容 v20210824 初始化版本
+【实验名称】 实验1.1 编写简单的 HTML 网页 【实验目的】 掌握 HTML 网页的编写 【实验环境】 内存：至少4G 硬盘：至少空余10G 操作系统: 64位 Windows系统。 【实验资源】 Edge 浏览器或 Chrome 浏览器 文本编辑器 【实验要求】 以下为一个的html网页实例，它的效果如下图所示。 &amp;lt;!DOCTYPE html&amp;gt;
 &amp;lt;head&amp;gt;
 &amp;lt;meta http-equiv=&amp;quot;Content-Type&amp;quot; content=&amp;quot;text/html; charset=UTF-8&amp;quot; /&amp;gt;
 &amp;lt;/head&amp;gt;
