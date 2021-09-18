@@ -27,8 +27,7 @@ Java后台应用项目开发 Part 1 - 搭建 Java EE 开发环境 【版本】 �
 &amp;lt;/form&amp;gt;
 &amp;lt;h1&amp;gt;图像&amp;lt;/h1&amp;gt;
 &amp;lt;img src=&amp;quot;/static/img/javawebdev_01/Snipaste_2021-08-24_14-01-27.</description></item><item><title>Java后台应用项目开发 课程资源汇总</title><link>https://huangzhiyi.github.io/javawebdev-summary/</link><pubDate>Tue, 10 Aug 2021 00:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/javawebdev-summary/</guid><description>实验报告模板和实验资源下载 链接：https://pan.baidu.com/s/1JtKJfJtb0ruoIB1VtvBWFw 提取码：heis
-实验报告要求 必须使用老师提供的实验报告模板。 必须保留封面 实验步骤每一步都有详细的文字操作步骤说明，步骤顺序号，截图。 截图只需要截关键部分信息，不能全屏截图。可以用红色框或箭头标注截图重点信息。推荐使用 Snipaste（官网下载或网盘下载） 进行截图和标记。 课程内容 （1）Java后台应用项目开发 Part 1 - 搭建 Java EE 开发环境 课程设计报告提交截止时间和地址 后续会公布链接，请各位同学登录网站 https://heis.gitee.io/javawebdev-summary
-课程设计报告提交</description></item><item><title>Hadoop大数据集群部署实战 Part 5 - 使用 MapReduce 和 Hive 进行数据分析</title><link>https://huangzhiyi.github.io/hadoop-training05/</link><pubDate>Sun, 23 May 2021 01:40:00 +0800</pubDate><guid>https://huangzhiyi.github.io/hadoop-training05/</guid><description>«返回课程汇总页面
+实验报告要求 必须使用老师提供的实验报告模板。 必须保留封面 实验步骤每一步都有详细的文字操作步骤说明，步骤顺序号，截图。 截图只需要截关键部分信息，不能全屏截图。可以用红色框或箭头标注截图重点信息。推荐使用 Snipaste（官网下载或网盘下载） 进行截图和标记。 课程内容 （1）Java后台应用项目开发 Part 1 - 搭建 Java EE 开发环境 （2）Java后台应用项目开发 Part 2 - MVC模式开发与 SpringMVC 框架开发 课程设计报告提交截止时间和地址 Java后台应用项目开发 Part 1 实验报告提交截止时间 2021/9/22(星期三) 19级计本1班提交作业链接 http://xzc.cn/GTNgx6606S 19级计本2班提交作业链接 http://xzc.cn/EuBQ5RNEU8 课程设计报告提交</description></item><item><title>Hadoop大数据集群部署实战 Part 5 - 使用 MapReduce 和 Hive 进行数据分析</title><link>https://huangzhiyi.github.io/hadoop-training05/</link><pubDate>Sun, 23 May 2021 01:40:00 +0800</pubDate><guid>https://huangzhiyi.github.io/hadoop-training05/</guid><description>«返回课程汇总页面
 Hadoop大数据集群部署实战 Part 5 - 使用 MapReduce 和 Hive 进行数据分析 【版本】 当前版本号v20210521
 版本 修改说明 v20210521 初始化版本
 数据分析实训5.1 - 在电影库中查找我的演员评分最高的5部电影 【实训名称】 数据分析实训5.1 - 在电影库中查找我的演员评分最高的5部电影
