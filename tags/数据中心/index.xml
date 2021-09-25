@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>数据中心 on Heis</title><link>https://huangzhiyi.github.io/tags/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83/</link><description>Recent content in 数据中心 on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 15 Sep 2021 00:44:00 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/tags/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83/index.xml" rel="self" type="application/rss+xml"/><item><title>云数据中心基础 Part 3 - 服务器虚拟化部署</title><link>https://huangzhiyi.github.io/cloud-data-center-03/</link><pubDate>Wed, 15 Sep 2021 00:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/cloud-data-center-03/</guid><description>«返回课程汇总页面
 云数据中心基础 Part 3 - 服务器虚拟化部署 【版本】 当前版本号v20210915
 版本 修改说明 v20210915 初始化版本
-【实验名称】 实验3.1 KVM 的安装使用 【实验目的】 掌握KVM的安装和使用 【实验环境】 CentOS 7.X FinalShell 【实验资源】 cirros 磁盘文件。 vnc viewer 链接：https://pan.baidu.com/s/1pQH-QuWHCs7p8KpO7RiMEA
+【实验名称】 实验3.1 KVM 的安装使用 【实验目的】 掌握KVM的安装和使用 【实验环境】 CentOS 7.X FinalShell 【实验资源】 cirros 磁盘文件。 vnc viewer 链接：https://pan.baidu.com/s/1czcuSALGMPgdkJceVJMK7Q
 提取码：heis
 【实验步骤】 启用虚拟化配置。使用管理员权限进入 Windows 系统的命令行 “Win+R”键可以快速调出运行窗口 输入“cmd”、 同时按下“Ctrl+Shift+ENter”键启动管理员权限的命令行窗口 在 Windows 的命令行窗口输入以下命令。 修改以下路径为你的virtualbox安装路径。 cd D:\&amp;quot;Program Files (x86)&amp;quot;\Oracle\VirtualBox
 执行以下命令启用你的虚拟机的虚拟化扩展特性。以下&amp;quot;Tmpl&amp;quot;需要修改为你的虚拟机名称。 VBoxManage.</description></item><item><title>云数据中心基础 Part 2 - Linux 虚拟化常用命令</title><link>https://huangzhiyi.github.io/cloud-data-center-02/</link><pubDate>Wed, 01 Sep 2021 00:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/cloud-data-center-02/</guid><description>«返回课程汇总页面
