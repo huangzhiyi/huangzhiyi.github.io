@@ -26,7 +26,7 @@
 掩码：24
 网关：10.0.0.254
 DNS:223.5.5.5
-</code></pre><ol start=23><li><p>回到主界面，进入软件选择界面，选择最小化安装“Minima Install”。
+</code></pre><ol start=20><li><p>回到主界面，进入软件选择界面，选择最小化安装“Minima Install”。
 <img src=/static/img/cloud-data-center-01/Snipaste_2021-02-28_00-12-04.png alt>
 <img src=/static/img/cloud-data-center-01/Snipaste_2021-07-01_16-45-26.png alt></p></li><li><p>回到主界面，进入系统安装位置菜单。
 <img src=/static/img/cloud-data-center-01/Snipaste_2021-02-28_00-15-09.png alt></p></li><li><p>选择手动分区。
@@ -37,8 +37,8 @@ DNS:223.5.5.5
 </code></pre><p><img src=/static/img/cloud-data-center-01/Snipaste_2021-02-28_00-19-10.png alt>
 <img src=/static/img/cloud-data-center-01/Snipaste_2021-07-01_16-50-47.png alt>
 <img src=/static/img/cloud-data-center-01/Snipaste_2021-02-28_00-20-18.png alt>
-<img src=/static/img/cloud-data-center-01/Snipaste_2021-07-01_16-48-51.png alt></p><ol start=28><li>禁用KDUMP。</li></ol><blockquote><p>kdump是Linux内核的一个功能，可在发生内核错误时创建核心转储。当被触发时，kdump会导出一个内存映像，该映像可用于调试和确定崩溃的原因。</p></blockquote><p><img src=/static/img/cloud-data-center-01/Snipaste_2021-02-28_00-23-28.png alt>
-<img src=/static/img/cloud-data-center-01/Snipaste_2021-02-28_00-25-52.png alt></p><ol start=29><li><p>开始安装系统
+<img src=/static/img/cloud-data-center-01/Snipaste_2021-07-01_16-48-51.png alt></p><ol start=25><li>禁用KDUMP。</li></ol><blockquote><p>kdump是Linux内核的一个功能，可在发生内核错误时创建核心转储。当被触发时，kdump会导出一个内存映像，该映像可用于调试和确定崩溃的原因。</p></blockquote><p><img src=/static/img/cloud-data-center-01/Snipaste_2021-02-28_00-23-28.png alt>
+<img src=/static/img/cloud-data-center-01/Snipaste_2021-02-28_00-25-52.png alt></p><ol start=26><li><p>开始安装系统
 <img src=/static/img/cloud-data-center-01/Snipaste_2021-02-28_00-26-28.png alt></p></li><li><p>设置 root 密码。
 <img src=/static/img/cloud-data-center-01/Snipaste_2021-02-28_00-27-05.png alt>
 <img src=/static/img/cloud-data-center-01/Snipaste_2021-02-28_00-27-57.png alt></p></li><li><p>创建 cdc 用户。
@@ -47,7 +47,7 @@ DNS:223.5.5.5
 <img src=/static/img/cloud-data-center-01/Snipaste_2021-02-28_00-28-45.png alt></p></li><li><p>重启以后，尝试使用 cdc 账户登录。
 <img src=/static/img/cloud-data-center-01/Snipaste_2021-07-01_16-59-01.png alt>
 <img src=/static/img/cloud-data-center-01/Snipaste_2021-08-29_10-53-11.jpg alt></p></li><li><p>登录成功以后，输入以下命令，提升为管理员权限。</p></li></ol><pre><code>su
-</code></pre><ol start=35><li>输入以下命令查看 enp0s3 的端口IP是否配置正常。</li></ol><pre><code>ip a
+</code></pre><ol start=32><li>输入以下命令查看 enp0s3 的端口IP是否配置正常。</li></ol><pre><code>ip a
 </code></pre><ul><li>正常情况应该可以看到类似以下信息，<code>enp0s3</code>网卡有对应 IP 地址 10.0.0.70。如果没看到，请参考常见问题2，启用网卡。</li></ul><pre><code>1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
@@ -61,18 +61,18 @@ DNS:223.5.5.5
     inet6 fe80::4977:e0ed:4338:25f8/64 scope link noprefixroute
        valid_lft forever preferred_lft forever
 
-</code></pre><ol start=34><li><p>进入当前Windows系统的网卡设置，修改虚拟网卡的配置。
+</code></pre><ol start=33><li><p>进入当前Windows系统的网卡设置，修改虚拟网卡的配置。
 <img src=/static/img/cloud-data-center-01/Snipaste_2021-07-01_17-23-54.png alt>
 <img src=/static/img/cloud-data-center-01/Snipaste_2021-07-01_17-24-31.png alt></p></li><li><p>打开 FinalShell，使用 root 用户SSH方式登录虚拟机。</p></li></ol><pre><code>IP:10.0.0.70
 端口：22
 用户名：root
 </code></pre><p><img src=/static/img/cloud-data-center-01/Snipaste_2021-08-29_10-54-26.jpg alt>
-<img src=/static/img/cloud-data-center-01/Snipaste_2021-08-29_10-55-32.jpg alt></p><ol start=36><li><p>为了提升软件安装速度，我们选择使用本地安装镜像作为 yum 的源。首先确保虚拟机加载了 CentOS 的安装光盘镜像。
+<img src=/static/img/cloud-data-center-01/Snipaste_2021-08-29_10-55-32.jpg alt></p><ol start=35><li><p>为了提升软件安装速度，我们选择使用本地安装镜像作为 yum 的源。首先确保虚拟机加载了 CentOS 的安装光盘镜像。
 <img src=/static/img/cloud-data-center-01/Snipaste_2021-07-01_17-26-36.png alt></p></li><li><p>调整硬盘为启动的第一顺位。
 <img src=/static/img/cloud-data-center-01/Snipaste_2021-07-02_00-09-59.png alt></p></li><li><p>解挂目录 /mnt 目录，准备把光盘挂载到此目录。</p></li></ol><pre><code>umount /mnt
 </code></pre><blockquote><p>如果没有挂载的情况下执行，会提示以下信息，表示目录状态是未挂账。这是正常的提示。</p></blockquote><pre><code>umount: /mnt：not mounted
-</code></pre><ol start=39><li>进入源目录，</li></ol><pre><code>cd  /etc/yum.repos.d/
-</code></pre><ol start=40><li>新建 test 目录，并把原有 .repo 后缀的源文件备份到 test 目录下。</li></ol><pre><code>mkdir test -p
+</code></pre><ol start=38><li>进入源目录，</li></ol><pre><code>cd  /etc/yum.repos.d/
+</code></pre><ol start=39><li>新建 test 目录，并把原有 .repo 后缀的源文件备份到 test 目录下。</li></ol><pre><code>mkdir test -p
 mv *.repo test
 </code></pre><ol start=40><li>配置本地源指向光盘镜像的挂载目录。</li></ol><pre><code>echo '[local]
 name=local

@@ -1,4 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>云计算 on Heis</title><link>https://huangzhiyi.github.io/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/</link><description>Recent content in 云计算 on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 15 Sep 2021 00:44:00 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/index.xml" rel="self" type="application/rss+xml"/><item><title>云数据中心基础 Part 3 - 服务器虚拟化部署</title><link>https://huangzhiyi.github.io/cloud-data-center-03/</link><pubDate>Wed, 15 Sep 2021 00:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/cloud-data-center-03/</guid><description>«返回课程汇总页面
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>云计算 on Heis</title><link>https://huangzhiyi.github.io/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/</link><description>Recent content in 云计算 on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 26 Sep 2021 00:44:00 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/index.xml" rel="self" type="application/rss+xml"/><item><title>云数据中心基础 Part 4 - OpenStack的安装</title><link>https://huangzhiyi.github.io/cloud-data-center-04/</link><pubDate>Sun, 26 Sep 2021 00:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/cloud-data-center-04/</guid><description>«返回课程汇总页面
+云数据中心基础 Part 4 - OpenStack的安装 【版本】 当前版本号v20210926
+版本 修改说明 v20210926 初始化版本
+【实验名称】 实验4.1 注册 OpenStack 虚拟机 【实验目的】 掌握 OpenStack 虚拟机的注册和配置 【实验环境】 VirtualBox FinalShell 【实验资源】 Openstack-Compute1 虚拟机 Openstack-Controller 虚拟机 链接：https://pan.baidu.com/s/1czcuSALGMPgdkJceVJMK7Q
+提取码：heis
+【实验步骤】 下载Openstack-Compute1.zip和Openstack-Controller.zip。并解压。 Openstack-Compute1目录内的是 OpenStack 的计算节点虚拟机，以下简称计算节点1。 Openstack-Controller目录内的是 OpenStack 的控制节点虚拟机，以下简称控制节点。 打开 VirtualBox，点击注册，分别找到以上2个目录内的vbox文件，注册2台虚拟机。 设置控制节点
+系统配置为2核处理器，3072M内存。 网络配置设置为仅主机(Host-Only)网络，混杂模式设置为全部允许。网卡 IP 配置参考实验1.</description></item><item><title>云数据中心基础 Part 3 - 服务器虚拟化部署</title><link>https://huangzhiyi.github.io/cloud-data-center-03/</link><pubDate>Wed, 15 Sep 2021 00:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/cloud-data-center-03/</guid><description>«返回课程汇总页面
 云数据中心基础 Part 3 - 服务器虚拟化部署 【版本】 当前版本号v20210915
 版本 修改说明 v20210915 初始化版本
 【实验名称】 实验3.1 KVM 的安装使用 【实验目的】 掌握KVM的安装和使用 【实验环境】 CentOS 7.X FinalShell 【实验资源】 cirros 磁盘文件。 vnc viewer 链接：https://pan.baidu.com/s/1czcuSALGMPgdkJceVJMK7Q
@@ -20,4 +26,70 @@ pwd
 版本 修改说明 v20210916 优化部分步骤，减少出错机会 v20210913 提示虚拟机存放目录不能使用中文和空格 v20210911 增加常见问题 v20210819 初始化版本
 【实验名称】 实验1.1 虚拟化软件安装 CentOS
 【实验目的】 掌握搭建 CentOS 模板镜像 熟练掌握 Linux命令（vi、tar、mv等等）的使用 掌握 VirtualBox 或 VMWare Workstation的使用 掌握 FinalShell 客户端连接虚拟机 【实验环境】 内存：至少4G 硬盘：至少空余40G 操作系统: 64位 Windows系统。 【实验资源】 FinalShell CentOS 7.9系统镜像 VirtualBox 6 或 VMWare Workstation 链接：https://pan.</description></item><item><title>云数据中心基础 课程资源汇总</title><link>https://huangzhiyi.github.io/cloud-data-center-summary/</link><pubDate>Mon, 09 Aug 2021 00:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/cloud-data-center-summary/</guid><description>实验报告模板和实验资源下载 链接：https://pan.baidu.com/s/1pQH-QuWHCs7p8KpO7RiMEA 提取码：heis
-实验报告要求 必须使用老师提供的实验报告模板。 必须保留封面 实验步骤每一步都有详细的文字操作步骤说明，步骤顺序号，截图。 截图只需要截关键部分信息，不能全屏截图。可以用红色框或箭头标注截图重点信息。推荐使用 Snipaste（官网下载或网盘下载） 进行截图和标记。 课程内容 （1）云数据中心基础 Part 1 - 虚拟化软件安装 CentOS （2）云数据中心基础 Part 2 - Linux 虚拟化常用命令 （3）云数据中心基础 Part 3 - 服务器虚拟化部署 实验报告提交截止时间和地址 云数据中心基础 Part 1 实验报告提交截止时间 2021/9/18(星期六) 20级计本1班提交作业链接 http://xzc.cn/WB66bBP6os 20级计本2班提交作业链接 http://xzc.cn/wI14X6eaI2 20级计本3班提交作业链接 http://xzc.cn/jkkkYDjHFI 20级计本4班提交作业链接 http://xzc.cn/y0F2lG49Gh 云数据中心基础 Part 2 实验报告提交截止时间 2021/9/27(星期一) 20级计本1班提交作业链接 http://xzc.cn/afoVrv8fvv 20级计本2班提交作业链接 http://xzc.cn/RhT33z1h2y 20级计本3班提交作业链接 http://xzc.cn/Typb4gg4B1 20级计本4班提交作业链接 http://xzc.cn/W2xCSSjEAE</description></item></channel></rss>
+实验报告要求 必须使用老师提供的实验报告模板。 必须保留封面 实验步骤每一步都有详细的文字操作步骤说明，步骤顺序号，截图。 截图只需要截关键部分信息，不能全屏截图。可以用红色框或箭头标注截图重点信息。推荐使用 Snipaste（官网下载或网盘下载） 进行截图和标记。 课程内容 （1）云数据中心基础 Part 1 - 虚拟化软件安装 CentOS （2）云数据中心基础 Part 2 - Linux 虚拟化常用命令 （3）云数据中心基础 Part 3 - 服务器虚拟化部署 （4）云数据中心基础 Part 4 - OpenStack 的安装 实验报告提交截止时间和地址 云数据中心基础 Part 1 实验报告提交截止时间 2021/9/18(星期六) 20级计本1班提交作业链接 http://xzc.cn/WB66bBP6os 20级计本2班提交作业链接 http://xzc.cn/wI14X6eaI2 20级计本3班提交作业链接 http://xzc.cn/jkkkYDjHFI 20级计本4班提交作业链接 http://xzc.cn/y0F2lG49Gh 云数据中心基础 Part 2 实验报告提交截止时间 2021/9/27(星期一) 20级计本1班提交作业链接 http://xzc.cn/afoVrv8fvv 20级计本2班提交作业链接 http://xzc.cn/RhT33z1h2y 20级计本3班提交作业链接 http://xzc.cn/Typb4gg4B1 20级计本4班提交作业链接 http://xzc.cn/W2xCSSjEAE 云数据中心基础 Part 3 实验报告提交截止时间 2021/10/8(星期五) 20级计本1班提交作业链接 http://xzc.</description></item><item><title>云计算部署实战Part9 - 增加一个计算节点</title><link>https://huangzhiyi.github.io/openstack-exp9/</link><pubDate>Tue, 09 Mar 2021 16:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/openstack-exp9/</guid><description>«返回课程汇总页面
+云计算部署实战 Part9 - 增加一个计算节点 【版本】 当前版本号v20210325
+版本 修改说明 v20210325 修改了步骤17的描述，更为准确 v20210309 初始化版本
+【实验名称】 云计算部署实战Part9 - 增加一个计算节点
+【实验目的】 通过增加一个计算节点，让计算节点组成集群。 【实验环境】 内存：至少4G 硬盘：至少空余40G 操作系统: 64位 Windows系统。 【实验资源】 XShell CentOS 7.4系统镜像 VMWare WorkStation Pro 模板机镜像 【实验步骤】 从模板机克隆出一台新的虚拟机作为新的计算节点。命令可参考之前步骤。以下步骤如果没有特别说明，都在新的计算节点上执行。
+把虚拟机 Hostname 命名为computeB+你学号后4位。注意替换为你的学号。命令可参考之前步骤。
+设置新的计算节点的IP为10.0.0.32。命令可参考之前步骤。
+控制节点和2个计算节点的hosts统一配置为如下文本。命令可参考之前步骤。
+10.</description></item><item><title>云计算部署实战Part8 - 启动一个镜像实例</title><link>https://huangzhiyi.github.io/openstack-exp8/</link><pubDate>Mon, 08 Mar 2021 16:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/openstack-exp8/</guid><description>«返回课程汇总页面
+云计算部署实战 Part8 - 启动一个镜像实例 【版本】 当前版本号v20210309
+版本 修改说明 v20210309 修改步骤9的描述 v20210308 初始化版本
+【实验名称】 云计算部署实战Part7 - 启动一个镜像实例
+【实验目的】 掌握搭建计算节点软件和环境 熟练掌握Linux命令（vi、tar、mv等等）的使用 掌握VMWare、XShell等客户端的使用 启动一个 Cirros 镜像实例 【实验环境】 内存：至少4G 硬盘：至少空余40G 操作系统: 64位 Windows系统。 【实验资源】 XShell CentOS 7.4系统镜像 VMWare WorkStation Pro Openstack源 【实验步骤】 使用Root用户登录控制节点（Controller）。输出 Hostname ，确认所在节点是控制节点。 hostname
+结果:
+controller+你的学号后4位
+创建一个 Token，查看是否能够成功获取。 source /etc/keystone/admin-openrc
+openstack token issue
+创建一个网络，注意替换为你的学号。 neutron net-create --shared --provider:physical_network provider --provider:network_type flat net+你的学号后4位
+创建成功会返回类似以下的表格。保存表格中的网络ID。 +---------------------------+--------------------------------------+
+| Field | Value |
++---------------------------+--------------------------------------+
+| admin_state_up | True |
+| availability_zone_hints | |
+| availability_zones | |
+| created_at | 2021-03-07T16:17:40 |
+| description | |
+| id | 80708834-0391-42d0-8f1c-74e81bba9f9e |
+| ipv4_address_scope | |
+| ipv6_address_scope | |
+| mtu | 1500 |
+| name | net9999 |
+| port_security_enabled | True |
+| provider:network_type | flat |
+| provider:physical_network | provider |
+| provider:segmentation_id | |
+| router:external | False |
+| shared | True |
+| status | ACTIVE |
+| subnets | |
+| tags | |
+| tenant_id | 70667e2a19c640b796c9e2de6571a33c |
+| updated_at | 2021-03-07T16:17:40 |
++---------------------------+--------------------------------------+
+进入 Dashboard（http://10.</description></item><item><title>云计算部署实战 Part 7 - 安装 Dashboard(Horizon)</title><link>https://huangzhiyi.github.io/openstack-exp7/</link><pubDate>Sat, 06 Mar 2021 16:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/openstack-exp7/</guid><description>«返回课程汇总页面
+云计算部署实战 Part 7 - 安装 Dashboard(Horizon) 【版本】 当前版本号v20210310
+版本 修改说明 v20210310 修改步骤14，提醒注意}符号的结束位置 v20210309 修改步骤19，去掉重启memcached命令 v20210304 初始化版本
+【实验名称】 云计算部署实战 Part 7 - 安装 Dashboard(Horizon)
+【实验目的】 掌握搭建计算节点软件和环境 熟练掌握Linux命令（vi、tar、mv等等）的使用 掌握VMWare、XShell等客户端的使用 【实验环境】 内存：至少4G 硬盘：至少空余40G 操作系统: 64位 Windows系统。 【实验资源】 XShell CentOS 7.4系统镜像 VMWare WorkStation Pro Openstack源 【实验步骤】 使用Root用户登录控制节点（Controller）。输出 Hostname ，确认所在节点是计算节点。 hostname
+结果:</description></item><item><title>云计算部署实战 Part 6 - 安装 Neutron 网络服务</title><link>https://huangzhiyi.github.io/openstack-exp6/</link><pubDate>Thu, 04 Mar 2021 16:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/openstack-exp6/</guid><description>«返回课程汇总页面
+云计算部署实战 Part 6 - 安装 Neutron 网络服务 【版本】 当前版本号v20210324
+版本 修改说明 v20210324 增加了验证步骤 v20210308 补充计算节点遗漏的第4步配置 v20210305 第7步rabbitmq host配置修正 v20210303 初始化版本
+【实验名称】 云计算部署实战 Part 6 - 安装 Neutron 网络服务
+【实验目的】 掌握搭建计算节点软件和环境 熟练掌握Linux命令（vi、tar、mv等等）的使用 掌握VMWare、XShell等客户端的使用 【实验环境】 内存：至少4G 硬盘：至少空余40G 操作系统: 64位 Windows系统。 【实验资源】 XShell CentOS 7.4系统镜像 VMWare WorkStation Pro Openstack源 【实验原理】 neutron-server 端口(9696) api：接受和响应外部的网络管理请求 neutron-linuxbridge-agent：负责创建桥接网卡 neutron-dhcp-agent：负责分配IP neutron-metadata-agent：配合nova-metadata-api实现虚拟机的定制化操作 L3-agent：实现三层网络vxlan(网络层) 【控制节点实验步骤】 使用Root用户登录控制节点（Controller）。输出 Hostname ，确认所在节点时控制节点。 hostname
+结果:</description></item><item><title>云计算部署实战 Part 5 - 安装 nova 计算服务</title><link>https://huangzhiyi.github.io/openstack-exp5/</link><pubDate>Wed, 03 Mar 2021 16:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/openstack-exp5/</guid><description>«返回课程汇总页面
+云计算部署实战 Part 5 - 安装 nova 计算服务 【版本】 当前版本号v20210308
+版本 修改说明 v20210308 修改计算节点步骤4 nova.conf 的配置 v20210305 增加环境变量的运行命令；修正一些拼写错误 v20210303 初始化版本
+【实验名称】 云计算部署实战 Part 5 - 安装 nova 计算服务
+【实验目的】 掌握搭建计算节点软件和环境 熟练掌握Linux命令（vi、tar、mv等等）的使用 掌握VMWare、XShell等客户端的使用 【实验环境】 内存：至少4G 硬盘：至少空余40G 操作系统: 64位 Windows系统。 【实验资源】 XShell CentOS 7.4系统镜像 VMWare WorkStation Pro Openstack源 【实验原理】 nova-api：接受并响应所有的计算服务请求，管理虚拟机(云主机)生命周期 nova-compute（多个）：真正管理虚拟机 nova-scheduler：nova调度器（挑选出最合适的nova-compute来创建虚机） nova-conductor：帮助nova-compute代理修改数据库中虚拟机的状态 nova-network：早期openstack版本管理虚拟机的网络（已弃用，已被 neutron 取代） nova-consoleauth和nova-novncproxy：web版的vnc来直接操作云主机 novncproxy：web版 vnc客户端 nova-api-metadata：接受来自虚拟机发送的元数据请求 【控制节点实验步骤】 使用Root用户登录控制节点（Controller）。输出 Hostname ，确认所在节点时控制节点。 hostname
+结果:</description></item><item><title>云计算部署实战 Part 4 - 安装 Glance 镜像服务</title><link>https://huangzhiyi.github.io/openstack-exp4/</link><pubDate>Tue, 02 Mar 2021 16:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/openstack-exp4/</guid><description>«返回课程汇总页面
+云计算部署实战 Part 4 - 安装 Glance 镜像服务 【版本】 当前版本号v20210324
+版本 修改说明 v20210324 增加验证步骤 v20210303-3 memcached_servers配置的地址需要加学号后4位 v20210303-2 步骤3增加project service创建 v20210303 运行openstack镜像命令前先设置环境变量 v20210302 初始化版本
+【实验名称】 云计算部署实战 Part 4 - 安装 Glance 镜像服务
+【实验目的】 掌握搭建计算节点软件和环境 熟练掌握Linux命令（vi、tar、mv等等）的使用 掌握VMWare、XShell等客户端的使用 【实验环境】 内存：至少4G 硬盘：至少空余40G 操作系统: 64位 Windows系统。 【实验资源】 XShell CentOS 7.4系统镜像 VMWare WorkStation Pro Openstack源 CirrOS 镜像 【实验步骤】 使用Root用户登录控制节点（Controller）。输出 Hostname ，确认所在节点是控制节点。 hostname
+结果:</description></item><item><title>云计算部署实战课程资源汇总</title><link>https://huangzhiyi.github.io/openstack-summary/</link><pubDate>Fri, 26 Feb 2021 16:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/openstack-summary/</guid><description>【版本】 当前版本号v20210324
+版本 修改说明 v20210324 增加常见错误分析和常用命令 v20210227 初始化版本
+课程设计模板下载 课程设计要求 必须使用老师提供的课程设计模板。 必须保留封面 实验步骤每一步都有详细的文字操作步骤说明，步骤顺序号，截图。 截图只需要截关键部分信息，不能全屏截图。可以用红色框或箭头标注截图重点信息。推荐使用 Snipaste（官网下载或网盘下载） 进行截图和标记。 实验报告提交截止时间和地址 后续会公布链接，请各位同学登录网站 https://heis.gitee.io/openstack-summary查看。
+课程内容 （1）云计算部署实战Part1 - 制作CentOS 模板镜像 （2）云计算部署实战Part2 - 配置计算节点和控制节点 （3）云计算部署实战Part3 - 安装Keystone认证服务 （4）云计算部署实战Part4 - 安装 Glance 镜像服务 （5）云计算部署实战Part5 - 安装 nova 计算服务 （6）云计算部署实战Part6 - 安装 Neutron 网络服务 （7）云计算部署实战Part7 - 安装 Dashboard （8）云计算部署实战Part8 - 启动一个镜像实例 （9）云计算部署实战Part9 - 增加一个计算节点 课程设计提交 （1）第1次课程设计报告提交（包含Part1） 19级计机4班——提交截止时间：3月3日（星期三）；提交地址：http://xzc.</description></item></channel></rss>
