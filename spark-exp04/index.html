@@ -11,7 +11,7 @@ r4.flatMap(lambda line:line.split(',')).collect()
 r5.flatMap(lambda line:line.split(',')).collect()
 </code></pre><ol start=6><li>基于parallelize创建</li></ol><pre><code>distData = sc.parallelize([1, 2, 3, 4, 5])
 distData.getNumPartitions()
-</code></pre><pre><code>distData = sc.parallelize([1, 2, 3, 4, 5]，4) 
+</code></pre><pre><code>distData = sc.parallelize([1, 2, 3, 4, 5]，4)
 distData.getNumPartitions()
 </code></pre><h2 id=实验42常见rdd算子练习>实验4.2：常见RDD算子练习</h2><h3 id=实验名称-1>【实验名称】</h3><p>实验4.2：常见RDD算子练习</p><h3 id=实验目的-1>【实验目的】</h3><ul><li>掌握常用的 RDD</li></ul><h3 id=实验原理-1>【实验原理】</h3><p>略</p><h3 id=实验环境-1>【实验环境】</h3><ul><li>Ubuntu 16.04</li><li>Python 3</li><li>PySpark</li><li>spark 2.4.4</li><li>Hadoop 2.7.3</li></ul><h3 id=实验参考资料>【实验参考资料】</h3><ul><li><a href=https://spark.apache.org/docs/latest/api/python/pyspark.html target=_blank>算子文档（官网英文）</a></li></ul><div class=tbl-start></div><table><thead><tr><th>算子</th><th>说明</th></tr></thead><tbody><tr><td>collect</td><td>返回RDD所有元素组成的列表</td></tr><tr><td>reduce</td><td>类似 MapReduce 的 Reducer，执行归并操作</td></tr><tr><td>saveAsTextFile</td><td>输出文本结果到文件目录</td></tr><tr><td>map</td><td>类似 MapReduce的Mapper，处理每个元素，可以返回新的数据结构</td></tr><tr><td>flatMap</td><td>会把所有返回的集合类型如list，dict，tuple全部遍历展平</td></tr><tr><td>foreach</td><td>处理每个元素，无返回值</td></tr><tr><td>filter</td><td>自定义过滤</td></tr><tr><td>distinct</td><td>去重</td></tr><tr><td>take(n)</td><td>取前N个</td></tr><tr><td>first</td><td>取第一个</td></tr><tr><td>sortBy</td><td>返回排序的数据，默认升序</td></tr><tr><td>top(n)</td><td>返回降序的数据前N个元素</td></tr><tr><td>join</td><td>内连接</td></tr><tr><td>leftOuterJoin</td><td>左外连接</td></tr><tr><td>rightOuterJoin</td><td>右外连接</td></tr><tr><td>union(RDD)</td><td>合并</td></tr><tr><td>intersection(RDD)</td><td>交集</td></tr><tr><td>subtract(RDD)</td><td>减去交集</td></tr><tr><td>mapPartitions</td><td>针对每一个分区做Map操作</td></tr><tr><td>mapPartitionsWithIndex</td><td>针对每一个分区做Map操作，带分区参数</td></tr><tr><td>glom</td><td>把每个分区数据列表作为元素，组成新列表</td></tr><tr><td>coalesce</td><td>归并（reduce）分区数量n</td></tr><tr><td>reduceByKey(f)</td><td>将相同key的值聚合到一起，与groupByKey类似，reduce任务的个数可以通过第二个可选的参数来设置</td></tr><tr><td>groupByKey()</td><td>在一个(K,V)的RDD上调用，返回一个(K, Iterator[V])的RDD，（没有入参）</td></tr><tr><td>mapValues(f)</td><td>对键值对中的每个值(value)应用一个函数，但不改变键(key)</td></tr><tr><td>flatMapValues(f)</td><td>对键值对RDD中每个值应用返回一个迭代器的函数，然后对每个元素生成一个对应的键值对。</td></tr><tr><td>combineByKey( createCombiner, mergeValue, mergeCombiners, numPartitions=None)</td><td>使用不同的返回类型合并具有相同键的值</td></tr><tr><td>join(otherDataset, numPartitions=None)</td><td>按key值相同的记录进行连接</td></tr><tr><td>union(otherDataset,numPartitions=None)</td><td>对源RDD和参数RDD求并集后返回一个新的RDD</td></tr><tr><td>aggregateByKey(zeroValue, seqFunc, combFunc, numPartitions=None)</td><td>使用给定的combine(组合)函数和一个中性的“零值”来聚合每个键的值</td></tr><tr><td>sortByKey(ascending=True, numPartitions=None)</td><td>在一个(K,V)的RDD上调用，K必须实现Ordered接口，返回一个按照key进行排序的(K,V)的RDD</td></tr><tr><td>join(other, numPartitions=None)</td><td>在类型为(K,V)和(K,W)的RDD上调用，返回一个相同key对应的所有元素对在一起的(K,(V,W))的RDD</td></tr><tr><td>keys()</td><td>获取所有key</td></tr><tr><td>values()</td><td>获取所有value</td></tr><tr><td>countByKey()</td><td>针对(K,V)类型的RDD，返回一个(K,Int)的map，表示每一个key对应的元素个数。</td></tr><tr><td>collectAsMap</td><td>与collect相关的算子是将结果返回到driver端。collectAsMap算子是将Kev-Value结构的RDD收集到driver端，并返回成一个字典</td></tr><tr><td>countByKey</td><td>与count类似，但是是以key为单位进行统计。</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h3 id=实验准备>【实验准备】</h3><p>在Python开发环境默认只打印最后一行变量，如果需要把所有行的变量都打印，需要运行以下2行代码，每次打开环境只需要运行一次即可。</p><pre><code>from IPython.core.interactiveshell import InteractiveShell
 InteractiveShell.ast_node_interactivity = &quot;all&quot;
@@ -25,11 +25,11 @@ rdd2.collect()
 </code></pre><p>期望输出值</p><pre><code>[[1, 2], [3, 4], [5, 6]]
 </code></pre><p>（3）补充以下代码，使得输出每个分区元素累加总和。</p><pre><code>rdd = sc.parallelize([1,2,3,4],2)
 def f(iterator): yield sum(iterator)
-rdd.&lt;补充代码&gt;.collect() 
+rdd.&lt;补充代码&gt;.collect()
 </code></pre><p>期望输出值</p><pre><code>[3,7]
 </code></pre><blockquote><p>提示：可以查下关于分区的算子</p></blockquote><p>（4）补充以下代码，使得输出每个分区编号和元素累加总和。</p><pre><code>rdd = sc.parallelize([1,2,3,4],2)
 def f&lt;补充代码&gt;
-rdd.mapPartitionsWithIndex(f).collect() 
+rdd.mapPartitionsWithIndex(f).collect()
 </code></pre><p>期望输出值</p><pre><code>[(0,[3]),(1,[7])]
 </code></pre><blockquote><p>提示：mapPartitionsWithIndex传进去的函数应该有2个参数。</p></blockquote><p>（5）补充以下代码，输出个位数是7的元素。（注意替换123为你学号的后三位）</p><pre><code>rdd = sc.textFile(&quot;/home/hadoop/123.txt&quot;).flatMap(lambda line:line.split(','))
 rdd.&lt;补充代码&gt;.collect()

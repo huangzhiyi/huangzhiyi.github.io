@@ -14,8 +14,8 @@
 </code></pre><p>3、使用pyspark开发一个WordCount程序。
 （1）在本地创建一个文件：<code>/home/hadoop/你的学号/wc.txt</code> (001表示学号，请根据情况修改)。此路径也可以换为hdfs的路径。</p><p>wc.txt文件中的内容是：</p><pre><code>Hi 你的名字
 count the chicks and rabbits in the cage
-chick rabbit chick rabbit chick rabbit 
-rabbit rabbit chick rabbit chick 
+chick rabbit chick rabbit chick rabbit
+rabbit rabbit chick rabbit chick
 chick rabbit chick rabbit chick rabbit
 </code></pre><p>（2）多行代码实现WordCount。</p><pre><code>#读取文件
 r1=sc.textFile(&quot;/home/hadoop/你的学号/wc.txt&quot;)

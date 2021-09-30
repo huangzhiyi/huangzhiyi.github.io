@@ -62,8 +62,8 @@ if __name__ == &quot;__main__&quot;:
         (1.0, Vectors.dense([0.0, 2.2, -1.5]))], [&quot;label&quot;, &quot;features&quot;])
 
     predictions = (model1.transform(test),model2.transform(test))
- 
-    
+
+
     for prediction in predictions:
         result = prediction.select(&quot;features&quot;, &quot;label&quot;, &quot;probability&quot;, &quot;prediction&quot;).collect()
         for row in result:
@@ -83,7 +83,7 @@ dv = Vectors.dense(2, 5, 8)
 
 #稀疏向量
 sv=Vectors.sparse(4, (1, 2, 3), (3, 5, 7))
-#print(sv[0]) 
+#print(sv[0])
 
 from pyspark.ml import Pipeline,Transformer
 from pyspark.ml.feature import Tokenizer,HashingTF
@@ -96,13 +96,13 @@ training = spark.createDataFrame([
 ], [&quot;id&quot;, &quot;text&quot;, &quot;label&quot;])
 
 #分词 Transformer
-tokenizer = Tokenizer(inputCol=&quot;text&quot;, outputCol=&quot;words&quot;) 
+tokenizer = Tokenizer(inputCol=&quot;text&quot;, outputCol=&quot;words&quot;)
 
 
 tokenizer.transform(training).show()
 
 #hash分桶及词频率统计 Transformer
-hashingTF = HashingTF(inputCol=tokenizer.getOutputCol(), outputCol=&quot;features&quot;) 
+hashingTF = HashingTF(inputCol=tokenizer.getOutputCol(), outputCol=&quot;features&quot;)
 
 #逻辑回归算法，算法是一个Estimator
 
@@ -114,7 +114,7 @@ hashingTF = HashingTF(inputCol=tokenizer.getOutputCol(), outputCol=&quot;feature
 #        print('%d:%f'%(idx,val))
 
 
-lr = LogisticRegression(maxIter=10, regParam=0.001,threshold=0.5) 
+lr = LogisticRegression(maxIter=10, regParam=0.001,threshold=0.5)
 #Pipeline 连接 Transformer 和 Estimator
 pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
 #训练出模型，模型是 Transformer

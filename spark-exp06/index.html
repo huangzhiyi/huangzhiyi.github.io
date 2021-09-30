@@ -33,7 +33,7 @@ from pyspark.sql import SparkSession
 
 sc =SparkContext('spark://node0:7077','ss-123')
 spark =SparkSession(sc)
-ssc = StreamingContext(sc, 1) 
+ssc = StreamingContext(sc, 1)
 ds1 = ssc.textFileStream(&lt;补充代码&gt;)
 def save2DB(fileRDD):
     &lt;补充代码&gt;

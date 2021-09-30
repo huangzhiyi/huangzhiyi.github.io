@@ -140,7 +140,7 @@ if __name__ == &quot;__main__&quot;:
         x = random() * 2 - 1
         y = random() * 2 - 1
         return 1 if x ** 2 + y ** 2 &lt; 1 else 0
-    
+
 	#累计圆面积内的点数
     count = sc.parallelize(xrange(1, n + 1), partitions).map(f).reduce(add)
 	#推导Pi的近似值
