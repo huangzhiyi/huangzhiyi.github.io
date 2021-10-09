@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>javaweb on Heis</title><link>https://huangzhiyi.github.io/categories/javaweb/</link><description>Recent content in javaweb on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 28 Sep 2021 00:20:00 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/categories/javaweb/index.xml" rel="self" type="application/rss+xml"/><item><title>Java后台应用项目开发 Part 3 - MyBatis 框架的使用</title><link>https://huangzhiyi.github.io/javawebdev-03/</link><pubDate>Tue, 28 Sep 2021 00:20:00 +0800</pubDate><guid>https://huangzhiyi.github.io/javawebdev-03/</guid><description>«返回课程汇总页面
-Java后台应用项目开发 Part 3 - MyBatis 框架的使用 【版本】 当前版本号v20210927
-版本 修改说明 v20210927 初始化版本
+Java后台应用项目开发 Part 3 - MyBatis 框架的使用 【版本】 当前版本号v20211009
+版本 修改说明 v20211009 修正 SqlMapConfig.xml 内容，缺失了一个&amp;quot; v20210927 初始化版本
 【实验名称】 实验3.1 新建 MyBatis 项目 【实验目的】 掌握新建 Maven 项目 掌握 MyBatis 框架的开发 【实验环境】 内存：至少4G 硬盘：至少空余10G 操作系统: 64位 Windows系统。 【实验资源】 IDEA Maven 3.6 【实验步骤】 参考实验2.2,新建一个新的 Maven Web 开发项目MyBatis。
-在 POM.xml 文件中加入依赖包的配置。
-&amp;lt;dependencies&amp;gt;
-&amp;lt;!-- JUnit 框架 --&amp;gt;
-&amp;lt;dependency&amp;gt;
-&amp;lt;groupId&amp;gt;junit&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;junit&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;4.</description></item><item><title>Java后台应用项目开发 Part 2 - MVC模式开发与 SpringMVC 框架开发</title><link>https://huangzhiyi.github.io/javawebdev-02/</link><pubDate>Mon, 13 Sep 2021 00:20:00 +0800</pubDate><guid>https://huangzhiyi.github.io/javawebdev-02/</guid><description>«返回课程汇总页面
+在 POM.xml 文件中加入依赖包的配置。</description></item><item><title>Java后台应用项目开发 Part 2 - MVC模式开发与 SpringMVC 框架开发</title><link>https://huangzhiyi.github.io/javawebdev-02/</link><pubDate>Mon, 13 Sep 2021 00:20:00 +0800</pubDate><guid>https://huangzhiyi.github.io/javawebdev-02/</guid><description>«返回课程汇总页面
 Java后台应用项目开发 Part 2 - MVC模式开发与 SpringMVC 框架开发 【版本】 当前版本号v20210922
 版本 修改说明 v20210922 补充Maven打包相关步骤 v20210913 初始化版本
 【实验名称】 实验2.1 MVC模式模拟开发登录功能 【实验目的】 掌握 MVC 模式的开发代码。 掌握 JUnit 测试用例的编写。 【实验环境】 内存：至少4G 硬盘：至少空余10G 操作系统: 64位 Windows系统。 【实验资源】 IDEA Maven 3.6 【实验要求】 根据以下提示，编写一个使用 MVC 模式模拟用户登录的例子，请完成 Maven 项目的新建、并完善代码。
