@@ -101,7 +101,7 @@ rz
 </code></pre><ol start=28><li>如果<code>cirros</code>虚拟机的状态为关闭，可以使用以下命令启动。</li></ol><pre><code>virsh start cirros
 </code></pre><ol start=29><li>使用以下命令查看<code>cirros</code>虚拟机的VNC服务器进程端口<code>5920</code>是否有信息输出。</li></ol><pre><code>yum install net-tools -y
 netstat -tulpn|grep 5920
-</code></pre><ol start=30><li><p>在宿主机 Windows 系统安装 VNC Viewer，过程略。</p></li><li><p>打开 VNC Viewer, 输入<code>10.0.0.70:5920</code>进行连接。
+</code></pre><ol start=30><li><p>在宿主机 Windows 系统安装 VNC Viewer，过程略。</p></li><li><p>打开 VNC Viewer, 输入<code>10.0.0.70:5920</code>（注意这里的英文的冒号！）进行连接。
 <img src=/static/img/cloud-data-center-03/Snipaste_2021-09-16_02-24-40.jpg alt>
 <img src=/static/img/cloud-data-center-03/Snipaste_2021-09-16_02-29-24.jpg alt></p></li><li><p>在 VNC Viewer 使用以下账号登录<code>cirros</code>虚拟机。</p></li></ol><pre><code>用户名：cirros
 密码：gocubsgo
