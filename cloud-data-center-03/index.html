@@ -18,8 +18,11 @@ VirtualBox 的安装路径可以通过桌面的 VirtualBox 快捷方式打开
 modprobe kvm-intel
 modprobe kvm-amd
 </code></pre><pre><code>lsmod | grep kvm
-</code></pre><ul><li>正常情况会输出以下信息：</li></ul><pre><code>kvm_intel             170086  0
+</code></pre><ul><li>正常情况下采用英特尔（Intel）CPU 会输出以下信息：</li></ul><pre><code>kvm_intel             170086  0
 kvm                   566340  1 kvm_intel
+irqbypass              13503  1 kvm
+</code></pre><ul><li>正常情况下采用AMD CPU 会输出以下信息：</li></ul><pre><code>kvm_amd             170086  0
+kvm                   566340  1 kvm_amd
 irqbypass              13503  1 kvm
 </code></pre><ol start=8><li>安装桥接网络工具，用于配置桥接网络。</li></ol><pre><code>yum -y install bridge-utils
 </code></pre><ol start=9><li>重启系统网络服务</li></ol><pre><code>systemctl restart network
@@ -132,7 +135,7 @@ chmod 777 /kvm-images/centos-vm
 </code></pre><ul><li>正常会返回类似以下信息</li></ul><pre><code>Formatting '/kvm-images/centos-vm/centos-vm.qcow2', fmt=qcow2 size=3221225472 encryption=off cluster_size=65536 lazy_refcounts=off
 </code></pre><ol start=4><li>修改磁盘和镜像文件的权限为777。</li></ol><pre><code>chmod 777 /kvm-images/centos-vm/CentOS-7-x86_64-Minimal-2009.iso
 chmod 777 /kvm-images/centos-vm/centos-vm.qcow2
-</code></pre><ol start=5><li>使用以下命令安装 CentOS。</li></ol><pre><code>virt-install --name centos-vm \
+</code></pre><ol start=5><li>使用以下命令安装 CentOS，虚拟机名称为<code>centos-vm</code>。</li></ol><pre><code>virt-install --name centos-vm \
 --ram=1024 --arch=x86_64 --vcpus=1 \
 --check-cpu --os-type=linux \
 --os-variant='rhel7' -c /kvm-images/centos-vm/CentOS-7-x86_64-Minimal-2009.iso \
