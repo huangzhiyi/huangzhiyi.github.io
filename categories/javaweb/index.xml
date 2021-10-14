@@ -1,7 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>javaweb on Heis</title><link>https://huangzhiyi.github.io/categories/javaweb/</link><description>Recent content in javaweb on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 28 Sep 2021 00:20:00 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/categories/javaweb/index.xml" rel="self" type="application/rss+xml"/><item><title>Java后台应用项目开发 Part 3 - MyBatis 框架的使用</title><link>https://huangzhiyi.github.io/javawebdev-03/</link><pubDate>Tue, 28 Sep 2021 00:20:00 +0800</pubDate><guid>https://huangzhiyi.github.io/javawebdev-03/</guid><description>«返回课程汇总页面
-Java后台应用项目开发 Part 3 - MyBatis 框架的使用 【版本】 当前版本号v20211012
-版本 修改说明 v20211012 修正 spring-mvc.xml 注释 v20211009 修正 SqlMapConfig.xml 内容，缺失了一个&amp;quot;，新增resource目录相关说明 v20210927 初始化版本
-【实验名称】 实验3.1 新建 MyBatis 项目 【实验目的】 掌握新建 Maven 项目 掌握 MyBatis 框架的开发 【实验环境】 内存：至少4G 硬盘：至少空余10G 操作系统: 64位 Windows系统。 【实验资源】 IDEA Maven 3.6 【实验步骤】 参考实验2.2,新建一个新的 Maven Web 开发项目MyBatis。</description></item><item><title>Java后台应用项目开发 Part 4 - Spring 框架的使用</title><link>https://huangzhiyi.github.io/javawebdev-04/</link><pubDate>Tue, 28 Sep 2021 00:20:00 +0800</pubDate><guid>https://huangzhiyi.github.io/javawebdev-04/</guid><description>«返回课程汇总页面
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>javaweb on Heis</title><link>https://huangzhiyi.github.io/categories/javaweb/</link><description>Recent content in javaweb on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 14 Oct 2021 00:20:00 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/categories/javaweb/index.xml" rel="self" type="application/rss+xml"/><item><title>Java后台应用项目开发 Part 4 - Spring 框架的使用</title><link>https://huangzhiyi.github.io/javawebdev-04/</link><pubDate>Thu, 14 Oct 2021 00:20:00 +0800</pubDate><guid>https://huangzhiyi.github.io/javawebdev-04/</guid><description>«返回课程汇总页面
 Java后台应用项目开发 Part 4 - Spring 框架的使用 【版本】 当前版本号v20211014
 版本 修改说明 v20211014 初始化版本
 【实验名称】 实验4.1 Spring 框架面向接口（Interface）编程 【实验目的】 掌握通过接口来实现代码的解耦 【实验环境】 内存：至少4G 硬盘：至少空余10G 操作系统: 64位 Windows系统。 【实验资源】 IDEA Maven 3.6 【实验步骤】 打开IDEA，新建一个新的 Maven Web 开发项目Game。
@@ -16,7 +13,10 @@ Java后台应用项目开发 Part 4 - Spring 框架的使用 【版本】 当前
 &amp;lt;dependency&amp;gt;
 &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
 &amp;lt;artifactId&amp;gt;spring-context&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;5.</description></item><item><title>Java后台应用项目开发 Part 2 - MVC模式开发与 SpringMVC 框架开发</title><link>https://huangzhiyi.github.io/javawebdev-02/</link><pubDate>Mon, 13 Sep 2021 00:20:00 +0800</pubDate><guid>https://huangzhiyi.github.io/javawebdev-02/</guid><description>«返回课程汇总页面
+&amp;lt;version&amp;gt;5.</description></item><item><title>Java后台应用项目开发 Part 3 - MyBatis 框架的使用</title><link>https://huangzhiyi.github.io/javawebdev-03/</link><pubDate>Tue, 28 Sep 2021 00:20:00 +0800</pubDate><guid>https://huangzhiyi.github.io/javawebdev-03/</guid><description>«返回课程汇总页面
+Java后台应用项目开发 Part 3 - MyBatis 框架的使用 【版本】 当前版本号v20211012
+版本 修改说明 v20211012 修正 spring-mvc.xml 注释 v20211009 修正 SqlMapConfig.xml 内容，缺失了一个&amp;quot;，新增resource目录相关说明 v20210927 初始化版本
+【实验名称】 实验3.1 新建 MyBatis 项目 【实验目的】 掌握新建 Maven 项目 掌握 MyBatis 框架的开发 【实验环境】 内存：至少4G 硬盘：至少空余10G 操作系统: 64位 Windows系统。 【实验资源】 IDEA Maven 3.6 【实验步骤】 参考实验2.2,新建一个新的 Maven Web 开发项目MyBatis。</description></item><item><title>Java后台应用项目开发 Part 2 - MVC模式开发与 SpringMVC 框架开发</title><link>https://huangzhiyi.github.io/javawebdev-02/</link><pubDate>Mon, 13 Sep 2021 00:20:00 +0800</pubDate><guid>https://huangzhiyi.github.io/javawebdev-02/</guid><description>«返回课程汇总页面
 Java后台应用项目开发 Part 2 - MVC模式开发与 SpringMVC 框架开发 【版本】 当前版本号v20210922
 版本 修改说明 v20210922 补充Maven打包相关步骤 v20210913 初始化版本
 【实验名称】 实验2.1 MVC模式模拟开发登录功能 【实验目的】 掌握 MVC 模式的开发代码。 掌握 JUnit 测试用例的编写。 【实验环境】 内存：至少4G 硬盘：至少空余10G 操作系统: 64位 Windows系统。 【实验资源】 IDEA Maven 3.6 【实验要求】 根据以下提示，编写一个使用 MVC 模式模拟用户登录的例子，请完成 Maven 项目的新建、并完善代码。
