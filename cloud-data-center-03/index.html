@@ -93,7 +93,7 @@ IPV6_PRIVACY=&quot;no&quot;
 br0             8000.080027b70551       no              enp0s3
 virbr0          8000.525400e4b791       yes             virbr0-nic
 </code></pre><ol start=22><li>查看所有网卡信息</li></ol><pre><code>ifconfig
-</code></pre><ul><li>正常情况下可以看到多出来了<code>br0</code>和<code>virbr0</code>网卡。其中<code>br0</code>是我们新建的桥接网卡。<code>virbr0</code>是 KVM 创建的虚拟桥接网卡。</li></ul><ol start=23><li>新建一个目录用于保存 KVM 虚拟机文件，并开放授权访问。</li></ol><pre><code>mkdir /kvm-images
+</code></pre><ul><li>没有此命令可以通过<code>yum install net-tools -y</code>来安装</li><li>正常情况下可以看到多出来了<code>br0</code>和<code>virbr0</code>网卡。其中<code>br0</code>是我们新建的桥接网卡。<code>virbr0</code>是 KVM 创建的虚拟桥接网卡。</li></ul><ol start=23><li>新建一个目录用于保存 KVM 虚拟机文件，并开放授权访问。</li></ol><pre><code>mkdir /kvm-images
 chmod 777 /kvm-images
 </code></pre><ol start=24><li>进入<code>/kvm-images</code>目录，上传<code>cirros-0.4.0-x86_64-disk.img</code>镜像文件。</li></ol><pre><code>cd  /kvm-images
 rz

@@ -11,7 +11,22 @@ mount /dev/sr1 /mnt2
 在实验 Part 1 的时候，我们已经挂载了一个 CentOS-7-x86_64-DVD-2009.</description></item><item><title>Java后台应用项目开发 Part 3 - MyBatis 框架的使用</title><link>https://huangzhiyi.github.io/javawebdev-03/</link><pubDate>Tue, 28 Sep 2021 00:20:00 +0800</pubDate><guid>https://huangzhiyi.github.io/javawebdev-03/</guid><description>«返回课程汇总页面
 Java后台应用项目开发 Part 3 - MyBatis 框架的使用 【版本】 当前版本号v20211012
 版本 修改说明 v20211012 修正 spring-mvc.xml 注释 v20211009 修正 SqlMapConfig.xml 内容，缺失了一个&amp;quot;，新增resource目录相关说明 v20210927 初始化版本
-【实验名称】 实验3.1 新建 MyBatis 项目 【实验目的】 掌握新建 Maven 项目 掌握 MyBatis 框架的开发 【实验环境】 内存：至少4G 硬盘：至少空余10G 操作系统: 64位 Windows系统。 【实验资源】 IDEA Maven 3.6 【实验步骤】 参考实验2.2,新建一个新的 Maven Web 开发项目MyBatis。</description></item><item><title>云数据中心基础 Part 4 - OpenStack的安装</title><link>https://huangzhiyi.github.io/cloud-data-center-04/</link><pubDate>Sun, 26 Sep 2021 00:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/cloud-data-center-04/</guid><description>«返回课程汇总页面
+【实验名称】 实验3.1 新建 MyBatis 项目 【实验目的】 掌握新建 Maven 项目 掌握 MyBatis 框架的开发 【实验环境】 内存：至少4G 硬盘：至少空余10G 操作系统: 64位 Windows系统。 【实验资源】 IDEA Maven 3.6 【实验步骤】 参考实验2.2,新建一个新的 Maven Web 开发项目MyBatis。</description></item><item><title>Java后台应用项目开发 Part 4 - Spring 框架的使用</title><link>https://huangzhiyi.github.io/javawebdev-04/</link><pubDate>Tue, 28 Sep 2021 00:20:00 +0800</pubDate><guid>https://huangzhiyi.github.io/javawebdev-04/</guid><description>«返回课程汇总页面
+Java后台应用项目开发 Part 4 - Spring 框架的使用 【版本】 当前版本号v20211014
+版本 修改说明 v20211014 初始化版本
+【实验名称】 实验4.1 Spring 框架面向接口（Interface）编程 【实验目的】 掌握通过接口来实现代码的解耦 【实验环境】 内存：至少4G 硬盘：至少空余10G 操作系统: 64位 Windows系统。 【实验资源】 IDEA Maven 3.6 【实验步骤】 打开IDEA，新建一个新的 Maven Web 开发项目Game。
+在 POM.xml 文件中加入依赖包的配置。
+&amp;lt;dependencies&amp;gt;
+&amp;lt;dependency&amp;gt;
+&amp;lt;groupId&amp;gt;junit&amp;lt;/groupId&amp;gt;
+&amp;lt;artifactId&amp;gt;junit&amp;lt;/artifactId&amp;gt;
+&amp;lt;version&amp;gt;4.13.1&amp;lt;/version&amp;gt;
+&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&amp;lt;dependency&amp;gt;
+&amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
+&amp;lt;artifactId&amp;gt;spring-context&amp;lt;/artifactId&amp;gt;
+&amp;lt;version&amp;gt;5.</description></item><item><title>云数据中心基础 Part 4 - OpenStack的安装</title><link>https://huangzhiyi.github.io/cloud-data-center-04/</link><pubDate>Sun, 26 Sep 2021 00:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/cloud-data-center-04/</guid><description>«返回课程汇总页面
 云数据中心基础 Part 4 - OpenStack的安装 【版本】 当前版本号v20211011
 版本 修改说明 v20211011 修改实验4.2 实例名称 v20210926 初始化版本
 【实验名称】 实验4.1 注册 OpenStack 虚拟机 【实验目的】 掌握 OpenStack 虚拟机的注册和配置 【实验环境】 VirtualBox FinalShell 【实验资源】 Openstack-Compute1 虚拟机 Openstack-Controller 虚拟机 链接：https://pan.baidu.com/s/1czcuSALGMPgdkJceVJMK7Q
