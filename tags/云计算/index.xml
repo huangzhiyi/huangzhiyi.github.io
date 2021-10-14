@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>云计算 on Heis</title><link>https://huangzhiyi.github.io/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/</link><description>Recent content in 云计算 on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 13 Oct 2021 00:44:00 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/index.xml" rel="self" type="application/rss+xml"/><item><title>云数据中心基础 Part 5 - 虚拟机自动化部署</title><link>https://huangzhiyi.github.io/cloud-data-center-05/</link><pubDate>Wed, 13 Oct 2021 00:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/cloud-data-center-05/</guid><description>«返回课程汇总页面
 云数据中心基础 Part 5 - 虚拟机自动化部署 【版本】 当前版本号v20211013
-版本 修改说明 v20211013 初始化版本
+版本 修改说明 v20211014 v20211013 初始化版本
 【实验名称】 实验5.1 PXE+Kickstart 自动部署 CentOS 【实验目的】 掌握 Kickstart 的配置和使用 掌握通过 Kickstart 自动安装 CentOS 系统 【实验环境】 VirtualBox FinalShell 【实验资源】 CentOS-7-x86_64-Minimal-2009.iso 链接：https://pan.baidu.com/s/1czcuSALGMPgdkJceVJMK7Q
 提取码：heis
 【实验步骤】 打开 Virtualbox,进入Tmpl虚拟机的设置界面。启用和设置网卡2。新增的网卡主要用于启用 DHCP 服务。 增加一个光驱，并选择CentOS-7-x86_64-Minimal-2009.iso盘片（注意此盘片为最小化CentOS的安装镜像，大小为973MB）. 设置CentOS-7-x86_64-Minimal-2009.iso盘片为第二IDE控制器从通道。
-启动Tmpl虚拟机，并使用root用户登录。
-su
-创建一个新的目录/mnt2用于挂载CentOS-7-x86_64-Minimal-2009.iso盘片。 mkdir /mnt2
-mount /dev/sr1 /mnt2
-在实验 Part 1 的时候，我们已经挂载了一个 CentOS-7-x86_64-DVD-2009.</description></item><item><title>云数据中心基础 Part 4 - OpenStack的安装</title><link>https://huangzhiyi.github.io/cloud-data-center-04/</link><pubDate>Sun, 26 Sep 2021 00:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/cloud-data-center-04/</guid><description>«返回课程汇总页面
+启动Tmpl虚拟机，并使用root用户登录。</description></item><item><title>云数据中心基础 Part 4 - OpenStack的安装</title><link>https://huangzhiyi.github.io/cloud-data-center-04/</link><pubDate>Sun, 26 Sep 2021 00:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/cloud-data-center-04/</guid><description>«返回课程汇总页面
 云数据中心基础 Part 4 - OpenStack的安装 【版本】 当前版本号v20211011
 版本 修改说明 v20211011 修改实验4.2 实例名称 v20210926 初始化版本
 【实验名称】 实验4.1 注册 OpenStack 虚拟机 【实验目的】 掌握 OpenStack 虚拟机的注册和配置 【实验环境】 VirtualBox FinalShell 【实验资源】 Openstack-Compute1 虚拟机 Openstack-Controller 虚拟机 链接：https://pan.baidu.com/s/1czcuSALGMPgdkJceVJMK7Q
@@ -32,4 +28,4 @@ pwd
 版本 修改说明 v20211003 常见问题新增自动挂载 v20210916 优化部分步骤，减少出错机会 v20210913 提示虚拟机存放目录不能使用中文和空格 v20210911 增加常见问题 v20210819 初始化版本
 【实验名称】 实验1.1 虚拟化软件安装 CentOS
 【实验目的】 掌握搭建 CentOS 模板镜像 熟练掌握 Linux命令（vi、tar、mv等等）的使用 掌握 VirtualBox 或 VMWare Workstation的使用 掌握 FinalShell 客户端连接虚拟机 【实验环境】 内存：至少4G 硬盘：至少空余40G 操作系统: 64位 Windows系统。 【实验资源】 FinalShell CentOS 7.</description></item><item><title>云数据中心基础 课程资源汇总</title><link>https://huangzhiyi.github.io/cloud-data-center-summary/</link><pubDate>Mon, 09 Aug 2021 00:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/cloud-data-center-summary/</guid><description>实验报告模板和实验资源下载 链接：https://pan.baidu.com/s/1pQH-QuWHCs7p8KpO7RiMEA 提取码：heis
-实验报告要求 必须使用老师提供的实验报告模板。 必须保留封面 实验步骤每一步都有详细的文字操作步骤说明，步骤顺序号，截图。 截图只需要截关键部分信息，不能全屏截图。可以用红色框或箭头标注截图重点信息。推荐使用 Snipaste（官网下载或网盘下载） 进行截图和标记。 课程内容 （1）云数据中心基础 Part 1 - 虚拟化软件安装 CentOS （2）云数据中心基础 Part 2 - Linux 虚拟化常用命令 （3）云数据中心基础 Part 3 - 服务器虚拟化部署 （4）云数据中心基础 Part 4 - OpenStack 的安装 实验报告提交截止时间和地址 云数据中心基础 Part 1 实验报告提交截止时间 2021/9/18(星期六) 20级计本1班提交作业链接 http://xzc.cn/WB66bBP6os 20级计本2班提交作业链接 http://xzc.cn/wI14X6eaI2 20级计本3班提交作业链接 http://xzc.cn/jkkkYDjHFI 20级计本4班提交作业链接 http://xzc.cn/y0F2lG49Gh 云数据中心基础 Part 2 实验报告提交截止时间 2021/9/27(星期一) 20级计本1班提交作业链接 http://xzc.cn/afoVrv8fvv 20级计本2班提交作业链接 http://xzc.cn/RhT33z1h2y 20级计本3班提交作业链接 http://xzc.cn/Typb4gg4B1 20级计本4班提交作业链接 http://xzc.cn/W2xCSSjEAE 云数据中心基础 Part 3 实验报告提交截止时间 2021/10/13(星期三) 20级计本1班提交作业链接 http://xzc.</description></item></channel></rss>
+实验报告要求 必须使用老师提供的实验报告模板。 必须保留封面 实验步骤每一步都有详细的文字操作步骤说明，步骤顺序号，截图。 截图只需要截关键部分信息，不能全屏截图。可以用红色框或箭头标注截图重点信息。推荐使用 Snipaste（官网下载或网盘下载） 进行截图和标记。 课程内容 （1）云数据中心基础 Part 1 - 虚拟化软件安装 CentOS （2）云数据中心基础 Part 2 - Linux 虚拟化常用命令 （3）云数据中心基础 Part 3 - 服务器虚拟化部署 （4）云数据中心基础 Part 4 - OpenStack 的安装 （5）云数据中心基础 Part 5 - 虚拟机自动化部署 实验报告提交截止时间和地址 云数据中心基础 Part 1 实验报告提交截止时间 2021/9/18(星期六) 20级计本1班提交作业链接 http://xzc.cn/WB66bBP6os 20级计本2班提交作业链接 http://xzc.cn/wI14X6eaI2 20级计本3班提交作业链接 http://xzc.cn/jkkkYDjHFI 20级计本4班提交作业链接 http://xzc.cn/y0F2lG49Gh 云数据中心基础 Part 2 实验报告提交截止时间 2021/9/27(星期一) 20级计本1班提交作业链接 http://xzc.cn/afoVrv8fvv 20级计本2班提交作业链接 http://xzc.cn/RhT33z1h2y 20级计本3班提交作业链接 http://xzc.</description></item></channel></rss>
