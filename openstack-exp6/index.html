@@ -62,7 +62,7 @@ openstack-config --set /etc/neutron/plugins/ml2/ml2_conf.ini  ml2_type_flat flat
 openstack-config --set /etc/neutron/plugins/ml2/ml2_conf.ini  securitygroup enable_ipset  True
 </code></pre><ol start=10><li>备份<code>linuxbridge_agent.ini</code>配置文件</li></ol><pre><code>cp /etc/neutron/plugins/ml2/linuxbridge_agent.ini{,.bak}
 grep '^[a-Z\[]' /etc/neutron/plugins/ml2/linuxbridge_agent.ini.bak &gt;/etc/neutron/plugins/ml2/linuxbridge_agent.ini
-</code></pre><ol start=11><li>查看你的主机IP对应的网口编号。如果修改过为<code>eth0</code>，未修改过一般为<code>ens33</code>。</li></ol><pre><code>ip a
+</code></pre><ol start=11><li>查看你的主机IP对应的网口编号。</li></ol><ul><li>VMWare Workstation 如果修改过为<code>eth0</code>，未修改过一般为<code>ens33</code>。</li><li>Virtualbox 一般为<code>enp0s3</code>。</li></ul><pre><code>ip a
 </code></pre><p><img src=/static/img/openstack-exp04/Snipaste_2021-03-04_12-54-08.png alt></p><ol start=12><li>修改<code>linuxbridge_agent.ini</code>配置文件，注意替换网口编号。</li></ol><pre><code>openstack-config --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini  linux_bridge physical_interface_mappings  provider:你的网口编号
 openstack-config --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini  securitygroup enable_security_group  True
 openstack-config --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini  securitygroup firewall_driver  neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
