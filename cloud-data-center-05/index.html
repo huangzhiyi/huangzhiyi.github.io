@@ -153,7 +153,12 @@ autopart --type=lvm
 %packages
 @^minimal
 %end
-</code></pre><ol start=29><li><p>开始配置 Clinet 客户端。新建一台虚拟机。
+</code></pre><ol start=29><li>禁用 SELINUX。</li></ol><pre><code>vi /etc/selinux/config
+</code></pre><ul><li>把<code>SELINUX</code>设置为<code>disabled</code></li></ul><pre><code>SELINUX=disabled
+</code></pre><ol start=30><li>确保关闭并禁用防火墙。</li></ol><pre><code>systemctl stop firewalld
+systemctl disable firewalld
+</code></pre><ol start=31><li>重启<code>Tmpl</code>虚拟机</li></ol><pre><code>reboot
+</code></pre><ol start=32><li><p>开始配置 Clinet 客户端。新建一台虚拟机。
 <img src=/static/img/cloud-data-center-05/Snipaste_2021-10-13_17-08-48.jpg alt></p></li><li><p>虚拟机命名为&rsquo;Client你学号后3位'。
 <img src=/static/img/cloud-data-center-05/Snipaste_2021-10-14_01-07-27.jpg alt></p></li><li><p>内存至少要分配<code>2048M</code>，否则会无法安装。
 <img src=/static/img/cloud-data-center-05/Snipaste_2021-10-14_01-08-32.jpg alt></p></li><li><p>创建虚拟硬盘
