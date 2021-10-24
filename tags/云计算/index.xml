@@ -1,4 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>云计算 on Heis</title><link>https://huangzhiyi.github.io/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/</link><description>Recent content in 云计算 on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 13 Oct 2021 00:44:00 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/index.xml" rel="self" type="application/rss+xml"/><item><title>云数据中心基础 Part 5 - 虚拟机自动化部署</title><link>https://huangzhiyi.github.io/cloud-data-center-05/</link><pubDate>Wed, 13 Oct 2021 00:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/cloud-data-center-05/</guid><description>«返回课程汇总页面
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>云计算 on Heis</title><link>https://huangzhiyi.github.io/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/</link><description>Recent content in 云计算 on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 25 Oct 2021 00:44:00 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/index.xml" rel="self" type="application/rss+xml"/><item><title>云数据中心基础 Part 6 - Docker部署和管理</title><link>https://huangzhiyi.github.io/cloud-data-center-06/</link><pubDate>Mon, 25 Oct 2021 00:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/cloud-data-center-06/</guid><description>«返回课程汇总页面
+云数据中心基础 Part 6 - Docker部署和管理 【版本】 当前版本号v20211025
+版本 修改说明 v20211025 初始化版本
+【实验名称】 实验6.1 安装 Docker 【实验目的】 掌握 Docker 的安装 【实验环境】 VirtualBox FinalShell 【实验资源】 docker-repo.tar 链接：https://pan.baidu.com/s/1czcuSALGMPgdkJceVJMK7Q
+提取码：heis
+【实验步骤】 使用root 用户登录Tmpl虚拟机。 su
+安装创建 yum 源库的命令 createrepo yum install -y createrepo
+创建目录用于存放 docker 源库。 mkdir /var/docker/repo -p
+上传docker-repo.tar到/var/docker/repo cd /var/docker/repo
+rz
+解压docker-repo.</description></item><item><title>云数据中心基础 Part 5 - 虚拟机自动化部署</title><link>https://huangzhiyi.github.io/cloud-data-center-05/</link><pubDate>Wed, 13 Oct 2021 00:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/cloud-data-center-05/</guid><description>«返回课程汇总页面
 云数据中心基础 Part 5 - 虚拟机自动化部署 【版本】 当前版本号v20211021
 版本 修改说明 v20211021 更新客户端无法请求服务端进行下载的问题 v20211013 初始化版本
 【实验名称】 实验5.1 PXE+Kickstart 自动部署 CentOS 【实验目的】 掌握 Kickstart 的配置和使用 掌握通过 Kickstart 自动安装 CentOS 系统 【实验环境】 VirtualBox FinalShell 【实验资源】 CentOS-7-x86_64-Minimal-2009.iso 链接：https://pan.baidu.com/s/1czcuSALGMPgdkJceVJMK7Q
