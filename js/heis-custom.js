@@ -100,7 +100,7 @@ function includeLinkStyle(url) {
 }
 
 function setTheme(theme){
-  setCookie("theme",theme,1);
+  setCookie("theme",theme,7);
   var eleLinks = document.querySelectorAll('link[title]');
   eleLinks.forEach(function (link) {
             link.disabled = true;
