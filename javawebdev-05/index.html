@@ -1,0 +1,554 @@
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=zh-CN lang=zh-cn><head><link href=//gmpg.org/xfn/11 rel=profile><meta charset=utf-8><meta name=generator content="Hugo 0.80.0"><meta name=viewport content="width=device-width,initial-scale=1"><title>Java后台应用项目开发 Part 5 - SSM框架整合和开发 &#183; Heis</title><link type=text/css rel=stylesheet href=https://huangzhiyi.github.io/css/heis-min.css?20210716><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?f58b6a2675cf52000232edb4d109eccc";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><link rel=apple-touch-icon-precomposed sizes=144x144 href=/apple-touch-icon-144-precomposed2.png><link rel="shortcut icon" href=/favicon2.png></head><body><style>.tooltip{position:relative;display:inline-block;border-bottom:1px dotted #000}.tooltip .tooltiptext{visibility:hidden;width:auto;max-width:200px;background-color:#000;color:#fff;text-align:center;position:absolute;z-index:1}.tooltip:hover .tooltiptext{visibility:visible;position:absolute;top:2rem;left:0;z-index:1000}</style><aside class=sidebar id=bsidebar><button id=hide-sb-btn onclick=hideSidebar()></button><div class="container sidebar-sticky"><div class=sidebar-about><a href=https://huangzhiyi.github.io/><h1 id=side-title>Heis</h1></a><p class=lead>Long live MAMBA</p><p class=ac><a href=https://support.qq.com/products/332688 class=tooltip target=_blank><img class=tooltiptext src=https://huangzhiyi.github.io/feedback.png?20210617>
+提点意见和建议»</a></p></div><nav><ul class=sidebar-nav><li><a href=https://huangzhiyi.github.io/>首页</a></li><li><a href=http://go.heisun.xyz/ target=_blank>课程导航»</a></li><li><a href=https://huangzhiyi.github.io/categories/javaweb/>Java后台应用项目开发»</a></li><li><a href=https://huangzhiyi.github.io/categories/clouddc/>云数据中心基础»</a></li><li><a href=https://huangzhiyi.github.io/categories>文章分类»</a></li><li><a href=https://huangzhiyi.github.io/tags>文章标签»</a></li><li><a href=https://heis.gitee.io/ target=_blank>镜像0：heis.gitee.io</a></li><li><a href=http://heisun.xyz/ target=_blank>镜像1：heisun.xyz</a></li><li><a href=https://huangzhiyi.github.io/ target=_blank>镜像2：huangzhiyi.github.io</a></li></ul></nav><p>&copy; 2021. All rights reserved.</p><p></p></div></aside><main class="content container" id=mainpanel><button id=show-sb-btn onclick=showSidebar()></button>
+<script src=https://huangzhiyi.github.io/js/jquery-min.js></script><div class=post><h1>Java后台应用项目开发 Part 5 - SSM框架整合和开发</h1><time datetime=2021-10-26T00:20:00+0800 class=post-date>2021-10-26</time><blockquote><h2>文章导航</h2><aside><nav id=TableOfContents><ul><li><a href=#java后台应用项目开发-part-5---ssm框架整合和开发>Java后台应用项目开发 Part 5 - SSM框架整合和开发</a><ul><li><a href=#版本>【版本】</a></li><li><a href=#实验名称-实验51-ssm框架整合>【实验名称】 实验5.1 SSM框架整合</a></li><li><a href=#实验目的>【实验目的】</a></li><li><a href=#实验环境>【实验环境】</a></li><li><a href=#实验资源>【实验资源】</a></li><li><a href=#实验步骤>【实验步骤】</a></li><li><a href=#实验名称-实验52-修改数据库用户表>【实验名称】 实验5.2 修改数据库用户表</a></li><li><a href=#实验目的-1>【实验目的】</a></li><li><a href=#实验环境-1>【实验环境】</a></li><li><a href=#实验资源-1>【实验资源】</a></li><li><a href=#实验要求>【实验要求】</a></li><li><a href=#实验名称-实验53-修改注册页面>【实验名称】 实验5.3 修改注册页面</a></li><li><a href=#实验目的-2>【实验目的】</a></li><li><a href=#实验环境-2>【实验环境】</a></li><li><a href=#实验资源-2>【实验资源】</a></li><li><a href=#实验要求-1>【实验要求】</a></li><li><a href=#实验名称-实验54-保存注册用户信息到数据库>【实验名称】 实验5.4 保存注册用户信息到数据库</a></li><li><a href=#实验目的-3>【实验目的】</a></li><li><a href=#实验环境-3>【实验环境】</a></li><li><a href=#实验资源-3>【实验资源】</a></li><li><a href=#实验要求-2>【实验要求】</a></li><li><a href=#实验名称-实验55-添加用户信息校验功能>【实验名称】 实验5.5 添加用户信息校验功能</a></li><li><a href=#实验目的-4>【实验目的】</a></li><li><a href=#实验环境-4>【实验环境】</a></li><li><a href=#实验资源-4>【实验资源】</a></li><li><a href=#实验要求-3>【实验要求】</a></li></ul></li></ul></nav></aside></blockquote><p><a href=/javawebdev-summary/>«返回课程汇总页面</a></p><h2 id=java后台应用项目开发-part-5---ssm框架整合和开发>Java后台应用项目开发 Part 5 - SSM框架整合和开发</h2><h3 id=版本>【版本】</h3><p>当前版本号<code>v20211026</code></p><div class=tbl-start></div><table><thead><tr><th>版本</th><th>修改说明</th></tr></thead><tbody><tr><td>v20211026</td><td>初始化版本</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h3 id=实验名称-实验51-ssm框架整合>【实验名称】 实验5.1 SSM框架整合</h3><h3 id=实验目的>【实验目的】</h3><ul><li>掌握 SSM 框架搭建的配置文件。</li></ul><h3 id=实验环境>【实验环境】</h3><ul><li>内存：至少4G</li><li>硬盘：至少空余10G</li><li>操作系统: 64位 Windows系统。</li></ul><h3 id=实验资源>【实验资源】</h3><ul><li>IDEA</li><li>Maven 3.6</li></ul><h3 id=实验步骤>【实验步骤】</h3><ol><li><p>参考<a href=/javawebdev-02>实验2.1</a>，新建一个名为<code>SSM</code>的 Maven Web 项目。</p></li><li><p>SSM 整合目录结构和配置文件如下图所示。
+<img src=/static/img/javawebdev-05/20211028110455.png alt></p></li><li><p>其中的配置文件代码如下：</p></li></ol><ul><li>数据库配置文件 <code>db.properties</code>，注意修改用户名和密码</li></ul><pre><code>driver=com.mysql.jdbc.Driver
+url=jdbc:mysql://localhost:3306/mobile_shop?useUnicode=true&amp;characterEncoding=UTF-8
+user=修改为你的数据库的用户
+pwd=修改为你的数据库的密码
+</code></pre><ul><li>容器配置文件<code>spring-mvc.xml</code>。</li></ul><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans
+        xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+        xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
+        xmlns:util=&quot;http://www.springframework.org/schema/util&quot;
+        xsi:schemaLocation=&quot;
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd&quot;&gt;
+    &lt;!--配置注解扫描--&gt;
+    &lt;context:component-scan base-package=&quot;mobileshop.controller,mobileshop.service&quot;/&gt;
+    &lt;!-- SpringMVC注解支持 --&gt;
+    &lt;mvc:annotation-driven/&gt;
+
+    &lt;!-- ThymeLeaf 视图 start --&gt;
+    &lt;bean id=&quot;templateResolver&quot;
+          class=&quot;org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver&quot;&gt;
+        &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/templates/&quot;/&gt;
+        &lt;property name=&quot;suffix&quot; value=&quot;.html&quot;/&gt;
+        &lt;property name=&quot;characterEncoding&quot; value=&quot;UTF-8&quot;/&gt;
+        &lt;property name=&quot;order&quot; value=&quot;1&quot;/&gt;
+        &lt;property name=&quot;templateMode&quot; value=&quot;HTML5&quot;/&gt;
+        &lt;property name=&quot;cacheable&quot; value=&quot;false&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;bean id=&quot;templateEngine&quot;
+          class=&quot;org.thymeleaf.spring5.SpringTemplateEngine&quot;&gt;
+        &lt;property name=&quot;templateResolver&quot; ref=&quot;templateResolver&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;bean id=&quot;viewResolver&quot; class=&quot;org.thymeleaf.spring5.view.ThymeleafViewResolver&quot;&gt;
+        &lt;property name=&quot;templateEngine&quot; ref=&quot;templateEngine&quot;/&gt;
+        &lt;property name=&quot;characterEncoding&quot; value=&quot;UTF-8&quot;/&gt;
+    &lt;/bean&gt;
+    &lt;!-- ThymeLeaf 视图 end --&gt;
+    &lt;util:properties id=&quot;jdbc&quot; location=&quot;classpath:db.properties&quot;/&gt;
+
+    &lt;bean id=&quot;dbcp&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot;&gt;
+        &lt;property name=&quot;driverClassName&quot; value=&quot;#{jdbc.driver}&quot;/&gt;
+        &lt;property name=&quot;url&quot; value=&quot;#{jdbc.url}&quot;/&gt;
+        &lt;property name=&quot;username&quot; value=&quot;#{jdbc.user}&quot;/&gt;
+        &lt;property name=&quot;password&quot; value=&quot;#{jdbc.pwd}&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 配置SqlSessionFactoryBean --&gt;
+    &lt;!-- 可以定义一些属性来指定Mybatis框架的配置信息 --&gt;
+    &lt;bean id=&quot;ssf&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
+        &lt;!-- 数据源，注入连接信息 --&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dbcp&quot;/&gt;
+        &lt;!-- 用于指定sql定义文件的位置(加classpath从src下找) --&gt;
+        &lt;property name=&quot;mapperLocations&quot;
+                  value=&quot;classpath:mobileshop/mapper/*.xml&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 配置MapperScannerConfigurer --&gt;
+    &lt;!-- 按指定包扫描接口，批量生成接口实现对象，id为接口名首字母小写 --&gt;
+    &lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;
+        &lt;!-- 指定扫描 mobileshop.dao包下所有接口 --&gt;
+        &lt;property name=&quot;basePackage&quot;
+                  value=&quot;mobileshop.dao&quot;/&gt;
+        &lt;!-- 注入sqlSessionFactory（此句可不写，自动注入sqlSessionFactory） --&gt;
+        &lt;property name=&quot;sqlSessionFactory&quot; ref=&quot;ssf&quot;/&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre><ul><li>Java Web应用程序配置文件<code>web.xml</code>。</li></ul><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app version=&quot;2.5&quot; xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee
+    http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd&quot;&gt;
+    &lt;display-name&gt;MobileShop&lt;/display-name&gt;
+    &lt;welcome-file-list&gt;
+        &lt;welcome-file&gt;index.html&lt;/welcome-file&gt;
+        &lt;welcome-file&gt;index.htm&lt;/welcome-file&gt;
+        &lt;welcome-file&gt;index.jsp&lt;/welcome-file&gt;
+        &lt;welcome-file&gt;default.html&lt;/welcome-file&gt;
+        &lt;welcome-file&gt;default.htm&lt;/welcome-file&gt;
+        &lt;welcome-file&gt;default.jsp&lt;/welcome-file&gt;
+    &lt;/welcome-file-list&gt;
+    &lt;servlet&gt;
+        &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;
+            org.springframework.web.servlet.DispatcherServlet
+        &lt;/servlet-class&gt;
+        &lt;!-- 指定Spring的配置文件 --&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+            &lt;param-value&gt;classpath:spring-mvc.xml&lt;/param-value&gt;
+        &lt;/init-param&gt;
+        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+    &lt;/servlet&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+    &lt;!-- 允许访问以html、css、js为结尾的静态资源 --&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;default&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;*.html&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;default&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;*.css&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;default&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;*.js&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;default&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;*.jpg&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+    &lt;!-- 解决中文乱码问题 --&gt;
+    &lt;filter&gt;
+        &lt;filter-name&gt;Set Character Encoding&lt;/filter-name&gt;
+        &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-class&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;encoding&lt;/param-name&gt;
+            &lt;param-value&gt;UTF-8&lt;/param-value&gt;
+        &lt;/init-param&gt;
+    &lt;/filter&gt;
+    &lt;filter-mapping&gt;
+        &lt;filter-name&gt;Set Character Encoding&lt;/filter-name&gt;
+        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;/filter-mapping&gt;
+&lt;/web-app&gt;
+</code></pre><ul><li>Maven 配置文件<code>pom.xml</code></li></ul><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;org.example&lt;/groupId&gt;
+    &lt;artifactId&gt;javaweb-exe02-springmvc&lt;/artifactId&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;packaging&gt;war&lt;/packaging&gt;
+
+    &lt;properties&gt;
+        &lt;maven.compiler.source&gt;8&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;8&lt;/maven.compiler.target&gt;
+        &lt;spring.version&gt;5.0.5.RELEASE&lt;/spring.version&gt;
+        &lt;tomcat.embed.version&gt;8.0.28&lt;/tomcat.embed.version&gt;
+    &lt;/properties&gt;
+
+    &lt;dependencies&gt;
+        &lt;!-- 测试依赖包 start--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;junit&lt;/groupId&gt;
+            &lt;artifactId&gt;junit&lt;/artifactId&gt;
+            &lt;version&gt;4.13.1&lt;/version&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-test&lt;/artifactId&gt;
+            &lt;version&gt;${spring.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- 测试依赖包 end--&gt;
+        &lt;!-- SpringMVC 依赖包 start --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+            &lt;version&gt;${spring.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- SpringMVC 依赖包 end --&gt;
+        &lt;!-- 嵌入式tomcat依赖包 start --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.tomcat&lt;/groupId&gt;
+            &lt;artifactId&gt;tomcat-servlet-api&lt;/artifactId&gt;
+            &lt;version&gt;${tomcat.embed.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.tomcat&lt;/groupId&gt;
+            &lt;artifactId&gt;tomcat-jsp-api&lt;/artifactId&gt;
+            &lt;version&gt;${tomcat.embed.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.tomcat.embed&lt;/groupId&gt;
+            &lt;artifactId&gt;tomcat-embed-core&lt;/artifactId&gt;
+            &lt;version&gt;${tomcat.embed.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.tomcat.embed&lt;/groupId&gt;
+            &lt;artifactId&gt;tomcat-embed-jasper&lt;/artifactId&gt;
+            &lt;version&gt;${tomcat.embed.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.tomcat.embed&lt;/groupId&gt;
+            &lt;artifactId&gt;tomcat-embed-logging-juli&lt;/artifactId&gt;
+            &lt;version&gt;${tomcat.embed.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- 嵌入式tomcat依赖包 end --&gt;
+        &lt;!-- 通用扩展工具包 --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;
+            &lt;artifactId&gt;commons-lang3&lt;/artifactId&gt;
+            &lt;version&gt;3.9&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;!-- spring jdbc 模块 --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
+            &lt;version&gt;${spring.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- MySQL 连接驱动 --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;mysql&lt;/groupId&gt;
+            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+            &lt;version&gt;5.1.38&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- MyBatis 包 --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+            &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+            &lt;version&gt;3.5.4&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+            &lt;artifactId&gt;mybatis-spring&lt;/artifactId&gt;
+            &lt;version&gt;2.0.3&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- 数据库连接池的包 --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;commons-dbcp&lt;/groupId&gt;
+            &lt;artifactId&gt;commons-dbcp&lt;/artifactId&gt;
+            &lt;version&gt;1.4&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- 模板框架Thymeleaf --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.thymeleaf&lt;/groupId&gt;
+            &lt;artifactId&gt;thymeleaf-spring5&lt;/artifactId&gt;
+            &lt;version&gt;3.0.12.RELEASE&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+    &lt;build&gt;
+        &lt;finalName&gt;mobileshop&lt;/finalName&gt;
+        &lt;plugins&gt;
+            &lt;!--&lt;plugin&gt;
+                &lt;groupId&gt;org.apache.tomcat.maven&lt;/groupId&gt;
+                &lt;artifactId&gt;tomcat7-maven-plugin&lt;/artifactId&gt;
+                &lt;version&gt;2.2&lt;/version&gt;
+                &lt;configuration&gt;
+                    &lt;url&gt;http://localhost:8080/manager/text&lt;/url&gt;
+                    &lt;username&gt;admin&lt;/username&gt;
+                    &lt;password&gt;password&lt;/password&gt;
+                    &lt;path&gt;/&lt;/path&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;--&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+                &lt;version&gt;3.5.1&lt;/version&gt;
+                &lt;configuration&gt;
+                    &lt;source&gt;1.8&lt;/source&gt;
+                    &lt;target&gt;1.8&lt;/target&gt;
+                    &lt;encoding&gt;UTF-8&lt;/encoding&gt;
+                    &lt;!-- 指定编码格式，否则在DOS下运行mvn compile命令时会出现莫名的错误，因为系统默认使用GBK编码 --&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-resources-plugin&lt;/artifactId&gt;
+                &lt;version&gt;2.6&lt;/version&gt;
+                &lt;configuration&gt;
+                    &lt;encoding&gt;UTF-8&lt;/encoding&gt;
+                    &lt;!-- 指定编码格式，否则在DOS下运行mvn命令时当发生文件资源copy时将使用系统默认使用GBK编码 --&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+&lt;/project&gt;
+</code></pre><ol start=4><li>新增注册页面<code>register.html</code>和消息提示页面<code>msg.html</code>。
+<img src=/static/img/javawebdev-05/Snipaste_2021-10-28_11-27-51.jpg alt></li></ol><ul><li><code>register.html</code></li></ul><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;cn&quot; xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;注册&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+注册页面
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><ul><li><code>msg.html</code></li></ul><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;cn&quot; xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;消息&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;p th:text=&quot;${msg}&quot; /&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><ol start=5><li>新增以下 Java 代码，展示注册页面。</li></ol><ul><li><code>RegisterController.java</code> 注册功能的Controller。注意此文件要放在<code>mobile.controller</code>包下。
+<img src=/static/img/javawebdev-05/Snipaste_2021-10-28_11-29-32.jpg alt></li></ul><pre><code>package mobileshop.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class RegisterController {
+
+    @RequestMapping(value = &quot;/register&quot;)
+    public String login(){
+        return &quot;register&quot;;
+    }
+
+}
+</code></pre><ul><li><code>Application.java</code> 启动嵌入式的 Tomcat。</li></ul><pre><code>package mobileshop;
+
+import org.apache.catalina.startup.Tomcat;
+import org.apache.commons.lang3.StringUtils;
+
+import java.io.File;
+import java.net.URL;
+
+public class Application {
+    private int port = 8082;
+    private String contextPath = &quot;&quot;;
+    public void start() throws Exception {
+        //新构建一个Tomcat实例
+        Tomcat tomcat = new Tomcat();
+        //获取 SpringMVC 配置文件的路径
+        URL url = getClass().getClassLoader().getResource(&quot;spring-mvc.xml&quot;);
+        System.out.println(&quot;URL path:&quot;+url.getPath());
+        //获取项目根目录
+        String pwd = StringUtils.substringBefore(url.getPath(), &quot;/target/classes&quot;);
+        System.out.println(&quot;BaseDir:&quot;+pwd);
+        //设置项目根目录为 BaseDir
+        tomcat.setBaseDir(pwd);
+        tomcat.setPort(port);
+
+        StringBuilder webAppBuilder = new StringBuilder();
+        //设置 war 目录
+        webAppBuilder.append(pwd).append(File.separator).append(&quot;target/mobileshop&quot;);
+        String webapp = webAppBuilder.toString();
+
+        tomcat.addWebapp(contextPath, webapp);
+        tomcat.enableNaming();
+        tomcat.start();//启动
+        tomcat.getServer().await();
+    }
+
+    public static void main(String[] args) throws Exception {
+        Application starter = new Application();
+        starter.start();
+    }
+}
+</code></pre><ol start=6><li>启动<code>Application</code>，访问<a href=http://localhost:8082/register target=_blank>http://localhost:8082/register</a>，是否可以查看到注册页面。</li></ol><h3 id=实验名称-实验52-修改数据库用户表>【实验名称】 实验5.2 修改数据库用户表</h3><h3 id=实验目的-1>【实验目的】</h3><ul><li>掌握编写 SQL 脚本修改数据库</li></ul><h3 id=实验环境-1>【实验环境】</h3><ul><li>内存：至少4G</li><li>硬盘：至少空余10G</li><li>操作系统: 64位 Windows系统。</li></ul><h3 id=实验资源-1>【实验资源】</h3><ul><li>IDEA</li><li>Maven 3.6</li></ul><h3 id=实验要求>【实验要求】</h3><ol><li>现在需要给前面实验3建好的数据库用户表<code>ms_user</code>新增一列<code>email</code>，用于保存用户的邮箱地址。请新增一个脚本文件<code>V003__ALTER_USER.sql</code>，记录用于修改现有数据库的 SQL 脚本，并且使用数据库客户端(例如：HeidiSQL)执行该脚本。
+<img src=/static/img/javawebdev-05/Snipaste_2021-10-28_11-43-41.jpg alt>
+<img src=/static/img/javawebdev-05/Snipaste_2021-10-28_11-48-05.jpg alt></li></ol><h3 id=实验名称-实验53-修改注册页面>【实验名称】 实验5.3 修改注册页面</h3><h3 id=实验目的-2>【实验目的】</h3><ul><li>掌握 HTML 页面的编写</li></ul><h3 id=实验环境-2>【实验环境】</h3><ul><li>内存：至少4G</li><li>硬盘：至少空余10G</li><li>操作系统: 64位 Windows系统。</li></ul><h3 id=实验资源-2>【实验资源】</h3><ul><li>IDEA</li><li>Maven 3.6</li></ul><h3 id=实验要求-1>【实验要求】</h3><ol><li>修改<code>register.html</code>，要求新增一个<code>表单</code>和<code>注册</code>按钮，让用户可以提交以下信息到<code>RegisterController</code>。</li></ol><ul><li>username 用户名</li><li>password 密码</li><li>email 邮箱地址</li></ul><ol start=2><li><p>表单使用<code>Post</code>方法提交，提交的地址为<code>signup</code>。</p></li><li><p>在<code>RegisterController</code>新增一个<code>signup</code>方法，收到注册的信息以后把内容打印出来，并跳转到<code>msg.html</code>。</p></li></ol><ul><li><code>RegisterController.java</code>新增方法</li></ul><pre><code>@RequestMapping(value = &quot;/signup&quot;)
+    public String signUp(ModelMap map,String username, String password, String email){
+        System.out.println(username+&quot; &quot;+password+&quot; &quot;+email);
+        return &quot;msg&quot;;
+    }
+</code></pre><ol start=4><li>尝试在页面提交注册信息，在控制台查看<code>RegisterController</code> 打印的注册信息。</li></ol><h3 id=实验名称-实验54-保存注册用户信息到数据库>【实验名称】 实验5.4 保存注册用户信息到数据库</h3><h3 id=实验目的-3>【实验目的】</h3><ul><li>掌握基于 SSM 编写代码，完成新的功能</li></ul><h3 id=实验环境-3>【实验环境】</h3><ul><li>内存：至少4G</li><li>硬盘：至少空余10G</li><li>操作系统: 64位 Windows系统。</li></ul><h3 id=实验资源-3>【实验资源】</h3><ul><li>IDEA</li><li>Maven 3.6</li></ul><h3 id=实验要求-2>【实验要求】</h3><ol><li>新增<code>UserDao</code>接口和<code>UserEntity</code>。</li></ol><ul><li><code>UserDao.java</code>
+<img src=/static/img/javawebdev-05/Snipaste_2021-10-28_14-51-12.jpg alt></li></ul><pre><code>package mobileshop.dao;
+
+import mobileshop.entity.UserEntity;
+
+public interface UserDao {
+    int save(UserEntity ue);
+}
+</code></pre><ul><li><code>UserEntity.java</code>
+<img src=/static/img/javawebdev-05/Snipaste_2021-10-28_14-56-46.jpg alt></li></ul><pre><code>package mobileshop.entity;
+
+public class UserEntity {
+    private Long userId;
+    private String username;
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+}
+</code></pre><ol start=2><li>新增<code>UserDaoMapper.xml</code>，请完善以下的SQL语句。</li></ol><ul><li><code>UserDaoMapper.xml</code> MyBatis 对应 <code>UserDao</code> 的 Mapper 配置</li></ul><p><img src=/static/img/javawebdev-05/Snipaste_2021-10-28_14-50-48.jpg alt></p><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;  
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+
+&lt;mapper namespace=&quot;mobileshop.dao.UserDao&quot;&gt;
+	&lt;insert id=&quot;save&quot; parameterType=&quot;mobileshop.entity.UserEntity&quot;&gt;
+		请完善SQL
+	&lt;/insert&gt;
+&lt;/mapper&gt;
+</code></pre><ol start=3><li>新增<code>UserService</code>接口和<code>UserServiceImpl</code>类。</li></ol><ul><li><code>UserService.java</code></li></ul><pre><code>package mobileshop.service;
+
+import mobileshop.entity.UserEntity;
+
+public interface UserService {
+
+    /**
+     * 保存用户信息
+     * @param ue
+     * @return
+     */
+    boolean save(UserEntity ue);
+}
+
+</code></pre><ul><li><code>UserServiceImpl.java</code></li></ul><pre><code>package mobileshop.service;
+
+import mobileshop.dao.UserDao;
+import mobileshop.entity.UserEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserServiceImpl implements UserService{
+
+    @Autowired
+    private UserDao userDao;
+
+    @Override
+    public boolean save(UserEntity ue) {
+        return userDao.save(ue)&gt;0;
+    }
+
+}
+
+</code></pre><ol start=4><li>请利用以上的代码，完善<code>RegisterController.signUp</code>方法。当用户在页面输入注册信息并提交时，可以保存信息到数据库。</li></ol><h3 id=实验名称-实验55-添加用户信息校验功能>【实验名称】 实验5.5 添加用户信息校验功能</h3><h3 id=实验目的-4>【实验目的】</h3><ul><li>掌握基于 SSM 编写代码，完成新的功能</li></ul><h3 id=实验环境-4>【实验环境】</h3><ul><li>内存：至少4G</li><li>硬盘：至少空余10G</li><li>操作系统: 64位 Windows系统。</li></ul><h3 id=实验资源-4>【实验资源】</h3><ul><li>IDEA</li><li>Maven 3.6</li></ul><h3 id=实验要求-3>【实验要求】</h3><ol><li>在<code>UserDao</code>新增<code>existUserNameOrEmail</code>方法。用于查找是否在用户表已存在username或email，存在则发回<code>true</code>，否则返回<code>false</code></li></ol><pre><code>package mobileshop.dao;
+
+import mobileshop.entity.UserEntity;
+import org.apache.ibatis.annotations.Param;
+
+public interface UserDao {
+    int save(UserEntity ue);
+
+    boolean existUserNameOrEmail(@Param(&quot;username&quot;) String username, @Param(&quot;email&quot;) String email);
+}
+</code></pre><ol start=2><li><code>UserDaoMapper.xml</code>新增对应<code>existUserNameOrEmail</code>方法的配置，请完善其中的SQL语句。</li></ol><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;  
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+
+&lt;mapper namespace=&quot;mobileshop.dao.UserDao&quot;&gt;
+	&lt;insert id=&quot;save&quot; parameterType=&quot;mobileshop.entity.UserEntity&quot;&gt;
+		请完善SQL语句
+	&lt;/insert&gt;
+	&lt;select id=&quot;existUserNameOrEmail&quot; parameterType=&quot;string&quot; resultType=&quot;boolean&quot;&gt;
+		请完善SQL语句
+	&lt;/select&gt;
+&lt;/mapper&gt;
+</code></pre><ol start=3><li>完善<code>UserService</code>接口和<code>UserServiceImpl</code>类。</li></ol><ul><li><code>UserService.java</code></li></ul><pre><code>package mobileshop.service;
+
+import mobileshop.entity.UserEntity;
+
+public interface UserService {
+
+    /**
+     * 保存用户信息
+     * @param ue
+     * @return
+     */
+    boolean save(UserEntity ue);
+
+    /**
+     * 存在 username 或 email 则返回 true
+     * @param username
+     * @param email
+     * @return
+     */
+    boolean existUserNameOrEmail(String username,String email);
+}
+
+</code></pre><ul><li><code>UserServiceImpl.java</code></li></ul><pre><code>package mobileshop.service;
+
+import mobileshop.dao.UserDao;
+import mobileshop.entity.UserEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserServiceImpl implements UserService{
+
+    @Autowired
+    private UserDao userDao;
+
+    @Override
+    public boolean save(UserEntity ue) {
+        return userDao.save(ue)&gt;0;
+    }
+
+    @Override
+    public boolean existUserNameOrEmail(String username,String email){
+        return userDao.existUserNameOrEmail(username,email);
+    }
+
+}
+
+</code></pre><ol start=4><li>完善<code>RegisterController.signup</code>方法，加入对用户提交数据的校验，校验逻辑如下：
+（1）如果username、password、email 任意一个为空，则返回消息<code>用户名，密码，邮箱均不能为空</code>。
+（2）如果username或email 已经存在与用户表，则返回消息<code>用户名或Email已存在</code>。
+（3）如果用户注册数据成功保存到数据库，则返回消息<code>注册成功</code>，否则返回消息<code>注册失败</code>。</li></ol><ul><li>参考代码如下：</li></ul><pre><code>@RequestMapping(value = &quot;/signup&quot;)
+    public String signUp(ModelMap map,String username, String password, String email){
+        String result=&quot;msg&quot;;
+        UserEntity ue=new UserEntity();
+        ue.setPassword(password);
+        ue.setUsername(username);
+        ue.setEmail(email);
+        if(请完善此处代码) {
+            if(请完善此处代码) {
+                if (请完善此处代码) {
+                    map.put(&quot;msg&quot;, &quot;注册成功&quot;);
+                } else {
+                    map.put(&quot;msg&quot;, &quot;注册失败&quot;);
+                }
+            }else{
+                map.put(&quot;msg&quot;, &quot;用户名或Email已存在&quot;);
+            }
+        }else{
+            map.put(&quot;msg&quot;, &quot;用户名，密码，邮箱均不能为空&quot;);
+        }
+        return result;
+    }
+</code></pre></div><button id=scroll-top-btn>↑顶部</button><div id=outerdiv style=position:fixed;top:0;left:0;background:rgba(0,0,0,.7);z-index:2;width:100%;height:100%;display:none><div id=innerdiv style=position:absolute><img id=bigimg style="border:5px solid #fff" src></div></div><div id=category style=display:none;position:fixed;right:10px;bottom:10px;width:10em></div><script src=https://huangzhiyi.github.io/js/highlight.pack.js></script><script src=https://huangzhiyi.github.io/js/highlightjs-line-numbers.min.js></script><script>hljs.initHighlightingOnLoad();hljs.initLineNumbersOnLoad();$(function(){$('div.tbl-start').nextUntil('div.tbl-end','table').addClass('tbl');$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});$("#scroll-top-btn").click(function(){document.body.scrollTop=document.documentElement.scrollTop=0;});});$(function(){var notdefault=0;$('.post').find('h1,h2').each(function(index,item){notdefault=1;$(this).attr('id','c'+index);var headerText=$(this).text();var tagName=$(this)[0].tagName.toLowerCase();var tagIndex=parseInt(tagName.charAt(1));if(tagIndex==1)
+$('#category').append($('<a name="c'+index+'"  class="cbtn article-ch'+tagIndex+'" >'+headerText+'</a>'));else
+$('#category').append($('<a name="c'+index+'"  class="cbtn article-ch'+tagIndex+'" > '+headerText+'</a>'));});if(notdefault==0){$('#c-default').css('display','block');}
+var navH=$(".post").offset().top;$(window).scroll(function(){var scroH=$(this).scrollTop();if(scroH>=navH){$("#category-ct").css({position:'fixed'});$("#category-ct").animate({top:'30px'},1000);}
+else{$("#category-ct").css({position:'static',top:'0px'});}});$(document).on('click','.cbtn',function(e){$('html,body').animate({scrollTop:$("#"+this.name).offset().top},500);});});</script><script src=https://huangzhiyi.github.io/js/clipboard.min.js></script><script src=https://huangzhiyi.github.io/js/codecopy.bundle.js?20210612></script></main><script src=https://huangzhiyi.github.io/js/jquery-min.js></script><script src=https://huangzhiyi.github.io/js/heis-custom-min.js?211006></script></body></html>
