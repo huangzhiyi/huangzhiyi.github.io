@@ -45,7 +45,7 @@ div.codecopy-btn {
     vertical-align: top;
     padding-right: 5px;
     white-space: nowrap;
-	padding-right:3px;
+	  padding-right:3px;
     /* your custom style here */
 }
 .succ{
@@ -65,7 +65,7 @@ div.codecopy-btn {
 }
 .sql-panel{
     width: 100rem;
-    max-width:100%;	
+    max-width:100%;
 }
 .sql-panel div{
 	margin-top:0.5rem;
@@ -144,7 +144,20 @@ table.tbl tr:nth-child(even)
 	right:8%;
 	bottom:8%;
 	cursor: pointer;
-    box-shadow: 0.2rem 0.2rem 0.2rem #EEEEEE, 0.2rem 0.2rem 0.2rem #EEEEEE;
+  box-shadow: 0.2rem 0.2rem 0.2rem #EEEEEE, 0.2rem 0.2rem 0.2rem #EEEEEE;
+	font-family:"PT Sans", Helvetica, Arial, sans-serif;
+	border-radius: 4px;
+	border:0;
+	background-color: #F9D342;
+}
+/*切换代码主题按钮*/
+#switch-theme-btn{
+  font-size: 1em;
+	position:fixed;
+	right:8%;
+	bottom:15%;
+	cursor: pointer;
+  box-shadow: 0.2rem 0.2rem 0.2rem #EEEEEE, 0.2rem 0.2rem 0.2rem #EEEEEE;
 	font-family:"PT Sans", Helvetica, Arial, sans-serif;
 	border-radius: 4px;
 	border:0;

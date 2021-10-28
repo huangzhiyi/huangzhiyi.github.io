@@ -62,4 +62,64 @@ function setClipboardText(event){
     }else if(window.clipboardData){
         return window.clipboardData.setData("text", textData);
     }
-};
+}
+
+/**
+*cookie 取值
+*/
+function getCookie(cname){
+  var name = cname + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0; i<ca.length; i++)
+  {
+    var c = ca[i].trim();
+    if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+  }
+  return "";
+}
+
+/**
+*设值到cookie
+*/
+function setCookie(cname,cvalue,exdays){
+  var d = new Date();
+  d.setTime(d.getTime()+(exdays*24*60*60*1000));
+  var expires = "expires="+d.toGMTString();
+  document.cookie = cname + "=" + cvalue + "; " + expires+"; path=/";
+}
+
+/**
+*加载CSS
+*/
+function includeLinkStyle(url) {
+  var link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.type = "text/css";
+  link.href = url;
+  document.getElementsByTagName("head")[0].appendChild(link);
+}
+
+function setTheme(theme){
+  setCookie("theme",theme,1);
+  var eleLinks = document.querySelectorAll('link[title]');
+  eleLinks.forEach(function (link) {
+            link.disabled = true;
+            if (link.getAttribute('title') == theme) {
+                link.disabled = false;
+            }
+        });
+}
+
+function switchTheme(){
+  var darkLink = document.getElementById("dark_theme_css");
+  var lightLink = document.getElementById("light_theme_css");
+  if(getCookie("theme")!="light"){
+    lightLink.disabled=false;
+    darkLink.disabled=true;
+    setCookie("theme","light",7);
+  }else{
+    lightLink.disabled=true;
+    darkLink.disabled=false;
+    setCookie("theme","dark",7);
+  }
+}
