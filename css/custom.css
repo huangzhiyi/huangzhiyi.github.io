@@ -46,8 +46,10 @@ div.codecopy-btn {
     padding-right: 5px;
     white-space: nowrap;
 	  padding-right:3px;
+    width:1.5rem;
     /* your custom style here */
 }
+
 .succ{
 	color:green;
 	font-weight: 600;
