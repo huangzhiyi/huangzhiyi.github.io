@@ -45,6 +45,7 @@ function showSidebar(){
 	$('#hide-sb-btn').toggle();
 	$('#show-sb-btn').toggle();
 	$('#mainpanel').css('margin','');
+  window.location.href="#side-title";
 }
 
 function setClipboardText(event){
