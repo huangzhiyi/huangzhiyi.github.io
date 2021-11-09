@@ -20,8 +20,8 @@ Web企业级项目实战 Part 4 - 完成用户激活功能 【版本】 当前�
 前端采用 AJAX 的方式请求登录，API 说明如下
 项 描述 登录请求API http://localhost:8082/activation 请求方法 get 必要参数 username -&amp;gt; 用户名，code -&amp;gt; 激活码
 激活校验要求 只有tab_user.</description></item><item><title>Web企业级项目实战 Part 3 - 完成用户注册功能</title><link>https://huangzhiyi.github.io/web-training-03/</link><pubDate>Mon, 08 Nov 2021 00:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/web-training-03/</guid><description>«返回课程汇总页面
-Web企业级项目实战 Part 3 - 完成用户注册功能 【版本】 当前版本号v20211108
-版本 修改说明 v20211108 初始化版本
+Web企业级项目实战 Part 3 - 完成用户注册功能 【版本】 当前版本号v20211109
+版本 修改说明 v20211109 增加前端校验说明 v20211108 初始化版本
 【实验名称】 实验3.1 完成用户注册功能 【实验目的】 掌握 AJAX 请求前后端开发技巧 掌握注册功能开发 【实验环境】 内存：至少4G 硬盘：至少空余10G 操作系统: 64位 Windows系统。 【实验资源】 下载地址： 链接：https://pan.baidu.com/s/1PTkWTRhSj0Gfdj08ETTBOQ
 提取码：heis
 【实验要求】 完成旅游网站的注册功能。用户访问http://localhost:8082/register.html，输入用户名、密码、Email、姓名、手机号、性别、出生日期和验证码可以实现注册。
