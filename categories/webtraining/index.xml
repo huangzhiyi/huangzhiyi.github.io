@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>webtraining on Heis</title><link>https://huangzhiyi.github.io/categories/webtraining/</link><description>Recent content in webtraining on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 08 Nov 2021 03:44:00 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/categories/webtraining/index.xml" rel="self" type="application/rss+xml"/><item><title>Web企业级项目实战 Part 5 - 完成用户登录功能</title><link>https://huangzhiyi.github.io/web-training-05/</link><pubDate>Mon, 08 Nov 2021 03:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/web-training-05/</guid><description>«返回课程汇总页面
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>webtraining on Heis</title><link>https://huangzhiyi.github.io/categories/webtraining/</link><description>Recent content in webtraining on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 09 Nov 2021 03:44:00 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/categories/webtraining/index.xml" rel="self" type="application/rss+xml"/><item><title>Web企业级项目实战 Part 6 - 完成项目首页动态加载数据功能</title><link>https://huangzhiyi.github.io/web-training-06/</link><pubDate>Tue, 09 Nov 2021 03:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/web-training-06/</guid><description>«返回课程汇总页面
+Web企业级项目实战 Part 6 - 完成项目首页动态加载数据功能 【版本】 当前版本号v20211109
+版本 修改说明 v20211109 初始化版本
+【实验名称】 实验6.1 完成项目产品目录菜单加载功能 【实验目的】 掌握前后端开发技巧 【实验环境】 内存：至少4G 硬盘：至少空余10G 操作系统: 64位 Windows系统。 【实验资源】 下载地址： 链接：https://pan.baidu.com/s/1PTkWTRhSj0Gfdj08ETTBOQ
+提取码：heis
+【实验要求】 完成项目首页产品目录加载功能。实现用户访问首页或产品目录页面时候可以展示所有的产品目录菜单链接。 前端请求 API 说明如下
+项 描述 登录请求API http://localhost:8082/category/findAll 请求方法 GET
+响应的 JSON 格式数据示例代码： [{&amp;quot;cid&amp;quot;:1,&amp;quot;cname&amp;quot;:&amp;quot;门票&amp;quot;},
+{&amp;quot;cid&amp;quot;:2,&amp;quot;cname&amp;quot;:&amp;quot;酒店&amp;quot;},
+{&amp;quot;cid&amp;quot;:3,&amp;quot;cname&amp;quot;:&amp;quot;香港车票&amp;quot;},
+{&amp;quot;cid&amp;quot;:4,&amp;quot;cname&amp;quot;:&amp;quot;出境游&amp;quot;},
+{&amp;quot;cid&amp;quot;:5,&amp;quot;cname&amp;quot;:&amp;quot;国内游&amp;quot;},
+{&amp;quot;cid&amp;quot;:6,&amp;quot;cname&amp;quot;:&amp;quot;港澳游&amp;quot;},
+{&amp;quot;cid&amp;quot;:7,&amp;quot;cname&amp;quot;:&amp;quot;抱团定制&amp;quot;},
+{&amp;quot;cid&amp;quot;:8,&amp;quot;cname&amp;quot;:&amp;quot;全球自由行&amp;quot;}]
+功能实现: 完善CategoryController.</description></item><item><title>Web企业级项目实战 Part 5 - 完成用户登录功能</title><link>https://huangzhiyi.github.io/web-training-05/</link><pubDate>Mon, 08 Nov 2021 03:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/web-training-05/</guid><description>«返回课程汇总页面
 Web企业级项目实战 Part 5 - 完成用户登录功能 【版本】 当前版本号v20211108
 版本 修改说明 v20211108 初始化版本
 【实验名称】 实验5.1 完成用户注册功能 【实验目的】 掌握 AJAX 请求前后端开发技巧 【实验环境】 内存：至少4G 硬盘：至少空余10G 操作系统: 64位 Windows系统。 【实验资源】 下载地址： 链接：https://pan.baidu.com/s/1PTkWTRhSj0Gfdj08ETTBOQ
@@ -39,4 +54,4 @@ Web企业级项目实战 Part 2 - 导入项目并进行开发调试 【版本】
 Web企业级项目实战 Part 1 - 搭建开发环境 【版本】 当前版本号v20211107
 版本 修改说明 v20211107 新增 Redis 和 谷歌浏览器的安装 v20211104 初始化版本
 【实验名称】 实验1.1 搭建 Java Web 开发环境 【实验目的】 掌握 JDK 的安装 掌握 IDEA 的安装与配置 掌握 Maven 的安装与配置 掌握 Tomcat 的安装、配置与使用 掌握 MySQL 安装和相应数据库客户端的使用 掌握 Postman 的安装和基本使用 掌握 Redis 的安装和运行 【实验环境】 内存：至少4G 硬盘：至少空余10G 操作系统: 64位 Windows系统。 【实验资源】 下载地址： 链接：https://pan.</description></item><item><title>Web企业级项目实战 课程资源汇总</title><link>https://huangzhiyi.github.io/web-training-summary/</link><pubDate>Wed, 03 Nov 2021 00:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/web-training-summary/</guid><description>课程报告模板和实验资源下载 链接：https://pan.baidu.com/s/1PTkWTRhSj0Gfdj08ETTBOQ 提取码：heis
-课程设计报告要求 必须使用老师提供的课程设计报告模板。 必须保留封面 实验步骤每一步都有详细的文字操作步骤说明，步骤顺序号，代码或者截图。 截图只需要截关键部分信息，不能全屏截图。可以用红色框或箭头标注截图重点信息。推荐使用 Snipaste（官网下载或网盘下载） 进行截图和标记。 每个同学要完成2篇周记 课程内容 （1）Web企业级项目实战 Part 1 - 搭建开发环境 （2）Web企业级项目实战 Part 2 - 导入项目并进行开发调试 （3）Web企业级项目实战 Part 3 - 完成用户注册功能 （4）Web企业级项目实战 Part 4 - 完成用户激活功能 （5）Web企业级项目实战 Part 5 - 完成用户登录功能</description></item></channel></rss>
+课程设计报告要求 必须使用老师提供的课程设计报告模板。 必须保留封面 实验步骤每一步都有详细的文字操作步骤说明，步骤顺序号，代码或者截图。 截图只需要截关键部分信息，不能全屏截图。可以用红色框或箭头标注截图重点信息。推荐使用 Snipaste（官网下载或网盘下载） 进行截图和标记。 每个同学要完成2篇周记 课程内容 （1）Web企业级项目实战 Part 1 - 搭建开发环境 （2）Web企业级项目实战 Part 2 - 导入项目并进行开发调试 （3）Web企业级项目实战 Part 3 - 完成用户注册功能 （4）Web企业级项目实战 Part 4 - 完成用户激活功能 （5）Web企业级项目实战 Part 5 - 完成用户登录功能 （6）Web企业级项目实战 Part 6 - 完成项目首页动态加载数据功能</description></item></channel></rss>
