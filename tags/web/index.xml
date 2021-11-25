@@ -55,8 +55,8 @@ Web企业级项目实战 Part 3 - 完成用户注册功能 【版本】 当前�
 &amp;quot;username&amp;quot;: &amp;quot;zhangsan&amp;quot;,
 &amp;quot;password&amp;quot;: &amp;quot;123456&amp;quot;,
 &amp;quot;email&amp;quot;: &amp;quot;zhangsan@qq.</description></item><item><title>Web企业级项目实战 Part 2 - 导入项目并进行开发调试</title><link>https://huangzhiyi.github.io/web-training-02/</link><pubDate>Sat, 06 Nov 2021 00:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/web-training-02/</guid><description>«返回课程汇总页面
-Web企业级项目实战 Part 2 - 导入项目并进行开发调试 【版本】 当前版本号v20211106
-版本 修改说明 v20211106 初始化版本
+Web企业级项目实战 Part 2 - 导入项目并进行开发调试 【版本】 当前版本号v20211125
+版本 修改说明 v20211125 增加常见问题 v20211106 初始化版本
 【实验名称】 实验2.1 导入 Web 项目 【实验目的】 掌握 Java Web 项目的导入和配置 掌握数据库的连接和配置 【实验环境】 内存：至少4G 硬盘：至少空余10G 操作系统: 64位 Windows系统。 【实验资源】 下载地址： 链接：https://pan.baidu.com/s/1PTkWTRhSj0Gfdj08ETTBOQ
 提取码：heis
 资源说明： travel-stu.zip 【实验步骤】 获取travel-stu.zip使用 IDEA 打开 travel-stu 项目目录。 导入项目以后，打开 IDEA File -&amp;gt; Settings菜单。找到Maven 选项，指向你安装的 Maven 路径。</description></item><item><title>Web企业级项目实战 Part 1 - 搭建开发环境</title><link>https://huangzhiyi.github.io/web-training-01/</link><pubDate>Thu, 04 Nov 2021 00:44:00 +0800</pubDate><guid>https://huangzhiyi.github.io/web-training-01/</guid><description>«返回课程汇总页面
