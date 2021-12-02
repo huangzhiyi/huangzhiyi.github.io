@@ -5,9 +5,11 @@
 【实验目的】 部署 Flume 【实验环境】 Windows 7 以上64位操作系统 JDK8 VMWare Workstation Pro Hadoop 2.7.3 CentOS 7 【实验资源】 下载链接：https://pan.baidu.com/s/1ghde86wcK6pwg1fdSSWg0w
 提取码：v3wv
 【实验步骤】 在NodeA节点运行以下语句，注意提升为root权限执行。 创建 Flume 的安装目录。 su
-mkdir /opt/flume chown hadoop:wheel /opt/flume
+mkdir /opt/flume
+chown hadoop:wheel /opt/flume
 提升 root 用户权限执行以下语句，加入 ZooKeeper 环境变量。 su
-echo &amp;quot;export FLUME_HOME=/opt/flume export PATH=\$FLUME_HOME/bin:\$PATH&amp;quot; &amp;gt;&amp;gt;/etc/profile
+echo &amp;quot;export FLUME_HOME=/opt/flume
+export PATH=\$FLUME_HOME/bin:\$PATH&amp;quot; &amp;gt;&amp;gt;/etc/profile
 切换回 hadoop 用户 su hadoop
 使环境变量生效。 source /etc/profile
 使用 hadoop 登录NodeA节点。 su hadoop
@@ -20,17 +22,20 @@ echo &amp;quot;export FLUME_HOME=/opt/flume export PATH=\$FLUME_HOME/bin:\$PATH&
 【实验步骤】 在NodeA、NodeB、NodeC三个节点分别运行以下语句，注意提升为root权限执行。 分别创建 ZooKeeper 的安装目录、数据存放目录和配置文件存放目录。 su
 mkdir /opt/zookeeper
 mkdir /opt/zookeeper_data
-mkdir /opt/zookeeper_config chown hadoop:wheel /opt/zookeeper
+mkdir /opt/zookeeper_config
+chown hadoop:wheel /opt/zookeeper
 chown hadoop:wheel /opt/zookeeper_data
 chown hadoop:wheel /opt/zookeeper_config
 提升 root 用户权限执行以下语句，加入 ZooKeeper 环境变量。 su
-echo &amp;quot;export ZK_HOME=/opt/zookeeper export PATH=\$ZK_HOME/bin:\$PATH:.</description></item><item><title>Hadoop Part 8 - 部署 HBase 和 HBase 常用操作(选做)</title><link>https://huangzhiyi.github.io/hadoop-c08/</link><pubDate>Thu, 20 May 2021 21:20:00 +0800</pubDate><guid>https://huangzhiyi.github.io/hadoop-c08/</guid><description>«返回课程汇总页面
+echo &amp;quot;export ZK_HOME=/opt/zookeeper
+export PATH=\$ZK_HOME/bin:\$PATH:.</description></item><item><title>Hadoop Part 8 - 部署 HBase 和 HBase 常用操作(选做)</title><link>https://huangzhiyi.github.io/hadoop-c08/</link><pubDate>Thu, 20 May 2021 21:20:00 +0800</pubDate><guid>https://huangzhiyi.github.io/hadoop-c08/</guid><description>«返回课程汇总页面
 【版本】 当前版本号v20210601
 版本 修改说明 v20210601 修正文件夹拷贝的命令错误和一些标点符号的错误 v20210520 初始化版本
 实验8.1 - 部署 HBase 完全分布式 【实验名称】 实验8.1 - 部署 HBase 完全分布式
 【实验目的】 部署 HBase 完全分布式 【实验环境】 Windows 7 以上64位操作系统 JDK8 VMWare Workstation Pro Hadoop 2.7.3 CentOS 7 【实验资源】 Hadoop 2.X HBase 1.X 下载链接：https://pan.baidu.com/s/1ghde86wcK6pwg1fdSSWg0w
 提取码：v3wv
-【实验步骤】 在NodeA、NodeB、NodeC三个节点分别运行以下语句，创建 HBase 的安装目录。 sudo mkdir /opt/hbase sudo chown hadoop:wheel /opt/hbase
+【实验步骤】 在NodeA、NodeB、NodeC三个节点分别运行以下语句，创建 HBase 的安装目录。 sudo mkdir /opt/hbase
+sudo chown hadoop:wheel /opt/hbase
 使用 hadoop 登录NodeA节点。 su hadoop
 上传 HBase 安装包hbase-1.</description></item><item><title>Hadoop Part 7 - 部署 Hive 和 Hive 常用操作</title><link>https://huangzhiyi.github.io/hadoop-c07/</link><pubDate>Fri, 16 Apr 2021 23:20:00 +0800</pubDate><guid>https://huangzhiyi.github.io/hadoop-c07/</guid><description>«返回课程汇总页面
 【版本】 当前版本号v20210527
@@ -40,7 +45,8 @@ echo &amp;quot;export ZK_HOME=/opt/zookeeper export PATH=\$ZK_HOME/bin:\$PATH:.<
 提取码：v3wv
 【实验步骤】 使用 hadoop 登录NodeA节点。 su hadoop
 Hive 的安装需要依赖 MySQL 或 MariaDB，这里我们选择 MariaDB。这里需要提权安装，如果安装失败请检查源配置文件/etc/yum.repos.d/local.repo或者光盘是否挂载成功。 sudo yum install mariadb mariadb-server
-启动 MariaDB 并设置为开机启动。 sudo systemctl start mariadb sudo systemctl enable mariadb
+启动 MariaDB 并设置为开机启动。 sudo systemctl start mariadb
+sudo systemctl enable mariadb
 使用 MariaDB 的安全安装选项。 mysql_secure_installation
 以下为弹出选项的输入值</description></item><item><title>Hadoop Part 6 - 编写 MapReduce 程序</title><link>https://huangzhiyi.github.io/hadoop-c06/</link><pubDate>Sun, 11 Apr 2021 23:20:00 +0800</pubDate><guid>https://huangzhiyi.github.io/hadoop-c06/</guid><description>«返回课程汇总页面
 【版本】 当前版本号v20210411
