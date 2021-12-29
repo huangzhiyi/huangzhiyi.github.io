@@ -323,14 +323,14 @@ var Search = {
     var searchterms = [];
     var excluded = [];
     var hlterms = [];
-    var tmp = query.split(/\s+/);
+    var tmp = query.split(\s+/);
     var objectterms = [];
     for (i = 0; i < tmp.length; i++) {
       if (tmp[i] !== "") {
           objectterms.push(tmp[i].toLowerCase());
       }
 
-      if ($u.indexOf(stopwords, tmp[i].toLowerCase()) != -1 || tmp[i].match(/^\d+$/) ||
+      if ($u.indexOf(stopwords, tmp[i].toLowerCase()) != -1 || tmp[i].match(^\d+$/) ||
           tmp[i] === "") {
         // skip this "word"
         continue;
@@ -414,7 +414,7 @@ var Search = {
         if (DOCUMENTATION_OPTIONS.FILE_SUFFIX === '') {
           // dirhtml builder
           var dirname = item[0] + '/';
-          if (dirname.match(/\/index\/$/)) {
+          if (dirname.match(\/index\/$/)) {
             dirname = dirname.substring(0, dirname.length-6);
           } else if (dirname == 'index/') {
             dirname = '';

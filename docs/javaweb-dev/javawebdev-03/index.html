@@ -1,0 +1,540 @@
+<!doctype html><html lang=zh><meta charset=utf-8><meta name=viewport content="width=device-width"><title>Java后台应用项目开发 Part 3 - MyBatis 框架的使用 | Java后台应用项目开发 课程资源汇总 | Heis</title><meta name=generator content="Hugo Eureka 0.8.4"><link rel=stylesheet href=/css/eureka.min.css><script defer src=/js/eureka.min.js></script><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" as=style onload="this.onload=null;this.rel='stylesheet'"><script src=/static/js/jquery-3.6.0.min.js></script><script src=/static/js/heis.js></script><link rel=stylesheet href=/static/css/heis.css media=print onload="this.media='all';this.onload=null" crossorigin><link rel=stylesheet href=/static/css/highlight-css/solarized-light.min.css media=print onload="this.media='all';this.onload=null" crossorigin><script defer src=/static/js/highlight.min.js crossorigin></script><script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script><script defer src=/static/js/highlightjs-line-numbers.min.js></script><link rel=icon type=image/png sizes=32x32 href=/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_2.png><link rel=apple-touch-icon sizes=180x180 href=/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_2.png><meta name=description content="Java后台应用项目开发 Part 3 - MyBatis 框架的使用"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"课程文档","item":"/docs/"},{"@type":"ListItem","position":2,"name":"Java后台应用项目开发 课程资源汇总","item":"/docs/javaweb-dev/"},{"@type":"ListItem","position":3,"name":"Java后台应用项目开发 Part 3 - MyBatis 框架的使用","item":"/docs/javaweb-dev/javawebdev-03/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/docs/javaweb-dev/javawebdev-03/"},"headline":"Java后台应用项目开发 Part 3 - MyBatis 框架的使用 | Java后台应用项目开发 课程资源汇总 | Heis","datePublished":"2021-09-28T00:20:00+08:00","dateModified":"2021-09-28T00:20:00+08:00","wordCount":2789,"publisher":{"@type":"Person","name":"C. Wang","logo":{"@type":"ImageObject","url":"/images/icon.png"}},"description":"Java后台应用项目开发 Part 3 - MyBatis 框架的使用"}</script><meta property="og:title" content="Java后台应用项目开发 Part 3 - MyBatis 框架的使用 | Java后台应用项目开发 课程资源汇总 | Heis"><meta property="og:type" content="article"><meta property="og:image" content="/images/icon.png"><meta property="og:url" content="/docs/javaweb-dev/javawebdev-03/"><meta property="og:description" content="Java后台应用项目开发 Part 3 - MyBatis 框架的使用"><meta property="og:locale" content="zh"><meta property="og:site_name" content="Heis"><meta property="article:published_time" content="2021-09-28T00:20:00+08:00"><meta property="article:modified_time" content="2021-09-28T00:20:00+08:00"><meta property="article:section" content="docs"><meta property="article:tag" content="java"><meta property="article:tag" content="web"><meta property="og:see_also" content="/docs/javaweb-dev/javawebdev-02/"><meta property="og:see_also" content="/docs/javaweb-dev/javawebdev-01/"><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?f58b6a2675cf52000232edb4d109eccc";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><body class="flex flex-col min-h-screen"><header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode")
+if(((storageColorScheme=='Auto'||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches)||storageColorScheme=="Dark"){document.getElementsByTagName('html')[0].classList.add('dark')}</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="mr-6 text-primary-text text-xl font-bold">Heis</a>
+<button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+<i class="fas fa-bars"></i></button><div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20"><div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0"><a href=/posts/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">文章</a>
+<a href=/docs/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 selected-menu-item mr-4">课程文档</a></div><div class=flex><div class="relative pt-4 md:pt-0"><div class="cursor-pointer hover:text-eureka" id=lightDarkMode><i class="fas fa-adjust"></i></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id=is-open></div><div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40" id=lightDarkOptions><span class="px-4 py-1 hover:text-eureka" name=Light>浅色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Dark>深色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Auto>自动</span></div></div></div></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id=is-open-mobile></div></nav><script>let element=document.getElementById('lightDarkMode')
+if(storageColorScheme==null||storageColorScheme=='Auto'){document.addEventListener('DOMContentLoaded',()=>{window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change',switchDarkMode)})}else if(storageColorScheme=="Light"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'sun')
+element.firstElementChild.classList.add('fa-sun')}else if(storageColorScheme=="Dark"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'moon')
+element.firstElementChild.classList.add('fa-moon')}
+document.addEventListener('DOMContentLoaded',()=>{getcolorscheme();switchBurger();});</script></div></header><main class="flex-grow pt-16"><div class=pl-scrollbar><div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto"><div class=lg:pt-12><div class="flex flex-col md:flex-row bg-secondary-bg rounded"><div class="md:w-1/4 lg:w-1/5 border-r"><div class="sticky top-16 pt-6"><div id=sidebar-title class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text"><span class=font-semibold>目录</span>
+<i class="fas fa-caret-right ml-1"></i></div><div id=sidebar-toc class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent"><div class="flex flex-wrap ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded"><a class=hover:text-eureka href=/docs/javaweb-dev/>Java后台应用项目开发 课程资源汇总</a></div><ul class=pl-6><li class=py-2><div><a class=hover:text-eureka href=/docs/javaweb-dev/javawebdev-05/>Java后台应用项目开发 Part 5 - SSM框架整合和开发</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/javaweb-dev/javawebdev-04/>Java后台应用项目开发 Part 4 - Spring 框架的使用</a></div></li><li class=py-2><div><a class="text-eureka hover:text-eureka" href=/docs/javaweb-dev/javawebdev-03/>Java后台应用项目开发 Part 3 - MyBatis 框架的使用</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/javaweb-dev/javawebdev-02/>Java后台应用项目开发 Part 2 - MVC模式开发与 SpringMVC 框架开发</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/javaweb-dev/javawebdev-01/>Java后台应用项目开发 Part 1 - 搭建 Java EE 开发环境</a></div></li></ul></div></div></div><div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8"><div class="w-full lg:w-3/4 pl-6 ml-0 mr-auto"><h1 class="font-bold text-3xl text-primary-text">Java后台应用项目开发 Part 3 - MyBatis 框架的使用</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i><span>2021-09-28</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i><span>6分钟阅读时长</span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i><a href=/categories/javaweb/ class=hover:text-eureka>javaweb</a></div></div></div><div class=flex><div class="w-full lg:w-3/4 px-6"><div class=content><p><a href=/javawebdev-summary/>«返回课程汇总页面</a></p><h2 id=java后台应用项目开发-part-3---mybatis-框架的使用>Java后台应用项目开发 Part 3 - MyBatis 框架的使用</h2><h2 id=版本>【版本】</h2><p>当前版本号<code>v20211012</code></p><div class=tbl-start></div><table><thead><tr><th>版本</th><th>修改说明</th></tr></thead><tbody><tr><td>v20211012</td><td>修正 spring-mvc.xml 注释</td></tr><tr><td>v20211009</td><td>修正 SqlMapConfig.xml 内容，缺失了一个"，新增resource目录相关说明</td></tr><tr><td>v20210927</td><td>初始化版本</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h3 id=实验名称-实验31-新建-mybatis-项目>【实验名称】 实验3.1 新建 MyBatis 项目</h3><h3 id=实验目的>【实验目的】</h3><ul><li>掌握新建 Maven 项目</li><li>掌握 MyBatis 框架的开发</li></ul><h3 id=实验环境>【实验环境】</h3><ul><li>内存：至少4G</li><li>硬盘：至少空余10G</li><li>操作系统: 64位 Windows系统。</li></ul><h3 id=实验资源>【实验资源】</h3><ul><li>IDEA</li><li>Maven 3.6</li></ul><h3 id=实验步骤>【实验步骤】</h3><ol><li><p>参考<a href=javawebdev-02>实验2.2</a>,新建一个新的 Maven Web 开发项目<code>MyBatis</code>。</p></li><li><p>在 POM.xml 文件中加入依赖包的配置。</p></li></ol><pre><code>&lt;dependencies&gt;
+        &lt;!-- JUnit 框架 --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;junit&lt;/groupId&gt;
+            &lt;artifactId&gt;junit&lt;/artifactId&gt;
+            &lt;version&gt;4.13.1&lt;/version&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;!-- MySQL 连接驱动 --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;mysql&lt;/groupId&gt;
+            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+            &lt;version&gt;5.1.38&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- MyBatis 包 --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+            &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+            &lt;version&gt;3.5.4&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+</code></pre><ol start=3><li>在项目下新建目录<code>src\main\resources\db\migration</code>，用于存放数据库 SQL 脚本文件。
+<img src=/static/img/javawebdev-03/Snipaste_2021-09-28_10-43-38.jpg alt></li></ol><blockquote><p>注意这里 IDEA 显示的<code>db.migration</code>，并不是目录名称为<code>db.migration</code>，而是一个层级目录如下所示。</p></blockquote><pre><code>resources
+  |- db
+    |- migration
+</code></pre><ol start=4><li>新建2个 SQL 脚本文件。</li></ol><ul><li>创建新的库和数据库用户脚本<code>V001__CREATE_DB.sql</code>，内容如下</li></ul><pre><code>create database mobile_shop;
+create user 'mshop'@'localhost' identified by 'hudp3ymVq5pMU47h';
+create user 'mshop'@'%' identified by 'hudp3ymVq5pMU47h';
+grant all on mobile_shop.* to 'mshop'@'localhost';
+grant all on mobile_shop.* to 'mshop'@'%';
+</code></pre><ul><li>创建用户表的脚本<code>V002__CREATE_USER.sql</code>，内容如下</li></ul><pre><code>CREATE TABLE `ms_user` (
+	`user_id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY comment '用户ID',
+	`username` VARCHAR(50) NOT NULL comment '用户名',
+	`password` VARCHAR(50) NOT NULL comment '密码'
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
+
+insert into `ms_user` (`username`,`password`) values('zhangsan','123456');
+</code></pre><ol start=5><li>启动MySQL，使用 HeidiSQL 连接 MySQL，并依照序号，先后执行以上2个 SQL 脚本文件。正常执行以后，运行以下 SQL 脚本应该能够查询到一条记录。</li></ol><pre><code>use mobile_shop;
+select * from ms_user;
+</code></pre><ol start=6><li>编写以下配置文件。请注意存放的目录路径，没有该目录可以自己创建。
+<img src=/static/img/javawebdev-03/Snipaste_2021-09-28_10-57-31.jpg alt></li></ol><ul><li>数据库连接的配置文件<code>db.properties</code></li></ul><pre><code>driver=com.mysql.jdbc.Driver
+url=jdbc:mysql://localhost:3306/mobile_shop?useUnicode=true&amp;characterEncoding=UTF-8
+user=mshop
+pwd=hudp3ymVq5pMU47h
+</code></pre><ul><li>MyBatis 配置文件<code>SqlMapConfig.xml</code></li></ul><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;  
+&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+
+&lt;configuration&gt;
+	&lt;!-- 引用db.properties配置文件 --&gt;
+	&lt;properties resource=&quot;db.properties&quot;/&gt;
+	&lt;environments default=&quot;environment&quot;&gt;
+		&lt;environment id=&quot;environment&quot;&gt;
+			&lt;!-- JDBC类型：有提交和回滚的设置 --&gt;
+			&lt;transactionManager type=&quot;JDBC&quot; /&gt;
+			&lt;!-- POOLED类型：数据库连接池 --&gt;
+			&lt;!-- 配置数据库连接信息 --&gt;
+			&lt;dataSource type=&quot;POOLED&quot;&gt;
+				&lt;!-- value的值引用db.properties中的值 --&gt;
+				&lt;property name=&quot;driver&quot; value=&quot;${driver}&quot; /&gt;
+				&lt;property name=&quot;url&quot; value=&quot;${url}&quot;/&gt;
+				&lt;property name=&quot;username&quot; value=&quot;${user}&quot; /&gt;
+				&lt;property name=&quot;password&quot; value=&quot;${pwd}&quot; /&gt;
+			&lt;/dataSource&gt;
+		&lt;/environment&gt;
+	&lt;/environments&gt;
+	&lt;!-- 配置映射文件 --&gt;
+	&lt;mappers&gt;
+		&lt;mapper resource=&quot;mobileshop/mapper/UserDaoMapper.xml&quot;/&gt;
+	&lt;/mappers&gt;
+&lt;/configuration&gt;
+</code></pre><ul><li>UserDao类对应的 MyBatis 映射配置<code>UserDaoMapper.xml</code></li></ul><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;  
+&lt;!DOCTYPE mapper PUBLIC &quot;-//ibatis.apache.org//DTD Mapper 3.0//EN&quot;      
+ &quot;http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd&quot;&gt;
+&lt;mapper namespace=&quot;mobileshop.dao.UserDao&quot;&gt;
+	&lt;select id=&quot;findAll&quot; resultType=&quot;mobileshop.entity.UserEntity&quot;&gt;
+		select * from ms_user
+	&lt;/select&gt;
+&lt;/mapper&gt;
+</code></pre><blockquote><p>注意这里 IDEA 显示的<code>mobileshop.mapper</code>，并不是目录名称为<code>mobileshop.mapper</code>，而是一个层级目录如下所示。</p></blockquote><pre><code>resources
+  |- mobileshop
+    |- mapper
+</code></pre><ol start=6><li>编写以下3个类。请注意存放的目录路径，没有该目录可以自己创建。
+<img src=/static/img/javawebdev-03/Snipaste_2021-09-28_10-49-51.jpg alt></li></ol><ul><li>访问用户表的 DAO 类<code>UserDao.java</code></li></ul><pre><code>package mobileshop.dao;
+
+import mobileshop.entity.UserEntity;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
+public interface UserDao {
+    List&lt;UserEntity&gt; findAll();
+}
+</code></pre><ul><li>装载用户信息的类<code>UserEntity.java</code>，注意观察 UserEntity 类与<code>ms_user</code>表之间，属性和列的对应关系。</li></ul><pre><code>package mobileshop.entity;
+
+public class UserEntity {
+    private Long userId;
+    private String username;
+    private String password;
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public Long getUserId() {
+        return userId;
+    }
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+}
+</code></pre><ul><li>获取 MyBatis 的 SqlSession 的类<code>MybatisUtils.java</code></li></ul><pre><code>package mobileshop.utils;
+import java.io.InputStream;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+public class MybatisUtils {
+	//获取SqlSession的方法
+	public static SqlSession getSqlSession(){
+		//SqlSessionFactoryBuilder ——&gt; SqlSessionFactory ——&gt; SqlSession
+		SqlSessionFactoryBuilder builder=new SqlSessionFactoryBuilder();
+		//加载sqlMapConfig.xml
+		ClassLoader loader= MybatisUtils.class.getClassLoader();//MybatisUtil：自己写的类都可以
+		InputStream inStream=loader.getResourceAsStream(&quot;SqlMapConfig.xml&quot;);
+		SqlSessionFactory factory=builder.build(inStream);
+		SqlSession session=factory.openSession();
+		return session;
+	}
+}
+</code></pre><ol start=7><li>编写单元测试用例，运行<code>testFindAll</code>方法，测试能否正常调用<code>UserDao</code>的<code>findAll</code>方法。正常情况下测试用例会通过。
+<img src=/static/img/javawebdev-03/Snipaste_2021-09-28_11-17-45.jpg alt></li></ol><pre><code>package mobileshop.dao;
+
+import mobileshop.entity.UserEntity;
+import mobileshop.utils.MybatisUtils;
+import org.apache.ibatis.session.SqlSession;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+public class UserDaoTest {
+
+    private SqlSession session;
+    private UserDao userDao;
+
+    @Before
+    public void beforeTest(){
+        session=MybatisUtils.getSqlSession();
+        userDao=session.getMapper(UserDao.class); //生成的一个动态代理
+    }
+
+    @Test
+    public void testFindAll(){
+        List&lt;UserEntity&gt; list= userDao.findAll();
+        assertTrue(list.size()&gt;0);
+    }
+
+    @After
+    public void closeSession(){
+        if(session!=null) {
+            session.commit();//提交更改
+            session.close();
+        }
+    }
+}
+</code></pre><h3 id=实验名称-实验32-开发用户的增删查改功能>【实验名称】 实验3.2 开发用户的增删查改功能</h3><h3 id=实验目的-1>【实验目的】</h3><ul><li>掌握 MyBatis 框架增删查改的开发</li></ul><h3 id=实验环境-1>【实验环境】</h3><ul><li>内存：至少4G</li><li>硬盘：至少空余10G</li><li>操作系统: 64位 Windows系统。</li></ul><h3 id=实验资源-1>【实验资源】</h3><ul><li>IDEA</li><li>Maven 3.6</li></ul><h3 id=实验要求>【实验要求】</h3><ol><li>在<code>UserDao</code>类新增以下方法。</li></ol><pre><code>package mobileshop.dao;
+
+import mobileshop.entity.UserEntity;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
+public interface UserDao {
+    /**
+     * 查找所有用户
+     * @return
+     */
+    List&lt;UserEntity&gt; findAll();
+
+    /**
+     * 按用户名查找用户
+     * @return
+     */
+    UserEntity findByUserName(String username);
+
+    /**
+     * 按用户名更新用户密码
+     * @return
+     */
+    int updatePassword(@Param(&quot;username&quot;)String username,@Param(&quot;password&quot;)String password);
+
+    /**
+     * 新增用户
+     * @param ue
+     * @return
+     */
+    int save(UserEntity ue);
+
+    /**
+     * 根据传入的用户名删除用户
+     * @param username
+     * @return
+     */
+    int deleteByUsername(String username);
+}
+
+</code></pre><ol start=2><li>测试用例修改如下，该测试用例会测试<code>UserDao</code>新增的所有方法。</li></ol><pre><code>package mobileshop.dao;
+
+import mobileshop.entity.UserEntity;
+import mobileshop.utils.MybatisUtils;
+import org.apache.ibatis.session.SqlSession;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+public class UserDaoTest {
+
+    private SqlSession session;
+    private UserDao userDao;
+
+    @Before
+    public void beforeTest(){
+        session=MybatisUtils.getSqlSession();
+        userDao=session.getMapper(UserDao.class); //生成的一个动态代理
+    }
+
+    @Test
+    public void testFindAll(){
+        List&lt;UserEntity&gt; list= userDao.findAll();
+        assertTrue(list.size()&gt;0);
+    }
+
+    @Test
+    /**
+     * 另一种方法运行findAll
+     */
+    public void testFindAll2(){
+        List&lt;UserEntity&gt; list= session.selectList(&quot;findAll&quot;);
+        assertTrue(list.size()&gt;0);
+    }
+
+    @Test
+    /**
+     * 测试 findByUserName 功能
+     */
+    public void testFindByUserName(){
+        String username=&quot;zhangsan&quot;;
+        UserEntity ue=userDao.findByUserName(username);
+        assertEquals(username,ue.getUsername());
+    }
+
+    @Test
+    /**
+     * 另一种方法调用 findByUserName 功能
+     */
+    public void testFindByUserName2(){
+        String username=&quot;zhangsan&quot;;
+        UserEntity ue=session.selectOne(&quot;findByUserName&quot;,username);
+        assertEquals(username,ue.getUsername());
+    }
+
+    @Test
+    /**
+     * 测试 updatePassword 功能
+     */
+    public void testUpdatePassword(){
+        int rs=userDao.updatePassword(&quot;zhangsan&quot;,&quot;123456&quot;);
+        assertEquals(1,rs);
+    }
+
+    @Test
+    /**
+     * 另一种方法调用 updatePassword 功能
+     */
+    public void testUpdatePassword2(){
+        Map&lt;String,String&gt; map=new HashMap&lt;&gt;();
+        map.put(&quot;username&quot;,&quot;zhangsan&quot;);
+        map.put(&quot;password&quot;,&quot;123456&quot;);
+        int rs=session.update(&quot;updatePassword&quot;,map);
+        assertEquals(1,rs);
+    }
+
+    @Test
+    /**
+     * 测试 save 功能
+     */
+    public void testSave(){
+        UserEntity u=new UserEntity();
+        u.setUsername(&quot;lisi&quot;);
+        u.setPassword(&quot;135790&quot;);
+        int rs=userDao.save(u);
+        assertEquals(1,rs);
+    }
+
+    @Test
+    /**
+     * 另一种方法调用 save 功能
+     */
+    public void testSave2(){
+        UserEntity u=new UserEntity();
+        u.setUsername(&quot;lisi&quot;);
+        u.setPassword(&quot;135790&quot;);
+        int rs=session.insert(&quot;save&quot;,u);
+        assertEquals(1,rs);
+    }
+
+    @Test
+    /**
+     * 测试 deleteByUsername 功能
+     */
+    public void testDeleteByUsername(){
+        UserEntity u=new UserEntity();
+        u.setUsername(&quot;wangwu&quot;);
+        u.setPassword(&quot;135790&quot;);
+        userDao.save(u);
+        int rs=userDao.deleteByUsername(&quot;wangwu&quot;);
+        assertEquals(1,rs);
+    }
+
+    @Test
+    /**
+     * 另一种方法调用 deleteByUsername 功能
+     */
+    public void testDeleteByUsername2(){
+        UserEntity u=new UserEntity();
+        u.setUsername(&quot;wangwu&quot;);
+        u.setPassword(&quot;135790&quot;);
+        userDao.save(u);
+        int rs=session.delete(&quot;deleteByUsername&quot;,&quot;wangwu&quot;);
+        assertEquals(1,rs);
+    }
+
+    @After
+    public void closeSession(){
+        if(session!=null) {
+            session.commit();//提交更改
+            session.close();
+        }
+    }
+}
+
+</code></pre><ol start=3><li>请你根据<code>UserDao</code>新增的方法，完善<code>UserDaoMapper.xml</code>，并且能够让<code>UserDaoTest</code>所有测试通过。</li></ol><h3 id=实验名称-实验33-集成-mybatis-框架到-web-项目>【实验名称】 实验3.3 集成 MyBatis 框架到 Web 项目</h3><h3 id=实验目的-2>【实验目的】</h3><ul><li>掌握 MyBatis 框架在Web项目中的开发</li></ul><h3 id=实验环境-2>【实验环境】</h3><ul><li>内存：至少4G</li><li>硬盘：至少空余10G</li><li>操作系统: 64位 Windows系统。</li></ul><h3 id=实验资源-2>【实验资源】</h3><ul><li>IDEA</li><li>Maven 3.6</li></ul><h3 id=实验要求-1>【实验要求】</h3><ol><li><p>结合<a href=javawebdev-02>实验2.2</a>和实验3.2，完善真实访问数据库的登录功能。</p></li><li><p>新建 Maven 项目，项目目录结构如下：
+<img src=/static/img/javawebdev-03/Snipaste_2021-09-29_23-50-18.jpg alt></p></li><li><p>以下为代码提示：</p></li></ol><ul><li>LoginController.java</li></ul><pre><code>package mobileshop.controller;
+
+import mobileshop.entity.UserEntity;
+import mobileshop.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class LoginController {
+
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping(value = &quot;/login&quot;)
+    public String login(){
+        return &quot;login&quot;;
+    }
+
+    @RequestMapping(value = &quot;/signin&quot;)
+    public String signIn(String username, String password){
+        //请完善代码
+    }
+}
+</code></pre><ul><li>UserDao.java</li></ul><pre><code>package mobileshop.dao;
+
+import mobileshop.entity.UserEntity;
+
+public interface UserDao {
+    UserEntity findByUserName(String username);
+}
+</code></pre><ul><li>UserEntity.java</li></ul><pre><code>package mobileshop.entity;
+
+public class UserEntity {
+    private Long userId;
+    private String username;
+    private String password;
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+}
+</code></pre><ul><li>UserService.java</li></ul><pre><code>package mobileshop.service;
+
+
+import mobileshop.entity.UserEntity;
+
+public interface UserService {
+    boolean validUserPwd(UserEntity ue);
+
+    UserEntity getUserByUsername(String username);
+}
+</code></pre><ul><li>UserServiceImpl.java</li></ul><pre><code>package mobileshop.service;
+
+import mobileshop.dao.UserDao;
+import mobileshop.entity.UserEntity;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserServiceImpl implements UserService{
+
+    @Autowired
+    private UserDao userDao;
+
+    @Override
+    public boolean validUserPwd(UserEntity ue) {
+        //请完善代码。
+    }
+
+    @Override
+    public UserEntity getUserByUsername(String username) {
+        return userDao.findByUserName(username);
+    }
+}
+</code></pre><ul><li><p>Application.java 同实验2.2</p></li><li><p>UserDaoMapper.xml</p></li></ul><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;  
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+
+&lt;mapper namespace=&quot;mobileshop.dao.UserDao&quot;&gt;
+	&lt;select id=&quot;findByUserName&quot; parameterType=&quot;string&quot;
+			resultType=&quot;mobileshop.entity.UserEntity&quot;&gt;
+		select * from ms_user where username=#{username}
+	&lt;/select&gt;
+&lt;/mapper&gt;
+</code></pre><ul><li><p>db.properties 同实验3.1</p></li><li><p>spring-mvc.xml</p></li></ul><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans
+        xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+        xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
+        xmlns:util=&quot;http://www.springframework.org/schema/util&quot;
+        xsi:schemaLocation=&quot;
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd&quot;&gt;
+    &lt;!--配置注解扫描--&gt;
+    &lt;context:component-scan base-package=&quot;mobileshop.controller,mobileshop.service&quot;/&gt;
+    &lt;!-- SpringMVC注解支持 --&gt;
+    &lt;mvc:annotation-driven/&gt;
+
+    &lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
+        &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/html/&quot; /&gt;
+        &lt;property name=&quot;suffix&quot; value=&quot;.html&quot; /&gt;
+    &lt;/bean&gt;
+
+    &lt;util:properties id=&quot;jdbc&quot; location=&quot;classpath:db.properties&quot;/&gt;
+
+    &lt;bean id=&quot;dbcp&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot;&gt;
+        &lt;property name=&quot;driverClassName&quot; value=&quot;#{jdbc.driver}&quot;/&gt;
+        &lt;property name=&quot;url&quot; value=&quot;#{jdbc.url}&quot;/&gt;
+        &lt;property name=&quot;username&quot; value=&quot;#{jdbc.user}&quot;/&gt;
+        &lt;property name=&quot;password&quot; value=&quot;#{jdbc.pwd}&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 配置SqlSessionFactoryBean --&gt;
+    &lt;!-- 可以定义一些属性来指定Mybatis框架的配置信息 --&gt;
+    &lt;bean id=&quot;ssf&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
+        &lt;!-- 数据源，注入连接信息 --&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dbcp&quot;/&gt;
+        &lt;!-- 用于指定sql定义文件的位置(加classpath从src下找) --&gt;
+        &lt;property name=&quot;mapperLocations&quot;
+                  value=&quot;classpath:mobileshop/mapper/*.xml&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 配置MapperScannerConfigurer --&gt;
+    &lt;!-- 按指定包扫描接口，批量生成接口实现对象，id为接口名首字母小写 --&gt;
+    &lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;
+        &lt;!-- 指定扫描 mobileshop.dao 包下所有接口 --&gt;
+        &lt;property name=&quot;basePackage&quot;
+                  value=&quot;mobileshop.dao&quot;/&gt;
+        &lt;!-- 注入sqlSessionFactory（此句可不写，自动注入sqlSessionFactory） --&gt;
+        &lt;property name=&quot;sqlSessionFactory&quot; ref=&quot;ssf&quot;/&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre><ul><li>web.xml 同实验2.2</li></ul></div><div class=my-4><a href=/tags/java/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#java</a>
+<a href=/tags/web/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#web</a></div><div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t"><div><span class="block font-bold">上一页</span>
+<a href=/docs/javaweb-dev/javawebdev-04/ class=block>Java后台应用项目开发 Part 4 - Spring 框架的使用</a></div><div class="md:text-right mt-4 md:mt-0"><span class="block font-bold">下一页</span>
+<a href=/docs/javaweb-dev/javawebdev-02/ class=block>Java后台应用项目开发 Part 2 - MVC模式开发与 SpringMVC 框架开发</a></div></div></div><div class="hidden lg:block lg:w-1/4"><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-secondary-bg pt-16 -mt-16"><span class="text-lg font-semibold">本页内容</span></div><div class="sticky-toc hidden lg:block px-6 pb-6 pt-10 -mt-10 border-l"><nav id=TableOfContents><ul><li><a href=#java后台应用项目开发-part-3---mybatis-框架的使用>Java后台应用项目开发 Part 3 - MyBatis 框架的使用</a></li><li><a href=#版本>【版本】</a><ul><li><a href=#实验名称-实验31-新建-mybatis-项目>【实验名称】 实验3.1 新建 MyBatis 项目</a></li><li><a href=#实验目的>【实验目的】</a></li><li><a href=#实验环境>【实验环境】</a></li><li><a href=#实验资源>【实验资源】</a></li><li><a href=#实验步骤>【实验步骤】</a></li><li><a href=#实验名称-实验32-开发用户的增删查改功能>【实验名称】 实验3.2 开发用户的增删查改功能</a></li><li><a href=#实验目的-1>【实验目的】</a></li><li><a href=#实验环境-1>【实验环境】</a></li><li><a href=#实验资源-1>【实验资源】</a></li><li><a href=#实验要求>【实验要求】</a></li><li><a href=#实验名称-实验33-集成-mybatis-框架到-web-项目>【实验名称】 实验3.3 集成 MyBatis 框架到 Web 项目</a></li><li><a href=#实验目的-2>【实验目的】</a></li><li><a href=#实验环境-2>【实验环境】</a></li><li><a href=#实验资源-2>【实验资源】</a></li><li><a href=#实验要求-1>【实验要求】</a></li></ul></li></ul></nav></div><script>window.addEventListener('DOMContentLoaded',()=>{enableStickyToc();});</script></div></div></div></div></div><div id=outerdiv><div id=innerdiv><img id=bigimg src></div></div><script>document.addEventListener('DOMContentLoaded',()=>{hljs.highlightAll();hljs.initLineNumbersOnLoad({singleLine:true});changeSidebarHeight();switchDocToc();$("img").css("cursor:pointer")
+$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});})</script><script src=/static/js/clipboard.min.js></script><script src=/static/js/codecopy.bundle.js?584></script></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text">&copy; 2021 <a href=https://www.wangchucheng.com/>C. Wang</a> and <a href=https://www.ruiqima.com/>R. Ma</a>
+&#183; Powered by the <a href=https://github.com/wangchucheng/hugo-eureka class=hover:text-eureka>Eureka</a> theme for <a href=https://gohugo.io class=hover:text-eureka>Hugo</a></p></div></div></footer></body></html>

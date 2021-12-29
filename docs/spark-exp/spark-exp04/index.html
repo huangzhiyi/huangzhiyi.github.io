@@ -1,0 +1,141 @@
+<!doctype html><html lang=zh><meta charset=utf-8><meta name=viewport content="width=device-width"><title>第四章 Spark RDD 实验手册 | Spark 课程 | Heis</title><meta name=generator content="Hugo Eureka 0.8.4"><link rel=stylesheet href=/css/eureka.min.css><script defer src=/js/eureka.min.js></script><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" as=style onload="this.onload=null;this.rel='stylesheet'"><script src=/static/js/jquery-3.6.0.min.js></script><script src=/static/js/heis.js></script><link rel=stylesheet href=/static/css/heis.css media=print onload="this.media='all';this.onload=null" crossorigin><link rel=stylesheet href=/static/css/highlight-css/solarized-light.min.css media=print onload="this.media='all';this.onload=null" crossorigin><script defer src=/static/js/highlight.min.js crossorigin></script><script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script><script defer src=/static/js/highlightjs-line-numbers.min.js></script><link rel=icon type=image/png sizes=32x32 href=/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_2.png><link rel=apple-touch-icon sizes=180x180 href=/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_2.png><meta name=description content="Spark 第四章 Spark RDD 实验手册"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"课程文档","item":"/docs/"},{"@type":"ListItem","position":2,"name":"Spark 课程","item":"/docs/spark-exp/"},{"@type":"ListItem","position":3,"name":"第四章 Spark RDD 实验手册","item":"/docs/spark-exp/spark-exp04/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/docs/spark-exp/spark-exp04/"},"headline":"第四章 Spark RDD 实验手册 | Spark 课程 | Heis","datePublished":"2020-02-14T10:42:51+08:00","dateModified":"2020-02-14T10:42:51+08:00","wordCount":4619,"author":{"@type":"Person","name":"heis"},"publisher":{"@type":"Person","name":"C. Wang","logo":{"@type":"ImageObject","url":"/images/icon.png"}},"description":"Spark 第四章 Spark RDD 实验手册"}</script><meta property="og:title" content="第四章 Spark RDD 实验手册 | Spark 课程 | Heis"><meta property="og:type" content="article"><meta property="og:image" content="/images/icon.png"><meta property="og:url" content="/docs/spark-exp/spark-exp04/"><meta property="og:description" content="Spark 第四章 Spark RDD 实验手册"><meta property="og:locale" content="zh"><meta property="og:site_name" content="Heis"><meta property="article:published_time" content="2020-02-14T10:42:51+08:00"><meta property="article:modified_time" content="2020-02-14T10:42:51+08:00"><meta property="article:section" content="docs"><meta property="article:tag" content="spark"><meta property="article:tag" content="RDD"><meta property="og:see_also" content="/docs/spark-exp/spark-exp03/"><meta property="og:see_also" content="/docs/spark-exp/spark-exp05/"><meta property="og:see_also" content="/docs/spark-exp/spark-exp02/"><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?f58b6a2675cf52000232edb4d109eccc";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><body class="flex flex-col min-h-screen"><header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode")
+if(((storageColorScheme=='Auto'||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches)||storageColorScheme=="Dark"){document.getElementsByTagName('html')[0].classList.add('dark')}</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="mr-6 text-primary-text text-xl font-bold">Heis</a>
+<button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+<i class="fas fa-bars"></i></button><div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20"><div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0"><a href=/posts/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">文章</a>
+<a href=/docs/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 selected-menu-item mr-4">课程文档</a></div><div class=flex><div class="relative pt-4 md:pt-0"><div class="cursor-pointer hover:text-eureka" id=lightDarkMode><i class="fas fa-adjust"></i></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id=is-open></div><div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40" id=lightDarkOptions><span class="px-4 py-1 hover:text-eureka" name=Light>浅色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Dark>深色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Auto>自动</span></div></div></div></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id=is-open-mobile></div></nav><script>let element=document.getElementById('lightDarkMode')
+if(storageColorScheme==null||storageColorScheme=='Auto'){document.addEventListener('DOMContentLoaded',()=>{window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change',switchDarkMode)})}else if(storageColorScheme=="Light"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'sun')
+element.firstElementChild.classList.add('fa-sun')}else if(storageColorScheme=="Dark"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'moon')
+element.firstElementChild.classList.add('fa-moon')}
+document.addEventListener('DOMContentLoaded',()=>{getcolorscheme();switchBurger();});</script></div></header><main class="flex-grow pt-16"><div class=pl-scrollbar><div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto"><div class=lg:pt-12><div class="flex flex-col md:flex-row bg-secondary-bg rounded"><div class="md:w-1/4 lg:w-1/5 border-r"><div class="sticky top-16 pt-6"><div id=sidebar-title class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text"><span class=font-semibold>目录</span>
+<i class="fas fa-caret-right ml-1"></i></div><div id=sidebar-toc class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent"><div class="flex flex-wrap ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded"><a class=hover:text-eureka href=/docs/spark-exp/>Spark 课程</a></div><ul class=pl-6><li class=py-2><div><a class=hover:text-eureka href=/docs/spark-exp/spark-exp02/>第二章 搭建 Spark 实验手册</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/spark-exp/spark-exp03/>第三章 使用 Python 开发 Spark 应用实验手册</a></div></li><li class=py-2><div><a class="text-eureka hover:text-eureka" href=/docs/spark-exp/spark-exp04/>第四章 Spark RDD 实验手册</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/spark-exp/spark-exp05/>第五章 SparkSQL 实验手册</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/spark-exp/spark-exp06/>第六章 Spark Streaming 实验手册</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/spark-exp/spark-exp07/>第七章 Spark 机器学习库实验手册</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/spark-exp/spark-exp08/>Spark 第八章 GraphFrames 图计算实验手册</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/spark-exp/spark-training1/>Spark 综合实验1</a></div></li></ul></div></div></div><div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8"><div class="w-full lg:w-3/4 pl-6 ml-0 mr-auto"><h1 class="font-bold text-3xl text-primary-text">第四章 Spark RDD 实验手册</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i><span>2020-02-14</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i><span>10分钟阅读时长</span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i><a href=/categories/spark/ class=hover:text-eureka>spark</a></div></div></div><div class=flex><div class="w-full lg:w-3/4 px-6"><div class=content><h2 id=版本>【版本】</h2><p>当前版本号<code>v20200317</code></p><div class=tbl-start></div><table><thead><tr><th>版本</th><th>修改说明</th></tr></thead><tbody><tr><td>v20200317</td><td>实验4.2，修正练习（8），应该是求交集</td></tr><tr><td>v20200310</td><td>初始化版本</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h2 id=实验名称实验41rdd-的创建>【实验名称】实验4.1：RDD 的创建</h2><h3 id=实验目的>【实验目的】</h3><ul><li>掌握RDD的创建的方式</li></ul><h3 id=实验原理>【实验原理】</h3><p>略</p><h3 id=实验环境>【实验环境】</h3><ul><li>Ubuntu 16.04</li><li>Python 3</li><li>PySpark</li><li>spark 2.4.4</li><li>Hadoop 2.7.3</li></ul><h3 id=实验步骤>【实验步骤】</h3><ol><li>在/home/hadoop路径下创建一个文本文件，并命名为<code>123.txt</code>（注意替换123为你学号的后三位）。并输入以下内容，注意替换其中汉字为你个人学号后三位。</li></ol><pre><code>你学号后三位,997,953,932,877,453
+</code></pre><ol start=2><li>启动 hadoop，并把第一步创建的文本文件上传到 HDFS。</li></ol><p>（1）启动 Hadoop</p><pre><code>start-hdp.sh
+</code></pre><p>（2）上传文本文件</p><pre><code>hdfs dfs -mkdir -p /spark-exp4
+hdfs dfs -put /home/hadoop/123.txt /spark-exp4/
+</code></pre><p>（3）查看是否上传成功</p><pre><code>hdfs dfs -ls /spark-exp4
+</code></pre><ol start=3><li><p>启动 PySpark 或 PyCharm 进行开发。</p></li><li><p>使用文件创建RDD。（注意替换123为你学号的后三位）</p></li></ol><pre><code>r4 = sc.textFile(&quot;/home/hadoop/123.txt&quot;)
+r4.flatMap(lambda line:line.split(',')).collect()
+</code></pre><ol start=5><li>使用 HDFS 文件创建RDD。（注意替换123为你学号的后三位）</li></ol><pre><code>r5 = sc.textFile(&quot;hdfs://node0:8020/spark-exp4/123.txt&quot;)
+r5.flatMap(lambda line:line.split(',')).collect()
+</code></pre><ol start=6><li>基于parallelize创建</li></ol><pre><code>distData = sc.parallelize([1, 2, 3, 4, 5])
+distData.getNumPartitions()
+</code></pre><pre><code>distData = sc.parallelize([1, 2, 3, 4, 5]，4)
+distData.getNumPartitions()
+</code></pre><h2 id=实验名称实验42常见rdd算子练习>【实验名称】实验4.2：常见RDD算子练习</h2><h3 id=实验目的-1>【实验目的】</h3><ul><li>掌握常用的 RDD</li></ul><h3 id=实验原理-1>【实验原理】</h3><p>略</p><h3 id=实验环境-1>【实验环境】</h3><ul><li>Ubuntu 16.04</li><li>Python 3</li><li>PySpark</li><li>spark 2.4.4</li><li>Hadoop 2.7.3</li></ul><h3 id=实验参考资料>【实验参考资料】</h3><ul><li><a href=https://spark.apache.org/docs/latest/api/python/pyspark.html target=_blank>算子文档（官网英文）</a></li></ul><div class=tbl-start></div><table><thead><tr><th>算子</th><th>说明</th></tr></thead><tbody><tr><td>collect</td><td>返回RDD所有元素组成的列表</td></tr><tr><td>reduce</td><td>类似 MapReduce 的 Reducer，执行归并操作</td></tr><tr><td>saveAsTextFile</td><td>输出文本结果到文件目录</td></tr><tr><td>map</td><td>类似 MapReduce的Mapper，处理每个元素，可以返回新的数据结构</td></tr><tr><td>flatMap</td><td>会把所有返回的集合类型如list，dict，tuple全部遍历展平</td></tr><tr><td>foreach</td><td>处理每个元素，无返回值</td></tr><tr><td>filter</td><td>自定义过滤</td></tr><tr><td>distinct</td><td>去重</td></tr><tr><td>take(n)</td><td>取前N个</td></tr><tr><td>first</td><td>取第一个</td></tr><tr><td>sortBy</td><td>返回排序的数据，默认升序</td></tr><tr><td>top(n)</td><td>返回降序的数据前N个元素</td></tr><tr><td>join</td><td>内连接</td></tr><tr><td>leftOuterJoin</td><td>左外连接</td></tr><tr><td>rightOuterJoin</td><td>右外连接</td></tr><tr><td>union(RDD)</td><td>合并</td></tr><tr><td>intersection(RDD)</td><td>交集</td></tr><tr><td>subtract(RDD)</td><td>减去交集</td></tr><tr><td>mapPartitions</td><td>针对每一个分区做Map操作</td></tr><tr><td>mapPartitionsWithIndex</td><td>针对每一个分区做Map操作，带分区参数</td></tr><tr><td>glom</td><td>把每个分区数据列表作为元素，组成新列表</td></tr><tr><td>coalesce</td><td>归并（reduce）分区数量n</td></tr><tr><td>reduceByKey(f)</td><td>将相同key的值聚合到一起，与groupByKey类似，reduce任务的个数可以通过第二个可选的参数来设置</td></tr><tr><td>groupByKey()</td><td>在一个(K,V)的RDD上调用，返回一个(K, Iterator[V])的RDD，（没有入参）</td></tr><tr><td>mapValues(f)</td><td>对键值对中的每个值(value)应用一个函数，但不改变键(key)</td></tr><tr><td>flatMapValues(f)</td><td>对键值对RDD中每个值应用返回一个迭代器的函数，然后对每个元素生成一个对应的键值对。</td></tr><tr><td>combineByKey( createCombiner, mergeValue, mergeCombiners, numPartitions=None)</td><td>使用不同的返回类型合并具有相同键的值</td></tr><tr><td>join(otherDataset, numPartitions=None)</td><td>按key值相同的记录进行连接</td></tr><tr><td>union(otherDataset,numPartitions=None)</td><td>对源RDD和参数RDD求并集后返回一个新的RDD</td></tr><tr><td>aggregateByKey(zeroValue, seqFunc, combFunc, numPartitions=None)</td><td>使用给定的combine(组合)函数和一个中性的“零值”来聚合每个键的值</td></tr><tr><td>sortByKey(ascending=True, numPartitions=None)</td><td>在一个(K,V)的RDD上调用，K必须实现Ordered接口，返回一个按照key进行排序的(K,V)的RDD</td></tr><tr><td>join(other, numPartitions=None)</td><td>在类型为(K,V)和(K,W)的RDD上调用，返回一个相同key对应的所有元素对在一起的(K,(V,W))的RDD</td></tr><tr><td>keys()</td><td>获取所有key</td></tr><tr><td>values()</td><td>获取所有value</td></tr><tr><td>countByKey()</td><td>针对(K,V)类型的RDD，返回一个(K,Int)的map，表示每一个key对应的元素个数。</td></tr><tr><td>collectAsMap</td><td>与collect相关的算子是将结果返回到driver端。collectAsMap算子是将Kev-Value结构的RDD收集到driver端，并返回成一个字典</td></tr><tr><td>countByKey</td><td>与count类似，但是是以key为单位进行统计。</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h3 id=实验准备>【实验准备】</h3><p>在Python开发环境默认只打印最后一行变量，如果需要把所有行的变量都打印，需要运行以下2行代码，每次打开环境只需要运行一次即可。</p><pre><code>from IPython.core.interactiveshell import InteractiveShell
+InteractiveShell.ast_node_interactivity = &quot;all&quot;
+</code></pre><p>测试</p><pre><code>sc.parallelize([1,2]).collect()
+sc.parallelize([3,4]).collect()
+</code></pre><h3 id=实验要求>【实验要求】</h3><p>以下要求&lt;补充代码>的部分，请各位同学补充相应的代码，并在实验报告内要记录以下题目的完整代码和输出。</p><p>（1）要求：使用 map 算子把以下 RDD 列表每个元素转为int类型，并且每个元素都加上1000，并输出结果。（注意替换123为你学号的后三位）</p><pre><code>rdd = sc.textFile(&quot;/home/hadoop/123.txt&quot;).flatMap(lambda line:line.split(','))
+rdd.map(&lt;补充代码&gt;).collect()
+</code></pre><p>（2）补充以下代码，使得输出符合要求。</p><pre><code>rdd1 = sc.parallelize([1,2,3,4,5,6],3)
+rdd2 = &lt;补充代码&gt;
+rdd2.collect()
+</code></pre><p>期望输出值</p><pre><code>[[1, 2], [3, 4], [5, 6]]
+</code></pre><p>（3）补充以下代码，使得输出每个分区元素累加总和。</p><pre><code>rdd = sc.parallelize([1,2,3,4],2)
+def f(iterator): yield sum(iterator)
+rdd.&lt;补充代码&gt;.collect()
+</code></pre><p>期望输出值</p><pre><code>[3,7]
+</code></pre><blockquote><p>提示：可以查下关于分区的算子</p></blockquote><p>（4）补充以下代码，使得输出每个分区编号和元素累加总和。</p><pre><code>rdd = sc.parallelize([1,2,3,4],2)
+def f&lt;补充代码&gt;
+rdd.mapPartitionsWithIndex(f).collect()
+</code></pre><p>期望输出值</p><pre><code>[(0,[3]),(1,[7])]
+</code></pre><blockquote><p>提示：mapPartitionsWithIndex传进去的函数应该有2个参数。</p></blockquote><p>（5）补充以下代码，输出个位数是7的元素。（注意替换123为你学号的后三位）</p><pre><code>rdd = sc.textFile(&quot;/home/hadoop/123.txt&quot;).flatMap(lambda line:line.split(','))
+rdd.&lt;补充代码&gt;.collect()
+</code></pre><blockquote><p>提示：可以使用int()转换字符串为整形</p></blockquote><p>（6）补充以下代码，使得重复的元素只保留1个进行输出。</p><pre><code>sc.parallelize([1, 1, 1, 2, 3, 2, 3]).&lt;补充代码&gt;.collect()
+</code></pre><blockquote><p>提示：distinct 算子</p></blockquote><p>（7）补充以下代码，求2个rdd的并集。</p><pre><code>rdd1 = sc.parallelize([1, 1, 2, 3])
+rdd2 = sc.parallelize([5, 3, 4, 6])
+&lt;补充代码&gt;
+</code></pre><p>期望输出值</p><pre><code>[1,2,3,4,5,6]
+</code></pre><blockquote><p>提示：union和distinct的组合可以产生并集的效果，要注意输出结果的排序。</p></blockquote><p>（8）补充以下代码，求2个rdd的交集。</p><pre><code>rdd1 = sc.parallelize([1, 4, 2, 3])
+rdd2 = sc.parallelize([5, 3, 4, 6])
+&lt;补充代码&gt;
+</code></pre><p>期望输出值</p><pre><code>[3,4]
+</code></pre><p>（9）补充以下代码，对List（列表）进行降序排序。（注意替换123为你学号的后三位）</p><pre><code>rdd = sc.textFile(&quot;/home/hadoop/123.txt&quot;).flatMap(lambda line:line.split(','))
+&lt;补充代码&gt;
+</code></pre><p>（10）补充以下代码，对列表元素key进行降序排序。</p><pre><code>rdd = sc.parallelize([(101,'Mike'),(134,'John'),(123,'Mary')])
+&lt;补充代码&gt;
+</code></pre><p>期望输出值</p><pre><code>[(134,'John'),(123,'Mary'),(101,'Mike')]
+</code></pre><p>（11）补充以下代码，按照元组的第三个元素进行降序排序。</p><pre><code>rdd = sc.parallelize([(101,'Mike',23),(134,'John',45),(123,'Mary',18)])
+&lt;补充代码&gt;
+</code></pre><p>期望输出值</p><pre><code>[(134, 'John', 45), (101, 'Mike', 23), (123, 'Mary', 18)]
+</code></pre><p>（12）补充以下代码，把列表中奇数和偶数分别分为2个区。</p><pre><code>rdd1 = sc.parallelize([1, 1, 2, 3, 5, 8])
+rdd1.groupBy(&lt;补充代码&gt;).map(&lt;补充代码&gt;).collect()
+</code></pre><p>期望输出值</p><pre><code>[(0, [2, 8]), (1, [1, 1, 3, 5])]
+</code></pre><p>（13）以下代码都是把RDD数据重新分为2个区，每句执行多次，对比他们三者的结果是否一样。如果不一致是什么原因？</p><pre><code>sc.parallelize([(1, 2), (2, 3), (3,4),(4,5),(5,6),(6,7)],3).partitionBy(2).glom().collect()
+</code></pre><pre><code>sc.parallelize([(1, 2), (2, 3), (3,4),(4,5),(5,6),(6,7)],3).repartition(2).glom().collect()
+</code></pre><pre><code>sc.parallelize([(1, 2), (2, 3), (3,4),(4,5),(5,6),(6,7)],3).coalesce(2).glom().collect()
+</code></pre><p>（14）补充以下代码，返回所有元素的和。</p><pre><code>sc.parallelize([1, 2, 3, 4, 5]).reduce(&lt;补充代码&gt;)
+</code></pre><p>（15）补充以下代码，返回所有key相同value的和。</p><pre><code>sc.parallelize([（1, 2）,(3, 4), (3, 5),(1, 4)]).&lt;补充代码&gt;
+</code></pre><p>期望输出值：</p><pre><code>[(1, 6), (3, 9)]
+</code></pre><p>（16）补充以下代码，计算元素的个数。（注意替换123为你学号的后三位）</p><pre><code>rdd = sc.textFile(&quot;/home/hadoop/123.txt&quot;).flatMap(lambda line:line.split(','))
+rdd.&lt;补充代码&gt;
+</code></pre><p>（17）补充以下代码，取前3个最大值，并按降序排列。（注意替换123为你学号的后三位）</p><pre><code>rdd = sc.textFile(&quot;/home/hadoop/123.txt&quot;).flatMap(lambda line:line.split(','))
+rdd.&lt;补充代码&gt;
+</code></pre><p>（18）补充以下代码，取每个分区的最大值，并计算分区最大值的和。</p><pre><code>rdd = sc.parallelize([1, 2, 3, 4, 5,6],2)
+rdd.aggregate(&lt;补充代码&gt;)
+</code></pre><p>（19）补充以下代码，把每个分区字符连接起来，分区与分区之间用空格隔开。</p><pre><code>rdd = sc.parallelize([&quot;H&quot;,&quot;e&quot;,&quot;l&quot;,&quot;l&quot;,&quot;o&quot;,&quot;F&quot;,&quot;r&quot;,&quot;a&quot;,&quot;n&quot;,&quot;k&quot;],2)
+rdd.aggregate(&lt;补充代码&gt;)
+</code></pre><p>期望输出值</p><pre><code>' Hello Frank'
+</code></pre><p>（20）补充以下代码，对相同的key进行分组。</p><pre><code>rdd = sc.parallelize([(&quot;a&quot;, 1), (&quot;b&quot;, 3), (&quot;a&quot;, 2), (&quot;b&quot;, 4)])
+rdd.&lt;补充代码&gt;.map(lambda x:&lt;补充代码&gt;)).collect()
+</code></pre><p>期望输出值</p><pre><code>[('b', [3, 4]), ('a', [1, 2])]
+</code></pre><p>（21）补充以下代码，对value列表的每个元素的第一个字母转为大写。</p><pre><code>rdd = sc.parallelize([(&quot;fruites&quot;, [&quot;apple&quot;, &quot;banana&quot;, &quot;lemon&quot;]), (&quot;vegetables&quot;, [&quot;tomato&quot;,&quot;cabbage&quot;])])
+def upperWordInList(list):
+    r=[]
+    for x in list:
+        &lt;补充把单词第一个字母转为大写代码&gt;
+    return r
+
+rdd.&lt;补充代码&gt;.collect()
+</code></pre><p>（22）补充以下代码，满足期望的输出值</p><pre><code>rdd = sc.parallelize([(&quot;fruites&quot;, [&quot;apple&quot;, &quot;banana&quot;, &quot;lemon&quot;]), (&quot;vegetables&quot;, [&quot;tomato&quot;,&quot;cabbage&quot;])])
+rdd.&lt;补充代码&gt;.collect()
+</code></pre><p>期望输出值：</p><pre><code>[('fruites', 'apple'),
+ ('fruites', 'banana'),
+ ('fruites', 'lemon'),
+ ('vegetables', 'tomato'),
+ ('vegetables', 'cabbage')]
+</code></pre><p>（23）补充以下代码，输出由key值组成的列表和value值组成的列表</p><pre><code>rdd=sc.parallelize([(1, 2), (3, 4)])
+rdd.&lt;补充代码&gt;.collect()
+rdd.&lt;补充代码&gt;.collect()
+</code></pre><p>期望输出值：</p><pre><code>[1, 3]
+[2, 4]
+</code></pre><p>（24）补充以下代码，输出由key值对应value元素个数。</p><pre><code>sc.parallelize([(&quot;fruites&quot;, [&quot;apple&quot;, &quot;banana&quot;, &quot;lemon&quot;]), (&quot;vegetables&quot;, [&quot;tomato&quot;,&quot;cabbage&quot;])]).flatMapValues(lambda x:x).&lt;补充代码&gt;
+</code></pre><p>期望输出值：</p><pre><code>defaultdict(int, {'fruites': 3, 'vegetables': 2})
+</code></pre><p>（25）补充以下代码，输出由key值对应value总和</p><pre><code>rdd = sc.parallelize([ (&quot;cat&quot;,2), (&quot;cat&quot;, 5), (&quot;mouse&quot;, 4),(&quot;cat&quot;, 12), (&quot;dog&quot;, 12), (&quot;mouse&quot;, 2)], 2)
+rdd.aggregateByKey(&lt;补充代码&gt;).collect()
+</code></pre><p>期望输出值：</p><pre><code>[('mouse', 6), ('cat', 19), ('dog', 12)]
+</code></pre><p>（26）补充以下代码，使用连接算子，使得代码输出符合期望值</p><pre><code>x = sc.parallelize([(&quot;a&quot;, 1), (&quot;b&quot;, 4)])
+y = sc.parallelize([(&quot;a&quot;, 2), (&quot;a&quot;, 3)])
+x.&lt;补充代码&gt;.collect()
+x.&lt;补充代码&gt;.collect()
+y.&lt;补充代码&gt;.collect()
+</code></pre><pre><code>[('a', (1, 2)), ('a', (1, 3))]
+[('b', (4, None)), ('a', (1, 2)), ('a', (1, 3))]
+[('b', (None, 4)), ('a', (2, 1)), ('a', (3, 1))]
+</code></pre><p>（27）补充以下代码，使得输出值为一个字典类型。（注意替换123为你学号的后三位）</p><pre><code>rdd = sc.textFile(&quot;/home/hadoop/123.txt&quot;).flatMap(lambda line:line.split(','))
+rdd.map(lambda x:(x,x)).&lt;补充代码&gt;
+</code></pre><p>期望输出值：</p><pre><code>{'123': '123',
+ '453': '453',
+ '877': '877',
+ '932': '932',
+ '953': '953',
+ '997': '997'}
+</code></pre><p>（28）补充以下代码，使得输出值符合期望值。</p><pre><code>rdd = sc.parallelize([(&quot;a&quot;,1),(&quot;b&quot;,1),(&quot;a&quot;, 1)])
+rdd.&lt;补充代码&gt;.keys()
+rdd.&lt;补充代码&gt;.items()
+</code></pre><p>期望输出值：</p><pre><code>dict_keys(['a', 'b'])
+dict_items([('a', 2), ('b', 1)])
+</code></pre><hr><h2 id=实验名称-实验43分析tomcat的访问日志求访问量最高的两个网页>【实验名称】 实验4.3：分析tomcat的访问日志，求访问量最高的两个网页</h2><h3 id=实验目的-2>【实验目的】</h3><p>掌握RDD的应用</p><h3 id=实验资源>【实验资源】</h3><pre><code>https://pan.baidu.com/s/1nIbyAa19D-MlutP3DIh6bA#提取码dzi0
+</code></pre><h3 id=实验原理-2>【实验原理】</h3><p>使用 Spark 相应 API 进行开发实现</p><h3 id=实验环境-2>【实验环境】</h3><ul><li>操作系统：Ubuntu 16.04</li><li>Spark：Spark2.x</li><li>开发环境：PyCharm 或 Jupitor Notebook</li></ul><h3 id=实验要求-1>【实验要求】</h3><p>Tomcat的访问日志文件为<code>spark-exp04-tomcat-log.txt</code>，格式如下：</p><p><img src=/static/img/spark/tomcat-log.png alt></p><p>（1）求出访问量最高的两个网页。要求输出以下格式：
+网页名称，访问量</p><p>（2）请自行开发代码实现（可以参考第二章的 WordCount 的开发例子），并在实验报告附上思考过程，开发步骤，代码和结果。</p><hr><h2 id=实验名称-实验44使用spark程序进行数据的清洗>【实验名称】 实验4.4：使用Spark程序进行数据的清洗</h2><h3 id=实验目的-3>【实验目的】</h3><p>掌握RDD的应用</p><h3 id=实验资源-1>【实验资源】</h3><pre><code>https://pan.baidu.com/s/1nIbyAa19D-MlutP3DIh6bA#提取码dzi0
+</code></pre><h3 id=实验原理-3>【实验原理】</h3><p>使用 Spark 相应 API 进行开发实现</p><h3 id=实验环境-3>【实验环境】</h3><ul><li>操作系统：Ubuntu 16.04</li><li>Spark：Spark2.x</li><li>开发环境：PyCharm 或 Jupitor Notebook</li></ul><h3 id=实验要求-2>【实验要求】</h3><p>数据源<code>spark-exp04-user-click-log.txt</code>文件记录了用户点击的日志记录，但日志中存在不合规范的数据。请用Spark程序进程数据清洗，完成以下操作：</p><p>（1）过滤不满足6个字段的数据</p><p>（2）过滤URL为空的数据</p><p>（3）请自行开发代码实现，并在实验报告附上思考过程，开发步骤，代码和结果。</p><hr><h2 id=实验名称-实验45人口身高数据分析>【实验名称】 实验4.5：人口身高数据分析</h2><h3 id=实验目的-4>【实验目的】</h3><p>掌握RDD的应用</p><h3 id=实验资源-2>【实验资源】</h3><pre><code>https://pan.baidu.com/s/1nIbyAa19D-MlutP3DIh6bA#提取码dzi0
+</code></pre><h3 id=实验原理-4>【实验原理】</h3><p>使用 Spark 相应 API 进行开发实现</p><h3 id=实验环境-4>【实验环境】</h3><ul><li>操作系统：Ubuntu 16.04</li><li>Spark：Spark2.x</li><li>开发环境：PyCharm 或 Jupitor Notebook</li></ul><h3 id=实验要求-3>【实验要求】</h3><p>文件<code>spark-exp04-sample-people-info-10w.txt</code>是某个地区的人口性别还有身高数据。三列分别是 ID，性别（M表示男，F表示女），身高 (cm)。要求</p><p>（1）统计出男女人数。</p><p>（2）男性中的最高，最低身高和平均身高。</p><p>（3）女性中的最高，最低身高和平均身高。</p><p>（4）请自行开发代码实现，并在实验报告附上思考过程，开发步骤，代码和结果。</p></div><div class=my-4><a href=/tags/spark/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#spark</a>
+<a href=/tags/rdd/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#RDD</a></div><div class=py-2><div class="flex flex-col md:flex-row items-center my-8"><a href=/authors/heis/ class="w-24 h-24 md:mr-4"><img src=/static/img/authors/heis.png class="w-full bg-primary-bg rounded-full" alt=Avatar></a><div class="w-full md:w-auto mt-4 md:mt-0"><a href=/authors/heis/ class="block font-bold text-lg pb-1 mb-2 border-b">黄老师</a>
+<span class="block pb-2"></span><a href=mailto:heishuangzy@qq.com class=mr-1><i class="fas fa-envelope"></i></a><a href=https://gitee.com/heis/ class=mr-1><i class="fab fa-git"></i></a></div></div></div><div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t"><div><span class="block font-bold">上一页</span>
+<a href=/docs/spark-exp/spark-exp03/ class=block>第三章 使用 Python 开发 Spark 应用实验手册</a></div><div class="md:text-right mt-4 md:mt-0"><span class="block font-bold">下一页</span>
+<a href=/docs/spark-exp/spark-exp05/ class=block>第五章 SparkSQL 实验手册</a></div></div></div><div class="hidden lg:block lg:w-1/4"><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-secondary-bg pt-16 -mt-16"><span class="text-lg font-semibold">本页内容</span></div><div class="sticky-toc hidden lg:block px-6 pb-6 pt-10 -mt-10 border-l"><nav id=TableOfContents><ul><li><a href=#版本>【版本】</a></li><li><a href=#实验名称实验41rdd-的创建>【实验名称】实验4.1：RDD 的创建</a><ul><li><a href=#实验目的>【实验目的】</a></li><li><a href=#实验原理>【实验原理】</a></li><li><a href=#实验环境>【实验环境】</a></li><li><a href=#实验步骤>【实验步骤】</a></li></ul></li><li><a href=#实验名称实验42常见rdd算子练习>【实验名称】实验4.2：常见RDD算子练习</a><ul><li><a href=#实验目的-1>【实验目的】</a></li><li><a href=#实验原理-1>【实验原理】</a></li><li><a href=#实验环境-1>【实验环境】</a></li><li><a href=#实验参考资料>【实验参考资料】</a></li><li><a href=#实验准备>【实验准备】</a></li><li><a href=#实验要求>【实验要求】</a></li></ul></li><li><a href=#实验名称-实验43分析tomcat的访问日志求访问量最高的两个网页>【实验名称】 实验4.3：分析tomcat的访问日志，求访问量最高的两个网页</a><ul><li><a href=#实验目的-2>【实验目的】</a></li><li><a href=#实验资源>【实验资源】</a></li><li><a href=#实验原理-2>【实验原理】</a></li><li><a href=#实验环境-2>【实验环境】</a></li><li><a href=#实验要求-1>【实验要求】</a></li></ul></li><li><a href=#实验名称-实验44使用spark程序进行数据的清洗>【实验名称】 实验4.4：使用Spark程序进行数据的清洗</a><ul><li><a href=#实验目的-3>【实验目的】</a></li><li><a href=#实验资源-1>【实验资源】</a></li><li><a href=#实验原理-3>【实验原理】</a></li><li><a href=#实验环境-3>【实验环境】</a></li><li><a href=#实验要求-2>【实验要求】</a></li></ul></li><li><a href=#实验名称-实验45人口身高数据分析>【实验名称】 实验4.5：人口身高数据分析</a><ul><li><a href=#实验目的-4>【实验目的】</a></li><li><a href=#实验资源-2>【实验资源】</a></li><li><a href=#实验原理-4>【实验原理】</a></li><li><a href=#实验环境-4>【实验环境】</a></li><li><a href=#实验要求-3>【实验要求】</a></li></ul></li></ul></nav></div><script>window.addEventListener('DOMContentLoaded',()=>{enableStickyToc();});</script></div></div></div></div></div><div id=outerdiv><div id=innerdiv><img id=bigimg src></div></div><script>document.addEventListener('DOMContentLoaded',()=>{hljs.highlightAll();hljs.initLineNumbersOnLoad({singleLine:true});changeSidebarHeight();switchDocToc();$("img").css("cursor:pointer")
+$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});})</script><script src=/static/js/clipboard.min.js></script><script src=/static/js/codecopy.bundle.js?145></script></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text">&copy; 2021 <a href=https://www.wangchucheng.com/>C. Wang</a> and <a href=https://www.ruiqima.com/>R. Ma</a>
+&#183; Powered by the <a href=https://github.com/wangchucheng/hugo-eureka class=hover:text-eureka>Eureka</a> theme for <a href=https://gohugo.io class=hover:text-eureka>Hugo</a></p></div></div></footer></body></html>

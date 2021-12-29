@@ -1,12 +1,1 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>RDD on Heis</title><link>https://huangzhiyi.github.io/tags/rdd/</link><description>Recent content in RDD on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 14 Feb 2020 10:42:51 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/tags/rdd/index.xml" rel="self" type="application/rss+xml"/><item><title>Spark 第四章 Spark RDD 实验手册</title><link>https://huangzhiyi.github.io/spark-exp04/</link><pubDate>Fri, 14 Feb 2020 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/spark-exp04/</guid><description>«返回课程汇总页面
-【实验手册版本】 当前版本号v20200317
-版本 修改说明 v20200317 实验4.2，修正练习（8），应该是求交集 v20200310 初始化版本
-实验4.1：RDD 的创建 【实验名称】 实验4.1：RDD 的创建
-【实验目的】 掌握RDD的创建的方式 【实验原理】 略
-【实验环境】 Ubuntu 16.04 Python 3 PySpark spark 2.4.4 Hadoop 2.7.3 【实验步骤】 在/home/hadoop路径下创建一个文本文件，并命名为123.txt（注意替换123为你学号的后三位）。并输入以下内容，注意替换其中汉字为你个人学号后三位。 你学号后三位,997,953,932,877,453
-启动 hadoop，并把第一步创建的文本文件上传到 HDFS。 （1）启动 Hadoop
-start-hdp.sh
-（2）上传文本文件
-hdfs dfs -mkdir -p /spark-exp4
-hdfs dfs -put /home/hadoop/123.txt /spark-exp4/
-（3）查看是否上传成功</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>RDD on Heis</title><link>/tags/rdd/</link><description>Recent content in RDD on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>&amp;copy; 2021 &lt;a href="https://www.wangchucheng.com/">C. Wang&lt;/a> and &lt;a href="https://www.ruiqima.com/">R. Ma&lt;/a></copyright><lastBuildDate>Fri, 14 Feb 2020 10:42:51 +0800</lastBuildDate><atom:link href="/tags/rdd/index.xml" rel="self" type="application/rss+xml"/><item><title>第四章 Spark RDD 实验手册</title><link>/docs/spark-exp/spark-exp04/</link><pubDate>Fri, 14 Feb 2020 10:42:51 +0800</pubDate><guid>/docs/spark-exp/spark-exp04/</guid><description>【版本】 当前版本号v20200317 版本 修改说明 v20200317 实验4.2，修正练习（8），应该是求交集 v20200310 初始化版本 【实验名称】实验4.1：RDD 的创建 【实验目的】</description></item></channel></rss>

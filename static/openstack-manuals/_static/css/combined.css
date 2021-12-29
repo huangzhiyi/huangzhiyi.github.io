@@ -2609,7 +2609,7 @@ ul.resource-links li a:hover {
 /*Blog Page*/
 .blog-title {
   width: 100%;
-  background: url(/images/images/summit-promo-bkgd1.jpg) no-repeat center center;
+  background: url(images/images/summit-promo-bkgd1.jpg) no-repeat center center;
   background-size: cover;
   padding: 50px 0;
   text-align: center; }

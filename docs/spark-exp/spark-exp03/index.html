@@ -1,0 +1,112 @@
+<!doctype html><html lang=zh><meta charset=utf-8><meta name=viewport content="width=device-width"><title>第三章 使用 Python 开发 Spark 应用实验手册 | Spark 课程 | Heis</title><meta name=generator content="Hugo Eureka 0.8.4"><link rel=stylesheet href=/css/eureka.min.css><script defer src=/js/eureka.min.js></script><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" as=style onload="this.onload=null;this.rel='stylesheet'"><script src=/static/js/jquery-3.6.0.min.js></script><script src=/static/js/heis.js></script><link rel=stylesheet href=/static/css/heis.css media=print onload="this.media='all';this.onload=null" crossorigin><link rel=stylesheet href=/static/css/highlight-css/solarized-light.min.css media=print onload="this.media='all';this.onload=null" crossorigin><script defer src=/static/js/highlight.min.js crossorigin></script><script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script><script defer src=/static/js/highlightjs-line-numbers.min.js></script><link rel=icon type=image/png sizes=32x32 href=/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_2.png><link rel=apple-touch-icon sizes=180x180 href=/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_2.png><meta name=description content="Spark 第三章使用 Python 开发 Spark 应用"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"课程文档","item":"/docs/"},{"@type":"ListItem","position":2,"name":"Spark 课程","item":"/docs/spark-exp/"},{"@type":"ListItem","position":3,"name":"第三章 使用 Python 开发 Spark 应用实验手册","item":"/docs/spark-exp/spark-exp03/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/docs/spark-exp/spark-exp03/"},"headline":"第三章 使用 Python 开发 Spark 应用实验手册 | Spark 课程 | Heis","datePublished":"2020-02-14T10:42:51+08:00","dateModified":"2020-02-14T10:42:51+08:00","wordCount":2947,"author":{"@type":"Person","name":"heis"},"publisher":{"@type":"Person","name":"C. Wang","logo":{"@type":"ImageObject","url":"/images/icon.png"}},"description":"Spark 第三章使用 Python 开发 Spark 应用"}</script><meta property="og:title" content="第三章 使用 Python 开发 Spark 应用实验手册 | Spark 课程 | Heis"><meta property="og:type" content="article"><meta property="og:image" content="/images/icon.png"><meta property="og:url" content="/docs/spark-exp/spark-exp03/"><meta property="og:description" content="Spark 第三章使用 Python 开发 Spark 应用"><meta property="og:locale" content="zh"><meta property="og:site_name" content="Heis"><meta property="article:published_time" content="2020-02-14T10:42:51+08:00"><meta property="article:modified_time" content="2020-02-14T10:42:51+08:00"><meta property="article:section" content="docs"><meta property="article:tag" content="spark"><meta property="article:tag" content="Python"><meta property="og:see_also" content="/docs/spark-exp/spark-exp05/"><meta property="og:see_also" content="/docs/spark-exp/spark-exp04/"><meta property="og:see_also" content="/docs/spark-exp/spark-exp02/"><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?f58b6a2675cf52000232edb4d109eccc";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><body class="flex flex-col min-h-screen"><header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode")
+if(((storageColorScheme=='Auto'||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches)||storageColorScheme=="Dark"){document.getElementsByTagName('html')[0].classList.add('dark')}</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="mr-6 text-primary-text text-xl font-bold">Heis</a>
+<button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+<i class="fas fa-bars"></i></button><div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20"><div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0"><a href=/posts/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">文章</a>
+<a href=/docs/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 selected-menu-item mr-4">课程文档</a></div><div class=flex><div class="relative pt-4 md:pt-0"><div class="cursor-pointer hover:text-eureka" id=lightDarkMode><i class="fas fa-adjust"></i></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id=is-open></div><div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40" id=lightDarkOptions><span class="px-4 py-1 hover:text-eureka" name=Light>浅色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Dark>深色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Auto>自动</span></div></div></div></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id=is-open-mobile></div></nav><script>let element=document.getElementById('lightDarkMode')
+if(storageColorScheme==null||storageColorScheme=='Auto'){document.addEventListener('DOMContentLoaded',()=>{window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change',switchDarkMode)})}else if(storageColorScheme=="Light"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'sun')
+element.firstElementChild.classList.add('fa-sun')}else if(storageColorScheme=="Dark"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'moon')
+element.firstElementChild.classList.add('fa-moon')}
+document.addEventListener('DOMContentLoaded',()=>{getcolorscheme();switchBurger();});</script></div></header><main class="flex-grow pt-16"><div class=pl-scrollbar><div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto"><div class=lg:pt-12><div class="flex flex-col md:flex-row bg-secondary-bg rounded"><div class="md:w-1/4 lg:w-1/5 border-r"><div class="sticky top-16 pt-6"><div id=sidebar-title class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text"><span class=font-semibold>目录</span>
+<i class="fas fa-caret-right ml-1"></i></div><div id=sidebar-toc class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent"><div class="flex flex-wrap ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded"><a class=hover:text-eureka href=/docs/spark-exp/>Spark 课程</a></div><ul class=pl-6><li class=py-2><div><a class=hover:text-eureka href=/docs/spark-exp/spark-exp02/>第二章 搭建 Spark 实验手册</a></div></li><li class=py-2><div><a class="text-eureka hover:text-eureka" href=/docs/spark-exp/spark-exp03/>第三章 使用 Python 开发 Spark 应用实验手册</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/spark-exp/spark-exp04/>第四章 Spark RDD 实验手册</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/spark-exp/spark-exp05/>第五章 SparkSQL 实验手册</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/spark-exp/spark-exp06/>第六章 Spark Streaming 实验手册</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/spark-exp/spark-exp07/>第七章 Spark 机器学习库实验手册</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/spark-exp/spark-exp08/>Spark 第八章 GraphFrames 图计算实验手册</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/spark-exp/spark-training1/>Spark 综合实验1</a></div></li></ul></div></div></div><div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8"><div class="w-full lg:w-3/4 pl-6 ml-0 mr-auto"><h1 class="font-bold text-3xl text-primary-text">第三章 使用 Python 开发 Spark 应用实验手册</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i><span>2020-02-14</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i><span>6分钟阅读时长</span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i><a href=/categories/spark/ class=hover:text-eureka>spark</a></div></div></div><div class=flex><div class="w-full lg:w-3/4 px-6"><div class=content><h2 id=版本>【版本】</h2><p>当前版本号<code>v20200316</code></p><div class=tbl-start></div><table><thead><tr><th>版本</th><th>修改说明</th></tr></thead><tbody><tr><td>v20200316</td><td>修改实验3.3中访问 Jupytor Notebook 注意要点。</td></tr><tr><td>v20200226</td><td>新增选做实验</td></tr><tr><td>v20200214</td><td>初始化版本</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h2 id=实验名称实验31pyspark-的应用>【实验名称】实验3.1：PySpark 的应用</h2><h3 id=实验目的>【实验目的】</h3><ul><li>掌握PySpark 的应用</li></ul><h3 id=实验原理>【实验原理】</h3><ul><li>pyspark -h 查看用法</li></ul><pre><code>Usage: pyspark [options]
+常见的[options] 如下表
+</code></pre><p><img src=/static/img/pyspark-usege.png alt></p><h3 id=实验环境>【实验环境】</h3><ul><li>Ubuntu 16.04</li><li>Python 3</li><li>PySpark</li><li>spark 2.4.4</li><li>scala 2.12.10</li></ul><h3 id=实验步骤>【实验步骤】</h3><p>1、输入<code>pyspark -h</code>查看各参数的定义</p><pre><code>pyspark -h
+</code></pre><p>2、查看sc变量
+（1）不指定 master 时</p><pre><code>pyspark
+</code></pre><p>查看sc变量</p><pre><code>sc
+</code></pre><p>退出PySpark</p><pre><code>quit()
+</code></pre><p>（2）指定 master 时
+启动 Spark</p><pre><code>start-spark.sh
+</code></pre><pre><code>pyspark --master spark://node0:7077
+</code></pre><p>查看sc变量</p><pre><code>sc
+</code></pre><p>3、使用pyspark开发一个WordCount程序。
+（1）在本地创建一个文件：<code>/home/hadoop/你的学号/wc.txt</code> (001表示学号，请根据情况修改)。此路径也可以换为hdfs的路径。</p><p>wc.txt文件中的内容是：</p><pre><code>Hi 你的名字
+count the chicks and rabbits in the cage
+chick rabbit chick rabbit chick rabbit
+rabbit rabbit chick rabbit chick
+chick rabbit chick rabbit chick rabbit
+</code></pre><p>（2）多行代码实现WordCount。</p><pre><code>#读取文件
+r1=sc.textFile(&quot;/home/hadoop/你的学号/wc.txt&quot;)
+r1.collect()
+
+#分行
+r2=r1.flatMap(lambda line:line.split(&quot; &quot;))
+r2.collect()
+
+#统计单词数量
+r3=r2.map(lambda w:(w,1))
+r3.collect()
+
+#单词次数累加
+r4=r3.reduceByKey(lambda x,y: x+y)
+r4.collect()
+
+#按次数排序
+r5=r4.sortBy(lambda x:x[1],False)
+r5.collect()
+</code></pre><blockquote><p>注:关于flatMap,map,reduceByKey等可参考书本第四章的算子部分。</p></blockquote><p>（3）一行代码实现 WordCount，并输出到文件。</p><pre><code>sc.textFile(&quot;/home/hadoop/你的学号/wc.txt&quot;).flatMap(lambda line:line.split(&quot; &quot;)).map(lambda w:(w,1)).reduceByKey(lambda x,y: x+y).sortBy(lambda x:x[1],False).saveAsTextFile(&quot;/home/hadoop/你的学号/wc-result&quot;)
+</code></pre><blockquote><p>提示:运行此命令每次需要更改saveAsTextFile后面的文件输出路径，否则会出错提示"FileAlreadyExistException"</p></blockquote><p>（4）退出PySpark，访问<code>/home/hadoop/你的学号/wc-result</code>目录，并查看输出目录下的文件。</p><p>（5）查看结果可能由多个文件（分区）组成。尝试重复步骤（3），修改代码使用repartition方法，把结果输出到一个分区。</p><h2 id=实验32搭建-pycharm-远程开发-spark-应用>实验3.2：搭建 PyCharm 远程开发 Spark 应用</h2><h2 id=实验名称>【实验名称】</h2><p>实验3.2：搭建 PyCharm 远程开发 Spark 应用</p><h3 id=实验目的-1>【实验目的】</h3><ul><li>掌握 PyCharm 的使用</li><li>掌握 PyCharm 远程开发 Spark 应用</li></ul><h3 id=实验原理-1>【实验原理】</h3><ul><li>通过 PyCharm 的设置,可以把本地电脑文件通过 SFTP 发送到虚拟机运行，从而能够实现远程的开发。</li></ul><h3 id=实验资源>【实验资源】</h3><ul><li>pycharm-professional-2019.3.3.exe</li></ul><pre><code>https://download-cf.jetbrains.com/python/pycharm-professional-2019.3.3.exe
+</code></pre><ul><li>pycharm 安装指南</li></ul><pre><code>https://pan.baidu.com/s/1-9Lu6beSXCj2RYp9hwpn5A#提取码=fjji
+</code></pre><ul><li>Python环境 Anaconda（windows平台）</li></ul><pre><code>https://repo.continuum.io/archive/Anaconda3-5.3.1-Windows-x86_64.exe
+</code></pre><h3 id=实验环境-1>【实验环境】</h3><ul><li>Ubuntu 16.04</li><li>Python 3</li><li>PySpark</li><li>spark 2.4.4</li><li>scala 2.12.10</li></ul><h3 id=实验步骤-1>【实验步骤】</h3><ol><li><p>在本机 Windows 安装 Anaconda。</p></li><li><p>安装 PyCharm professional。</p></li><li><p>查看 pycharm 安装指南进行配置。</p></li><li><p>安装完成后，打开PyCharm，新建一个名字叫<code>spark-exp</code>的项目，项目路径可以自己定义，这里以<code>D:\workspaces\workspace_python\spark-exp</code>为例。
+<img src=/static/img/chp03-createworkspace.png alt></p></li><li><p>打开菜单"Tools -> Deployment -> Configuration&mldr;"
+<img src=/static/img/chp03-new-deployment.png alt></p></li><li><p>这里需要新建一个通过 SFTP 把本地文件远程发布到虚拟机的设置。
+<img src=/static/img/chp03-new-sftp.png alt></p></li><li><p>输入名称<code>hadoop@node0</code>
+<img src=/static/img/chp03-new-sftp-server.png alt></p></li><li><p>输入虚拟机的地址<code>192.168.30.130</code>，用户名<code>hadoop</code>，密码<code>Hdp0668</code>。
+<img src=/static/img/chp03-new-sftp-server-settings.png alt></p></li></ol><p>测试连接成功后，保存并退出。
+<img src=/static/img/chp03-test-connection.png alt></p><ol start=9><li><p>打开菜单"File -> Settings"
+<img src=/static/img/chp03-open-settings.png alt></p></li><li><p>新增一个 Interpreter（Python解析器），这里我们需要设置虚拟机的 Python 解析器相关设定，这样我们通过 SFTP 从本地发送到虚拟机的Python 脚本才能知道使用哪个解析器进行解析运行。
+<img src=/static/img/chp03-add-interpreter.png alt>
+<img src=/static/img/chp03-add-interpreter-settings.png alt></p></li><li><p>选择"ssh-interpreter"，配置虚拟机的地址，用户名和密码。
+<img src=/static/img/chp03-new-ssh-interpreter.png alt>
+<img src=/static/img/chp03-new-ssh-interpreter-pwd.png alt></p></li><li><p>interpreter 需要选择Python的所在路径，这里设置为<code>/usr/bin/python3</code>。把本地项目路径<code>D:/workspaces/workspace_python/spark-exp</code>映射到虚拟机的路径<code>/home/hadoop/spark-exp</code>，如果虚拟机路径不存在请先创建。完成以后点击"Finish"。</p></li></ol><p><img src=/static/img/chp03-new-ssh-interpreter-path.png alt></p><ol start=13><li><p>在 spark-exp 项目下新建一个 wordcount2.py 文件。
+<img src=/static/img/chp03-new-python-wc.png alt></p></li><li><p>wordcount2 输入以下代码，注意修改你的学号。</p></li></ol><pre><code>from pyspark import SparkContext
+sc = SparkContext(&quot;spark://node0:7077&quot;, &quot;WordCountApp&quot;)
+rs = sc.textFile(&quot;/home/hadoop/你的学号/wc.txt&quot;).flatMap(lambda line: line.split(&quot; &quot;)).map(lambda w: (w, 1)).reduceByKey(lambda x, y: x+y).sortBy(lambda x:x[1], False).collect()
+for e in rs:
+    print(e)
+
+</code></pre><ol start=15><li><p>把wordcount2.py 文件上传到虚拟机。
+<img src=/static/img/chp03-deployment-wc2.png alt></p></li><li><p>编辑 python 脚本的运行设置模板。
+<img src=/static/img/chp03-edit-configuration.png alt></p></li><li><p>新增一个 python 运行设置模板。
+<img src=/static/img/chp03-new-python-run-conf.png alt></p></li><li><p>在环境变量中增加以下环境变量</p></li></ol><pre><code>SPARK_HOME    /opt/spark
+PYTHONPATH    /opt/spark/python
+JAVA_HOME     /opt/jdk8
+HADOOP_HOME   /opt/hadoop
+SCALA_HOME    /opt/scala2-12
+</code></pre><p><img src=/static/img/chp03-new-env.png alt></p><ol start=19><li><p>把"Script path"配置设置为本地 wordcount2.py 文件路径。&ldquo;Python interpreter&rdquo; 选择刚创建的解析器。
+<img src=/static/img/chp03-new-run-conf1.png alt></p></li><li><p>从模板创建一个运行设置
+<img src=/static/img/chp03-new-run-templ.png alt></p></li><li><p>启动虚拟机的spark</p></li></ol><pre><code>start-spark.sh
+</code></pre><ol start=22><li>运行 wordcount2 看是否能够得到结果。</li></ol><p><img src=/static/img/chp03-run-wc2.png alt></p><h2 id=实验33搭建-jupyter-notebook选做>实验3.3：搭建 Jupyter Notebook（选做）</h2><h2 id=实验名称-1>【实验名称】</h2><p>实验3.3：搭建 Jupyter Notebook（选做）</p><h3 id=实验目的-2>【实验目的】</h3><ul><li>搭建 Jupyter Notebook 开发环境</li></ul><h3 id=实验原理-2>【实验原理】</h3><p>Jupyter Notebook 是一个基于Web 的交互编程环境，支持多种编程语言。使用他来替代命令行交互编程可以获得更好的编程体验。</p><h3 id=实验环境-2>【实验环境】</h3><ul><li>Ubuntu 16.04</li><li>Python 3.5</li><li>PySpark</li><li>spark 2.4.4</li><li>scala 2.12.10</li></ul><h3 id=实验步骤-2>【实验步骤】</h3><ol><li>配置 Python 依赖包的源，Python使用pip 来下载依赖的包。但是原有的下载源下载资源太慢，这里我们改用清华大学的安装源。</li></ol><pre><code>mkdir ~/.pip/
+vim ~/.pip/pip.conf
+</code></pre><ol start=2><li>在 pip.conf 文件里面输入以下内容，修改源为清华大学源。</li></ol><pre><code>[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+[install]
+trusted-host = pypi.tuna.tsinghua.edu.cn
+</code></pre><ol start=3><li>通过网络下载安装 Jupyter Notebook 前，先检查一下能否连接互联网，如果命令没有响应，请返回实验2检查网络安装和配置。</li></ol><pre><code>#测试能否联网
+ping baidu.com
+</code></pre><ol start=4><li>安装 Jupyter Notebook。</li></ol><pre><code>pip3 install notebook
+</code></pre><ol start=5><li>因为安装 ipython 版本和 Python3.5 不兼容，所以卸载自带 ipython，安装7.9.0版本。</li></ol><pre><code>pip3 uninstall ipython
+pip3 install ipython==7.9.0
+</code></pre><ol start=6><li>安装 findspark，主要用来检测spark运行。</li></ol><pre><code>pip3 install findspark
+</code></pre><ol start=7><li>修改 PySpark 的驱动命令，修改为使用 Jupyter Notebook。</li></ol><pre><code>vim /opt/spark/conf/spark-env.sh
+</code></pre><p>找到这句，注释掉。</p><pre><code>#export PYSPARK_DRIVER_PYTHON=python3
+</code></pre><ol start=8><li>在用户的环境变量配置文件增加 PYSPARK 驱动配置。
+（1）用户的环境变量配置</li></ol><pre><code>vim ~/.bashrc
+</code></pre><p>（2）在文件最后加入</p><pre><code>#由于上文注释掉此选项以后，pyspark 将不能在SSH终端（例如Xshell）输入 Python 代码，而是自动启动 Jupyter Notebook，用户可以在 Notebook 输入代码。
+export PYSPARK_DRIVER_PYTHON=jupyter
+#--ip=* 选项主要是为了启动 Jupyter 服务器可以绑定所有IP，浏览器可以访问。
+export PYSPARK_DRIVER_PYTHON_OPTS='notebook --ip=*'
+</code></pre><p>（3）让配置生效</p><pre><code>source ~/.bashrc
+</code></pre><ol start=9><li>启动PySpark，查看是否能够启动 Jupyter Notebook。</li></ol><pre><code>pyspark
+</code></pre><p>复制命令行下 Jupyter Notebook 的地址。
+<img src=/static/img/jupyter-token.png alt></p><blockquote><p>注意：</p><ol><li>Jupyter Notebook每次地址token参数会不一样。</li><li>如果 Jupyter Notebook 地址不能访问可以替换 node0 为虚拟机 IP 地址，或者编辑 Windows 的 host 文件（C:\Windows\System32\drivers\etc\hosts），增加一行"192.168.30.130 node0"，把node0指向虚拟机地址，即可访问。</li></ol></blockquote><ol start=10><li>访问 Jupyter Notebook 的地址，新建一个文件，Jupyter 会自动在你启动的目录下生成一个<code>Untitled.ipynb</code>的文件来保存你输入的代码。</li></ol><p><img src=/static/img/jupyter-new.png alt></p><p><img src=/static/img/jupyter-run.png alt></p><blockquote><p>提示：</p><ol><li>在命令行按下<code>Ctrl+C</code>可以停止 Jupyter Notebook。</li><li>如果安装了 Jupyter Notebook，原本 PySpark 的命令行交互方式就不能再使用了。如果想要恢复，就把第7步注释的部分还原，把第8步的环境变量配置注释掉。</li></ol></blockquote><ol start=11><li><p>自行探索 Jupyter Notebook 的保存，编辑等功能。</p></li><li><p>重复执行试验3.2 的 wordcount 部分代码，检验 Jupyter Notebook 是否正常运行。</p></li></ol></div><div class=my-4><a href=/tags/spark/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#spark</a>
+<a href=/tags/python/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#Python</a></div><div class=py-2><div class="flex flex-col md:flex-row items-center my-8"><a href=/authors/heis/ class="w-24 h-24 md:mr-4"><img src=/static/img/authors/heis.png class="w-full bg-primary-bg rounded-full" alt=Avatar></a><div class="w-full md:w-auto mt-4 md:mt-0"><a href=/authors/heis/ class="block font-bold text-lg pb-1 mb-2 border-b">黄老师</a>
+<span class="block pb-2"></span><a href=mailto:heishuangzy@qq.com class=mr-1><i class="fas fa-envelope"></i></a><a href=https://gitee.com/heis/ class=mr-1><i class="fab fa-git"></i></a></div></div></div><div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t"><div><span class="block font-bold">上一页</span>
+<a href=/docs/spark-exp/spark-exp02/ class=block>第二章 搭建 Spark 实验手册</a></div><div class="md:text-right mt-4 md:mt-0"><span class="block font-bold">下一页</span>
+<a href=/docs/spark-exp/spark-exp04/ class=block>第四章 Spark RDD 实验手册</a></div></div></div><div class="hidden lg:block lg:w-1/4"><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-secondary-bg pt-16 -mt-16"><span class="text-lg font-semibold">本页内容</span></div><div class="sticky-toc hidden lg:block px-6 pb-6 pt-10 -mt-10 border-l"><nav id=TableOfContents><ul><li><a href=#版本>【版本】</a></li><li><a href=#实验名称实验31pyspark-的应用>【实验名称】实验3.1：PySpark 的应用</a><ul><li><a href=#实验目的>【实验目的】</a></li><li><a href=#实验原理>【实验原理】</a></li><li><a href=#实验环境>【实验环境】</a></li><li><a href=#实验步骤>【实验步骤】</a></li></ul></li><li><a href=#实验32搭建-pycharm-远程开发-spark-应用>实验3.2：搭建 PyCharm 远程开发 Spark 应用</a></li><li><a href=#实验名称>【实验名称】</a><ul><li><a href=#实验目的-1>【实验目的】</a></li><li><a href=#实验原理-1>【实验原理】</a></li><li><a href=#实验资源>【实验资源】</a></li><li><a href=#实验环境-1>【实验环境】</a></li><li><a href=#实验步骤-1>【实验步骤】</a></li></ul></li><li><a href=#实验33搭建-jupyter-notebook选做>实验3.3：搭建 Jupyter Notebook（选做）</a></li><li><a href=#实验名称-1>【实验名称】</a><ul><li><a href=#实验目的-2>【实验目的】</a></li><li><a href=#实验原理-2>【实验原理】</a></li><li><a href=#实验环境-2>【实验环境】</a></li><li><a href=#实验步骤-2>【实验步骤】</a></li></ul></li></ul></nav></div><script>window.addEventListener('DOMContentLoaded',()=>{enableStickyToc();});</script></div></div></div></div></div><div id=outerdiv><div id=innerdiv><img id=bigimg src></div></div><script>document.addEventListener('DOMContentLoaded',()=>{hljs.highlightAll();hljs.initLineNumbersOnLoad({singleLine:true});changeSidebarHeight();switchDocToc();$("img").css("cursor:pointer")
+$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});})</script><script src=/static/js/clipboard.min.js></script><script src=/static/js/codecopy.bundle.js?210></script></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text">&copy; 2021 <a href=https://www.wangchucheng.com/>C. Wang</a> and <a href=https://www.ruiqima.com/>R. Ma</a>
+&#183; Powered by the <a href=https://github.com/wangchucheng/hugo-eureka class=hover:text-eureka>Eureka</a> theme for <a href=https://gohugo.io class=hover:text-eureka>Hugo</a></p></div></div></footer></body></html>

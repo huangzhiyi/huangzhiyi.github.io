@@ -1,11 +1,1 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Streaming on Heis</title><link>https://huangzhiyi.github.io/tags/streaming/</link><description>Recent content in Streaming on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 19 Apr 2020 10:42:51 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/tags/streaming/index.xml" rel="self" type="application/rss+xml"/><item><title>Spark 第六章 Spark Streaming 实验手册</title><link>https://huangzhiyi.github.io/spark-exp06/</link><pubDate>Sun, 19 Apr 2020 10:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/spark-exp06/</guid><description>«返回课程汇总页面
-【实验手册版本】 当前版本号v20200424
-版本 修改说明 v20200424 新增修改日志级别的步骤 v20200419 初始化版本
-实验6.1 ：运行网络版的WordCount 【实验名称】 实验6.1 ：运行网络版的WordCount 【实验目的】 了解NetCat工具的使用。 初步了解Streaming运行的方式。 【实验原理】 运行Spark自带的StreamingWordCount程序，
-【实验环境】 操作系统：Ubuntu 16.04 （确保机器cpu核数大于接收器的数量，或Local模式线程数大于接收器数量） Spark：Spark2.x Pyspark 【实验步骤】 一、基于netcat的聊天室
-启动 NetCat 服务端，并在1234端口监听 nc -lk 1234
-使用xshell 打开一个新的选项卡，连接虚拟机。启动NetCat客户端，并连接Netcat服务端 nc localhost 1234
-注意：如果客户端和服务端不在同一台机器，localhost 可以换成实际IP。
-在服务端输入以下字符串，并按回车，可以在客户端收到消息，并打印出来。这里注意替换学号为你个人学号。 hello 你的学号
-在客户端输入字符串，并按回车，可以在服务端收到消息，并打印出来。这里注意替换学号为你个人学号。 你好 你的学号
-在 NetCat 客户端的选项卡使用ctrl+c终止客户端进程。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Streaming on Heis</title><link>/tags/streaming/</link><description>Recent content in Streaming on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh</language><copyright>&amp;copy; 2021 &lt;a href="https://www.wangchucheng.com/">C. Wang&lt;/a> and &lt;a href="https://www.ruiqima.com/">R. Ma&lt;/a></copyright><lastBuildDate>Sun, 19 Apr 2020 10:42:51 +0800</lastBuildDate><atom:link href="/tags/streaming/index.xml" rel="self" type="application/rss+xml"/><item><title>第六章 Spark Streaming 实验手册</title><link>/docs/spark-exp/spark-exp06/</link><pubDate>Sun, 19 Apr 2020 10:42:51 +0800</pubDate><guid>/docs/spark-exp/spark-exp06/</guid><description>【版本】 当前版本号v20200424 版本 修改说明 v20200424 新增修改日志级别的步骤 v20200419 初始化版本 实验6.1 ：运行网络版的WordCount 【实验名称】 实验6.1 ：</description></item></channel></rss>

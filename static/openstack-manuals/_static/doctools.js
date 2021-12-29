@@ -31,7 +31,7 @@ if (!window.console || !console.firebug) {
  * small helper function to urldecode strings
  */
 jQuery.urldecode = function(x) {
-  return decodeURIComponent(x).replace(/\+/g, ' ');
+  return decodeURIComponent(x).replace(\+/g, ' ');
 };
 
 /**
@@ -165,7 +165,7 @@ var Documentation = {
    */
   highlightSearchWords : function() {
     var params = $.getQueryParameters();
-    var terms = (params.highlight) ? params.highlight[0].split(/\s+/) : [];
+    var terms = (params.highlight) ? params.highlight[0].split(\s+/) : [];
     if (terms.length) {
       var body = $('div.body');
       if (!body.length) {
@@ -220,8 +220,8 @@ var Documentation = {
    */
   getCurrentURL : function() {
     var path = document.location.pathname;
-    var parts = path.split(/\//);
-    $.each(DOCUMENTATION_OPTIONS.URL_ROOT.split(/\//), function() {
+    var parts = path.split(\//);
+    $.each(DOCUMENTATION_OPTIONS.URL_ROOT.split(\//), function() {
       if (this == '..')
         parts.pop();
     });

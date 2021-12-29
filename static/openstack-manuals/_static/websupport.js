@@ -401,7 +401,7 @@
 
   /** Handle when the user clicks on a sort by link. */
   function handleReSort(link) {
-    var classes = link.attr('class').split(/\s+/);
+    var classes = link.attr('class').split(\s+/);
     for (var i=0; i<classes.length; i++) {
       if (classes[i] != 'sort-option') {
 	by = classes[i].substring(2);
@@ -601,7 +601,7 @@
       return escape ? esc.text(cur || "").html() : cur;
     }
 
-    return template.replace(/<([%#])([\w\.]*)\1>/g, function() {
+    return template.replace(<([%#])([\w\.]*)\1>/g, function() {
       return handle(arguments[2], arguments[1] == '%' ? true : false);
     });
   }
@@ -792,7 +792,7 @@ $(document).ready(function() {
   // highlight search words in search results
   $("div.context").each(function() {
     var params = $.getQueryParameters();
-    var terms = (params.q) ? params.q[0].split(/\s+/) : [];
+    var terms = (params.q) ? params.q[0].split(\s+/) : [];
     var result = $(this);
     $.each(terms, function() {
       result.highlightText(this.toLowerCase(), 'highlighted');
