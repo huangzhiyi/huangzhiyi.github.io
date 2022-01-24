@@ -1,0 +1,413 @@
++++
+Description = "Hadoop Part 1 - 模板机制作"
+Tags = ["hadoop","大数据","课程"]
+Categories = ["hadoopd"]
+date = "2021-07-01T00:44:00+08:00"
+draft = true
+title = "Hadoop Part 1 - 模板机制作"
+toc = true
+authors = "heis"
+weight=100
++++
+<a href="/hadoop-d/">«返回课程汇总页面</a>
+
+## 【版本】
+
+当前版本号`v20210630`
+<div class="tbl-start"></div>
+
+|版本|修改说明|
+|-|-|
+|v20220119|重新梳理结果，增加专业术语的解析|
+|v20210630|初始化版本|
+
+<div class="tbl-end" style="height:10px"></div>
+
+## 【实验名称】
+Hadoop Part 1 - 模板机制作
+
+## 【实验目的】
+- 掌握搭建 CentOS 模板镜像
+- 熟练掌握 Linux命令（vi、tar、mv等等）的使用
+- 掌握 VirtualBox、FinalShell 等客户端的使用
+
+## 【实验环境】
+- 内存：至少4G
+- 硬盘：至少空余40G
+- 操作系统: 64位 Windows系统。
+
+## 【实验资源】
+- FinalShell
+- CentOS 7.9系统镜像
+- VirtualBox 6
+- Hadoop 安装包
+```
+下载链接：https://pan.baidu.com/s/1ghde86wcK6pwg1fdSSWg0w
+提取码：v3wv
+```
+
+## 【实验步骤】
+###  【安装VirtualBox和FinalShell】
+
+1. 安装 VirtualBox 6，过程略。如果之前有安装旧版本的 VirtualBox，请先卸载。
+
+2. 安装 FinalShell，过程略。
+
+###  【VirtualBox 新建虚拟机】
+
+3. 启动 VirtualBox，点击“新建”，新建1台虚拟机。
+![](/static/img/hadoop-d01/Snipaste_2021-02-27_23-07-24.png)
+
+4. 类型选择 Linux，版本选择 Red Hat（64-bit）。
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_08-56-41.png)
+
+5. 分配 1024M 内存。
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_08-57-19.png)
+
+6. 创建虚拟磁盘。
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_09-04-34.png)
+
+7. 磁盘映像选择 VDI。
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_09-05-51.png)
+
+8. 磁盘选择“动态分配”。
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_09-06-50.png)
+
+9. 磁盘分配最大容量 30GB。点击“创建”。
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_09-07-43.png)
+
+10. 设置虚拟机。
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_09-09-54.png)
+
+11. 加载 CentOS 的安装镜像。
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_16-29-52.png)
+
+12. 连接方式选择“仅主机（Host-Only）网络”，网卡选择“VirtualBox Host-Only Ethernet Adapter #2”。
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_16-32-39.png)
+
+
+###  【安装CentOS 7】
+
+13. 启动“HadoopTmpl”虚拟机。
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_16-37-46.png)
+
+14. 选择“Install CentOS 7”，进行 CentOS 安装。
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_16-40-00.png)
+
+15. 虚拟机安装语言选择默认英语。
+![](/static/img/hadoop-d01/Snipaste_2021-03-17_23-38-19.png)
+
+16. 时区选择东8区，注意调整时间为你当前安装的实际时间。
+![](/static/img/hadoop-d01/Snipaste_2021-03-17_23-39-13.png)
+![](/static/img/hadoop-d01/Snipaste_2021-03-17_23-41-04.png)
+
+17. 语言支持勾选中文。
+![](/static/img/hadoop-d01/Snipaste_2021-03-17_23-42-02.png)
+![](/static/img/hadoop-d01/Snipaste_2021-03-17_23-42-33.png)
+
+18. 网口设置，启用网口，并设置 Host Name 为 `hadooptmpl`
+![](/static/img/hadoop-d01/Snipaste_2021-03-17_23-43-42.png)
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_16-52-07.png)
+
+19. 设置网口信息。
+![](/static/img/hadoop-d01/Snipaste_2021-03-17_23-52-17.png)
+```
+地址：10.0.0.70
+掩码：24
+网关：10.0.0.254
+DNS:223.5.5.5
+```
+
+20. 回到主界面，进入软件选择界面，选择最小化安装“Minima Install”。
+![](/static/img/hadoop-d01/Snipaste_2021-02-28_00-12-04.png)
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_16-45-26.png)
+
+21. 回到主界面，进入系统安装位置菜单。
+![](/static/img/hadoop-d01/Snipaste_2021-02-28_00-15-09.png)
+
+22. 选择手动分区。
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_16-47-36.png)
+
+23. 选择标准分区格式
+![](/static/img/hadoop-d01/Snipaste_2021-02-28_00-17-39.png)
+
+24. 新建3个分区（Partition）
+```
+swap分区：2048M
+/boot 分区：300M
+/ 根分区：剩余所有空间
+```
+![](/static/img/hadoop-d01/Snipaste_2021-02-28_00-19-10.png)
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_16-50-47.png)
+![](/static/img/hadoop-d01/Snipaste_2021-02-28_00-20-18.png)
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_16-48-51.png)
+
+25. 禁用KDUMP。
+>KDUMP 是 Linux 内核的一个功能，可在发生内核错误时创建核心转储。当被触发时，KDUMP 会导出一个内存映像，该映像可用于调试和确定崩溃的原因。
+
+![](/static/img/hadoop-d01/Snipaste_2021-02-28_00-23-28.png)
+![](/static/img/hadoop-d01/Snipaste_2021-02-28_00-25-52.png)
+
+26. 开始安装系统
+![](/static/img/hadoop-d01/Snipaste_2021-02-28_00-26-28.png)
+
+27. 设置 root 密码，密码设置为`123456`。此时可能会提示密码过短，但是再次按下按钮确认即可成功修改。
+![](/static/img/hadoop-d01/Snipaste_2021-02-28_00-27-05.png)
+![](/static/img/hadoop-d01/Snipaste_2021-02-28_00-27-57.png)
+>重要提示：这里设置的密码较为简单，仅为简化实验操作。在工作环境中切勿使用过于简单的密码。
+
+28. 创建 hadoop 用户，密码设置为`123456`。此时可能会提示密码过短，但是再次按下按钮确认即可成功修改。
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_17-07-56.png)
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_17-07-00.png)
+
+>重要提示：这里设置的密码较为简单，仅为简化实验操作。在工作环境中切勿使用过于简单的密码。
+
+29. 等待系统安装完毕以后，点击重启。
+![](/static/img/hadoop-d01/Snipaste_2021-02-28_00-28-45.png)
+
+### 【配置 CentOS 系统】
+
+30. 重启以后，尝试使用 hadoop/123456 账户登录。
+>注意请不要使用 root 登录！！！。
+
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_16-59-01.png)
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_17-09-52.png)
+
+31. 进入当前Windows系统的网卡设置，修改虚拟网卡的配置。
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_17-23-54.png)
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_17-24-31.png)
+
+32. 打开FinalShell，使用 hadoop 用户SSH方式登录虚拟机。
+```
+IP:10.0.0.70
+端口：22
+用户名：hadoop
+```
+![](/static/img/hadoop-d01/Snipaste_2022-01-21_15-29-11.png)
+![](/static/img/hadoop-d01/Snipaste_2022-01-21_15-34-45.png)
+![](/static/img/hadoop-d01/Snipaste_2022-01-21_15-35-58.png)
+
+33. 使用`su`命令，输入root的密码`123456`，切换为root用户。
+```
+su
+```
+
+34. 执行以下命令，禁用防火墙。
+```
+systemctl stop firewalld
+systemctl disable firewalld
+```
+
+35. 备份 SELinux 配置文件，并禁用 SELinux。
+```
+cp /etc/selinux/config{,.bak}
+vi /etc/selinux/config
+```
+在文件中修改
+```
+SELINUX=disabled
+```
+>注：此为实验安装，为了尽量方便访问 Hadoop 的服务，所以选择关闭防火墙和SELinux。真实生产部署 Hadoop 不应该禁用防火墙和SELinux，它们对于系统的安全性是至关重要的。
+
+36. 关闭图形化networkmanager，以后统一用network来管理
+```
+systemctl stop NetworkManager.service
+systemctl disable NetworkManager.service
+```
+
+### 【配置 SSH】
+
+37. 备份 SSH 配置文件，优化 SSH 的连接速度。
+```
+cp /etc/ssh/sshd_config{,.bak}
+vi /etc/ssh/sshd_config
+```
+
+38. 找到`UseDNS no`，去掉前面的#号注释
+
+39. 找到`GSSAPIAuthentication no`这一行的yes，把yes改成no
+
+40. 改完重启sshd
+```
+systemctl restart sshd
+```
+
+### 【配置 CentOS yum源】
+>yum，是Yellow dog Updater, Modified 的简称，是杜克大学为了提高RPM 软件包安装性而开发的一种软件包管理器。
+
+>起初是由 yellow dog 这一发行版的开发者 Terra Soft 研发，用 Python 写成，那时还叫做yup(yellow dog updater)，后经杜克大学的Linux@Duke 开发团队进行改进，遂有此名。
+
+>yum 的宗旨是自动化地升级，安装/移除 rpm 包，收集 rpm 包的相关信息，检查rpm包的依赖性并自动提示用户解决。
+
+>yum 的关键之处是要有可靠的 repository，顾名思义，这是软件的仓库，它可以是 http 或 ftp 站点，也可以是本地软件池，但必须包含 rpm 的 header，header 包括了rpm 包的各种信息，包括描述，功能，提供的文件，依赖性等。正是收集了这些header 并加以分析，才能自动化地完成余下的任务。
+
+<div class="warning">注意此阶段命令需要在 root 用户下执行！</div>
+
+41. 为了提升软件安装速度，我们选择使用本地安装镜像作为 yum 的源。首先确保虚拟机加载了 CentOS 的安装光盘镜像。
+![](/static/img/hadoop-d01/Snipaste_2021-07-01_17-26-36.png)
+
+42. 调整硬盘为启动的第一顺位。
+![](/static/img/hadoop-d01/Snipaste_2021-07-02_00-09-59.png)
+
+43. 解挂目录 /mnt 目录，准备把光盘挂载到此目录。
+```
+umount /mnt
+```
+
+44. 进入源目录，把原有源备份到test目录下。
+```
+cd  /etc/yum.repos.d/
+mkdir test -p
+mv *.repo test
+```
+
+45. 配置本地源指向光盘镜像的挂载目录。
+```
+echo '[local]
+name=local
+baseurl=file:///mnt
+gpgcheck=0'>local.repo
+```
+
+46. 挂载光盘内容到 /mnt 目录下
+```
+mount /dev/cdrom /mnt
+```
+
+47. 清理源缓存
+```
+yum makecache
+```
+>正常清理源缓存以后，会看到以下结果提示
+>Determining fastest mirrors
+>Metadata Cache Created
+
+48. 执行以下命令，每次启动系统自动挂载光盘内容到`/mnt`目录下。
+```
+echo 'mount /dev/cdrom /mnt' >>/etc/rc.local
+chmod +x /etc/rc.d/rc.local
+```
+
+### 【CentOS 安装通用软件】
+<div class="warning">注意此阶段命令需要在 root 用户下执行！</div>
+49. 安装 tab 补全
+```
+yum install -y bash-completion.noarch
+```
+
+50. 安装常用的命令
+```
+yum install -y net-tools vim lrzsz wget tree screen lsof  tcpdump chrony rsync
+```
+
+### 【CentOS 安装 JDK】
+<div class="warning">注意此阶段命令需要在 root 用户下执行！</div>
+51. 上传 JDK 安装包`jdk-8u231-linux-x64.tar.gz` 到 `/opt` 目录下。
+
+52. 解压安装JDK
+```
+cd /opt
+tar -xvf jdk-8u231-linux-x64.tar.gz
+mv jdk1.8.0_231 jdk8
+```
+
+53. 设置 JDK 相关的环境变量，并运行。
+```
+cp /etc/profile /etc/profile.bak
+echo "export JAVA_HOME=/opt/jdk8
+export CLASSPATH=\$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:.
+export PATH=\$JAVA_HOME/bin:\$PATH" >>/etc/profile
+```
+```
+source /etc/profile
+```
+
+54. 测试 JDK 是否正常安装，正常安装的运行以下命令以后可以返回 JDK 的版本。
+```
+java -version
+```
+
+55. 修改 hosts，在配置文件末尾加入3个节点配置。注意替换为你的学号。
+
+- 备份 hosts 文件，仅执行一次
+```
+cp /etc/hosts{,.bak}
+```
+
+- 写入内容到 hosts 文件
+```
+echo "10.0.0.71 nodea+你的学号后3位
+10.0.0.72 nodeb+你的学号后3位
+10.0.0.73 nodec+你的学号后3位">> /etc/hosts
+```
+>假如你的学号为123，则命令为
+```
+echo "10.0.0.71 nodea123
+10.0.0.72 nodeb123
+10.0.0.73 nodec123">> /etc/hosts
+```
+
+- 打开 hosts 文件查看是否有写入内容
+```
+cat /etc/hosts
+```
+
+### 【CentOS 安装 chrony】
+<div class="warning">注意此阶段命令需要在 root 用户下执行！</div>
+
+>Chrony是一个开源的自由软件，像CentOS 7或基于RHEL 7操作系统，已经是默认服务，默认配置文件在 /etc/chrony.conf 它能保持系统时间与时间服务器（NTP）同步，让时间始终保持同步。相对于NTP时间同步软件，占据很大优势。其用法也很简单。
+
+56. 安装和设置chrony。打开时间同步配置文件，在文件最后增加以下代码，保存退出。
+```
+vim /etc/chrony.conf
+```
+```
+server 10.0.0.71 iburst
+```
+
+57. 重启时间同步服务
+```
+systemctl restart chronyd
+```
+
+### 【CentOS 解压准备 Hadoop】
+<div class="warning">注意此阶段命令需要在 hadoop 用户下执行！</div>
+
+58. 切换为 hadoop 用户
+```
+su hadoop
+```
+
+59. 进入 hadoop 工作目录，上传 Hadoop 安装包`hadoop-3.3.1.tar.gz`。
+```
+cd ~
+```
+
+60. 移动安装包`hadoop-3.3.1.tar.gz` 到/opt目录并解压。
+```
+sudo mv hadoop-3.3.1.tar.gz /opt
+sudo tar -xvf hadoop-3.3.1.tar.gz
+```
+
+61. 修改 hadoop 存放目录，创建一个 tmp 目录用于存储HDFS文件内容。
+```
+sudo mv hadoop-3.3.1 hadoop
+sudo mkdir /opt/hadoop/tmp
+```
+
+62. 设置 /opt/hadoop 的拥有者为 hadoop 用户·
+```
+sudo chown hadoop:wheel -R /opt/hadoop
+```
+
+63. 设置 Hadoop 的环境变量。
+```
+echo "export HADOOP_HOME=/opt/hadoop
+export PATH=\$HADOOP_HOME/bin:\$HADOOP_HOME/sbin:\$PATH:.
+">>/etc/profile
+```
+
+64. 删除 Hadoop 下cmd后缀的脚本，这些脚本仅能在 Windows 下运行。
+```
+sudo rm /opt/hadoop/sbin/*.cmd -f
+```

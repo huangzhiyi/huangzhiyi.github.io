@@ -5,10 +5,27 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" href="./fonts/fontawesome/css/font-awesome.min.css" />
 		<script src="./js/jquery-3.6.0.min.js"></script>
+		<style media="print">
+		.container{
+			width:700px;
+			text-align: center;
+			margin: 2rem 0;
+		}
+		.box {
+			display: -webkit-flex;/* Safari */
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+		#controlPanel{
+			display:none;
+		}
+		</style>
 		<style>
 			.container {
 				text-align: center;
-				margin: 2rem 0;
+				margin:0 auto;
 				width: 100%;
 			}
 
@@ -17,9 +34,8 @@
 				/* Safari */
 				display: flex;
 				flex-direction: row;
-				flex-wrap: nowrap;
+				flex-wrap: wrap;
 				justify-content: center;
-
 			}
 
 			.item {
@@ -102,17 +118,35 @@
 				border-radius: 10px;
 				border: 2px solid #808080;
 			}
+			
+			.printBtn {
+				background-color: #60C5F1;
+				height: 4rem;
+				width:100%;
+				color: #fff;
+				font-size: 1.5rem;
+				border-radius: 10px;
+				border: 2px solid #808080;
+			}
 		</style>
 	</head>
 	<body>
 		<div class="container">
+			<div>
+				<div style="flex-grow:2;border:0;">
+					<h1 id="titPanel" style="font-size:2rem">点名</h1>
+				</div>
+				<div style="flex-grow:1;border:0;">
+					<h1 id="times" style="font-size:1rem"></h1>
+				</div>
+			</div>
 			<div class="box">
 				<div class="item" style="flex-grow:1">
 					<p><span style="font-size:3rem;" class="colorG"><i class="fa fa-check"></i>已签到</span>&nbsp;<span
 							id="signCountField">0</span>人</p>
 					<ul id="signfield" class="nField"></ul>
 				</div>
-				<div class="item" style="flex-grow:2">
+				<div id="controlPanel" class="item" style="flex-grow:2">
 					<div><span style="font-size:1.8rem">班级：</span> <select id="clzSel" class="clzfield">
 							<option value="-1"></option>
 						</select>
@@ -123,7 +157,8 @@
 								<option value="2">2倍速</option>
 								<option value="2.5">2.5倍速</option>
 								<option value="3">3倍速</option>
-							</select> </div>
+							</select>
+						</div>
 					</div>
 					<div>
 						<h1 id="curname" style="cursor:pointer;font-size:5rem;"
@@ -139,6 +174,10 @@
 						<tr>
 							<td><button class="leaveBtn" onclick="leaveCur();rollNext();speakCur()"><i
 										class="fa fa-circle-o"></i>请假</button></td>
+						</tr>
+						<tr>
+							<td colspan="2"><button class="printBtn" onclick="printPage()"><i
+										class="fa fa-print"></i>打印</button></td>
 						</tr>
 					</table>
 					<ul id="namefield" class="nField"></ul>
@@ -364,7 +403,12 @@
 			function leaveCur() {
 				addNameToField("leavefield", $("#curname").text());
 			}
-
+            
+			/**
+			 * 把名字移到其他模块
+			 * @param {Object} moduleId
+			 * @param {Object} idx
+			 */
 			function moveTo(moduleId, idx) {
 				$("#" + moduleId).prepend($("#stu" + idx));
 			}
@@ -379,13 +423,38 @@
 				}
 			}
 			
-
+			/**
+			 * 
+			 */
 			function initClzSel() {
 				for (let i = 0; i < clzColl.length; i++) {
 					$("#clzSel").append("<option value='" + i + "'>" + clzColl[i].clzname + "-" + clzColl[i].stus.length +
 						"</option>");
 				}
 			}
+			
+			/**
+			 * 获取时间
+			 */
+			function getDate(){
+			    //获取当前时间
+			    var date = new Date();
+			    //格式化为本地时间格式
+			    var date1 = date.toLocaleString();
+			    //获取div
+			    var div1 = document.getElementById("times");
+			    //将时间写入div
+			    div1.innerHTML = date1;
+			}
+			//使用定时器每秒向div写入当前时间
+			setInterval("getDate()",1000);
+			
+			function printPage(){
+				let today = new Date();
+				document.title="点名"+ today.getFullYear()+"-"+(today.getMonth()+1)+"-"+today.getDate()+"_"+today.getHours()+"_"+today.getMinutes();
+				window.print();
+			}
+			
 			$(function() {
 				var clzSel = $("#clzSel");
 				clzSel.data("prev",clzSel.val());
@@ -411,6 +480,7 @@
 								}
 								$("#namefield").append(nameCtn);
 								showCurNames();
+								$("#titPanel").text($(this).find("option:selected").text());
 							} else {
 						        resetNameField();
 							}

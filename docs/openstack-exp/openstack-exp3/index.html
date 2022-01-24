@@ -28,13 +28,13 @@ show tables;
 </code></pre><ol start=9><li>清除 Keystone 配置文件的注释</li></ol><pre><code>grep -Ev '^$|#' /etc/keystone/keystone.conf.bak &gt;/etc/keystone/keystone.conf
 </code></pre><ol start=10><li>安装<code>openstack-utils</code></li></ol><pre><code>yum install openstack-utils -y
 </code></pre><ol start=11><li>配置 Keystone 的admin_token，数据库连接，token provider。注意替换你的学号。</li></ol><pre><code>openstack-config --set /etc/keystone/keystone.conf DEFAULT admin_token  ADMIN_TOKEN
-openstack-config --set /etc/keystone/keystone.conf database connection  mysql+pymysql://keystone:KEYSTONE_DBPASS@controller+你学号后4位/keystone
+openstack-config --set /etc/keystone/keystone.conf database connection  mysql+pymysql://keystone:KEYSTONE_DBPASS@controller+你学号后3位/keystone
 openstack-config --set /etc/keystone/keystone.conf token provider  fernet
 </code></pre><ol start=12><li>执行同步数据库</li></ol><pre><code>cd /etc/keystone/
 su -s /bin/sh -c &quot;keystone-manage db_sync&quot; keystone
 </code></pre><ol start=13><li><p>此时再次连接 MariaDB，查询 keystone 库中是否有表。参考步骤2、5、6。</p></li><li><p>初始化 fernet。</p></li></ol><pre><code>cd /etc/keystone/
 keystone-manage fernet_setup --keystone-user keystone --keystone-group keystone
-</code></pre><ol start=15><li>追加 Apache (httpd)的配置，注意替换你的学号。这里主要是增加ServerName的配置。</li></ol><pre><code>echo &quot;ServerName controller+你学号后4位&quot; &gt;&gt;/etc/httpd/conf/httpd.conf
+</code></pre><ol start=15><li>追加 Apache (httpd)的配置，注意替换你的学号。这里主要是增加ServerName的配置。</li></ol><pre><code>echo &quot;ServerName controller+你学号后3位&quot; &gt;&gt;/etc/httpd/conf/httpd.conf
 </code></pre><ol start=16><li>增加一个Apache的虚拟主机（VirtualHost）配置，keystone-public运行在5000端口，keystone-admin运行在35357端口。</li></ol><pre><code>vi /etc/httpd/conf.d/wsgi-keystone.conf
 </code></pre><pre><code>Listen 5000
 Listen 35357
@@ -174,12 +174,12 @@ openstack endpoint list |grep -E &quot;ID|keystone&quot;
 </code></pre><ol start=8><li>在<code>控制节点</code>上查看以下服务是否是 active 的状态。正常应该出现5个服务 active。</li></ol><pre><code>systemctl -a |grep -E &quot;UNIT|chronyd|memcached|rabbitmq|mariadb|httpd&quot;
 </code></pre><h3 id=思考和探索>【思考和探索】</h3><ol><li>关于用户，角色，权限的关系，你是如何理解的？</li><li>现在需要创建一个符合如下要求的域、项目、用户、角色，并且能够成功获取到token，你能够完成命令的编写并实现这个要求吗？</li></ol><pre><code>domain=default
 project=roomaccess
-user=stu+你学号后4位
+user=stu+你学号后3位
 role=student
 </code></pre></div><div class=my-4><a href=/tags/openstack/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#openstack</a>
 <a href=/tags/%E9%83%A8%E7%BD%B2/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#部署</a></div><div class=py-2><div class="flex flex-col md:flex-row items-center my-8"><a href=/authors/heis/ class="w-24 h-24 md:mr-4"><img src=/static/img/authors/heis.png class="w-full bg-primary-bg rounded-full" alt=Avatar></a><div class="w-full md:w-auto mt-4 md:mt-0"><a href=/authors/heis/ class="block font-bold text-lg pb-1 mb-2 border-b">黄老师</a>
 <span class="block pb-2"></span><a href=mailto:heishuangzy@qq.com class=mr-1><i class="fas fa-envelope"></i></a><a href=https://gitee.com/heis/ class=mr-1><i class="fab fa-git"></i></a></div></div></div><div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t"><div><span class="block font-bold">上一页</span>
 <a href=/docs/openstack-exp/openstack-exp2/ class=block>Part 2 - 配置计算节点和控制节点</a></div><div class="md:text-right mt-4 md:mt-0"><span class="block font-bold">下一页</span>
 <a href=/docs/openstack-exp/openstack-exp4/ class=block>Part 4 - 安装 Glance 镜像服务</a></div></div></div><div class="hidden lg:block lg:w-1/4"><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-secondary-bg pt-16 -mt-16"><span class="text-lg font-semibold">本页内容</span></div><div class="sticky-toc hidden lg:block px-6 pb-6 pt-10 -mt-10 border-l"><nav id=TableOfContents><ul><li><a href=#版本>【版本】</a></li><li><a href=#实验名称>【实验名称】</a><ul><li><a href=#实验目的>【实验目的】</a></li><li><a href=#实验环境>【实验环境】</a></li><li><a href=#实验资源>【实验资源】</a></li><li><a href=#实验步骤>【实验步骤】</a></li><li><a href=#控制节点验证步骤>【控制节点验证步骤】</a></li><li><a href=#思考和探索>【思考和探索】</a></li></ul></li></ul></nav></div><script>window.addEventListener('DOMContentLoaded',()=>{enableStickyToc();});</script></div></div></div></div></div><div id=outerdiv><div id=innerdiv><img id=bigimg src></div></div><script>document.addEventListener('DOMContentLoaded',()=>{hljs.highlightAll();hljs.initLineNumbersOnLoad({singleLine:true});changeSidebarHeight();switchDocToc();$("img").css("cursor:pointer")
-$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});})</script><script src=/static/js/clipboard.min.js></script><script src=/static/js/codecopy.bundle.js?488></script></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text">&copy; 2021 <a href=https://www.wangchucheng.com/>C. Wang</a> and <a href=https://www.ruiqima.com/>R. Ma</a>
+$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});$("ol").each(function(index){if(/\d{1,4}/.test($(this).attr("start"))){$(this).attr("id","step"+$(this).attr("start"));}});});</script><script src=/static/js/clipboard.min.js></script><script src=/static/js/codecopy.bundle.js?139></script></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text">&copy; 2021 <a href=https://www.wangchucheng.com/>C. Wang</a> and <a href=https://www.ruiqima.com/>R. Ma</a>
 &#183; Powered by the <a href=https://github.com/wangchucheng/hugo-eureka class=hover:text-eureka>Eureka</a> theme for <a href=https://gohugo.io class=hover:text-eureka>Hugo</a></p></div></div></footer></body></html>
