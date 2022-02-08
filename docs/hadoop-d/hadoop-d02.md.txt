@@ -1,10 +1,10 @@
 +++
-Description = "Hadoop Part 2 - 部署 Hadoop 完全分布模式"
+Description = "Hadoop Part 2 - 部署 Hadoop 完全分布模式（Fully Distributed Mode）"
 Tags = ["hadoop","大数据"]
 Categories = ["hadoopd"]
 date = "2021-03-19T00:44:00+08:00"
 draft = false
-title = "Hadoop Part 2 - 部署 Hadoop 完全分布模式"
+title = "Hadoop Part 2 - 部署 Hadoop 完全分布模式（Fully Distributed Mode）"
 toc = true
 authors = "heis"
 weight = 200
@@ -28,19 +28,17 @@ weight = 200
 
 <div class="tbl-end" style="height:10px"></div>
 
-## Hadoop Part 2 - 部署 Hadoop 完全分布模式（Fully Distributed Mode）
-
-### 【实验目的】
+## 【实验目的】
 - 掌握搭建 Hadoop 完全分布模式
 - 熟练掌握Linux命令（vi、tar、mv等等）的使用
 - 掌握VirtualBox、FinalShell等客户端的使用
 
-### 【实验环境】
+## 【实验环境】
 - 内存：至少4G
 - 硬盘：至少空余40G
 - 操作系统: 64位 Windows系统。
 
-### 【实验资源】
+## 【实验资源】
 - FinalShell
 - CentOS 7.9系统镜像
 - VirtualBox 6.5
@@ -49,8 +47,8 @@ weight = 200
 下载链接：https://pan.baidu.com/s/1ghde86wcK6pwg1fdSSWg0w
 提取码：v3wv
 ```
-### 【实验步骤】
-### 【克隆模板机步骤】
+## 【实验步骤】
+### 克隆模板机
 1. 关闭 Part1 完成的 HadoopTmpl 模板机。依次克隆出3台虚拟机，名称，主机名和 IP 地址如下表所示，注意替换为你的学号后3位。
 
 <div class="tbl-start"></div>
@@ -85,7 +83,7 @@ sudo vim /etc/sysconfig/network-scripts/ifcfg-enp0s3
 
 6. 重启克隆的3台虚拟机，配置 FinalShell 分别连接3台虚拟机，使用`hadoop`用户登录，密码为`123456`，测试是否能够正常登录。
 
-### 【配置免密登录步骤】
+### 配置免密登录
 > 免密登录，顾名思义就是不需要输入密码即可登录。免密登录的大致原理，就是在客户端 client 生成一对密钥（包括公钥和私钥），然后将公钥传到服务器 server。当 client 通过 ssh 登录 server 时，不用再输入密码就能直接登进去，这就是 ssh 免密登录。
 >
 > Hadoop 的 NameNode 是通过SSH 来启动和停止各个节点上的各种守护进程的，这就需要在节点之间执行指令的时候是不需要输入密码的方式，故我们需要配置SSH使用免密登录。
@@ -187,7 +185,7 @@ ssh hadoop@nodeb+你的学号后3位
 exit
 ```
 
-### 【修改 Hadoop 配置文件步骤】
+### 修改 Hadoop 配置文件
 
 <div class="warning">注意此阶段命令如无特殊说明，均在 NodeA 的 hadoop 用户下执行！</div>
 
@@ -370,14 +368,14 @@ chmod 744 start-hdp.sh stop-hdp.sh restart-hdp.sh
 start-hdp.sh
 ```
 
-### 【实验验证步骤-免密登录验证】
+### 验证免密登录
 
 29. 在`NodeB`和`NodeC`2个节点分别执行以下命令，查看是否包含来自`NodeA`的公钥。
 ```
 cat  authorized_keys
 ```
 
-### 【实验验证步骤- Hadoop 进程验证】
+### 验证 Hadoop 是否正常启动
 
 30. 在`NodeA`输入`jps`命令，观察是否有以下进程。
 ```
@@ -388,35 +386,47 @@ SecondaryNameNode
 JobHistoryServer
 ```
 
-31. 在`NodeB`和`NodeC`分别输入`jps`命令，观察是否有以下进程。
+31. 在`NodeA`输入以下命令查看机架拓扑是否有`NodeB`和`NodeC`的信息
+```
+hdfs dfsadmin -printTopology
+```
+- 正常应该有类似以下信息返回：
+```
+Rack: /default-rack
+   10.0.0.72:9866 (nodeb你的学号后3位)
+   10.0.0.73:9866 (nodec你的学号后3位)
+```
+
+32. 在`NodeB`和`NodeC`分别输入`jps`命令，观察是否有以下进程。
 ```
 DataNode
 NodeManager
 Jps
 ```
 
-### 【实验验证步骤- HDFS 验证】
 
-32. 打开宿主机浏览器，访问 HDFS Web界面 <a href="http://10.0.0.71:9870/" target="_blank">http://10.0.0.71:9870/</a>
+### 验证 HDFS 是否正常工作
 
-33. 查看 NameNode 是否 Active
+33. 打开宿主机浏览器，访问 HDFS Web界面 <a href="http://10.0.0.71:9870/" target="_blank">http://10.0.0.71:9870/</a>
+
+34. 查看 NameNode 是否 Active
 ![](/static/img/hadoop-d02/Snipaste_2022-01-24_15-24-52.png)
 
-34. 查看2个节点 DataNode 服务状态是否正常。
+35. 查看2个节点 DataNode 服务状态是否正常。
 ![](/static/img/hadoop-d02/Snipaste_2022-01-24_15-25-55.png)
 
-35. 上传`countryroad.txt`到`NodeA`的`/home/hadoop`
+36. 上传`countryroad.txt`到`NodeA`的`/home/hadoop`
 
-36. 把`countryroad.txt`从 CentOS 文件系统上传到 HDFS 文件系统。
+37. 把`countryroad.txt`从 CentOS 文件系统上传到 HDFS 文件系统。
 ```
 hdfs dfs -mkdir /part2
 hdfs dfs -put /home/hadoop/countryroad.txt /part2
 hdfs dfs -ls /part2
 ```
 
-### 【实验验证步骤- MapReduce 验证】
+### 验证 MapReduce 是否正常工作
 
-37. 运行 Hadoop 自带的 Wordcount 程序，观察输出的内容。
+38. 运行 Hadoop 自带的 Wordcount 程序，观察输出的内容。
 ```
 cd $HADOOP_HOME/share/hadoop/mapreduce
 hadoop jar hadoop-mapreduce-examples-3.3.1.jar wordcount /part2/countryroad.txt /output
@@ -426,11 +436,11 @@ hadoop jar hadoop-mapreduce-examples-3.3.1.jar wordcount /part2/countryroad.txt 
 2022-01-24 15:48:51,712 INFO mapreduce.Job: Job job_xxxxxxx completed successfully
 ```
 
-38. 程序执行过程中，可以访问 Yarn Web 界面查看任务进展。<a href="http://10.0.0.71:8088/cluster/apps" target="_blank">http://10.0.0.71:8088/cluster/apps</a>
+39. 程序执行过程中，可以访问 Yarn Web 界面查看任务进展。<a href="http://10.0.0.71:8088/cluster/apps" target="_blank">http://10.0.0.71:8088/cluster/apps</a>
 
 ![](/static/img/hadoop-d02/Snipaste_2021-03-19_23-41-58.png)
 
-39. 等待程序运行完毕，观察输出的内容
+40. 等待程序运行完毕，观察输出的内容
 ```
 hdfs dfs -cat /output/part-r-00000
 ```

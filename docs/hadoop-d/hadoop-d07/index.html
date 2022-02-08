@@ -1,0 +1,213 @@
+<!doctype html><html lang=zh><meta charset=utf-8><meta name=viewport content="width=device-width"><title>Hadoop Part 7 - 部署 Hive 和 Hive 常用操作 | Hadoop 3 课程资源汇总 | Heis</title><meta name=generator content="Hugo Eureka 0.8.4"><link rel=stylesheet href=/css/eureka.min.css><script defer src=/js/eureka.min.js></script><script src=/static/js/jquery-3.6.0.min.js></script><script src=/static/js/heis.js></script><link rel=stylesheet href=/static/css/heis.css media=all onload="this.media='all';this.onload=null" crossorigin><link rel=stylesheet href=/static/css/print.css media=print crossorigin><link rel=stylesheet href=/static/css/highlight-css/solarized-light.min.css media=print onload="this.media='all';this.onload=null" crossorigin><script defer src=/static/js/highlight.min.js crossorigin></script><script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script><script defer src=/static/js/highlightjs-line-numbers.min.js></script><link rel=icon type=image/png sizes=32x32 href=/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_2.png><link rel=apple-touch-icon sizes=180x180 href=/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_2.png><meta name=description content="Hadoop Part 7 - 部署 Hive 和 Hive 常用操作"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"课程文档","item":"/docs/"},{"@type":"ListItem","position":2,"name":"Hadoop 3 课程资源汇总","item":"/docs/hadoop-d/"},{"@type":"ListItem","position":3,"name":"Hadoop Part 7 - 部署 Hive 和 Hive 常用操作","item":"/docs/hadoop-d/hadoop-d07/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/docs/hadoop-d/hadoop-d07/"},"headline":"Hadoop Part 7 - 部署 Hive 和 Hive 常用操作 | Hadoop 3 课程资源汇总 | Heis","datePublished":"2021-04-16T23:20:00+08:00","dateModified":"2021-04-16T23:20:00+08:00","wordCount":2329,"author":{"@type":"Person","name":"heis"},"publisher":{"@type":"Person","name":"C. Wang","logo":{"@type":"ImageObject","url":"/images/icon.png"}},"description":"Hadoop Part 7 - 部署 Hive 和 Hive 常用操作"}</script><meta property="og:title" content="Hadoop Part 7 - 部署 Hive 和 Hive 常用操作 | Hadoop 3 课程资源汇总 | Heis"><meta property="og:type" content="article"><meta property="og:image" content="/images/icon.png"><meta property="og:url" content="/docs/hadoop-d/hadoop-d07/"><meta property="og:description" content="Hadoop Part 7 - 部署 Hive 和 Hive 常用操作"><meta property="og:locale" content="zh"><meta property="og:site_name" content="Heis"><meta property="article:published_time" content="2021-04-16T23:20:00+08:00"><meta property="article:modified_time" content="2021-04-16T23:20:00+08:00"><meta property="article:section" content="docs"><meta property="article:tag" content="hadoop"><meta property="article:tag" content="大数据"><meta property="article:tag" content="课程"><meta property="og:see_also" content="/docs/hadoop-d/hadoop-d06/"><meta property="og:see_also" content="/docs/hadoop-d/hadoop-d05/"><meta property="og:see_also" content="/docs/hadoop-d/hadoop-d04/"><meta property="og:see_also" content="/docs/hadoop-d/hadoop-d03/"><meta property="og:see_also" content="/docs/hadoop-d/hadoop-d02/"><meta property="og:see_also" content="/docs/bi-exp/bi-training2/"><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?f58b6a2675cf52000232edb4d109eccc";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><body class="flex flex-col min-h-screen"><header id=headerctn class="fixed flex items-center w-full pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode")
+if(((storageColorScheme=='Auto'||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches)||storageColorScheme=="Dark"){document.getElementsByTagName('html')[0].classList.add('dark')}</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="mr-6 text-primary-text text-xl font-bold">Heis</a>
+<button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+<i class="fas fa-bars"></i></button><div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20"><div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0"><a href=/posts/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">文章</a>
+<a href=/docs/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 selected-menu-item mr-4">课程文档</a>
+<a href=/static/dm.html class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">点名</a></div><div class=flex><div class="relative pt-4 md:pt-0"><div class="cursor-pointer hover:text-eureka" id=lightDarkMode><i class="fas fa-adjust"></i></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id=is-open></div><div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40" id=lightDarkOptions><span class="px-4 py-1 hover:text-eureka" name=Light>浅色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Dark>深色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Auto>自动</span></div></div></div></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id=is-open-mobile></div></nav><script>let element=document.getElementById('lightDarkMode')
+if(storageColorScheme==null||storageColorScheme=='Auto'){document.addEventListener('DOMContentLoaded',()=>{window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change',switchDarkMode)})}else if(storageColorScheme=="Light"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'sun')
+element.firstElementChild.classList.add('fa-sun')}else if(storageColorScheme=="Dark"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'moon')
+element.firstElementChild.classList.add('fa-moon')}
+document.addEventListener('DOMContentLoaded',()=>{getcolorscheme();switchBurger();});</script></div></header><main class=flex-grow><div class=pl-scrollbar><div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto"><div class=lg:pt-12><div class="flex flex-col md:flex-row bg-secondary-bg rounded"><div class="md:w-1/4 lg:w-1/5 border-r"><div class="sticky top-16 pt-6"><div id=sidebar-title class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text"><span class=font-semibold>目录</span>
+<i class="fas fa-caret-right ml-1"></i></div><div id=sidebar-toc class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent"><div class="flex flex-wrap ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded"><a class=hover:text-eureka href=/docs/hadoop-d/>Hadoop 3 课程资源汇总</a></div><ul class=pl-6><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-d/hadoop-d02/>Hadoop Part 2 - 部署 Hadoop 完全分布模式（Fully Distributed Mode）</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-d/hadoop-d03/>Hadoop Part 3 - 通过 Shell 命令访问 HDFS</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-d/hadoop-d04/>Hadoop Part 4 - 搭建 Hadoop 开发环境</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-d/hadoop-d05/>Hadoop Part 5 - HDFS Java 编程访问</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-d/hadoop-d06/>Hadoop Part 6 - 编写 MapReduce 程序</a></div></li><li class=py-2><div><a class="text-eureka hover:text-eureka" href=/docs/hadoop-d/hadoop-d07/>Hadoop Part 7 - 部署 Hive 和 Hive 常用操作</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-d/hadoop-d08/>Hadoop Part 8 - 部署 HBase 和 HBase 常用操作(选做)</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-d/hadoop-d09/>Hadoop Part 9 - 部署 ZooKeeper 和 ZooKeeper 常用操作(选做)</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-d/hadoop-d10/>Hadoop Part 10 - Flume 和 Sqoop 操作实例（选做）</a></div></li></ul></div></div></div><div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8"><div class="w-full lg:w-3/4 pl-6 ml-0 mr-auto"><h1 class="font-bold text-3xl text-primary-text">Hadoop Part 7 - 部署 Hive 和 Hive 常用操作</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i><span>2021-04-16</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i><span>5分钟阅读时长</span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i><a href=/categories/hadoop/ class=hover:text-eureka>hadoop</a></div></div></div><div class=flex><div class="w-full lg:w-3/4 px-6"><div class=content><p><a href=/hadoop-c-summary/>«返回课程汇总页面</a></p><h2 id=版本>【版本】</h2><p>当前版本号<code>v20210527</code></p><div class=tbl-start></div><table><thead><tr><th>版本</th><th>修改说明</th></tr></thead><tbody><tr><td>v20210527</td><td>修改hive-site.xml的配置</td></tr><tr><td>v20210416</td><td>初始化版本</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h2 id=实验71----部署-hive>实验7.1 - 部署 Hive</h2><h2 id=实验目的>【实验目的】</h2><ul><li>掌握部署 Hive</li></ul><h2 id=实验环境>【实验环境】</h2><ul><li>Windows 7 以上64位操作系统</li><li>JDK8</li><li>IDEA</li><li>Hadoop 3</li><li>MariaDB/MySQL</li></ul><h2 id=实验资源>【实验资源】</h2><ul><li>Hadoop</li></ul><pre><code>下载链接：https://pan.baidu.com/s/1ghde86wcK6pwg1fdSSWg0w
+提取码：v3wv
+</code></pre><h2 id=实验步骤>【实验步骤】</h2><ol><li>使用 hadoop 登录 NodeA 节点。</li></ol><pre><code>su hadoop
+</code></pre><ol start=2><li>Hive 的安装需要依赖 MySQL 或 MariaDB，这里我们选择 MariaDB。这里需要提权安装，如果安装失败请检查源配置文件<code>/etc/yum.repos.d/local.repo</code>或者光盘是否挂载成功。</li></ol><pre><code>sudo yum install mariadb mariadb-server
+</code></pre><ol start=3><li>启动 MariaDB 并设置为开机启动。</li></ol><pre><code>sudo systemctl start mariadb
+sudo systemctl enable mariadb
+</code></pre><ol start=4><li>使用 MariaDB 的安全安装选项。</li></ol><pre><code>mysql_secure_installation
+</code></pre><p>以下为弹出选项的输入值</p><pre><code>Enter current password for root (enter for none): 回车
+Set root password? [Y/n] Y
+New password: 123456
+Re-enter new password:123456
+Remove anonymous users? [Y/n] Y
+Disallow root login remotely? [Y/n] Y
+Remove test database and access to it? [Y/n] Y
+Reload privilege tables now? [Y/n] Y
+</code></pre><ol start=5><li>测试使用 root 账户登录 MariaDB。密码为<code>123456</code></li></ol><pre><code>mysql -u root -p
+</code></pre><blockquote><p>注意此处设置的简单密码仅为方便实验实施，工作环境请勿设置简单密码！</p></blockquote><ol start=6><li>登录进入 MariaDB 以后。执行以下SQL</li></ol><pre><code class=language-sql>-- 创建 hive 数据库
+create database hive CHARACTER SET utf8 COLLATE utf8_general_ci;
+-- 创建 hive 用户并授权
+create user 'hive'@'localhost' identified by 'hive123456';
+create user 'hive'@'%' identified by 'hive123456';
+grant all on hive.* to 'hive'@'localhost';
+grant all on hive.* to 'hive'@'%';
+exit
+</code></pre><ol start=7><li>退出 MariaDB 命令行，使用 hive 用户进行登录，登录以后查看是否有 hive 这个库。</li></ol><pre><code>mysql hive -uhive -p
+</code></pre><ul><li>查看是否有 hive 这个库。</li></ul><pre><code>use hive;
+</code></pre><ul><li>退出</li></ul><pre><code>exit;
+</code></pre><ol start=8><li>退出 MariaDB 命令行，切换到系统 root 用户。</li></ol><pre><code>su
+</code></pre><ol start=9><li>增加 Hive 相关环境变量设置。</li></ol><ul><li>需要root权限执行</li></ul><pre><code>echo &quot;export HIVE_HOME=/opt/hive
+export PATH=\$HIVE_HOME/bin:\$PATH&quot; &gt;&gt;/etc/profile
+</code></pre><ol start=10><li>新增 MariaDB 配置。</li></ol><ul><li>需要root权限执行</li></ul><pre><code>echo '[client]
+default-character-set=utf8
+[mysqld]
+bind-address = 0.0.0.0
+default-storage-engine = innodb
+innodb_file_per_table
+max_connections = 4096
+collation-server = utf8_general_ci
+character-set-server = utf8
+wait_timeout = 600
+max_allowed_packet = 64M
+sql_mode=NO_BACKSLASH_ESCAPES
+[mysql]
+default-character-set=utf8'  &gt;/etc/my.cnf.d/hive.cnf
+</code></pre><ol start=11><li>切换到系统 hadoop 用户。</li></ol><pre><code>su hadoop
+</code></pre><ol start=12><li>查看环境变量的输出是否正确。</li></ol><pre><code>source /etc/profile
+echo $HIVE_HOME
+</code></pre><p>应该输出</p><pre><code>/opt/hive
+</code></pre><ol start=13><li>重启 MariaDB。</li></ol><pre><code>sudo systemctl restart mariadb
+</code></pre><ol start=14><li>查看进程和端口是否正常。</li></ol><pre><code>sudo netstat -tulpn|grep mysql
+</code></pre><p>正常会输出进程信息，类似以下内容：</p><pre><code>tcp  0   0 0.0.0.0:3306  0.0.0.0:* LISTEN  2152/mysqld
+</code></pre><ol start=15><li>使用 hadoop 用户上传 Hive 安装文件<code>apache-hive-3.1.2-bin.tar.gz</code>到 /home/hadoop 并解压。</li></ol><pre><code>cd ~
+tar -xvf apache-hive-3.1.2-bin.tar.gz
+</code></pre><ol start=16><li>创建 hive 安装目录，并拷贝文件到安装目录。</li></ol><pre><code>sudo mkdir -p /opt/hive
+sudo chown hadoop:wheel /opt/hive
+mv ~/apache-hive-3.1.2-bin/* /opt/hive
+</code></pre><ol start=17><li><p>上传 MariaDB 驱动<code>mariadb-java-client-2.7.2.jar</code>到 /opt/hive/lib/ 目录下。</p></li><li><p>编辑 Hive 的配置文件。</p></li></ol><pre><code>cd /opt/hive/conf/
+vi hive-site.xml
+</code></pre><ol start=19><li>加入以下内容。</li></ol><pre><code class=language-xml>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;no&quot;?&gt;
+&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;
+&lt;configuration&gt;
+  &lt;!-- 数据库连接 --&gt;
+  &lt;property&gt;
+    &lt;name&gt;javax.jdo.option.ConnectionURL&lt;/name&gt;
+    &lt;value&gt;jdbc:mysql://localhost:3306/hive?useSSL=false&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;!-- 数据库驱动名 --&gt;
+  &lt;property&gt;
+    &lt;name&gt;javax.jdo.option.ConnectionDriverName&lt;/name&gt;
+    &lt;value&gt;org.mariadb.jdbc.Driver&lt;/value&gt;
+  &lt;/property&gt;  &lt;!-- 数据库用户名 --&gt;  &lt;property&gt;
+    &lt;name&gt;javax.jdo.option.ConnectionUserName&lt;/name&gt;
+    &lt;value&gt;hive&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;!-- 数据库用户密码 --&gt;
+  &lt;property&gt;
+    &lt;name&gt;javax.jdo.option.ConnectionPassword&lt;/name&gt;
+    &lt;value&gt;hive123456&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;!-- 不校验 Schema --&gt;
+  &lt;property&gt;
+    &lt;name&gt;hive.metastore.schema.verification&lt;/name&gt;
+    &lt;value&gt;false&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;!-- 显示表名 --&gt;
+  &lt;property&gt;
+    &lt;name&gt;hive.cli.print.current.db&lt;/name&gt;
+    &lt;value&gt;true&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;!-- 显示表头 --&gt;
+  &lt;property&gt;
+    &lt;name&gt;hive.cli.print.header&lt;/name&gt;
+    &lt;value&gt;true&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;!-- 表头不显示表名 --&gt;
+  &lt;property&gt;
+    &lt;name&gt;hive.resultset.use.unique.column.names&lt;/name&gt;
+    &lt;value&gt;false&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt; 
+    &lt;name&gt;hive.fetch.task.conversion&lt;/name&gt; 
+    &lt;value&gt;more&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre><ol start=20><li>初始化 Hive 的 Schema。</li></ol><pre><code>schematool -dbType mysql -initSchema
+</code></pre><ol start=21><li>检查 MariaDB 的 hive 库里是否有表。</li></ol><pre><code>mysql hive -uhive -phive123456
+show tables
+exit
+</code></pre><ol start=22><li>启动 Hadoop。</li></ol><pre><code>start-hdp.sh
+</code></pre><ol start=23><li>启动 Hive</li></ol><pre><code>hive
+</code></pre><ol start=24><li>查看所有数据库</li></ol><pre><code>hive&gt; show databases;
+</code></pre><h2 id=实验72----使用-hive-进行简单分析>实验7.2 - 使用 Hive 进行简单分析</h2><h2 id=实验目的-1>【实验目的】</h2><ul><li>掌握使用 HiveQL 进行数据分析</li></ul><h2 id=实验环境-1>【实验环境】</h2><ul><li>Windows 7 以上64位操作系统</li><li>JDK8</li><li>IDEA</li><li>Hadoop 3</li><li>MariaDB/MySQL</li><li>Hive 3.x</li></ul><h2 id=实验资源-1>【实验资源】</h2><ul><li>Hive</li><li>部门数据 dept.csv</li><li>员工数据 emp.csv</li></ul><pre><code>下载链接：https://pan.baidu.com/s/1ghde86wcK6pwg1fdSSWg0w
+提取码：v3wv
+</code></pre><h2 id=实验步骤-1>【实验步骤】</h2><ol><li><p>启动 Hadoop。</p></li><li><p>上传<code>dept.csv</code>和<code>emp.csv</code>到 Linux 系统。将实验环境提到的源数据的两张表复制到 HDFS 的/exp7 目录下。</p></li></ol><pre><code>hdfs dfs -mkdir -p /exp7
+hdfs dfs -put dept.csv /exp7
+hdfs dfs -put emp.csv /exp7
+</code></pre><ol start=3><li>启动 Hive</li></ol><pre><code>hive
+</code></pre><ol start=4><li>创建员工表，注意替换为你的学号后3位。</li></ol><pre><code>hive&gt; create table emp你的学号后3位(empno int,ename string,job string,mgr int,hiredate string,sal int,comm int,deptno int) row format delimited fields terminated by ',';
+</code></pre><ol start=5><li>创建部门表，注意替换为你的学号后3位。</li></ol><pre><code>hive&gt; create table dept你的学号后3位(deptno int,dname string,loc string) row format delimited fields terminated by ',';
+</code></pre><ol start=6><li>导入数据。</li></ol><pre><code>hive&gt; load data inpath '/exp7/emp.csv' into table emp你的学号后3位;
+hive&gt; load data inpath '/exp7/dept.csv' into table dept你的学号后3位;
+</code></pre><ol start=7><li>根据员工的部门号创建分区，表名为<code>emp_part+学号后3位</code>。</li></ol><pre><code>hive&gt; create table emp_part你的学号后3位(empno int,ename string,job string,mgr int,hiredate string,sal int,comm int)partitioned by (deptno int)row format delimited fields terminated by ',';
+</code></pre><ol start=8><li>向分区表插入数据：指明导入的数据的分区（通过子查询导入数据）。</li></ol><pre><code>hive&gt; insert into table emp_part你的学号后3位 partition(deptno=10) select empno,ename,job,mgr,hiredate,sal,comm from emp你的学号后3位 where deptno=10;
+hive&gt; insert into table emp_part你的学号后3位 partition(deptno=20) select empno,ename,job,mgr,hiredate,sal,comm from emp你的学号后3位 where deptno=20;
+hive&gt; insert into table emp_part你的学号后3位 partition(deptno=30) select empno,ename,job,mgr,hiredate,sal,comm from emp你的学号后3位 where deptno=30;
+</code></pre><ol start=9><li>创建一个桶表，表名为<code>emp_bucket+学号后3位</code>，根据员工的职位（job）进行分桶。</li></ol><pre><code>hive&gt; create table emp_bucket你的学号后3位(empno int,ename string,job string,mgr int,hiredate string,sal int,comm int,deptno int)clustered by (job) into 4 buckets row format delimited fields terminated by ',';
+</code></pre><ol start=10><li>通过子查询插入数据：</li></ol><pre><code>hive&gt; insert into emp_bucket你的学号后3位 select * from emp你的学号后3位;
+</code></pre><ol start=11><li>独立完成以下 HiveQL 查询。记录下你的 HiveQL。</li></ol><ul><li>（1）查询所有的员工信息。
+期望结果：</li></ul><pre><code>empno	ename	job	    mgr	 hiredate	sal	comm	deptno
+7369	SMITH	CLERK	7902	1980/12/17	800	NULL	20
+7499	ALLEN	SALESMAN	7698	1981/2/20	1600	300	30
+7521	WARD	SALESMAN	7698	1981/2/22	1250	500	30
+7566	JONES	MANAGER	7839	1981/4/2	2975	NULL	20
+7654	MARTIN	SALESMAN	7698	1981/9/28	1250	1400	30
+7698	BLAKE	MANAGER	7839	1981/5/1	2850	NULL	30
+7782	CLARK	MANAGER	7839	1981/6/9	2450	NULL	10
+7788	SCOTT	ANALYST	7566	1987/4/19	3000	NULL	20
+7839	KING	PRESIDENT	NULL	1981/11/17	5000	NULL	10
+7844	TURNER	SALESMAN	7698	1981/9/8	1500	0	30
+7876	ADAMS	CLERK	7788	1987/5/23	1100	NULL	20
+7900	JAMES	CLERK	7698	1981/12/3	950	NULL	30
+7902	FORD	ANALYST	7566	1981/12/3	3000	NULL	20
+7934	MILLER	CLERK	7782	1982/1/23	1300	NULL	10
+</code></pre><ul><li>（2）<code>查询员工信息</code>：查询员工姓名为<code>BLAKE</code>的员工号、姓名和薪水。</li></ul><p>期望结果：</p><pre><code>empno	ename	sal
+7698	BLAKE	2850
+</code></pre><ul><li>（3）<code>多表关联查询</code>：关联查询<code>emp</code>表和<code>dept</code>表中所有员工部门名称、员工姓名，并按部门名称排序。</li></ul><p>期望结果：</p><pre><code>dname	ename
+ACCOUNTING	MILLER
+ACCOUNTING	KING
+ACCOUNTING	CLARK
+RESEARCH	ADAMS
+RESEARCH	SCOTT
+RESEARCH	SMITH
+RESEARCH	JONES
+RESEARCH	FORD
+SALES	TURNER
+SALES	ALLEN
+SALES	BLAKE
+SALES	MARTIN
+SALES	WARD
+SALES	JAMES
+</code></pre><ul><li>（4）<code>分区表关联查询</code>：关联查询<code>emp_part</code>表和<code>dept</code>表，找到员工部门是10和20的部门名称和员工姓名，并按部门名称排序。</li></ul><p>期望结果：</p><pre><code>dname	ename
+ACCOUNTING	MILLER
+ACCOUNTING	KING
+ACCOUNTING	CLARK
+RESEARCH	FORD
+RESEARCH	ADAMS
+RESEARCH	SCOTT
+RESEARCH	JONES
+RESEARCH	SMITH
+</code></pre><ul><li>（5）<code>桶表关联查询</code>：关联查询<code>emp_bucket</code>表和<code>dept</code>表，找到员工部门是20和30的部门名称和部门下员工的数量。</li></ul><p>期望结果：</p><pre><code>dname	no
+RESEARCH	5
+SALES	6
+</code></pre><ul><li>（6）查询各个部门的总薪水。</li></ul><p>期望结果：</p><pre><code>dname	sumsal
+ACCOUNTING	8750
+RESEARCH	10875
+SALES	9400
+</code></pre><ul><li>（7）根据职位给员工涨工资，并把涨前、涨后的薪水显示出来。</li></ul><div class=tbl-start></div><table><thead><tr><th>职位</th><th>薪水变化</th></tr></thead><tbody><tr><td>PRESIDENT</td><td>+1000</td></tr><tr><td>MANAGER</td><td>+800</td></tr><tr><td>其他</td><td>+400</td></tr></tbody></table><div class=tbl-end style=height:10px></div><p>期望结果：</p><pre><code>empno	ename	job	sal_before	sal_after
+7369	SMITH	CLERK	800	1200
+7499	ALLEN	SALESMAN	1600	2000
+7521	WARD	SALESMAN	1250	1650
+7566	JONES	MANAGER	2975	3775
+7654	MARTIN	SALESMAN	1250	1650
+7698	BLAKE	MANAGER	2850	3650
+7782	CLARK	MANAGER	2450	3250
+7788	SCOTT	ANALYST	3000	3400
+7839	KING	PRESIDENT	5000	6000
+7844	TURNER	SALESMAN	1500	1900
+7876	ADAMS	CLERK	1100	1500
+7900	JAMES	CLERK	950	1350
+7902	FORD	ANALYST	3000	3400
+7934	MILLER	CLERK	1300	1700
+</code></pre></div><div class=my-4><a href=/tags/hadoop/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#hadoop</a>
+<a href=/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#大数据</a>
+<a href=/tags/%E8%AF%BE%E7%A8%8B/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#课程</a></div><div class=py-2><div class="flex flex-col md:flex-row items-center my-8"><a href=/authors/heis/ class="w-24 h-24 md:mr-4"><img src=/static/img/authors/heis.png class="w-full bg-primary-bg rounded-full" alt=Avatar></a><div class="w-full md:w-auto mt-4 md:mt-0"><a href=/authors/heis/ class="block font-bold text-lg pb-1 mb-2 border-b">黄老师</a>
+<span class="block pb-2"></span><a href=mailto:heishuangzy@qq.com class=mr-1><i class="fas fa-envelope"></i></a><a href=https://gitee.com/heis/ class=mr-1><i class="fab fa-git"></i></a></div></div></div><div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t"><div><span class="block font-bold">上一页</span>
+<a href=/docs/hadoop-d/hadoop-d06/ class=block>Hadoop Part 6 - 编写 MapReduce 程序</a></div><div id=next-ctn class="md:text-right mt-4 md:mt-0"><span class="block font-bold">下一页</span>
+<a href=/docs/hadoop-d/hadoop-d08/ class=block>Hadoop Part 8 - 部署 HBase 和 HBase 常用操作(选做)</a></div></div></div><div class="hidden lg:block lg:w-1/4"><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-secondary-bg pt-16 -mt-16"><span class="text-lg font-semibold">本页内容</span></div><div class="sticky-toc hidden lg:block px-6 pb-6 pt-10 -mt-10 border-l"><nav id=TableOfContents><ul><li><a href=#版本>【版本】</a></li><li><a href=#实验71----部署-hive>实验7.1 - 部署 Hive</a></li><li><a href=#实验目的>【实验目的】</a></li><li><a href=#实验环境>【实验环境】</a></li><li><a href=#实验资源>【实验资源】</a></li><li><a href=#实验步骤>【实验步骤】</a></li><li><a href=#实验72----使用-hive-进行简单分析>实验7.2 - 使用 Hive 进行简单分析</a></li><li><a href=#实验目的-1>【实验目的】</a></li><li><a href=#实验环境-1>【实验环境】</a></li><li><a href=#实验资源-1>【实验资源】</a></li><li><a href=#实验步骤-1>【实验步骤】</a></li></ul></nav></div><script>window.addEventListener('DOMContentLoaded',()=>{enableStickyToc();});</script></div></div></div></div></div><div id=outerdiv><div id=innerdiv><img id=bigimg src></div></div><script>document.addEventListener('DOMContentLoaded',()=>{hljs.highlightAll();hljs.initLineNumbersOnLoad({singleLine:true});changeSidebarHeight();switchDocToc();$("img").css("cursor:pointer")
+$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});$("ol").each(function(index){if(/\d{1,4}/.test($(this).attr("start"))){let idx=parseInt($(this).attr("start"));let lis=$(this).find("li");if(lis.length>0){lis.each(function(index){$(this).attr("id","step"+(idx+index));});}else{$(this).attr("id","step"+idx);}}});});</script><script src=/static/js/clipboard.min.js></script><script src=/static/js/codecopy.bundle.js?56></script></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text">&copy; 2021 <a href=https://www.wangchucheng.com/>C. Wang</a> and <a href=https://www.ruiqima.com/>R. Ma</a>
+&#183; Powered by the <a href=https://github.com/wangchucheng/hugo-eureka class=hover:text-eureka>Eureka</a> theme for <a href=https://gohugo.io class=hover:text-eureka>Hugo</a></p></div></div></footer></body></html>

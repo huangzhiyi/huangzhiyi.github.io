@@ -1,0 +1,243 @@
++++
+Description = "Hadoop Part 3 - 通过Shell命令访问HDFS"
+Tags = ["hadoop","大数据","课程"]
+Categories = ["hadoop"]
+
+date = "2021-03-28T00:44:00+08:00"
+draft = false
+title = "Hadoop Part 3 - 通过Shell命令访问HDFS"
+toc = true
+authors = "heis"
+weight = 300
++++
+
+## 【版本】
+
+当前版本号`v20210423`
+<div class="tbl-start"></div>
+
+|版本|修改说明|
+|-|-|
+|v20210423|修正步骤30 文件夹错误|
+|v20210328|初始化版本|
+
+<div class="tbl-end" style="height:10px"></div>
+
+## Hadoop Part 3 - 通过Shell命令访问HDFS
+
+### 【实验目的】
+- 掌握 Web Console 访问 HDFS。
+- 掌握常用的 Shell 命令访问 HDFS。
+- 了解如何使用 IDEA 创建 Maven 工程、运行 Maven 工程。
+- 了解通过 Java API 访问 HDFS。
+
+### 【实验环境】
+- 内存：至少4G
+- 硬盘：至少空余40G
+- 操作系统: CentOS 7.9
+
+### 【实验资源】
+- FinalShell
+- VirtualBox 6.5
+- Hadoop 3 安装包
+```
+下载链接：https://pan.baidu.com/s/1ghde86wcK6pwg1fdSSWg0w
+提取码：v3wv
+```
+
+### 【实验参考】
+- hdfs dfs 操作命令
+```
+hadoop fs [generic options]
+	[-appendToFile <localsrc> ... <dst>]
+	[-cat [-ignoreCrc] <src> ...]
+	[-checksum <src> ...]
+	[-chgrp [-R] GROUP PATH...]
+	[-chmod [-R] <MODE[,MODE]... | OCTALMODE> PATH...]
+	[-chown [-R] [OWNER][:[GROUP]] PATH...]
+	[-copyFromLocal [-f] [-p] [-l] <localsrc> ... <dst>]
+	[-copyToLocal [-p] [-ignoreCrc] [-crc] <src> ... <localdst>]
+	[-count [-q] [-h] <path> ...]
+	[-cp [-f] [-p | -p[topax]] <src> ... <dst>]
+	[-createSnapshot <snapshotDir> [<snapshotName>]]
+	[-deleteSnapshot <snapshotDir> <snapshotName>]
+	[-df [-h] [<path> ...]]
+	[-du [-s] [-h] <path> ...]
+	[-expunge]
+	[-find <path> ... <expression> ...]
+	[-get [-p] [-ignoreCrc] [-crc] <src> ... <localdst>]
+	[-getfacl [-R] <path>]
+	[-getfattr [-R] {-n name | -d} [-e en] <path>]
+	[-getmerge [-nl] <src> <localdst>]
+	[-help [cmd ...]]
+	[-ls [-d] [-h] [-R] [<path> ...]]
+	[-mkdir [-p] <path> ...]
+	[-moveFromLocal <localsrc> ... <dst>]
+	[-moveToLocal <src> <localdst>]
+	[-mv <src> ... <dst>]
+	[-put [-f] [-p] [-l] <localsrc> ... <dst>]
+	[-renameSnapshot <snapshotDir> <oldName> <newName>]
+	[-rm [-f] [-r|-R] [-skipTrash] <src> ...]
+	[-rmdir [--ignore-fail-on-non-empty] <dir> ...]
+	[-setfacl [-R] [{-b|-k} {-m|-x <acl_spec>} <path>]|[--set <acl_spec> <path>]]
+	[-setfattr {-n name [-v value] | -x name} <path>]
+	[-setrep [-R] [-w] <rep> <path> ...]
+	[-stat [format] <path> ...]
+	[-tail [-f] <file>]
+	[-test -[defsz] <path>]
+	[-text [-ignoreCrc] <src> ...]
+	[-touchz <path> ...]
+	[-truncate [-w] <length> <path> ...]
+	[-usage [cmd ...]]
+```
+
+- HDFS 安全模式操作
+```
+enter - 进入安全模式
+leave - 强制NameNode离开安全模式
+get   - 返回安全模式是否开启的信息
+wait  - 等待，一直到安全模式结束。
+```
+
+- HDFS 开启关闭快照功能
+```
+#在某个目录开启快照功能
+hdfs dfsadmin -allowSnapshot <snapshotDir>
+#在某个目录关闭快照功能
+hdfs dfsadmin -disallowSnapshot <snapshotDir>
+```
+
+- HDFS 操作快照功能
+```
+#创建快照
+hdfs dfs -createSnapshot <snapshotDir> [<snapshotName>]
+#删除快照
+hdfs dfs -deleteSnapshot <snapshotDir> <snapshotName>
+#重命名快照
+hdfs dfs -renameSnapshot <snapshotDir> <oldName> <newName>
+```
+
+- 文件目录数量配额（Quota）
+setQuota指的是对HDFS中某个目录设置文件和目录数量之和的最大值。
+```
+hdfs dfsadmin -setQuota <quota> <dirname>...<dirname>
+```
+
+- 空间配额（SpaceQuota）
+setSpaceQuota针对的是设置HDFS中某个目录可用存储空间大小，单位是byte。在使用该命令的时候最好设置空间大小为数据块（默认128MB）的整数倍。
+```
+hdfs dfsadmin -setSpaceQuota <quota> <dirname>...<dirname>
+```
+
+- 报告文件系统的基本信息和统计信息
+```
+hdfs dfsadmin -report
+```
+
+- 查看拓扑
+```
+hdfs dfsadmin -printTopology
+```
+
+### 【实验步骤】
+1. 启动NodeA、NodeB、NodeC3个节点的虚拟机，使用`hadoop`用户登录 `NodeA`，启动 Hadoop。
+```
+start-hdp.sh
+```
+
+2. 查看 hdfs 的机架拓扑。
+```
+hdfs dfsadmin -printTopology
+```
+
+3. 查看 put 命令的使用方法和参数
+```
+hdfs dfs -help put
+```
+
+4. 在用户目录下创建一个文本文件。注意替换为你的学号。
+```
+cd ~
+echo "uploaded by 你的学号后4位" >uploader.txt
+ls
+```
+
+5. 使用`hdfs dfs -put`命令上传本地`~/uploader.txt`文件到 HDFS 的根目录`/`下。
+
+6. 查看`hdfs dfs -mkdir`的用法，并在 HDFS 上创建`/poetry`文件夹。
+
+7. 从实验资源下载`haizi1.txt`到本地~目录。
+
+8. 使用`hdfs dfs -moveFromLocal`或者`hdfs dfs -put`命令，上传`haizi1.txt`到 HDFS 的`/poetry`目录下。
+
+9. 查看 HDFS 的`/poetry`目录，确认是否上传成功。
+```
+hdfs dfs -ls -h /poetry
+```
+
+10. 使用`hdfs dfs -cat`命令输出HDFS 的`/poetry/haizi1.txt`文件的内容。
+
+11. 使用`hdfs dfs -cp`命令把 HDFS 的`/poetry/haizi1.txt`复制为`/poetry/FacingTheSea.txt`。
+
+12. 使用`hdfs dfs -checksum`命令分别输出`/poetry/haizi1.txt`和`/poetry/FacingTheSea.txt`。比较两者的校验码是否一致。
+
+13. 使用`hdfs dfs -appendToFile`命令把本地的`~/uploader.txt`的内容追加到 HDFS 的`/poetry/FacingTheSea.txt`
+
+14. 使用`hdfs dfs -tail`命令输出 HDFS 的`/poetry/FacingTheSea.txt`的内容。
+
+15. 使用`hdfs dfs -rm`命令移除 HDFS 的`/poetry/haizi1.txt`，并查看`/poetry`目录下的文件，确认是否删除成功。
+
+16. 使用`hdfs dfs -mv`命令移动 HDFS 的`/poetry/FacingTheSea.txt`到根目录下。
+
+17. 使用`hdfs dfs -rmdir`命令删除 HDFS 的`/poetry`目录。
+
+18. 使用`hdfs dfs -find`找出 HDFS 根目录下的所有`.txt`结尾的文件。
+
+19. 使用`hdfs dfs -ls -R /`列出 HDFS 根目录下的所有文件。
+
+20. 使用命令让 HDFS 进入安全模式
+```
+hdfs dfsadmin -safemode enter
+```
+
+21. 尝试创建一个文件，观察 HDFS 提示信息。
+```
+hdfs dfs -touchz /test.txt
+```
+
+22. 获取安全模式的状态。
+```
+hdfs dfsadmin -safemode get
+```
+
+23. 使用相应命令退出安全模式。
+
+24. 在 HDFS 创建目录`/snapshot+你学号后3位`，注意替换为你的学号。
+
+25. 在该目录上开启快照（snapshot）功能，注意替换为你的学号。
+```
+hdfs dfsadmin -allowSnapshot /snapshot+你学号后3位
+```
+
+26. 上传本地的`haizi1.txt`文件到`/snapshot+你学号后3位`目录
+
+27. 创建名为`v1`的快照，注意替换为你的学号。
+```
+hdfs dfs -createSnapshot /snapshot+你学号后3位 v1
+```
+
+28. 使用`hdfs dfs -appendToFile`把本地的`haizi2.txt`追加到`/snapshot+你学号后3位/haizi1.txt`文件。
+
+29. 使用`diff`命令对比快照修改前后的内容。
+```
+diff <(hdfs dfs -cat /snapshot+你学号后3位/.snapshot/v1/haizi1.txt) <(hdfs dfs -cat /snapshot+你学号后3位/haizi1.txt)
+```
+
+30. 在 HDFS 上创建目录`/quota+你学号后3位`，注意替换为你的学号。
+
+31. 设置文件/目录数量配额为2，注意替换为你的学号。
+```
+hdfs dfsadmin -setQuota 2 /quota+你学号后3位
+```
+
+32. 尝试在`/quota+你学号后3位`目录下创建2个文件，观察会有什么反馈消息。
