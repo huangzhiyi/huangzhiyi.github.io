@@ -1,0 +1,342 @@
++++
+Description = "安装 nova 计算服务"
+Tags = ["openstack","部署"]
+Categories = ["openstack"]
+
+date = "2021-03-03T16:42:51+08:00"
+draft = false
+title = "Part 5 - 安装 nova 计算服务"
+toc = true
+
+authors = "heis"
+weight = 500
++++
+
+
+## 【版本】
+
+当前版本号`v20220208`
+<div class="tbl-start"></div>
+
+|版本|修改说明|
+|-|-|
+|v20220208|修正相关步骤|
+|v20210308|修改计算节点步骤4 nova.conf 的配置|
+|v20210305|增加环境变量的运行命令；修正一些拼写错误|
+|v20210303|初始化版本|
+
+<div class="tbl-end" style="height:10px"></div>
+
+## 【实验名称】
+
+云计算部署实战 Part 5 - 安装 nova 计算服务
+
+## 【实验目的】
+
+- 掌握搭建计算节点软件和环境
+- 熟练掌握Linux命令（vi、tar、mv等等）的使用
+- 掌握VMWare、XShell等客户端的使用
+
+## 【实验环境】
+- 内存：至少4G
+- 硬盘：至少空余40G
+- 操作系统: 64位 Windows系统。
+
+## 【实验资源】
+- XShell
+- CentOS 7.4系统镜像
+- VMWare WorkStation Pro
+- Openstack源
+
+## 【实验原理】
+- nova-api：接受并响应所有的计算服务请求，管理虚拟机(云主机)生命周期
+- nova-compute（多个）：真正管理虚拟机
+- nova-scheduler：nova调度器（挑选出最合适的nova-compute来创建虚机）
+- nova-conductor：帮助nova-compute代理修改数据库中虚拟机的状态
+- nova-network：早期openstack版本管理虚拟机的网络（已弃用，已被 neutron 取代）
+- nova-consoleauth和nova-novncproxy：web版的vnc来直接操作云主机
+- novncproxy：web版 vnc客户端
+- nova-api-metadata：接受来自虚拟机发送的元数据请求
+
+## 【实验步骤】
+### 控制节点实验步骤
+1. 使用Root用户登录控制节点（Controller）。输出 Hostname ，确认所在节点时控制节点。
+```
+hostname
+```
+结果:
+```
+controller+你的学号后3位
+```
+
+<div class="warning">注意以下步骤在控制节点（Controller）上执行！</div>
+
+### 控制节点创建 nova 相关库
+
+2. 使用 root 用户登录 MariaDB 数据库，密码为`123456`。创建 `nova_api` 和`nova`库，nova 用户和授权。
+```
+mysql -u root -p
+```
+```
+CREATE DATABASE nova_api;
+CREATE DATABASE nova;
+GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'localhost' \
+  IDENTIFIED BY 'NOVA_DBPASS';
+GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'%' \
+  IDENTIFIED BY 'NOVA_DBPASS';
+GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'localhost' \
+  IDENTIFIED BY 'NOVA_DBPASS';
+GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'%' \
+  IDENTIFIED BY 'NOVA_DBPASS';
+exit;
+```
+
+### 控制节点创建 nova 用户
+
+3. 在 Keystone 创建系统用户 nova，并关联 admin 角色
+```
+source /etc/keystone/admin-openrc
+openstack user create --domain default \
+  --password NOVA_PASS nova
+openstack role add --project service --user nova admin
+```
+
+### 控制节点创建 nova service 和 endpoint
+
+4. 在 Keystone 上创建服务和注册 API。注意替换你的学号
+```
+source /etc/keystone/admin-openrc
+openstack service create --name nova \
+  --description "OpenStack Compute" compute
+openstack endpoint create --region RegionOne \
+  compute public http://controller+你学号后3位:8774/v2.1/%\(tenant_id\)s
+openstack endpoint create --region RegionOne \
+  compute internal http://controller+你学号后3位:8774/v2.1/%\(tenant_id\)s  
+openstack endpoint create --region RegionOne \
+  compute admin http://controller+你学号后3位:8774/v2.1/%\(tenant_id\)s
+```
+
+### 控制节点安装 nova 相关软件并进行配置
+
+5. 安装 Nova 服务相应软件包
+```
+yum install openstack-nova-api openstack-nova-conductor \
+  openstack-nova-console openstack-nova-novncproxy \
+  openstack-nova-scheduler -y
+```
+
+6. 备份 Nova 的配置文件。
+```
+cp /etc/nova/nova.conf{,.bak}
+grep '^[a-Z\[]' /etc/nova/nova.conf.bak >/etc/nova/nova.conf
+```
+
+7. 修改相应服务的配置文件。注意替换你的学号。
+```
+openstack-config --set /etc/nova/nova.conf  DEFAULT enabled_apis  osapi_compute,metadata
+openstack-config --set /etc/nova/nova.conf  DEFAULT rpc_backend  rabbit
+openstack-config --set /etc/nova/nova.conf  DEFAULT auth_strategy  keystone
+openstack-config --set /etc/nova/nova.conf  DEFAULT my_ip  10.0.0.11
+openstack-config --set /etc/nova/nova.conf  DEFAULT use_neutron  True
+openstack-config --set /etc/nova/nova.conf  DEFAULT firewall_driver  nova.virt.firewall.NoopFirewallDriver
+openstack-config --set /etc/nova/nova.conf  api_database connection  mysql+pymysql://nova:NOVA_DBPASS@controller+你学号后3位/nova_api
+openstack-config --set /etc/nova/nova.conf  database  connection  mysql+pymysql://nova:NOVA_DBPASS@controller+你学号后3位/nova
+openstack-config --set /etc/nova/nova.conf  glance api_servers  http://controller+你学号后3位:9292
+openstack-config --set /etc/nova/nova.conf  keystone_authtoken  auth_uri  http://controller+你学号后3位:5000
+openstack-config --set /etc/nova/nova.conf  keystone_authtoken  auth_url  http://controller+你学号后3位:35357
+openstack-config --set /etc/nova/nova.conf  keystone_authtoken  memcached_servers  controller+你学号后3位:11211
+openstack-config --set /etc/nova/nova.conf  keystone_authtoken  auth_type  password
+openstack-config --set /etc/nova/nova.conf  keystone_authtoken  project_domain_name  default
+openstack-config --set /etc/nova/nova.conf  keystone_authtoken  user_domain_name  default
+openstack-config --set /etc/nova/nova.conf  keystone_authtoken  project_name  service
+openstack-config --set /etc/nova/nova.conf  keystone_authtoken  username  nova
+openstack-config --set /etc/nova/nova.conf  keystone_authtoken  password  NOVA_PASS
+openstack-config --set /etc/nova/nova.conf  oslo_concurrency lock_path  /var/lib/nova/tmp
+openstack-config --set /etc/nova/nova.conf  oslo_messaging_rabbit   rabbit_host  controller+你学号后3位
+openstack-config --set /etc/nova/nova.conf  oslo_messaging_rabbit   rabbit_userid  openstack
+openstack-config --set /etc/nova/nova.conf  oslo_messaging_rabbit   rabbit_password  RABBIT_PASS
+openstack-config --set /etc/nova/nova.conf  vnc vncserver_listen  '$my_ip'
+openstack-config --set /etc/nova/nova.conf  vnc vncserver_proxyclient_address  '$my_ip'
+```
+
+8. 同步数据库
+```
+su -s /bin/sh -c "nova-manage api_db sync" nova
+su -s /bin/sh -c "nova-manage db sync" nova
+```
+
+### 控制节点检查 nova 数据库
+
+9. 进入 MariaDB 查看是否有表格出现。密码为`NOVA_DBPASS`。如果有则表示数据库同步成功。
+```
+mysql -u nova -p
+```
+```
+use nova;
+show tables;
+use nova_api;
+show tables;
+```
+
+10. 退出 MariaDB 。
+```
+exit
+```
+
+### 控制节点检查 nova 服务（守护进程）状态
+
+11. 启动 Nova 服务，并设置为开机启动。
+```
+systemctl enable openstack-nova-api.service \
+  openstack-nova-consoleauth.service openstack-nova-scheduler.service \
+  openstack-nova-conductor.service openstack-nova-novncproxy.service
+systemctl restart openstack-nova-api.service \
+  openstack-nova-consoleauth.service openstack-nova-scheduler.service \
+  openstack-nova-conductor.service openstack-nova-novncproxy.service
+```
+
+12. 查看 Nova 服务状态是否已启用（active）。
+```
+systemctl status openstack-nova-api.service \
+  openstack-nova-consoleauth.service openstack-nova-scheduler.service \
+  openstack-nova-conductor.service openstack-nova-novncproxy.service
+```
+
+13. 验证 Compute 服务是否和步骤4生成的一致。
+```
+openstack compute service list
+```
+
+### 计算节点实验步骤
+14. 使用Root用户登录计算节点（Compute）。输出 Hostname ，确认所在节点是计算节点。
+```
+hostname
+```
+结果:
+```
+compute+你的学号后3位
+```
+
+<div class="warning">注意以下步骤在计算节点（Computer）上执行！</div>
+
+15. 安装 Nova 和 Openstack-utils。
+```
+yum install openstack-nova-compute -y
+yum install openstack-utils.noarch -y
+```
+
+16. 备份 Nova 的配置文件。
+```
+cp /etc/nova/nova.conf{,.bak}
+grep '^[a-Z\[]' /etc/nova/nova.conf.bak >/etc/nova/nova.conf
+```
+
+17. 修改相应服务的配置文件。注意替换你的学号。
+```
+openstack-config --set /etc/nova/nova.conf  DEFAULT enabled_apis  osapi_compute,metadata
+openstack-config --set /etc/nova/nova.conf  DEFAULT rpc_backend  rabbit
+openstack-config --set /etc/nova/nova.conf  DEFAULT auth_strategy  keystone
+openstack-config --set /etc/nova/nova.conf  DEFAULT my_ip  10.0.0.31
+openstack-config --set /etc/nova/nova.conf  DEFAULT use_neutron  True
+openstack-config --set /etc/nova/nova.conf  DEFAULT firewall_driver  nova.virt.firewall.NoopFirewallDriver
+openstack-config --set /etc/nova/nova.conf  glance api_servers  http://controller+你的学号后3位:9292
+openstack-config --set /etc/nova/nova.conf  keystone_authtoken  auth_uri  http://controller+你的学号后3位:5000
+openstack-config --set /etc/nova/nova.conf  keystone_authtoken  auth_url  http://controller+你的学号后3位:35357
+openstack-config --set /etc/nova/nova.conf  keystone_authtoken  memcached_servers  controller+你的学号后3位:11211
+openstack-config --set /etc/nova/nova.conf  keystone_authtoken  auth_type  password
+openstack-config --set /etc/nova/nova.conf  keystone_authtoken  project_domain_name  default
+openstack-config --set /etc/nova/nova.conf  keystone_authtoken  user_domain_name  default
+openstack-config --set /etc/nova/nova.conf  keystone_authtoken  project_name  service
+openstack-config --set /etc/nova/nova.conf  keystone_authtoken  username  nova
+openstack-config --set /etc/nova/nova.conf  keystone_authtoken  password  NOVA_PASS
+openstack-config --set /etc/nova/nova.conf  oslo_concurrency lock_path  /var/lib/nova/tmp
+openstack-config --set /etc/nova/nova.conf  oslo_messaging_rabbit   rabbit_host  controller+你的学号后3位
+openstack-config --set /etc/nova/nova.conf  oslo_messaging_rabbit   rabbit_userid  openstack
+openstack-config --set /etc/nova/nova.conf  oslo_messaging_rabbit   rabbit_password  RABBIT_PASS
+openstack-config --set /etc/nova/nova.conf  vnc enabled  True
+openstack-config --set /etc/nova/nova.conf  vnc vncserver_listen  0.0.0.0
+openstack-config --set /etc/nova/nova.conf  vnc vncserver_proxyclient_address  '$my_ip'
+openstack-config --set /etc/nova/nova.conf  vnc novncproxy_base_url  http://10.0.0.11:6080/vnc_auto.html
+openstack-config --set /etc/nova/nova.conf  libvirt cpu_mode none
+openstack-config --set /etc/nova/nova.conf  libvirt virt_type qemu
+```
+
+18. 启动 libvirtd 服务，并设置为开机启动。此处需要启动你的控制节点，否则无法正常启动`openstack-nova-compute.service`。
+```
+systemctl enable libvirtd.service openstack-nova-compute.service
+systemctl start libvirtd.service openstack-nova-compute.service
+```
+
+### 控制节点验证
+
+19. 查看以下服务是否是 active 的状态，正常应该出现12个服务 active。
+```
+systemctl -a |grep -E "UNIT|chronyd|memcached|rabbitmq|mariadb|glance|httpd|nova"
+```
+
+20. 运行以下命令，检查`openstack-nova-compute`服务是否运行在控制节点，如果此服务 active，说明你实验环境有错，把计算节点的命令运行在了控制节点上。
+```
+systemctl status openstack-nova-compute
+```
+
+21. 验证`nova.conf`配置文件里面 controller 出现的次数。注意替换为你的个人学号。
+```
+grep -o controller+你学号后3位 /etc/nova/nova.conf|wc -l
+```
+验证结果：
+```
+7
+```
+
+22. 查询 nova service，表里应该只有一行记录。
+```
+source /etc/keystone/admin-openrc
+openstack service list |grep -E "ID|nova"
+```
+类似结果：
+```
+| ID                               | Name     | Type     |
+| 58dd2fdf5e624592919302df11e8b74f | nova     | compute  |
+```
+
+23. 查询 nova endpoint，表里应该有3行记录。
+```
+source /etc/keystone/admin-openrc
+openstack endpoint list |grep -E "ID|nova"
+```
+类似结果：
+```
+| ID                               | Region    | Service Name | Service Type | Enabled | Interface | URL                                           |
+| 4350cc63081047e495541008324a844c | RegionOne | nova         | compute      | True    | internal  | http://controller9999:8774/v2.1/%(tenant_id)s |
+| 56211f55db4f4d928660e8415bc85efb | RegionOne | nova         | compute      | True    | public    | http://controller9999:8774/v2.1/%(tenant_id)s |
+| 5ae3985f807c41359d8b7d2901a06066 | RegionOne | nova         | compute      | True    | admin     | http://controller9999:8774/v2.1/%(tenant_id)s |
+```
+
+24. 查询 nova user，表里应该有1行记录。
+```
+source /etc/keystone/admin-openrc
+openstack user list |grep -E "ID|nova"
+```
+类似结果：
+```
+| ID                               | Name    |
+| c5a480d3f8ba41458926135609074b3c | nova    |
+```
+
+
+### 计算节点验证
+25. 查看以下服务是否是 active 的状态，正常应该出现3个服务 active。
+```
+systemctl -a |grep -E "UNIT|chronyd|nova|libvirtd"
+```
+
+26. 验证`nova.conf`配置文件里面 controller 出现的次数。注意替换为你的个人学号。
+```
+grep -o controller+你学号后3位 /etc/nova/nova.conf|wc -l
+```
+验证结果：
+```
+5
+```
+
+## 【思考和探索】
