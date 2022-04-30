@@ -1,0 +1,1 @@
+- Docker实验待改进，尽量实现联网下载 Docker 镜像。其他的项目比如，Java Web，hadoop项目也争取实现 Docker 运行。
