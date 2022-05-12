@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>点名</title>
+		<title>点名考勤</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" href="./fonts/fontawesome/css/font-awesome.min.css" />
 		<script src="./js/jquery-3.6.0.min.js"></script>
@@ -146,7 +146,7 @@
 							id="signCountField">0</span>人</p>
 					<ul id="signfield" class="nField"></ul>
 				</div>
-				<div id="controlPanel" class="item" style="flex-grow:2">
+				<div id="controlPanel" class="item" style="flex-grow:1">
 					<div><span style="font-size:1.8rem">班级：</span> <select id="clzSel" class="clzfield">
 							<option value="-1"></option>
 						</select>
@@ -186,20 +186,28 @@
 					<p><span style="font-size:3rem;" class="colorR"><i class="fa fa-close"></i>缺勤</span>&nbsp;<span
 							id="absCountField">0</span>人</p>
 					<ul id="absfield" class="nField"></ul>
-				</div>
-				<div class="item" style="flex-grow:1">
 					<p><span style="font-size:3rem;" class="colorY"><i class="fa fa-circle-o"></i>请假</span>&nbsp;<span
 							id="leaveCountField">0</span>人</p>
 					<ul id="leavefield" class="nField"></ul>
+				</div>
+				<div class="item" style="flex-grow:1">
+					<p><span style="font-size:3rem;" class="colorG"><i class="fa fa-check"></i>比对</span>&nbsp;<span id="anum">0</span>人</p>
+					<div>
+						<textarea id="cset" class=""></textarea>
+					</div>
+					<p><span style="font-size:3rem;" class="colorG"><i class="fa fa-check"></i>缺失</span>&nbsp;<span id="mnum">0</span>人</p>
+					<ul id="comfield" class="nField"></ul>
 				</div>
 			</div>
 		</div>
 		<script>
 			let cur = 0,
-				namearr = [],
-				signCount = 0,
-				absCount = 0,
-				leaveCount = 0;
+			    comNameSet=new Set([]),
+			    nameSet=new Set([]),
+				namearr = [],//选择班级的名单
+				signCount = 0, //签到人数
+				absCount = 0, //缺勤人数
+				leaveCount = 0; //请假人数
 			let clzColl = [{
 					"clzname": "19级计算机1班",
 					"stus": [{"name": "蔡华裕(101)","speak": "蔡华裕"}, {"name": "陈华瑞(102)","speak": "陈华瑞"}, {"name": "陈景鸿(103)","speak": "陈景鸿"}, {"name": "陈世科(104)","speak": "陈世科"}, {"name": "陈文涛(105)","speak": "陈文涛"}, {"name": "邓耀涛(106)","speak": "邓耀涛"}, {"name": "冯江龙(107)","speak": "冯江龙"}, {"name": "高海楠(108)","speak": "高海楠"}, {"name": "高锦麟(109)","speak": "高锦麟"}, {"name": "江海琪(110)","speak": "江海琪"}, {"name": "赖创建(111)","speak": "赖创建"}, {"name": "李健文(112)","speak": "李健文"}, {"name": "李键炜(113)","speak": "李键炜"}, {"name": "李娜(114)","speak": "李娜"}, {"name": "凌远静(116)","speak": "凌远静"}, {"name": "刘健(117)","speak": "刘健"}, {"name": "卢嘉雯(118)","speak": "卢嘉雯"}, {"name": "陆骁(119)","speak": "陆骁"}, {"name": "罗堡嘉(120)","speak": "罗堡嘉"}, {"name": "彭皓宇(121)","speak": "彭皓宇"}, {"name": "宋国威(122)","speak": "宋国威"}, {"name": "苏力权(123)","speak": "苏力权"}, {"name": "谭伟贤(124)","speak": "谭伟贤"}, {"name": "唐欣薇(125)","speak": "唐欣薇"}, {"name": "王烁然(126)","speak": "王烁然"}, {"name": "王炜兴(127)","speak": "王炜兴"}, {"name": "伍世杰(128)","speak": "伍世杰"}, {"name": "谢滋圻(129)","speak": "谢滋圻"}, {"name": "徐绮澄(130)","speak": "徐绮澄"}, {"name": "徐艳媚(131)","speak": "徐艳媚"}, {"name": "张斌豪(132)","speak": "张斌豪"}, {"name": "赵农春(133)","speak": "赵农春"}, {"name": "郑晓航(134)","speak": "郑晓航"}, {"name": "郑志宏(135)","speak": "郑志宏"}, {"name": "郑智滔(136)","speak": "郑智滔"}, {"name": "江淦宽(711)","speak": "江淦宽"}, ]
@@ -238,7 +246,7 @@
 				},
 				{
 					"clzname": "20级计算机4班",
-					"stus": [{"name": "蔡伟焘(401)","speak": "蔡伟焘"}, {"name": "陈 浩(402)","speak": "陈 浩"}, {"name": "陈梓锋(403)","speak": "陈梓锋"}, {"name": "龚 艳(404)","speak": "龚 艳"}, {"name": "何湧涛(405)","speak": "何湧涛"}, {"name": "黄嘉豪(407)","speak": "黄嘉豪"}, {"name": "赖柱铭(408)","speak": "赖柱铭"}, {"name": "雷伟坤(409)","speak": "雷伟坤"}, {"name": "李俊杰(410)","speak": "李俊杰"}, {"name": "廖婉滢(411)","speak": "廖婉滢"}, {"name": "林 颖(412)","speak": "林 颖"}, {"name": "罗榕均(413)","speak": "罗榕均"}, {"name": "佘锦基(414)","speak": "佘锦基"}, {"name": "谭桂志(415)","speak": "谭桂志"}, {"name": "王涵琪(416)","speak": "王涵琪"}, {"name": "魏 强(417)","speak": "魏 强"}, {"name": "温剑波(418)","speak": "温剑波"}, {"name": "吴雨鑫(419)","speak": "吴雨鑫"}, {"name": "伍泽豪(420)","speak": "伍泽豪"}, {"name": "冼国豪(421)","speak": "冼国豪"}, {"name": "肖启洪(422)","speak": "肖启洪"}, {"name": "谢奇峻(423)","speak": "谢奇峻"}, {"name": "谢水福(424)","speak": "谢水福"}, {"name": "徐诗墁(425)","speak": "徐诗墁"}, {"name": "杨庆锋(426)","speak": "杨庆锋"}, {"name": "余梓彦(427)","speak": "余梓彦"}, {"name": "郑新权(428)","speak": "郑新权"}, {"name": "郑泽鸿(429)","speak": "郑泽鸿"}, {"name": "刘旭楠(117)","speak": "刘旭楠"}, {"name": "刘宗松(123)","speak": "刘宗松"}, ]
+					"stus": [{"name": "蔡伟焘(401)","speak": "蔡伟焘"}, {"name": "陈 浩(402)","speak": "陈 浩"}, {"name": "陈梓锋(403)","speak": "陈梓锋"}, {"name": "龚 艳(404)","speak": "龚 艳"}, {"name": "何湧涛(405)","speak": "何湧涛"}, {"name": "黄嘉豪(407)","speak": "黄嘉豪"}, {"name": "赖柱铭(408)","speak": "赖柱铭"}, {"name": "雷伟坤(409)","speak": "雷伟坤"}, {"name": "李俊杰(410)","speak": "李俊杰"}, {"name": "廖婉滢(411)","speak": "廖婉滢"}, {"name": "林 颖(412)","speak": "林 颖"}, {"name": "罗榕均(413)","speak": "罗榕均"}, {"name": "佘锦基(414)","speak": "佘锦基"}, {"name": "谭桂志(415)","speak": "谭桂志"}, {"name": "王涵琪(416)","speak": "王涵琪"}, {"name": "魏 强(417)","speak": "魏 强"}, {"name": "温剑波(418)","speak": "温剑波"}, {"name": "吴雨鑫(419)","speak": "吴雨鑫"}, {"name": "伍泽豪(420)","speak": "伍泽豪"}, {"name": "冼国豪(421)","speak": "冼国豪"}, {"name": "肖启洪(422)","speak": "肖启洪"}, {"name": "谢奇峻(423)","speak": "谢奇峻"}, {"name": "谢水福(424)","speak": "谢水福"}, {"name": "徐诗墁(425)","speak": "徐诗墁"}, {"name": "杨庆锋(426)","speak": "杨庆锋"}, {"name": "余梓彦(427)","speak": "余梓彦"}, {"name": "郑新权(428)","speak": "郑新权"}, {"name": "郑泽鸿(429)","speak": "郑泽鸿"}, {"name": "刘旭楠(117)","speak": "刘旭楠"}, {"name": "刘宗松(123)","speak": "刘宗松"},{"name": "邓鸿坤(303)","speak": "邓鸿坤"}, ]
 				},
 				{
 					"clzname": "20级计算机5班",
@@ -385,19 +393,19 @@
 			 * 当前姓名签到
 			 */
 			function signCur() {
-				addNameToField("signfield", $("#curname").text());
+				addNameToField("signfield");
 			}
 			/**
 			 * 当前姓名缺勤
 			 */
 			function absCur() {
-				addNameToField("absfield", $("#curname").text());
+				addNameToField("absfield");
 			}
 			/**
 			 * 当前姓名请假
 			 */
 			function leaveCur() {
-				addNameToField("leavefield", $("#curname").text());
+				addNameToField("leavefield");
 			}
             
 			/**
@@ -409,13 +417,19 @@
 				$("#" + moduleId).prepend($("#stu" + idx));
 			}
 
-			function addNameToField(nfield, name) {
-				if (cur < namearr.length) {
-					let name = namearr[cur];
-					if (name && name != "") {$("#" + nfield).prepend("<li class='nameItem' onclick='speakByIdx("+cur+")' id='stu" + cur + "'>" + name + 
-						"<a href=\"javascript:moveTo('signfield'," + cur + ")\"><i class='fa fa-check colorG'></i></a>" + 
-						"<a href=\"javascript:moveTo('absfield'," + cur + ")\"><i class='fa fa-close colorR'></i></a>" +
-						"<a href=\"javascript:moveTo('leavefield'," + cur + ")\"><i class='fa fa-circle-o colorY'></i></a></li>");}
+			function addNameToField(nfield, spname) {
+				if(spname==null){
+					if (cur < namearr.length) {
+						let name = namearr[cur];
+						if (name && name != "") {$("#" + nfield).prepend("<li class='nameItem' onclick='speakByIdx("+cur+")' id='stu" + cur + "'>" + name + 
+							"<a href=\"javascript:moveTo('signfield'," + cur + ")\"><i class='fa fa-check colorG'></i></a>" + 
+							"<a href=\"javascript:moveTo('absfield'," + cur + ")\"><i class='fa fa-close colorR'></i></a>" +
+							"<a href=\"javascript:moveTo('leavefield'," + cur + ")\"><i class='fa fa-circle-o colorY'></i></a></li>");}
+					}
+				}else{
+					if (spname && spname != "") {
+						$("#" + nfield).prepend("<li class='nameItem' id='stu" + cur + "'>" + spname +"</li>");
+				    }
 				}
 			}
 			
@@ -451,12 +465,35 @@
 				window.print();
 			}
 			
+			function compareNameSet(){
+				if(nameSet.size>0 && comNameSet.size>0){
+					$("#comfield").html("");
+					for(let name of nameSet){
+						var nameSigned=false;
+						if(comNameSet.has(name)){
+							nameSigned=true;//签到名单包含该学生名字，全匹配
+						}else{
+							for(let cname of comNameSet){
+								if(cname.includes(name)){//签到名单包含该学生名字，模糊匹配
+									nameSigned=true;
+									break;
+								}
+							}
+						}
+						if(!nameSigned){
+							addNameToField("comfield",name)
+						}
+					}
+				}
+			}
+			
 			$(function() {
 				var clzSel = $("#clzSel");
 				clzSel.data("prev",clzSel.val());
 				initClzSel();
 				let clzSelPreVal = "";
 				$("#clzSel").change(function (evt, params) {
+					nameSet=new Set([]);
 					let prevVal=$(this).data("prev")||"";
 						var confirmResult=false;
 						if(prevVal=="-1"){
@@ -470,9 +507,12 @@
 								const stus = clzColl[idx].stus;
 								resetNameField();
 								let nameCtn = "";
+								var realname;
 								for (let i = 0; i < stus.length; i++) {	
 									nameCtn += "<li>" + stus[i].name + "</li>";
 									namearr[i] = stus[i].name;
+									realname=stus[i].name.substring(0,stus[i].name.indexOf("(")).replace(/\s*/g,'');
+									nameSet.add(realname);
 								}
 								$("#namefield").append(nameCtn);
 								showCurNames();
@@ -487,6 +527,7 @@
 					
 					speakCur();
 					$(this).data("prev",$(this).find("option:selected").val());
+					compareNameSet();
 				});
 				$("#curname").click(function() {
 					const clzIdx = parseInt($("#clzSel").find("option:selected").val());
@@ -520,6 +561,27 @@
 				$("#leavefield").bind("DOMNodeRemoved", function() {
 					let count = $(this).find("li").length;
 					$("#leaveCountField").text(count - 1);
+				});
+				
+				$("textarea").each(function(idx){
+					$(this).on("input",function(){
+						console.log($(this).prop("scrollHeight"));
+						$(this).css("height","");
+						$(this).css("height",Math.min($(this).prop("scrollHeight"), 1000) + "px");
+					});
+				});
+				
+				$("#cset").blur(function(){
+					comNameSet=new Set([]);
+					let lines=$.trim($(this).val());
+					$(this).val(lines);
+					let names=lines.split("\n");
+					for(var name of names){
+						comNameSet.add(name.replace(/\s*/g,'')); 
+					}
+					
+					$("#anum").text(comNameSet.size);
+					compareNameSet();
 				});
 			});
 		</script>
