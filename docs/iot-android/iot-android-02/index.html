@@ -1,0 +1,542 @@
+<!doctype html><html lang=zh><meta charset=utf-8><meta name=viewport content="width=device-width"><title>Part 2 - 物联网移动 APP 开发基础 | 《物联网移动APP设计及开发》 课程资源汇总 | Heis</title><meta name=generator content="Hugo Eureka 0.8.4"><link rel=stylesheet href=/css/eureka.min.css><script defer src=/js/eureka.min.js></script><script src=/static/js/jquery-3.6.0.min.js></script><script src=/static/js/heis.js></script><link rel=stylesheet href=/static/css/heis.css media=all onload="this.media='all';this.onload=null" crossorigin><link rel=stylesheet href=/static/css/print.css media=print crossorigin><link rel=stylesheet href=/static/css/highlight-css/solarized-light.min.css media=print onload="this.media='all';this.onload=null" crossorigin><script defer src=/static/js/highlight.min.js crossorigin></script><script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script><script defer src=/static/js/highlightjs-line-numbers.min.js></script><link rel=icon type=image/png sizes=32x32 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_32x32_fill_box_center_2.png><link rel=apple-touch-icon sizes=180x180 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_180x180_fill_box_center_2.png><meta name=description content="《物联网移动APP设计及开发》Activity、Fragment、用户界面设计等实验"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"课程文档","item":"/docs/"},{"@type":"ListItem","position":2,"name":"《物联网移动APP设计及开发》 课程资源汇总","item":"/docs/iot-android/"},{"@type":"ListItem","position":3,"name":"Part 2 - 物联网移动 APP 开发基础","item":"/docs/iot-android/iot-android-02/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/docs/iot-android/iot-android-02/"},"headline":"Part 2 - 物联网移动 APP 开发基础 | 《物联网移动APP设计及开发》 课程资源汇总 | Heis","datePublished":"2021-08-22T10:44:00+08:00","dateModified":"2021-08-22T10:44:00+08:00","wordCount":3188,"author":{"@type":"Person","name":"heis"},"publisher":{"@type":"Person","name":"C. Wang","logo":{"@type":"ImageObject","url":"/images/icon.png"}},"description":"《物联网移动APP设计及开发》Activity、Fragment、用户界面设计等实验"}</script><meta property="og:title" content="Part 2 - 物联网移动 APP 开发基础 | 《物联网移动APP设计及开发》 课程资源汇总 | Heis"><meta property="og:type" content="article"><meta property="og:image" content="/images/icon.png"><meta property="og:url" content="/docs/iot-android/iot-android-02/"><meta property="og:description" content="《物联网移动APP设计及开发》Activity、Fragment、用户界面设计等实验"><meta property="og:locale" content="zh"><meta property="og:site_name" content="Heis"><meta property="article:published_time" content="2021-08-22T10:44:00+08:00"><meta property="article:modified_time" content="2021-08-22T10:44:00+08:00"><meta property="article:section" content="docs"><meta property="article:tag" content="iot"><meta property="article:tag" content="android"><meta property="article:tag" content="安卓"><meta property="article:tag" content="studio"><meta property="article:tag" content="物联网"><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?f58b6a2675cf52000232edb4d109eccc";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><body class="flex flex-col min-h-screen"><header id=headerctn class="fixed flex items-center w-full pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode")
+if(((storageColorScheme=='Auto'||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches)||storageColorScheme=="Dark"){document.getElementsByTagName('html')[0].classList.add('dark')}</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="mr-6 text-primary-text text-xl font-bold">Heis</a>
+<button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+<i class="fas fa-bars"></i></button><div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20"><div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0"><a href=/posts/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">文章</a>
+<a href=/docs/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 selected-menu-item mr-4">课程文档</a>
+<a href=/go class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">导航</a></div><div class=flex><div class="relative pt-4 md:pt-0"><div class="cursor-pointer hover:text-eureka" id=lightDarkMode><i class="fas fa-adjust"></i></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id=is-open></div><div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40" id=lightDarkOptions><span class="px-4 py-1 hover:text-eureka" name=Light>浅色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Dark>深色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Auto>自动</span></div></div></div></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id=is-open-mobile></div></nav><script>let element=document.getElementById('lightDarkMode')
+if(storageColorScheme==null||storageColorScheme=='Auto'){document.addEventListener('DOMContentLoaded',()=>{window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change',switchDarkMode)})}else if(storageColorScheme=="Light"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'sun')
+element.firstElementChild.classList.add('fa-sun')}else if(storageColorScheme=="Dark"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'moon')
+element.firstElementChild.classList.add('fa-moon')}
+document.addEventListener('DOMContentLoaded',()=>{getcolorscheme();switchBurger();});</script></div></header><main class="flex-grow pt-16"><div class=pl-scrollbar><div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto"><div class=lg:pt-12><div class="flex flex-col md:flex-row bg-secondary-bg rounded"><div class="md:w-1/4 lg:w-1/5 border-r"><div class="sticky top-16 pt-6"><div id=sidebar-title class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text"><span class=font-semibold>目录</span>
+<i class="fas fa-caret-right ml-1"></i></div><div id=sidebar-toc class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent"><div class="flex flex-wrap ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded"><a class=hover:text-eureka href=/docs/iot-android/>《物联网移动APP设计及开发》 课程资源汇总</a></div><ul class=pl-6><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-android/iot-android-01/>Part 1 - 搭建开发环境</a></div></li><li class=py-2><div><a class="text-eureka hover:text-eureka" href=/docs/iot-android/iot-android-02/>Part 2 - 物联网移动 APP 开发基础</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-android/iot-android-03/>Part 3 - 物联网移动App架构设计</a></div></li></ul></div></div></div><div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8"><div class="w-full lg:w-3/4 pl-6 ml-0 mr-auto"><h1 class="font-bold text-3xl text-primary-text">Part 2 - 物联网移动 APP 开发基础</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i><span>2021-08-22</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i><span>7分钟阅读时长</span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i><a href=/categories/iotapp/ class=hover:text-eureka>iotapp</a></div></div></div><div class=flex><div class="w-full lg:w-3/4 px-6"><div class=content><h2 id=版本>【版本】</h2><p>当前版本号<code>v20220822</code></p><div class=tbl-start></div><table><thead><tr><th>版本</th><th>修改说明</th></tr></thead><tbody><tr><td>v20220822</td><td>初始化版本</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h2 id=实验名称-实验21-编写一个能够互动的-activity>【实验名称】 实验2.1 编写一个能够互动的 Activity</h2><h2 id=实验目的>【实验目的】</h2><ul><li>掌握布局和简单组件的拖拽使用</li><li>掌握新建Activity</li><li>掌握按钮点击事件</li><li>掌握 Toast 文字框</li></ul><h2 id=实验环境>【实验环境】</h2><ul><li>一台运行 64 位版本的 Windows（8、10 或 11）、Linux、macOS（10.14 Mojave 或更高版本）或 Chrome 操作系统的计算机。</li><li>计算机可以访问互联网。</li><li>内存：至少6G</li><li>硬盘：至少空余20G</li></ul><h2 id=实验要求>【实验要求】</h2><ul><li>运行APP，点击按钮可以弹出文字框。
+<img src=/static/img/iot-android-02/2.gif alt></li></ul><h2 id=实验步骤>【实验步骤】</h2><ol><li><p>参考实验 Part1新建一个项目。</p></li><li><p>新建一个 Activity，命名为<code>FirstActivity</code>。</p></li><li><p>打开布局文件<code>activity_first.xml</code>，拖拽一个布局<code>Linear Layout</code>和<code>按钮</code>进布局。
+<img src=/static/img/iot-android-02/1.gif alt></p></li><li><p>修改按钮的<code>id</code>和<code>text</code>属性，<code>activity_first.xml</code>最终代码参考如下</p></li></ol><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;.FirstActivity&quot;&gt;
+
+    &lt;LinearLayout
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:orientation=&quot;vertical&quot;
+        tools:layout_editor_absoluteX=&quot;1dp&quot;
+        tools:layout_editor_absoluteY=&quot;1dp&quot;
+        tools:ignore=&quot;MissingConstraints&quot;&gt;
+
+        &lt;Button
+            android:id=&quot;@+id/hellobtn&quot;
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:text=&quot;Say Hello&quot; /&gt;
+    &lt;/LinearLayout&gt;
+
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
+</code></pre><ol start=5><li>修改 FirstActivity，增加按钮点击事件，实现弹出文字框。<code>FirstActivity</code>部分参考代码如下，请同学们自己完成：</li></ol><pre><code>package iot.app.chp01;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+import java.time.Duration;
+
+public class FirstActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.i(&quot;FirstActivity&quot;,&quot;创建FirstActivity&quot;);
+        setContentView(R.layout.activity_first);
+        //通过根R和按钮ID找到按钮组件
+        Button button2=findViewById(R.id.hellobtn);
+        //添加点击事件
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO:同学们自己完成这里的关键代码
+            }
+        });
+    }
+}
+</code></pre><ol start=6><li>设置 <code>FirstActivity</code>为主活动，启动应用会先启动此活动。</li></ol><ul><li>AndroidManifest.xml</li></ul><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    package=&quot;iot.app.chp01&quot;&gt;
+    &lt;application
+        android:allowBackup=&quot;true&quot;
+        android:dataExtractionRules=&quot;@xml/data_extraction_rules&quot;
+        android:fullBackupContent=&quot;@xml/backup_rules&quot;
+        android:icon=&quot;@mipmap/ic_launcher&quot;
+        android:label=&quot;@string/app_name&quot;
+        android:roundIcon=&quot;@mipmap/ic_launcher_round&quot;
+        android:supportsRtl=&quot;true&quot;
+        android:theme=&quot;@style/Theme.Iot_app_chp01&quot;
+        tools:targetApi=&quot;31&quot;&gt;
+        
+        &lt;activity
+            android:name=&quot;.FirstActivity&quot;
+            android:exported=&quot;true&quot; &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+&lt;/manifest&gt;
+</code></pre><h2 id=实验名称-实验22-体验-activity-的生命周期>【实验名称】 实验2.2 体验 Activity 的生命周期</h2><h2 id=实验目的-1>【实验目的】</h2><ul><li>掌握 Activity 的生命周期</li><li>掌握每个操作对应调用的 Activity 的方法</li></ul><h2 id=实验环境-1>【实验环境】</h2><ul><li>一台运行 64 位版本的 Windows（8、10 或 11）、Linux、macOS（10.14 Mojave 或更高版本）或 Chrome 操作系统的计算机。</li><li>计算机可以访问互联网。</li><li>内存：至少6G</li><li>硬盘：至少空余20G</li></ul><h2 id=实验要求-1>【实验要求】</h2><ul><li>分别执行以下动作，观察日志输出分别调用哪个方法，并记录到你的实验报告。
+（1）启动<code>LifeCycleActivity</code>，点击<code>返回</code>。
+（2）启动<code>LifeCycleActivity</code>，点击<code>启动 DialogActivity</code>，点击<code>返回</code>。
+（3）启动<code>LifeCycleActivity</code>，点击<code>启动 NormalActivity</code>，点击<code>返回</code>。
+<img src=/static/img/iot-android-02/3.gif alt></li></ul><h2 id=实验步骤-1>【实验步骤】</h2><ol><li>创建<code>DialogActivity</code>，参考代码如下。</li></ol><ul><li>DialogActivity</li></ul><pre><code>package iot.app.chp01.lifecycle;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+import iot.app.chp01.R;
+
+public class DialogActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_dialog);
+    }
+}
+</code></pre><ul><li>activity_dialog.xml</li></ul><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;&gt;
+
+        &lt;TextView
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:text=&quot;This is a dialog activity&quot;
+            /&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre><ol start=2><li>创建<code>NormalActivity</code>，参考代码如下。</li></ol><ul><li>NormalActivity.java</li></ul><pre><code>package iot.app.chp01.lifecycle;
+
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import iot.app.chp01.R;
+
+public class NormalActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_normal);
+    }
+}
+</code></pre><ul><li>activity_normal.xml</li></ul><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;&gt;
+    &lt;TextView
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;This is a normal activity&quot;
+        /&gt;
+&lt;/LinearLayout&gt;
+</code></pre><ol start=3><li>创建<code>LifeCycleActivity</code>，参考代码如下。</li></ol><ul><li>LifeCycleActivity.java</li></ul><pre><code>package iot.app.chp01.lifecycle;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import iot.app.chp01.R;
+
+public class LifeCycleActivity extends AppCompatActivity {
+
+    public static final String TAG = &quot;LifeCycleActivity&quot;;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.d(TAG, &quot;onCreate&quot;);
+        setContentView(R.layout.activity_lifecycle);
+        Button startNormalBtn = (Button) findViewById(R.id.start_normal_activity);
+        Button startDialogBtn = (Button) findViewById(R.id.start_dialog_activity);
+        startNormalBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(&quot;android.intent.action.NORMAL&quot;);
+                startActivity(intent);
+            }
+        });
+        startDialogBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LifeCycleActivity.this, DialogActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, &quot;onStart&quot;);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, &quot;onResume&quot;);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, &quot;onPause&quot;);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, &quot;onStop&quot;);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, &quot;onDestroy&quot;);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, &quot;onRestart&quot;);
+    }
+
+}
+</code></pre><ul><li>activity_lifecycle.xml</li></ul><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;.NavActivity&quot;&gt;
+
+    &lt;LinearLayout
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:orientation=&quot;vertical&quot;&gt;
+
+        &lt;Button
+            android:id=&quot;@+id/start_dialog_activity&quot;
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:text=&quot;启动 DialogActivity&quot; /&gt;
+
+        &lt;Button
+            android:id=&quot;@+id/start_normal_activity&quot;
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:text=&quot;启动 NormalActivity&quot; /&gt;
+    &lt;/LinearLayout&gt;
+
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
+</code></pre><ol start=4><li>修改<code>AndroidManifest.xml</code>，设置 <code>LifeCycleActivity</code>为主活动。</li></ol><h2 id=实验名称-实验23-观察任务task-的返回栈back-stack>【实验名称】 实验2.3 观察任务(Task) 的返回栈（Back Stack）</h2><h2 id=实验目的-2>【实验目的】</h2><ul><li>理解任务栈的概念和观察方法</li></ul><h2 id=实验环境-2>【实验环境】</h2><ul><li>一台运行 64 位版本的 Windows（8、10 或 11）、Linux、macOS（10.14 Mojave 或更高版本）或 Chrome 操作系统的计算机。</li><li>计算机可以访问互联网。</li><li>内存：至少6G</li><li>硬盘：至少空余20G</li></ul><h2 id=实验要求-2>【实验要求】</h2><ul><li>分别执行以下动作，并记录结果到你的实验报告。</li></ul><p>（1）启动<code>LifeCycleActivity</code>，点击<code>启动 DialogActivity</code>，输入命令观察返回栈内容。</p><p>（2）启动<code>LifeCycleActivity</code>，点击<code>启动 NormalActivity</code>，输入命令观察返回栈内容。</p><h2 id=实验步骤-2>【实验步骤】</h2><ol><li>启动<code>LifeCycleActivity</code>，点击<code>启动 DialogActivity</code>按钮。</li><li>在Terminal输入命令观察返回栈内容。</li></ol><pre><code> adb shell dumpsys activity
+</code></pre><ol start=3><li>在 Terminal 输出内容查找到类似以下内容。重点观察<code>Running activities (most recent first):</code>这部分的返回栈记录。</li></ol><pre><code>ACTIVITY MANAGER ACTIVITIES (dumpsys activity activities)
+Display #0 (activities from top to bottom):
+  Stack #1:
+  mFullscreen=true
+  mBounds=null
+    Task id #58
+    mFullscreen=true
+    mBounds=null
+    mMinWidth=-1
+    mMinHeight=-1
+    mLastNonFullscreenBounds=null
+      TaskRecord{126a601 #58 A=iot.app.chp01 U=0 StackId=1 sz=2}
+      Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=iot.app.chp01/.NavActivity }
+        Hist #1: ActivityRecord{a3c81ac u0 iot.app.chp01/.lifecycle.LifeCycleActivity t58}
+          Intent { cmp=iot.app.chp01/.lifecycle.LifeCycleActivity }
+          ProcessRecord{4316d32 14705:iot.app.chp01/u0a84}
+        Hist #0: ActivityRecord{793ff3a u0 iot.app.chp01/.NavActivity t58}
+          Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=iot.app.chp01/.NavActivity }
+          ProcessRecord{4316d32 14705:iot.app.chp01/u0a84}
+
+    Running activities (most recent first):
+      TaskRecord{126a601 #58 A=iot.app.chp01 U=0 StackId=1 sz=2}
+        Run #1: ActivityRecord{a3c81ac u0 iot.app.chp01/.lifecycle.LifeCycleActivity t58}
+        Run #0: ActivityRecord{793ff3a u0 iot.app.chp01/.NavActivity t58}
+
+    mResumedActivity: ActivityRecord{a3c81ac u0 iot.app.chp01/.lifecycle.LifeCycleActivity t58}
+
+</code></pre><ol start=4><li>启动<code>LifeCycleActivity</code>，点击<code>启动 NormalActivity</code>，输入命令，再次观察任务返回栈的内容。</li></ol><h2 id=实验名称-实验24-设计一个注册界面>【实验名称】 实验2.4 设计一个注册界面</h2><h2 id=实验目的-3>【实验目的】</h2><ul><li>掌握使用 Android 布局和组件实现界面</li></ul><h2 id=实验环境-3>【实验环境】</h2><ul><li>一台运行 64 位版本的 Windows（8、10 或 11）、Linux、macOS（10.14 Mojave 或更高版本）或 Chrome 操作系统的计算机。</li><li>计算机可以访问互联网。</li><li>内存：至少6G</li><li>硬盘：至少空余20G</li></ul><h2 id=实验要求-3>【实验要求】</h2><ul><li>新建一个RegisterActivity，拖拽组件实现以下注册界面
+<img src=/static/img/iot-android-02/Snipaste_2022-08-23_00-30-19.jpg alt></li></ul><h2 id=实验步骤-3>【实验步骤】</h2><ol><li><p>新建一个<code>Empty Activity</code>，命名为<code>RegisterActivity</code>。</p></li><li><p>拖拽布局和组件实现注册界面。
+<img src=/static/img/iot-android-02/Snipaste_2022-08-23_00-30-19.jpg alt></p></li><li><p>设置<code>RegisterActivity</code>为主活动。</p></li></ol><h2 id=实验名称-实验25-实现碎片替换>【实验名称】 实验2.5 实现碎片替换</h2><h2 id=实验目的-4>【实验目的】</h2><ul><li>掌握使用 Android 的 Fragment</li></ul><h2 id=实验环境-4>【实验环境】</h2><ul><li>一台运行 64 位版本的 Windows（8、10 或 11）、Linux、macOS（10.14 Mojave 或更高版本）或 Chrome 操作系统的计算机。</li><li>计算机可以访问互联网。</li><li>内存：至少6G</li><li>硬盘：至少空余20G</li></ul><h2 id=实验要求-4>【实验要求】</h2><ul><li>新建一个Activity，实现右边碎片的替换。
+<img src=/static/img/iot-android-02/4.gif alt></li></ul><h2 id=实验步骤-4>【实验步骤】</h2><ol><li>新建一个活动<code>TabActivity</code>。</li></ol><ul><li><code>TabActivity.java</code></li></ul><pre><code>package iot.app.chp01.fragment;
+
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import iot.app.chp01.R;
+
+public class TabActivity extends AppCompatActivity  {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_tab);
+    }
+
+}
+</code></pre><ul><li><code>activity_tab.xml</code></li></ul><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:orientation=&quot;horizontal&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot; &gt;
+
+    &lt;androidx.fragment.app.FragmentContainerView
+        android:id=&quot;@+id/left_fragment&quot;
+        android:name=&quot;iot.app.chp01.fragment.LeftFragment&quot;
+        android:layout_width=&quot;0dp&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:layout_weight=&quot;1&quot; /&gt;
+
+    &lt;androidx.fragment.app.FragmentContainerView
+        android:id=&quot;@+id/right_fragment&quot;
+        android:name=&quot;iot.app.chp01.fragment.RightFragment&quot;
+        android:layout_width=&quot;0dp&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:layout_weight=&quot;1&quot; /&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre><ol start=2><li>新建一个碎片<code>LeftFragment</code>。
+<img src=/static/img/iot-android-02/Snipaste_2022-08-23_01-27-07.jpg alt></li></ol><ul><li><code>LeftFragment.java</code></li></ul><pre><code>package iot.app.chp01.fragment;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+
+import iot.app.chp01.R;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+public class LeftFragment extends Fragment implements View.OnClickListener{
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragement_left, container, false);
+        Button button = (Button)view.findViewById(R.id.button3);
+        Log.d(&quot;TabActivity&quot;,String.valueOf(button));
+        button.setOnClickListener(this);
+        return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.button3:
+                replaceFragment(new AnotherRightFragment());
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
+     * 替换碎片
+     * @param fragment
+     */
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getParentFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.right_fragment, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+}
+</code></pre><ul><li><code>fragement_left.xml</code></li></ul><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:orientation=&quot;vertical&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/textView4&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;左边碎片&quot;
+        android:textAlignment=&quot;center&quot;
+        android:textSize=&quot;16sp&quot; /&gt;
+
+    &lt;Button
+        android:id=&quot;@+id/button3&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_gravity=&quot;center_horizontal&quot;
+        android:text=&quot;切换右边碎片&quot; /&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre><ol start=3><li>新建一个碎片<code>RightFragment</code></li></ol><ul><li><code>RightFragment.java</code></li></ul><pre><code>package iot.app.chp01.fragment;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import iot.app.chp01.R;
+import androidx.fragment.app.Fragment;
+
+public class RightFragment extends Fragment {
+
+    public static final String TAG = &quot;RightFragment&quot;;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Log.d(TAG, &quot;onAttach&quot;);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.d(TAG, &quot;onCreate&quot;);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        Log.d(TAG, &quot;onCreateView&quot;);
+        View view = inflater.inflate(R.layout.fragement_right, container, false);
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Log.d(TAG, &quot;onActivityCreated&quot;);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.d(TAG, &quot;onStart&quot;);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, &quot;onResume&quot;);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d(TAG, &quot;onPause&quot;);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d(TAG, &quot;onStop&quot;);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.d(TAG, &quot;onDestroyView&quot;);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, &quot;onDestroy&quot;);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Log.d(TAG, &quot;onDetach&quot;);
+    }
+
+}
+</code></pre><ul><li><code>fragement_right.xml</code></li></ul><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;FrameLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:orientation=&quot;vertical&quot;
+    android:background=&quot;#00ff00&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;&gt;
+
+    &lt;TextView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_gravity=&quot;center_horizontal&quot;
+        android:text=&quot;右边碎片&quot;
+        android:textAlignment=&quot;center&quot;
+        android:textSize=&quot;20sp&quot; /&gt;
+
+&lt;/FrameLayout&gt;
+</code></pre><ol start=5><li>新建一个新的右边碎片，用于覆盖原有右边碎片。</li></ol><ul><li><code>AnotherRightFragment.java</code></li></ul><pre><code>package iot.app.chp01.fragment;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import iot.app.chp01.R;
+import androidx.fragment.app.Fragment;
+
+public class AnotherRightFragment extends Fragment {
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragement_right2, container, false);
+        return view;
+    }
+
+}
+</code></pre><ul><li><code>fragement_right2.xml</code></li></ul><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;FrameLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:orientation=&quot;vertical&quot;
+    android:background=&quot;#ffff00&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;&gt;
+
+    &lt;TextView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_gravity=&quot;center_horizontal&quot;
+        android:text=&quot;替换为新的碎片&quot;
+        android:textAlignment=&quot;center&quot;
+        android:textSize=&quot;20sp&quot; /&gt;
+
+&lt;/FrameLayout&gt;
+</code></pre><h2 id=实验名称-实验26-实现登录跳转>【实验名称】 实验2.6 实现登录跳转</h2><h2 id=实验目的-5>【实验目的】</h2><ul><li>掌握使用布局（Layout）和组件进行界面设计</li><li>掌握活动之间的跳转</li></ul><h2 id=实验环境-5>【实验环境】</h2><ul><li>一台运行 64 位版本的 Windows（8、10 或 11）、Linux、macOS（10.14 Mojave 或更高版本）或 Chrome 操作系统的计算机。</li><li>计算机可以访问互联网。</li><li>内存：至少6G</li><li>硬盘：至少空余20G</li></ul><h2 id=实验要求-5>【实验要求】</h2><ul><li>新建 <code>LoginActivity</code> 和 <code>DashboardActivity</code>，实现点击 LoginActivity 的登录按钮跳转到 <code>DashboardActivity</code>。
+<img src=/static/img/iot-android-02/5.gif alt></li></ul><h2 id=实验步骤-5>【实验步骤】</h2><ol><li>请同学们自行实现。</li></ol></div><div class=my-4><a href=/tags/iot/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#iot</a>
+<a href=/tags/android/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#android</a>
+<a href=/tags/%E5%AE%89%E5%8D%93/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#安卓</a>
+<a href=/tags/studio/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#studio</a>
+<a href=/tags/%E7%89%A9%E8%81%94%E7%BD%91/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#物联网</a></div><div class=py-2><div class="flex flex-col md:flex-row items-center my-8"><a href=/authors/heis/ class="w-24 h-24 md:mr-4"><img src=/static/img/authors/heis.png class="w-full bg-primary-bg rounded-full" alt=Avatar></a><div class="w-full md:w-auto mt-4 md:mt-0"><a href=/authors/heis/ class="block font-bold text-lg pb-1 mb-2 border-b">黄老师</a>
+<span class="block pb-2"></span><a href=mailto:heishuangzy@qq.com class=mr-1><i class="fas fa-envelope"></i></a><a href=https://gitee.com/heis/ class=mr-1><i class="fab fa-git"></i></a><a href=http://heis.gitee.io/ class=mr-1><i class="fas fa-blog"></i></a></div></div></div><div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t"><div id=presec><span class="block font-bold">上一页</span>
+<a href=/docs/iot-android/iot-android-01/ class=block>Part 1 - 搭建开发环境</a></div><div id=nextsec class="md:text-right mt-4 md:mt-0"><span class="block font-bold">下一页</span>
+<a href=/docs/iot-android/iot-android-03/ class=block>Part 3 - 物联网移动App架构设计</a></div></div></div><div class="hidden lg:block lg:w-1/4"><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-secondary-bg pt-16 -mt-16"><span class="text-lg font-semibold">本页内容</span></div><div class="sticky-toc hidden lg:block px-6 pb-6 pt-10 -mt-10 border-l"><nav id=TableOfContents><ul><li><a href=#版本>【版本】</a></li><li><a href=#实验名称-实验21-编写一个能够互动的-activity>【实验名称】 实验2.1 编写一个能够互动的 Activity</a></li><li><a href=#实验目的>【实验目的】</a></li><li><a href=#实验环境>【实验环境】</a></li><li><a href=#实验要求>【实验要求】</a></li><li><a href=#实验步骤>【实验步骤】</a></li><li><a href=#实验名称-实验22-体验-activity-的生命周期>【实验名称】 实验2.2 体验 Activity 的生命周期</a></li><li><a href=#实验目的-1>【实验目的】</a></li><li><a href=#实验环境-1>【实验环境】</a></li><li><a href=#实验要求-1>【实验要求】</a></li><li><a href=#实验步骤-1>【实验步骤】</a></li><li><a href=#实验名称-实验23-观察任务task-的返回栈back-stack>【实验名称】 实验2.3 观察任务(Task) 的返回栈（Back Stack）</a></li><li><a href=#实验目的-2>【实验目的】</a></li><li><a href=#实验环境-2>【实验环境】</a></li><li><a href=#实验要求-2>【实验要求】</a></li><li><a href=#实验步骤-2>【实验步骤】</a></li><li><a href=#实验名称-实验24-设计一个注册界面>【实验名称】 实验2.4 设计一个注册界面</a></li><li><a href=#实验目的-3>【实验目的】</a></li><li><a href=#实验环境-3>【实验环境】</a></li><li><a href=#实验要求-3>【实验要求】</a></li><li><a href=#实验步骤-3>【实验步骤】</a></li><li><a href=#实验名称-实验25-实现碎片替换>【实验名称】 实验2.5 实现碎片替换</a></li><li><a href=#实验目的-4>【实验目的】</a></li><li><a href=#实验环境-4>【实验环境】</a></li><li><a href=#实验要求-4>【实验要求】</a></li><li><a href=#实验步骤-4>【实验步骤】</a></li><li><a href=#实验名称-实验26-实现登录跳转>【实验名称】 实验2.6 实现登录跳转</a></li><li><a href=#实验目的-5>【实验目的】</a></li><li><a href=#实验环境-5>【实验环境】</a></li><li><a href=#实验要求-5>【实验要求】</a></li><li><a href=#实验步骤-5>【实验步骤】</a></li></ul></nav></div><script>window.addEventListener('DOMContentLoaded',()=>{enableStickyToc();});</script></div></div></div></div></div><div id=outerdiv><div id=innerdiv><img id=bigimg src></div></div><script>document.addEventListener('DOMContentLoaded',()=>{hljs.highlightAll();hljs.initLineNumbersOnLoad({singleLine:true});changeSidebarHeight();switchDocToc();$("img").css("cursor:pointer")
+$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});$("ol").each(function(index){if(/\d{1,4}/.test($(this).attr("start"))){let idx=parseInt($(this).attr("start"));let lis=$(this).find("li");if(lis.length>0){lis.each(function(index){$(this).attr("id","step"+(idx+index));});}else{$(this).attr("id","step"+idx);}}});});</script><script src=/static/js/clipboard.min.js></script><script src=/static/js/codecopy.bundle.js?968></script></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text">&copy; 2021 <a href=https://www.wangchucheng.com/>C. Wang</a> and <a href=https://www.ruiqima.com/>R. Ma</a>
+&#183; Powered by the <a href=https://github.com/wangchucheng/hugo-eureka class=hover:text-eureka>Eureka</a> theme for <a href=https://gohugo.io class=hover:text-eureka>Hugo</a></p></div></div></footer></body></html>
