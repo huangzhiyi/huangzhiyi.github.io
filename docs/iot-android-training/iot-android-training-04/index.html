@@ -1,0 +1,110 @@
+<!doctype html><html lang=zh><meta charset=utf-8><meta name=viewport content="width=device-width"><title>Part 4 - 完善 MQTT 控制设备功能 | 《物联网移动APP设计及开发实训》 课程资源汇总 | Heis</title><meta name=generator content="Hugo Eureka 0.8.4"><link rel=stylesheet href=/css/eureka.min.css><script defer src=/js/eureka.min.js></script><script src=/static/js/jquery-3.6.0.min.js></script><script src=/static/js/heis.js></script><link rel=stylesheet href=/static/css/heis.css media=all onload="this.media='all';this.onload=null" crossorigin><link rel=stylesheet href=/static/css/print.css media=print crossorigin><link rel=stylesheet href=/static/css/highlight-css/solarized-light.min.css media=print onload="this.media='all';this.onload=null" crossorigin><script defer src=/static/js/highlight.min.js crossorigin></script><script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script><script defer src=/static/js/highlightjs-line-numbers.min.js></script><link rel=icon type=image/png sizes=32x32 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_32x32_fill_box_center_2.png><link rel=apple-touch-icon sizes=180x180 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_180x180_fill_box_center_2.png><meta name=description content="《物联网移动APP设计及开发实训》 完善 MQTT 控制设备功能"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"课程文档","item":"/docs/"},{"@type":"ListItem","position":2,"name":"《物联网移动APP设计及开发实训》 课程资源汇总","item":"/docs/iot-android-training/"},{"@type":"ListItem","position":3,"name":"Part 4 - 完善 MQTT 控制设备功能","item":"/docs/iot-android-training/iot-android-training-04/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/docs/iot-android-training/iot-android-training-04/"},"headline":"Part 4 - 完善 MQTT 控制设备功能 | 《物联网移动APP设计及开发实训》 课程资源汇总 | Heis","datePublished":"2021-11-08T00:44:00+08:00","dateModified":"2021-11-08T00:44:00+08:00","wordCount":1349,"author":{"@type":"Person","name":"heis"},"publisher":{"@type":"Person","name":"C. Wang","logo":{"@type":"ImageObject","url":"/images/icon.png"}},"description":"《物联网移动APP设计及开发实训》 完善 MQTT 控制设备功能"}</script><meta property="og:title" content="Part 4 - 完善 MQTT 控制设备功能 | 《物联网移动APP设计及开发实训》 课程资源汇总 | Heis"><meta property="og:type" content="article"><meta property="og:image" content="/images/icon.png"><meta property="og:url" content="/docs/iot-android-training/iot-android-training-04/"><meta property="og:description" content="《物联网移动APP设计及开发实训》 完善 MQTT 控制设备功能"><meta property="og:locale" content="zh"><meta property="og:site_name" content="Heis"><meta property="article:published_time" content="2021-11-08T00:44:00+08:00"><meta property="article:modified_time" content="2021-11-08T00:44:00+08:00"><meta property="article:section" content="docs"><meta property="article:tag" content="iot"><meta property="article:tag" content="android"><meta property="article:tag" content="安卓"><meta property="article:tag" content="studio"><meta property="article:tag" content="物联网"><meta property="og:see_also" content="/docs/iot-android-training/iot-android-training-02/"><meta property="og:see_also" content="/docs/iot-android-training/iot-android-training-03/"><meta property="og:see_also" content="/docs/iot-android-training/iot-android-training-01/"><meta property="og:see_also" content="/docs/iot-android/iot-android-05/"><meta property="og:see_also" content="/docs/iot-android/iot-android-04/"><meta property="og:see_also" content="/docs/iot-android/iot-android-01/"><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?f58b6a2675cf52000232edb4d109eccc";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><body class="flex flex-col min-h-screen"><header id=headerctn class="fixed flex items-center w-full pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode")
+if(((storageColorScheme=='Auto'||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches)||storageColorScheme=="Dark"){document.getElementsByTagName('html')[0].classList.add('dark')}</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="mr-6 text-primary-text text-xl font-bold">Heis</a>
+<button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+<i class="fas fa-bars"></i></button><div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20"><div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0"><a href=/posts/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">文章</a>
+<a href=/docs/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 selected-menu-item mr-4">课程文档</a>
+<a href=/go class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">导航</a></div><div class=flex><div class="relative pt-4 md:pt-0"><div class="cursor-pointer hover:text-eureka" id=lightDarkMode><i class="fas fa-adjust"></i></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id=is-open></div><div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40" id=lightDarkOptions><span class="px-4 py-1 hover:text-eureka" name=Light>浅色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Dark>深色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Auto>自动</span></div></div></div></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id=is-open-mobile></div></nav><script>let element=document.getElementById('lightDarkMode')
+if(storageColorScheme==null||storageColorScheme=='Auto'){document.addEventListener('DOMContentLoaded',()=>{window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change',switchDarkMode)})}else if(storageColorScheme=="Light"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'sun')
+element.firstElementChild.classList.add('fa-sun')}else if(storageColorScheme=="Dark"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'moon')
+element.firstElementChild.classList.add('fa-moon')}
+document.addEventListener('DOMContentLoaded',()=>{getcolorscheme();switchBurger();});</script></div></header><main class="flex-grow pt-16"><div class=pl-scrollbar><div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto"><div class=lg:pt-12><div class="flex flex-col md:flex-row bg-secondary-bg rounded"><div class="md:w-1/4 lg:w-1/5 border-r"><div class="sticky top-16 pt-6"><div id=sidebar-title class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text"><span class=font-semibold>目录</span>
+<i class="fas fa-caret-right ml-1"></i></div><div id=sidebar-toc class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent"><div class="flex flex-wrap ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded"><a class=hover:text-eureka href=/docs/iot-android-training/>《物联网移动APP设计及开发实训》 课程资源汇总</a></div><ul class=pl-6><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-android-training/iot-android-training-01/>Part 1 - 搭建开发环境</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-android-training/iot-android-training-02/>Part 2 - 完善登录和退出功能</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-android-training/iot-android-training-03/>Part 3 - 完善获取用户设备功能</a></div></li><li class=py-2><div><a class="text-eureka hover:text-eureka" href=/docs/iot-android-training/iot-android-training-04/>Part 4 - 完善 MQTT 控制设备功能</a></div></li></ul></div></div></div><div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8"><div class="w-full lg:w-3/4 pl-6 ml-0 mr-auto"><h1 class="font-bold text-3xl text-primary-text">Part 4 - 完善 MQTT 控制设备功能</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i><span>2021-11-08</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i><span>3分钟阅读时长</span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i><a href=/categories/iot-android-training/ class=hover:text-eureka>iot-android-training</a></div></div></div><div class=flex><div class="w-full lg:w-3/4 px-6"><div class=content><h2 id=版本>【版本】</h2><p>当前版本号<code>v20221108</code></p><div class=tbl-start></div><table><thead><tr><th>版本</th><th>修改说明</th></tr></thead><tbody><tr><td>v20221108</td><td>初始化版本</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h2 id=实验名称-实验41-smart-home-实现-mqtt-客户端功能>【实验名称】 实验4.1 Smart Home 实现 MQTT 客户端功能</h2><h2 id=实验目的>【实验目的】</h2><ul><li>掌握 Android MQTT 客户端的使用</li></ul><h2 id=实验环境>【实验环境】</h2><ul><li>Android Studio</li><li>Smart Home 项目</li></ul><h2 id=实验说明>【实验说明】</h2><ul><li>配置 MQTT 客户端参数可以修改 SmartHome.init 方法</li></ul><pre><code>public String init(Context context,String client_id) {
+    this.context = context;
+    //配置连接信息
+    mqttConnectOptions = new MqttConnectOptions();
+    //TODO:实验3.1 设置MQTT地址，注意要进行地址转换
+    mqttConnectOptions.setServerURIs(new String[]{});
+    //是否清除缓存
+    mqttConnectOptions.setCleanSession(false);
+    //是否重连
+    mqttConnectOptions.setAutomaticReconnect(true);
+    //设置心跳,30s
+    mqttConnectOptions.setKeepAliveInterval(30);
+    //TODO:实验3.1 登录用户名
+    mqttConnectOptions.setUserName(&quot;&quot;);
+    //TODO:实验3.1 登录密码
+    ...
+}
+</code></pre><h2 id=实验要求>【实验要求】</h2><ul><li>（1）配置<code>iot.app.smarthome.mqtt.SmartMqtt</code>的 MQTT 地址、用户名和密码。</li></ul><h2 id=实验名称-实验42-smart-home-实现-lightbulbactivity智能灯设备控制界面>【实验名称】 实验4.2 Smart Home 实现 LightBulbActivity（智能灯设备控制界面）</h2><h2 id=实验目的-1>【实验目的】</h2><ul><li>掌握 DeviceAdapter.ViewHolder 的点击事件编写</li><li>掌握新的 Activity 的编写</li></ul><h2 id=实验环境-1>【实验环境】</h2><ul><li>Android Studio</li><li>Smart Home 项目</li></ul><h2 id=实验说明-1>【实验说明】</h2><ul><li>在<code>iot.app.smarthome.ui.device.DeviceAdapter</code>的 onCreateViewHolder 方法可以增加点击事件代码。</li></ul><pre><code>@Override
+public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.device_item, parent, false);
+    final ViewHolder holder = new ViewHolder(view);
+    holder.devView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+			
+		}
+    });
+}
+</code></pre><h2 id=实验要求-1>【实验要求】</h2><ul><li>（1）当用户在<code>设备</code>界面点击智能灯时，跳转到<code>LightBulbActivity</code>（智能灯设备控制界面）。
+<img src=/static/img/iot-android-training-04/open-bulb.gif alt></li><li>（2）跳转到<code>LightBulbActivity</code>时，请把点击的设备的 IotID 通过 intent 传到<code>LightBulbActivity</code>。</li><li>（3）在智能灯设备控制界面，设置IotID 显示栏，一个开灯按钮，一个关灯按钮。
+<img src=/static/img/iot-android-training-04/Snipaste_2022-11-09_11-33-40.jpg alt></li></ul><h2 id=实验名称-实验43-通过-lightbulbactivity-发送-mqtt-消息控制智能灯开关状态>【实验名称】 实验4.3 通过 LightBulbActivity 发送 MQTT 消息控制智能灯开关状态。</h2><h2 id=实验目的-2>【实验目的】</h2><ul><li>掌握 MQTT 发送消息和接受消息的代码编写</li></ul><h2 id=实验环境-2>【实验环境】</h2><ul><li>Android Studio</li><li>Smart Home 项目</li></ul><h2 id=实验说明-2>【实验说明】</h2><ul><li>（1）SmartMqtt 客户端初始化示例代码</li></ul><pre><code>SmartMqtt mqttClient=SmartMqtt.getInstance();
+String mqttClientId=mqttClient.init(LightBulbActivity.this,null);
+mqttClient.setMqttCallback(new MqttCallback() {
+    @Override
+    public void connectionLost(Throwable cause) {
+        Log.i(&quot;MQTT&quot;,&quot;Connection Lost&quot;);
+    }
+    @Override
+    public void messageArrived(String topic, MqttMessage message) throws Exception {
+        String payload=new String(message.getPayload());//获取监听主题的消息       
+    }
+    @Override
+    public void deliveryComplete(IMqttDeliveryToken token) {
+        Log.i(&quot;MQTT&quot;,&quot;delivery Complete&quot;);
+    }
+});
+IMqttToken token=mqttClient.connect();
+token.setActionCallback(new IMqttActionListener() {
+    @Override
+    public void onSuccess(IMqttToken asyncActionToken) {
+        //订阅主题的代码可以写在这个方法内
+    }
+    @Override
+    public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
+        Log.i(&quot;MQTT&quot;,&quot;Subscribe action fail&quot;);
+    }
+});
+</code></pre><ul><li>（2）SmartMqtt 订阅主题的示例代码</li></ul><pre><code>SmartMqtt mqttClient=SmartMqtt.getInstance();
+mqttClient.subscribe(&quot;订阅的主题&quot;, new IMqttActionListener() {
+    @Override
+    public void onSuccess(IMqttToken asyncActionToken) {
+        Log.i(&quot;MQTT&quot;, &quot;Subscribe success with topics:&quot;+StringUtils.join(asyncActionToken.getTopics(),'|'));
+    }
+    @Override
+    public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
+        if(exception!=null){
+            exception.printStackTrace();
+        }
+        Log.i(&quot;MQTT&quot;,&quot;Subscribe fail&quot;);
+    }
+});
+</code></pre><ul><li>（3）SmartMqtt 发送消息的示例代码</li></ul><pre><code>SmartMqtt mqttClient=SmartMqtt.getInstance();
+Gson gson=new Gson();
+mqttClient.sendData(&quot;主题&quot;, gson.toJson(内容).getBytes(StandardCharsets.UTF_8), new IMqttActionListener() {
+    @Override
+    public void onSuccess(IMqttToken asyncActionToken) {
+        Log.i(&quot;MQTT&quot;,&quot;send Data success&quot;);
+    }
+    @Override
+    public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
+        Log.e(&quot;MQTT&quot;,&quot;send Data fail&quot;);
+    }
+});
+</code></pre><ul><li>（4）模拟智能灯设备可以通过发送以下示例信息到该设备的主题，实现开关灯操作。</li></ul><blockquote><p>eventTime和updateTime 是当前的时间戳
+switchState是目标状态，on表示开灯，off表示关灯。</p></blockquote><pre><code>{&quot;eventId&quot;:&quot;0759&quot;,&quot;eventName&quot;:&quot;updateDevShadow&quot;,&quot;eventTime&quot;:1667962757651,&quot;params&quot;:[{&quot;switchState&quot;:&quot;on&quot;,&quot;updateTime&quot;:1667962757651}]}
+</code></pre><p>-（5）发送的主题和返回消息的主题可以在模拟智能灯设备的配置页面查看<a href=http://localhost:8101/config>http://localhost:8101/config</a>
+<img src=/static/img/iot-android-training-04/Snipaste_2022-11-09_11-02-40.jpg alt></p><h2 id=实验要求-2>【实验要求】</h2><ul><li>（1）按下LightBulbActivity 的开关按钮，可以通过 MQTT 发送消息到模拟智能灯设备，实现开灯或关灯。</li><li>（2）开灯或关灯可以接收模拟智能灯设备的回复消息。
+<img src=/static/img/iot-android-training-04/switch-bulb.gif alt></li></ul><h2 id=实验步骤>【实验步骤】</h2><ol><li><p>启动 Mosquitto 。</p></li><li><p>运行脚本<code>0-start-iot-bulb.bat</code> 启动模拟智能灯设备项目</p></li><li><p>完善Smart Home 项目代码，实现实验要求。</p></li></ol></div><div class=my-4><a href=/tags/iot/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#iot</a>
+<a href=/tags/android/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#android</a>
+<a href=/tags/%E5%AE%89%E5%8D%93/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#安卓</a>
+<a href=/tags/studio/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#studio</a>
+<a href=/tags/%E7%89%A9%E8%81%94%E7%BD%91/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#物联网</a></div><div class=py-2><div class="flex flex-col md:flex-row items-center my-8"><a href=/authors/heis/ class="w-24 h-24 md:mr-4"><img src=/static/img/authors/heis.png class="w-full bg-primary-bg rounded-full" alt=Avatar></a><div class="w-full md:w-auto mt-4 md:mt-0"><a href=/authors/heis/ class="block font-bold text-lg pb-1 mb-2 border-b">黄老师</a>
+<span class="block pb-2"></span><a href=mailto:heishuangzy@qq.com class=mr-1><i class="fas fa-envelope"></i></a><a href=https://gitee.com/heis/ class=mr-1><i class="fab fa-git"></i></a><a href=http://heis.gitee.io/ class=mr-1><i class="fas fa-blog"></i></a></div></div></div><div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t"><div id=presec><span class="block font-bold">上一页</span>
+<a href=/docs/iot-android-training/iot-android-training-03/ class=block>Part 3 - 完善获取用户设备功能</a></div><div id=nextsec class="md:text-right mt-4 md:mt-0"></div></div></div><div class="hidden lg:block lg:w-1/4"><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-secondary-bg pt-16 -mt-16"><span class="text-lg font-semibold">本页内容</span></div><div class="sticky-toc hidden lg:block px-6 pb-6 pt-10 -mt-10 border-l"><nav id=TableOfContents><ul><li><a href=#版本>【版本】</a></li><li><a href=#实验名称-实验41-smart-home-实现-mqtt-客户端功能>【实验名称】 实验4.1 Smart Home 实现 MQTT 客户端功能</a></li><li><a href=#实验目的>【实验目的】</a></li><li><a href=#实验环境>【实验环境】</a></li><li><a href=#实验说明>【实验说明】</a></li><li><a href=#实验要求>【实验要求】</a></li><li><a href=#实验名称-实验42-smart-home-实现-lightbulbactivity智能灯设备控制界面>【实验名称】 实验4.2 Smart Home 实现 LightBulbActivity（智能灯设备控制界面）</a></li><li><a href=#实验目的-1>【实验目的】</a></li><li><a href=#实验环境-1>【实验环境】</a></li><li><a href=#实验说明-1>【实验说明】</a></li><li><a href=#实验要求-1>【实验要求】</a></li><li><a href=#实验名称-实验43-通过-lightbulbactivity-发送-mqtt-消息控制智能灯开关状态>【实验名称】 实验4.3 通过 LightBulbActivity 发送 MQTT 消息控制智能灯开关状态。</a></li><li><a href=#实验目的-2>【实验目的】</a></li><li><a href=#实验环境-2>【实验环境】</a></li><li><a href=#实验说明-2>【实验说明】</a></li><li><a href=#实验要求-2>【实验要求】</a></li><li><a href=#实验步骤>【实验步骤】</a></li></ul></nav></div><script>window.addEventListener('DOMContentLoaded',()=>{enableStickyToc();});</script></div></div></div></div></div><div id=outerdiv><div id=innerdiv><img id=bigimg src></div></div><script>document.addEventListener('DOMContentLoaded',()=>{hljs.highlightAll();hljs.initLineNumbersOnLoad({singleLine:true});changeSidebarHeight();switchDocToc();$("img").css("cursor:pointer")
+$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});$("ol").each(function(index){if(/\d{1,4}/.test($(this).attr("start"))){let idx=parseInt($(this).attr("start"));let lis=$(this).find("li");if(lis.length>0){lis.each(function(index){$(this).attr("id","step"+(idx+index));});}else{$(this).attr("id","step"+idx);}}});});</script><script src=/static/js/clipboard.min.js></script><script src=/static/js/codecopy.bundle.js?600></script></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text">&copy; 2021 <a href=https://www.wangchucheng.com/>C. Wang</a> and <a href=https://www.ruiqima.com/>R. Ma</a>
+&#183; Powered by the <a href=https://github.com/wangchucheng/hugo-eureka class=hover:text-eureka>Eureka</a> theme for <a href=https://gohugo.io class=hover:text-eureka>Hugo</a></p></div></div></footer></body></html>
