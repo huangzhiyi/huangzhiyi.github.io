@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<title>Get 测试</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="js/jquery-3.6.0.min.js"></script>
+		<style>
+		        table{
+		            width:100%;
+		            background-color:white;
+		            background-top:none;
+		        }
+		        table tr th{
+		            font-weight: bold;
+		        }
+		        table tr th,td{
+		            text-align:center;
+		            width: 1.88rem;
+		            height: 1.26rem;
+		            font-family: "Microsoft YaHei";
+		            border:1px solid #D9D9D9;
+		            font-size:1rem;
+		        }
+		    </style>
+	</head>
+	<body>
+		<h1>Get 参数显示</h1>
+		<table cellspacing="0" cellpadding="0"  id="paramsTbl">
+			<tr>
+				<th>参数名</th>
+				<th>值</th>
+			</tr>
+		</table>
+		<script>
+			$(document).ready(function(){
+				var query = window.location.search.substring(1);
+				var vars = query.split("&");
+				var html="";
+				for (var i=0;i<vars.length;i++) {
+					html+="<tr>";
+				    var pair = vars[i].split("=");
+				    html+="<td>"+pair[0]+"</td>";
+				    html+="<td>"+pair[1]+"</td>";
+					html+="</tr>";
+				}
+				$("#paramsTbl").append(html);
+			});
+		</script>
+	</body>
+</html>

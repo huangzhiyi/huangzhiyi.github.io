@@ -1,4 +1,4 @@
-<!doctype html><html lang=zh><meta charset=utf-8><meta name=viewport content="width=device-width"><title>Part 3 - 物联网云平台开发框架搭建 | 《物联网云平台设计与开发》课程资源汇总 | Heis</title><meta name=generator content="Hugo Eureka 0.8.4"><link rel=stylesheet href=/css/eureka.min.css><script defer src=/js/eureka.min.js></script><script src=/static/js/jquery-3.6.0.min.js></script><script src=/static/js/heis.js></script><link rel=stylesheet href=/static/css/heis.css media=all onload="this.media='all';this.onload=null" crossorigin><link rel=stylesheet href=/static/css/print.css media=print crossorigin><link rel=stylesheet href=/static/css/highlight-css/solarized-light.min.css media=print onload="this.media='all';this.onload=null" crossorigin><script defer src=/static/js/highlight.min.js crossorigin></script><script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script><script defer src=/static/js/highlightjs-line-numbers.min.js></script><link rel=icon type=image/png sizes=32x32 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_32x32_fill_box_center_2.png><link rel=apple-touch-icon sizes=180x180 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_180x180_fill_box_center_2.png><meta name=description content="物联网云平台设计与开发实验Part 3"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"课程文档","item":"/docs/"},{"@type":"ListItem","position":2,"name":"《物联网云平台设计与开发》课程资源汇总","item":"/docs/iot-cloud-platform/"},{"@type":"ListItem","position":3,"name":"Part 3 - 物联网云平台开发框架搭建","item":"/docs/iot-cloud-platform/iot-cp-03/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/docs/iot-cloud-platform/iot-cp-03/"},"headline":"Part 3 - 物联网云平台开发框架搭建 | 《物联网云平台设计与开发》课程资源汇总 | Heis","datePublished":"2022-03-16T00:42:51+08:00","dateModified":"2022-03-16T00:42:51+08:00","wordCount":3734,"author":{"@type":"Person","name":"heis"},"publisher":{"@type":"Person","name":"C. Wang","logo":{"@type":"ImageObject","url":"/images/icon.png"}},"description":"物联网云平台设计与开发实验Part 3"}</script><meta property="og:title" content="Part 3 - 物联网云平台开发框架搭建 | 《物联网云平台设计与开发》课程资源汇总 | Heis"><meta property="og:type" content="article"><meta property="og:image" content="/images/icon.png"><meta property="og:url" content="/docs/iot-cloud-platform/iot-cp-03/"><meta property="og:description" content="物联网云平台设计与开发实验Part 3"><meta property="og:locale" content="zh"><meta property="og:site_name" content="Heis"><meta property="article:published_time" content="2022-03-16T00:42:51+08:00"><meta property="article:modified_time" content="2022-03-16T00:42:51+08:00"><meta property="article:section" content="docs"><meta property="article:tag" content="iot"><meta property="article:tag" content="物联网"><meta property="article:tag" content="云平台"><meta property="og:see_also" content="/docs/iot-cloud-platform/iot-cp-01/"><meta property="og:see_also" content="/docs/iot-cloud-platform/iot-cp-02/"><meta property="og:see_also" content="/docs/iot-android-training/iot-android-training-02/"><meta property="og:see_also" content="/docs/iot-android-training/iot-android-training-03/"><meta property="og:see_also" content="/docs/iot-android-training/iot-android-training-04/"><meta property="og:see_also" content="/docs/iot-android-training/iot-android-training-01/"><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?f58b6a2675cf52000232edb4d109eccc";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><body class="flex flex-col min-h-screen"><header id=headerctn class="fixed flex items-center w-full pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode")
+<!doctype html><html lang=zh><meta charset=utf-8><meta name=viewport content="width=device-width"><title>Part 3 - 物联网云平台开发框架搭建 | 《物联网云平台设计与开发》课程资源汇总 | Heis</title><meta name=generator content="Hugo Eureka 0.8.4"><link rel=stylesheet href=/css/eureka.min.css><script defer src=/js/eureka.min.js></script><script src=/static/js/jquery-3.6.0.min.js></script><script src=/static/js/heis.js></script><link rel=stylesheet href=/static/css/heis.css media=all onload="this.media='all';this.onload=null" crossorigin><link rel=stylesheet href=/static/css/print.css media=print crossorigin><link rel=stylesheet href=/static/css/highlight-css/solarized-light.min.css media=print onload="this.media='all';this.onload=null" crossorigin><script defer src=/static/js/highlight.min.js crossorigin></script><script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script><script defer src=/static/js/highlightjs-line-numbers.min.js></script><link rel=icon type=image/png sizes=32x32 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_32x32_fill_box_center_2.png><link rel=apple-touch-icon sizes=180x180 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_180x180_fill_box_center_2.png><meta name=description content="物联网云平台设计与开发实验Part 3"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"课程文档","item":"/docs/"},{"@type":"ListItem","position":2,"name":"《物联网云平台设计与开发》课程资源汇总","item":"/docs/iot-cloud-platform/"},{"@type":"ListItem","position":3,"name":"Part 3 - 物联网云平台开发框架搭建","item":"/docs/iot-cloud-platform/iot-cp-03/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/docs/iot-cloud-platform/iot-cp-03/"},"headline":"Part 3 - 物联网云平台开发框架搭建 | 《物联网云平台设计与开发》课程资源汇总 | Heis","datePublished":"2022-03-16T00:42:51+08:00","dateModified":"2022-03-16T00:42:51+08:00","wordCount":3063,"author":{"@type":"Person","name":"heis"},"publisher":{"@type":"Person","name":"C. Wang","logo":{"@type":"ImageObject","url":"/images/icon.png"}},"description":"物联网云平台设计与开发实验Part 3"}</script><meta property="og:title" content="Part 3 - 物联网云平台开发框架搭建 | 《物联网云平台设计与开发》课程资源汇总 | Heis"><meta property="og:type" content="article"><meta property="og:image" content="/images/icon.png"><meta property="og:url" content="/docs/iot-cloud-platform/iot-cp-03/"><meta property="og:description" content="物联网云平台设计与开发实验Part 3"><meta property="og:locale" content="zh"><meta property="og:site_name" content="Heis"><meta property="article:published_time" content="2022-03-16T00:42:51+08:00"><meta property="article:modified_time" content="2022-03-16T00:42:51+08:00"><meta property="article:section" content="docs"><meta property="article:tag" content="iot"><meta property="article:tag" content="物联网"><meta property="article:tag" content="云平台"><meta property="og:see_also" content="/docs/iot-cloud-platform/iot-cp-01/"><meta property="og:see_also" content="/docs/iot-cloud-platform/iot-cp-02/"><meta property="og:see_also" content="/docs/iot-android-training/iot-android-training-02/"><meta property="og:see_also" content="/docs/iot-android-training/iot-android-training-03/"><meta property="og:see_also" content="/docs/iot-android-training/iot-android-training-04/"><meta property="og:see_also" content="/docs/iot-android-training/iot-android-training-01/"><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?f58b6a2675cf52000232edb4d109eccc";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><body class="flex flex-col min-h-screen"><header id=headerctn class="fixed flex items-center w-full pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode")
 if(((storageColorScheme=='Auto'||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches)||storageColorScheme=="Dark"){document.getElementsByTagName('html')[0].classList.add('dark')}</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="mr-6 text-primary-text text-xl font-bold">Heis</a>
 <button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
 <i class="fas fa-bars"></i></button><div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20"><div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0"><a href=/posts/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">文章</a>
@@ -12,38 +12,25 @@ element.firstElementChild.classList.add('fa-sun')}else if(storageColorScheme=="D
 element.firstElementChild.setAttribute("data-icon",'moon')
 element.firstElementChild.classList.add('fa-moon')}
 document.addEventListener('DOMContentLoaded',()=>{getcolorscheme();switchBurger();});</script></div></header><main class="flex-grow pt-16"><div class=pl-scrollbar><div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto"><div class=lg:pt-12><div class="flex flex-col md:flex-row bg-secondary-bg rounded"><div class="md:w-1/4 lg:w-1/5 border-r"><div class="sticky top-16 pt-6"><div id=sidebar-title class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text"><span class=font-semibold>目录</span>
-<i class="fas fa-caret-right ml-1"></i></div><div id=sidebar-toc class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent"><div class="flex flex-wrap ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded"><a class=hover:text-eureka href=/docs/iot-cloud-platform/>《物联网云平台设计与开发》课程资源汇总</a></div><ul class=pl-6><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-cloud-platform/iot-cp-01/>Part 1 - 物联网云平台开发环境搭建</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-cloud-platform/iot-cp-02/>Part 2 - 物联网云平台总体分析与设计</a></div></li><li class=py-2><div><a class="text-eureka hover:text-eureka" href=/docs/iot-cloud-platform/iot-cp-03/>Part 3 - 物联网云平台开发框架搭建</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-cloud-platform/iot-cp-04/>Part 4 - 物联网云平台基础模块开发实战</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-cloud-platform/iot-cp-05/>Part 5 - 物联网云平台数据管理开发实战</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-cloud-platform/iot-cp-06/>Part 6 - 物联网云平台消息机制</a></div></li></ul></div></div></div><div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8"><div class="w-full lg:w-3/4 pl-6 ml-0 mr-auto"><h1 class="font-bold text-3xl text-primary-text">Part 3 - 物联网云平台开发框架搭建</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i><span>2022-03-16</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i><span>8分钟阅读时长</span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i><a href=/categories/iot-cloud-platform/ class=hover:text-eureka>iot-cloud-platform</a></div></div></div><div class=flex><div class="w-full lg:w-3/4 px-6"><div class=content><h2 id=版本>【版本】</h2><p>当前版本号<code>v20220411</code></p><div class=tbl-start></div><table><thead><tr><th>版本</th><th>修改说明</th></tr></thead><tbody><tr><td>v20220411</td><td>提醒注意配置 IDEA 的 Maven 配置</td></tr><tr><td>v20220316</td><td>初始化</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h2 id=实验名称31-创建并配置一个-maven-项目>【实验名称】3.1 创建并配置一个 Maven 项目</h2><h2 id=实验目的>【实验目的】</h2><ul><li>掌握 Maven 项目的创建与配置</li></ul><h2 id=实验环境>【实验环境】</h2><ul><li>IDEA</li><li>Maven 3.6</li><li>MariaDB 10.4</li><li>JDK 8</li></ul><h2 id=实验步骤>【实验步骤】</h2><ol><li><p>打开IDEA，点击菜单“File”->“New”->“Project”</p></li><li><p>选择“Maven”菜单，新建一个项目
-<img src=/static/img/iot-cloud-platform-03/Snipaste_2022-03-16_10-02-50.jpg alt></p></li><li><p>项目名称为<code>iot-java-exercise</code>
-<img src=/static/img/iot-cloud-platform-03/Snipaste_2022-03-16_10-23-02.jpg alt></p></li><li><p>打开 IDEA Settings 设置
-<img src=/static/img/iot-cloud-platform-03/Snipaste_2022-03-16_11-11-46.jpg alt></p></li><li><p>设置你的 Maven 安装路径
-<img src=/static/img/iot-cloud-platform-03/Snipaste_2022-03-16_11-13-20.jpg alt></p></li><li><p>下载<code>repos.zip</code>文件，并且解压到<code>你的Maven 安装目录/repos</code>。即你Maven配置的<a href=../iot-cp-01#step15>本地仓库路径</a></p></li><li><p>修改<code>pom.xml</code>文件，引入测试框架JUnit。注意替换<code>groupId</code>标签内的内容为<code>stu你的学号后3位</code>。</p></li></ol><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
-         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
-    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
-
-    &lt;groupId&gt;stu替换为你学号后3位&lt;/groupId&gt;&lt;!-- 替换标签内的内容为 stu你的学号后3位 --&gt;
-    &lt;artifactId&gt;iot-java-exercise&lt;/artifactId&gt;
-    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
-
-    &lt;properties&gt;
-        &lt;maven.compiler.source&gt;8&lt;/maven.compiler.source&gt;
-        &lt;maven.compiler.target&gt;8&lt;/maven.compiler.target&gt;
-    &lt;/properties&gt;
-
-    &lt;dependencies&gt;
-    &lt;!-- 新增 JUnit 依赖包 开始 --&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;junit&lt;/groupId&gt;
-            &lt;artifactId&gt;junit&lt;/artifactId&gt;
-            &lt;version&gt;4.11&lt;/version&gt;
-            &lt;scope&gt;test&lt;/scope&gt;
-        &lt;/dependency&gt;
-	&lt;!-- 新增 JUnit 依赖包 结束--&gt;
-    &lt;/dependencies&gt;
-&lt;/project&gt;
-</code></pre><ol start=8><li><p>右键点击<code>pom.xml</code>，选择<code>Maven</code>&ndash;><code>Reload Project</code>，把依赖包引入到项目中。
-Snipaste_2022-03-16_16-47-59.jpg</p></li><li><p>在<code>src\test\java</code>目录新建一个单元测试类<code>MyFirstTest</code>，代码如下。
+<i class="fas fa-caret-right ml-1"></i></div><div id=sidebar-toc class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent"><div class="flex flex-wrap ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded"><a class=hover:text-eureka href=/docs/iot-cloud-platform/>《物联网云平台设计与开发》课程资源汇总</a></div><ul class=pl-6><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-cloud-platform/iot-cp-01/>Part 1 - 物联网云平台开发环境搭建</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-cloud-platform/iot-cp-02/>Part 2 - 物联网云平台总体分析与设计</a></div></li><li class=py-2><div><a class="text-eureka hover:text-eureka" href=/docs/iot-cloud-platform/iot-cp-03/>Part 3 - 物联网云平台开发框架搭建</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-cloud-platform/iot-cp-04/>Part 4 - 物联网云平台基础模块开发实战</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-cloud-platform/iot-cp-05/>Part 5 - 物联网云平台数据管理开发实战</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-cloud-platform/iot-cp-06/>Part 6 - 物联网云平台消息机制</a></div></li></ul></div></div></div><div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8"><div class="w-full lg:w-3/4 pl-6 ml-0 mr-auto"><h1 class="font-bold text-3xl text-primary-text">Part 3 - 物联网云平台开发框架搭建</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i><span>2022-03-16</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i><span>7分钟阅读时长</span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i><a href=/categories/iot-cloud-platform/ class=hover:text-eureka>iot-cloud-platform</a></div></div></div><div class=flex><div class="w-full lg:w-3/4 px-6"><div class=content><h2 id=版本>【版本】</h2><p>当前版本号<code>v20230131</code></p><div class=tbl-start></div><table><thead><tr><th>版本</th><th>修改说明</th></tr></thead><tbody><tr><td>v20230131</td><td>重新整理项目</td></tr><tr><td>v20220411</td><td>提醒注意配置 IDEA 的 Maven 配置</td></tr><tr><td>v20220316</td><td>初始化</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h2 id=实验名称31-创建名称为-iot-lock-的-maven-项目>【实验名称】3.1 创建名称为 iot-lock 的 Maven 项目</h2><h2 id=实验目的>【实验目的】</h2><ul><li>掌握 Maven 项目的创建与配置</li></ul><h2 id=实验环境>【实验环境】</h2><ul><li>IDEA</li><li>Maven 3.6</li><li>MariaDB 10.4</li><li>JDK 8</li></ul><h2 id=实验步骤>【实验步骤】</h2><ol><li><p>打开IDEA，点击菜单<code>文件</code>-><code>新建</code>-><code>项目</code>（ File -> New -> Project ）</p></li><li><p>选择<code>Maven Archetype</code>菜单，分别输入项目名称、JDK版本和Archetype，然后创建新项目。
+<img src=/static/img/iot-cloud-platform-03/Snipaste_2023-01-31_16-04-28.jpg alt></p></li><li><p>打开 IDEA 设置（Settings）
+<img src=/static/img/iot-cloud-platform-03/Snipaste_2023-01-31_16-11-37.jpg alt></p></li><li><p>设置你的 Maven 安装路径
+<img src=/static/img/iot-cloud-platform-03/Snipaste_2023-01-31_16-13-30.jpg alt></p></li><li><p>下载<code>repos.zip</code>文件，并且解压到<code>你的Maven 安装目录/repos</code>目录下。即你Maven配置的<a href=../iot-cp-01#step15>本地仓库路径</a></p></li><li><p>打开<code>pom.xml</code>文件，修改<code>单元测试框架 JUnit</code>的版本号（version)。</p></li></ol><ul><li>修改前</li></ul><pre><code>&lt;dependency&gt;
+   &lt;groupId&gt;junit&lt;/groupId&gt;
+   &lt;artifactId&gt;junit&lt;/artifactId&gt;
+   &lt;version&gt;3.8.1&lt;/version&gt;
+   &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre><ul><li>修改后</li></ul><pre><code>&lt;dependency&gt;
+   &lt;groupId&gt;junit&lt;/groupId&gt;
+   &lt;artifactId&gt;junit&lt;/artifactId&gt;
+   &lt;version&gt;4.11&lt;/version&gt;
+   &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre><ol start=7><li><p>右键点击<code>pom.xml</code>，选择 <code>Maven</code>-> 重新加载项目(<code>Reload Project</code>)，把依赖包引入到项目中。
+<img src=/static/img/iot-cloud-platform-03/Snipaste_2023-01-31_16-21-21.jpg alt></p></li><li><p>在<code>src</code>目录下新建一个存放测试代码的目录<code>test\java</code>
+<img src=/static/img/iot-cloud-platform-03/Snipaste_2023-01-31_16-24-24.jpg alt>
+<img src=/static/img/iot-cloud-platform-03/Snipaste_2023-01-31_16-25-06.jpg alt></p></li><li><p>在<code>src\test\java</code>目录新建一个单元测试类<code>MyFirstTest</code>，代码如下。
 <img src=/static/img/iot-cloud-platform-03/Snipaste_2022-03-16_14-39-56.jpg alt></p></li></ol><pre><code>import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -62,13 +49,16 @@ public class MyFirstTest {
 
 </code></pre><ol start=9><li>运行这个单元测试，查看测试结果，如果是√表示测试通过；如果是×表示测试不通过。
 <img src=/static/img/iot-cloud-platform-03/Snipaste_2022-03-16_14-42-26.jpg alt>
-<img src=/static/img/iot-cloud-platform-03/Snipaste_2022-03-16_14-45-16.jpg alt></li></ol><h2 id=实验名称32-编写一个模拟密码解锁的案例>【实验名称】3.2 编写一个模拟密码解锁的案例</h2><h2 id=实验目的-1>【实验目的】</h2><ul><li>掌握 MVC 模型</li><li>掌握 Java 编程中接口的实现</li><li>掌握 Java 列表的使用</li></ul><h2 id=实验环境-1>【实验环境】</h2><ul><li>IDEA</li><li>Maven 3.6</li><li>MariaDB 10.4</li><li>JDK 8</li></ul><h2 id=实验说明>【实验说明】</h2><ol><li>本实验主要编写一个Java的应用程序，用于校验用户输入密码是否有效。</li><li>密码有效的条件为</li></ol><ul><li>(1) 密码状态为<code>enabled</code></li><li>(2) 密码全部由数字组成，长度6-18位。</li><li>(3) 密码不能超过过期时间</li></ul><h2 id=实验效果>【实验效果】</h2><p><img src=/static/img/iot-cloud-platform-03/unlock.gif alt></p><h2 id=实验步骤-1>【实验步骤】</h2><ol><li>在上面创建的<code>iot-java-exercise</code>项目的<code>src\main\java</code>目录下新增一个包，并命名为<code>stu你的学号后3位</code>，注意替换为你的学号后三位。
-<img src=/static/img/iot-cloud-platform-03/Snipaste_2022-03-16_11-22-12.jpg alt>
-<img src=/static/img/iot-cloud-platform-03/Snipaste_2022-03-16_13-53-10.jpg alt></li></ol><h3 id=pwdentity>PwdEntity</h3><ol start=2><li>在包下面新增一个类（Class）<code>PwdEntity</code>，用于装载密码信息。并根据下表中描述，编写对应的属性和 Getter 和 Setter。请同学们自己完成代码。
-<img src=/static/img/iot-cloud-platform-03/Snipaste_2022-03-16_14-13-53.jpg alt></li></ol><div class=tbl-start></div><table><thead><tr><th>属性</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td>id</td><td>字符串</td><td>行编号，数字自增</td></tr><tr><td>typ</td><td>字符串</td><td>密码类型，固定-fixed，临时-temp</td></tr><tr><td>pwd</td><td>字符串</td><td>密码，长度不超过18位</td></tr><tr><td>status</td><td>字符串</td><td>状态，启用-enabled，禁用-disabled</td></tr><tr><td>uptTime</td><td>java.util.Date</td><td>更新时间</td></tr><tr><td>expiredTime</td><td>java.util.Date</td><td>过期时间</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h3 id=mockdb>MockDB</h3><ol start=3><li>编写一个模拟数据库的类<code>MockDB</code>，用于装载密码。类名和代码如下。注意替换学号
+<img src=/static/img/iot-cloud-platform-03/Snipaste_2022-03-16_14-45-16.jpg alt></li></ol><h2 id=实验名称32-编写一个模拟密码解锁的案例>【实验名称】3.2 编写一个模拟密码解锁的案例</h2><h2 id=实验目的-1>【实验目的】</h2><ul><li>掌握 MVC 模型</li><li>掌握 Java 编程中接口的实现</li><li>掌握 Java 列表的使用</li></ul><h2 id=实验环境-1>【实验环境】</h2><ul><li>IDEA</li><li>Maven 3.6</li><li>MariaDB 10.4</li><li>JDK 8</li></ul><h2 id=实验说明>【实验说明】</h2><ol><li>本实验主要编写一个Java的应用程序，用于校验用户输入密码是否有效。</li><li>密码有效的条件为</li></ol><ul><li>(1) 密码状态为<code>enabled</code></li><li>(2) 密码全部由数字组成，长度6-18位。</li><li>(3) 密码不能超过过期时间</li></ul><h2 id=实验效果>【实验效果】</h2><p><img src=/static/img/iot-cloud-platform-03/unlock.gif alt></p><h2 id=实验步骤-1>【实验步骤】</h2><ol><li><p>在上面创建的<code>iot-lock</code>项目的<code>src</code>目录下新增<code>\main\java</code>目录，用于存放项目代码。
+<img src=/static/img/iot-cloud-platform-03/Snipaste_2023-01-31_17-09-16.jpg alt>
+<img src=/static/img/iot-cloud-platform-03/Snipaste_2023-01-31_17-10-21.jpg alt></p></li><li><p>在<code>\main\java</code>目录下，新建名为<code>stu你的学号后3位</code>的<code>软件包</code>，注意替换为你的学号后三位。
+<img src=/static/img/iot-cloud-platform-03/Snipaste_2023-01-31_17-11-06.jpg alt>
+<img src=/static/img/iot-cloud-platform-03/Snipaste_2023-01-31_17-12-00.jpg alt></p></li><li><p>请根据以下结构创建响应的<code>软件包</code>（Package）和<code>类</code>（Class）
+<img src=/static/img/iot-cloud-platform-03/Snipaste_2023-01-31_17-17-58.jpg alt></p></li></ol><h3 id=pwdentity>PwdEntity</h3><ol start=4><li>类<code>PwdEntity</code>用于装载密码信息。并根据下表中描述，编写对应的属性和 Getter 和 Setter。请同学们自己完成代码。
+<img src=/static/img/iot-cloud-platform-03/Snipaste_2023-01-31_17-13-09.jpg alt></li></ol><div class=tbl-start></div><table><thead><tr><th>属性</th><th>类型</th><th>说明</th></tr></thead><tbody><tr><td>id</td><td>字符串</td><td>行编号，数字自增</td></tr><tr><td>typ</td><td>字符串</td><td>密码类型，固定-fixed，临时-temp</td></tr><tr><td>pwd</td><td>字符串</td><td>密码，长度不超过18位</td></tr><tr><td>status</td><td>字符串</td><td>状态，启用-enabled，禁用-disabled</td></tr><tr><td>uptTime</td><td>java.util.Date</td><td>更新时间</td></tr><tr><td>expiredTime</td><td>java.util.Date</td><td>过期时间</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h3 id=mockdb>MockDB</h3><ol start=5><li>模拟数据库的类<code>MockDB</code>，用于装载密码。类名和代码如下。注意替换学号
 <img src=/static/img/iot-cloud-platform-03/Snipaste_2022-03-16_17-15-43.jpg alt></li></ol><pre><code>package stu替换为你学号后3位.mockdb;
 
-import stu替换为你学号后3位.PwdEntity;
+import stu替换为你学号后3位.entity.PwdEntity;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -110,7 +100,7 @@ public class MockDB {
   }
 }
 
-</code></pre><h3 id=pwdservice-和-pwdserviceimpl>PwdService 和 PwdServiceImpl</h3><ol start=4><li>编写 Service 层代码，实现从数据库中检查密码是否匹配。注意替换学号和完善<code>PwdServiceImpl</code>的代码。
+</code></pre><h3 id=pwdservice-和-pwdserviceimpl>PwdService 和 PwdServiceImpl</h3><ol start=6><li>编写 Service 层代码，实现从数据库中检查密码是否匹配。注意替换学号和完善<code>PwdServiceImpl</code>的代码。
 <img src=/static/img/iot-cloud-platform-03/Snipaste_2022-03-16_17-20-08.jpg alt></li></ol><pre><code>package stu替换为你学号后3位.service;
 
 public interface PwdService {
@@ -167,7 +157,7 @@ public class PwdServiceImpl implements PwdService {
     return result;
   }
 }
-</code></pre><ol start=5><li>编写一个测试用例，用于测试<code>PwdServiceImpl</code>是否正常。
+</code></pre><h3 id=测试用例>测试用例</h3><ol start=7><li>在<code>test/java/</code>目录下新增一个测试用例<code>PwdServiceTest</code>，用于测试<code>PwdServiceImpl</code>是否正常。
 <img src=/static/img/iot-cloud-platform-03/Snipaste_2022-03-17_09-03-14.jpg alt></li></ol><pre><code>import org.junit.Test;
 import stu替换为你学号后3位.service.PwdService;
 import stu替换为你学号后3位.service.impl.PwdServiceImpl;
@@ -194,7 +184,7 @@ public class PwdServiceTest {
     assertFalse(pwdService.isValidPassword(&quot;666666&quot;));
   }
 }
-</code></pre><h3 id=unlockcontroller>UnlockController</h3><ol start=6><li>编写一个 Controller 层代码，实现解锁功能并提示解锁结果消息。注意替换学号。
+</code></pre><h3 id=unlockcontroller>UnlockController</h3><ol start=8><li>编写一个 Controller 层代码，实现解锁功能并提示解锁结果消息。注意替换学号。
 <img src=/static/img/iot-cloud-platform-03/Snipaste_2022-03-17_08-47-57.jpg alt></li></ol><pre><code>package stu替换为你学号后3位.controller;
 
 import stu替换为你学号后3位.service.PwdService;
@@ -248,328 +238,46 @@ public class UnlockApplication {
   }
 }
 </code></pre><ol start=8><li>启动<code>UnlockApplication</code>，输入密码进行测试。
-<img src=/static/img/iot-cloud-platform-03/unlock.gif alt></li></ol><h2 id=实验名称33-使用-springboot-搭建智能锁项目-iot-lock>【实验名称】3.3 使用 Springboot 搭建智能锁项目 iot-lock</h2><h2 id=实验目的-2>【实验目的】</h2><ul><li>掌握 Springboot 的搭建。</li></ul><h2 id=实验环境-2>【实验环境】</h2><ul><li>IDEA</li><li>Maven 3.6</li><li>MariaDB 10.4</li><li>JDK 8</li></ul><h2 id=实验说明-1>【实验说明】</h2><ol><li>本项目是使用 Web 项目形式模拟一个智能设备端。使用了内置硬编码密码<code>123456</code>进行解锁。</li><li>本项目利用 Maven 引入<code>Spring Boot</code>和<code>thymeleaf</code>框架，前端使用到了<code>bootstrap</code>和<code>jQuery</code>框架。</li></ol><h2 id=实验效果-1>【实验效果】</h2><ol><li>访问智能锁首页输入密码进行解锁
-<img src=/static/img/iot-cloud-platform-03/unlock2.gif alt></li></ol><h2 id=实验步骤-2>【实验步骤】</h2><ol><li><p>参考实验3.1 新建一个 Maven 项目，名称为<code>iot-lock</code>。注意配置 IDEA 的 Maven 设置，指向你本地安装的 Maven 目录，IDEA 菜单路径<code>File</code> -> <code>Settings</code>。
-<img src=/static/img/iot-cloud-platform-03/Snipaste_2022-04-11_22-29-03.jpg alt></p></li><li><p>本项目将加入以下代码。
-<img src=/static/img/iot-cloud-platform-03/Snipaste_2022-03-18_00-49-21.jpg alt></p></li></ol><h3 id=pomxml>pom.xml</h3><ol start=3><li>配置<code>pom.xml</code>，引入<code>Spring Boot</code>框架和相关依赖jar包。</li></ol><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-
-&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-  xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
-  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
-  &lt;parent&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
-    &lt;version&gt;2.6.3&lt;/version&gt;
-    &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
-  &lt;/parent&gt;
-  &lt;groupId&gt;iot-cloud-platform&lt;/groupId&gt;
-  &lt;artifactId&gt;iot-lock&lt;/artifactId&gt;
-  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
-  &lt;packaging&gt;jar&lt;/packaging&gt;
-
-  &lt;name&gt;iot-lock Maven Webapp&lt;/name&gt;
-  &lt;!-- FIXME change it to the project's website --&gt;
-  &lt;url&gt;http://localhost:8097&lt;/url&gt;
-
-  &lt;properties&gt;
-    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
-    &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
-    &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;
-    &lt;java.version&gt;8&lt;/java.version&gt;
-    &lt;version&gt;2.6.3&lt;/version&gt;
-    &lt;project.build.sourceEncoding&gt;
-      UTF-8
-    &lt;/project.build.sourceEncoding&gt;
-    &lt;start-class&gt;iot.cloud.platform.lock.IoTLockApplication&lt;/start-class&gt;
-    &lt;thymeleaf-spring5.version&gt;3.0.15.RELEASE&lt;/thymeleaf-spring5.version&gt;
-    &lt;thymeleaf-layout-dialect.version&gt;3.0.0&lt;/thymeleaf-layout-dialect.version&gt;
-  &lt;/properties&gt;
-
-  &lt;dependencies&gt;
-    &lt;dependency&gt;
-      &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;
-      &lt;artifactId&gt;commons-lang3&lt;/artifactId&gt;
-      &lt;version&gt;3.1&lt;/version&gt;
-    &lt;/dependency&gt;
-    &lt;dependency&gt;
-      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-      &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;
-    &lt;/dependency&gt;
+<img src=/static/img/iot-cloud-platform-03/Snipaste_2023-01-31_17-23-43.jpg alt>
+<img src=/static/img/iot-cloud-platform-03/unlock.gif alt></li></ol><h2 id=实验名称33-iot-lock-项目引入-springboot-搭建-web-项目>【实验名称】3.3 iot-lock 项目引入 Springboot 搭建 Web 项目</h2><h2 id=实验目的-2>【实验目的】</h2><ul><li>掌握 Springboot 的搭建。</li></ul><h2 id=实验环境-2>【实验环境】</h2><ul><li>IDEA</li><li>Maven 3.6</li><li>MariaDB 10.4</li><li>JDK 8</li><li>iot-lock-p1项目代码</li></ul><h2 id=实验效果-1>【实验效果】</h2><ol><li>访问智能锁首页输入密码进行解锁
+<img src=/static/img/iot-cloud-platform-03/unlock2.gif alt></li></ol><h2 id=实验说明-1>【实验说明】</h2><ol><li><code>iot-lock-p1.zip</code>包含的项目是使用 Web 项目形式模拟一个智能锁。使用了内置硬编码的密码<code>123456</code>进行解锁。</li><li>本项目利用 Maven 引入<code>Spring Boot</code>和<code>beetl</code>框架，前端使用到了<code>bootstrap</code>和<code>jQuery</code>框架。</li><li>以下为一些关键代码的说明：</li></ol><h3 id=pomxml>pom.xml</h3><ul><li>pom.xml 文件的<code>&lt;dependencies>&lt;/dependencies></code>标签内引入了<code>Spring Boot</code>和<code>beetl</code>框架依赖的包。</li></ul><pre><code>&lt;!-- Springboot Web 相关依赖包 Start --&gt;
     &lt;dependency&gt;
       &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
       &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
     &lt;/dependency&gt;
     &lt;dependency&gt;
-      &lt;groupId&gt;junit&lt;/groupId&gt;
-      &lt;artifactId&gt;junit&lt;/artifactId&gt;
-      &lt;version&gt;4.11&lt;/version&gt;
-      &lt;scope&gt;test&lt;/scope&gt;
+      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
     &lt;/dependency&gt;
-  &lt;/dependencies&gt;
-
-  &lt;build&gt;
-    &lt;resources&gt;
-      &lt;resource&gt;
-        &lt;directory&gt;src/main/resources&lt;/directory&gt;
-        &lt;includes&gt;
-          &lt;include&gt;**/*.properties&lt;/include&gt;
-          &lt;include&gt;**/*.html&lt;/include&gt;
-        &lt;/includes&gt;
-        &lt;filtering&gt;true&lt;/filtering&gt;
-      &lt;/resource&gt;
-    &lt;/resources&gt;
-    &lt;plugins&gt;
-      &lt;plugin&gt;
-        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-        &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
-        &lt;version&gt;2.6.3&lt;/version&gt;
-        &lt;configuration&gt;
-          &lt;fork&gt;true&lt;/fork&gt;
-          &lt;finalName&gt;${project.artifactId}&lt;/finalName&gt;
-        &lt;/configuration&gt;
-      &lt;/plugin&gt;
-    &lt;/plugins&gt;
-  &lt;/build&gt;
-&lt;/project&gt;
-
-</code></pre><h3 id=applicationproperties>application.properties</h3><ol start=4><li><code>Spring Boot</code>配置文件<code>application.properties</code>。</li></ol><pre><code>#应用端口
-server.port=8097
-
-#thymeleaf 框架
-spring.thymeleaf.cache=false
-spring.thymeleaf.prefix=classpath:/templates/
-spring.thymeleaf.check-template-location=true
-spring.thymeleaf.suffix=.html
-spring.thymeleaf.encoding=UTF-8
-spring.thymeleaf.content-type=text/html
-spring.thymeleaf.mode=HTML
-</code></pre><h3 id=indexhtml>index.html</h3><ol start=5><li>项目首页<code>index.html</code></li></ol><pre><code>&lt;!DOCTYPE HTML&gt;
-&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
-&lt;head&gt;
-    &lt;title&gt;智能锁解锁&lt;/title&gt;
-    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;/&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
-    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;static/css/bootstrap.min.css&quot;&gt;
-    &lt;script src=&quot;static/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;static/js/jquery-3.6.0.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;static/js/iot-lock.js&quot;&gt;&lt;/script&gt;
-    &lt;style&gt;
-        table{
-            width:100%;
-            background-color:white;
-            background-top:none;
-        }
-        table tr td{
-            text-align:center;
-            width: 1.88rem;
-            height: 1.26rem;
-            font-family: &quot;Microsoft YaHei&quot;;
-            font-weight: normal;
-            border:1px solid #D9D9D9;
-            font-size:2rem;
-        }
-        .numBtn{
-            width:33%;
-            cursor:pointer;
-        }
-        .numBtn:active{
-            background-color:#ECECEC;
-        }
-        #unlockBtn{
-           background-color: #41A5EE;
-           color:#FFF;
-           cursor:pointer;
-        }
-        #unlockBtn:active{
-           background-color:#185ABD;
-        }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;div class=&quot;container&quot;&gt;
-    &lt;div id=&quot;msgPanel&quot; style=&quot;position:fixed;right:1rem;width:30%;&quot;&gt;
-    &lt;/div&gt;
-    &lt;main style=&quot;margin-top:2rem;&quot;&gt;
-        &lt;h1&gt;智能锁（设备ID：&lt;span id=&quot;deviceId&quot; th:text=&quot;${deviceId}&quot;&gt;&lt;/span&gt;） - 解锁&lt;/h1&gt;
-            &lt;div class=&quot;mb-3&quot;&gt;
-                &lt;label for=&quot;pwd&quot; class=&quot;form-label&quot;&gt;密码&lt;/label&gt;
-                &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;pwd&quot; name=&quot;pwd&quot;/&gt;
-            &lt;/div&gt;
-
-        &lt;div class=&quot;mb-3&quot;&gt;
-            &lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
-                &lt;tr&gt;
-                    &lt;td class=&quot;numBtn&quot;&gt;1&lt;/td&gt;
-                    &lt;td class=&quot;numBtn&quot;&gt;2&lt;/td&gt;
-                    &lt;td class=&quot;numBtn&quot;&gt;3&lt;/td&gt;
-                &lt;/tr&gt;
-                &lt;tr&gt;
-                    &lt;td class=&quot;numBtn&quot;&gt;4&lt;/td&gt;
-                    &lt;td class=&quot;numBtn&quot;&gt;5&lt;/td&gt;
-                    &lt;td class=&quot;numBtn&quot;&gt;6&lt;/td&gt;
-                &lt;/tr&gt;
-                &lt;tr&gt;
-                    &lt;td class=&quot;numBtn&quot;&gt;7&lt;/td&gt;
-                    &lt;td class=&quot;numBtn&quot;&gt;8&lt;/td&gt;
-                    &lt;td class=&quot;numBtn&quot;&gt;9&lt;/td&gt;
-                &lt;/tr&gt;
-                &lt;tr&gt;
-                    &lt;td&gt;&lt;/td&gt;
-                    &lt;td class=&quot;numBtn&quot;&gt;0&lt;/td&gt;
-                    &lt;td id=&quot;unlockBtn&quot; style=&quot;background-color:&quot;&gt;解锁&lt;/td&gt;
-                &lt;/tr&gt;
-            &lt;/table&gt;
-        &lt;/div&gt;
-    &lt;/main&gt;
-
-&lt;/div&gt;
-&lt;script&gt;
-    $(function() {
-        $(&quot;#pwd&quot;).focus();
-        $(&quot;.numBtn&quot;).click(function(){
-          let p=$(&quot;#pwd&quot;).val();
-          $(&quot;#pwd&quot;).val(p+$(this).text()).focus();
-        });
-		$(&quot;#unlockBtn&quot;).click(function() {
-		   let pwd=$('#pwd').val();
-		   let deviceId=$('#deviceId').text();
-		   if(pwd==&quot;&quot;){
-              showMsg(&quot;密码不能为空&quot;,'danger');
-		   }else{
-           $.ajax({
-				url: &quot;http://localhost:8097/unlock&quot;,
-				contentType: &quot;application/json&quot;,
-					type: &quot;post&quot;,
-					data: JSON.stringify({
-					    &quot;deviceId&quot;:deviceId,
-						&quot;pwd&quot;: pwd,
-					}),
-					dataType: &quot;json&quot;,
-					success: function(result) {
-					  if(result.errcode=='0'){
-						showMsg(result.errmsg,'success');
-					  }else{
-					    showMsg(result.errmsg,'danger');
-					  }
-					  $(&quot;#pwd&quot;).val(&quot;&quot;);
-					},
-					error: function() {
-						showMsg(&quot;系统异常&quot;,'danger');
-					}
-				});
-			}
-		});
-	});
-&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><h3 id=static目录>static目录</h3><ol start=6><li><code>static</code>目录可以从<code>static.zip</code>压缩包解压</li></ol><h3 id=indexcontrollerjava>IndexController.java</h3><ol start=7><li>首页的控制器<code>IndexController.java</code></li></ol><pre><code>package iot.cloud.platform.lock.controller;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-@Controller
-public class IndexController {
-
-  @RequestMapping(&quot;/&quot;)
-  public String index(Model model){
-    model.addAttribute(&quot;deviceId&quot;,&quot;Lock01&quot;);
-    return &quot;index&quot;;
-  }
-}
-
-</code></pre><h3 id=unlockcontrollerjava>UnlockController.java</h3><ol start=8><li>解锁的控制器<code>UnlockController.java</code></li></ol><pre><code>package iot.cloud.platform.lock.controller;
-
-import iot.cloud.platform.lock.vo.ResMsg;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.Map;
-
-@Controller
-public class UnlockController {
-
-  @RequestMapping(&quot;/unlock&quot;)
-  @ResponseBody
-  public ResMsg unlock(@RequestBody Map&lt;String,String&gt; secret){
-    ResMsg result=new ResMsg();
-    String pwd=secret.get(&quot;pwd&quot;);
-    if(&quot;123456&quot;.equals(pwd)){//硬编码的密码
-      result.setErrcode(&quot;0&quot;);
-      result.setErrmsg(&quot;解锁成功&quot;);
-    }else{
-      result.setErrcode(&quot;1&quot;);
-      result.setErrmsg(&quot;密码错误&quot;);
-    }
-    return result;
-  }
-}
-</code></pre><h3 id=resmsgjava>ResMsg.java</h3><ol start=9><li>装载消息的类<code>ResMsg</code></li></ol><pre><code>package iot.cloud.platform.lock.vo;
-
-public class ResMsg {
-    private String errcode=&quot;0&quot;;
-    private String errmsg;
-    private Object data;
-
-    public ResMsg(){
-
-    }
-
-    public ResMsg(String errcode, String errmsg){
-        this.errcode=errcode;
-        this.errmsg=errmsg;
-    }
-
-    public String getErrcode() {
-        return errcode;
-    }
-
-    public void setErrcode(String errcode) {
-        this.errcode = errcode;
-    }
-
-    public String getErrmsg() {
-        return errmsg;
-    }
-
-    public void setErrmsg(String errmsg) {
-        this.errmsg = errmsg;
-    }
-
-    public Object getData() {
-        return data;
-    }
-
-    public void setData(Object result) {
-        this.data = data;
-    }
-}
-</code></pre><h3 id=iotlockapplicationjava>IoTLockApplication.java</h3><ol start=10><li>应用程序启动类<code>IoTLockApplication</code></li></ol><pre><code>package iot.cloud.platform.lock;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
-public class IoTLockApplication {
-	public static void main(String[] args) {
-		SpringApplication.run(IoTLockApplication.class, args);
-	}
-}
-</code></pre><ol start=11><li><p>新建一个应用程序配置，用于启动<code>IoTLockApplication</code>
-<img src=/static/img/iot-cloud-platform-03/Snipaste_2022-03-18_01-05-31.jpg alt>
-<img src=/static/img/iot-cloud-platform-03/Snipaste_2022-03-18_01-06-23.jpg alt>
-<img src=/static/img/iot-cloud-platform-03/Snipaste_2022-03-18_01-06-59.jpg alt></p></li><li><p>启动<code>IoTLockApplication</code>。
-<img src=/static/img/iot-cloud-platform-03/Snipaste_2022-03-18_01-10-19.jpg alt></p></li><li><p>正常情况下，IDEA 控制台应该会有类似以下日志打印输出。</p></li></ol><pre><code>Started IoTLockApplication in 6.733 seconds (JVM running for 7.816)
-</code></pre><ol start=14><li>访问应用首页<a href=http://localhost:8097/ target=_blank>http://localhost:8097/</a>，使用密码<code>123456</code>解锁。
+    &lt;!-- Springboot Web 相关依赖包 End --&gt;
+    &lt;!-- 前端模板引擎 beetl start--&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;com.ibeetl&lt;/groupId&gt;
+      &lt;artifactId&gt;beetl&lt;/artifactId&gt;
+      &lt;version&gt;3.13.0.RELEASE&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;!-- 前端模板引擎 beetl end--&gt;
+    &lt;!-- SpringBoot 开发者工具 start --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;
+      &lt;optional&gt;true&lt;/optional&gt;
+      &lt;scope&gt;true&lt;/scope&gt;
+    &lt;/dependency&gt;
+    &lt;!-- SpringBoot 开发者工具 end--&gt;
+</code></pre><h3 id=beetlconfigurationjava>BeetlConfiguration.java</h3><ul><li>此类为配置 Beetl 的参数类。包括 Beetl 模板放置在项目哪个路径下，使用模板文件后缀名等等。</li></ul><h3 id=indexcontrollerjava>IndexController.java</h3><ul><li>首页访问的是<code>IndexController.index</code> 方法</li></ul><h3 id=unlockcontrollerjava>UnlockController.java</h3><ul><li>解锁按钮调用的是<code>UnlockController.unlock</code> 方法</li></ul><h3 id=applicationyml>application.yml</h3><ul><li>包含了应用程序的基本配置</li></ul><h3 id=前端页面>前端页面</h3><ul><li>前端的页面放在 <code>src/main/resources/templates</code> 路径下</li></ul><h2 id=实验步骤-2>【实验步骤】</h2><ol><li><p>下载<code>iot-lock-p1.zip</code>项目代码，把代码复制到 iot-lock 项目内。
+<img src=/static/img/iot-cloud-platform-03/Snipaste_2023-02-01_16-21-53.jpg alt></p></li><li><p>把<code>iot-lock-p1.zip</code>项目内的 pom.xml 覆盖原有的 pom.xml 。
+<img src=/static/img/iot-cloud-platform-03/Snipaste_2023-02-01_16-28-32.jpg alt></p></li><li><p>新建一个应用程序配置，用于启动<code>IoTLockApplication</code>。主类输入<code>iot.cloud.platform.lock.IoTLockApplication</code>，程序实参输入<code>-Dspring.output.ansi.enabled=ALWAYS</code>
+<img src=/static/img/iot-cloud-platform-03/Snipaste_2023-02-01_16-30-26.jpg alt>
+<img src=/static/img/iot-cloud-platform-03/Snipaste_2023-02-01_16-32-00.jpg alt>、</p></li><li><p>启动<code>IoTLockApplication</code>。
+<img src=/static/img/iot-cloud-platform-03/Snipaste_2022-03-18_01-10-19.jpg alt></p></li><li><p>正常情况下，IDEA 控制台应该会有类似以下日志打印输出。</p></li></ol><pre><code>Tomcat started on port(s): 8097 (http) with context path ''
+Started IoTLockApplication in 2.076 seconds (JVM running for 2.459)
+</code></pre><ol start=6><li>访问应用首页<a href=http://localhost:8097/ target=_blank>http://localhost:8097/</a>，使用密码<code>123456</code>解锁。
 <img src=/static/img/iot-cloud-platform-03/Snipaste_2022-03-18_01-15-57.jpg alt></li></ol></div><div class=my-4><a href=/tags/iot/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#iot</a>
 <a href=/tags/%E7%89%A9%E8%81%94%E7%BD%91/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#物联网</a>
 <a href=/tags/%E4%BA%91%E5%B9%B3%E5%8F%B0/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#云平台</a></div><div class=py-2><div class="flex flex-col md:flex-row items-center my-8"><a href=/authors/heis/ class="w-24 h-24 md:mr-4"><img src=/static/img/authors/heis.png class="w-full bg-primary-bg rounded-full" alt=Avatar></a><div class="w-full md:w-auto mt-4 md:mt-0"><a href=/authors/heis/ class="block font-bold text-lg pb-1 mb-2 border-b">黄老师</a>
 <span class="block pb-2"></span><a href=mailto:heishuangzy@qq.com class=mr-1><i class="fas fa-envelope"></i></a><a href=https://gitee.com/heis/ class=mr-1><i class="fab fa-git"></i></a><a href=http://heis.gitee.io/ class=mr-1><i class="fas fa-blog"></i></a></div></div></div><div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t"><div id=presec><span class="block font-bold">上一页</span>
 <a href=/docs/iot-cloud-platform/iot-cp-02/ class=block>Part 2 - 物联网云平台总体分析与设计</a></div><div id=nextsec class="md:text-right mt-4 md:mt-0"><span class="block font-bold">下一页</span>
-<a href=/docs/iot-cloud-platform/iot-cp-04/ class=block>Part 4 - 物联网云平台基础模块开发实战</a></div></div></div><div class="hidden lg:block lg:w-1/4"><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-secondary-bg pt-16 -mt-16"><span class="text-lg font-semibold">本页内容</span></div><div class="sticky-toc hidden lg:block px-6 pb-6 pt-10 -mt-10 border-l"><nav id=TableOfContents><ul><li><a href=#版本>【版本】</a></li><li><a href=#实验名称31-创建并配置一个-maven-项目>【实验名称】3.1 创建并配置一个 Maven 项目</a></li><li><a href=#实验目的>【实验目的】</a></li><li><a href=#实验环境>【实验环境】</a></li><li><a href=#实验步骤>【实验步骤】</a></li><li><a href=#实验名称32-编写一个模拟密码解锁的案例>【实验名称】3.2 编写一个模拟密码解锁的案例</a></li><li><a href=#实验目的-1>【实验目的】</a></li><li><a href=#实验环境-1>【实验环境】</a></li><li><a href=#实验说明>【实验说明】</a></li><li><a href=#实验效果>【实验效果】</a></li><li><a href=#实验步骤-1>【实验步骤】</a><ul><li><a href=#pwdentity>PwdEntity</a></li><li><a href=#mockdb>MockDB</a></li><li><a href=#pwdservice-和-pwdserviceimpl>PwdService 和 PwdServiceImpl</a></li><li><a href=#unlockcontroller>UnlockController</a></li><li><a href=#unlockapplication>UnlockApplication</a></li></ul></li><li><a href=#实验名称33-使用-springboot-搭建智能锁项目-iot-lock>【实验名称】3.3 使用 Springboot 搭建智能锁项目 iot-lock</a></li><li><a href=#实验目的-2>【实验目的】</a></li><li><a href=#实验环境-2>【实验环境】</a></li><li><a href=#实验说明-1>【实验说明】</a></li><li><a href=#实验效果-1>【实验效果】</a></li><li><a href=#实验步骤-2>【实验步骤】</a><ul><li><a href=#pomxml>pom.xml</a></li><li><a href=#applicationproperties>application.properties</a></li><li><a href=#indexhtml>index.html</a></li><li><a href=#static目录>static目录</a></li><li><a href=#indexcontrollerjava>IndexController.java</a></li><li><a href=#unlockcontrollerjava>UnlockController.java</a></li><li><a href=#resmsgjava>ResMsg.java</a></li><li><a href=#iotlockapplicationjava>IoTLockApplication.java</a></li></ul></li></ul></nav></div><script>window.addEventListener('DOMContentLoaded',()=>{enableStickyToc();});</script></div></div></div></div></div><div id=outerdiv><div id=innerdiv><img id=bigimg src></div></div><script>document.addEventListener('DOMContentLoaded',()=>{hljs.highlightAll();hljs.initLineNumbersOnLoad({singleLine:true});changeSidebarHeight();switchDocToc();$("img").css("cursor:pointer")
-$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});$("ol").each(function(index){if(/\d{1,4}/.test($(this).attr("start"))){let idx=parseInt($(this).attr("start"));let lis=$(this).find("li");if(lis.length>0){lis.each(function(index){$(this).attr("id","step"+(idx+index));});}else{$(this).attr("id","step"+idx);}}});});</script><script src=/static/js/clipboard.min.js></script><script src=/static/js/codecopy.bundle.js?376></script></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text">&copy; 2021 <a href=https://www.wangchucheng.com/>C. Wang</a> and <a href=https://www.ruiqima.com/>R. Ma</a>
+<a href=/docs/iot-cloud-platform/iot-cp-04/ class=block>Part 4 - 物联网云平台基础模块开发实战</a></div></div></div><div class="hidden lg:block lg:w-1/4"><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-secondary-bg pt-16 -mt-16"><span class="text-lg font-semibold">本页内容</span></div><div class="sticky-toc hidden lg:block px-6 pb-6 pt-10 -mt-10 border-l"><nav id=TableOfContents><ul><li><a href=#版本>【版本】</a></li><li><a href=#实验名称31-创建名称为-iot-lock-的-maven-项目>【实验名称】3.1 创建名称为 iot-lock 的 Maven 项目</a></li><li><a href=#实验目的>【实验目的】</a></li><li><a href=#实验环境>【实验环境】</a></li><li><a href=#实验步骤>【实验步骤】</a></li><li><a href=#实验名称32-编写一个模拟密码解锁的案例>【实验名称】3.2 编写一个模拟密码解锁的案例</a></li><li><a href=#实验目的-1>【实验目的】</a></li><li><a href=#实验环境-1>【实验环境】</a></li><li><a href=#实验说明>【实验说明】</a></li><li><a href=#实验效果>【实验效果】</a></li><li><a href=#实验步骤-1>【实验步骤】</a><ul><li><a href=#pwdentity>PwdEntity</a></li><li><a href=#mockdb>MockDB</a></li><li><a href=#pwdservice-和-pwdserviceimpl>PwdService 和 PwdServiceImpl</a></li><li><a href=#测试用例>测试用例</a></li><li><a href=#unlockcontroller>UnlockController</a></li><li><a href=#unlockapplication>UnlockApplication</a></li></ul></li><li><a href=#实验名称33-iot-lock-项目引入-springboot-搭建-web-项目>【实验名称】3.3 iot-lock 项目引入 Springboot 搭建 Web 项目</a></li><li><a href=#实验目的-2>【实验目的】</a></li><li><a href=#实验环境-2>【实验环境】</a></li><li><a href=#实验效果-1>【实验效果】</a></li><li><a href=#实验说明-1>【实验说明】</a><ul><li><a href=#pomxml>pom.xml</a></li><li><a href=#beetlconfigurationjava>BeetlConfiguration.java</a></li><li><a href=#indexcontrollerjava>IndexController.java</a></li><li><a href=#unlockcontrollerjava>UnlockController.java</a></li><li><a href=#applicationyml>application.yml</a></li><li><a href=#前端页面>前端页面</a></li></ul></li><li><a href=#实验步骤-2>【实验步骤】</a></li></ul></nav></div><script>window.addEventListener('DOMContentLoaded',()=>{enableStickyToc();});</script></div></div></div></div></div><div id=outerdiv><div id=innerdiv><img id=bigimg src></div></div><script>document.addEventListener('DOMContentLoaded',()=>{hljs.highlightAll();hljs.initLineNumbersOnLoad({singleLine:true});changeSidebarHeight();switchDocToc();$("img").css("cursor:pointer")
+$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});$("ol").each(function(index){if(/\d{1,4}/.test($(this).attr("start"))){let idx=parseInt($(this).attr("start"));let lis=$(this).find("li");if(lis.length>0){lis.each(function(index){$(this).attr("id","step"+(idx+index));});}else{$(this).attr("id","step"+idx);}}});});</script><script src=/static/js/clipboard.min.js></script><script src=/static/js/codecopy.bundle.js?830></script></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text">&copy; 2021 <a href=https://www.wangchucheng.com/>C. Wang</a> and <a href=https://www.ruiqima.com/>R. Ma</a>
 &#183; Powered by the <a href=https://github.com/wangchucheng/hugo-eureka class=hover:text-eureka>Eureka</a> theme for <a href=https://gohugo.io class=hover:text-eureka>Hugo</a></p></div></div></footer></body></html>
