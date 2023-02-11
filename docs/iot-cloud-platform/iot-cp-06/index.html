@@ -1,4 +1,4 @@
-<!doctype html><html lang=zh><meta charset=utf-8><meta name=viewport content="width=device-width"><title>Part 6 - 物联网云平台消息机制 | 《物联网云平台设计与开发》课程资源汇总 | Heis</title><meta name=generator content="Hugo Eureka 0.8.4"><link rel=stylesheet href=/css/eureka.min.css><script defer src=/js/eureka.min.js></script><script src=/static/js/jquery-3.6.0.min.js></script><script src=/static/js/heis.js></script><link rel=stylesheet href=/static/css/heis.css media=all onload="this.media='all';this.onload=null" crossorigin><link rel=stylesheet href=/static/css/print.css media=print crossorigin><link rel=stylesheet href=/static/css/highlight-css/solarized-light.min.css media=print onload="this.media='all';this.onload=null" crossorigin><script defer src=/static/js/highlight.min.js crossorigin></script><script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script><script defer src=/static/js/highlightjs-line-numbers.min.js></script><link rel=icon type=image/png sizes=32x32 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_32x32_fill_box_center_2.png><link rel=apple-touch-icon sizes=180x180 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_180x180_fill_box_center_2.png><meta name=description content="物联网云平台设计与开发实验Part 6"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"课程文档","item":"/docs/"},{"@type":"ListItem","position":2,"name":"《物联网云平台设计与开发》课程资源汇总","item":"/docs/iot-cloud-platform/"},{"@type":"ListItem","position":3,"name":"Part 6 - 物联网云平台消息机制","item":"/docs/iot-cloud-platform/iot-cp-06/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/docs/iot-cloud-platform/iot-cp-06/"},"headline":"Part 6 - 物联网云平台消息机制 | 《物联网云平台设计与开发》课程资源汇总 | Heis","datePublished":"2022-03-31T10:05:51+08:00","dateModified":"2022-03-31T10:05:51+08:00","wordCount":4965,"author":{"@type":"Person","name":"heis"},"publisher":{"@type":"Person","name":"C. Wang","logo":{"@type":"ImageObject","url":"/images/icon.png"}},"description":"物联网云平台设计与开发实验Part 6"}</script><meta property="og:title" content="Part 6 - 物联网云平台消息机制 | 《物联网云平台设计与开发》课程资源汇总 | Heis"><meta property="og:type" content="article"><meta property="og:image" content="/images/icon.png"><meta property="og:url" content="/docs/iot-cloud-platform/iot-cp-06/"><meta property="og:description" content="物联网云平台设计与开发实验Part 6"><meta property="og:locale" content="zh"><meta property="og:site_name" content="Heis"><meta property="article:published_time" content="2022-03-31T10:05:51+08:00"><meta property="article:modified_time" content="2022-03-31T10:05:51+08:00"><meta property="article:section" content="docs"><meta property="article:tag" content="iot"><meta property="article:tag" content="物联网"><meta property="article:tag" content="云平台"><meta property="og:see_also" content="/docs/iot-cloud-platform/iot-cp-05/"><meta property="og:see_also" content="/docs/iot-cloud-platform/iot-cp-04/"><meta property="og:see_also" content="/docs/iot-cloud-platform/iot-cp-03/"><meta property="og:see_also" content="/docs/iot-cloud-platform/iot-cp-01/"><meta property="og:see_also" content="/docs/iot-cloud-platform/iot-cp-02/"><meta property="og:see_also" content="/docs/iot-android-training/iot-android-training-02/"><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?f58b6a2675cf52000232edb4d109eccc";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><body class="flex flex-col min-h-screen"><header id=headerctn class="fixed flex items-center w-full pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode")
+<!doctype html><html lang=zh><meta charset=utf-8><meta name=viewport content="width=device-width"><title>Part 6 - 物联网云平台消息机制 | 《物联网云平台设计与开发》课程资源汇总 | Heis</title><meta name=generator content="Hugo Eureka 0.8.4"><link rel=stylesheet href=/css/eureka.min.css><script defer src=/js/eureka.min.js></script><script src=/static/js/jquery-3.6.0.min.js></script><script src=/static/js/heis.js></script><link rel=stylesheet href=/static/css/heis.css media=all onload="this.media='all';this.onload=null" crossorigin><link rel=stylesheet href=/static/css/print.css media=print crossorigin><link rel=stylesheet href=/static/css/highlight-css/solarized-light.min.css media=print onload="this.media='all';this.onload=null" crossorigin><script defer src=/static/js/highlight.min.js crossorigin></script><script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script><script defer src=/static/js/highlightjs-line-numbers.min.js></script><link rel=icon type=image/png sizes=32x32 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_32x32_fill_box_center_2.png><link rel=apple-touch-icon sizes=180x180 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_180x180_fill_box_center_2.png><meta name=description content="物联网云平台设计与开发实验Part 6"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"课程文档","item":"/docs/"},{"@type":"ListItem","position":2,"name":"《物联网云平台设计与开发》课程资源汇总","item":"/docs/iot-cloud-platform/"},{"@type":"ListItem","position":3,"name":"Part 6 - 物联网云平台消息机制","item":"/docs/iot-cloud-platform/iot-cp-06/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/docs/iot-cloud-platform/iot-cp-06/"},"headline":"Part 6 - 物联网云平台消息机制 | 《物联网云平台设计与开发》课程资源汇总 | Heis","datePublished":"2022-03-31T10:05:51+08:00","dateModified":"2022-03-31T10:05:51+08:00","wordCount":4814,"author":{"@type":"Person","name":"heis"},"publisher":{"@type":"Person","name":"C. Wang","logo":{"@type":"ImageObject","url":"/images/icon.png"}},"description":"物联网云平台设计与开发实验Part 6"}</script><meta property="og:title" content="Part 6 - 物联网云平台消息机制 | 《物联网云平台设计与开发》课程资源汇总 | Heis"><meta property="og:type" content="article"><meta property="og:image" content="/images/icon.png"><meta property="og:url" content="/docs/iot-cloud-platform/iot-cp-06/"><meta property="og:description" content="物联网云平台设计与开发实验Part 6"><meta property="og:locale" content="zh"><meta property="og:site_name" content="Heis"><meta property="article:published_time" content="2022-03-31T10:05:51+08:00"><meta property="article:modified_time" content="2022-03-31T10:05:51+08:00"><meta property="article:section" content="docs"><meta property="article:tag" content="iot"><meta property="article:tag" content="物联网"><meta property="article:tag" content="云平台"><meta property="og:see_also" content="/docs/iot-cloud-platform/iot-cp-05/"><meta property="og:see_also" content="/docs/iot-cloud-platform/iot-cp-04/"><meta property="og:see_also" content="/docs/iot-cloud-platform/iot-cp-03/"><meta property="og:see_also" content="/docs/iot-cloud-platform/iot-cp-01/"><meta property="og:see_also" content="/docs/iot-cloud-platform/iot-cp-02/"><meta property="og:see_also" content="/docs/iot-android-training/iot-android-training-02/"><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?f58b6a2675cf52000232edb4d109eccc";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><body class="flex flex-col min-h-screen"><header id=headerctn class="fixed flex items-center w-full pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode")
 if(((storageColorScheme=='Auto'||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches)||storageColorScheme=="Dark"){document.getElementsByTagName('html')[0].classList.add('dark')}</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="mr-6 text-primary-text text-xl font-bold">Heis</a>
 <button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
 <i class="fas fa-bars"></i></button><div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20"><div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0"><a href=/posts/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">文章</a>
@@ -12,27 +12,27 @@ element.firstElementChild.classList.add('fa-sun')}else if(storageColorScheme=="D
 element.firstElementChild.setAttribute("data-icon",'moon')
 element.firstElementChild.classList.add('fa-moon')}
 document.addEventListener('DOMContentLoaded',()=>{getcolorscheme();switchBurger();});</script></div></header><main class="flex-grow pt-16"><div class=pl-scrollbar><div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto"><div class=lg:pt-12><div class="flex flex-col md:flex-row bg-secondary-bg rounded"><div class="md:w-1/4 lg:w-1/5 border-r"><div class="sticky top-16 pt-6"><div id=sidebar-title class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text"><span class=font-semibold>目录</span>
-<i class="fas fa-caret-right ml-1"></i></div><div id=sidebar-toc class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent"><div class="flex flex-wrap ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded"><a class=hover:text-eureka href=/docs/iot-cloud-platform/>《物联网云平台设计与开发》课程资源汇总</a></div><ul class=pl-6><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-cloud-platform/iot-cp-01/>Part 1 - 物联网云平台开发环境搭建</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-cloud-platform/iot-cp-02/>Part 2 - 物联网云平台总体分析与设计</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-cloud-platform/iot-cp-03/>Part 3 - 物联网云平台开发框架搭建</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-cloud-platform/iot-cp-04/>Part 4 - 物联网云平台基础模块开发实战</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-cloud-platform/iot-cp-05/>Part 5 - 物联网云平台数据管理开发实战</a></div></li><li class=py-2><div><a class="text-eureka hover:text-eureka" href=/docs/iot-cloud-platform/iot-cp-06/>Part 6 - 物联网云平台消息机制</a></div></li></ul></div></div></div><div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8"><div class="w-full lg:w-3/4 pl-6 ml-0 mr-auto"><h1 class="font-bold text-3xl text-primary-text">Part 6 - 物联网云平台消息机制</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i><span>2022-03-31</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i><span>10分钟阅读时长</span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i><a href=/categories/iot-cloud-platform/ class=hover:text-eureka>iot-cloud-platform</a></div></div></div><div class=flex><div class="w-full lg:w-3/4 px-6"><div class=content><h2 id=版本>【版本】</h2><p>当前版本号<code>v20220420</code></p><div class=tbl-start></div><table><thead><tr><th>版本</th><th>修改说明</th></tr></thead><tbody><tr><td>v20220420</td><td>补充DateUtils</td></tr><tr><td>v20220408</td><td>初始化</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h2 id=实验名称61-安装-mosquitto-和-mqttfx>【实验名称】6.1 安装 Mosquitto 和 MQTT.fx</h2><h2 id=实验目的>【实验目的】</h2><ul><li>掌握 Mosquitto 安装、配置和使用</li><li>掌握 MQTT 客户端 MQTT.fx 的安装、配置和使用</li></ul><h2 id=实验环境>【实验环境】</h2><ul><li>Mosquitto</li><li>MQTT.fx</li></ul><h2 id=实验说明>【实验说明】</h2><ol><li><p>Eclipse Mosquitto 是一个实现了5.0、3.1.1、3.1 版本的 MQTT 协议的开源的消息代理中间件（Message Broker）。它的轻量化特性使它适用于从低功耗单板机到服务器等设备。<a href=https://mosquitto.org/>官网地址</a></p></li><li><p>MQTT.fx 是一个基于 JavaFX 开发的 MQTT 的客户端。<a href=https://softblade.de/en/mqtt-fx/>官网地址</a></p></li></ol><h2 id=实验资源>【实验资源】</h2><pre><code>链接：https://pan.baidu.com/s/11pySDL6xto7rW3AIc5-7nA 
+<i class="fas fa-caret-right ml-1"></i></div><div id=sidebar-toc class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent"><div class="flex flex-wrap ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded"><a class=hover:text-eureka href=/docs/iot-cloud-platform/>《物联网云平台设计与开发》课程资源汇总</a></div><ul class=pl-6><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-cloud-platform/iot-cp-01/>Part 1 - 物联网云平台开发环境搭建</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-cloud-platform/iot-cp-02/>Part 2 - 物联网云平台总体分析与设计</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-cloud-platform/iot-cp-03/>Part 3 - 物联网云平台开发框架搭建</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-cloud-platform/iot-cp-04/>Part 4 - 物联网云平台基础模块开发实战</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-cloud-platform/iot-cp-05/>Part 5 - 物联网云平台数据管理开发实战</a></div></li><li class=py-2><div><a class="text-eureka hover:text-eureka" href=/docs/iot-cloud-platform/iot-cp-06/>Part 6 - 物联网云平台消息机制</a></div></li></ul></div></div></div><div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8"><div class="w-full lg:w-3/4 pl-6 ml-0 mr-auto"><h1 class="font-bold text-3xl text-primary-text">Part 6 - 物联网云平台消息机制</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i><span>2022-03-31</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i><span>10分钟阅读时长</span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i><a href=/categories/iot-cloud-platform/ class=hover:text-eureka>iot-cloud-platform</a></div></div></div><div class=flex><div class="w-full lg:w-3/4 px-6"><div class=content><h2 id=版本>【版本】</h2><p>当前版本号<code>v20220420</code></p><div class=tbl-start></div><table><thead><tr><th>版本</th><th>修改说明</th></tr></thead><tbody><tr><td>v20230208</td><td>换掉Mosquitto 和 MQTT.fx，换为 EMQX 和 MQTTX</td></tr><tr><td>v20220420</td><td>补充DateUtils</td></tr><tr><td>v20220408</td><td>初始化</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h2 id=实验名称61-安装-emqx-和-mqttx>【实验名称】6.1 安装 EMQX 和 MQTTX</h2><h2 id=实验目的>【实验目的】</h2><ul><li>掌握 EMQ 安装、配置和使用</li><li>掌握 MQTT 客户端 MQTTX 的安装、配置和使用</li></ul><h2 id=实验环境>【实验环境】</h2><ul><li>EMQX</li><li>MQTTX</li></ul><h2 id=实验说明>【实验说明】</h2><ol><li><p>EMQX 是基于高并发的Erlang/OTP语言平台设计，支持百万级连接和分布式集群，发布订阅模式的开源MQTT消息服务器。完整支持MQTT V3.1/V3.1.1协议规范，扩展支持WebSocket、Stomp、CoAP、MQTT-SN或私有TCP协议。<a href="https://www.emqx.io/downloads?os=Windows">官网地址</a></p></li><li><p>MQTTX 是EMQ 开源的一款优雅的跨平台MQTT 5.0 桌面客户端工具，它能运行在macOS, Linux, Windows 上，并且支持MQTT 消息格式转换。<a href=https://mqttx.app/>官网地址</a></p></li></ol><h2 id=实验资源>【实验资源】</h2><pre><code>链接：https://pan.baidu.com/s/11pySDL6xto7rW3AIc5-7nA 
 提取码：mp89
-</code></pre><h2 id=实验效果>【实验效果】</h2><ol><li>MQTT.fx 向订阅主题发布消息，并测试是否能够收到订阅的消息。
-<img src=/static/img/iot-cloud-platform-06/mqtt-test.gif alt></li></ol><h2 id=实验步骤>【实验步骤】</h2><ol><li><p>下载<code>mosquitto.zip</code>，解压到安装目录下，例如<code>d:\mosquitto</code></p></li><li><p>使用文本编辑器打开<code>mosquitto.conf</code>,配置启用用户名和密码访问。</p></li></ol><ul><li>(1)在约513行找到</li></ul><pre><code>#allow_anonymous false
-</code></pre><ul><li>修改为以下代码，禁用匿名访问</li></ul><pre><code>allow_anonymous false
-</code></pre><ul><li>(2)在约531行找到</li></ul><pre><code>#password_file
-</code></pre><ul><li>修改为以下代码，指定pwfile文件用于保存用户名和密码</li></ul><pre><code>password_file pwfile
-</code></pre><ol start=3><li>使用<code>cmder</code>进入<code>mosquitto</code>的安装目录<code>d:\mosquitto</code>，运行以下命令创建用户<code>iotweb</code>。密码输入2次<code>iotweb</code>。</li></ol><pre><code>cp pwfile.example pwfile
-mosquitto_passwd.exe -b pwfile iotweb iotweb
-</code></pre><ol start=4><li>在<code>mosquitto</code>的安装目录，与<code>mosquitto.exe</code> 的同一级目录下，创建一个<code>mosquitto</code>的启动脚本<code>0-start-mosquitto.bat</code>。</li></ol><pre><code>cd d:
+</code></pre><h2 id=实验效果>【实验效果】</h2><ol><li>MQTTX 向订阅主题发布消息，并测试是否能够收到订阅的消息。
+<img src=/static/img/iot-cloud-platform-06/mqttx-send.gif alt></li></ol><h2 id=实验步骤>【实验步骤】</h2><h3 id=emqx-安装>EMQX 安装</h3><ol><li><p>下载<code>emqx-5.0.14-windows-amd64.tar.gz</code>，解压到安装目录下，例如<code>d:\emqx</code>。</p></li><li><p>进入安装目录的<code>bin</code>目录下，新建一个文本文件，并命名为<code>0-start-emqx.bat</code>，作为 EMQX 的启动脚本。</p></li></ol><pre><code>cd d:
 cd %~dp0
-mosquitto.exe -c mosquitto.conf -v
-</code></pre><p><img src=/static/img/iot-cloud-platform-06/Snipaste_2021-05-18_23-42-56.png alt></p><ol start=5><li><p>双击脚本<code>0-start-mosquitto.bat</code>启动<code>mosquitto</code>。MQTT 服务器默认监听在<code>tcp://localhost:1883</code>
-<img src=/static/img/iot-cloud-platform-06/Snipaste_2021-05-18_23-53-12.png alt></p></li><li><p>下载并解压<code>mqttfx.zip</code>，启动<code>mqttfx.exe</code>。
-<img src=/static/img/iot-cloud-platform-06/Snipaste_2021-05-19_00-13-38.png alt></p></li><li><p>配置 MQTT 连接。
-<img src=/static/img/iot-cloud-platform-06/Snipaste_2021-05-18_23-51-46.png alt></p></li><li><p>输入用户名<code>iotweb</code>和密码<code>iotweb</code>，点击<code>Apply</code>按钮保存。
-<img src=/static/img/iot-cloud-platform-06/Snipaste_2021-05-18_23-55-03.png alt></p></li><li><p>回到<code>MQTT.fx</code>主页，点击<code>connect</code>连接MQTT 服务器（<code>tcp://localhost:1883</code>），观察是否连接成功。
-<img src=/static/img/iot-cloud-platform-06/Snipaste_2021-05-18_23-57-48.png alt></p></li></ol><p><img src=/static/img/iot-cloud-platform-06/Snipaste_2021-05-19_00-00-53.png alt></p><ul><li>观察 MQTT 服务器命令行窗口输出是否有连接来自于<code>iotweb</code>
-<img src=/static/img/iot-cloud-platform-06/Snipaste_2021-05-19_00-01-59.png alt></li></ul><ol start=10><li><p>使用<code>MQTT.fx</code>，订阅（subscribe）<code>/iot/cloud/lock01/receive</code>主题。
-<img src=/static/img/iot-cloud-platform-06/Snipaste_2022-04-10_01-03-05.jpg alt></p></li><li><p>使用<code>MQTT.fx</code>，向<code>/iot/cloud/lock01/receive</code>主题发布（publish）以下消息内容。</p></li></ol><pre><code>hello
-</code></pre><p><img src=/static/img/iot-cloud-platform-06/Snipaste_2022-04-10_01-01-22.jpg alt></p><ol start=12><li>查看订阅主题收到的消息。</li></ol><p><img src=/static/img/iot-cloud-platform-06/Snipaste_2022-04-10_01-04-35.jpg alt></p><h2 id=实验名称62-iot-lock-项目配置-mqtt-客户端>【实验名称】6.2 iot-lock 项目配置 MQTT 客户端</h2><h2 id=实验目的-1>【实验目的】</h2><ul><li>掌握使用 SpringBoot 整合 MQTT 的配置</li></ul><h2 id=实验环境-1>【实验环境】</h2><ul><li>IDEA</li><li>Maven 3.6</li><li>MariaDB 10.4</li><li>JDK 8</li><li>Mosquitto</li><li>MQTT.fx</li></ul><h2 id=实验说明-1>【实验说明】</h2><ol><li>本实验承接实验4.3，在此基础上给智能锁设备端新增 MQTT 配置，实现 MQTT 通讯功能。</li><li>本实验使用 MQTT.fx 模拟用户终端，向模拟的物联网云平台的 MQTT 服务器（即 Mosquitto）发送消息，检查智能锁设备端能否收到订阅的 MQTT 消息。</li></ol><h2 id=实验效果-1>【实验效果】</h2><ol><li>使用 MQTT.fx 模拟用户终端想主题发送消息，智能锁设备端能够收到订阅的消息。
+emqx start
+</code></pre><ol start=3><li>同样在<code>bin</code>目录下，新建一个文本文件，并命名为<code>0-stop-emqx.bat</code>，作为 EMQX 的启动脚本。</li></ol><pre><code>cd d:
+cd %~dp0
+emqx stop
+</code></pre><ol start=4><li><p>双击脚本<code>0-start-emqx.bat</code>启动<code>EMQX</code>。MQTT 服务器默认监听在<code>tcp://localhost:1883</code>。</p></li><li><p>访问 EMQX 的管理控制台（EMQX Dashboard）<a href=http://localhost:18083/#/login></a>
+<img src=/static/img/iot-cloud-platform-06/Snipaste_2023-02-08_16-01-52.jpg alt></p></li><li><p>输入默认用户名 admin 与默认密码 public，登录进入 Dashboard。
+<img src=/static/img/iot-cloud-platform-06/Snipaste_2023-02-08_16-04-20.jpg alt></p></li></ol><h3 id=mqttx-安装>MQTTX 安装</h3><ol start=7><li><p>下载并安装<code>MQTTX-Setup-1.7.3-x64.exe</code>，启动<code>MQTTX.exe</code>。</p></li><li><p>启动 MQTTX，新建连接。
+<img src=/static/img/iot-cloud-training-01/Snipaste_2022-04-28_15-40-58.jpg alt></p></li><li><p>输入 MQTT 代理地址、用户名和密码进行连接。</p></li></ol><pre><code>用户名：iotweb
+密码：iotweb
+Host： mqtt://localhost
+</code></pre><p><img src=/static/img/iot-cloud-training-01/Snipaste_2022-04-28_16-01-19.jpg alt></p><ol start=10><li><p>观察 EMQX 服务器<a href=http://localhost:18083/#/connections>http://localhost:18083/#/connections</a>是否有连接来自于 MQTTX 客户端
+<img src=/static/img/iot-cloud-platform-06/Snipaste_2023-02-11_09-45-50.jpg alt></p></li><li><p>使用MQTTX，订阅（subscribe）<code>/iot/cloud/lock01/receive</code>主题。
+<img src=/static/img/iot-cloud-platform-06/Snipaste_2023-02-11_09-48-50.jpg alt>
+<img src=/static/img/iot-cloud-platform-06/Snipaste_2023-02-11_09-49-55.jpg alt></p></li><li><p>使用<code>MQTTX</code>，向<code>/iot/cloud/lock01/receive</code>主题发布（publish）以下消息内容。</p></li></ol><pre><code>hello
+</code></pre><p><img src=/static/img/iot-cloud-platform-06/Snipaste_2023-02-11_09-51-27.jpg alt></p><ol start=12><li>查看订阅主题收到的消息。
+<img src=/static/img/iot-cloud-platform-06/mqttx-send.gif alt></li></ol><h2 id=实验名称62-iot-lock-项目配置-mqtt-客户端>【实验名称】6.2 iot-lock 项目配置 MQTT 客户端</h2><h2 id=实验目的-1>【实验目的】</h2><ul><li>掌握使用 SpringBoot 整合 MQTT 的配置</li></ul><h2 id=实验环境-1>【实验环境】</h2><ul><li>IDEA</li><li>Maven 3.6</li><li>MariaDB 10.4</li><li>JDK 8</li><li>EMQX</li><li>MQTTX</li></ul><h2 id=实验说明-1>【实验说明】</h2><ol><li>本实验承接实验4.3，在此基础上给智能锁设备端新增 MQTT 配置，实现 MQTT 通讯功能。</li><li>本实验使用 MQTTX 模拟用户终端，向模拟的物联网云平台的 MQTT 服务器（即 EMQX）发送消息，检查智能锁设备端能否收到订阅的 MQTT 消息。</li></ol><h2 id=实验效果-1>【实验效果】</h2><ol><li>使用 MQTTX 模拟用户终端想主题发送消息，智能锁设备端能够收到订阅的消息。
 <img src=/static/img/iot-cloud-platform-06/mqtt-send.gif alt></li></ol><h2 id=实验步骤-1>【实验步骤】</h2><h3 id=pomxml>pom.xml</h3><ol><li>pom.xml 新增以下依赖配置，引入 MQTT 依赖包。</li></ol><pre><code>    &lt;!-- MQTT start --&gt;
     &lt;dependency&gt;
       &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
@@ -47,78 +47,39 @@ mosquitto.exe -c mosquitto.conf -v
       &lt;artifactId&gt;spring-integration-mqtt&lt;/artifactId&gt;
     &lt;/dependency&gt;
     &lt;!-- MQTT end --&gt;
-</code></pre><h3 id=applicationproperties>application.properties</h3><ol start=2><li><code>application.properites</code> 配置文件新增以下配置，连接 MQTT 服务器，并实现配置订阅主题和推送主题。在此配置文件中，我们设置了让智能锁设备订阅<code>/iot/cloud/lock01/receive</code>主题。</li></ol><pre><code># MQTT用户名
-mqtt.username=iotweb
-# MQTT密码
-mqtt.password=iotweb
-# 推送信息的连接地址，如果有多个，用逗号隔开，如：tcp://127.0.0.1:61613,tcp://192.168.1.61:61613
-mqtt.url=tcp://localhost:1883
-#mqtt.iotId=lock01
-
-##################
-#  MQTT 生产者
-##################
-# 连接服务器默认客户端ID
-mqtt.producer.clientId=mqttProducer
-# 默认的推送主题，实际可在调用接口时指定
-mqtt.producer.defaultTopic=/iot/cloud/lock01/post,/iot/cloud/lock01/receive_reply
-
-# 设备端回复消息主题
-mqtt.receive_reply.topic=/iot/cloud/lock01/receive_reply
-
-# 设备端主动推送消息主题
-mqtt.post.topic=/iot/cloud/lock01/post
-
-##################
-#  MQTT 消费者
-##################
-# 连接服务器默认客户端ID
-mqtt.consumer.clientId=mqttConsumer
-# 默认的接收主题，可以订阅多个Topic，逗号分隔
-mqtt.consumer.defaultTopic=/iot/cloud/lock01/post_reply,/iot/cloud/lock01/receive
+</code></pre><h3 id=applicationyml>application.yml</h3><ol start=2><li><code>application.yml</code> 配置文件新增以下配置，连接 MQTT 服务器，并实现配置订阅主题和推送主题。在此配置文件中，我们设置了让智能锁设备订阅<code>/iot/cloud/devices/receive</code>主题。</li></ol><pre><code>mqtt:
+  host: tcp://localhost:1883
+  username: iotweb
+  password: iotweb
+  qos: 1
+  client-id: lock001
+  topic:
+    post: /iot/cloud/devices/post
+    post_reply: /iot/cloud/devices/post_reply
+    receive: /iot/cloud/devices/receive
+    receive_reply: /iot/cloud/devices/receive_reply
 </code></pre><h3 id=mqttconfigjava>MqttConfig.java</h3><ol start=3><li>新增一个MQTT 的配置类<code>MqttConfig</code>。</li></ol><pre><code>package iot.cloud.platform.lock.config;
 
+import iot.cloud.platform.lock.utils.ExcptUtil;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.integration.annotation.ServiceActivator;
-import org.springframework.integration.channel.DirectChannel;
-import org.springframework.integration.core.MessageProducer;
-import org.springframework.integration.mqtt.core.DefaultMqttPahoClientFactory;
-import org.springframework.integration.mqtt.core.MqttPahoClientFactory;
-import org.springframework.integration.mqtt.inbound.MqttPahoMessageDrivenChannelAdapter;
-import org.springframework.integration.mqtt.outbound.MqttPahoMessageHandler;
-import org.springframework.integration.mqtt.support.DefaultPahoMessageConverter;
-import org.springframework.messaging.MessageChannel;
-import org.springframework.messaging.MessageHandler;
 
-/**
- * MQTT配置，生产者
- *
- * @author Johnny
- */
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 @Configuration
+@Slf4j
+@Data
 public class MqttConfig {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(MqttConfig.class);
-
-    private static final byte[] WILL_DATA;
-
-    static {
-        WILL_DATA = &quot;offline&quot;.getBytes();
-    }
-
-    /**
-     * 订阅的bean名称
-     */
-    public static final String CHANNEL_NAME_IN = &quot;mqttInboundChannel&quot;;
-    /**
-     * 发布的bean名称
-     */
-    public static final String CHANNEL_NAME_OUT = &quot;mqttOutboundChannel&quot;;
+    @Value(&quot;${mqtt.host}&quot;)
+    private String host;
 
     @Value(&quot;${mqtt.username}&quot;)
     private String username;
@@ -126,215 +87,429 @@ public class MqttConfig {
     @Value(&quot;${mqtt.password}&quot;)
     private String password;
 
-    @Value(&quot;${mqtt.url}&quot;)
-    private String url;
-
-    @Value(&quot;${mqtt.producer.clientId}&quot;)
-    private String producerClientId;
-
-    @Value(&quot;${mqtt.producer.defaultTopic}&quot;)
-    private String producerDefaultTopic;
-
-    @Value(&quot;${mqtt.consumer.clientId}&quot;)
-    private String consumerClientId;
-
-    @Value(&quot;${mqtt.consumer.defaultTopic}&quot;)
-    private String consumerDefaultTopic;
-
+    @Value(&quot;${mqtt.client-id}&quot;)
+    private String clientId;
+    @Value(&quot;${mqtt.topic.post}&quot;)
+    private String topic_post;
+    @Value(&quot;${mqtt.topic.post_reply}&quot;)
+    private String topic_post_reply;
+    @Value(&quot;${mqtt.topic.receive}&quot;)
+    private String topic_receive;
+    @Value(&quot;${mqtt.topic.receive_reply}&quot;)
+    private String topic_receive_reply;
     /**
-     * MQTT连接器选项
+     *  qos
+     *  MQTT协议中有三种消息发布服务质量:
+     *  QOS 0： “至多一次”，消息发布完全依赖底层 TCP/IP 网络。会发生消息丢失或重复。这一级别可用于如下情况，环境传感器数据，丢失一次读记录无所谓，因为不久后还会有第二次发送。
+     *  QOS 1： “至少一次”，确保消息到达，但消息重复可能会发生。
+     *  QOS2： “只有一次”，确保消息到达一次。这一级别可用于如下情况，在计费系统中，消息重复或丢失会导致不正确的结果，资源开销大
      *
-     * @return {@link MqttConnectOptions}
      */
+    @Value(&quot;${mqtt.qos}&quot;)
+    private int qos;
     @Bean
-    public MqttConnectOptions getMqttConnectOptions() {
+    public MqttClient getMqttClient(){
+        MqttClient client=null;
+        try {
+            final String id= clientId;
+            client = new MqttClient(host, id, new MemoryPersistence());
+            log.info(&quot;创建mqtt客户端ID:&quot;+id);
+        } catch (Exception e) {
+            log.error(&quot;创建mqtt客户端异常：&quot;+ ExcptUtil.filterStack(e));
+        }
+        return client;
+    }
+
+    @Bean
+    public MqttConnectOptions getOptions() {
         MqttConnectOptions options = new MqttConnectOptions();
-        // 设置是否清空session,这里如果设置为false表示服务器会保留客户端的连接记录，
-        // 这里设置为true表示每次连接到服务器都以新的身份连接
-        options.setCleanSession(true);
-        // 设置连接的用户名
         options.setUserName(username);
-        // 设置连接的密码
         options.setPassword(password.toCharArray());
-        options.setServerURIs(url.split(&quot;,&quot;));
-        // 设置超时时间 单位为秒
-        options.setConnectionTimeout(10);
-        // 设置会话心跳时间 单位为秒 服务器会每隔1.5*20秒的时间向客户端发送心跳判断客户端是否在线，但这个方法并没有重连的机制
-        options.setKeepAliveInterval(20);
-        // 设置“遗嘱”消息的话题，若客户端与服务器之间的连接意外中断，服务器将发布客户端的“遗嘱”消息。
-        options.setWill(&quot;willTopic&quot;, WILL_DATA, 2, false);
+        // 是否清除session
+        options.setCleanSession(false);
         return options;
     }
 
-
     /**
-     * MQTT客户端
-     *
-     * @return {@link MqttPahoClientFactory}
+     * 初始化已订阅主题
+     * @return
      */
-    @Bean
-    public MqttPahoClientFactory mqttClientFactory() {
-        DefaultMqttPahoClientFactory factory = new DefaultMqttPahoClientFactory();
-        factory.setConnectionOptions(getMqttConnectOptions());
-        return factory;
+    @Bean(&quot;mqttSubTopics&quot;)
+    public Map&lt;String,Integer&gt; getMqttSubTopics(){
+        Map&lt;String,Integer&gt; mqttSubTopics=new ConcurrentHashMap&lt;&gt;();
+        mqttSubTopics.put(topic_post_reply,qos);
+        mqttSubTopics.put(topic_receive,qos);
+        return mqttSubTopics;
     }
 
     /**
-     * MQTT信息通道（生产者）
-     *
-     * @return {@link org.springframework.messaging.MessageChannel}
+     * 初始化已订阅主题对应的回复主题
+     * @return
      */
-    @Bean(name = CHANNEL_NAME_OUT)
-    public MessageChannel mqttOutboundChannel() {
-        return new DirectChannel();
+    @Bean(&quot;mqttTopicReplyMap&quot;)
+    public Map&lt;String,String&gt; getMqttTopicReplyMap(){
+        Map&lt;String,String&gt; topicReplyMap=new ConcurrentHashMap&lt;&gt;();
+        topicReplyMap.put(topic_post_reply,topic_post);
+        topicReplyMap.put(topic_receive,topic_receive_reply);
+        return topicReplyMap;
     }
-
-    /**
-     * MQTT消息处理器（生产者）
-     *
-     * @return {@link org.springframework.messaging.MessageHandler}
-     */
-    @Bean
-    @ServiceActivator(inputChannel = CHANNEL_NAME_OUT)
-    public MessageHandler mqttOutbound() {
-        MqttPahoMessageHandler messageHandler = new MqttPahoMessageHandler(
-                producerClientId,
-                mqttClientFactory());
-        messageHandler.setAsync(true);
-        messageHandler.setDefaultTopic(producerDefaultTopic);
-        return messageHandler;
-    }
-
-    /**
-     * MQTT消息订阅绑定（消费者）
-     *
-     * @return {@link org.springframework.integration.core.MessageProducer}
-     */
-    @Bean
-    public MessageProducer inbound() {
-        // 可以同时消费（订阅）多个Topic
-        MqttPahoMessageDrivenChannelAdapter adapter =
-                new MqttPahoMessageDrivenChannelAdapter(
-                        consumerClientId, mqttClientFactory(),
-                        consumerDefaultTopic.split(&quot;,&quot;));
-        adapter.setCompletionTimeout(5000);
-        adapter.setConverter(new DefaultPahoMessageConverter());
-        adapter.setQos(1);
-        // 设置订阅通道
-        adapter.setOutputChannel(mqttInboundChannel());
-        return adapter;
-    }
-
-    /**
-     * MQTT信息通道（消费者）
-     *
-     * @return {@link org.springframework.messaging.MessageChannel}
-     */
-    @Bean(name = CHANNEL_NAME_IN)
-    public MessageChannel mqttInboundChannel() {
-        return new DirectChannel();
-    }
-
 }
-</code></pre><h3 id=mqttinboundservicejava-和-mqttoutboundservicejava>MqttInboundService.java 和 MqttOutboundService.java</h3><ol start=4><li>新增处理接收 MQTT消息的接口<code>MqttInboundService</code>和推送 MQTT 消息的接口<code>MqttOutboundService</code></li></ol><ul><li>MqttInboundService.java</li></ul><pre><code>package iot.cloud.platform.lock.service;
 
-import org.springframework.messaging.MessageHandler;
+</code></pre><h3 id=mqttconsumerjava-和-mqttconsumercallbackjava>MqttConsumer.java 和 MqttConsumerCallback.java</h3><ol start=4><li>新增 MQTT 客户端<code>MqttConsumer</code>和 MQTT 接收消息的处理接口<code>MqttConsumerCallback</code></li></ol><ul><li>MqttConsumer.java</li></ul><pre><code>package iot.cloud.platform.lock.mqtt;
 
-public interface MqttInboundService {
-
-    MessageHandler handleSubscribeMsg();
-}
-</code></pre><ul><li>MqttOutboundService.java</li></ul><pre><code>package iot.cloud.platform.lock.service;
-
-import org.springframework.integration.annotation.MessagingGateway;
-import org.springframework.integration.mqtt.support.MqttHeaders;
-import org.springframework.messaging.handler.annotation.Header;
- 
-/**
- * mqtt发送消息
- * （defaultRequestChannel = &quot;mqttOutboundChannel&quot; 对应config配置）
- * **/
-@MessagingGateway(defaultRequestChannel = &quot;mqttOutboundChannel&quot;)
-public interface MqttOutboundService {
-
-    /**
-     * 发送信息到MQTT服务器
-     *
-     * @param data 发送的文本
-     */
-    void sendToMqtt(String data);
-
-    /**
-     * 发送信息到MQTT服务器
-     *
-     * @param topic   主题
-     * @param payload 消息主体
-     */
-    void sendToMqtt(@Header(MqttHeaders.TOPIC) String topic,
-                    String payload);
-
-    /**
-     * 发送信息到MQTT服务器
-     *
-     * @param topic   主题
-     * @param qos     对消息处理的几种机制。
-     *                0 表示的是订阅者没收到消息不会再次发送，消息会丢失。
-     *                1 表示的是会尝试重试，一直到接收到消息，但这种情况可能导致订阅者收到多次重复消息。
-     *                2 多了一次去重的动作，确保订阅者收到的消息有一次。
-     * @param payload 消息主体
-     */
-    void sendToMqtt(@Header(MqttHeaders.TOPIC) String topic,
-                    @Header(MqttHeaders.QOS) int qos,
-                    String payload);
-}
-</code></pre><h3 id=mqttreceiveserviceimpljava>MqttReceiveServiceImpl.java</h3><ol start=5><li>新增一个<code>MqttReceiveServiceImpl</code>类，用于处理接收 MQTT 消息。</li></ol><pre><code>package iot.cloud.platform.lock.service.impl;
-
-import iot.cloud.platform.lock.config.MqttConfig;
-import iot.cloud.platform.lock.service.MqttInboundService;
-import iot.cloud.platform.lock.service.MqttOutboundService;
-import iot.cloud.platform.lock.service.PwdService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import iot.cloud.platform.lock.service.ConfigService;
+import iot.cloud.platform.lock.utils.ExcptUtil;
+import lombok.extern.slf4j.Slf4j;
+import org.eclipse.paho.client.mqttv3.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.integration.annotation.ServiceActivator;
-import org.springframework.messaging.Message;
-import org.springframework.messaging.MessageHandler;
-import org.springframework.messaging.MessagingException;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.stereotype.Component;
 
-@Service
-public class MqttReceiveServiceImpl implements MqttInboundService {
+import java.util.HashMap;
+import java.util.Map;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(MqttReceiveServiceImpl.class);
-
-    @Value(&quot;${mqtt.receive_reply.topic}&quot;)
-    public String receive_reply_topic;
+@Slf4j
+@Component
+public class MqttConsumer implements ApplicationRunner {
+    @Autowired
+    private MqttClient client;
 
     @Autowired
-    private PwdService pwdService;
+    private MqttConnectOptions options;
 
     @Autowired
-    private MqttOutboundService mqttOutboundService;
+    private MqttConsumerCallback callback;
+
+    @Autowired
+    @Qualifier(&quot;mqttSubTopics&quot;)
+    private Map&lt;String,Integer&gt; mqttSubTopics;
+
+    private final Map&lt;String,String&gt; topicReplyMap=new HashMap&lt;&gt;();
+
+    @Autowired
+    private ConfigService configService;
 
     @Override
-    @Bean
-    @ServiceActivator(inputChannel = MqttConfig.CHANNEL_NAME_IN)
-    public MessageHandler handleSubscribeMsg() {
-        return new MessageHandler() {
-            @Override
-            public void handleMessage(Message&lt;?&gt; mqttMsg) throws MessagingException {
-                LOGGER.error(&quot;receive subscribe :{}&quot;, mqttMsg.getPayload());
-            }
-        };
+    public void run(ApplicationArguments args) {
+        log.info(&quot;初始化并启动mqtt......&quot;);
+        init();
     }
 
+    /**
+     * 连接mqtt服务器
+     */
+    private void init() {
+        try {
+            client.setCallback(callback);
+            client.connect(options);
+        } catch (Exception e) {
+            log.info(&quot;mqtt连接异常：&quot; + ExcptUtil.filterStack(e));
+        }
+    }
+
+    private String[] getSubTopics(){
+        return mqttSubTopics.keySet().stream().toArray(String[]::new);
+    }
+
+
+
+    /**
+     * 订阅某个主题
+     *
+     * @param topic
+     * @param qos
+     */
+    public void subscribe(String topic, int qos) {
+        try {
+            client.subscribe(topic, qos);
+            mqttSubTopics.put(topic,qos);
+            log.info(&quot;订阅主题:&quot; + topic);
+        } catch (MqttException e) {
+            log.error(ExcptUtil.filterStack(e));
+        }
+    }
+
+    /**
+     * 发布，非持久化
+     *
+     *  qos根据文档设置为1
+     *
+     * @param topic
+     * @param msg
+     */
+    public void publish(String topic, String msg) {
+        publish(1, false, topic, msg);
+    }
+
+    /**
+     * 发布
+     */
+    public void publish(int qos, boolean retained, String topic, String pushMessage) {
+        MqttMessage message = new MqttMessage();
+        message.setQos(qos);
+        message.setRetained(retained);
+        message.setPayload(pushMessage.getBytes());
+        MqttTopic mTopic = client.getTopic(topic);
+        if (null == mTopic) {
+            log.info(&quot;topic：&quot; + topic + &quot; 不存在&quot;);
+        }
+        MqttDeliveryToken token;
+        try {
+            token = mTopic.publish(message);
+            token.waitForCompletion();
+
+            if (!token.isComplete()) {
+                log.info(&quot;消息发送成功&quot;);
+            }
+        } catch (MqttPersistenceException e) {
+            log.error(ExcptUtil.filterStack(e));
+        } catch (MqttException e) {
+            log.error(ExcptUtil.filterStack(e));
+        }
+    }
 }
-</code></pre><h3 id=测试>测试</h3><ol start=6><li><p>启动 IoTLockApplication。
-<img src=/static/img/iot-cloud-platform-06/Snipaste_2022-04-10_01-43-58.jpg alt></p></li><li><p>参考实验6.1，启动<code>mosquitto</code>。</p></li><li><p>参考实验6.1，使用<code>MQTT.fx</code>，向<code>/iot/cloud/lock01/receive</code>主题发布（publish）以下消息内容。</p></li></ol><pre><code>hello
-</code></pre><ol start=9><li>查看<code>iot-lock</code>项目的 IDEA 的控制台，查看是否能够收到以下消息。</li></ol><pre><code>receive subscribe :hello
-</code></pre><p><img src=/static/img/iot-cloud-platform-06/Snipaste_2022-04-10_01-46-50.jpg alt></p><h2 id=实验名称63-iot-lock-项目实现修改固定密码功能>【实验名称】6.3 iot-lock 项目实现修改固定密码功能</h2><h2 id=实验目的-2>【实验目的】</h2><ul><li>掌握使用 SpringBoot 整合 MQTT 协议并进行开发</li></ul><h2 id=实验环境-2>【实验环境】</h2><ul><li>IDEA</li><li>Maven 3.6</li><li>MariaDB 10.4</li><li>JDK 8</li><li>Mosquitto</li><li>MQTT.fx</li></ul><h2 id=实验说明-2>【实验说明】</h2><ol><li>此实验承接实验6.2，使用MQTT.fx模拟一个用户终端，向物联网云平台（Mosquitto服务器）发送一条修改固定密码的指令，智能锁设备端收到指令，并实现密码的修改。</li></ol><p><img src=/static/img/iot-cloud-platform-06/Snipaste_2022-04-11_11-39-32.jpg alt></p><p><img src=/static/img/iot-cloud-platform-06/Snipaste_2022-04-11_11-40-09.jpg alt></p><h2 id=实验效果-2>【实验效果】</h2><ol><li>发送修改密码的消息以后，能够收到回复的 MQTT 消息，并且能够用新的固定密码<code>654321</code>解锁。</li></ol><p><img src=/static/img/iot-cloud-platform-06/update-fixed-pwd.gif alt></p><h2 id=实验步骤-2>【实验步骤】</h2><h3 id=pwdservice>PwdService</h3><ol><li>PwdService 新增修改固定密码方法<code>resetFixedPwd</code></li></ol><pre><code>/**
+</code></pre><ul><li>MqttConsumerCallback.java</li></ul><pre><code>package iot.cloud.platform.lock.mqtt;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import iot.cloud.platform.lock.service.PwdService;
+import iot.cloud.platform.lock.utils.DateUtil;
+import iot.cloud.platform.lock.utils.ExcptUtil;
+import iot.cloud.platform.lock.vo.MqttMsg;
+import iot.cloud.platform.lock.vo.ResMsg;
+import lombok.extern.slf4j.Slf4j;
+import org.eclipse.paho.client.mqttv3.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * mqtt回调处理类
+ */
+
+@Component
+@Slf4j
+public class MqttConsumerCallback implements MqttCallbackExtended {
+
+    @Autowired
+    private MqttClient client;
+    @Autowired
+    private MqttConnectOptions options;
+    @Autowired
+    @Qualifier(&quot;mqttSubTopics&quot;)
+    private Map&lt;String,Integer&gt; mqttSubTopics;
+	
+    @Autowired
+    @Qualifier(&quot;mqttTopicReplyMap&quot;)
+    private Map&lt;String,String&gt; mqttTopicReplyMap;
+	
+    @Autowired
+    private PwdService pwdService;
+    /**
+     * 断开重连
+     */
+    @Override
+    public void connectionLost(Throwable cause) {
+        log.info(&quot;MQTT连接断开&quot;,cause);
+        try {
+            if (null != client &amp;&amp; !client.isConnected()) {
+                client.reconnect();
+                log.info(&quot;尝试重新连接&quot;);
+            } else {
+                client.connect(options);
+                log.info(&quot;尝试建立新连接&quot;);
+            }
+        } catch (Exception e) {
+            log.error(ExcptUtil.filterStack(e));
+        }
+    }
+
+    /**
+     * 消息处理
+     */
+    @Override
+    public void messageArrived(String topic, MqttMessage message) {
+        try {
+            String msg = new String(message.getPayload());
+            log.info(&quot;收到主题[&quot; + topic + &quot;]消息 -&gt;&quot; + msg);
+            ObjectMapper objMapper=new ObjectMapper();
+            MqttMsg&lt;HashMap&gt; resvMsg=null;
+            try {
+                //ObjectMapper 是 Jackson包用于解析 Json 为java 对象
+                resvMsg = objMapper.readValue(msg, MqttMsg.class);
+            } catch (JsonProcessingException e) {
+                log.error(ExcptUtil.filterStack(e));
+            }
+
+            //TODO:请完善此处代码，完成实验6.3,6.4的功能。
+            ResMsg returnVal=null;
+			
+            MqttMsg&lt;ResMsg&gt; replyMsg=new MqttMsg();
+            replyMsg.setEventId(resvMsg.getEventId());
+            replyMsg.setEventName(resvMsg.getEventName());
+            replyMsg.setEventTime(resvMsg.getEventTime());
+            replyMsg.setData(returnVal);
+            String receiveReplyMsg=&quot;{}&quot;;
+            try {
+                //把replyMsg对象转换为 JSON 消息
+                receiveReplyMsg=objMapper.writeValueAsString(replyMsg);
+                log.info(&quot;回复MQTT消息：&quot;+receiveReplyMsg);
+				String replyTopic=mqttTopicReplyMap.get(topic);
+                if(replyTopic!=null){
+                    client.publish(replyTopic,receiveReplyMsg.getBytes(StandardCharsets.UTF_8),1,true);
+                }
+            } catch (JsonProcessingException e) {
+                log.error(e.getMessage(),e);
+            }
+        } catch (Exception e) {
+            log.error(ExcptUtil.filterStack(e));
+        }
+    }
+
+    @Override
+    public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
+
+    }
+
+    @Override
+    public void connectComplete(boolean b, String s) {
+        mqttSubTopics.forEach((k,v) -&gt;{
+            try {
+                client.subscribe(k,v);
+                log.info(&quot;订阅主题:&quot;+k);
+            } catch (MqttException e) {
+                log.error(ExcptUtil.filterStack(e));
+            }
+        });
+    }
+}
+</code></pre><h3 id=mqttmsgjava>MqttMsg.java</h3><ol start=5><li>新增一个<code>MqttMsg</code>类，用于装载 MQTT 消息。</li></ol><pre><code>package iot.cloud.platform.lock.vo;
+
+import lombok.Data;
+
+@Data
+public class MqttMsg&lt;T&gt;{
+  protected String eventId;
+  protected String eventName;
+  protected long eventTime;
+  protected T data;
+}
+
+</code></pre><h3 id=dateutil>DateUtil</h3><ol start=6><li>新增日期处理工具类<code>DateUtil</code> 和异常处理工具类<code>ExcptUtil</code></li></ol><ul><li>DateUtil.java</li></ul><pre><code>package iot.cloud.platform.lock.utils;
+
+import org.apache.commons.lang3.StringUtils;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class DateUtil {
+
+  public static Date parseJsonDateTime(String dtText){
+    if(StringUtils.isBlank(dtText)){
+      return null;
+    }
+    SimpleDateFormat format = new SimpleDateFormat(&quot;yyyy-MM-dd'T'HH:mm:ss&quot;);
+    try {
+      return format.parse(dtText);
+    } catch (ParseException e) {
+      throw new RuntimeException(e);
+    }
+  }
+}
+</code></pre><ul><li>ExcptUtil.java</li></ul><pre><code>package iot.cloud.platform.lock.utils;
+
+import org.apache.commons.lang3.StringUtils;
+
+public class ExcptUtil {
+
+    private final static String PACKAGE=&quot;iot.cloud.platform.lock&quot;;
+
+    public static String getKeyInfo(Throwable t,String packageName){
+        String msg=&quot;&quot;;
+        if(t!=null){
+            msg+=t.getClass().getName()+&quot; -&gt; &quot;;
+        }
+        msg+=t.getMessage()+&quot;\n&quot;
+                + filterStack(t,packageName);
+        return msg;
+    }
+
+    public static String filterStack(Throwable throwable, String packageName) {
+        if (throwable==null) {
+            return &quot;&quot;;
+        } else {
+            StackTraceElement[] stackTraceElements = throwable.getStackTrace();
+            String stackTraceElementString = stackTraceElements[0].toString()+&quot;\n&quot;;
+            if (StringUtils.isEmpty(packageName)) {
+                return stackTraceElementString;
+            } else {
+                StackTraceElement[] eles = stackTraceElements;
+                int length = Math.min(stackTraceElements.length,10);
+
+                for(int i = 1; i &lt; length; ++i) {
+                    StackTraceElement stackTraceElement = eles[i];
+                    stackTraceElementString += stackTraceElement.toString()+&quot;\n&quot;;
+                    if (stackTraceElement.toString().contains(packageName)) {
+                        break;
+                    }
+                }
+
+                return stackTraceElementString;
+            }
+        }
+    }
+    public static String filterStack(Throwable throwable) {
+        if (throwable==null) {
+            return &quot;&quot;;
+        } else {
+            StackTraceElement[] stackTraceElements = throwable.getStackTrace();
+            String stackTraceElementString = stackTraceElements[0].toString()+&quot;\n&quot;;
+            StackTraceElement[] eles = stackTraceElements;
+            int length = Math.min(stackTraceElements.length,10);
+
+            for(int i = 1; i &lt; length; ++i) {
+                StackTraceElement stackTraceElement = eles[i];
+                stackTraceElementString += stackTraceElement.toString()+&quot;\n&quot;;
+                if (stackTraceElement.toString().contains(PACKAGE)) {
+                    break;
+                }
+            }
+            return stackTraceElementString;
+        }
+    }
+
+    public static String filterStack(Throwable throwable,Class clazz) {
+        if (throwable==null) {
+            return &quot;&quot;;
+        } else {
+            StackTraceElement[] stackTraceElements = throwable.getStackTrace();
+            String stackTraceElementString = stackTraceElements[0].toString()+&quot;\n&quot;;
+            StackTraceElement[] eles = stackTraceElements;
+            int length = Math.min(stackTraceElements.length,10);
+
+            for(int i = 1; i &lt; length; ++i) {
+                StackTraceElement stackTraceElement = eles[i];
+                stackTraceElementString += stackTraceElement.toString()+&quot;\n&quot;;
+                if (stackTraceElement.toString().contains(clazz.getPackage().getName())) {
+                    break;
+                }
+            }
+            return stackTraceElementString;
+        }
+    }
+}
+
+</code></pre><h3 id=测试>测试</h3><ol start=7><li><p>启动 IoTLockApplication。
+<img src=/static/img/iot-cloud-platform-06/Snipaste_2022-04-10_01-43-58.jpg alt></p></li><li><p>参考实验6.1，启动<code>EMQX</code>。</p></li><li><p>参考实验6.1，使用<code>MQTTX</code>，向<code>/iot/cloud/devices/receive</code>主题发布（publish）以下消息内容。</p></li></ol><pre><code>{&quot;eventId&quot;:&quot;1234&quot;,&quot;eventName&quot;:&quot;sayhello&quot;,&quot;eventTime&quot;:1676083251643}
+</code></pre><ol start=10><li>查看<code>iot-lock</code>项目的 IDEA 的控制台，查看是否能够收到以下消息。</li></ol><pre><code>2023-02-11 10:45:23.116  INFO 23288 --- [T Call: lock001] i.c.p.lock.mqtt.MqttConsumerCallback     : 收到主题[/iot/cloud/devices/receive]消息 -&gt;{&quot;eventId&quot;:&quot;1234&quot;,&quot;eventName&quot;:&quot;sayhello&quot;,&quot;eventTime&quot;:1676083251643}
+</code></pre><h2 id=实验名称63-iot-lock-项目实现修改固定密码功能>【实验名称】6.3 iot-lock 项目实现修改固定密码功能</h2><h2 id=实验目的-2>【实验目的】</h2><ul><li>掌握使用 SpringBoot 整合 MQTT 协议并进行开发</li></ul><h2 id=实验环境-2>【实验环境】</h2><ul><li>IDEA</li><li>Maven 3.6</li><li>MariaDB 10.4</li><li>JDK 8</li><li>EMQX</li><li>MQTTX</li></ul><h2 id=实验说明-2>【实验说明】</h2><ol><li>此实验承接实验6.2，使用MQTTX模拟一个用户终端，向物联网云平台（EMQX服务器）发送一条修改固定密码的指令，智能锁设备端收到指令，并实现密码的修改。</li></ol><p><img src=/static/img/iot-cloud-platform-06/Snipaste_2022-04-11_11-39-32.jpg alt></p><p><img src=/static/img/iot-cloud-platform-06/Snipaste_2022-04-11_11-40-09.jpg alt></p><h2 id=实验效果-2>【实验效果】</h2><ol><li>发送修改密码的消息以后，能够收到回复的 MQTT 消息，并且能够用新的固定密码<code>654321</code>解锁。</li></ol><p><img src=/static/img/iot-cloud-platform-06/mqtt-reset-fixed-pwd.gif alt></p><h2 id=实验步骤-2>【实验步骤】</h2><h3 id=pwdservice>PwdService</h3><ol><li>PwdService 新增修改固定密码方法<code>resetFixedPwd</code></li></ol><pre><code>/**
    * 更新固定密码
    * @param oPwd 原密码
    * @param nPwd 新密码
@@ -357,179 +532,11 @@ public boolean isValidPwd(String pwd) {
 errmsg=&quot;更新密码成功&quot;
 </code></pre><ul><li>（3）如果新密码满足（1）要求，如果密码更新不成功，返回ResMsg 对象属性值如下：</li></ul><pre><code>errcode=&quot;4001&quot;
 errmsg=&quot;更新密码失败，旧密码错误&quot;
-</code></pre><h3 id=新增-vo-类>新增 VO 类</h3><ol start=3><li>新增 vo 类，用于把接收的 JSON 消息转换为对应的对象。</li></ol><ul><li>（1）MqttBaseMsg.java</li></ul><pre><code>package iot.cloud.platform.lock.vo;
-
-public class MqttBaseMsg {
-  protected String eventId;
-  protected String eventName;
-  protected long eventTime;
-
-  public String getEventId() {
-    return eventId;
-  }
-
-  public void setEventId(String eventId) {
-    this.eventId = eventId;
-  }
-
-  public String getEventName() {
-    return eventName;
-  }
-
-  public void setEventName(String eventName) {
-    this.eventName = eventName;
-  }
-
-  public long getEventTime() {
-    return eventTime;
-  }
-
-  public void setEventTime(long eventTime) {
-    this.eventTime = eventTime;
-  }
-
-}
-</code></pre><ul><li>（2）MqttReplyMsg.java</li></ul><pre><code>package iot.cloud.platform.lock.vo;
-
-public class MqttReplyMsg extends MqttBaseMsg{
-
-  private ResMsg resMsg;
-
-  public ResMsg getResMsg() {
-    return resMsg;
-  }
-
-  public void setResMsg(ResMsg resMsg) {
-    this.resMsg = resMsg;
-  }
-}
-</code></pre><ul><li>（3）MqttResvMsg.java</li></ul><pre><code>package iot.cloud.platform.lock.vo;
-
-public class MqttResvMsg extends MqttBaseMsg{
-
-  protected Object[] params;
-
-  public Object[] getParams() {
-    return params;
-  }
-
-  public void setParams(Object[] params) {
-    this.params = params;
-  }
-}
-</code></pre><h3 id=mqttreceiveserviceimpljava-1>MqttReceiveServiceImpl.java</h3><ol start=4><li>修改 MqttReceiveServiceImpl 为以下代码</li></ol><pre><code>package iot.cloud.platform.lock.service.impl;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import iot.cloud.platform.lock.config.MqttConfig;
-import iot.cloud.platform.lock.service.MqttInboundService;
-import iot.cloud.platform.lock.service.MqttOutboundService;
-import iot.cloud.platform.lock.service.PwdService;
-import iot.cloud.platform.lock.utils.DateUtils;
-import iot.cloud.platform.lock.vo.MqttReplyMsg;
-import iot.cloud.platform.lock.vo.MqttResvMsg;
-import iot.cloud.platform.lock.vo.ResMsg;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.integration.annotation.ServiceActivator;
-import org.springframework.messaging.Message;
-import org.springframework.messaging.MessageHandler;
-import org.springframework.messaging.MessagingException;
-import org.springframework.stereotype.Service;
-
-@Service
-public class MqttReceiveServiceImpl implements MqttInboundService {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(MqttReceiveServiceImpl.class);
-
-    @Value(&quot;${mqtt.receive_reply.topic}&quot;)
-    public String receive_reply_topic;
-
-    @Autowired
-    private PwdService pwdService;
-
-    @Autowired
-    private MqttOutboundService mqttOutboundService;
-
-    /**
-     * 接受实例代码-修改固定密码：{&quot;eventId&quot;:&quot;1234&quot;,&quot;eventName&quot;:&quot;resetFixedPwd&quot;,&quot;eventTime&quot;:1647155485187,&quot;params&quot;:[&quot;123456&quot;,&quot;654321&quot;]}
-     * 返回实例代码：
-     * @return
-     */
-    @Override
-    @Bean
-    @ServiceActivator(inputChannel = MqttConfig.CHANNEL_NAME_IN)
-    public MessageHandler handleSubscribeMsg() {
-        return new MessageHandler() {
-            @Override
-            public void handleMessage(Message&lt;?&gt; mqttMsg) throws MessagingException {
-                LOGGER.error(&quot;receive subscribe :{}&quot;, mqttMsg.getPayload());
-                ObjectMapper objMapper=new ObjectMapper();
-                MqttResvMsg resvMsg=null;
-                ResMsg returnVal=null;
-                try {
-                    String jsonstr=mqttMsg.getPayload().toString();
-                    //ObjectMapper 是 Jackson包用于解析 Json 为java 对象
-                    resvMsg = objMapper.readValue(jsonstr, MqttResvMsg.class);
-                } catch (JsonProcessingException e) {
-                    LOGGER.error(e.getMessage(),e);
-                }
-
-                Object[] params=resvMsg.getParams();
-                if(&quot;resetFixedPwd&quot;.equals(resvMsg.getEventName())){
-                    returnVal=pwdService.resetFixedPwd((String)params[0],(String)params[1]);
-                }
-
-                MqttReplyMsg replyMsg=new MqttReplyMsg();
-                replyMsg.setEventId(resvMsg.getEventId());
-                replyMsg.setEventName(resvMsg.getEventName());
-                replyMsg.setEventTime(resvMsg.getEventTime());
-                replyMsg.setResMsg((ResMsg)returnVal);
-                String receiveReplyMsg=&quot;{}&quot;;
-                try {
-                    //把replyMsg对象转换为 JSON 消息
-                    receiveReplyMsg=objMapper.writeValueAsString(replyMsg);
-                } catch (JsonProcessingException e) {
-                    LOGGER.error(e.getMessage(),e);
-                }
-
-                mqttOutboundService.sendToMqtt(receive_reply_topic,receiveReplyMsg);
-            }
-        };
-    }
-
-}
-</code></pre><h3 id=dateutils>DateUtils</h3><ol start=5><li>增加<code>DateUtils</code>，用于处理日期相关的类。</li></ol><pre><code>package iot.cloud.platform.lock.utils;
-
-import org.apache.commons.lang3.StringUtils;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-public class DateUtils {
-
-  public static Date parseJsonDateTime(String dtText){
-    if(StringUtils.isBlank(dtText)){
-      return null;
-    }
-    SimpleDateFormat format = new SimpleDateFormat(&quot;yyyy-MM-dd'T'HH:mm:ss&quot;);
-    try {
-      return format.parse(dtText);
-    } catch (ParseException e) {
-      throw new RuntimeException(e);
-    }
-  }
-}
-
-</code></pre><ol start=6><li><p>重新构建（Build）项目，启动<code>IoTLockApplication</code>。</p></li><li><p>启动 MQTT 服务器 Mosquitto。</p></li><li><p>使用<code>MQTT.fx</code>订阅主题<code>/iot/cloud/lock01/receive_reply</code>。
-<img src=/static/img/iot-cloud-platform-06/Snipaste_2022-04-11_10-18-06.jpg alt></p></li><li><p>使用<code>MQTT.fx</code>向主题<code>/iot/cloud/lock01/receive</code>发送以下消息，修改智能锁设备端密码为<code>654321</code>。</p></li></ol><pre><code>{&quot;eventId&quot;:&quot;1234&quot;,&quot;eventName&quot;:&quot;resetFixedPwd&quot;,&quot;eventTime&quot;:1649641518308,&quot;params&quot;:[&quot;123456&quot;,&quot;654321&quot;]}
-</code></pre><p><img src=/static/img/iot-cloud-platform-06/Snipaste_2022-04-11_10-21-15.jpg alt></p><ol start=10><li><p>使用<code>MQTT.fx</code>查看订阅主题<code>/iot/cloud/lock01/receive_reply</code>是否收到智能锁设备端回复的消息。
-<img src=/static/img/iot-cloud-platform-06/Snipaste_2022-04-11_10-23-50.jpg alt></p></li><li><p>浏览器访问<a href=http://localhost:8097>http://localhost:8097</a>，尝试使用新的固定密码<code>654321</code>进行解锁，测试是否能够解锁成功。</p></li></ol><h2 id=实验名称64-iot-lock-项目实现新增临时密码功能选做>【实验名称】6.4 iot-lock 项目实现新增临时密码功能（选做）</h2><h2 id=实验目的-3>【实验目的】</h2><ul><li>掌握使用 SpringBoot 整合 MQTT 协议并进行开发</li></ul><h2 id=实验环境-3>【实验环境】</h2><ul><li>IDEA</li><li>Maven 3.6</li><li>MariaDB 10.4</li><li>JDK 8</li><li>Mosquitto</li><li>MQTT.fx</li></ul><h2 id=实验说明-3>【实验说明】</h2><ol><li>此实验承接实验6.3，使用MQTT.fx模拟一个用户终端，向物联网云平台（Mosquitto服务器）发送一条新增临时密码的指令，智能锁设备端收到指令，实现新增临时密码，并回复用户终端是否新增成功。</li></ol><h2 id=实验效果-3>【实验效果】</h2><ol><li>发送新增临时密码的消息以后，能够收到回复的 MQTT 消息，并且能够用新的临时密码<code>075911</code>解锁。
-<img src=/static/img/iot-cloud-platform-06/add-temp-pwd.gif alt></li></ol><h2 id=实验步骤-3>【实验步骤】</h2><h3 id=pwdservice-1>PwdService</h3><ol><li><code>PwdService</code>新增方法，其余代码参考6.3自行实现。</li></ol><pre><code>/**
+</code></pre><ol start=6><li><p>重新构建（Build）项目，启动<code>IoTLockApplication</code>。</p></li><li><p>启动 MQTT 服务器 EMQX。</p></li><li><p>使用<code>MQTTX</code>订阅主题<code>/iot/cloud/devices/receive_reply</code>。
+<img src=/static/img/iot-cloud-platform-06/Snipaste_2023-02-11_11-07-51.jpg alt></p></li><li><p>使用<code>MQTTX</code>向主题<code>/iot/cloud/devices/receive</code>发送以下消息，修改智能锁设备端密码为<code>654321</code>。</p></li></ol><pre><code>{&quot;eventId&quot;:&quot;1234&quot;,&quot;eventName&quot;:&quot;resetFixedPwd&quot;,&quot;eventTime&quot;:1676084750362,&quot;data&quot;:{&quot;nPwd&quot;:&quot;654321&quot;,&quot;oPwd&quot;:&quot;123456&quot;}}
+</code></pre><ol start=10><li><p>使用<code>MQTTX</code>查看订阅主题<code>/iot/cloud/devices/receive_reply</code>是否收到智能锁设备端回复的消息。
+<img src=/static/img/iot-cloud-platform-06/Snipaste_2023-02-11_11-29-48.jpg alt></p></li><li><p>浏览器访问<a href=http://localhost:8097>http://localhost:8097</a>，尝试使用新的固定密码<code>654321</code>进行解锁，测试是否能够解锁成功。</p></li></ol><h2 id=实验名称64-iot-lock-项目实现新增临时密码功能选做>【实验名称】6.4 iot-lock 项目实现新增临时密码功能（选做）</h2><h2 id=实验目的-3>【实验目的】</h2><ul><li>掌握使用 SpringBoot 整合 MQTT 协议并进行开发</li></ul><h2 id=实验环境-3>【实验环境】</h2><ul><li>IDEA</li><li>Maven 3.6</li><li>MariaDB 10.4</li><li>JDK 8</li><li>EMQX</li><li>MQTTX</li></ul><h2 id=实验说明-3>【实验说明】</h2><ol><li>此实验承接实验6.3，使用MQTTX 模拟一个用户终端，向物联网云平台（ EMQX 服务器）发送一条新增临时密码的指令，智能锁设备端收到指令，实现新增临时密码，并回复用户终端是否新增成功。</li></ol><h2 id=实验效果-3>【实验效果】</h2><ol><li>发送新增临时密码的消息以后，能够收到回复的 MQTT 消息，并且能够用新的临时密码<code>075911</code>解锁。
+<img src=/static/img/iot-cloud-platform-06/mqtt-add-temp-pwd.gif alt></li></ol><h2 id=实验步骤-3>【实验步骤】</h2><h3 id=pwdservice-1>PwdService</h3><ol><li><code>PwdService</code>新增方法，其余代码参考6.3自行实现。</li></ol><pre><code>/**
    * 新增临时密码
    * @param pwd 临时密码
    * @param expiredTime 过期时间
@@ -540,12 +547,11 @@ public class DateUtils {
 errmsg=&quot;新增密码成功&quot;
 </code></pre><ul><li>如果新增失败，返回ResMsg 对象属性值如下：</li></ul><pre><code>errcode=&quot;4003&quot;
 errmsg=&quot;新增密码失败&quot;
-</code></pre><ol start=2><li><p>重新构建（Build）项目，启动<code>IoTLockApplication</code>。</p></li><li><p>启动 MQTT 服务器 Mosquitto。</p></li><li><p>使用<code>MQTT.fx</code>订阅主题<code>/iot/cloud/lock01/receive_reply</code>。
-<img src=/static/img/iot-cloud-platform-06/Snipaste_2022-04-11_10-18-06.jpg alt></p></li><li><p>使用<code>MQTT.fx</code>向主题<code>/iot/cloud/lock01/receive</code>发送以下消息，新增智能锁设备端临时密码<code>075911</code>，有效期至<code>2022-4-30 10:00:00</code>。</p></li></ol><pre><code>{&quot;eventId&quot;:&quot;4532&quot;,&quot;eventName&quot;:&quot;addTempPwd&quot;,&quot;eventTime&quot;:1647155485187,&quot;params&quot;:[&quot;075911&quot;,&quot;2022-4-30T10:00:00&quot;]}
-</code></pre><p><img src=/static/img/iot-cloud-platform-06/Snipaste_2022-04-11_10-35-21.jpg alt></p><ol start=6><li>使用<code>MQTT.fx</code>查看订阅主题<code>/iot/cloud/lock01/receive_reply</code>是否收到智能锁设备端回复的消息。</li></ol><p><img src=/static/img/iot-cloud-platform-06/Snipaste_2022-04-11_10-36-02.jpg alt></p><ol start=7><li>浏览器访问<a href=http://localhost:8097>http://localhost:8097</a>，尝试使用新的临时密码<code>075911</code>进行解锁，测试是否能够解锁成功。</li></ol></div><div class=my-4><a href=/tags/iot/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#iot</a>
+</code></pre><ol start=2><li><p>重新构建（Build）项目，启动<code>IoTLockApplication</code>。</p></li><li><p>启动 MQTT 服务器 EMQX。</p></li><li><p>使用<code>MQTTX</code>订阅主题<code>/iot/cloud/devices/receive_reply</code>。</p></li><li><p>使用<code>MQTTX</code>向主题<code>/iot/cloud/devices/receive</code>发送以下消息，新增智能锁设备端临时密码<code>075911</code>，有效期至<code>2023-7-11 10:00:00</code>。</p></li></ol><pre><code>{&quot;eventId&quot;:&quot;1234&quot;,&quot;eventName&quot;:&quot;addTempPwd&quot;,&quot;eventTime&quot;:1676086292304,&quot;data&quot;:{&quot;pwd&quot;:&quot;075911&quot;,&quot;expiredTime&quot;:&quot;2023-07-11T10:00:00&quot;}}
+</code></pre><ol start=6><li>使用<code>MQTTX</code>查看订阅主题<code>/iot/cloud/devices/receive_reply</code>是否收到智能锁设备端回复的消息。</li></ol><p><img src=/static/img/iot-cloud-platform-06/Snipaste_2023-02-11_11-33-55.jpg alt></p><ol start=7><li>浏览器访问<a href=http://localhost:8097>http://localhost:8097</a>，尝试使用新的临时密码<code>075911</code>进行解锁，测试是否能够解锁成功。</li></ol></div><div class=my-4><a href=/tags/iot/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#iot</a>
 <a href=/tags/%E7%89%A9%E8%81%94%E7%BD%91/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#物联网</a>
 <a href=/tags/%E4%BA%91%E5%B9%B3%E5%8F%B0/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#云平台</a></div><div class=py-2><div class="flex flex-col md:flex-row items-center my-8"><a href=/authors/heis/ class="w-24 h-24 md:mr-4"><img src=/static/img/authors/heis.png class="w-full bg-primary-bg rounded-full" alt=Avatar></a><div class="w-full md:w-auto mt-4 md:mt-0"><a href=/authors/heis/ class="block font-bold text-lg pb-1 mb-2 border-b">黄老师</a>
 <span class="block pb-2"></span><a href=mailto:heishuangzy@qq.com class=mr-1><i class="fas fa-envelope"></i></a><a href=https://gitee.com/heis/ class=mr-1><i class="fab fa-git"></i></a><a href=http://heis.gitee.io/ class=mr-1><i class="fas fa-blog"></i></a></div></div></div><div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t"><div id=presec><span class="block font-bold">上一页</span>
-<a href=/docs/iot-cloud-platform/iot-cp-05/ class=block>Part 5 - 物联网云平台数据管理开发实战</a></div><div id=nextsec class="md:text-right mt-4 md:mt-0"></div></div></div><div class="hidden lg:block lg:w-1/4"><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-secondary-bg pt-16 -mt-16"><span class="text-lg font-semibold">本页内容</span></div><div class="sticky-toc hidden lg:block px-6 pb-6 pt-10 -mt-10 border-l"><nav id=TableOfContents><ul><li><a href=#版本>【版本】</a></li><li><a href=#实验名称61-安装-mosquitto-和-mqttfx>【实验名称】6.1 安装 Mosquitto 和 MQTT.fx</a></li><li><a href=#实验目的>【实验目的】</a></li><li><a href=#实验环境>【实验环境】</a></li><li><a href=#实验说明>【实验说明】</a></li><li><a href=#实验资源>【实验资源】</a></li><li><a href=#实验效果>【实验效果】</a></li><li><a href=#实验步骤>【实验步骤】</a></li><li><a href=#实验名称62-iot-lock-项目配置-mqtt-客户端>【实验名称】6.2 iot-lock 项目配置 MQTT 客户端</a></li><li><a href=#实验目的-1>【实验目的】</a></li><li><a href=#实验环境-1>【实验环境】</a></li><li><a href=#实验说明-1>【实验说明】</a></li><li><a href=#实验效果-1>【实验效果】</a></li><li><a href=#实验步骤-1>【实验步骤】</a><ul><li><a href=#pomxml>pom.xml</a></li><li><a href=#applicationproperties>application.properties</a></li><li><a href=#mqttconfigjava>MqttConfig.java</a></li><li><a href=#mqttinboundservicejava-和-mqttoutboundservicejava>MqttInboundService.java 和 MqttOutboundService.java</a></li><li><a href=#mqttreceiveserviceimpljava>MqttReceiveServiceImpl.java</a></li><li><a href=#测试>测试</a></li></ul></li><li><a href=#实验名称63-iot-lock-项目实现修改固定密码功能>【实验名称】6.3 iot-lock 项目实现修改固定密码功能</a></li><li><a href=#实验目的-2>【实验目的】</a></li><li><a href=#实验环境-2>【实验环境】</a></li><li><a href=#实验说明-2>【实验说明】</a></li><li><a href=#实验效果-2>【实验效果】</a></li><li><a href=#实验步骤-2>【实验步骤】</a><ul><li><a href=#pwdservice>PwdService</a></li><li><a href=#pwdserviceimpl>PwdServiceImpl</a></li><li><a href=#新增-vo-类>新增 VO 类</a></li><li><a href=#mqttreceiveserviceimpljava-1>MqttReceiveServiceImpl.java</a></li><li><a href=#dateutils>DateUtils</a></li></ul></li><li><a href=#实验名称64-iot-lock-项目实现新增临时密码功能选做>【实验名称】6.4 iot-lock 项目实现新增临时密码功能（选做）</a></li><li><a href=#实验目的-3>【实验目的】</a></li><li><a href=#实验环境-3>【实验环境】</a></li><li><a href=#实验说明-3>【实验说明】</a></li><li><a href=#实验效果-3>【实验效果】</a></li><li><a href=#实验步骤-3>【实验步骤】</a><ul><li><a href=#pwdservice-1>PwdService</a></li></ul></li></ul></nav></div><script>window.addEventListener('DOMContentLoaded',()=>{enableStickyToc();});</script></div></div></div></div></div><div id=outerdiv><div id=innerdiv><img id=bigimg src></div></div><script>document.addEventListener('DOMContentLoaded',()=>{hljs.highlightAll();hljs.initLineNumbersOnLoad({singleLine:true});changeSidebarHeight();switchDocToc();$("img").css("cursor:pointer")
-$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});$("ol").each(function(index){if(/\d{1,4}/.test($(this).attr("start"))){let idx=parseInt($(this).attr("start"));let lis=$(this).find("li");if(lis.length>0){lis.each(function(index){$(this).attr("id","step"+(idx+index));});}else{$(this).attr("id","step"+idx);}}});});</script><script src=/static/js/clipboard.min.js></script><script src=/static/js/codecopy.bundle.js?369></script></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text">&copy; 2021 <a href=https://www.wangchucheng.com/>C. Wang</a> and <a href=https://www.ruiqima.com/>R. Ma</a>
+<a href=/docs/iot-cloud-platform/iot-cp-05/ class=block>Part 5 - 物联网云平台数据管理开发实战</a></div><div id=nextsec class="md:text-right mt-4 md:mt-0"></div></div></div><div class="hidden lg:block lg:w-1/4"><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-secondary-bg pt-16 -mt-16"><span class="text-lg font-semibold">本页内容</span></div><div class="sticky-toc hidden lg:block px-6 pb-6 pt-10 -mt-10 border-l"><nav id=TableOfContents><ul><li><a href=#版本>【版本】</a></li><li><a href=#实验名称61-安装-emqx-和-mqttx>【实验名称】6.1 安装 EMQX 和 MQTTX</a></li><li><a href=#实验目的>【实验目的】</a></li><li><a href=#实验环境>【实验环境】</a></li><li><a href=#实验说明>【实验说明】</a></li><li><a href=#实验资源>【实验资源】</a></li><li><a href=#实验效果>【实验效果】</a></li><li><a href=#实验步骤>【实验步骤】</a><ul><li><a href=#emqx-安装>EMQX 安装</a></li><li><a href=#mqttx-安装>MQTTX 安装</a></li></ul></li><li><a href=#实验名称62-iot-lock-项目配置-mqtt-客户端>【实验名称】6.2 iot-lock 项目配置 MQTT 客户端</a></li><li><a href=#实验目的-1>【实验目的】</a></li><li><a href=#实验环境-1>【实验环境】</a></li><li><a href=#实验说明-1>【实验说明】</a></li><li><a href=#实验效果-1>【实验效果】</a></li><li><a href=#实验步骤-1>【实验步骤】</a><ul><li><a href=#pomxml>pom.xml</a></li><li><a href=#applicationyml>application.yml</a></li><li><a href=#mqttconfigjava>MqttConfig.java</a></li><li><a href=#mqttconsumerjava-和-mqttconsumercallbackjava>MqttConsumer.java 和 MqttConsumerCallback.java</a></li><li><a href=#mqttmsgjava>MqttMsg.java</a></li><li><a href=#dateutil>DateUtil</a></li><li><a href=#测试>测试</a></li></ul></li><li><a href=#实验名称63-iot-lock-项目实现修改固定密码功能>【实验名称】6.3 iot-lock 项目实现修改固定密码功能</a></li><li><a href=#实验目的-2>【实验目的】</a></li><li><a href=#实验环境-2>【实验环境】</a></li><li><a href=#实验说明-2>【实验说明】</a></li><li><a href=#实验效果-2>【实验效果】</a></li><li><a href=#实验步骤-2>【实验步骤】</a><ul><li><a href=#pwdservice>PwdService</a></li><li><a href=#pwdserviceimpl>PwdServiceImpl</a></li></ul></li><li><a href=#实验名称64-iot-lock-项目实现新增临时密码功能选做>【实验名称】6.4 iot-lock 项目实现新增临时密码功能（选做）</a></li><li><a href=#实验目的-3>【实验目的】</a></li><li><a href=#实验环境-3>【实验环境】</a></li><li><a href=#实验说明-3>【实验说明】</a></li><li><a href=#实验效果-3>【实验效果】</a></li><li><a href=#实验步骤-3>【实验步骤】</a><ul><li><a href=#pwdservice-1>PwdService</a></li></ul></li></ul></nav></div><script>window.addEventListener('DOMContentLoaded',()=>{enableStickyToc();});</script></div></div></div></div></div><div id=outerdiv><div id=innerdiv><img id=bigimg src></div></div><script>document.addEventListener('DOMContentLoaded',()=>{hljs.highlightAll();hljs.initLineNumbersOnLoad({singleLine:true});changeSidebarHeight();switchDocToc();$("img").css("cursor:pointer")
+$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});$("ol").each(function(index){if(/\d{1,4}/.test($(this).attr("start"))){let idx=parseInt($(this).attr("start"));let lis=$(this).find("li");if(lis.length>0){lis.each(function(index){$(this).attr("id","step"+(idx+index));});}else{$(this).attr("id","step"+idx);}}});});</script><script src=/static/js/clipboard.min.js></script><script src=/static/js/codecopy.bundle.js?34></script></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text">&copy; 2021 <a href=https://www.wangchucheng.com/>C. Wang</a> and <a href=https://www.ruiqima.com/>R. Ma</a>
 &#183; Powered by the <a href=https://github.com/wangchucheng/hugo-eureka class=hover:text-eureka>Eureka</a> theme for <a href=https://gohugo.io class=hover:text-eureka>Hugo</a></p></div></div></footer></body></html>
