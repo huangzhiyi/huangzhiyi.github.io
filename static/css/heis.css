@@ -316,3 +316,11 @@ table.tbl tr:nth-child(even)
 .sticky-toc ul {
   padding-left:1rem;	
 }
+
+.warning{
+	color:#B21016;
+	font-weight:bold;
+	font-size:1.2rem;
+	text-align:center;
+	border: 1px solid #F47378;
+}
