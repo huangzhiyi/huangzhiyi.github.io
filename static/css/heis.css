@@ -31,7 +31,6 @@
 	border:5px solid #fff;
 }
 
-
 /*pre标签class*/
 pre.codecopy{
     position: relative;
@@ -323,4 +322,112 @@ table.tbl tr:nth-child(even)
 	font-size:1.2rem;
 	text-align:center;
 	border: 1px solid #F47378;
+}
+/*返回到顶部按钮样式*/
+#nav_top_icon
+{
+	display: flex;
+    position: fixed;
+    bottom: 10%;
+    right: 8%;
+    z-index: 888;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 40px;
+    box-shadow: 2px 2px 2px #888888;
+    opacity:0.7 ;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+	background: #ff9900 url('/static/img/common/rocket.png') no-repeat;
+	background-size:100% 100%;
+}
+#nav_top_icon:hover{
+	cursor:pointer;
+	background:#ff9900 url('/static/img/common/rocket-launch.png') no-repeat;
+	background-size:100% 100%;
+}
+@media(min-width: 768px) {
+	#list_note_icon{
+		display: block;
+	}
+}
+@media(min-width: 1024px) {
+	#list_note_icon{
+		display: none;
+	}
+}
+#list_note_icon
+{
+    position: fixed;
+    bottom: 18%;
+    right: 8%;
+    z-index: 888;
+    background: #ff9900;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 40px;
+    box-shadow: 2px 2px 2px #888888;
+    opacity:0.7 ;
+}
+
+#list_note_icon:before
+{
+    content: "";
+    display:block;
+    background:#333;
+    position:absolute;
+    height:2px;
+    width: 1.4rem;
+    top:0.9rem;
+    left:0.8rem;
+    box-shadow:0 0.4rem #333, 0 0.8rem #333, 0 1.2rem #333;
+    -webkit-box-shadow:0 0.4rem #333, 0 0.8rem #333, 0 1.2rem #333;
+    -moz-box-shadow:0 0.4rem #333, 0 0.8rem #333, 0 1.2rem #333;
+}
+#popDiv{
+    background-color: #FFF;
+    z-index: 11;
+    width: 100%;
+	height:100%;
+	padding:5px 5px 5px 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    top:0;
+    left: 0; 
+	opacity:0.9 ;
+	border-right:1px solid rgb(229, 231, 235) ;
+}
+#popDiv .close span {
+    color: #000;
+	display: block;
+	font-size: 1.5rem;
+}
+#popDiv .close span:hover {
+    cursor: pointer;
+}
+#popDiv .close span::before{
+    content: "\2716";
+}
+/* 弹出界面的关闭链接 */
+#popDiv .close{
+	/* 设置文本靠右显示，也就是关闭按钮显示在右边 */
+    text-align: right;
+    margin-right: 5px;
+    /* 背景颜色 */
+    background-color: #FFF;
+	height:2rem;
+}
+#popOuterDiv{
+	position:fixed;
+	top:64px;
+	left:0;
+	background:#fff;
+	opacity: 0.9;
+	z-index:8;
+	width:100%;
+	height:100%;
+	display:none;
+	overflow: hidden;
 }

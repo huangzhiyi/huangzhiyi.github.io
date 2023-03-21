@@ -22,7 +22,7 @@ function imgShow(outerdiv, innerdiv, bigimg, _this){
         imgWidth = realWidth;
         imgHeight = realHeight;
       }
-          $(bigimg).css("width",imgWidth);//以最终的宽度对图片缩放
+      $(bigimg).css("width",imgWidth);//以最终的宽度对图片缩放
       var w = (windowW-imgWidth)/2;//计算图片与窗口左边距
       var h = (windowH-imgHeight)/2;//计算图片与窗口上边距
       $(innerdiv).css({"top":h, "left":w});//设置#innerdiv的top和left属性
