@@ -339,12 +339,12 @@ table.tbl tr:nth-child(even)
 	flex-wrap: wrap;
 	justify-content: center;
 	align-content: center;
-	background: #ff9900 url('/static/img/common/rocket.png') no-repeat;
+	background: #f9d342 url('/static/img/common/rocket.png') no-repeat;
 	background-size:100% 100%;
 }
 #nav_top_icon:hover{
 	cursor:pointer;
-	background:#ff9900 url('/static/img/common/rocket-launch.png') no-repeat;
+	background:#f9d342 url('/static/img/common/rocket-launch.png') no-repeat;
 	background-size:100% 100%;
 }
 @media(min-width: 768px) {
@@ -363,7 +363,7 @@ table.tbl tr:nth-child(even)
     bottom: 18%;
     right: 8%;
     z-index: 888;
-    background: #ff9900;
+    background: #f9d342;
     width: 3rem;
     height: 3rem;
     border-radius: 40px;
