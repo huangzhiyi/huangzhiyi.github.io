@@ -46,6 +46,12 @@
 	  background-color: #f9f9f9;
 	  -webkit-print-color-adjust: exact;
 	}
+	#nav_top_icon{
+		display:none;
+	}
+	#list_note_icon{
+		display:none;
+	}
 }
 @media screen{
 	#headerctn{
