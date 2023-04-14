@@ -10,8 +10,10 @@ for (let i = 0; i < codecopys.length; i++) {
     let html_temp = '<div class="codecopy-btn" id="copybtn_'+i+'" data-title="复制" data-clipboard-action="copy" data-clipboard-target="#code_' + i + '"' +
         'οnclick="onC(this);" οnmοuseοut="mOut(this)">复制</div>';
 
-	  codecopy.setAttribute('class','codecopy');
-    codecopy.firstChild.setAttribute('id', 'code_' + i);
+	codecopy.setAttribute('class','codecopy');
+	if(codecopy.firstChild.attributes){
+        codecopy.firstChild.setAttribute('id', 'code_' + i);
+	}
 
     //将复制按钮追加至页面
     let html = codecopy.innerHTML + html_temp;
