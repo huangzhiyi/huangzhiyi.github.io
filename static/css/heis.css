@@ -431,3 +431,14 @@ table.tbl tr:nth-child(even)
 	display:none;
 	overflow: hidden;
 }
+#btmQrcode{
+	text-align:center;
+	display:flex;
+	width:100%;
+	justify-content: center;
+	align-items:center;
+}
+#btmQrcode canvas{
+	width:8rem;
+	height:8rem;
+}
