@@ -1,0 +1,3 @@
+- Docker实验待改进，尽量实现联网下载 Docker 镜像。其他的项目比如，Java Web，hadoop项目也争取实现 Docker 运行。
+- 考虑引入CentOS8 或者 RockyLinux
+- 运维的这章可以考虑加入一些主流运维工具给学生体验

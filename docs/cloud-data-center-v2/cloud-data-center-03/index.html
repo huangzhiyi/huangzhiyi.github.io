@@ -1,0 +1,221 @@
+<!doctype html><html lang=zh><meta charset=utf-8><meta name=viewport content="width=device-width"><title>Part 3 - 服务器虚拟化部署 | 《云数据中心基础》V2版 | Heis</title><meta name=generator content="Hugo Eureka 0.8.4"><link rel=stylesheet href=/css/eureka.min.css><script defer src=/js/eureka.min.js></script><script src=/static/js/jquery-3.6.0.min.js></script><script src=/static/js/heis.js?230321></script><link rel=stylesheet href=/static/css/heis.css?230321 media=all onload="this.media='all';this.onload=null" crossorigin><link rel=stylesheet href=/static/css/print.css?230413 media=print crossorigin><link rel=stylesheet href=/static/css/highlight-css/solarized-light.min.css media=print onload="this.media='all';this.onload=null" crossorigin><script defer src=/static/js/highlight.min.js crossorigin></script><script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script><script defer src=/static/js/highlightjs-line-numbers.min.js></script><link rel=icon type=image/png sizes=32x32 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_32x32_fill_box_center_2.png><link rel=apple-touch-icon sizes=180x180 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_180x180_fill_box_center_2.png><meta name=description content="云数据中心基础 Part 3 - 服务器虚拟化部署"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"课程文档","item":"/docs/"},{"@type":"ListItem","position":2,"name":"《云数据中心基础》V2版","item":"/docs/cloud-data-center-v2/"},{"@type":"ListItem","position":3,"name":"Part 3 - 服务器虚拟化部署","item":"/docs/cloud-data-center-v2/cloud-data-center-03/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/docs/cloud-data-center-v2/cloud-data-center-03/"},"headline":"Part 3 - 服务器虚拟化部署 | 《云数据中心基础》V2版 | Heis","datePublished":"2021-09-15T00:44:00+08:00","dateModified":"2021-09-15T00:44:00+08:00","wordCount":4608,"author":{"@type":"Person","name":"heis"},"publisher":{"@type":"Person","name":"C. Wang","logo":{"@type":"ImageObject","url":"/images/icon.png"}},"description":"云数据中心基础 Part 3 - 服务器虚拟化部署"}</script><meta property="og:title" content="Part 3 - 服务器虚拟化部署 | 《云数据中心基础》V2版 | Heis"><meta property="og:type" content="article"><meta property="og:image" content="/images/icon.png"><meta property="og:url" content="/docs/cloud-data-center-v2/cloud-data-center-03/"><meta property="og:description" content="云数据中心基础 Part 3 - 服务器虚拟化部署"><meta property="og:locale" content="zh"><meta property="og:site_name" content="Heis"><meta property="article:published_time" content="2021-09-15T00:44:00+08:00"><meta property="article:modified_time" content="2021-09-15T00:44:00+08:00"><meta property="article:section" content="docs"><meta property="article:tag" content="数据中心"><meta property="article:tag" content="云计算"><meta property="og:see_also" content="/docs/cloud-data-center/cloud-data-center-03/"><meta property="og:see_also" content="/docs/cloud-data-center/cloud-data-center-02/"><meta property="og:see_also" content="/docs/cloud-data-center-v2/cloud-data-center-02/"><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?f58b6a2675cf52000232edb4d109eccc";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><body class="flex flex-col min-h-screen"><header id=headerctn class="fixed flex items-center w-full pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode")
+if(((storageColorScheme=='Auto'||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches)||storageColorScheme=="Dark"){document.getElementsByTagName('html')[0].classList.add('dark')}</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="mr-6 text-primary-text text-xl font-bold">Heis</a>
+<button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+<i class="fas fa-bars"></i></button><div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20"><div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0"><a href=/posts/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">文章</a>
+<a href=/docs/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 selected-menu-item mr-4">课程文档</a>
+<a href=/go class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">导航</a></div><div class=flex><div class="relative pt-4 md:pt-0"><div class="cursor-pointer hover:text-eureka" id=lightDarkMode><i class="fas fa-adjust"></i></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id=is-open></div><div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40" id=lightDarkOptions><span class="px-4 py-1 hover:text-eureka" name=Light>浅色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Dark>深色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Auto>自动</span></div></div></div></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id=is-open-mobile></div></nav><script>let element=document.getElementById('lightDarkMode')
+if(storageColorScheme==null||storageColorScheme=='Auto'){document.addEventListener('DOMContentLoaded',()=>{window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change',switchDarkMode)})}else if(storageColorScheme=="Light"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'sun')
+element.firstElementChild.classList.add('fa-sun')}else if(storageColorScheme=="Dark"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'moon')
+element.firstElementChild.classList.add('fa-moon')}
+document.addEventListener('DOMContentLoaded',()=>{getcolorscheme();switchBurger();});</script></div></header><main class="flex-grow pt-16"><div class=pl-scrollbar><div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto"><div id=doc-container class=lg:pt-12><div class="flex flex-col md:flex-row bg-secondary-bg rounded"><div class="md:w-1/4 lg:w-1/5 border-r"><div class="sticky top-16 pt-6"><div id=sidebar-title class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text"><span class=font-semibold>目录</span>
+<i class="fas fa-caret-right ml-1"></i></div><div id=sidebar-toc class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent"><div class="flex flex-wrap ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded"><a class=hover:text-eureka href=/docs/cloud-data-center-v2/>《云数据中心基础》V2版</a></div><ul class=pl-6><li class=py-2><div><a class=hover:text-eureka href=/docs/cloud-data-center-v2/cloud-data-center-01/>Part 1 - 虚拟化软件安装 Linux 服务器版本</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/cloud-data-center-v2/cloud-data-center-02/>Part 2 - Linux 虚拟化常用命令</a></div></li><li class=py-2><div><a class="text-eureka hover:text-eureka" href=/docs/cloud-data-center-v2/cloud-data-center-03/>Part 3 - 服务器虚拟化部署</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/cloud-data-center-v2/cloud-data-center-04/>Part 4 - OpenStack的安装</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/cloud-data-center-v2/cloud-data-center-05/>Part 5 - 虚拟机自动化部署</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/cloud-data-center-v2/cloud-data-center-06/>Part 6 - Docker部署和管理</a></div></li></ul></div></div></div><div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8"><div id=doc-tit class="w-full lg:w-3/4 pl-6 ml-0 mr-auto"><h1 class="font-bold text-3xl text-primary-text">Part 3 - 服务器虚拟化部署</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i><span>2021-09-15</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i><span>10分钟阅读时长</span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i><a href=/categories/clouddc/ class=hover:text-eureka>clouddc</a></div></div></div><div class=flex><div class="w-full lg:w-3/4 px-6"><div class=content><p><a href=../>«返回课程汇总页面</a></p><h2 id=版本>【版本】</h2><p>当前版本号<code>v20221105</code></p><div class=tbl-start></div><table><thead><tr><th>版本</th><th>修改说明</th></tr></thead><tbody><tr><td>v20221105</td><td>增加常见问题3</td></tr><tr><td>v20221015</td><td>增加更多的说明和导航标题，增加常见问题解决办法</td></tr><tr><td>v20221014</td><td>增加常见问题，解决apic不支持的问题和一些命令错误</td></tr><tr><td>v20220408</td><td>修复切换到D盘的命令</td></tr><tr><td>v20211011</td><td>增加网卡配置说明</td></tr><tr><td>v20211005</td><td>修正centos-vm的网络配置</td></tr><tr><td>v20211003</td><td>修正cirros的网卡配置代码</td></tr><tr><td>v20210930</td><td>增加一些命令说明</td></tr><tr><td>v20210928</td><td>增加 VMWare Workstation 和 AMD CPU的相关命令和说明</td></tr><tr><td>v20210915</td><td>初始化版本</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h2 id=实验名称实验31-kvm-的安装使用>【实验名称】实验3.1 KVM 的安装使用</h2><h2 id=实验目的>【实验目的】</h2><ul><li>掌握KVM的安装和使用</li></ul><h2 id=实验环境>【实验环境】</h2><ul><li>CentOS 7.X</li><li>FinalShell</li></ul><h2 id=实验资源>【实验资源】</h2><ul><li>cirros 磁盘文件。</li><li>vnc viewer</li></ul><pre><code>链接：https://pan.baidu.com/s/1kw7nT7dbonUTSlPqIHVwhQ 
+提取码：heis
+</code></pre><h2 id=实验步骤>【实验步骤】</h2><h3 id=开启虚拟化嵌套>开启虚拟化嵌套</h3><blockquote><p>如果你使用的是VMWare Workstation Pro，仅需要勾选以下选项，请忽略步骤1-3。
+<img src=/static/img/cloud-data-center-03/Snipaste_2021-09-15_10-05-17.jpg alt></p></blockquote><ol><li>启用虚拟化配置。使用管理员权限进入 Windows 系统的命令行</li></ol><ul><li>“Win+R”键可以快速调出运行窗口</li><li>输入“cmd”、</li><li>同时按下“Ctrl+Shift+ENter”键启动管理员权限的命令行窗口
+<img src=/static/img/cloud-data-center-03/Snipaste_2021-09-15_09-49-25.jpg alt></li></ul><ol start=2><li>在 Windows 的命令行窗口输入以下命令。</li></ol><ul><li>修改以下<code>D:\"Program Files (x86)"\Oracle\VirtualBox</code>路径为你的 Virtualbox 安装路径。</li></ul><pre><code>d:
+cd D:\&quot;Program Files (x86)&quot;\Oracle\VirtualBox
+</code></pre><blockquote><p>如果你安装在d盘，需要先输入 <code>d:</code> 切换到D盘，再运行 cd 命令
+VirtualBox 的安装路径可以通过桌面的 VirtualBox 快捷方式打开
+<img src=/static/img/cloud-data-center-03/Snipaste_2021-09-28_08-45-49.jpg alt></p></blockquote><ul><li>执行以下命令启用你的虚拟机的虚拟化扩展特性。以下"Tmpl"需要修改为你的虚拟机名称。</li></ul><pre><code>VBoxManage.exe modifyvm &quot;Tmpl&quot; --nested-hw-virt on
+</code></pre><ol start=3><li>打开 Virtualbox，查看虚拟化选项是否已经启用。
+<img src=/static/img/cloud-data-center-03/Snipaste_2021-09-15_10-03-12.jpg alt></li></ol><h3 id=提升虚拟机cpu和内存配置>提升虚拟机CPU和内存配置</h3><ol start=4><li>为了运行 KVM 虚拟机避免卡顿，修改虚拟机的处理器数量为2。内存为2G。
+<img src=/static/img/cloud-data-center-03/Snipaste_2021-09-16_00-22-55.jpg alt>
+<img src=/static/img/cloud-data-center-03/Snipaste_2021-09-17_14-12-28.jpg alt></li></ol><h3 id=检查-cpu-是否支持虚拟化特性>检查 CPU 是否支持虚拟化特性</h3><ol start=5><li><p>启动虚拟机，打开 FinalShell，使用 root 用户进行登录。</p></li><li><p>查看是否有内容输出</p></li></ol><pre><code>grep 'vmx\|svm\|lm' /proc/cpuinfo
+</code></pre><ul><li>正常输出类似以下信息，如果有信息输出带有 vmx 或者 svm 字符（FinalShell 会标红色），就说明支持虚拟化指令;如果没有任何的输出，说明你的cpu不支持，将无法使用KVM虚拟机。</li><li>一般英特尔（Intel）的 CPU 会有 vmx 字符输出；AMD 的 CPU 会有 svm 字符输出；lm(KVM仅支持x84_64平台，lm即64位)</li></ul><pre><code>flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc eagerfpu pni pclmulqdq monitor vmx ssse3 cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single tpr_shadow flexpriority fsgsbase avx2 invpcid rdseed clflushopt md_clear flush_l1d
+</code></pre><h3 id=加载-kvm-模块>加载 KVM 模块</h3><ol start=7><li>确保BIOS里开启虚拟化功能，查看是否已加载KVM模块。</li></ol><pre><code>modprobe kvm
+</code></pre><pre><code>lsmod | grep kvm
+</code></pre><ul><li>正常情况下输出以下信息，均属于正常输出。</li></ul><pre><code>kvm_intel             170086  0
+kvm                   566340  1 kvm_intel
+irqbypass              13503  1 kvm
+</code></pre><pre><code>kvm_amd             170086  0
+kvm                   566340  1 kvm_amd
+irqbypass              13503  1 kvm
+</code></pre><pre><code>kvm                   637289  0 
+irqbypass              13503  1 kvm
+</code></pre><h3 id=安装桥接网络工具>安装桥接网络工具</h3><ol start=8><li>安装桥接网络工具，用于配置桥接网络。</li></ol><pre><code>yum -y install bridge-utils
+</code></pre><ol start=9><li>重启系统网络服务</li></ol><pre><code>systemctl restart network
+</code></pre><h3 id=关闭防火墙和一些安全设定>关闭防火墙和一些安全设定</h3><ol start=10><li>关闭防火墙</li></ol><pre><code>systemctl stop firewalld  
+systemctl disable firewalld
+</code></pre><blockquote><p>systemctl stop 表示后台停止服务
+systemctl start 表示后台启动服务
+systemctl disable 表示禁止开机启动服务
+systemctl enable 表示允许开机启动服务</p></blockquote><ul><li>查看防火墙状态是否关闭(inactive)</li></ul><pre><code>systemctl status firewalld
+</code></pre><ol start=11><li>关闭 SELinux</li></ol><pre><code>setenforce 0
+</code></pre><h3 id=安装-kvm-和相关管理工具>安装 KVM 和相关管理工具</h3><ol start=12><li>安装 KVM 和相关管理工具</li></ol><pre><code>yum install qemu-kvm libvirt qemu-kvm-tools qemu-img virt-install virt-manager virt-viewer -y
+</code></pre><ol start=13><li>启用 libvirtd 服务。</li></ol><pre><code>systemctl enable libvirtd
+systemctl start libvirtd
+systemctl status libvirtd
+</code></pre><blockquote><p>libvirt是目前使用最为广泛的对KVM虚拟机进行管理的工具和API。
+libvirtd 是服务器端 libvirt 的后台服务进程。</p></blockquote><ol start=14><li>检查 KVM 是否安装成功。运行以下命令查看虚拟机系统列表。</li></ol><pre><code>virsh -c qemu:///system list
+</code></pre><ul><li>正常情况会返回</li></ul><pre><code>Id    Name                         State
+----------------------------------------------------
+</code></pre><h3 id=配置网桥网络>配置网桥网络</h3><ol start=15><li>接下来我们将配置网卡的桥接，用于连接KVM上的虚拟机。首先进入以下目录。</li></ol><pre><code>cd /etc/sysconfig/network-scripts/
+</code></pre><ol start=16><li>查看你的网卡名称。</li></ol><pre><code>ls |grep ifcfg-
+</code></pre><ol start=17><li>复制你当前网卡配置文件。其中<code>ifcfg-enp0s3</code>替换为你的网卡名称（通常使用VMWare Workstation 的默认网卡配置名称为 ifcfg-ens33）。</li></ol><pre><code>cp ifcfg-enp0s3 ifcfg-br0
+</code></pre><ol start=18><li>修改复制出来的<code>ifcfg-br0</code>网卡配置文件，配置为桥接网卡。</li></ol><pre><code>vi /etc/sysconfig/network-scripts/ifcfg-br0
+</code></pre><ul><li>修改<code>TYPE="Ethernet"</code> 为<code>TYPE="Bridge"</code></li><li>修改<code>NAME="enp0s3"</code> 为<code>NAME="br0"</code></li><li>修改<code>DEVICE="enp0s3"</code> 为<code>DEVICE="br0"</code></li><li>在<code>UUID=</code> 这一行行首添加<code>#</code>进行注释</li></ul><p>修改以后内容类似以下：</p><pre><code>TYPE=&quot;Bridge&quot;
+PROXY_METHOD=&quot;none&quot;
+BROWSER_ONLY=&quot;no&quot;
+BOOTPROTO=&quot;none&quot;
+DEFROUTE=&quot;yes&quot;
+IPV4_FAILURE_FATAL=&quot;no&quot;
+IPV6INIT=&quot;yes&quot;
+IPV6_AUTOCONF=&quot;yes&quot;
+IPV6_DEFROUTE=&quot;yes&quot;
+IPV6_FAILURE_FATAL=&quot;no&quot;
+IPV6_ADDR_GEN_MODE=&quot;stable-privacy&quot;
+NAME=&quot;br0&quot;
+#UUID=&quot;015214e3-3bda-4a8c-b201-05168f20343b&quot;
+DEVICE=&quot;br0&quot;
+ONBOOT=&quot;yes&quot;
+IPADDR=&quot;10.0.0.70&quot;
+PREFIX=&quot;24&quot;
+GATEWAY=&quot;10.0.0.254&quot;
+DNS1=&quot;223.5.5.5&quot;
+IPV6_PRIVACY=&quot;no&quot;
+</code></pre><blockquote><p>桥接网卡：桥接技术通常用于给网卡再生成一个逻辑网口，可以让虚拟机连接新的网口。</p></blockquote><ol start=19><li>修改<code>ifcfg-enp0s3</code>网卡配置文件</li></ol><pre><code>vi /etc/sysconfig/network-scripts/ifcfg-enp0s3
+</code></pre><ul><li>在第2行新增一行，输入<code>BRIDGE=br0</code></li><li>在<code>IPADDR=</code> 这一行行首添加<code>#</code>进行注释</li><li>在<code>PREFIX=</code> 这一行行首添加<code>#</code>进行注释</li><li>在<code>GATEWAY=</code> 这一行行首添加<code>#</code>进行注释</li><li>在<code>DNS1=</code> 这一行行首添加<code>#</code>进行注释</li></ul><p>修改以后内容类似以下：</p><pre><code>TYPE=&quot;Ethernet&quot;
+BRIDGE=br0
+PROXY_METHOD=&quot;none&quot;
+BROWSER_ONLY=&quot;no&quot;
+BOOTPROTO=&quot;none&quot;
+DEFROUTE=&quot;yes&quot;
+IPV4_FAILURE_FATAL=&quot;no&quot;
+IPV6INIT=&quot;yes&quot;
+IPV6_AUTOCONF=&quot;yes&quot;
+IPV6_DEFROUTE=&quot;yes&quot;
+IPV6_FAILURE_FATAL=&quot;no&quot;
+IPV6_ADDR_GEN_MODE=&quot;stable-privacy&quot;
+NAME=&quot;enp0s3&quot;
+UUID=&quot;015214e3-3bda-4a8c-b201-05168f20343b&quot;
+DEVICE=&quot;enp0s3&quot;
+ONBOOT=&quot;yes&quot;
+#IPADDR=&quot;10.0.0.70&quot;
+#PREFIX=&quot;24&quot;
+#GATEWAY=&quot;10.0.0.254&quot;
+#DNS1=&quot;223.5.5.5&quot;
+IPV6_PRIVACY=&quot;no&quot;
+</code></pre><ol start=20><li>重启系统网络服务</li></ol><pre><code>systemctl restart network
+</code></pre><ol start=21><li>查看桥接网卡</li></ol><pre><code>brctl show
+</code></pre><blockquote><p>brctl 是以太网桥接管理命令</p></blockquote><ul><li>正常情况会显示类似信息</li></ul><pre><code>bridge name     bridge id               STP enabled     interfaces
+br0             8000.080027b70551       no              enp0s3
+virbr0          8000.525400e4b791       yes             virbr0-nic
+</code></pre><ol start=22><li>查看所有网卡信息</li></ol><pre><code> ifconfig|grep 'br0\|enp0s3'
+</code></pre><blockquote><p>没有此命令可以通过<code>yum install net-tools -y</code>来安装</p></blockquote><ul><li>正常情况下可以看到以下输出，多出来了<code>br0</code>和<code>virbr0</code>网卡。其中<code>br0</code>是我们新建的桥接网卡。<code>virbr0</code>是 KVM 创建的虚拟桥接网卡。</li><li>三个网卡的状态都应该是UP，表示正常工作状态。</li></ul><pre><code>br0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+enp0s3: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+virbr0: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500
+</code></pre><h3 id=新建-kvm-虚拟机-cirros>新建 KVM 虚拟机 cirros</h3><ol start=23><li>新建一个目录用于保存 KVM 虚拟机文件，并开放授权访问。</li></ol><pre><code>mkdir /kvm-images
+chmod 777 /kvm-images
+</code></pre><ol start=24><li>进入<code>/kvm-images</code>目录，上传<code>cirros-0.4.0-x86_64-disk.img</code>镜像文件。</li></ol><pre><code>cd  /kvm-images
+rz
+</code></pre><blockquote><p>rz 命令用于上传文件，如果没有可以用以下命令安装</p></blockquote><pre><code>yum install lrzsz -y
+</code></pre><ol start=25><li>修改<code>cirros-0.4.0-x86_64-disk.img</code>镜像文件权限。</li></ol><pre><code>chmod 777 /kvm-images/cirros-0.4.0-x86_64-disk.img
+</code></pre><blockquote><p>CirrOS 是一个迷你的 Linux 镜像，启动非常快，通常用于虚拟机测试。</p></blockquote><ol start=26><li>使用KVM 创建一个虚拟机。</li></ol><pre><code>virt-install --connect=qemu:///system --name=cirros --ram=256 --vcpus=1 --disk path=/kvm-images/cirros-0.4.0-x86_64-disk.img,format=qcow2 --import --bridge=br0  --vnc --vncport=5920 --vnclisten=0.0.0.0 --check path_in_use=off
+</code></pre><blockquote><p>命令解析：&ndash;name=虚拟机名称 &ndash;ram=内存大小 &ndash;vcpus=虚拟处理器核数 &ndash;disk path=虚拟磁盘地址 format=磁盘格式 &ndash;bridge=连接的网桥 &ndash;vncport=VNC的连接端口 &ndash;vnclisten=VNC监听地址</p></blockquote><blockquote><p>创建过程中如果出现“ERROR unsupported format character &lsquo;�&rsquo; (0xffffffe7) at index 47”，请忽略，这是软件的bug，不会影响创建的结果。</p></blockquote><ol start=27><li>使用命令查看<code>cirros</code>虚拟机的状态。</li></ol><pre><code>virsh list --all
+</code></pre><ol start=28><li>如果<code>cirros</code>虚拟机的状态为关闭，可以使用以下命令启动。</li></ol><pre><code>virsh start cirros
+</code></pre><ol start=29><li>使用以下命令查看<code>cirros</code>虚拟机的VNC服务器进程端口<code>5920</code>是否有信息输出。</li></ol><pre><code>yum install net-tools -y
+netstat -tulpn|grep 5920
+</code></pre><ol start=30><li><p>在宿主机 Windows 系统安装 VNC Viewer，过程略。</p></li><li><p>打开 VNC Viewer, 输入<code>10.0.0.70:5920</code>（注意这里的英文的冒号！）进行连接。
+<img src=/static/img/cloud-data-center-03/Snipaste_2021-09-16_02-24-40.jpg alt>
+<img src=/static/img/cloud-data-center-03/Snipaste_2021-09-16_02-29-24.jpg alt></p></li><li><p>在 VNC Viewer 使用以下账号登录<code>cirros</code>虚拟机。</p></li></ol><pre><code>用户名：cirros
+密码：gocubsgo
+</code></pre><ol start=33><li>修改<code>cirros</code>网卡设置。注意以下命令是在 VNC Viewer 下执行。</li></ol><pre><code>sudo vi /etc/network/interfaces
+</code></pre><ol start=34><li>修改网卡配置。注意以下命令是在 VNC Viewer 下执行。</li></ol><pre><code>auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+address 10.0.0.71
+netmask 255.255.255.0
+gateway 10.0.0.254
+</code></pre><ol start=35><li>重启网卡。注意以下命令是在 VNC Viewer 下执行。</li></ol><pre><code>sudo ifdown eth0 &amp; sudo ifup eth0
+</code></pre><ol start=36><li>回到 <code>Finalshell</code>，在宿主机<code>CentOS</code>输入以下内容，测试能否连通<code>cirros</code>。</li></ol><pre><code>ping 10.0.0.71
+</code></pre><blockquote><p>提示：ping命令可以使用 <code>Ctrl</code>+<code>C</code> 组合键来中止。</p></blockquote><ul><li>正常连通应该有类似以下信息返回</li></ul><pre><code>PING 10.0.0.71 (10.0.0.71) 56(84) bytes of data.
+64 bytes from 10.0.0.71: icmp_seq=1 ttl=64 time=1.52 ms
+64 bytes from 10.0.0.71: icmp_seq=2 ttl=64 time=0.883 ms
+</code></pre><ul><li>无法连通情况会返回如下消息</li></ul><pre><code>From 10.0.0.71 icmp_seq=1 Destination Host Unreachable
+</code></pre><ol start=37><li>在<code>Finalshell</code> 使用 ssh 命令连接<code>cirros</code>，并使用以上 cirros账号进行登录。</li></ol><pre><code>ssh cirros@10.0.0.71
+</code></pre><ol start=38><li>在<code>Finalshell</code>登录进入<code>cirros</code>虚拟机以后输入以下命令。请替换以下输出内容为你的学号和姓名拼音。</li></ol><pre><code>echo 你的学号和姓名拼音
+</code></pre><ol start=39><li>在<code>Finalshell</code>输入以下命令，退出<code>cirros</code>。</li></ol><pre><code>exit
+</code></pre><ol start=40><li>在<code>Finalshell</code>输入以下命令，关闭<code>cirros</code>。</li></ol><pre><code>virsh shutdown cirros
+</code></pre><ol start=41><li>在<code>Finalshell</code>输入以下命令，查看<code>cirros</code>状态。</li></ol><pre><code>virsh list --all
+</code></pre><h2 id=实验名称实验32-kvm-安装-centos选做加分>【实验名称】实验3.2 KVM 安装 CentOS（选做，加分）</h2><h2 id=实验目的-1>【实验目的】</h2><ul><li>掌握 KVM 安装CentOS</li></ul><h2 id=实验环境-1>【实验环境】</h2><ul><li>CentOS 7.X</li><li>FinalShell</li></ul><h2 id=实验资源-1>【实验资源】</h2><ul><li>CentOS 7.9 Minimal iso镜像文件</li></ul><h2 id=实验步骤-1>【实验步骤】</h2><ol><li>创建一个新的目录，用于 KVM 安装 CentOS。</li></ol><pre><code>mkdir /kvm-images/centos-vm
+chmod 777 /kvm-images/centos-vm
+</code></pre><ol start=2><li>进入刚创建的目录，上传<code>CentOS-7-x86_64-Minimal-2009.iso</code>到该目录，并修改权限为777。</li></ol><pre><code>cd /kvm-images/centos-vm
+</code></pre><blockquote><p>上传可以使用rz命令，或者直接使用 FinalShell 上传
+<img src=/static/img/cloud-data-center-03/Snipaste_2021-09-17_09-42-46.jpg alt></p></blockquote><ol start=3><li>创建虚拟磁盘，并格式化。</li></ol><pre><code>qemu-img create -f qcow2 /kvm-images/centos-vm/centos-vm.qcow2 5G
+</code></pre><ul><li>正常会返回类似以下信息</li></ul><pre><code>Formatting '/kvm-images/centos-vm/centos-vm.qcow2', fmt=qcow2 size=3221225472 encryption=off cluster_size=65536 lazy_refcounts=off
+</code></pre><ol start=4><li>修改磁盘和镜像文件的权限为777。</li></ol><pre><code>chmod 777 /kvm-images/centos-vm/CentOS-7-x86_64-Minimal-2009.iso
+chmod 777 /kvm-images/centos-vm/centos-vm.qcow2
+</code></pre><ol start=5><li>使用以下命令安装 CentOS，虚拟机名称为<code>centos-vm</code>。</li></ol><pre><code>virt-install --name centos-vm \
+--ram=1024 --arch=x86_64 --vcpus=1 \
+--check-cpu --os-type=linux \
+--os-variant='rhel7' -c /kvm-images/centos-vm/CentOS-7-x86_64-Minimal-2009.iso \
+--disk path=/kvm-images/centos-vm/centos-vm.qcow2,device=disk,bus=virtio,size=6,format=qcow2 \
+--bridge=br0 --noautoconsole --vnc --vncport=5922 --vnclisten=0.0.0.0
+</code></pre><ol start=6><li>在<code>Finalshell</code>输入以下命令，查看<code>centos-vm</code>状态。</li></ol><pre><code>virsh list --all
+</code></pre><ol start=7><li><p>使用 VNCViewer 连接<code>10.0.0.70:5922</code>。可能窗口加载会比较慢。稍等一会将会出现 CentOS 的安装界面。
+<img src=/static/img/cloud-data-center-03/Snipaste_2021-09-17_09-59-14.jpg alt></p></li><li><p>安装选择语言，可以参考 Part1。</p></li><li><p>时区设置部分参考以下步骤。
+<img src=/static/img/cloud-data-center-03/Snipaste_2021-09-17_10-13-11.jpg alt></p></li><li><p>语言设置部分参考以下步骤。
+<img src=/static/img/cloud-data-center-03/Snipaste_2021-09-17_10-15-11.jpg alt>
+<img src=/static/img/cloud-data-center-03/Snipaste_2021-09-17_10-14-19.jpg alt></p></li><li><p>禁用 KDUMP。
+<img src=/static/img/cloud-data-center-03/Snipaste_2021-09-17_10-16-12.jpg alt>
+<img src=/static/img/cloud-data-center-03/Snipaste_2021-09-17_10-15-35.jpg alt></p></li><li><p>磁盘分区如下，步骤参考Part1。</p></li></ol><pre><code>swap分区：512M
+/boot 分区：300M
+/ 根分区：剩余所有空间
+</code></pre><ol start=13><li><p>网卡设置部分。
+<img src=/static/img/cloud-data-center-03/Snipaste_2021-09-17_10-12-51.jpg alt>
+<img src=/static/img/cloud-data-center-03/Snipaste_2021-09-17_10-05-13.jpg alt>
+<img src=/static/img/cloud-data-center-03/Snipaste_2021-10-05_10-09-28.jpg alt></p></li><li><p>开始安装，此过程可能需要三小时以上，实验时请适当评估时间。
+<img src=/static/img/cloud-data-center-03/Snipaste_2021-09-17_10-18-32.jpg alt></p></li><li><p>设置以下2个用户。
+<img src=/static/img/cloud-data-center-03/Snipaste_2021-09-17_10-23-13.jpg alt></p></li></ol><pre><code>#root用户
+用户名：root
+密码：123456
+
+#cdcvm用户
+用户名：cdcvm
+密码123456
+</code></pre><ol start=16><li>安装完成以后，请分别使用 VNC Viewer 或 SSH 登录<code>centos-vm</code>虚拟机。</li></ol><h2 id=常用命令>【常用命令】</h2><h3 id=virsh>virsh</h3><ul><li>查看正在运行的 KVM 的虚拟机</li></ul><pre><code>virsh list
+</code></pre><ul><li>查看所有状态的 KVM 的虚拟机</li></ul><pre><code>virsh list --all
+</code></pre><ul><li>启动 KVM 虚拟机</li></ul><pre><code>virsh start 虚拟机名
+</code></pre><ul><li>正常关闭 KVM 虚拟机</li></ul><pre><code>virsh shutdown 虚拟机名
+</code></pre><ul><li>立即中止 KVM 虚拟机（相当于断电）</li></ul><pre><code>virsh destroy 虚拟机名
+</code></pre><ul><li>移除 KVM 虚拟机</li></ul><pre><code>virsh undefine 虚拟机名
+</code></pre><ul><li>编辑 KVM 虚拟机配置</li></ul><pre><code>virsh edit 虚拟机名
+</code></pre><ul><li>重启虚拟机</li></ul><pre><code>virsh reboot 虚拟机名
+</code></pre><ul><li>虚拟机随宿主机启动</li></ul><pre><code>virsh autostart 虚拟机名
+</code></pre><h2 id=常见问题>【常见问题】</h2><h3 id=1-cirros-虚拟机无法正常启动提示not-syncing-i0-apic--timer-doesnt-work的错误>1. cirros 虚拟机无法正常启动，提示<code>not syncing: I0-APIC + timer doesn't work</code>的错误。</h3><p><img src=/static/img/cloud-data-center-03/apic-error.png alt></p><p>答：需要通过修改内核启动参数，跳过 APIC 检查。</p><ul><li>（1）重新启动cirros</li></ul><pre><code>virsh destroy cirros
+virsh start cirros
+</code></pre><ul><li>（2）使用 VNC 连接<code>10.0.0.70:5920</code></li><li>（3）在进入 grub 引导界面后，不断按下<code>Esc</code>键，随即会跳转到内核参数编辑界面。
+<img src=/static/img/cloud-data-center-03/Snipaste_2022-10-15_18-03-21.jpg alt></li><li>（4）进入内核参数编辑界面，按下<code>e</code>键进行编辑。
+<img src=/static/img/cloud-data-center-03/Snipaste_2022-10-15_18-03-59.jpg alt></li><li>（5）按方向键下<code>↓</code>，选中<code>kernel</code>，按下<code>e</code>键进行编辑。
+<img src=/static/img/cloud-data-center-03/Snipaste_2022-10-15_18-04-20.jpg alt></li><li>（6）在现有参数基础上加上以下参数（参数要有空格隔开），禁止系统进行时间检查和 APIC检查。编辑完按下<code>Enter</code>。</li></ul><pre><code> no_timer_check noapic
+</code></pre><p><img src=/static/img/cloud-data-center-03/Snipaste_2022-10-15_18-04-57.jpg alt></p><ul><li><p>（7）按下<code>b</code>键重新启动，应该可以进入到 cirros 系统登录界面。
+<img src=/static/img/cloud-data-center-03/Snipaste_2022-10-15_18-05-19.jpg alt></p></li><li><p>（8）进入 cirros 系统以后，编辑内核启动参数，实现以后每次启动都禁用时间检查。</p></li></ul><pre><code>sudo vi /boot/grub/menu.lst
+</code></pre><p><img src=/static/img/cloud-data-center-03/Snipaste_2022-10-15_18-18-13.jpg alt></p><ul><li>（9）进入 cirros 系统以后，编辑内核启动参数，实现以后每次启动都禁用时间检查。</li></ul><pre><code>sudo vi /boot/grub/menu.lst
+</code></pre><ul><li>找到<code>console=XXXX</code>字样，在后面加上以下参数，并保存。</li></ul><pre><code> no_timer_check noapic
+</code></pre><p><img src=/static/img/cloud-data-center-03/Snipaste_2022-10-15_18-20-30.jpg alt></p><ul><li>（10）编辑网络检查的启动脚本<code>S40network</code>。</li></ul><pre><code>sudo vi /etc/init.d/S40network
+</code></pre><ul><li>在第9行开头加入<code>#</code>注释，减少 DHCP 获取时间。</li></ul><p><img src=/static/img/cloud-data-center-03/Snipaste_2022-10-15_18-24-26.jpg alt></p><ul><li>（11）重启 cirros</li></ul><pre><code>sudo reboot
+</code></pre><h3 id=2-使用-ping-命令无法连通-kvm-虚拟机-cirrosping-100071失败>2. 使用 ping 命令无法连通 KVM 虚拟机 cirros，<code>ping 10.0.0.71</code>失败。</h3><p>答：</p><ul><li>（1）首先查看 cirros 的状态是否为<code>running</code></li></ul><pre><code>virsh list --all
+</code></pre><ul><li>（2）使用 VNC 进入 cirros，查看 IP 是否为 10.0.0.71。</li></ul><pre><code>ip addr
+</code></pre><ul><li>（3）在CentOS上重启 cirros。</li></ul><pre><code>virsh reboot cirros
+</code></pre><h3 id=3-vmware-开启嵌套虚拟化失败提示类似此平台不支持虚拟化的intel-vt-xept-或-amd-v消息>3. VMWare 开启嵌套虚拟化失败，提示类似<code>此平台不支持虚拟化的Intel VT-X/EPT 或 AMD-V</code>消息。</h3><p>答：这是因为 VMWare Workstation 和微软 Windows上的 Hyper-V 不兼容导致的，需要关闭 Windows 的 Hyper-V 功能。</p><ul><li>（1）在<code>控制面板</code>-><code>程序</code>-<code>打开或关闭Windows功能</code> 下，去掉<code>Hyper-V</code>选项。</li></ul><p><img src=/static/img/cloud-data-center-03/Snipaste_2022-11-05_14-50-58.jpg alt></p><ul><li><p>（2）按下WIN+R组合键打开“运行”，然后输入services.msc回车。在 Windows 的服务禁用 <code>Hyper-V</code>服务。
+<img src=/static/img/cloud-data-center-03/Snipaste_2022-11-05_14-52-50.jpg alt>
+<img src=/static/img/cloud-data-center-03/Snipaste_2022-11-05_14-54-16.jpg alt></p></li><li><p>（3）在Windows 的 CMD 下执行命令彻底关闭 Hyper-V。</p></li></ul><pre><code>bcdedit /set hypervisorlaunchtype off
+bcdedit /set hypervisorlaunchtype auto
+</code></pre><ul><li>（4）重启电脑。</li></ul></div><div class=my-4><a href=/tags/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#数据中心</a>
+<a href=/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#云计算</a></div><div class=py-2><div class="flex flex-col md:flex-row items-center my-8"><a href=/authors/heis/ class="w-24 h-24 md:mr-4"><img src=/static/img/authors/heis.png class="w-full bg-primary-bg rounded-full" alt=Avatar></a><div class="w-full md:w-auto mt-4 md:mt-0"><a href=/authors/heis/ class="block font-bold text-lg pb-1 mb-2 border-b">黄老师</a>
+<span class="block pb-2"></span><a href=mailto:heishuangzy@qq.com class=mr-1><i class="fas fa-envelope"></i></a><a href=https://gitee.com/heis/ class=mr-1><i class="fab fa-git"></i></a><a href=http://heis.gitee.io/ class=mr-1><i class="fas fa-blog"></i></a></div></div></div><div id=btmQrcode></div><p style=text-align:center>扫码或长按识别访问</p><script src=/static/js/qrcode.min.js></script><script type=text/javascript>function getURL(){var url=window.location.href;if(window.location.hash!=""){url=url.substring(0,url.indexOf("#"));}
+return url;}
+new QRCode(document.getElementById("btmQrcode"),{text:getURL(),width:192,height:192,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});</script><div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t"><div id=presec><span class="block font-bold">上一页</span>
+<a href=/docs/cloud-data-center-v2/cloud-data-center-02/ class=block>Part 2 - Linux 虚拟化常用命令</a></div><div id=nextsec class="md:text-right mt-4 md:mt-0"><span class="block font-bold">下一页</span>
+<a href=/docs/cloud-data-center-v2/cloud-data-center-04/ class=block>Part 4 - OpenStack的安装</a></div></div></div><div class="hidden lg:block lg:w-1/4"><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-secondary-bg pt-16 -mt-16"><span class="text-lg font-semibold">本页内容</span></div><div class="sticky-toc hidden lg:block px-6 pb-6 pt-10 -mt-10 border-l"><nav id=TableOfContents><ul><li><a href=#版本>【版本】</a></li><li><a href=#实验名称实验31-kvm-的安装使用>【实验名称】实验3.1 KVM 的安装使用</a></li><li><a href=#实验目的>【实验目的】</a></li><li><a href=#实验环境>【实验环境】</a></li><li><a href=#实验资源>【实验资源】</a></li><li><a href=#实验步骤>【实验步骤】</a><ul><li><a href=#开启虚拟化嵌套>开启虚拟化嵌套</a></li><li><a href=#提升虚拟机cpu和内存配置>提升虚拟机CPU和内存配置</a></li><li><a href=#检查-cpu-是否支持虚拟化特性>检查 CPU 是否支持虚拟化特性</a></li><li><a href=#加载-kvm-模块>加载 KVM 模块</a></li><li><a href=#安装桥接网络工具>安装桥接网络工具</a></li><li><a href=#关闭防火墙和一些安全设定>关闭防火墙和一些安全设定</a></li><li><a href=#安装-kvm-和相关管理工具>安装 KVM 和相关管理工具</a></li><li><a href=#配置网桥网络>配置网桥网络</a></li><li><a href=#新建-kvm-虚拟机-cirros>新建 KVM 虚拟机 cirros</a></li></ul></li><li><a href=#实验名称实验32-kvm-安装-centos选做加分>【实验名称】实验3.2 KVM 安装 CentOS（选做，加分）</a></li><li><a href=#实验目的-1>【实验目的】</a></li><li><a href=#实验环境-1>【实验环境】</a></li><li><a href=#实验资源-1>【实验资源】</a></li><li><a href=#实验步骤-1>【实验步骤】</a></li><li><a href=#常用命令>【常用命令】</a><ul><li><a href=#virsh>virsh</a></li></ul></li><li><a href=#常见问题>【常见问题】</a><ul><li><a href=#1-cirros-虚拟机无法正常启动提示not-syncing-i0-apic--timer-doesnt-work的错误>1. cirros 虚拟机无法正常启动，提示<code>not syncing: I0-APIC + timer doesn't work</code>的错误。</a></li><li><a href=#2-使用-ping-命令无法连通-kvm-虚拟机-cirrosping-100071失败>2. 使用 ping 命令无法连通 KVM 虚拟机 cirros，<code>ping 10.0.0.71</code>失败。</a></li><li><a href=#3-vmware-开启嵌套虚拟化失败提示类似此平台不支持虚拟化的intel-vt-xept-或-amd-v消息>3. VMWare 开启嵌套虚拟化失败，提示类似<code>此平台不支持虚拟化的Intel VT-X/EPT 或 AMD-V</code>消息。</a></li></ul></li></ul></nav></div><script>window.addEventListener('DOMContentLoaded',()=>{enableStickyToc();});</script></div></div></div></div></div><div id=outerdiv><div id=innerdiv><img id=bigimg src></div></div><div id=popOuterDiv><div id=popDiv style=display:none><div class=close><span onclick="$('#popDiv').hide();"></span></div><p id=popCtn></p></div></div><div id=nav_top_icon style=display:none></div><div id=list_note_icon></div><script>$(function(){var scrollTop=$(window).scrollTop();if(scrollTop>0){$("#nav_top_icon").show(200);}
+window.onscroll=function(){scrollTop=$(window).scrollTop();if(scrollTop==0){$("#nav_top_icon").hide(200);}else{$("#nav_top_icon").show(200);}}
+$("#nav_top_icon").click(function(){$("body,html").animate({scrollTop:0},500);});$("#list_note_icon").click(function(){$("#popOuterDiv").toggle();$("#popDiv").slideToggle();$("#popCtn").html($("#TableOfContents").html());})
+$("#popOuterDiv").click(function(){$("#popOuterDiv").hide();$("#popDiv").slideUp();})});document.addEventListener('DOMContentLoaded',()=>{hljs.highlightAll();hljs.initLineNumbersOnLoad({singleLine:true});changeSidebarHeight();switchDocToc();$("img").css("cursor:pointer")
+$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});$("ol").each(function(index){if(/\d{1,4}/.test($(this).attr("start"))){let idx=parseInt($(this).attr("start"));let lis=$(this).find("li");if(lis.length>0){lis.each(function(index){$(this).attr("id","step"+(idx+index));});}else{$(this).attr("id","step"+idx);}}});});</script><script src=/static/js/clipboard.min.js></script><script src=/static/js/codecopy.bundle.js?942></script></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text">&copy; 2021 <a href=https://www.wangchucheng.com/>C. Wang</a> and <a href=https://www.ruiqima.com/>R. Ma</a>
+&#183; Powered by the <a href=https://github.com/wangchucheng/hugo-eureka class=hover:text-eureka>Eureka</a> theme for <a href=https://gohugo.io class=hover:text-eureka>Hugo</a></p></div></div></footer></body></html>

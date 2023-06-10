@@ -1,0 +1,167 @@
+<!doctype html><html lang=zh><meta charset=utf-8><meta name=viewport content="width=device-width"><title>Part 2 - Linux 虚拟化常用命令 | 《云数据中心基础》V2版 | Heis</title><meta name=generator content="Hugo Eureka 0.8.4"><link rel=stylesheet href=/css/eureka.min.css><script defer src=/js/eureka.min.js></script><script src=/static/js/jquery-3.6.0.min.js></script><script src=/static/js/heis.js?230321></script><link rel=stylesheet href=/static/css/heis.css?230321 media=all onload="this.media='all';this.onload=null" crossorigin><link rel=stylesheet href=/static/css/print.css?230413 media=print crossorigin><link rel=stylesheet href=/static/css/highlight-css/solarized-light.min.css media=print onload="this.media='all';this.onload=null" crossorigin><script defer src=/static/js/highlight.min.js crossorigin></script><script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script><script defer src=/static/js/highlightjs-line-numbers.min.js></script><link rel=icon type=image/png sizes=32x32 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_32x32_fill_box_center_2.png><link rel=apple-touch-icon sizes=180x180 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_180x180_fill_box_center_2.png><meta name=description content="云数据中心基础 Part 2 - Linux 虚拟化常用命令"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"课程文档","item":"/docs/"},{"@type":"ListItem","position":2,"name":"《云数据中心基础》V2版","item":"/docs/cloud-data-center-v2/"},{"@type":"ListItem","position":3,"name":"Part 2 - Linux 虚拟化常用命令","item":"/docs/cloud-data-center-v2/cloud-data-center-02/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/docs/cloud-data-center-v2/cloud-data-center-02/"},"headline":"Part 2 - Linux 虚拟化常用命令 | 《云数据中心基础》V2版 | Heis","datePublished":"2021-09-01T00:44:00+08:00","dateModified":"2021-09-01T00:44:00+08:00","wordCount":3728,"author":{"@type":"Person","name":"heis"},"publisher":{"@type":"Person","name":"C. Wang","logo":{"@type":"ImageObject","url":"/images/icon.png"}},"description":"云数据中心基础 Part 2 - Linux 虚拟化常用命令"}</script><meta property="og:title" content="Part 2 - Linux 虚拟化常用命令 | 《云数据中心基础》V2版 | Heis"><meta property="og:type" content="article"><meta property="og:image" content="/images/icon.png"><meta property="og:url" content="/docs/cloud-data-center-v2/cloud-data-center-02/"><meta property="og:description" content="云数据中心基础 Part 2 - Linux 虚拟化常用命令"><meta property="og:locale" content="zh"><meta property="og:site_name" content="Heis"><meta property="article:published_time" content="2021-09-01T00:44:00+08:00"><meta property="article:modified_time" content="2021-09-01T00:44:00+08:00"><meta property="article:section" content="docs"><meta property="article:tag" content="数据中心"><meta property="article:tag" content="云计算"><meta property="og:see_also" content="/docs/cloud-data-center/cloud-data-center-02/"><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?f58b6a2675cf52000232edb4d109eccc";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><body class="flex flex-col min-h-screen"><header id=headerctn class="fixed flex items-center w-full pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode")
+if(((storageColorScheme=='Auto'||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches)||storageColorScheme=="Dark"){document.getElementsByTagName('html')[0].classList.add('dark')}</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="mr-6 text-primary-text text-xl font-bold">Heis</a>
+<button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+<i class="fas fa-bars"></i></button><div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20"><div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0"><a href=/posts/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">文章</a>
+<a href=/docs/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 selected-menu-item mr-4">课程文档</a>
+<a href=/go class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">导航</a></div><div class=flex><div class="relative pt-4 md:pt-0"><div class="cursor-pointer hover:text-eureka" id=lightDarkMode><i class="fas fa-adjust"></i></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id=is-open></div><div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40" id=lightDarkOptions><span class="px-4 py-1 hover:text-eureka" name=Light>浅色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Dark>深色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Auto>自动</span></div></div></div></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id=is-open-mobile></div></nav><script>let element=document.getElementById('lightDarkMode')
+if(storageColorScheme==null||storageColorScheme=='Auto'){document.addEventListener('DOMContentLoaded',()=>{window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change',switchDarkMode)})}else if(storageColorScheme=="Light"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'sun')
+element.firstElementChild.classList.add('fa-sun')}else if(storageColorScheme=="Dark"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'moon')
+element.firstElementChild.classList.add('fa-moon')}
+document.addEventListener('DOMContentLoaded',()=>{getcolorscheme();switchBurger();});</script></div></header><main class="flex-grow pt-16"><div class=pl-scrollbar><div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto"><div id=doc-container class=lg:pt-12><div class="flex flex-col md:flex-row bg-secondary-bg rounded"><div class="md:w-1/4 lg:w-1/5 border-r"><div class="sticky top-16 pt-6"><div id=sidebar-title class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text"><span class=font-semibold>目录</span>
+<i class="fas fa-caret-right ml-1"></i></div><div id=sidebar-toc class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent"><div class="flex flex-wrap ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded"><a class=hover:text-eureka href=/docs/cloud-data-center-v2/>《云数据中心基础》V2版</a></div><ul class=pl-6><li class=py-2><div><a class=hover:text-eureka href=/docs/cloud-data-center-v2/cloud-data-center-01/>Part 1 - 虚拟化软件安装 Linux 服务器版本</a></div></li><li class=py-2><div><a class="text-eureka hover:text-eureka" href=/docs/cloud-data-center-v2/cloud-data-center-02/>Part 2 - Linux 虚拟化常用命令</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/cloud-data-center-v2/cloud-data-center-03/>Part 3 - 服务器虚拟化部署</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/cloud-data-center-v2/cloud-data-center-04/>Part 4 - OpenStack的安装</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/cloud-data-center-v2/cloud-data-center-05/>Part 5 - 虚拟机自动化部署</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/cloud-data-center-v2/cloud-data-center-06/>Part 6 - Docker部署和管理</a></div></li></ul></div></div></div><div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8"><div id=doc-tit class="w-full lg:w-3/4 pl-6 ml-0 mr-auto"><h1 class="font-bold text-3xl text-primary-text">Part 2 - Linux 虚拟化常用命令</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i><span>2021-09-01</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i><span>8分钟阅读时长</span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i><a href=/categories/clouddc/ class=hover:text-eureka>clouddc</a></div></div></div><div class=flex><div class="w-full lg:w-3/4 px-6"><div class=content><p><a href=../>«返回课程汇总页面</a></p><h2 id=版本>【版本】</h2><p>当前版本号<code>v20210926</code></p><div class=tbl-start></div><table><thead><tr><th>版本</th><th>修改说明</th></tr></thead><tbody><tr><td>v20210926</td><td>添加常见问题，修正从网盘下载bsdiff</td></tr><tr><td>v20210922</td><td>修改实验2.7 hadoop用户为cdc用户，修正部分命令错误</td></tr><tr><td>v20210920</td><td>添加常见问题</td></tr><tr><td>v20210901</td><td>初始化版本</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h2 id=实验21-目录管理命令>实验2.1 目录管理命令</h2><h2 id=实验目的>【实验目的】</h2><ul><li>掌握目录相关的 Linux 命令的使用</li></ul><h2 id=实验环境>【实验环境】</h2><ul><li>CentOS 7.X</li></ul><h2 id=实验实例>【实验实例】</h2><ol><li><p>启动实验1制作的虚拟机。</p></li><li><p>使用 Final Shell 连接虚拟机，并使用 cdc 用户登录。</p></li><li><p>登录以后，查看当前所在路径。</p></li></ol><pre><code>pwd
+</code></pre><blockquote><p>一般用户登录以后都默认进入当前用户的主目录 /home/用户名</p></blockquote><ol start=4><li>创建一个新的目录</li></ol><pre><code>mkdir dir1
+</code></pre><ol start=5><li>进入 dir1 目录</li></ol><pre><code>cd dir1
+</code></pre><ol start=6><li>进入 dir1 目录</li></ol><pre><code>cd dir1
+</code></pre><ol start=7><li>返回上一级目录。</li></ol><pre><code>cd ..
+</code></pre><ol start=8><li>删除 dir1 这个空目录</li></ol><pre><code>rmdir dir1
+</code></pre><h2 id=实验要求>【实验要求】</h2><ol><li>在 cdc 用户的主目录下创建以下结构的目录。</li></ol><pre><code>/
+|-home
+  |-cdc
+    |-dir2
+       |-dir21
+         |-dir211
+</code></pre><ol start=2><li><p>请把 <code>/home/cdc</code> 下的所有空目录删除</p></li><li><p>请在实验报告详细记录你的每一步的命令和结果。</p></li></ol><blockquote><p>提示：可以了解 mkdir -p</p></blockquote><hr><h2 id=实验22-相对路径和绝对路径>实验2.2 相对路径和绝对路径</h2><h2 id=实验目的-1>【实验目的】</h2><ul><li>掌握 Linux 的相对路径和绝对路径访问方式</li></ul><h2 id=实验环境-1>【实验环境】</h2><ul><li>CentOS 7.X</li></ul><h2 id=实验实例-1>【实验实例】</h2><ol><li>以下为一些特殊目录</li></ol><pre><code>. 代表此层目录
+.. 代表上一层目录
+- 代表前一个工作目录
+~ 代表 “ 目前使用者身份 ” 所在的主文件夹
+</code></pre><ol start=2><li>进入根目录，查看根目录下所有目录。</li></ol><pre><code>cd /
+ls
+</code></pre><ol start=3><li>进入相对路径目录</li></ol><pre><code>cd var/tmp
+</code></pre><ol start=4><li>查看当前目录</li></ol><pre><code>pwd
+</code></pre><ol start=5><li>进入前一个访问过的目录，并查看当前目录。</li></ol><pre><code>cd -
+pwd
+</code></pre><ol start=6><li>直接通过绝对路径进入目录。</li></ol><pre><code>cd /var/tmp
+pwd
+</code></pre><h2 id=实验要求-1>【实验要求】</h2><ol><li>在 cdc 用户的主目录下创建以下结构的目录。</li></ol><pre><code>/
+|-home
+  |-cdc
+    |-dir3
+       |-dir31
+       |-dir32
+</code></pre><ol start=2><li><p>进入工作目录<code>/home/cdc/dir3/dir32</code>，使用相对路径删除空目录<code>dir31</code>。</p></li><li><p>使用绝对路径删除空目录<code>dir32</code>。</p></li><li><p>请在实验报告详细记录你的每一步的命令和结果。</p></li></ol><hr><h2 id=实验23-文件创建复制删除与移动>实验2.3 文件创建、复制、删除与移动</h2><h2 id=实验目的-2>【实验目的】</h2><ul><li>掌握 Linux 文件复制、删除与移动相关命令</li></ul><h2 id=实验环境-2>【实验环境】</h2><ul><li>CentOS 7.X</li></ul><h2 id=实验实例-2>【实验实例】</h2><ol><li>在 cdc 用户的主目录下创建文件<code>file1</code></li></ol><pre><code>cd ~
+</code></pre><pre><code>touch file1
+</code></pre><ol start=2><li>复制文件<code>file1</code>为<code>file2</code>。并查看是否复制成功</li></ol><pre><code>cp file1 file2
+ls
+</code></pre><ol start=3><li>移动（重命名）<code>file1</code> 为 <code>file1.txt</code></li></ol><pre><code>mv file1 file1.txt
+</code></pre><ol start=4><li>删除<code>file2</code>，按下y确认删除。</li></ol><pre><code>rm file2
+</code></pre><h2 id=实验要求-2>【实验要求】</h2><ol><li>在 cdc 用户的主目录下创建文件<code>file3</code>。</li><li>复制<code>file3</code> 到 <code>/var/tmp</code> 目录下，并改名为<code>file4</code>。</li><li>删除<code>file4</code>。</li><li>请在实验报告详细记录你的每一步的命令和结果。</li></ol><hr><h2 id=实验24-文件内容的编辑和查看>实验2.4 文件内容的编辑和查看</h2><h2 id=实验目的-3>【实验目的】</h2><ul><li>掌握 Linux 文件内容的编辑的相关命令</li></ul><h2 id=实验环境-3>【实验环境】</h2><ul><li>CentOS 7.X</li></ul><h2 id=实验实例-3>【实验实例】</h2><ol><li>在 cdc 用户的主目录下创建一个文件，并同时写入内容。</li></ol><pre><code>cd ~
+echo 'life is like a box of chocolates' &gt; life.txt
+</code></pre><ol start=2><li>使用cat 命令输出<code>life.txt</code>内容。</li></ol><pre><code>cat life.txt
+</code></pre><h2 id=实验要求-3>【实验要求】</h2><ol><li>承接上面实例，使用<code>vi</code>修改<code>life.txt</code>，在文件第2行加如以下内容。</li></ol><pre><code>You never know what gonna get.
+</code></pre><ol start=2><li>请在实验报告详细记录你的每一步的命令和结果。</li></ol><hr><h2 id=实验25-软件的安装与卸载>实验2.5 软件的安装与卸载</h2><h2 id=实验目的-4>【实验目的】</h2><ul><li>掌握 CentOS 的软件的安装与卸载</li></ul><h2 id=实验环境-4>【实验环境】</h2><ul><li>CentOS 7.X</li></ul><h2 id=实验实例-4>【实验实例】</h2><ol><li>提升到 root 权限，输入 root 的密码。</li></ol><pre><code>su
+</code></pre><ol start=2><li>安装配置 MariaDB</li></ol><pre><code>yum install mariadb mariadb-server -y
+</code></pre><blockquote><p>安装成功应该会展示类似以下内容。</p></blockquote><ul><li>中文界面</li></ul><pre><code>已安装:
+  mariadb.x86_64 3:10.1.20-1.el7                               
+  mariadb-server.x86_64 3:10.1.20-1.el7                        
+
+完毕！
+</code></pre><ul><li>英文界面</li></ul><pre><code>installed:
+mariadb.x86 64 3:18.1.20-1.e17 mariadb-server.x86 64 3:10.1.29-1.e17
+
+Dependency Installed:
+mariadb-common.x8664 3:10.1.29-1.e17 mariadb-errmsg.x8664 3:18.1.29-1.e17  mariadb-conf ig.x8664 3:18.1.28-1.e17
+
+Dependencu Updated:
+mariadb-libs.x8664 3:18.1.28-1.e17
+
+Complete!
+</code></pre><ol start=3><li>新建 MariaDB 的配置文件。</li></ol><pre><code>echo '[mysqld]
+bind-address = 10.0.0.70
+default-storage-engine = innodb
+innodb_file_per_table
+max_connections = 4096
+collation-server = utf8_general_ci
+character-set-server = utf8'  &gt;/etc/my.cnf.d/cdc.cnf
+</code></pre><ol start=4><li>设置 MariaDB 为开机启动</li></ol><pre><code>systemctl enable mariadb
+</code></pre><ol start=5><li>启动<code>MariaDB</code></li></ol><pre><code>systemctl start mariadb
+</code></pre><ol start=6><li>开始 MariaDB 安全配置和初始化。</li></ol><pre><code>mysql_secure_installation
+</code></pre><ol start=7><li>根据以下提示进行输入，修改 MariaDB 的 root 用户密码为123456。</li></ol><pre><code>Enter current password for root (enter for none): -&gt; 直接回车
+Set root password? [Y/n] -&gt; 输入y
+New password:   -&gt; 输入123456
+Re-enter new password:  -&gt; 输入123456
+Remove anonymous users? [Y/n] -&gt; 输入y
+Disallow root login remotely? [Y/n]  -&gt; 输入y
+Remove test database and access to it? [Y/n] -&gt; 输入y
+Reload privilege tables now? [Y/n] -&gt; 输入y
+</code></pre><ol start=8><li>重新启动<code>MariaDB</code></li></ol><pre><code>systemctl restart mariadb
+</code></pre><ol start=9><li>查看<code>MariaDB</code>状态是否为active</li></ol><pre><code>systemctl status mariadb
+</code></pre><ol start=10><li>使用root连接<code>MariaDB</code>，输入密码123456。</li></ol><pre><code>mysql -u root -p
+</code></pre><ol start=11><li>使用<code>exit</code>命令退出<code>MariaDB</code>命令行。</li></ol><pre><code>MariaDB [(none)]&gt; exit;
+</code></pre><h2 id=实验要求-4>【实验要求】</h2><ol><li><p>使用<code>systemctl stop</code>命令停止<code>MariaDB</code>进程。</p></li><li><p>使用<code>yum remove</code>命令移除<code>MariaDB</code>相关组件。</p></li><li><p>移除<code>/etc/my.cnf.d/cdc.cnf</code>配置文件。</p></li><li><p>请在实验报告详细记录你的每一步的命令和结果。</p></li></ol><hr><h2 id=实验26-端口和进程的查看>实验2.6 端口和进程的查看</h2><h2 id=实验目的-5>【实验目的】</h2><ul><li>掌握 CentOS 查看端口和进程的命令</li></ul><h2 id=实验环境-5>【实验环境】</h2><ul><li>CentOS 7.X</li></ul><h2 id=实验要求-5>【实验要求】</h2><ol><li><p>使用<code>yum</code>命令重新安装<code>MariaDB</code>。</p></li><li><p>使用<code>yum</code>命令安装命令<code>lsof</code>、<code>vim</code>。</p></li><li><p>使用cp命令备份<code>/etc/my.cnf.d/cdc.cnf</code>到<code>/etc/my.cnf.d/cdc.cnf.bak</code></p></li><li><p>使用vim 修改<code>/etc/my.cnf.d/cdc.cnf</code>为以下内容。</p></li></ol><pre><code>[mysql]
+default-character-set = utf8mb4
+
+[mysqld]
+bind-address = 10.0.0.70
+default-storage-engine = innodb
+innodb_file_per_table
+max_connections = 4096
+collation-server = utf8mb4_unicode_ci
+character-set-server = utf8mb4
+</code></pre><ol start=5><li><p>重启<code>MariaDB</code>。</p></li><li><p>使用<code>lsof -i:3306</code>命令查看3306端口的进程是否存在。</p></li><li><p>使用<code>netstat -tulpn|grep 3306</code>命令查看3306端口的进程是否存在。</p></li></ol><blockquote><p>如果提示没有找到命令，可以用以下命令安装</p></blockquote><pre><code>yum install net-tools -y
+</code></pre><ol start=8><li><p>使用 <code>MariaDB</code> 的root 用户进行登录。</p></li><li><p>请在实验报告详细记录你的每一步的命令和结果。</p></li></ol><h2 id=实验27-实现完全备份差异备份和增量备份>实验2.7 实现完全备份、差异备份和增量备份</h2><h2 id=实验目的-6>【实验目的】</h2><ul><li>掌握完全备份、差异备份和增量备份三者的概念和区别</li><li>掌握 bsdiff 和 bspatch 命令的使用</li></ul><h2 id=实验说明>【实验说明】</h2><ul><li>bsdiff 是用于比较2个二进制文件之间的差异的命令，并且可以生成差异补丁（patch）文件。</li><li>bspatch 是可以通过应用补丁（patch）文件把文件进行恢复。</li></ul><h2 id=实验环境-6>【实验环境】</h2><ul><li>内存：至少4G</li><li>硬盘：至少空余40G</li><li>操作系统: 64位 Windows系统。</li></ul><h2 id=实验资源>【实验资源】</h2><ul><li>FinalShell</li><li>CentOS 7.9系统镜像</li><li>VirtualBox 6 或 VMWare Workstation</li><li>bsdiff-4.3.tar.gz</li></ul><pre><code>链接：https://pan.baidu.com/s/1kw7nT7dbonUTSlPqIHVwhQ 
+提取码：heis
+</code></pre><h2 id=实验步骤>【实验步骤】</h2><h3 id=安装-bsdiff-和-bspatch>安装 bsdiff 和 bspatch</h3><ol><li>使用 cdc 用户登录虚拟机，并查看当前用户名。</li></ol><pre><code>whoami
+</code></pre><ol start=2><li>安装一些 bsdiff 需要的编译和依赖包。</li></ol><pre><code>sudo yum -y install gcc automake autoconf libtool make bzip2-devel 
+</code></pre><blockquote><p>注意前面的<code>sudo</code> 命令是提升至root权限去运行后面的yum命令，这里需要输入密码。</p></blockquote><ol start=3><li>从实验资源网盘下载<code>bsdiff-4.3.tar.gz</code>，通过 FinalShell 上传到 cdc 用户的工作目录<code>/home/cdc</code>。</li></ol><pre><code>cd ~
+rz
+</code></pre><blockquote><p><code>rz</code>命令是用于文件上传，如果rz命令失效，可以使用 FinalShell 自带的上传功能进行上传。</p></blockquote><p><img src=/static/img/cloud-data-center-01/Snipaste_2022-08-24_15-07-01.jpg alt></p><ol start=4><li>解压<code>bsdiff-4.3.tar.gz</code>。</li></ol><pre><code>tar -zxvf bsdiff-4.3.tar.gz
+</code></pre><ol start=5><li>进入解压出来的目录，修改<code>Makefile</code>。</li></ol><pre><code>cd bsdiff-4.3
+</code></pre><pre><code>vi Makefile
+</code></pre><ol start=6><li>在<code>Makefile</code>倒数第1和倒数第3行的首字符前，分别加入一个<code>tab</code>符号。</li></ol><ul><li>修改前</li></ul><pre><code>install:
+        ${INSTALL_PROGRAM} bsdiff bspatch ${PREFIX}/bin
+.ifndef WITHOUT_MAN
+        ${INSTALL_MAN} bsdiff.1 bspatch.1 ${PREFIX}/man/man1
+.endif
+</code></pre><pre><code>install:
+        ${INSTALL_PROGRAM} bsdiff bspatch ${PREFIX}/bin
+        .ifndef WITHOUT_MAN
+        ${INSTALL_MAN} bsdiff.1 bspatch.1 ${PREFIX}/man/man1
+        .endif
+</code></pre><ol start=7><li>编译生成命令 bsdiff 和 bspatch</li></ol><pre><code>make
+</code></pre><ul><li>正常会输出以下内容</li></ul><pre><code>cc -O3 -lbz2    bsdiff.c   -o bsdiff
+cc -O3 -lbz2    bspatch.c   -o bspatch
+</code></pre><ol start=8><li>查看是否命令已经编译成功，并保存载目录下。</li></ol><pre><code>ls
+</code></pre><ol start=9><li>把目录移到<code>/usr/local/sbin/</code>目录，该目录已经声明在环节变量 PATH 中，可以在任何地方调用该目录下的命令。</li></ol><pre><code>sudo cp bsdiff bspatch /usr/local/sbin/
+</code></pre><h3 id=bsdiff-和-bspatch-命令示范>bsdiff 和 bspatch 命令示范</h3><ol start=10><li><p>下载并上传<code>chp1_2_data.tar</code>到 hadoop 用户的工作目录。</p></li><li><p>解压该压缩包。</p></li></ol><pre><code>tar -xvf chp1_2_data.tar
+</code></pre><ol start=12><li>解压以后，查看目录下有3个文件，分别代表第1天（Day1.txt），第2天（Day2.txt），第3天（Day3.txt）的内容。</li></ol><pre><code>Day1.txt  Day2.txt  Day3.txt
+
+</code></pre><ol start=13><li>通过 bsdiff 的帮忙命令查看命令的使用方法</li></ol><pre><code>bsdiff -h
+</code></pre><ul><li>从以下输出的内容来看，bsdiff的第1个参数是旧文件名，第2个参数是新的文件名，第三个参数是补丁文件名。</li></ul><pre><code>usage: bsdiff oldfile newfile patchfile
+</code></pre><ol start=14><li>通过 bspatch 的帮忙命令查看命令的使用方法</li></ol><pre><code>bspatch -h
+</code></pre><ul><li>从以下输出的内容来看，bspatch的第1个参数是旧文件名，第2个参数是新的文件名，第三个参数是补丁文件名。</li></ul><pre><code>usage: bspatch oldfile newfile patchfile
+</code></pre><ol start=15><li>使用 <code>cat</code>和<code>diff</code> 命令查看 Day1.txt 和 Day2.txt 的内容差异。</li></ol><pre><code>cat Day1.txt
+cat Day2.txt
+diff Day1.txt Day2.txt
+</code></pre><blockquote><p>diff 如果没有任何输出，表示2个文件内容相同。</p></blockquote><ol start=16><li>使用 bsdiff 计算 Day1.txt 和 Day2.txt 的差异补丁<code>Day2-Day1.patch</code>。</li></ol><pre><code>bsdiff Day1.txt Day2.txt Day2-Day1.patch
+</code></pre><ol start=17><li>对比 Day1.txt、Day2.txt、Day2-Day1.patch 三个文件的大小</li></ol><pre><code>ll  Day1.txt Day2.txt Day2-Day1.patch
+</code></pre><p><img src=/static/img/cloud-data-center-01/Snipaste_2022-08-24_15-56-02.jpg alt></p><ol start=18><li>使用 bspatch在 Day1.txt 上应用差异补丁，还原 Day2 的内容。</li></ol><pre><code>bspatch Day1.txt Day2-recov.txt Day2-Day1.patch
+</code></pre><ol start=19><li>使用 <code>cat</code>和<code>diff</code> 命令对比 Day2.txt 和 Day2-recov.txt 的内容，查看是否有差异。</li></ol><h2 id=实验要求-6>【实验要求】</h2><p>请同学们参考上面的例子，按以下要求完成实验。</p><ol><li><p>创建目录<code>fullbackup</code>，使用命令分别完全备份Day1、Day2、Day3的内容到该目录下。</p></li><li><p>创建目录<code>diffbackup</code>，使用命令实现以下备份到该目录下。</p></li></ol><ul><li>完全备份 Day1</li><li>比较并生成 Day2 与 Day1 的差异补丁<code>Day2-Day1.patch</code>，并使用该补丁恢复出文件<code>Day2-recov.txt</code>，比较恢复文件和 Day2.txt 的区别。</li><li>比较并生成 Day3 与 Day1 的差异补丁<code>Day3-Day1.patch</code>，并使用该补丁恢复出文件<code>Day3-recov.txt</code>，比较恢复文件和 Day3.txt 的区别。</li></ul><ol start=3><li>创建目录<code>increbackup</code>，使用命令实现以下备份到该目录下。</li></ol><ul><li>完全备份 Day1</li><li>比较并生成 Day2 与 Day1 的差异补丁<code>Day2-Day1.patch</code>。</li><li>比较并生成 Day3 与 Day2 的差异补丁<code>Day3-Day2.patch</code>。</li><li>使用上面2个差异补丁，恢复出文件<code>Day3-dump.txt</code>，比较恢复文件和 Day3.txt 的区别。</li></ul><blockquote><p>提示：创建目录命令为 mkdir</p></blockquote><h2 id=常见问题>【常见问题】</h2><h3 id=1-安装软件失败提示error-dowloading-packages或者-errno-256-no-more-mirrors-to-try>1. 安装软件失败提示<code>Error dowloading packages</code>或者 <code>[Errno 256] No more mirrors to try.</code></h3><p>答：这是因为没有正确挂载光盘内的镜像文件导致的。重新挂载就可以了。</p><pre><code>mount /dev/cdrom /mnt
+</code></pre><h3 id=2-安装-mariadb-出错执行命令yum-install-mariadb-mariadb-server--y-提示no-module-named-sqlitecachec>2. 安装 MariaDB 出错，执行命令<code>yum install mariadb mariadb-server -y</code> 提示“No module named sqlitecachec”。</h3><p>答：这是因为没有安装上<code>yum-metadata-parser</code>包。</p><ul><li>（1）执行以下命令完成<code>yum-metadata-parser</code>包的安装。</li></ul><pre><code>sudo rpm -ivh /mnt/Packages/yum-metadata-parser-1.1.4-10.el7.x86_64.rpm --force
+</code></pre><ul><li>（2）执行清理操作，重新安装 MariaDB。</li></ul><pre><code>yum clean all
+yum install mariadb mariadb-server -y
+</code></pre><h3 id=3-安装软件不成功提示error-downloading-packages-或者-no-more-mirrors-to-try>3. 安装软件不成功，提示“Error downloading packages:” 或者“ No more mirrors to try”</h3><p>答：</p><ul><li><p>（1）检查虚拟光驱是否已经插入镜像文件。
+<img src=/static/img/cloud-data-center-01/Snipaste_2022-09-03_15-24-50.jpg alt>
+<img src=/static/img/cloud-data-center-01/Snipaste_2022-09-03_17-09-12.jpg alt></p></li><li><p>（2）解挂，再重新挂载。</p></li></ul><pre><code>umount /mnt
+</code></pre><pre><code>mount /dev/cdrom /mnt
+</code></pre><ul><li>（3）检查源的内容是否正确。</li></ul><pre><code>cat /etc/yum.repos.d/local.repo 
+</code></pre><blockquote><p>正常会展示以下内容</p></blockquote><pre><code>[local]
+name=local
+baseurl=file:///mnt
+gpgcheck=0
+</code></pre><ul><li>（4）清理源缓存</li></ul><pre><code>yum makecache
+</code></pre><ul><li>（5）重新执行安装命令</li></ul></div><div class=my-4><a href=/tags/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#数据中心</a>
+<a href=/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#云计算</a></div><div class=py-2><div class="flex flex-col md:flex-row items-center my-8"><a href=/authors/heis/ class="w-24 h-24 md:mr-4"><img src=/static/img/authors/heis.png class="w-full bg-primary-bg rounded-full" alt=Avatar></a><div class="w-full md:w-auto mt-4 md:mt-0"><a href=/authors/heis/ class="block font-bold text-lg pb-1 mb-2 border-b">黄老师</a>
+<span class="block pb-2"></span><a href=mailto:heishuangzy@qq.com class=mr-1><i class="fas fa-envelope"></i></a><a href=https://gitee.com/heis/ class=mr-1><i class="fab fa-git"></i></a><a href=http://heis.gitee.io/ class=mr-1><i class="fas fa-blog"></i></a></div></div></div><div id=btmQrcode></div><p style=text-align:center>扫码或长按识别访问</p><script src=/static/js/qrcode.min.js></script><script type=text/javascript>function getURL(){var url=window.location.href;if(window.location.hash!=""){url=url.substring(0,url.indexOf("#"));}
+return url;}
+new QRCode(document.getElementById("btmQrcode"),{text:getURL(),width:192,height:192,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});</script><div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t"><div id=presec><span class="block font-bold">上一页</span>
+<a href=/docs/cloud-data-center-v2/cloud-data-center-01/ class=block>Part 1 - 虚拟化软件安装 Linux 服务器版本</a></div><div id=nextsec class="md:text-right mt-4 md:mt-0"><span class="block font-bold">下一页</span>
+<a href=/docs/cloud-data-center-v2/cloud-data-center-03/ class=block>Part 3 - 服务器虚拟化部署</a></div></div></div><div class="hidden lg:block lg:w-1/4"><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-secondary-bg pt-16 -mt-16"><span class="text-lg font-semibold">本页内容</span></div><div class="sticky-toc hidden lg:block px-6 pb-6 pt-10 -mt-10 border-l"><nav id=TableOfContents><ul><li><a href=#版本>【版本】</a></li><li><a href=#实验21-目录管理命令>实验2.1 目录管理命令</a></li><li><a href=#实验目的>【实验目的】</a></li><li><a href=#实验环境>【实验环境】</a></li><li><a href=#实验实例>【实验实例】</a></li><li><a href=#实验要求>【实验要求】</a></li><li><a href=#实验22-相对路径和绝对路径>实验2.2 相对路径和绝对路径</a></li><li><a href=#实验目的-1>【实验目的】</a></li><li><a href=#实验环境-1>【实验环境】</a></li><li><a href=#实验实例-1>【实验实例】</a></li><li><a href=#实验要求-1>【实验要求】</a></li><li><a href=#实验23-文件创建复制删除与移动>实验2.3 文件创建、复制、删除与移动</a></li><li><a href=#实验目的-2>【实验目的】</a></li><li><a href=#实验环境-2>【实验环境】</a></li><li><a href=#实验实例-2>【实验实例】</a></li><li><a href=#实验要求-2>【实验要求】</a></li><li><a href=#实验24-文件内容的编辑和查看>实验2.4 文件内容的编辑和查看</a></li><li><a href=#实验目的-3>【实验目的】</a></li><li><a href=#实验环境-3>【实验环境】</a></li><li><a href=#实验实例-3>【实验实例】</a></li><li><a href=#实验要求-3>【实验要求】</a></li><li><a href=#实验25-软件的安装与卸载>实验2.5 软件的安装与卸载</a></li><li><a href=#实验目的-4>【实验目的】</a></li><li><a href=#实验环境-4>【实验环境】</a></li><li><a href=#实验实例-4>【实验实例】</a></li><li><a href=#实验要求-4>【实验要求】</a></li><li><a href=#实验26-端口和进程的查看>实验2.6 端口和进程的查看</a></li><li><a href=#实验目的-5>【实验目的】</a></li><li><a href=#实验环境-5>【实验环境】</a></li><li><a href=#实验要求-5>【实验要求】</a></li><li><a href=#实验27-实现完全备份差异备份和增量备份>实验2.7 实现完全备份、差异备份和增量备份</a></li><li><a href=#实验目的-6>【实验目的】</a></li><li><a href=#实验说明>【实验说明】</a></li><li><a href=#实验环境-6>【实验环境】</a></li><li><a href=#实验资源>【实验资源】</a></li><li><a href=#实验步骤>【实验步骤】</a><ul><li><a href=#安装-bsdiff-和-bspatch>安装 bsdiff 和 bspatch</a></li><li><a href=#bsdiff-和-bspatch-命令示范>bsdiff 和 bspatch 命令示范</a></li></ul></li><li><a href=#实验要求-6>【实验要求】</a></li><li><a href=#常见问题>【常见问题】</a><ul><li><a href=#1-安装软件失败提示error-dowloading-packages或者-errno-256-no-more-mirrors-to-try>1. 安装软件失败提示<code>Error dowloading packages</code>或者 <code>[Errno 256] No more mirrors to try.</code></a></li><li><a href=#2-安装-mariadb-出错执行命令yum-install-mariadb-mariadb-server--y-提示no-module-named-sqlitecachec>2. 安装 MariaDB 出错，执行命令<code>yum install mariadb mariadb-server -y</code> 提示“No module named sqlitecachec”。</a></li><li><a href=#3-安装软件不成功提示error-downloading-packages-或者-no-more-mirrors-to-try>3. 安装软件不成功，提示“Error downloading packages:” 或者“ No more mirrors to try”</a></li></ul></li></ul></nav></div><script>window.addEventListener('DOMContentLoaded',()=>{enableStickyToc();});</script></div></div></div></div></div><div id=outerdiv><div id=innerdiv><img id=bigimg src></div></div><div id=popOuterDiv><div id=popDiv style=display:none><div class=close><span onclick="$('#popDiv').hide();"></span></div><p id=popCtn></p></div></div><div id=nav_top_icon style=display:none></div><div id=list_note_icon></div><script>$(function(){var scrollTop=$(window).scrollTop();if(scrollTop>0){$("#nav_top_icon").show(200);}
+window.onscroll=function(){scrollTop=$(window).scrollTop();if(scrollTop==0){$("#nav_top_icon").hide(200);}else{$("#nav_top_icon").show(200);}}
+$("#nav_top_icon").click(function(){$("body,html").animate({scrollTop:0},500);});$("#list_note_icon").click(function(){$("#popOuterDiv").toggle();$("#popDiv").slideToggle();$("#popCtn").html($("#TableOfContents").html());})
+$("#popOuterDiv").click(function(){$("#popOuterDiv").hide();$("#popDiv").slideUp();})});document.addEventListener('DOMContentLoaded',()=>{hljs.highlightAll();hljs.initLineNumbersOnLoad({singleLine:true});changeSidebarHeight();switchDocToc();$("img").css("cursor:pointer")
+$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});$("ol").each(function(index){if(/\d{1,4}/.test($(this).attr("start"))){let idx=parseInt($(this).attr("start"));let lis=$(this).find("li");if(lis.length>0){lis.each(function(index){$(this).attr("id","step"+(idx+index));});}else{$(this).attr("id","step"+idx);}}});});</script><script src=/static/js/clipboard.min.js></script><script src=/static/js/codecopy.bundle.js?168></script></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text">&copy; 2021 <a href=https://www.wangchucheng.com/>C. Wang</a> and <a href=https://www.ruiqima.com/>R. Ma</a>
+&#183; Powered by the <a href=https://github.com/wangchucheng/hugo-eureka class=hover:text-eureka>Eureka</a> theme for <a href=https://gohugo.io class=hover:text-eureka>Hugo</a></p></div></div></footer></body></html>
