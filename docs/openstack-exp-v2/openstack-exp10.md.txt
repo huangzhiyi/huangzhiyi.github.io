@@ -1,0 +1,231 @@
++++
+Description = "云计算部署实战 Part 9 - 增加一个计算节点"
+Tags = ["openstack","部署"]
+Categories = ["openstack"]
+date = "2021-03-09T16:42:51+08:00"
+draft = false
+title = "Part 10 - 增加一个计算节点"
+toc = true
+authors = "heis"
+weight = 950
++++
+
+
+## 【版本】
+
+当前版本号`v20230701`
+<div class="tbl-start"></div>
+
+|版本|修改说明|
+|-|-|
+|v20230701|文档基于 RockyLinux8 和 Openstack Yoga 开发|
+
+<div class="tbl-end" style="height:10px"></div>
+
+## 任务10 - 增加一个计算节点
+
+## 【实验目的】
+- 掌握配置Openstack计算节点，让计算节点组成集群。
+
+## 【实验环境】
+- 内存：至少4G
+- 硬盘：至少空余40G
+- 操作系统: 64位 Windows系统。
+
+## 【实验资源】
+- FinalShell
+- CentOS 7 系统镜像
+- VirtualBox
+- Openstack 源
+
+## 【实验步骤】
+1. 从模板机克隆出一台新的虚拟机作为新的计算节点。命令可参考之前步骤。以下步骤如果没有特别说明，都在新的计算节点上执行。
+
+2. 把虚拟机 Hostname 命名为`computerB+你学号后3位`。注意替换为你的学号。命令可参考之前步骤。
+
+3. 设置新的计算节点的IP为`10.0.0.32`。命令可参考之前[Part 2 步骤6](../openstack-exp2#step6)。
+
+4. 控制节点和2个计算节点的`hosts`统一配置为如下文本。命令可参考之前[Part 2 步骤8](../openstack-exp2#step8)。
+```
+10.0.0.11 controller+你学号后3位
+10.0.0.31 computer+你学号后3位
+10.0.0.32 computerB+你学号后3位
+```
+
+5. 配置 chrony 和控制节点同步。命令可参考之前[Part 2 步骤9](../openstack-exp2#step9)。
+
+### 安装nova-compute
+
+6. 安装 nova-compute 和 Openstack-utils。
+```
+dnf install openstack-nova-compute -y
+dnf install openstack-utils -y
+```
+
+### nova.conf配置
+
+7. 备份 Nova 的配置文件。
+```
+cp /etc/nova/nova.conf{,.bak}
+grep '^[a-Z\[]' /etc/nova/nova.conf.bak >/etc/nova/nova.conf
+```
+
+8. 修改相应服务的配置文件。注意替换你的学号。
+```
+openstack-config --set /etc/nova/nova.conf DEFAULT enabled_apis  osapi_compute,metadata
+openstack-config --set /etc/nova/nova.conf DEFAULT transport_url  rabbit://openstack:RABBIT_PASS@controller+你的学号后3位
+openstack-config --set /etc/nova/nova.conf DEFAULT my_ip  10.0.0.31
+openstack-config --set /etc/nova/nova.conf DEFAULT compute_driver libvirt.LibvirtDriver
+openstack-config --set /etc/nova/nova.conf  DEFAULT verbose  True
+openstack-config --set /etc/nova/nova.conf  DEFAULT debug  True
+openstack-config --set /etc/nova/nova.conf  DEFAULT log_dir  /var/log/nova
+openstack-config --set /etc/nova/nova.conf  DEFAULT instances_path /var/lib/nova/instances
+openstack-config --set /etc/nova/nova.conf api auth_strategy  keystone
+openstack-config --set /etc/nova/nova.conf keystone_authtoken www_authenticate_uri  http://controller+你的学号后3位:5000/
+openstack-config --set /etc/nova/nova.conf keystone_authtoken auth_url  http://controller+你的学号后3位:5000/
+openstack-config --set /etc/nova/nova.conf keystone_authtoken memcached_servers  controller+你的学号后3位:11211
+openstack-config --set /etc/nova/nova.conf keystone_authtoken auth_type  password
+openstack-config --set /etc/nova/nova.conf keystone_authtoken project_domain_name  Default
+openstack-config --set /etc/nova/nova.conf keystone_authtoken user_domain_name  Default
+openstack-config --set /etc/nova/nova.conf keystone_authtoken project_name  service
+openstack-config --set /etc/nova/nova.conf keystone_authtoken username  nova
+openstack-config --set /etc/nova/nova.conf keystone_authtoken password  NOVA_PASS
+openstack-config --set /etc/nova/nova.conf service_user send_service_user_token  true
+openstack-config --set /etc/nova/nova.conf service_user auth_url  http://controller+你的学号后3位:5000/identity
+openstack-config --set /etc/nova/nova.conf service_user auth_strategy  keystone
+openstack-config --set /etc/nova/nova.conf service_user auth_type  password
+openstack-config --set /etc/nova/nova.conf service_user project_domain_name  Default
+openstack-config --set /etc/nova/nova.conf service_user project_name  service
+openstack-config --set /etc/nova/nova.conf service_user user_domain_name  Default
+openstack-config --set /etc/nova/nova.conf service_user username  nova
+openstack-config --set /etc/nova/nova.conf service_user password  NOVA_PASS
+openstack-config --set /etc/nova/nova.conf vnc enabled  true
+openstack-config --set /etc/nova/nova.conf vnc server_listen  0.0.0.0
+openstack-config --set /etc/nova/nova.conf vnc server_proxyclient_address  $my_ip
+openstack-config --set /etc/nova/nova.conf vnc novncproxy_base_url  http://10.0.0.11:6080/vnc_auto.html
+openstack-config --set /etc/nova/nova.conf glance api_servers  http://controller+你的学号后3位:9292
+openstack-config --set /etc/nova/nova.conf oslo_concurrency lock_path  /var/lib/nova/tmp
+openstack-config --set /etc/nova/nova.conf placement region_name  RegionOne
+openstack-config --set /etc/nova/nova.conf placement project_domain_name  Default
+openstack-config --set /etc/nova/nova.conf placement project_name  service
+openstack-config --set /etc/nova/nova.conf placement auth_type  password
+openstack-config --set /etc/nova/nova.conf placement user_domain_name  Default
+openstack-config --set /etc/nova/nova.conf placement auth_url  http://controller+你的学号后3位:5000/v3
+openstack-config --set /etc/nova/nova.conf placement username  placement
+openstack-config --set /etc/nova/nova.conf placement password  PLACEMENT_PASS
+openstack-config --set /etc/nova/nova.conf libvirt virt_type  qemu
+openstack-config --set /etc/nova/nova.conf libvirt cpu_mode none
+```
+
+### 启动服务
+
+9. 启动 libvirtd 服务，并设置为开机启动。此处需要启动你的控制节点，否则无法正常启动`openstack-nova-compute`。
+```
+systemctl enable libvirtd openstack-nova-compute
+systemctl start libvirtd openstack-nova-compute
+```
+
+10. 安装相关网络工具和驱动。
+```
+dnf install openstack-neutron-linuxbridge ebtables ipset -y
+```
+
+### neutron.conf配置
+
+11. 备份`neutron.conf`配置。
+```
+cp /etc/neutron/neutron.conf{,.bak}
+grep '^[a-Z\[]' /etc/neutron/neutron.conf.bak >/etc/neutron/neutron.conf
+```
+
+12. 修改`neutron.conf`，注意替换你的学号。
+```
+openstack-config --set /etc/neutron/neutron.conf  DEFAULT transport_url  rabbit://openstack:RABBIT_PASS@controller+你的学号后3位
+openstack-config --set /etc/neutron/neutron.conf  DEFAULT auth_strategy  keystone
+openstack-config --set /etc/neutron/neutron.conf  keystone_authtoken www_authenticate_uri  http://controller+你的学号后3位:5000
+openstack-config --set /etc/neutron/neutron.conf  keystone_authtoken auth_url  http://controller+你的学号后3位:5000
+openstack-config --set /etc/neutron/neutron.conf  keystone_authtoken memcached_servers  controller:11211
+openstack-config --set /etc/neutron/neutron.conf  keystone_authtoken auth_type  password
+openstack-config --set /etc/neutron/neutron.conf  keystone_authtoken project_domain_name  default
+openstack-config --set /etc/neutron/neutron.conf  keystone_authtoken user_domain_name  default
+openstack-config --set /etc/neutron/neutron.conf  keystone_authtoken project_name  service
+openstack-config --set /etc/neutron/neutron.conf  keystone_authtoken username  neutron
+openstack-config --set /etc/neutron/neutron.conf  keystone_authtoken password  NEUTRON_PASS
+openstack-config --set /etc/neutron/neutron.conf  oslo_concurrency lock_path  /var/lib/neutron/tmp
+```
+
+13. 查看你的主机 IP 对应的网口编号。如果修改过为`eth0`，未修改过一般为`ens33`。
+```
+ip a
+```
+![](/static/img/openstack-v2-exp07/Snipaste_2021-03-04_12-54-08.png)
+
+14. 修改`linuxbridge_agent.ini`配置，注意替换网口编号
+```
+openstack-config --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini linux_bridge physical_interface_mappings provider:替换为你的网口编号
+openstack-config --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini vxlan enable_vxlan false
+openstack-config --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini securitygroup enable_security_group true
+openstack-config --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini securitygroup firewall_driver neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
+```
+
+15. 修改 nova 配置，增加 neutron 相关配置，注意替换你的学号。
+```
+openstack-config --set /etc/nova/nova.conf neutron url http://controller:9696
+openstack-config --set /etc/nova/nova.conf neutron auth_url http://controller+你的学号后3位:5000
+openstack-config --set /etc/nova/nova.conf neutron auth_type password
+openstack-config --set /etc/nova/nova.conf neutron project_domain_name default
+openstack-config --set /etc/nova/nova.conf neutron user_domain_name default
+openstack-config --set /etc/nova/nova.conf neutron region_name RegionOne
+openstack-config --set /etc/nova/nova.conf neutron project_name service
+openstack-config --set /etc/nova/nova.conf neutron username neutron
+openstack-config --set /etc/nova/nova.conf neutron password NEUTRON_PASS
+```
+
+### br_netfilter 模块
+> br_netfilter 是一个核心模块用于实现 Linux 系统内网桥的支持。
+
+16. 开启`br_netfilter` 模块。
+```
+modprobe br_netfilter
+```
+
+17. 设置随开机启动。
+```
+echo 'net.bridge.bridge-nf-call-iptables = 1' >> /etc/sysctl.conf
+echo 'net.bridge.bridge-nf-call-ip6tables = 1' >> /etc/sysctl.conf
+echo 'modprobe br_netfilter' > /etc/sysconfig/modules/br_netfilter.modules
+```
+
+18. 设置权限
+```
+chmod 755 /etc/sysconfig/modules/br_netfilter.modules
+```
+
+19. 查看模块是否已经启用。
+```
+lsmod |grep br_netfilter
+```
+- 如果出现以下结果，则表示已经启用
+```
+br_netfilter           24576  0
+bridge                290816  1 br_netfilter
+```
+
+### 启动 Neutron 服务
+
+20. 启动服务
+```
+systemctl restart openstack-nova-compute
+systemctl enable neutron-linuxbridge-agent
+systemctl start neutron-linuxbridge-agent
+```
+
+21. 在 Dashboard 查看是否有新的计算节点加入。
+![](/static/img/openstack-exp09/Snipaste_2021-03-10_01-14-04.png)
+
+22. 请搜索参考网上资料，实现在指定新的计算节点上创建一个名为`cirros+你学号后3位`的实例。
+<div class="warning">注意新的实例需要通过命令方式指定运行在新的计算节点上。</div>
+
+23. 登录新的实例，输出系统 hostname 和 IP。
+
+## 【思考和探索】
