@@ -1,0 +1,187 @@
+<!doctype html><html lang=zh><meta charset=utf-8><meta name=viewport content="width=device-width"><title>常见问题 FAQ | 《云计算部署实战》v2版 | Heis</title><meta name=generator content="Hugo Eureka 0.8.4"><link rel=stylesheet href=/css/eureka.min.css><script defer src=/js/eureka.min.js></script><script src=/static/js/jquery-3.6.0.min.js></script><script src=/static/js/heis.js?230321></script><link rel=stylesheet href=/static/css/heis.css?230321 media=all onload="this.media='all';this.onload=null" crossorigin><link rel=stylesheet href=/static/css/print.css?230413 media=print crossorigin><link rel=stylesheet href=/static/css/highlight-css/solarized-light.min.css media=print onload="this.media='all';this.onload=null" crossorigin><script defer src=/static/js/highlight.min.js crossorigin></script><script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script><script defer src=/static/js/highlightjs-line-numbers.min.js></script><link rel=icon type=image/png sizes=32x32 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_32x32_fill_box_center_2.png><link rel=apple-touch-icon sizes=180x180 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_180x180_fill_box_center_2.png><meta name=description content="在任务完成的过程中遇到的常见问题"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"课程文档","item":"/docs/"},{"@type":"ListItem","position":2,"name":"《云计算部署实战》v2版","item":"/docs/openstack-exp-v2/"},{"@type":"ListItem","position":3,"name":"常见问题 FAQ","item":"/docs/openstack-exp-v2/faq/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/docs/openstack-exp-v2/faq/"},"headline":"常见问题 FAQ | 《云计算部署实战》v2版 | Heis","datePublished":"2021-03-09T16:42:51+08:00","dateModified":"2021-03-09T16:42:51+08:00","wordCount":3900,"author":{"@type":"Person","name":"heis"},"publisher":{"@type":"Person","name":"C. Wang","logo":{"@type":"ImageObject","url":"/images/icon.png"}},"description":"在任务完成的过程中遇到的常见问题"}</script><meta property="og:title" content="常见问题 FAQ | 《云计算部署实战》v2版 | Heis"><meta property="og:type" content="article"><meta property="og:image" content="/images/icon.png"><meta property="og:url" content="/docs/openstack-exp-v2/faq/"><meta property="og:description" content="在任务完成的过程中遇到的常见问题"><meta property="og:locale" content="zh"><meta property="og:site_name" content="Heis"><meta property="article:published_time" content="2021-03-09T16:42:51+08:00"><meta property="article:modified_time" content="2021-03-09T16:42:51+08:00"><meta property="article:section" content="docs"><meta property="article:tag" content="openstack"><meta property="article:tag" content="部署"><meta property="og:see_also" content="/docs/openstack-exp-v2/openstack-exp10/"><meta property="og:see_also" content="/docs/openstack-exp-v2/commands/"><meta property="og:see_also" content="/docs/openstack-exp-v2/openstack-exp09/"><meta property="og:see_also" content="/docs/openstack-exp-v2/openstack-exp08/"><meta property="og:see_also" content="/docs/openstack-exp-v2/openstack-exp07/"><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?f58b6a2675cf52000232edb4d109eccc";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><body class="flex flex-col min-h-screen"><header id=headerctn class="fixed flex items-center w-full pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode")
+if(((storageColorScheme=='Auto'||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches)||storageColorScheme=="Dark"){document.getElementsByTagName('html')[0].classList.add('dark')}</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="mr-6 text-primary-text text-xl font-bold">Heis</a>
+<button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+<i class="fas fa-bars"></i></button><div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20"><div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0"><a href=/posts/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">文章</a>
+<a href=/docs/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 selected-menu-item mr-4">课程文档</a>
+<a href=/go class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">导航</a></div><div class=flex><div class="relative pt-4 md:pt-0"><div class="cursor-pointer hover:text-eureka" id=lightDarkMode><i class="fas fa-adjust"></i></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id=is-open></div><div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40" id=lightDarkOptions><span class="px-4 py-1 hover:text-eureka" name=Light>浅色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Dark>深色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Auto>自动</span></div></div></div></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id=is-open-mobile></div></nav><script>let element=document.getElementById('lightDarkMode')
+if(storageColorScheme==null||storageColorScheme=='Auto'){document.addEventListener('DOMContentLoaded',()=>{window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change',switchDarkMode)})}else if(storageColorScheme=="Light"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'sun')
+element.firstElementChild.classList.add('fa-sun')}else if(storageColorScheme=="Dark"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'moon')
+element.firstElementChild.classList.add('fa-moon')}
+document.addEventListener('DOMContentLoaded',()=>{getcolorscheme();switchBurger();});</script></div></header><main class="flex-grow pt-16"><div class=pl-scrollbar><div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto"><div id=doc-container class=lg:pt-12><div class="flex flex-col md:flex-row bg-secondary-bg rounded"><div class="md:w-1/4 lg:w-1/5 border-r"><div class="sticky top-16 pt-6"><div id=sidebar-title class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text"><span class=font-semibold>目录</span>
+<i class="fas fa-caret-right ml-1"></i></div><div id=sidebar-toc class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent"><div class="flex flex-wrap ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded"><a class=hover:text-eureka href=/docs/openstack-exp-v2/>《云计算部署实战》v2版</a></div><ul class=pl-6><li class=py-2><div><a class=hover:text-eureka href=/docs/openstack-exp-v2/openstack-exp01/>Part 1 - 导入并测试模板机</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/openstack-exp-v2/openstack-exp02/>Part 2 -配置计算节点和控制节点</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/openstack-exp-v2/openstack-exp03/>Part 3 - 安装 Keystone 认证服务</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/openstack-exp-v2/openstack-exp04/>Part 4 - 安装 Glance 镜像服务</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/openstack-exp-v2/openstack-exp05/>Part 5 - 安装 Placement 服务</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/openstack-exp-v2/openstack-exp06/>Part 6 - 安装 Nova 计算服务</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/openstack-exp-v2/openstack-exp07/>Part 7 - 安装 Neutron 网络服务</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/openstack-exp-v2/openstack-exp08/>Part 8 - 安装 Dashboard(Horizon)</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/openstack-exp-v2/openstack-exp09/>Part 9 - 启动一个镜像实例</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/openstack-exp-v2/openstack-exp10/>Part 10 - 增加一个计算节点（选做）</a></div></li><li class=py-2><div><a class="text-eureka hover:text-eureka" href=/docs/openstack-exp-v2/faq/>常见问题 FAQ</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/openstack-exp-v2/commands/>常用命令</a></div></li></ul></div></div></div><div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8"><div id=doc-tit class="w-full lg:w-3/4 pl-6 ml-0 mr-auto"><h1 class="font-bold text-3xl text-primary-text">常见问题 FAQ</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i><span>2021-03-09</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i><span>8分钟阅读时长</span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i><a href=/categories/openstack/ class=hover:text-eureka>openstack</a></div></div></div><div class=flex><div class="w-full lg:w-3/4 px-6"><div class=content><p>【版本】</p><p>当前版本号<code>v20240321</code></p><div class=tbl-start></div><table><thead><tr><th>版本</th><th>修改说明</th></tr></thead><tbody><tr><td>v20240321</td><td>把全部问题汇集到此文档</td></tr></tbody></table><div class=tbl-end style=height:10px></div><p>由于常见问题比较多，各位同学可以<code>Ctrl+F</code>打开页面的查找功能来查找问题！</p><h2 id=virtualbox-相关>VirtualBox 相关</h2><h3 id=q101-virtualbox-启动错误-the-vm-session-was-closed-before-any-attempt-to-power-it-on>Q101. VirtualBox 启动错误 “the vm session was closed before any attempt to power it on”</h3><ul><li>答：点击虚拟机“清除”，清除保存状态。
+<img src=/static/img/openstack-v2-exp01/Snipaste_2022-03-01_09-06-00.png alt></li></ul><h3 id=q102-virtualbox-不能为虚拟电脑打开一个新任务the-vm-session-was-closed-before-any-attempt-to-power-it-on>Q102. VirtualBox 不能为虚拟电脑打开一个新任务：“The VM session was closed before any attempt to power it on”</h3><ul><li>答：关闭VirtualBox，右键点击VirtualBox图标，并选择“以管理员身份运行” 。</li></ul><h3 id=q103-遇到-virtualbox-无法选择仅主机host-only网络或者选择后出错的情况>Q103. 遇到 VirtualBox 无法选择<code>仅主机Host-Only网络</code>，或者选择后出错的情况。</h3><ul><li>（1）关闭虚拟机，关闭VirtualBox。以管理员权限运行VirtualBox。</li><li>（2）从菜单“管理”->“主机网络管理器”
+<img src=/static/img/openstack-v2-exp01/Snipaste_2021-09-09_17-31-23.png alt></li><li>（3）创建一个新的网卡
+<img src=/static/img/openstack-v2-exp01/Snipaste_2021-09-09_17-36-26.png alt></li><li>（4）在虚拟机的网络设置选择新的网卡。
+<img src=/static/img/openstack-v2-exp01/Snipaste_2021-09-09_17-38-20.png alt></li></ul><h3 id=q104-安装完成后重启又进入安装界面>Q104. 安装完成后，重启又进入安装界面。</h3><p>答：这是因为没有调整虚拟机的启动顺序，安装以后，硬盘的启动顺序应该在光盘之前。关闭虚拟机，参考<a href=#step36>步骤36</a>。</p><h3 id=q105-如何对虚拟机进行备份生成快照>Q105. 如何对虚拟机进行备份（生成快照）</h3><p>答：
+虚拟机的备份称为<code>快照</code>，允许用户创建<code>快照</code>并且进行恢复。</p><ul><li><p>（1）点击虚拟机的选项菜单，点击<code>备份</code>。
+<img src=/static/img/openstack-v2-exp01/Snipaste_2022-09-17_08-54-52.jpg alt></p></li><li><p>（2）点击<code>生成</code>，输入快照名称和描述，可以创建快照。
+<img src=/static/img/openstack-v2-exp01/Snipaste_2022-09-17_08-56-05.jpg alt></p></li></ul><p>如果需要恢复，可以右键点击对应的<code>快照</code>，选择<code>恢复备份</code>。
+<img src=/static/img/openstack-v2-exp01/Snipaste_2022-09-17_08-58-42.jpg alt></p><h3 id=q106-打开virtualbox-遇到uuid-00000000-0000-0000-0000-000000000000-has-zero-format错误>Q106. 打开VirtualBox 遇到“UUID-{00000000-0000-0000-0000-000000000000} has zero format.”错误</h3><p>答：</p><ul><li><p>（1）按照消息的提示，用文本编辑器打开<code>C:\Users\你的用户名\.VirtualBox\VirtualBox.xml</code>。
+<img src=/static/img/openstack-v2-exp01/20240311142839.jpg alt></p></li><li><p>（2）按消息提示找到<code>UUID="{00000000-0000-0000-0000-000000000000}"</code>这一行，如下参考代码，删除以后，保存VirtualBox.xml。</p></li></ul><pre><code>&lt;MachineEntry uuid=&quot;{00000000-0000-0000-0000-000000000000}&quot; src=&quot;E:\VirtualBoxImages\rockylinux8_8\rockylinux8_8.vbox&quot;/&gt;
+</code></pre><ul><li>（3）再次打开VirtualBox。</li></ul><h3 id=q107-打开-virtualbox-虚拟机出现-runtime-error-opening-xxxx-for-overwriting-verr-access-deniedaccess-denied>Q107. 打开 VirtualBox 虚拟机出现 Runtime error opening XXXX for overwriting VERR ACCESS DENIED(Access denied.)</h3><p><img src=/static/img/openstack-v2-exp01/PixPin_2024-03-11_14-55-00.jpg alt>
+答：
+这是因为存放VirtualBox虚拟机文件的目录没有写入权限导致的。</p><ul><li><p>（1）首先打开 VirtualBox 存放虚拟机文件的目录。</p></li><li><p>（2）右键点击该目录，选择“属性”。
+<img src=/static/img/openstack-v2-exp01/PixPin_2024-03-11_15-17-29.jpg alt></p></li><li><p>（3）选中“安全”选项卡，编辑权限。
+<img src=/static/img/openstack-v2-exp01/PixPin_2024-03-11_15-18-02.jpg alt></p></li><li><p>（4）添加用户，你当前的用户名可以在“命令提示符”（CMD）
+<img src=/static/img/openstack-v2-exp01/PixPin_2024-03-11_15-26-17.jpg alt></p></li></ul><p><img src=/static/img/openstack-v2-exp01/PixPin_2024-03-11_15-14-30.jpg alt></p><ul><li>（5）输入用户名，检查名称。
+<img src=/static/img/openstack-v2-exp01/PixPin_2024-03-11_15-33-51.jpg alt></li></ul><p><img src=/static/img/openstack-v2-exp01/PixPin_2024-03-11_15-35-55.jpg alt></p><ul><li>（6）选中用户名，并且勾选“完全控制”选项。点击“应用按钮”，把权限应用到目录。
+<img src=/static/img/openstack-v2-exp01/PixPin_2024-03-11_15-40-18.jpg alt></li></ul><h3 id=q109-virtualbox-无法打开运行虚拟机提示verr_invalid_name-104---invalidmalformed-filepath-name错误或者virtualbox后找不到对应的虚拟网卡>Q109. VirtualBox 无法打开运行虚拟机，提示“VERR_INVALID_NAME(-104) - Invalid(malformed) file/path name.”错误，或者VirtualBox后找不到对应的虚拟网卡。</h3><p><img src=/static/img/openstack-v2-exp01/PixPin_2024-03-18_11-33-56.jpg alt></p><p>答：</p><ul><li><p>（1）在 Windows 系统控制面板下，卸载 Virtualbox。
+<img src=/static/img/openstack-v2-exp01/Snipaste_2023-09-15_22-47-19.jpg alt>
+<img src=/static/img/openstack-v2-exp01/Snipaste_2023-09-15_22-48-30.jpg alt></p></li><li><p>（2）安装 CCCleaner 扫描注册表。
+<img src=/static/img/openstack-v2-exp01/Snipaste_2023-09-15_22-50-08.jpg alt></p></li><li><p>（3）清理注册表前选择备份注册表。
+<img src=/static/img/openstack-v2-exp01/Snipaste_2023-09-15_22-50-55.jpg alt></p></li><li><p>（4）清理注册表。
+<img src=/static/img/openstack-v2-exp01/Snipaste_2023-09-15_22-51-47.jpg alt></p></li><li><p>（5）重启 Windows系统，并重新安装 Virtualbox。</p></li></ul><ol start=14><li>安装 Virtualbox 后找不到对应的虚拟网卡。
+答：参考上面常见问题13</li></ol><h2 id=网络相关>网络相关</h2><h3 id=q206-finalshell-连接不上虚拟机>Q206. FinalShell 连接不上虚拟机</h3><p>答：</p><ul><li>（1）检查虚拟机 IP 地址是否 10.0.0.70，在虚拟机输入以下命令</li></ul><pre><code>ip a
+</code></pre><ul><li>（2）检查虚拟机对应的虚拟网络适配器（网卡）的IP设置。</li></ul><pre><code>IP:10.0.0.2
+掩码:255.255.255.0
+网关:10.0.0.254
+</code></pre><p><img src=/static/img/openstack-v2-exp01/Snipaste_2022-09-04_00-26-05.jpg alt>
+<img src=/static/img/openstack-v2-exp01/Snipaste_2022-09-03_16-56-34.jpg alt>
+<img src=/static/img/openstack-v2-exp01/Snipaste_2022-09-03_16-57-45.jpg alt></p><h2 id=系统相关>系统相关</h2><h3 id=q301-安装软件失败提示error-dowloading-packages或者-errno-256-no-more-mirrors-to-try>Q301. 安装软件失败提示Error dowloading packages或者 [Errno 256] No more mirrors to try.</h3><p>答：这是因为没有正确挂载光盘内的镜像文件导致的。</p><ul><li><p>（1）查看虚拟机是否已经插入 RockyLinux 的安装镜像虚拟光盘。
+<img src=/static/img/openstack-v2-exp01/PixPin_2024-03-04_15-39-02.jpg alt></p></li><li><p>（2）查看<code>/mnt</code>目录下是否有内容。如果没有内容需要执行第3步的重新挂载。</p></li></ul><pre><code>ls /mnt
+</code></pre><p>正常状况下应该可以查看到光盘的内容。</p><p><img src=/static/img/openstack-v2-exp01/PixPin_2024-03-04_15-44-11.jpg alt></p><ul><li>（3）重新把光盘内容挂载到<code>/mnt</code>目录。</li></ul><pre><code>mount /dev/cdrom /mnt
+</code></pre><ul><li>正常会返回以下挂载成功消息。</li></ul><pre><code>mount:/dev/sr0 is write-protected, mounting read-only
+</code></pre><ul><li>（4）刷新源的缓存，再重新尝试安装软件。</li></ul><pre><code>dnf clean all
+dnf makecache
+</code></pre><h3 id=q302-如何查看-centos-虚拟机网卡信息>Q302. 如何查看 CentOS 虚拟机网卡信息。</h3><pre><code>ip a
+</code></pre><h3 id=q303-如何启用网卡>Q303. 如何启用网卡</h3><p>遇到网卡没有开机启用的情况，可以编辑网卡设置。如果网卡名称为<code>enp0s3</code>，则可以使用以下命令编辑<code>enp0s3</code>网卡配置。如果网卡名称不同，则需要修改以下命令为相应网卡名。</p><ul><li>（1）先提升root权限</li></ul><pre><code>su
+</code></pre><ul><li>（2）编辑配置</li></ul><pre><code>vi /etc/sysconfig/network-scripts/ifcfg-enp0s3
+</code></pre><ul><li><p>（3）把 <code>ONBOOT=no</code> 修改为 <code>ONBOOT=yes</code></p></li><li><p>（4）重启网络管理器</p></li></ul><pre><code>systemctl restart NetworkManager
+</code></pre><h3 id=q304-如何修改网卡的-ip-地址>Q304. 如何修改网卡的 IP 地址</h3><ul><li>（1）先提升root权限</li></ul><pre><code>su
+</code></pre><ul><li>（2）编辑配置，如果网卡名称为<code>enp0s3</code>，则可以使用以下命令编辑<code>enp0s3</code>网卡配置。如果网卡名称不同，则需要修改以下命令为相应网卡名。</li></ul><pre><code>vi /etc/sysconfig/network-scripts/ifcfg-enp0s3
+</code></pre><ul><li>（3）修改以下选项，并保存。</li></ul><pre><code>#IP 地址
+IPADDR=&quot;10.0.0.70&quot;
+#掩码
+PREFIX=&quot;24&quot;
+#网关
+GATEWAY=&quot;10.0.0.254&quot;
+#DNS地址
+DNS1=&quot;223.5.5.5&quot;
+</code></pre><ul><li>（4）重启网络服务</li></ul><pre><code>sudo nmcli c reload
+</code></pre><ul><li>（5）再次查看IP地址是否更改成功</li></ul><pre><code>ip a
+</code></pre><h3 id=q305-实现开机挂载mnt目录>Q305. 实现开机挂载<code>/mnt</code>目录</h3><ul><li>(1) 提升到 root 权限</li></ul><pre><code>su
+</code></pre><ul><li>(2) 执行以下命令</li></ul><pre><code>echo 'mount /dev/cdrom /mnt'&gt;&gt; /etc/rc.local
+</code></pre><pre><code>sudo chmod +x /etc/rc.local
+</code></pre><pre><code>source /etc/rc.local
+</code></pre><h3 id=q306-挂载mnt不成功提示找不到媒体>Q306. 挂载<code>/mnt</code>不成功，提示找不到媒体。</h3><pre><code>[root@tmpl ~]# mount /dev/cdrom /mnt
+mount: 在 /dev/sr0 上找不到媒体
+</code></pre><p>答：
+（1）检查虚拟光驱是否已经插入镜像文件。
+<img src=/static/img/openstack-v2-exp01/Snipaste_2023-06-10_11-44-37.jpg alt></p><p>（2）解挂，再重新挂载。</p><pre><code>umount /mnt
+</code></pre><pre><code>mount /dev/cdrom /mnt
+</code></pre><h3 id=q307-安装软件不成功提示error-downloading-packages-或者-no-more-mirrors-to-try>Q307. 安装软件不成功，提示“Error downloading packages:” 或者“ No more mirrors to try”</h3><p>答：</p><ul><li><p>（1）检查虚拟光驱是否已经插入镜像文件。
+<img src=/static/img/openstack-v2-exp01/Snipaste_2023-06-10_11-44-37.jpg alt></p></li><li><p>（2）解挂，再重新挂载。</p></li></ul><pre><code>umount /mnt
+</code></pre><pre><code>mount /dev/cdrom /mnt
+</code></pre><ul><li>（3）检查源的内容是否正确。</li></ul><pre><code>cat /etc/yum.repos.d/local.repo 
+</code></pre><blockquote><p>正常会展示以下内容</p></blockquote><pre><code>[local-openstack-yoga]
+name=Openstack Yoga
+baseurl=file:///opt/repo/openstack-yoga
+gpgcheck=0
+enabled=1
+gpgkey=0
+
+[local-baseos]
+name=Rocky Linux $releasever - Local - BaseOS
+baseurl=file:///mnt/BaseOS
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rockyofficial
+
+[local-appstream]
+name=Rocky Linux $releasever - Local - AppStream
+baseurl=file:///mnt/AppStream
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rockyofficial
+</code></pre><ul><li>（4）清理源缓存</li></ul><pre><code>dnf clean all
+dnf makecache
+</code></pre><ul><li>（5）重新执行安装命令</li></ul><h2 id=openstack命令相关>OpenStack命令相关</h2><h3 id=q401--bash-openstack-未找到命令>Q401. “-bash: openstack: 未找到命令”</h3><ul><li>答：未安装 openstack 客户端，执行以下命令安装</li></ul><pre><code>dnf install python-openstackclient openstack-selinux -y
+</code></pre><h3 id=q402-执行-openstack-命令遇到missing-value-auth-url-required-for-auth-plugin-password-或者-missing-parameters-错误如下图和代码所示>Q402. 执行 openstack 命令遇到“Missing value auth-url required for auth plugin password” 或者 “Missing parameter(s): ”错误，如下图和代码所示。</h3><p><img src=/static/img/openstack-v2-exp02/PixPin_2024-03-08_00-20-14.jpg alt></p><pre><code>Missing parameter(s): 
+Set a username with --os-username, OS_USERNAME, or auth.username
+Set a scope, such as a project or domain, set a project scope with --os-project-name, OS_PROJECT_NAME or auth.project_name, set a domain scope with --os-domain-name, OS_DOMAIN_NAME or auth.domain_name
+</code></pre><ul><li>答：运行以下命令执行环境变量</li></ul><pre><code>source /etc/keystone/admin-openrc
+</code></pre><h3 id=q403-错误publicurl-endpoint-for-compute-service-not-found>Q403. 错误“publicURL endpoint for compute service not found”</h3><ul><li>答：运行一下命令，查看是否有 Nova 服务（Service）。</li></ul><pre><code>openstack service list|grep nova
+</code></pre><ul><li>如果没有可以执行以下命令创建 Nova 服务（Service）。</li></ul><pre><code>openstack service create --name nova  --description &quot;OpenStack Compute&quot; compute
+</code></pre><h3 id=q404-错误could-not-determine-a-suitable-url-for-the-plugin>Q404. 错误“Could not determine a suitable URL for the plugin”</h3><ul><li>答：使用以下命令检查 keystone 的 endpoint</li></ul><pre><code>openstack endpoint list|grep -E 'ID|keystone'
+</code></pre><ul><li>正常的 endpoint 类似以下所示</li></ul><pre><code>| ID                               | Region    | Service Name | Service Type | Enabled | Interface | URL   
+| 0474f429a13f4e39b10239aca9f878e4 | RegionOne | keystone     | identity     | True    | admin    | http://controller999:5000/v3 |
+| 200aa266832f462ca9307a54db0aadb5 | RegionOne | keystone     | identity     | True    | public   | http://controller999:5000/v3  |
+| 7c989fa05c004b579a9ebe10f627def9 | RegionOne | keystone     | identity     | True    | internal | http://controller999:5000/v3  |
+</code></pre><h3 id=q405-openstack-nova-compute-无法启动提示-error-novavirtdriver---compute-driver-option-required-but-not-specified>Q405. openstack-nova-compute 无法启动，提示 &ldquo;ERROR nova.virt.driver [-] Compute driver option required, but not specified&rdquo;。</h3><p>答：主要原因是缺少这行配置，请运行一下命令。<a href=https://bugs.launchpad.net/nova/+bug/1139684>参考链接</a></p><pre><code>openstack-config --set /etc/nova/nova.conf DEFAULT compute_driver libvirt.LibvirtDriver
+</code></pre><h3 id=q406-openstack-nova-compute-无法启动提示timed-out-waiting-for-a-reply-to-message-id>Q406. openstack-nova-compute 无法启动，提示“Timed out waiting for a reply to message ID”</h3><p>答：这有可能是因为控制节点和计算节点时间不同步，导致 RabbitMQ 队列响应超时。</p><ul><li>（1）请分别检查控制节点和计算节点时间是否同步。</li></ul><pre><code>date
+</code></pre><p><img src=/static/img/openstack-v2-exp03/PixPin_2024-03-14_00-39-59.jpg alt></p><ul><li>（2）如果无法同步，使用时间修改命令进行更改，参考<a href=../#%E4%BF%AE%E6%94%B9%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4>时间修改命令</a></li><li>（3）按顺序重启以下进程</li></ul><pre><code>#控制节点
+rabbitmq-server
+openstack-nova-conductor
+openstack-nova-scheduler
+
+#计算节点
+openstack-nova-compute
+</code></pre><h3 id=q407-登录-dashboardhorizon-web界面提示身份验证令牌已经过期>Q407. 登录 Dashboard(Horizon) Web界面提示身份验证令牌已经过期</h3><p>请使用 <code>timedatectl</code> 命令校准控制节点和计算节点的时间，或者通过宿主机同步时间来进行校准。</p><h3 id=q408-登录-dashboardhorizon-提示无法连接-keystone>Q408. 登录 Dashboard(Horizon) 提示无法连接 Keystone</h3><p>请检查计算节点下 /var/log/httpd/error_log 查看具体信息进行诊断。可能原因有：</p><ul><li>（1）计算节点访问不了控制节点的 Keystone Endpoint（端口5000）</li><li>（2）控制节点关于 Keystone 的 service 或 endpoint 配置重复或错误。</li></ul><h3 id=q409-登录-dashboardhorizon-的页面没有显示域domain>Q409. 登录 Dashboard(Horizon) 的页面没有显示域（Domain）</h3><p>在<code>local_settings</code>配置文件中找到<code>OPENSTACK_KEYSTONE_DEFAULT_DOMAIN</code>选项（如果没有则新增），注意去掉前面注释的#号，通过仪表盘创建用户时的默认域配置为 default。</p><pre><code>OPENSTACK_KEYSTONE_DEFAULT_DOMAIN = 'default'
+</code></pre><h3 id=q410-使用-admin-账号登录-dashboardhorizon-的页面显示凭据无效>Q410. 使用 admin 账号登录 Dashboard(Horizon) 的页面显示“凭据无效”</h3><p><img src=/static/img/openstack-v2-exp08/Snipaste_2023-03-15_15-20-15.jpg alt></p><ul><li>（1）首先检查 openstack 中关于 keystone 的endpoint是否有问题。</li></ul><pre><code>source /etc/keystone/admin-openrc
+openstack endpoint list|grep -E 'ID|keystone'
+</code></pre><ul><li>可以看到类似以下结果（其中XXX是你学号后3位）：</li></ul><pre><code>| Service Name | Service Type | Interface | URL                          |
+| keystone     | identity     | admin     | http://controllerXXX:5000/v3|
+| keystone     | identity     | public    | http://controllerXXX:5000/v3 |
+| keystone     | identity     | internal  | http://controllerXXX:5000/v3 |
+</code></pre><ul><li>（2）检查是否能够查看 keystone 的 token，</li></ul><pre><code>source /etc/keystone/admin-openrc
+openstack token issue
+</code></pre><p>类似结果：</p><pre><code>+------------+-------------------------------------------------+
+| Field      | Value                                           |
++------------+-------------------------------------------------+
+| expires    | 2021-03-24T08:27:30.000000Z                     |
+| id         | gAAAAABgWunifA_DeD3mcJMerIIFLqXy7tajYuAmAVvM1pM |
+|            | 9yTeRaM5gXVDImlqbrivC1IwtpxtJR2Gq6EHMJ1iSZ10iRa |
+|            | dJzqZWYjoWLha-bSlbqb3y0Iyzo-                    |
+|            | liAC02tVsiv6ZPge4KXndvwxTk79_dkw--              |
+|            | zvXUlKmM5SY68n2eQZttddTcPSQ                     |
+| project_id | 70667e2a19c640b796c9e2de6571a33c                |
+| user_id    | 5b74a6845f264ae9912b78d4a32f5f73                |
++------------+-------------------------------------------------+
+</code></pre><ul><li>（3）打开<code>local_settings</code> 配置文件，在<code>OPENSTACK_API_VERSIONS</code>检查配置。</li></ul><pre><code>vim /etc/openstack-dashboard/local_settings
+</code></pre><p>配置如下：</p><pre><code>OPENSTACK_API_VERSIONS = {
+     &quot;data-processing&quot;: 1.1,
+     &quot;identity&quot;: 3,
+     &quot;image&quot;:2,
+     &quot;volume&quot;: 3,
+     &quot;compute&quot;: 2,
+ }
+</code></pre><h3 id=q411-启动-apachehttpd-失败>Q411. 启动 Apache(httpd) 失败。</h3><p>答 ：可以在控制节点上查看 httpd 的日志诊断错误。</p><pre><code>tail -100 /var/log/httpd/openstack_dashboard-error.log 
+</code></pre><h3 id=q412-控制节点-ping-openstack-的实例无响应或者分配了错误的ip>Q412. 控制节点 ping Openstack 的实例无响应，或者分配了错误的IP。</h3><p>答：</p><ul><li><p>（1）检查该实例是否者已启动并且活跃（Active）。</p></li><li><p>（2）检查虚拟机的网卡混合模式是否为全部允许，参考<a href=../openstack-exp01#step31>此步骤</a></p></li><li><p>（3）查看该实例分配到IP，这里以<code>10.0.0.215</code>为例。
+<img src=/static/img/openstack-v2-exp09/PixPin_2024-03-13_17-20-14.jpg alt></p></li><li><p>（4）进入Openstack 实例的控制台。
+<img src=/static/img/openstack-v2-exp09/Snipaste_2024-03-14_11-57-24.jpg alt></p></li><li><p>（5）使用账户密码<code>cirros/gocubsgo</code>登录Cirros。</p></li><li><p>（6）在 Cirros 上面执行以下命令手动配置IP。请使用你的IP替换<code>10.0.0.215</code>，其中<code>/24</code>表示的是<a href=https://baike.baidu.com/item/%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81/100207>子网掩码</a>。</p></li></ul><pre><code>sudo ip a add 10.0.0.215/24 dev eth0
+</code></pre><h3 id=q413-使用-ssh-登录-cirros-实例没有免密登录需要输入用户名和密码>Q413. 使用 SSH 登录 CirrOS 实例没有免密登录，需要输入用户名和密码。</h3><p>答：检查 Neutron 的配置文件<code>/etc/neutron/metadata_agent.ini</code>是否配置正确。查看<a href=../openstack-exp07#step20>Part 7 的步骤19，20</a>。</p><h3 id=q414-创建的-openstack-虚拟机实例提示host-is-not-mapped-to-any-cell错误>Q414. 创建的 OpenStack 虚拟机实例提示“Host is not mapped to any cell”错误。</h3><p>答： 这可能是因为 OpenStack 的计算节点没有映射到任何单元（Cell），可以在控制节点运行以下命令，再尝试重新创建实例。</p><pre><code>nova-manage cell_v2 discover_hosts --verbose
+</code></pre><ul><li>正常会提示类似以下消息：</li></ul><pre><code>Found 2 cell mappings.
+Getting computes from cell 'cell1': 03746a84-850f-4f7d-8467-970461437001
+Found 0 unmapped computes in cell: 03746a84-850f-4f7d-8467-970461437001
+Skipping cell0 since it does not contain hosts.
+</code></pre><h3 id=q415-cirros-实例无法正常启动提示not-syncing-i0-apic--timer-doesnt-work的错误>Q415. cirros 实例无法正常启动，提示<code>not syncing: I0-APIC + timer doesn't work</code>的错误。</h3><p><img src=/static/img/openstack-v2-exp09/apic-error.png alt></p><p>答：
+解决方法一：通过修改 cirros 虚拟机的参数禁用 APIC 检查</p><ul><li>（1）关闭实例，并查看实例ID。以下命令在控制节点运行。</li></ul><pre><code>openstack server list
+openstack server stop 实例名称
+</code></pre><p><img src=/static/img/openstack-v2-exp09/PixPin_2024-03-14_00-08-42.jpg alt></p><ul><li>（2）在实例所在的计算节点编辑实例配置，配置的格式是XML格式。</li></ul><pre><code>virsh edit 实例ID
+</code></pre><p><img src=/static/img/openstack-v2-exp09/PixPin_2024-03-14_00-10-26.jpg alt></p><ul><li>（3）此时已经使用 vi 打开了<code>cirros</code>虚拟机配置文件。找到以下内容，把其中内容进行注释。</li><li>找到以下这段配置内容</li></ul><pre><code>  &lt;features&gt;
+    &lt;acpi/&gt;
+    &lt;apic/&gt;
+  &lt;/features&gt;
+</code></pre><ul><li>注释掉<code>&lt;acpi/></code>和<code>&lt;apic/></code>标签</li></ul><pre><code>  &lt;features&gt;
+    &lt;!--
+	&lt;acpi/&gt;
+    &lt;apic/&gt;
+	--&gt;
+  &lt;/features&gt;
+</code></pre><ul><li>（5）保存并退出编辑。<code>exit</code>命令可以退出<code>virsh</code>客户端。</li></ul><pre><code>exit
+</code></pre><ul><li>（6）重启实例。</li></ul></div><div class=my-4><a href=/tags/openstack/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#openstack</a>
+<a href=/tags/%E9%83%A8%E7%BD%B2/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#部署</a></div><div class=py-2><div class="flex flex-col md:flex-row items-center my-8"><a href=/authors/heis/ class="w-24 h-24 md:mr-4"><img src=/static/img/authors/heis.png class="w-full bg-primary-bg rounded-full" alt=Avatar></a><div class="w-full md:w-auto mt-4 md:mt-0"><a href=/authors/heis/ class="block font-bold text-lg pb-1 mb-2 border-b">黄老师</a>
+<span class="block pb-2"></span><a href=mailto:heishuangzy@qq.com class=mr-1><i class="fas fa-envelope"></i></a><a href=https://gitee.com/heis/ class=mr-1><i class="fab fa-git"></i></a><a href=http://heis.gitee.io/ class=mr-1><i class="fas fa-blog"></i></a></div></div></div><div id=btmQrcode></div><p style=text-align:center>扫码或长按识别访问</p><script src=/static/js/qrcode.min.js></script><script type=text/javascript>function getURL(){var url=window.location.href;if(window.location.hash!=""){url=url.substring(0,url.indexOf("#"));}
+return url;}
+new QRCode(document.getElementById("btmQrcode"),{text:getURL(),width:192,height:192,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});</script><div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t"><div id=presec><span class="block font-bold">上一页</span>
+<a href=/docs/openstack-exp-v2/openstack-exp10/ class=block>Part 10 - 增加一个计算节点（选做）</a></div><div id=nextsec class="md:text-right mt-4 md:mt-0"><span class="block font-bold">下一页</span>
+<a href=/docs/openstack-exp-v2/commands/ class=block>常用命令</a></div></div></div><div class="hidden lg:block lg:w-1/4"><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-secondary-bg pt-16 -mt-16"><span class="text-lg font-semibold">本页内容</span></div><div class="sticky-toc hidden lg:block px-6 pb-6 pt-10 -mt-10 border-l"><nav id=TableOfContents><ul><li><a href=#virtualbox-相关>VirtualBox 相关</a><ul><li><a href=#q101-virtualbox-启动错误-the-vm-session-was-closed-before-any-attempt-to-power-it-on>Q101. VirtualBox 启动错误 “the vm session was closed before any attempt to power it on”</a></li><li><a href=#q102-virtualbox-不能为虚拟电脑打开一个新任务the-vm-session-was-closed-before-any-attempt-to-power-it-on>Q102. VirtualBox 不能为虚拟电脑打开一个新任务：“The VM session was closed before any attempt to power it on”</a></li><li><a href=#q103-遇到-virtualbox-无法选择仅主机host-only网络或者选择后出错的情况>Q103. 遇到 VirtualBox 无法选择<code>仅主机Host-Only网络</code>，或者选择后出错的情况。</a></li><li><a href=#q104-安装完成后重启又进入安装界面>Q104. 安装完成后，重启又进入安装界面。</a></li><li><a href=#q105-如何对虚拟机进行备份生成快照>Q105. 如何对虚拟机进行备份（生成快照）</a></li><li><a href=#q106-打开virtualbox-遇到uuid-00000000-0000-0000-0000-000000000000-has-zero-format错误>Q106. 打开VirtualBox 遇到“UUID-{00000000-0000-0000-0000-000000000000} has zero format.”错误</a></li><li><a href=#q107-打开-virtualbox-虚拟机出现-runtime-error-opening-xxxx-for-overwriting-verr-access-deniedaccess-denied>Q107. 打开 VirtualBox 虚拟机出现 Runtime error opening XXXX for overwriting VERR ACCESS DENIED(Access denied.)</a></li><li><a href=#q109-virtualbox-无法打开运行虚拟机提示verr_invalid_name-104---invalidmalformed-filepath-name错误或者virtualbox后找不到对应的虚拟网卡>Q109. VirtualBox 无法打开运行虚拟机，提示“VERR_INVALID_NAME(-104) - Invalid(malformed) file/path name.”错误，或者VirtualBox后找不到对应的虚拟网卡。</a></li></ul></li><li><a href=#网络相关>网络相关</a><ul><li><a href=#q206-finalshell-连接不上虚拟机>Q206. FinalShell 连接不上虚拟机</a></li></ul></li><li><a href=#系统相关>系统相关</a><ul><li><a href=#q301-安装软件失败提示error-dowloading-packages或者-errno-256-no-more-mirrors-to-try>Q301. 安装软件失败提示Error dowloading packages或者 [Errno 256] No more mirrors to try.</a></li><li><a href=#q302-如何查看-centos-虚拟机网卡信息>Q302. 如何查看 CentOS 虚拟机网卡信息。</a></li><li><a href=#q303-如何启用网卡>Q303. 如何启用网卡</a></li><li><a href=#q304-如何修改网卡的-ip-地址>Q304. 如何修改网卡的 IP 地址</a></li><li><a href=#q305-实现开机挂载mnt目录>Q305. 实现开机挂载<code>/mnt</code>目录</a></li><li><a href=#q306-挂载mnt不成功提示找不到媒体>Q306. 挂载<code>/mnt</code>不成功，提示找不到媒体。</a></li><li><a href=#q307-安装软件不成功提示error-downloading-packages-或者-no-more-mirrors-to-try>Q307. 安装软件不成功，提示“Error downloading packages:” 或者“ No more mirrors to try”</a></li></ul></li><li><a href=#openstack命令相关>OpenStack命令相关</a><ul><li><a href=#q401--bash-openstack-未找到命令>Q401. “-bash: openstack: 未找到命令”</a></li><li><a href=#q402-执行-openstack-命令遇到missing-value-auth-url-required-for-auth-plugin-password-或者-missing-parameters-错误如下图和代码所示>Q402. 执行 openstack 命令遇到“Missing value auth-url required for auth plugin password” 或者 “Missing parameter(s): ”错误，如下图和代码所示。</a></li><li><a href=#q403-错误publicurl-endpoint-for-compute-service-not-found>Q403. 错误“publicURL endpoint for compute service not found”</a></li><li><a href=#q404-错误could-not-determine-a-suitable-url-for-the-plugin>Q404. 错误“Could not determine a suitable URL for the plugin”</a></li><li><a href=#q405-openstack-nova-compute-无法启动提示-error-novavirtdriver---compute-driver-option-required-but-not-specified>Q405. openstack-nova-compute 无法启动，提示 &ldquo;ERROR nova.virt.driver [-] Compute driver option required, but not specified&rdquo;。</a></li><li><a href=#q406-openstack-nova-compute-无法启动提示timed-out-waiting-for-a-reply-to-message-id>Q406. openstack-nova-compute 无法启动，提示“Timed out waiting for a reply to message ID”</a></li><li><a href=#q407-登录-dashboardhorizon-web界面提示身份验证令牌已经过期>Q407. 登录 Dashboard(Horizon) Web界面提示身份验证令牌已经过期</a></li><li><a href=#q408-登录-dashboardhorizon-提示无法连接-keystone>Q408. 登录 Dashboard(Horizon) 提示无法连接 Keystone</a></li><li><a href=#q409-登录-dashboardhorizon-的页面没有显示域domain>Q409. 登录 Dashboard(Horizon) 的页面没有显示域（Domain）</a></li><li><a href=#q410-使用-admin-账号登录-dashboardhorizon-的页面显示凭据无效>Q410. 使用 admin 账号登录 Dashboard(Horizon) 的页面显示“凭据无效”</a></li><li><a href=#q411-启动-apachehttpd-失败>Q411. 启动 Apache(httpd) 失败。</a></li><li><a href=#q412-控制节点-ping-openstack-的实例无响应或者分配了错误的ip>Q412. 控制节点 ping Openstack 的实例无响应，或者分配了错误的IP。</a></li><li><a href=#q413-使用-ssh-登录-cirros-实例没有免密登录需要输入用户名和密码>Q413. 使用 SSH 登录 CirrOS 实例没有免密登录，需要输入用户名和密码。</a></li><li><a href=#q414-创建的-openstack-虚拟机实例提示host-is-not-mapped-to-any-cell错误>Q414. 创建的 OpenStack 虚拟机实例提示“Host is not mapped to any cell”错误。</a></li><li><a href=#q415-cirros-实例无法正常启动提示not-syncing-i0-apic--timer-doesnt-work的错误>Q415. cirros 实例无法正常启动，提示<code>not syncing: I0-APIC + timer doesn't work</code>的错误。</a></li></ul></li></ul></nav></div><script>window.addEventListener('DOMContentLoaded',()=>{enableStickyToc();});</script></div></div></div></div></div><div id=outerdiv><div id=innerdiv><img id=bigimg src></div></div><div id=popOuterDiv><div id=popDiv style=display:none><div class=close><span onclick="$('#popDiv').hide();"></span></div><p id=popCtn></p></div></div><div id=nav_top_icon style=display:none></div><div id=list_note_icon></div><script>$(function(){var scrollTop=$(window).scrollTop();if(scrollTop>0){$("#nav_top_icon").show(200);}
+window.onscroll=function(){scrollTop=$(window).scrollTop();if(scrollTop==0){$("#nav_top_icon").hide(200);}else{$("#nav_top_icon").show(200);}}
+$("#nav_top_icon").click(function(){$("body,html").animate({scrollTop:0},500);});$("#list_note_icon").click(function(){$("#popOuterDiv").toggle();$("#popDiv").slideToggle();$("#popCtn").html($("#TableOfContents").html());})
+$("#popOuterDiv").click(function(){$("#popOuterDiv").hide();$("#popDiv").slideUp();})});document.addEventListener('DOMContentLoaded',()=>{hljs.highlightAll();hljs.initLineNumbersOnLoad({singleLine:true});changeSidebarHeight();switchDocToc();$("img").css("cursor:pointer")
+$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});$("ol").each(function(index){if(/\d{1,4}/.test($(this).attr("start"))){let idx=parseInt($(this).attr("start"));let lis=$(this).find("li");if(lis.length>0){lis.each(function(index){$(this).attr("id","step"+(idx+index));});}else{$(this).attr("id","step"+idx);}}});});</script><script src=/static/js/clipboard.min.js></script><script src=/static/js/codecopy.bundle.js?963></script></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text">&copy; 2021 <a href=https://www.wangchucheng.com/>C. Wang</a> and <a href=https://www.ruiqima.com/>R. Ma</a>
+&#183; Powered by the <a href=https://github.com/wangchucheng/hugo-eureka class=hover:text-eureka>Eureka</a> theme for <a href=https://gohugo.io class=hover:text-eureka>Hugo</a></p></div></div></footer></body></html>
