@@ -1,0 +1,154 @@
+<!doctype html><html lang=zh><meta charset=utf-8><meta name=viewport content="width=device-width"><title>P5 - HBase 部署与实践 | Hadoop集群部署与开发 V5 | Heis</title><meta name=generator content="Hugo Eureka 0.8.4"><link rel=stylesheet href=/css/eureka.min.css><script defer src=/js/eureka.min.js></script><script src=/static/js/jquery-3.6.0.min.js></script><script src=/static/js/heis.js?230321></script><link rel=stylesheet href=/static/css/heis.css?230321 media=all onload="this.media='all';this.onload=null" crossorigin><link rel=stylesheet href=/static/css/print.css?230413 media=print crossorigin><link rel=stylesheet href=/static/css/highlight-css/solarized-light.min.css media=print onload="this.media='all';this.onload=null" crossorigin><script defer src=/static/js/highlight.min.js crossorigin></script><script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script><script defer src=/static/js/highlightjs-line-numbers.min.js></script><link rel=icon type=image/png sizes=32x32 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_32x32_fill_box_center_2.png><link rel=apple-touch-icon sizes=180x180 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_180x180_fill_box_center_2.png><meta name=description content="部署 HBase 和使用 HBase 进行数据分析"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"系列文章","item":"/docs/"},{"@type":"ListItem","position":2,"name":"Hadoop集群部署与开发 V5","item":"/docs/hadoop-e/"},{"@type":"ListItem","position":3,"name":"P5 - HBase 部署与实践","item":"/docs/hadoop-e/hadoop-e05/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/docs/hadoop-e/hadoop-e05/"},"headline":"P5 - HBase 部署与实践 | Hadoop集群部署与开发 V5 | Heis","datePublished":"2021-05-20T21:20:00+08:00","dateModified":"2021-05-20T21:20:00+08:00","wordCount":2805,"author":{"@type":"Person","name":"heis"},"publisher":{"@type":"Person","name":"C. Wang","logo":{"@type":"ImageObject","url":"/images/icon.png"}},"description":"部署 HBase 和使用 HBase 进行数据分析"}</script><meta property="og:title" content="P5 - HBase 部署与实践 | Hadoop集群部署与开发 V5 | Heis"><meta property="og:type" content="article"><meta property="og:image" content="/images/icon.png"><meta property="og:url" content="/docs/hadoop-e/hadoop-e05/"><meta property="og:description" content="部署 HBase 和使用 HBase 进行数据分析"><meta property="og:locale" content="zh"><meta property="og:site_name" content="Heis"><meta property="article:published_time" content="2021-05-20T21:20:00+08:00"><meta property="article:modified_time" content="2021-05-20T21:20:00+08:00"><meta property="article:section" content="docs"><meta property="article:tag" content="hadoop"><meta property="article:tag" content="大数据"><meta property="article:tag" content="课程"><meta property="og:see_also" content="/docs/hadoop-e/hadoop-e04/"><meta property="og:see_also" content="/docs/hadoop-e/hadoop-e03/"><meta property="og:see_also" content="/docs/hadoop-e/hadoop-e01/"><meta property="og:see_also" content="/docs/bi-exp/bi-training2/"><meta property="og:see_also" content="/docs/bi-exp/bi-training1-rs/"><meta property="og:see_also" content="/docs/bi-exp/bi-training1/"><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?f58b6a2675cf52000232edb4d109eccc";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><body class="flex flex-col min-h-screen"><header id=headerctn class="fixed flex items-center w-full pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode")
+if(((storageColorScheme=='Auto'||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches)||storageColorScheme=="Dark"){document.getElementsByTagName('html')[0].classList.add('dark')}</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="mr-6 text-primary-text text-xl font-bold">Heis</a>
+<button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+<i class="fas fa-bars"></i></button><div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20"><div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0"><a href=/posts/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">文章</a>
+<a href=/docs/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 selected-menu-item mr-4">系列</a></div><div class=flex><div class="relative pt-4 md:pt-0"><div class="cursor-pointer hover:text-eureka" id=lightDarkMode><i class="fas fa-adjust"></i></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id=is-open></div><div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40" id=lightDarkOptions><span class="px-4 py-1 hover:text-eureka" name=Light>浅色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Dark>深色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Auto>自动</span></div></div></div></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id=is-open-mobile></div></nav><script>let element=document.getElementById('lightDarkMode')
+if(storageColorScheme==null||storageColorScheme=='Auto'){document.addEventListener('DOMContentLoaded',()=>{window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change',switchDarkMode)})}else if(storageColorScheme=="Light"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'sun')
+element.firstElementChild.classList.add('fa-sun')}else if(storageColorScheme=="Dark"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'moon')
+element.firstElementChild.classList.add('fa-moon')}
+document.addEventListener('DOMContentLoaded',()=>{getcolorscheme();switchBurger();});</script></div></header><main class="flex-grow pt-16"><div class=pl-scrollbar><div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto"><div id=doc-container class=lg:pt-12><div class="flex flex-col md:flex-row bg-secondary-bg rounded"><div class="md:w-1/4 lg:w-1/5 border-r"><div class="sticky top-16 pt-6"><div id=sidebar-title class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text"><span class=font-semibold>目录</span>
+<i class="fas fa-caret-right ml-1"></i></div><div id=sidebar-toc class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent"><div class="flex flex-wrap ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded"><a class=hover:text-eureka href=/docs/hadoop-e/>Hadoop集群部署与开发 V5</a></div><ul class=pl-6><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-e/hadoop-e01/>P1 - 部署 Hadoop 完全分布式与搭建开发环境</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-e/hadoop-e02/>P2 - HDFS 实战</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-e/hadoop-e03/>P3 - MapReduce实战</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-e/hadoop-e04/>P4 - Hive 部署与实践</a></div></li><li class=py-2><div><a class="text-eureka hover:text-eureka" href=/docs/hadoop-e/hadoop-e05/>P5 - HBase 部署与实践</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-e/hadoop-e06/>P6 - Zookeeper 部署与实践</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-e/hadoop-e07/>P7 - Flume 和 Sqoop 部署与实践</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-e/hadoop-e90/>Hadoop 模板机制作</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-e/hadoop-faq/>常见问题</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-e/hadoop-cmd/>常用命令</a></div></li></ul></div></div></div><div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8"><div id=doc-tit class="w-full lg:w-3/4 pl-6 ml-0 mr-auto"><h1 class="font-bold text-3xl text-primary-text">P5 - HBase 部署与实践</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i><span>2021-05-20</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i><span>6分钟阅读时长</span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i><a href=/categories/hadoopd/ class=hover:text-eureka>hadoopd</a></div></div></div><div class=flex><div class="w-full lg:w-3/4 px-6"><div class=content><h2 id=版本>【版本】</h2><p>当前版本号<code>v20220411</code></p><div class=tbl-start></div><table><thead><tr><th>版本</th><th>修改说明</th></tr></thead><tbody><tr><td>v20220411</td><td>增加配置修正HMaster消失的问题</td></tr><tr><td>v20210601</td><td>修正文件夹拷贝的命令错误和一些标点符号的错误</td></tr><tr><td>v20210520</td><td>初始化版本</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h2 id=任务51----部署-hbase-完全分布式>任务5.1 - 部署 HBase 完全分布式</h2><h2 id=任务目的>【任务目的】</h2><ul><li>部署 HBase 完全分布式</li></ul><h2 id=任务环境>【任务环境】</h2><ul><li>Windows 7 以上64位操作系统</li><li>JDK8</li><li>Hadoop 3</li><li>CentOS 7</li></ul><h2 id=任务资源>【任务资源】</h2><ul><li>HBase 1.X</li></ul><pre><code>链接：https://pan.baidu.com/s/1MoQ0iU0Qb1o8_o5JV6X6iw 
+提取码：3rno
+</code></pre><h2 id=任务内容>【任务内容】</h2><ul><li>部署 HBase 完全分布式</li></ul><h2 id=任务步骤>【任务步骤】</h2><ol><li>在NodeA、NodeB、NodeC三个节点分别运行以下语句，创建 HBase 的安装目录。</li></ol><pre><code>sudo mkdir /opt/hbase
+sudo chown hadoop:wheel /opt/hbase
+</code></pre><ol start=2><li>使用 hadoop 登录NodeA节点。</li></ol><pre><code>su hadoop
+</code></pre><ol start=3><li><p>上传 HBase 安装包<code>hbase-1.6.0-bin.tar.gz</code> 到 NodeA 节点 <code>/home/hadoop</code> 目录。</p></li><li><p>解压<code>hbase-1.6.0-bin.tar.gz</code>到<code>/home/hadoop</code> 目录。</p></li></ol><pre><code>tar -xvf hbase-1.6.0-bin.tar.gz
+</code></pre><ol start=5><li>把解压以后的目录移到安装目录</li></ol><pre><code>sudo mv ~/hbase-1.6.0/* /opt/hbase
+</code></pre><ol start=6><li>提升 root 用户权限执行以下语句，加入 HBase 环境变量。</li></ol><pre><code>su
+echo &quot;export HBASE_HOME=/opt/hbase
+export PATH=\$HBASE_HOME/bin:\$PATH:.&quot; &gt;&gt;/etc/profile
+</code></pre><ol start=7><li>切换会 hadoop 用户</li></ol><pre><code>su hadoop
+</code></pre><ol start=8><li>使环境变量生效。</li></ol><pre><code>source /etc/profile
+</code></pre><ol start=9><li>编辑 HBase 的环境配置脚本。</li></ol><pre><code>cd $HBASE_HOME/conf
+vim hbase-env.sh
+</code></pre><ol start=10><li>在第1行加入</li></ol><pre><code>export JAVA_HOME=/opt/jdk8
+</code></pre><ol start=11><li>在约128行，设置启用Zookeeper</li></ol><pre><code>export HBASE_MANAGES_ZK=true
+</code></pre><ol start=12><li><p>保存 hbase-env.sh。</p></li><li><p>备份并编辑 HBase 配置文件 <code>hbase-site.xml</code>。</p></li></ol><pre><code>cd $HBASE_HOME/conf
+cp hbase-site.xml{,.bak}
+vim hbase-site.xml
+</code></pre><ol start=14><li>输入以下内容，注意替换你的学号后3位。</li></ol><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;
+&lt;configuration&gt;
+    &lt;!--HBase 的数据保存在 HDFS 对应目录 --&gt;
+    &lt;property&gt;
+        &lt;name&gt;hbase.rootdir&lt;/name&gt;
+        &lt;value&gt;hdfs://nodea你的学号后3位:8020/hbase&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;!-- 是否是分布式环境 --&gt;
+    &lt;property&gt;
+        &lt;name&gt;hbase.cluster.distributed&lt;/name&gt;
+        &lt;value&gt;true&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;!-- 配置 ZK 的地址 ,3 个节点都启用 ZooKeeper--&gt;
+    &lt;property&gt;
+        &lt;name&gt;hbase.zookeeper.quorum&lt;/name&gt;
+		&lt;value&gt;nodea你的学号后3位,nodeb你的学号后3位,nodec你的学号后3位&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;!-- 冗余度 --&gt;
+    &lt;property&gt;
+        &lt;name&gt;dfs.replication&lt;/name&gt;
+        &lt;value&gt;1&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;!-- 主节点和从节点允许的最大时间误差 --&gt;
+    &lt;property&gt;
+        &lt;name&gt;hbase.master.maxclockskew&lt;/name&gt;
+        &lt;value&gt;180000&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;!--zookeeper 数据目录 --&gt;
+    &lt;property&gt;
+        &lt;name&gt;hbase.zookeeper.property.dataDir&lt;/name&gt;
+        &lt;value&gt;/opt/hbase/zookeeper&lt;/value&gt;
+    &lt;/property&gt;
+	&lt;property&gt;
+	    &lt;name&gt;hbase.unsafe.stream.capability.enforce&lt;/name&gt;
+	    &lt;value&gt;false&lt;/value&gt;
+	&lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre><ol start=15><li>编辑Region Server的配置文件<code>regionservers</code>。</li></ol><pre><code>cd $HBASE_HOME/conf
+vi regionservers
+</code></pre><ol start=16><li>清空文件内容，加入以下内容并保存。注意替换你的学号后3位。</li></ol><pre><code>nodea你的学号后3位
+nodeb你的学号后3位
+nodec你的学号后3位
+</code></pre><ol start=17><li>同步 HBase 安装目录内容到 NodeB 和 NodeC。注意替换为你的学号后3位。</li></ol><pre><code>rsync -r /opt/hbase nodeb你的学号后3位:/opt
+rsync -r /opt/hbase nodec你的学号后3位:/opt
+</code></pre><blockquote><p>rsync 是文件同步命令，可以用于本机和远程之间的文件同步
+如果没有安装，可以使用 yum install rsync 安装</p></blockquote><ol start=18><li>启动 HDFS 和 HBase。</li></ol><pre><code>start-dfs.sh
+start-hbase.sh
+</code></pre><h2 id=任务验证步骤>【任务验证步骤】</h2><ol><li>在 NodeA、NodeB 和 NodeC 3个节点分别输入jps。</li></ol><pre><code>jps
+</code></pre><ol start=2><li>查看其中1个节点是否存在以下进程</li></ol><pre><code>HRegionServer
+HQuorumPeer
+HMaster
+</code></pre><ol start=3><li>另外2个节点存在以下进程。</li></ol><pre><code>HQuorumPeer
+HRegionServer
+</code></pre><h2 id=任务52-通过-hbase-shell-访问-hbase>任务5.2 通过 HBase Shell 访问 HBase</h2><h2 id=任务目的-1>【任务目的】</h2><ul><li>掌握 HBase Shell 常用指令的使用。</li></ul><h2 id=任务环境-1>【任务环境】</h2><ul><li>Windows 7 以上64位操作系统</li><li>JDK8</li><li>Hadoop 3</li><li>CentOS 7</li></ul><h2 id=任务资源-1>【任务资源】</h2><ul><li>Hadoop 3.X</li><li>HBase 1.X</li></ul><h2 id=任务内容-1>【任务内容】</h2><ul><li>按要求使用 HBase Shell 访问 HBase</li></ul><h2 id=任务步骤-1>【任务步骤】</h2><ol><li>启动 HBase</li></ol><pre><code>start-dfs.sh
+start-hbase.sh
+</code></pre><ol start=2><li>启动 HBase Shell。</li></ol><pre><code>hbase shell
+</code></pre><ol start=3><li><p>执行命令前，请大家注意在hbase shell 下删除字符需要同时按下 <code>ctrl+Backspace</code>。</p></li><li><p>查询服务器状态。</p></li></ol><pre><code>status
+</code></pre><ol start=5><li>查询 HBase 版本。</li></ol><pre><code>version
+</code></pre><ol start=6><li>查看所有表。</li></ol><pre><code>list
+</code></pre><ol start=7><li>增、删、改
+注意：为了避免冲突，下面的表名命名规则为 member + 学号，比如学号 +学号，表名为
+member+学号。</li></ol><ul><li>创建一个Rowkey是会员名的会员表。</li></ul><pre><code>create 'member+学号后3位','member_id','address','info'
+</code></pre><ul><li>获得表的描述。</li></ul><pre><code>describe 'member+学号后3位'
+</code></pre><ul><li>添加一个列族id。</li></ul><pre><code>alter 'member+学号后3位', 'id'
+</code></pre><ul><li>再次查询表的结构，是否多了一个id。</li></ul><pre><code>describe 'member+学号后3位'
+</code></pre><ul><li>添加数据。在 HBase Shell 中，我们可以通过 put 命令来插入数据。列族下的列不需要提前创建，在需要时通过<code>:</code>来指定即可。添加数据如下：</li></ul><pre><code>put 'member+学号后3位', 'debugo','id','11'
+put 'member+学号后3位', 'debugo','info:age','27'
+put 'member+学号后3位', 'debugo','info:birthday','1991-04-04'
+put 'member+学号后3位', 'debugo','info:industry', 'it'
+put 'member+学号后3位', 'debugo','address:city','Shanghai'
+put 'member+学号后3位', 'debugo','address:country','China'
+put 'member+学号后3位', 'Sariel', 'id', '21'
+put 'member+学号后3位', 'Sariel','info:age', '26'
+put 'member+学号后3位', 'Sariel','info:birthday', '1992-05-09'
+put 'member+学号后3位', 'Sariel','info:industry', 'it'
+put 'member+学号后3位', 'Sariel','address:city', 'Beijing'
+put 'member+学号后3位', 'Sariel','address:country', 'China'
+put 'member+学号后3位', 'Elvis', 'id', '22'
+put 'member+学号后3位', 'Elvis','info:age', '26'
+put 'member+学号后3位', 'Elvis','info:birthday', '1992-09-14'
+put 'member+学号后3位', 'Elvis','info:industry', 'it'
+put 'member+学号后3位', 'Elvis','address:city', 'Beijing'
+put 'member+学号后3位', 'Elvis','address:country', 'china'
+</code></pre><ul><li>查看表数据。</li></ul><pre><code>scan 'member+学号后3位'
+</code></pre><ul><li>删除一个列族。</li></ul><pre><code>alter 'member+学号后3位', {NAME =&gt; 'member_id', METHOD =&gt; 'delete' }
+</code></pre><ul><li>通过 delete 命令，我们可以删除行键是&rsquo;debugo&rsquo;记录的&rsquo;info:age&rsquo;字段，再用 get 获取&rsquo;info:age&rsquo;字段的值，会发现已经没有值了，命令如下。</li></ul><pre><code>delete 'member+学号后3位','debugo','info:age'
+get 'member+学号后3位','debugo','info:age'
+</code></pre><ul><li>删除整行的值，用 deleteall 命令：</li></ul><pre><code>deleteall 'member+学号后3位','debugo'
+get 'member+学号后3位','debugo'
+</code></pre><ul><li>通过 enable 和 disable 来启用/禁用这个表，相应地可以通过 is_enabled 和 is_disabled 来检查表是否被启用/禁用。</li></ul><pre><code>is_enabled 'member+学号后3位'
+is_disabled 'member+学号后3位'
+</code></pre><ul><li>使用 exists 来检查表是否存在。</li></ul><pre><code>exists 'member+学号后3位'
+</code></pre><ul><li>删除表前需要先将表 disable。</li></ul><pre><code>disable 'member+学号后3位'
+drop 'member+学号后3位'
+</code></pre><ol start=8><li>查询</li></ol><ul><li>查询表中有多少行，用 count 命令。</li></ul><pre><code>count 'member+学号后3位'
+</code></pre><ul><li>get 命令。获取一个 ID 的所有数据。</li></ul><pre><code>get 'member+学号后3位', 'Sariel'
+</code></pre><ul><li>get 命令。获得一个 ID 下一个列簇（一个列）中的所有数据。</li></ul><pre><code>get 'member+学号后3位', 'Sariel', 'info'
+</code></pre><ul><li>查询整表数据。</li></ul><pre><code>scan 'member+学号后3位'
+</code></pre><ul><li>扫描整个列簇。</li></ul><pre><code>scan 'member+学号后3位', {COLUMN=&gt;'info'}
+</code></pre><ul><li>扫描其中指定的某个列。</li></ul><pre><code>scan 'member+学号后3位', {COLUMNS=&gt; 'info:birthday'}
+</code></pre><ul><li>除了列（COLUMNS）修饰词外，HBase 还支持 LIMIT（限制查询结果行数），STARTROW
+（ROWKEY 为起始行，会先根据这个 KEY 定位到 Region，再向后扫描）、STOPROW（结束行）、
+TIMERANGE（限定时间戳范围）、VERSIONS（版本数）、FILTER（按条件过滤行）等。比如
+我们从 Sariel 这个 ROWKEY 开始，找下一个行的最新版本，代码如下。</li></ul><pre><code>scan 'member+学号后3位', { STARTROW =&gt; 'Sariel', LIMIT=&gt;1, VERSIONS=&gt;1}
+</code></pre><ul><li>Filter 是一个非常强大的修饰词，可以设定一系列条件来进行过滤。比如我们要限制某个列的值等于 26。</li></ul><pre><code>scan 'member+学号后3位', FILTER=&gt;&quot;ValueFilter(=,'binary:26')&quot;
+</code></pre><ul><li>值包含 6 这个数字的过滤指令：</li></ul><pre><code>scan 'member+学号后3位', FILTER=&gt;&quot;ValueFilter(=,'substring:6')&quot;
+</code></pre><ul><li>列名中的前缀为 birth 的过滤指令：</li></ul><pre><code>scan 'member+学号后3位', FILTER=&gt;&quot;ColumnPrefixFilter('birth') &quot;
+</code></pre><ul><li>FILTER 支持多个过滤条件（通过括号、AND 和 OR 的条件组合）。</li></ul><pre><code>scan 'member+学号后3位', FILTER=&gt;&quot;ColumnPrefixFilter('birth') AND ValueFilter(=,'substring:1988')&quot;
+</code></pre><ul><li>PrefixFilter 对 ROWKEY 的前缀进行判断，这是一个非常常用的功能。</li></ul><pre><code>scan 'member+学号后3位', FILTER=&gt;&quot;PrefixFilter('E')&quot;
+</code></pre></div><div class=my-4><a href=/tags/hadoop/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#hadoop</a>
+<a href=/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#大数据</a>
+<a href=/tags/%E8%AF%BE%E7%A8%8B/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#课程</a></div><div class=py-2><div class="flex flex-col md:flex-row items-center my-8"><a href=/authors/heis/ class="w-24 h-24 md:mr-4"><img src=/static/img/authors/heis.png class="w-full bg-primary-bg rounded-full" alt=Avatar></a><div class="w-full md:w-auto mt-4 md:mt-0"><a href=/authors/heis/ class="block font-bold text-lg pb-1 mb-2 border-b">黄老师</a>
+<span class="block pb-2"></span><a href=mailto:heishuangzy@qq.com class=mr-1><i class="fas fa-envelope"></i></a><a href=https://gitee.com/heis/ class=mr-1><i class="fab fa-git"></i></a><a href=http://heis.gitee.io/ class=mr-1><i class="fas fa-blog"></i></a></div></div></div><div id=btmQrcode></div><p style=text-align:center>扫码或长按识别访问</p><script src=/static/js/qrcode.min.js></script><script type=text/javascript>function getURL(){var url=window.location.href;if(window.location.hash!=""){url=url.substring(0,url.indexOf("#"));}
+return url;}
+new QRCode(document.getElementById("btmQrcode"),{text:getURL(),width:192,height:192,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});</script><div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t"><div id=presec><span class="block font-bold">上一页</span>
+<a href=/docs/hadoop-e/hadoop-e04/ class=block>P4 - Hive 部署与实践</a></div><div id=nextsec class="md:text-right mt-4 md:mt-0"><span class="block font-bold">下一页</span>
+<a href=/docs/hadoop-e/hadoop-e06/ class=block>P6 - Zookeeper 部署与实践</a></div></div></div><div class="hidden lg:block lg:w-1/4"><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-secondary-bg pt-16 -mt-16"><span class="text-lg font-semibold">本页内容</span></div><div class="sticky-toc hidden lg:block px-6 pb-6 pt-10 -mt-10 border-l"><nav id=TableOfContents><ul><li><a href=#版本>【版本】</a></li><li><a href=#任务51----部署-hbase-完全分布式>任务5.1 - 部署 HBase 完全分布式</a></li><li><a href=#任务目的>【任务目的】</a></li><li><a href=#任务环境>【任务环境】</a></li><li><a href=#任务资源>【任务资源】</a></li><li><a href=#任务内容>【任务内容】</a></li><li><a href=#任务步骤>【任务步骤】</a></li><li><a href=#任务验证步骤>【任务验证步骤】</a></li><li><a href=#任务52-通过-hbase-shell-访问-hbase>任务5.2 通过 HBase Shell 访问 HBase</a></li><li><a href=#任务目的-1>【任务目的】</a></li><li><a href=#任务环境-1>【任务环境】</a></li><li><a href=#任务资源-1>【任务资源】</a></li><li><a href=#任务内容-1>【任务内容】</a></li><li><a href=#任务步骤-1>【任务步骤】</a></li></ul></nav></div><script>window.addEventListener('DOMContentLoaded',()=>{enableStickyToc();});</script></div></div></div></div></div><div id=outerdiv><div id=innerdiv><img id=bigimg src></div></div><div id=popOuterDiv><div id=popDiv style=display:none><div class=close><span onclick="$('#popDiv').hide();"></span></div><p id=popCtn></p></div></div><div id=nav_top_icon style=display:none></div><div id=list_note_icon></div><script>$(function(){var scrollTop=$(window).scrollTop();if(scrollTop>0){$("#nav_top_icon").show(200);}
+window.onscroll=function(){scrollTop=$(window).scrollTop();if(scrollTop==0){$("#nav_top_icon").hide(200);}else{$("#nav_top_icon").show(200);}}
+$("#nav_top_icon").click(function(){$("body,html").animate({scrollTop:0},500);});$("#list_note_icon").click(function(){$("#popOuterDiv").toggle();$("#popDiv").slideToggle();$("#popCtn").html($("#TableOfContents").html());})
+$("#popOuterDiv").click(function(){$("#popOuterDiv").hide();$("#popDiv").slideUp();})});document.addEventListener('DOMContentLoaded',()=>{hljs.highlightAll();hljs.initLineNumbersOnLoad({singleLine:true});changeSidebarHeight();switchDocToc();$("img").css("cursor:pointer")
+$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});$("ol").each(function(index){if(/\d{1,4}/.test($(this).attr("start"))){let idx=parseInt($(this).attr("start"));let lis=$(this).find("li");if(lis.length>0){lis.each(function(index){$(this).attr("id","step"+(idx+index));});}else{$(this).attr("id","step"+idx);}}});});</script><script src=/static/js/clipboard.min.js></script><script src=/static/js/codecopy.bundle.js?484></script></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text"></p></div></div></footer></body></html>

@@ -1,0 +1,417 @@
+<!doctype html><html lang=zh><meta charset=utf-8><meta name=viewport content="width=device-width"><title>P1 - 部署 Hadoop 完全分布式与搭建开发环境 | Hadoop集群部署与开发 V5 | Heis</title><meta name=generator content="Hugo Eureka 0.8.4"><link rel=stylesheet href=/css/eureka.min.css><script defer src=/js/eureka.min.js></script><script src=/static/js/jquery-3.6.0.min.js></script><script src=/static/js/heis.js?230321></script><link rel=stylesheet href=/static/css/heis.css?230321 media=all onload="this.media='all';this.onload=null" crossorigin><link rel=stylesheet href=/static/css/print.css?230413 media=print crossorigin><link rel=stylesheet href=/static/css/highlight-css/solarized-light.min.css media=print onload="this.media='all';this.onload=null" crossorigin><script defer src=/static/js/highlight.min.js crossorigin></script><script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script><script defer src=/static/js/highlightjs-line-numbers.min.js></script><link rel=icon type=image/png sizes=32x32 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_32x32_fill_box_center_2.png><link rel=apple-touch-icon sizes=180x180 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_180x180_fill_box_center_2.png><meta name=description content="部署 Hadoop 完全分布模式，并搭建开发环境"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"系列文章","item":"/docs/"},{"@type":"ListItem","position":2,"name":"Hadoop集群部署与开发 V5","item":"/docs/hadoop-e/"},{"@type":"ListItem","position":3,"name":"P1 - 部署 Hadoop 完全分布式与搭建开发环境","item":"/docs/hadoop-e/hadoop-e01/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/docs/hadoop-e/hadoop-e01/"},"headline":"P1 - 部署 Hadoop 完全分布式与搭建开发环境 | Hadoop集群部署与开发 V5 | Heis","datePublished":"2021-03-19T00:44:00+08:00","dateModified":"2021-03-19T00:44:00+08:00","wordCount":7153,"author":{"@type":"Person","name":"heis"},"publisher":{"@type":"Person","name":"C. Wang","logo":{"@type":"ImageObject","url":"/images/icon.png"}},"description":"部署 Hadoop 完全分布模式，并搭建开发环境"}</script><meta property="og:title" content="P1 - 部署 Hadoop 完全分布式与搭建开发环境 | Hadoop集群部署与开发 V5 | Heis"><meta property="og:type" content="article"><meta property="og:image" content="/images/icon.png"><meta property="og:url" content="/docs/hadoop-e/hadoop-e01/"><meta property="og:description" content="部署 Hadoop 完全分布模式，并搭建开发环境"><meta property="og:locale" content="zh"><meta property="og:site_name" content="Heis"><meta property="article:published_time" content="2021-03-19T00:44:00+08:00"><meta property="article:modified_time" content="2021-03-19T00:44:00+08:00"><meta property="article:section" content="docs"><meta property="article:tag" content="hadoop"><meta property="article:tag" content="大数据"><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?f58b6a2675cf52000232edb4d109eccc";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><body class="flex flex-col min-h-screen"><header id=headerctn class="fixed flex items-center w-full pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode")
+if(((storageColorScheme=='Auto'||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches)||storageColorScheme=="Dark"){document.getElementsByTagName('html')[0].classList.add('dark')}</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="mr-6 text-primary-text text-xl font-bold">Heis</a>
+<button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+<i class="fas fa-bars"></i></button><div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20"><div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0"><a href=/posts/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">文章</a>
+<a href=/docs/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 selected-menu-item mr-4">系列</a></div><div class=flex><div class="relative pt-4 md:pt-0"><div class="cursor-pointer hover:text-eureka" id=lightDarkMode><i class="fas fa-adjust"></i></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id=is-open></div><div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40" id=lightDarkOptions><span class="px-4 py-1 hover:text-eureka" name=Light>浅色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Dark>深色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Auto>自动</span></div></div></div></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id=is-open-mobile></div></nav><script>let element=document.getElementById('lightDarkMode')
+if(storageColorScheme==null||storageColorScheme=='Auto'){document.addEventListener('DOMContentLoaded',()=>{window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change',switchDarkMode)})}else if(storageColorScheme=="Light"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'sun')
+element.firstElementChild.classList.add('fa-sun')}else if(storageColorScheme=="Dark"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'moon')
+element.firstElementChild.classList.add('fa-moon')}
+document.addEventListener('DOMContentLoaded',()=>{getcolorscheme();switchBurger();});</script></div></header><main class="flex-grow pt-16"><div class=pl-scrollbar><div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto"><div id=doc-container class=lg:pt-12><div class="flex flex-col md:flex-row bg-secondary-bg rounded"><div class="md:w-1/4 lg:w-1/5 border-r"><div class="sticky top-16 pt-6"><div id=sidebar-title class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text"><span class=font-semibold>目录</span>
+<i class="fas fa-caret-right ml-1"></i></div><div id=sidebar-toc class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent"><div class="flex flex-wrap ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded"><a class=hover:text-eureka href=/docs/hadoop-e/>Hadoop集群部署与开发 V5</a></div><ul class=pl-6><li class=py-2><div><a class="text-eureka hover:text-eureka" href=/docs/hadoop-e/hadoop-e01/>P1 - 部署 Hadoop 完全分布式与搭建开发环境</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-e/hadoop-e02/>P2 - HDFS 实战</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-e/hadoop-e03/>P3 - MapReduce实战</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-e/hadoop-e04/>P4 - Hive 部署与实践</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-e/hadoop-e05/>P5 - HBase 部署与实践</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-e/hadoop-e06/>P6 - Zookeeper 部署与实践</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-e/hadoop-e07/>P7 - Flume 和 Sqoop 部署与实践</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-e/hadoop-e90/>Hadoop 模板机制作</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-e/hadoop-faq/>常见问题</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/hadoop-e/hadoop-cmd/>常用命令</a></div></li></ul></div></div></div><div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8"><div id=doc-tit class="w-full lg:w-3/4 pl-6 ml-0 mr-auto"><h1 class="font-bold text-3xl text-primary-text">P1 - 部署 Hadoop 完全分布式与搭建开发环境</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i><span>2021-03-19</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i><span>15分钟阅读时长</span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i><a href=/categories/hadoopd/ class=hover:text-eureka>hadoopd</a></div></div></div><div class=flex><div class="w-full lg:w-3/4 px-6"><div class=content><h2 id=版本>【版本】</h2><p>当前版本号<code>v20250211</code></p><div class=tbl-start></div><table><thead><tr><th>版本</th><th>修改说明</th></tr></thead><tbody><tr><td>v20250211</td><td>初始化版本</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h2 id=任务11-部署-hadoop-完全分布式>任务1.1 部署 Hadoop 完全分布式</h2><h2 id=任务目的>【任务目的】</h2><ul><li>掌握搭建 Hadoop 完全分布模式环境。</li><li>熟练掌握 Linux 常用命令如vi、ping、cat、ssh等。</li><li>掌握VirtualBox、FinalShell等客户端的使用。</li></ul><h2 id=任务环境>【任务环境】</h2><ul><li>内存：至少4G</li><li>硬盘：至少空余40G</li><li>操作系统: 64位 Windows系统。</li></ul><h2 id=任务资源>【任务资源】</h2><ul><li>FinalShell</li><li>CentOS 7.9系统镜像</li><li>VirtualBox 7</li><li>Hadoop 3 安装包</li></ul><h2 id=任务要求>【任务要求】</h2><ul><li>（1）完成模板机的克隆</li><li>（2）完成Hadoop 完全分布模式的部署</li></ul><h2 id=任务说明>【任务说明】</h2><ul><li>（1）由于部署 Hadoop 完全分布式需要3个节点，我们使用虚拟化技术，在本地虚拟化出3台虚拟机来部署 Hadoop 完全分布式环境。</li><li>（2）对于 Hadoop 平台的编程调用，需要准备好 Java 的标准开发环境。我们使用 Java 开发常见的 JDK+Maven+IDEA 组合来进行部署和配置。</li></ul><h2 id=任务步骤>【任务步骤】</h2><h3 id=安装-virtualbox>安装 VirtualBox</h3><ol><li>安装 VirtualBox ，过程略。如果之前有安装旧版本的 VirtualBox，请先卸载。
+<img src=/static/img/hadoop-e01/PixPin_2025-02-11_16-38-40.png alt></li></ol><h3 id=导入模板机>导入模板机</h3><ol start=2><li><p>解压虚拟机压缩包<code>HadoopTmpl.zip</code>到本地目录路径，例如<code>D:\VirtualBoxImages</code>。注意这个路径<code>不能含有中文或者空格</code>。解压以后可以看到以下文件。
+<img src=/static/img/hadoop-e01/PixPin_2025-02-12_15-37-07.png alt></p></li><li><p>打开 VirtualBox ，并导入前面解压的“HadoopTmpl”虚拟机，由于接下来我们要从这台虚拟机复制出3台新的虚拟机，所以我们称这台机为“模板机”。
+<img src=/static/img/hadoop-e01/PixPin_2025-02-12_15-05-06.png alt>
+<img src=/static/img/hadoop-e01/PixPin_2025-02-12_15-07-13.png alt></p></li><li><p>导入成功以后可以在 VirtualBox 左侧看到<code>HadoopTmpl</code>虚拟机。
+<img src=/static/img/hadoop-e01/PixPin_2025-02-12_15-39-21.png alt></p></li></ol><h3 id=配置模板机>配置模板机</h3><ol start=5><li><p>打开 VirtualBox 的网络管理器进行配置。
+<img src=/static/img/hadoop-e01/PixPin_2025-02-12_15-43-07.png alt></p></li><li><p>选中<code>VirtualBox Host-Only Ethernet Adapter</code>，这是虚拟机的<code>仅主机（Host-Only）</code>虚拟网络适配器。修改以下的参数：</p></li></ol><pre><code>IPv4 地址：10.0.0.2
+IPv4 网络掩码：255.255.255.0
+</code></pre><p><img src=/static/img/hadoop-e01/PixPin_2025-02-12_15-49-03.png alt></p><ol start=7><li><p>设置<code>HadoopTmpl</code>虚拟机的网络适配器，指向刚才配置的<code>VirtualBox Host-Only Ethernet Adapter</code>。
+<img src=/static/img/hadoop-e01/PixPin_2025-02-12_15-54-03.png alt></p></li><li><p>插入安装镜像光盘<code>CentOS-7-x86_64-DVD-2009.iso</code>，作为本地软件源。
+<img src=/static/img/hadoop-e01/PixPin_2025-02-12_16-57-34.png alt>
+<img src=/static/img/hadoop-e01/PixPin_2025-02-12_16-58-02.png alt></p></li></ol><h3 id=测试模板机>测试模板机</h3><ol start=9><li><p>启动模板机，正常启动以后会出现以下界面。
+<img src=/static/img/hadoop-e01/PixPin_2025-02-12_17-17-39.png alt></p></li><li><p>安装 FinalShell，过程略。
+<img src=/static/img/hadoop-e01/PixPin_2025-02-11_17-02-17.png alt></p></li><li><p>使用 FinalShell 连接模板机，连接配置如下：</p></li></ol><pre><code>连接名称：hadoop@10.0.0.70
+主机：10.0.0.70
+端口：22
+用户名：hadoop
+密码：132456
+</code></pre><p><img src=/static/img/hadoop-e01/PixPin_2025-02-12_17-28-09.png alt>
+<img src=/static/img/hadoop-e01/PixPin_2025-02-12_17-29-33.png alt>
+<img src=/static/img/hadoop-e01/PixPin_2025-02-12_17-36-50.png alt></p><ol start=12><li>HadoopTmpl 模板机有2个用户，通常只需要使用 hadoop 用户登录系统即可。</li></ol><pre><code>#hadoop用户
+用户名：hadoop
+密码：132456
+
+#root用户
+用户名：root
+密码：132456
+</code></pre><h3 id=复制模板机>复制模板机</h3><ol start=13><li>登录模板机以后，修改hosts文件。</li></ol><pre><code>sudo vim /etc/hosts
+</code></pre><ol start=14><li>在文件后面<code>新增以下几行</code>。这里主要是为了后面复制出来的虚拟机可以相互通过主机名进行相互访问。</li></ol><pre><code>10.0.0.71 nodea替换为你学号后3位
+10.0.0.72 nodeb替换为你学号后3位
+10.0.0.73 nodec替换为你学号后3位
+</code></pre><p><img src=/static/img/hadoop-e01/PixPin_2025-02-13_09-41-33.png alt></p><ol start=15><li>关闭 HadoopTmpl 模板机。依次从模板机复制出3台虚拟机，名称，主机名和 IP 地址如下表所示，注意替换为你的学号后3位。</li></ol><p><a href=../hadoop-faq/#2-virtualbox-如何复制克隆虚拟机 target=_blank>复制虚拟机的方法请点击此链接查看</a></p><div class=tbl-start></div><table><thead><tr><th>虚拟机名称</th><th>主机名（hostname）</th><th>IP地址</th></tr></thead><tbody><tr><td>NodeA</td><td>nodea+你学号后3位（例如nodea101）</td><td>10.0.0.71</td></tr><tr><td>NodeB</td><td>nodeb+你学号后3位（例如nodeb101）</td><td>10.0.0.72</td></tr><tr><td>NodeC</td><td>nodec+你学号后3位（例如nodec101）</td><td>10.0.0.73</td></tr></tbody></table><div class=tbl-end style=height:10px></div><ol start=16><li>由于刚复制好的虚拟机都使用同一个IP地址，所以不能同时启动模板机、NodeA、NodeB或NodeC。需要依次启动，登录，并逐一修改为对应的 hostname 和 IP。</li></ol><p><a href=../hadoop-faq/#4-如何修改centos-7主机名 target=_blank>修改主机名的方法请点击此链接查看</a></p><p><a href=../hadoop-faq/#3-virtualbox-修改虚拟网卡的ip等信息 target=_blank>修改IP地址的方法请点击此链接查看</a></p><ol start=17><li>同时启动 NodeA、NodeB 和 NodeC 3台虚拟机，配置 FinalShell 分别连接3台虚拟机，使用<code>hadoop</code>用户登录，密码为<code>123456</code>，测试是否能够正常登录。
+<img src=/static/img/hadoop-e01/PixPin_2025-02-13_09-32-24.png alt>
+<img src=/static/img/hadoop-e01/PixPin_2025-02-13_09-34-50.png alt></li></ol><h3 id=配置免密登录>配置免密登录</h3><blockquote><p>免密登录，顾名思义就是不需要输入密码即可登录。免密登录的大致原理，就是在客户端 client 生成一对密钥（包括公钥和私钥），然后将公钥传到服务器。当客户端通过 ssh 登录服务器时，不用再输入密码就能直接登进去，这就是 ssh 免密登录。</p><p>Hadoop 的 NameNode 是通过SSH 来启动和停止各个节点上的各种守护进程的，这就需要在节点之间执行指令的时候是不需要输入密码的方式，故我们需要配置 SSH 使用免密登录。</p></blockquote><div class=warning>注意此阶段命令如无特殊说明，均在 NodeA 的 hadoop 用户下执行！</div><ol start=18><li>保证NodeA、NodeB 和 NodeC 3台虚拟机都处于启动状态。使用 hadoop 用户登录 NodeA 节点。如果使用root登录的可以使用以下命令切换到hadoop用户。</li></ol><pre><code>su hadoop
+</code></pre><ol start=19><li>使用 ping 命令检查是否能够连通 NodeB 和 NodeC。</li></ol><pre><code>ping nodeb+你学号后3位 -c 3
+ping nodec+你学号后3位 -c 3
+</code></pre><ul><li>正常情况下应该有类似返回信息如下：</li></ul><pre><code>64 bytes from nodeb (10.0.0.72): icmp_seq=1 ttl=64 time=0.373 ms
+</code></pre><ul><li>如果没有看到以上返回消息，请检查<code>/etc/hosts</code>是否修改正确，参考 <a href=../hadoop-e01#step14>Part1 步骤14</a>。</li></ul><ol start=20><li>配置免密登录。首先生成密钥对，运行以下命令。直接回车（Enter）3次。</li></ol><pre><code>ssh-keygen -t rsa
+</code></pre><ul><li>在返回的对话文字中，直接回车（Enter）3次，输出内容类似以下。</li></ul><pre><code>Generating public/private rsa key pair.
+Enter file in which to save the key (/home/hadoop/.ssh/id_rsa): 
+Created directory '/home/hadoop/.ssh'.
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/hadoop/.ssh/id_rsa.
+Your public key has been saved in /home/hadoop/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:MSUbr5VaCY4KSpsCM0l8uhYWkr5R9iNI05SFuF00jLA hadoop@nodea999
+The key's randomart image is:
++---[RSA 2048]----+
+|.+=.B+  + .      |
+|+B.O o.o B o     |
+|OE% o . = *      |
+|o%o+ +   B       |
+|+o= o . S        |
+|.+               |
+|.                |
+|                 |
+|                 |
++----[SHA256]-----+
+</code></pre><ol start=21><li>查看目录下是否有公钥<code>id_rsa.pub</code>和私钥<code>id_rsa</code>。</li></ol><pre><code>cd ~/.ssh
+ls
+</code></pre><ul><li>可以看到以下2个文件。其中<code>id_rsa</code>是私钥，<code>id_rsa.pub</code>是公钥。</li></ul><pre><code>id_rsa  id_rsa.pub
+</code></pre><ol start=22><li>执行以下命令，把公钥写入本机授权文件。</li></ol><pre><code>cat id_rsa.pub &gt;&gt; authorized_keys
+</code></pre><ol start=23><li>查看授权文件内的公钥内容。</li></ol><pre><code>cd ~/.ssh
+cat authorized_keys
+</code></pre><ul><li>可以看到类似以下内容</li></ul><pre><code>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC1Df9cM8NVGURMj3I86EoiO4Jy6LuuHOc+MC3vnZPJX9ISSXDZ9Qx+a5CCdoZJyySG3IlvAFBLv2Wnv60tDZ9xHEQ0WbkAV/IeDrdRk1OI51/bEGfdPqTLBtic1eXsFC6luc7kbQYuxQRoeovl2UwHNgzAX/xTyUV0uAuvTeggyGWq05I9OiantybrumNUJO8gFO3R9CA/zvNrJbuvVDKT9AAqQpn57jDsHkTiAlGoubKUcgAWy1EbYk7hVCL1gFkMcxDMvSOBoY23oqEFSNrkuho2Cj2fNUinaDNDPPzoqbDwvU9IUCGhgfiNYb4Ub/hoabJRjlcNiEgoD+G79lNd hadoop@nodea你的学号后3位
+</code></pre><ol start=24><li>修改 authorized_keys 的权限为444，让<code>NodeA</code>能够免密登录自身。</li></ol><pre><code>chmod 444 authorized_keys
+ls -al authorized_keys	
+</code></pre><ol start=25><li>确认<code>NodeB</code>和<code>NodeC</code>2个节点都已经启动。在<code>NodaA</code>上面运行以下命令，把公钥拷贝到<code>NodeB</code>和<code>NodeC</code>。</li></ol><pre><code>ssh-copy-id -i ~/.ssh/id_rsa.pub nodeb+你学号后3位 -f
+ssh-copy-id -i ~/.ssh/id_rsa.pub nodec+你学号后3位 -f
+</code></pre><ul><li>系统询问是否连接，输入yes</li></ul><pre><code>Are you sure you want to continue connecting (yes/no)? yes
+</code></pre><ul><li>输入 hadoop 登录密码</li></ul><pre><code>hadoop@nodeb你学号后3位's password:
+</code></pre><ol start=26><li>使用以下方法测试免密登录是否配置成功，在NodeA上面分别 SSH 登录<code>NodeA</code>、<code>NodeB</code>、<code>NodeC</code>。</li></ol><ul><li>例如：在 NodeA 执行以下命令，使用 SSH 协议登录 NodeB。</li></ul><pre><code>ssh hadoop@nodeb+你的学号后3位
+</code></pre><ul><li>如果能够成功登录 NodeB 节点，而且不需要输入密码，则表示免密登录成功。输入以下命令退出登录。</li></ul><pre><code>exit
+</code></pre><h3 id=修改-hadoop-配置文件>修改 Hadoop 配置文件</h3><div class=warning>注意此阶段命令如无特殊说明，均在 NodeA 的 hadoop 用户下执行！</div><ol start=27><li>备份和编辑 Hadoop 的 core-site.xml 配置文件。在configuration 标签内添加配置，注意替换为你的学号后3位。</li></ol><pre><code>cp /opt/hadoop/etc/hadoop/core-site.xml{,.bak}
+vim /opt/hadoop/etc/hadoop/core-site.xml
+</code></pre><pre><code>&lt;configuration&gt;
+  &lt;!-- HDFS 访问地址 --&gt;
+  &lt;property&gt;
+    &lt;name&gt;fs.defaultFS&lt;/name&gt;
+    &lt;value&gt;hdfs://nodea+你学号后3位:8020&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
+    &lt;value&gt;/opt/hadoop/tmp&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;fs.trash.interval&lt;/name&gt;
+    &lt;value&gt;1440&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;hadoop.http.staticuser.user&lt;/name&gt;
+    &lt;value&gt;hadoop&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre><ol start=28><li>备份和编辑 Hadoop 的 hdfs-site.xml 配置文件。请注意替换为你的学号。</li></ol><pre><code>cp /opt/hadoop/etc/hadoop/hdfs-site.xml{,.bak}
+vim /opt/hadoop/etc/hadoop/hdfs-site.xml
+</code></pre><pre><code>&lt;configuration&gt;
+  &lt;!-- secondary namenode 访问地址--&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.secondary.http.address&lt;/name&gt;
+    &lt;value&gt;nodea+你学号后3位:50090&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;!-- HDFS 副本数量 --&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.replication&lt;/name&gt;
+    &lt;value&gt;2&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre><ol start=29><li>新建一个 masters 配置文件，写入 Secondary NameNode 的主机名。</li></ol><pre><code>vim /opt/hadoop/etc/hadoop/masters
+</code></pre><p>删除原有内容，写入以下内容，注意替换为你的学号后3位。</p><pre><code>nodea+你的学号后3位
+</code></pre><ol start=30><li>备份和编辑 Hadoop 的 mapred-site.xml 配置文件。注意替换为你的学号后3位。</li></ol><pre><code>cp /opt/hadoop/etc/hadoop/mapred-site.xml{,.bak}
+vim /opt/hadoop/etc/hadoop/mapred-site.xml
+</code></pre><pre><code>&lt;configuration&gt;
+  &lt;property&gt;
+    &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
+    &lt;value&gt;yarn&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt;
+    &lt;value&gt;nodea+你学号后3位:10020&lt;/value&gt;
+    &lt;description&gt;Host and port for Job History Server (default 0.0.0.0:10020)&lt;/description&gt;
+  &lt;/property&gt;
+  &lt;property&gt; 
+      &lt;name&gt;mapreduce.application.classpath&lt;/name&gt;
+      &lt;value&gt;$HADOOP_HOME/share/hadoop/mapreduce/*,$HADOOP_HOME/share/hadoop/mapreduce/lib/*,$HADOOP_HOME/share/hadoop/common/*,$HADOOP_HOME/share/hadoop/common/lib/*,$HADOOP_HOME/share/hadoop/yarn/*,$HADOOP_HOME/share/hadoop/yarn/lib/*,$HADOOP_HOME/share/hadoop/hdfs/*,$HADOOP_HOME/share/hadoop/hdfs/lib/*&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre><ol start=31><li>备份和编辑 Hadoop 的 yarn-site.xml 配置文件。注意替换为你的学号后3位。</li></ol><pre><code>cp /opt/hadoop/etc/hadoop/yarn-site.xml{,.bak}
+vim /opt/hadoop/etc/hadoop/yarn-site.xml
+</code></pre><pre><code>&lt;configuration&gt;
+  &lt;property&gt;
+    &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;
+    &lt;value&gt;nodea+你学号后3位&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
+    &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre><ol start=32><li>编辑 workers ，清除原来的所有内容，增加配置 DataNode 节点信息。注意替换为你的学号后3位。</li></ol><pre><code>vim /opt/hadoop/etc/hadoop/workers
+</code></pre><ul><li>删除原有内容，写入以下内容。</li></ul><pre><code>nodeb+你学号后3位
+nodec+你学号后3位
+</code></pre><blockquote><p>从Hadoop 3.0 开始，slaves 已经启用，改用 workers 来进行替代配置数据节点信息。</p></blockquote><ol start=33><li>修改 hadoop-env.sh，在第1行加入以下代码。</li></ol><pre><code>vim /opt/hadoop/etc/hadoop/hadoop-env.sh
+</code></pre><pre><code>export JAVA_HOME=/opt/jdk8
+</code></pre><ol start=34><li>把<code>NodeA</code>节点的 Hadoop /opt/hadoop/etc/hadoop 下所有配置文件发送到<code>NodeB</code>和<code>NodeC</code>。如果上面的配置文件有修改，也需要同步发送到<code>NodeB</code>和<code>NodeC</code>节点。</li></ol><pre><code>cd /opt/hadoop/etc/
+scp -r hadoop hadoop@nodeb+你学号后3位:/opt/hadoop/etc/
+scp -r hadoop hadoop@nodec+你学号后3位:/opt/hadoop/etc/
+</code></pre><ol start=35><li>格式化 HDFS。</li></ol><div class=warning>注意此命令请勿重复执行，因为会导致 DataNode 和 NameNode 的集群ID不一致，造成HDFS出错。</div><pre><code>hdfs namenode -format
+</code></pre><ul><li>在输出的内容中，如果能看到以下这句信息，说明格式化成功。</li></ul><pre><code>2022-01-24 14:32:54,209 INFO common.Storage: Storage directory /opt/hadoop/tmp/dfs/name has been successfully formatted.
+</code></pre><ol start=36><li>创建 Hadoop 启动脚本，注意替换为你的学号后3位。</li></ol><pre><code>vim /opt/hadoop/sbin/start-hdp.sh
+</code></pre><pre><code>#!/usr/bin/env bash
+echo &quot;Start Hadoop by 你的学号后3位&quot;
+start-dfs.sh
+start-yarn.sh
+mapred --daemon start historyserver
+</code></pre><ol start=37><li>创建 Hadoop 停止脚本，注意替换为你的学号后3位。</li></ol><pre><code>vim /opt/hadoop/sbin/stop-hdp.sh
+</code></pre><pre><code>#!/usr/bin/env bash
+echo &quot;Stop Hadoop by 你的学号后3位&quot;
+mapred --daemon stop historyserver
+stop-yarn.sh
+stop-dfs.sh
+</code></pre><ol start=38><li>创建 Hadoop 重启脚本，注意替换为你的学号后3位。</li></ol><pre><code>vim /opt/hadoop/sbin/restart-hdp.sh
+</code></pre><pre><code>#!/usr/bin/env bash
+stop-hdp.sh
+start-hdp.sh
+</code></pre><ol start=39><li>修改创建的脚本的权限。</li></ol><pre><code>cd /opt/hadoop/sbin/
+chmod 744 start-hdp.sh stop-hdp.sh restart-hdp.sh
+</code></pre><ol start=40><li>使用脚本启动 Hadoop。</li></ol><pre><code>start-hdp.sh
+</code></pre><h3 id=验证免密登录>验证免密登录</h3><ol start=41><li>在<code>NodeB</code>和<code>NodeC</code>2个节点分别执行以下命令，查看是否包含来自<code>NodeA</code>的公钥。</li></ol><pre><code>cd ~/.ssh
+cat  authorized_keys
+</code></pre><h3 id=验证时间是否同步>验证时间是否同步</h3><ol start=42><li>在<code>NodeB</code>和<code>NodeC</code>2个节点分别执行以下命令，查看时间是否与<code>NodeA</code>同步。</li></ol><pre><code>date
+</code></pre><blockquote><p>如果时间不同步，可以执行以下语句，尝试强制同步时间。</p></blockquote><pre><code>chronyc -a makestep
+</code></pre><h3 id=验证-hadoop-是否正常启动>验证 Hadoop 是否正常启动</h3><ol start=43><li>在<code>NodeA</code>输入<code>jps</code>命令，观察是否有以下进程。</li></ol><pre><code>jps
+</code></pre><ul><li>正常应该有类似以下信息返回：</li></ul><pre><code>NameNode
+Jps
+ResourceManager
+SecondaryNameNode
+JobHistoryServer
+</code></pre><ol start=44><li>在<code>NodeA</code>输入以下命令查看机架拓扑是否有<code>NodeB</code>和<code>NodeC</code>的信息</li></ol><pre><code>hdfs dfsadmin -printTopology
+</code></pre><ul><li>正常应该有类似以下信息返回：</li></ul><pre><code>Rack: /default-rack
+   10.0.0.72:9866 (nodeb你的学号后3位)
+   10.0.0.73:9866 (nodec你的学号后3位)
+</code></pre><ol start=45><li>在<code>NodeB</code>和<code>NodeC</code>分别输入<code>jps</code>命令，观察是否有以下进程。</li></ol><pre><code>jps
+</code></pre><ul><li>正常应该有类似以下信息返回：</li></ul><pre><code>DataNode
+NodeManager
+Jps
+</code></pre><h3 id=验证-hdfs-是否正常工作>验证 HDFS 是否正常工作</h3><ol start=46><li><p>打开宿主机浏览器，访问 HDFS Web界面 <a href=http://10.0.0.71:9870/ target=_blank>http://10.0.0.71:9870/</a></p></li><li><p>查看 NameNode 是否 Active
+<img src=/static/img/hadoop-d02/Snipaste_2022-01-24_15-24-52.png alt></p></li><li><p>查看2个节点 DataNode 服务状态是否正常。
+<img src=/static/img/hadoop-d02/Snipaste_2022-01-24_15-25-55.png alt></p></li><li><p>上传<code>countryroad.txt</code>到<code>NodeA</code>的<code>/home/hadoop</code></p></li><li><p>把<code>countryroad.txt</code>从 CentOS 文件系统上传到 HDFS 文件系统。</p></li></ol><pre><code>hdfs dfs -mkdir /part2
+hdfs dfs -put /home/hadoop/countryroad.txt /part2
+hdfs dfs -ls /part2
+</code></pre><h3 id=验证-mapreduce-是否正常工作>验证 MapReduce 是否正常工作</h3><ol start=51><li>运行 Hadoop 自带的 Wordcount 程序，观察输出的内容。</li></ol><pre><code>cd $HADOOP_HOME/share/hadoop/mapreduce
+hadoop jar hadoop-mapreduce-examples-3.3.1.jar wordcount /part2/countryroad.txt /output
+</code></pre><ul><li>如果输出的日志内容包含类似以下信息，则表示执行成功</li></ul><pre><code>2022-01-24 15:48:51,712 INFO mapreduce.Job: Job job_xxxxxxx completed successfully
+</code></pre><ol start=52><li>程序执行过程中，可以访问 Yarn Web 界面查看任务进展。<a href=http://10.0.0.71:8088/cluster/apps target=_blank>http://10.0.0.71:8088/cluster/apps</a></li></ol><p><img src=/static/img/hadoop-d02/Snipaste_2021-03-19_23-41-58.png alt></p><ol start=53><li>等待程序运行完毕，观察输出的内容</li></ol><pre><code>hdfs dfs -cat /output/part-r-00000
+</code></pre><h2 id=任务12-搭建-hadoop-开发环境>任务1.2 搭建 Hadoop 开发环境</h2><h2 id=任务目的-1>【任务目的】</h2><ul><li>掌握 JDK 的安装和环境变量的设置</li><li>掌握 IDEA 的安装和使用</li><li>掌握 Maven 的安装、配置和使用命令</li></ul><h2 id=任务环境-1>【任务环境】</h2><ul><li>Windows 7 以上64位操作系统</li></ul><h2 id=任务资源-1>【任务资源】</h2><ul><li><a href=https://www.oracle.com/java/technologies/javase-downloads.html target=_blank>JDK 8</a> - Java Development Kit是 Oracle 公司针对Java开发人员发布的免费软件开发工具包，是 Java 开发必备的开发工具。</li><li><a href=https://www.jetbrains.com/idea/ target=_blank>Intellij IDEA</a> - 业界简称IDEA，是 jetbrains 公司推出的和 Eclipse 齐名的 Java 集成开发环境（IDE）。</li><li><a href=https://maven.apache.org/ target=_blank>Apache Maven</a> - Apache Maven，是一个软件项目管理及自动构建工具，由Apache软件基金会所提供。是 Java 构建打包最广泛使用的工具。</li></ul><h2 id=任务说明-1>【任务说明】</h2><ul><li>为了能够使用编程的方式访问和调用 Hadoop 平台的功能，我们必须部署一套基于 Java 的编程环境。本次任务主要是完成 JDK、Maven 和 IDEA的安装和配置。</li></ul><h2 id=任务内容>【任务内容】</h2><ul><li>完成 JDK、IDEA 和 Maven 的安装与配置</li><li>编写测试用例测试之前的软件安装是否成功</li></ul><h2 id=任务步骤-1>【任务步骤】</h2><h3 id=安装-jdk-8>安装 JDK 8</h3><ol><li>在 Windows 运行安装 jdk-8u261-windows-x64.exe，安装过程略。此处以安装到<code>d:\jdk8</code>为例。安装完结束以后目录架构如下：目录架构如下：</li></ol><pre><code>d:\jdk8
+  |-bin/
+  |-lib/
+  |-include/
+  |-jre/            
+  |-legal/
+  |-javafx-src.zip  
+  |-jmc.txt
+  |-src.zip
+  |-COPYRIGHT
+  |-release
+  |-LICENSE
+  |-README.html
+</code></pre><ol start=2><li>进入Windows的环境变量配置界面，配置以下环境变量。如果系统C盘会还原，每次重启电脑都需要配置此环境变量。注意修改 JDK 的安装目录为你实际安装目录。
+<img src=/static/img/hadoop-d04/shuxing.png alt>
+<img src=/static/img/hadoop-d04/hjbl.png alt>
+<img src=/static/img/hadoop-d04/Snipaste_2021-04-02_23-14-11.png alt>
+<img src=/static/img/hadoop-d04/Snipaste_2022-01-25_11-25-54.png alt></li></ol><pre><code>#新增
+JAVA_HOME=D:\jdk8
+CLASSPATH=%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar
+
+#修改PATH，在PATH环境变量原有值后面追加
+;%JAVA_HOME%\bin;
+</code></pre><ol start=3><li>打开Windows 的命令行终端，运行以下命令，测试是否有<code>JDK</code>的版本输出。</li></ol><pre><code>java -version
+</code></pre><ul><li>正常情况会有类似以下内容输出</li></ul><pre><code>java version &quot;1.8.0_271&quot;
+Java(TM) SE Runtime Environment (build 1.8.0_271-b09)
+Java HotSpot(TM) 64-Bit Server VM (build 25.271-b09, mixed mode)
+</code></pre><h3 id=安装-idea>安装 IDEA</h3><ol start=4><li>运行<code>ideaIC-2021.2.1.exe</code>，指定目录安装 IDEA，这里以<code>d:\idea</code>为例。安装完成以后目录架构如下：</li></ol><pre><code>d:\idea\ideaIC-2021.2.1.win
+  |-bin\               
+  |-build.txt         
+  |-jbr\               
+  |-lib\               
+  |-license           
+  |-LICENSE.txt       
+  |-NOTICE.txt        
+  |-plugins\           
+  |-product-info.json 
+  |-redist\         
+</code></pre><ol start=5><li>编辑<code>d:\idea\ideaIC-2021.2.1.win\bin</code>目录下的<code>idea.exe.vmoptions</code>和<code>idea64.exe.vmoptions</code>，在文件末尾加上以下代码，让 IDEA 默认使用UTF8编码。</li></ol><pre><code>-Dfile.encoding=UTF-8
+</code></pre><h3 id=安装和配置-maven-3>安装和配置 Maven 3</h3><ol start=6><li>解压<code>apache-maven-3.6.3-bin.zip</code>，这里以解压到<code>d:\maven363</code>为例。在Maven 安装目录下创建一个<code>repos</code>目录，解压<code>repos.zip</code>到<code>repos</code>目录下，里面包含 hadoop 开发包的仓库（Repository）。</li></ol><pre><code>d:\maven363
+  |-bin/      
+  |-boot/     
+  |-conf/     
+  |-lib/      
+  |-LICENSE   
+  |-NOTICE    
+  |-README.txt
+  |-repos/       
+</code></pre><ol start=7><li>编辑<code>d:\maven363\conf\settings.xml</code>文件。在<code>&lt;settings></code>标签内新增本地仓库路径设置。<code>&lt;localRepository></code>标签内内容注意修改为你的 Maven 的实际安装路径。</li></ol><pre><code>&lt;localRepository&gt;D:/maven363/repos&lt;/localRepository&gt;
+</code></pre><p><img src=/static/img/hadoop-d04/Snipaste_2022-04-25_11-06-26.jpg alt></p><blockquote><p>注意：这个XML的标签，需要放在 XML 的注释 外，放在注释内的内容是无法生效的。</p></blockquote><ol start=8><li>编辑<code>d:\maven363\conf\settings.xml</code>文件。在约148行<code>&lt;mirrors></code>标签内增加远程仓库镜像地址。开发过程中依赖的 Jar 包可以通过配置从此地址下载。</li></ol><ul><li>如果电脑可以联网，可以修改指向阿里云的仓库镜像。</li></ul><pre><code>&lt;mirror&gt;
+  &lt;id&gt;nexus-aliyun&lt;/id&gt;
+  &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;
+  &lt;name&gt;Nexus aliyun&lt;/name&gt;
+  &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;
+&lt;/mirror&gt;
+</code></pre><blockquote><p>注意：这个XML的标签，需要放在 XML 的注释 外，放在注释内的内容是无法生效的。</p></blockquote><ol start=9><li>进入Windows的环境变量配置界面，配置以下环境变量。可参考<a href=#step2>步骤2</a></li></ol><pre><code>#新增
+MAVEN_HOME=D:\maven363
+
+#修改PATH，在PATH环境变量原有值后面追加
+;%MAVEN_HOME%\bin;
+</code></pre><ul><li>以下截图仅供参考，请根据你自己的 Maven 路径设置。</li></ul><p><img src=/static/img/hadoop-d04/Snipaste_2022-06-06_10-05-00.jpg alt>
+<img src=/static/img/hadoop-d04/Snipaste_2022-06-06_10-07-08.jpg alt></p><ol start=10><li>打开Windows 的命令行终端，运行以下命令，测试是否能够输出你的 mvn 脚本所在路径。</li></ol><pre><code>where mvn
+</code></pre><ul><li>正常会输出你的 mvn 路径，以下截图仅供参考。
+<img src=/static/img/hadoop-d04/20220606100943.png alt></li></ul><ol start=11><li>打开Windows 的命令行终端，运行以下命令，测试是否有<code>Maven</code>的版本输出。</li></ol><pre><code>mvn -version
+</code></pre><h3 id=安装和配置-idea>安装和配置 IDEA</h3><ol start=12><li><p>启动IDEA，运行<code>d:\idea\ideaIC-2021.2.1.win\bin\idea.exe</code>。新建一个项目。
+<img src=/static/img/hadoop-d04/Snipaste_2021-03-31_15-46-09.png alt></p></li><li><p>新建一个 Maven 项目，<code>Project SDK</code>选择 1.8，如果没有，则点击<code>Add JDK...</code>，指向你的 JDK 的安装目录。
+<img src=/static/img/hadoop-d04/Snipaste_2021-03-31_15-46-53.png alt>
+<img src=/static/img/hadoop-d04/Snipaste_2021-03-31_15-47-31.png alt>
+<img src=/static/img/hadoop-d04/Snipaste_2021-03-31_15-47-55.png alt></p></li><li><p>新建一个开发项目，命名为<code>hadoopexp+你学号后3位</code>。
+<img src=/static/img/hadoop-d04/Snipaste_2021-03-31_15-49-00.png alt></p></li><li><p>创建成功以后，可以看到项目的整体目录架构。
+<img src=/static/img/hadoop-d04/Snipaste_2021-03-31_15-50-00.png alt></p></li><li><p>修改 IDEA 的 Maven 配置，指向本地安装的 Maven。这里注意替换为你的 Maven 的实际安装目录。
+<img src=/static/img/hadoop-d04/Snipaste_2021-04-01_08-03-49.png alt>
+<img src=/static/img/hadoop-d04/Snipaste_2021-04-01_08-06-39.png alt></p></li><li><p>修改项目下的<code>pom.xml</code>文件，此文件是 Maven 项目的配置文件。</p></li></ol><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;hadoop&lt;/groupId&gt;
+    &lt;artifactId&gt;hadoop-exp&lt;/artifactId&gt;
+    &lt;version&gt;1.0&lt;/version&gt;
+    &lt;packaging&gt;jar&lt;/packaging&gt;
+    &lt;properties&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+        &lt;maven.compiler.encoding&gt;UTF-8&lt;/maven.compiler.encoding&gt;
+        &lt;maven.compiler.source&gt;8&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;8&lt;/maven.compiler.target&gt;
+        &lt;hadoop.version&gt;3.3.1&lt;/hadoop.version&gt;
+    &lt;/properties&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;junit&lt;/groupId&gt;
+            &lt;artifactId&gt;junit&lt;/artifactId&gt;
+            &lt;version&gt;4.13&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.hadoop&lt;/groupId&gt;
+            &lt;artifactId&gt;hadoop-common&lt;/artifactId&gt;
+            &lt;version&gt;${hadoop.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.hadoop&lt;/groupId&gt;
+            &lt;artifactId&gt;hadoop-client&lt;/artifactId&gt;
+            &lt;version&gt;${hadoop.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.hadoop&lt;/groupId&gt;
+            &lt;artifactId&gt;hadoop-hdfs&lt;/artifactId&gt;
+            &lt;version&gt;${hadoop.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.hbase&lt;/groupId&gt;
+            &lt;artifactId&gt;hbase-client&lt;/artifactId&gt;
+            &lt;version&gt;1.3.1&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.hbase&lt;/groupId&gt;
+            &lt;artifactId&gt;hbase-server&lt;/artifactId&gt;
+            &lt;version&gt;1.3.1&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.hbase&lt;/groupId&gt;
+            &lt;artifactId&gt;hbase-server&lt;/artifactId&gt;
+            &lt;version&gt;1.3.1&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.mockito&lt;/groupId&gt;
+            &lt;artifactId&gt;mockito-core&lt;/artifactId&gt;
+            &lt;version&gt;3.9.0&lt;/version&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-jar-plugin&lt;/artifactId&gt;
+                &lt;version&gt;3.2.0&lt;/version&gt;
+                &lt;configuration&gt;
+                    &lt;archive&gt;
+                        &lt;!--&lt;manifestFile&gt;${project.build.outputDirectory}/META-INF/MANIFEST.MF&lt;/manifestFile&gt;--&gt;
+                        &lt;manifest&gt;
+                            &lt;!-- main()所在的类，注意修改为你的Main主类 --&gt;
+                            &lt;mainClass&gt;hadoop.mapreduce.wc.WordCountMain&lt;/mainClass&gt;
+                        &lt;/manifest&gt;
+                    &lt;/archive&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+&lt;/project&gt;
+</code></pre><ol start=18><li><p>在项目<code>hadoop-exp\src\main\java</code>下创建一个名为<code>hadoop+你学号后3位</code>的包。注意替换为你学号后3位。
+<img src=/static/img/hadoop-d04/Snipaste_2021-04-02_23-46-52.png alt></p></li><li><p>在你创建的包下面，再创建一个名为<code>Hello</code>的类（class）。
+<img src=/static/img/hadoop-d04/Snipaste_2021-04-02_23-48-25.png alt>
+<img src=/static/img/hadoop-d04/Snipaste_2021-04-02_23-48-47.png alt></p></li><li><p>在<code>Hello</code>这个类中，编写一个<code>main</code>方法，打印出以下内容。记录你编写的代码,注意替换为你学号后3位。</p></li></ol><pre><code>Hello from 你学号后3位
+</code></pre><p><img src=/static/img/hadoop-d04/Snipaste_2021-04-02_23-56-19.png alt>
+<img src=/static/img/hadoop-d04/Snipaste_2021-04-02_23-57-15.png alt></p><ol start=21><li><p>JUnit 是 Java 开发中最常用的单元测试框架，可以帮助测试我们编写的代码。JUnit 非常容易上手。我们可以新建一个 JUnit 测试类学习使用它。</p></li><li><p>在项目<code>hadoop-exp\src\test\java</code>下创建一个名为<code>hadoop+你学号后3位</code>的包。注意替换为你学号后3位。</p></li><li><p>在你刚创建的包下面创建一个名为<code>HelloJUnit</code>的类。</p></li><li><p>编辑<code>HelloJUnit</code>类，输入下面的代码，运行查看测试结果。注意替换为你学号后3位。</p></li></ol><pre><code>package hadoop+你学号后3位;
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class HelloJUnit {
+	
+	@Test
+    public void test1(){
+		//assertEquals第1个参数时期待值，第2个参数是我们需要测试的值
+        assertEquals(2,1+1);
+		assertNotEquals(&quot;帅哥&quot;,&quot;帅锅&quot;);
+        assertFalse(3==(1+1));//断定参数是 False
+        assertTrue(2==(1+1));//断定参数是 True
+
+        //字符串的 split 方法是根据第一个参数字符来把字符串分切为一个字符串数组
+        String[] strArr=&quot;唱,跳,RAP,篮球&quot;.split(&quot;,&quot;);
+        assertEquals(&quot;唱&quot;,strArr[0]);
+        assertEquals(&quot;跳&quot;,strArr[1]);
+		assertEquals(&quot;RAP&quot;,strArr[2]);
+		assertEquals(&quot;篮球&quot;,strArr[3]);
+    }
+}
+</code></pre><p><img src=/static/img/hadoop-d04/Snipaste_2021-04-03_00-15-31.png alt></p><ol start=25><li><p>如果结果显示是绿色的勾，则表示单元测试成功。如果是交叉，则表示测试失败。
+<img src=/static/img/hadoop-d04/Snipaste_2021-04-03_00-23-55.png alt></p></li><li><p>修改以上<code>HelloJUnit</code>类，重新运行，让测试成功。并记录你修改的代码。</p></li><li><p>编写一个<code>test2</code>方法，测试以下2个字符串是否相等。</p></li></ol><pre><code>字符串1:1ll1ll1l11ll1l
+字符串2:1ll1ll1ll1ll1l
+</code></pre><h2 id=常见问题>【常见问题】</h2><h3 id=1-nodea节点namenode或secondarynamenode-无法启动并且日志提示opthadooptmpdfsnamesecondary-is-in-an-inconsistent-state>1. <code>NodeA</code>节点<code>NameNode</code>或<code>SecondaryNameNode</code> 无法启动。并且日志提示“/opt/hadoop/tmp/dfs/namesecondary is in an inconsistent state”。</h3><p>答：可能是因为多次格式化或者配置文件没有同步导致的错误。</p><ul><li>(1) 首先把<code>NodeA</code>节点的 Hadoop /opt/hadoop/etc/hadoop 下所有配置文件发送到<code>NodeB</code>和<code>NodeC</code>。</li></ul><pre><code>cd /opt/hadoop/etc/
+scp -r hadoop hadoop@nodeb+你学号后3位:/opt/hadoop/etc/
+scp -r hadoop hadoop@nodec+你学号后3位:/opt/hadoop/etc/
+</code></pre><ul><li>(2) 删除/opt/hadoop/tmp 下的所有内容。</li><li>(3) 再次执行 HDFS 格式化。</li></ul><pre><code>hdfs namenode -format
+</code></pre><h3 id=2-hadoop-执行-mapreduce-任务失败并且日志伴有note-system-times-on-machines-may-be-out-of-sync-check-system-time-and-time-zones>2. Hadoop 执行 MapReduce 任务失败，并且日志伴有“Note: System times on machines may be out of sync. Check system time and time zones.”</h3><p>答：可能是由于虚拟机节点之间的时间不同步导致的。</p><ul><li>(1) 在<code>NodeB</code>和<code>NodeC</code>执行以下语句，尝试强制与<code>NodeA</code>同步时间。</li></ul><pre><code>chronyc -a makestep
+</code></pre><ul><li>(2) 重启 Hadoop。</li></ul><h3 id=3-yarn-的-resourcemanager-进程找不到而且日志报javalangnullpointerexception>3. YARN 的 ResourceManager 进程找不到，而且日志报<code>java.lang.NullPointerException</code></h3><pre><code>java.lang.NullPointerException
+        at org.apache.hadoop.yarn.server.api.protocolrecords.impl.pb.NodesToAttributesMappingRequestPBImpl.initNodeAttributesMapping(NodesToAttributesMappingRequestPBImpl.java:102)
+        at org.apache.hadoop.yarn.server.api.protocolrecords.impl.pb.NodesToAttributesMappingRequestPBImpl.getNodesToAttributes(NodesToAttributesMappingRequestPBImpl.java:117)
+        at org.apache.hadoop.yarn.nodelabels.store.op.FSNodeStoreLogOp.getNodeToAttributesMap(FSNodeStoreLogOp.java:46)
+        at org.apache.hadoop.yarn.nodelabels.store.op.NodeAttributeMirrorOp.recover(NodeAttributeMirrorOp.java:57)
+        at org.apache.hadoop.yarn.nodelabels.store.op.NodeAttributeMirrorOp.recover(NodeAttributeMirrorOp.java:35)
+        at org.apache.hadoop.yarn.nodelabels.store.AbstractFSNodeStore.loadFromMirror(AbstractFSNodeStore.java:121)
+        at org.apache.hadoop.yarn.nodelabels.store.AbstractFSNodeStore.recoverFromStore(AbstractFSNodeStore.java:150)
+        at org.apache.hadoop.yarn.server.resourcemanager.nodelabels.FileSystemNodeAttributeStore.recover(FileSystemNodeAttributeStore.java:95)
+</code></pre><p>答：在<code>/tmp</code>目录下找到以下 yarn 相关的目录进行删除</p><pre><code>/tmp/hadoop-yarn-hadoop
+/tmp/hadoop-yarn-root
+</code></pre></div><div class=my-4><a href=/tags/hadoop/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#hadoop</a>
+<a href=/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#大数据</a></div><div class=py-2><div class="flex flex-col md:flex-row items-center my-8"><a href=/authors/heis/ class="w-24 h-24 md:mr-4"><img src=/static/img/authors/heis.png class="w-full bg-primary-bg rounded-full" alt=Avatar></a><div class="w-full md:w-auto mt-4 md:mt-0"><a href=/authors/heis/ class="block font-bold text-lg pb-1 mb-2 border-b">黄老师</a>
+<span class="block pb-2"></span><a href=mailto:heishuangzy@qq.com class=mr-1><i class="fas fa-envelope"></i></a><a href=https://gitee.com/heis/ class=mr-1><i class="fab fa-git"></i></a><a href=http://heis.gitee.io/ class=mr-1><i class="fas fa-blog"></i></a></div></div></div><div id=btmQrcode></div><p style=text-align:center>扫码或长按识别访问</p><script src=/static/js/qrcode.min.js></script><script type=text/javascript>function getURL(){var url=window.location.href;if(window.location.hash!=""){url=url.substring(0,url.indexOf("#"));}
+return url;}
+new QRCode(document.getElementById("btmQrcode"),{text:getURL(),width:192,height:192,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});</script><div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t"><div id=presec></div><div id=nextsec class="md:text-right mt-4 md:mt-0"><span class="block font-bold">下一页</span>
+<a href=/docs/hadoop-e/hadoop-e02/ class=block>P2 - HDFS 实战</a></div></div></div><div class="hidden lg:block lg:w-1/4"><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-secondary-bg pt-16 -mt-16"><span class="text-lg font-semibold">本页内容</span></div><div class="sticky-toc hidden lg:block px-6 pb-6 pt-10 -mt-10 border-l"><nav id=TableOfContents><ul><li><a href=#版本>【版本】</a></li><li><a href=#任务11-部署-hadoop-完全分布式>任务1.1 部署 Hadoop 完全分布式</a></li><li><a href=#任务目的>【任务目的】</a></li><li><a href=#任务环境>【任务环境】</a></li><li><a href=#任务资源>【任务资源】</a></li><li><a href=#任务要求>【任务要求】</a></li><li><a href=#任务说明>【任务说明】</a></li><li><a href=#任务步骤>【任务步骤】</a><ul><li><a href=#安装-virtualbox>安装 VirtualBox</a></li><li><a href=#导入模板机>导入模板机</a></li><li><a href=#配置模板机>配置模板机</a></li><li><a href=#测试模板机>测试模板机</a></li><li><a href=#复制模板机>复制模板机</a></li><li><a href=#配置免密登录>配置免密登录</a></li><li><a href=#修改-hadoop-配置文件>修改 Hadoop 配置文件</a></li><li><a href=#验证免密登录>验证免密登录</a></li><li><a href=#验证时间是否同步>验证时间是否同步</a></li><li><a href=#验证-hadoop-是否正常启动>验证 Hadoop 是否正常启动</a></li><li><a href=#验证-hdfs-是否正常工作>验证 HDFS 是否正常工作</a></li><li><a href=#验证-mapreduce-是否正常工作>验证 MapReduce 是否正常工作</a></li></ul></li><li><a href=#任务12-搭建-hadoop-开发环境>任务1.2 搭建 Hadoop 开发环境</a></li><li><a href=#任务目的-1>【任务目的】</a></li><li><a href=#任务环境-1>【任务环境】</a></li><li><a href=#任务资源-1>【任务资源】</a></li><li><a href=#任务说明-1>【任务说明】</a></li><li><a href=#任务内容>【任务内容】</a></li><li><a href=#任务步骤-1>【任务步骤】</a><ul><li><a href=#安装-jdk-8>安装 JDK 8</a></li><li><a href=#安装-idea>安装 IDEA</a></li><li><a href=#安装和配置-maven-3>安装和配置 Maven 3</a></li><li><a href=#安装和配置-idea>安装和配置 IDEA</a></li></ul></li><li><a href=#常见问题>【常见问题】</a><ul><li><a href=#1-nodea节点namenode或secondarynamenode-无法启动并且日志提示opthadooptmpdfsnamesecondary-is-in-an-inconsistent-state>1. <code>NodeA</code>节点<code>NameNode</code>或<code>SecondaryNameNode</code> 无法启动。并且日志提示“/opt/hadoop/tmp/dfs/namesecondary is in an inconsistent state”。</a></li><li><a href=#2-hadoop-执行-mapreduce-任务失败并且日志伴有note-system-times-on-machines-may-be-out-of-sync-check-system-time-and-time-zones>2. Hadoop 执行 MapReduce 任务失败，并且日志伴有“Note: System times on machines may be out of sync. Check system time and time zones.”</a></li><li><a href=#3-yarn-的-resourcemanager-进程找不到而且日志报javalangnullpointerexception>3. YARN 的 ResourceManager 进程找不到，而且日志报<code>java.lang.NullPointerException</code></a></li></ul></li></ul></nav></div><script>window.addEventListener('DOMContentLoaded',()=>{enableStickyToc();});</script></div></div></div></div></div><div id=outerdiv><div id=innerdiv><img id=bigimg src></div></div><div id=popOuterDiv><div id=popDiv style=display:none><div class=close><span onclick="$('#popDiv').hide();"></span></div><p id=popCtn></p></div></div><div id=nav_top_icon style=display:none></div><div id=list_note_icon></div><script>$(function(){var scrollTop=$(window).scrollTop();if(scrollTop>0){$("#nav_top_icon").show(200);}
+window.onscroll=function(){scrollTop=$(window).scrollTop();if(scrollTop==0){$("#nav_top_icon").hide(200);}else{$("#nav_top_icon").show(200);}}
+$("#nav_top_icon").click(function(){$("body,html").animate({scrollTop:0},500);});$("#list_note_icon").click(function(){$("#popOuterDiv").toggle();$("#popDiv").slideToggle();$("#popCtn").html($("#TableOfContents").html());})
+$("#popOuterDiv").click(function(){$("#popOuterDiv").hide();$("#popDiv").slideUp();})});document.addEventListener('DOMContentLoaded',()=>{hljs.highlightAll();hljs.initLineNumbersOnLoad({singleLine:true});changeSidebarHeight();switchDocToc();$("img").css("cursor:pointer")
+$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});$("ol").each(function(index){if(/\d{1,4}/.test($(this).attr("start"))){let idx=parseInt($(this).attr("start"));let lis=$(this).find("li");if(lis.length>0){lis.each(function(index){$(this).attr("id","step"+(idx+index));});}else{$(this).attr("id","step"+idx);}}});});</script><script src=/static/js/clipboard.min.js></script><script src=/static/js/codecopy.bundle.js?626></script></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text"></p></div></div></footer></body></html>
