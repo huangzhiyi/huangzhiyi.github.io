@@ -442,3 +442,11 @@ table.tbl tr:nth-child(even)
 	width:8rem;
 	height:8rem;
 }
+
+.mcr-bg-yellow{
+	background-color: #FFEEDD;
+}
+
+.mcr-bg-red{
+	background-color: #FEDCDC;
+}

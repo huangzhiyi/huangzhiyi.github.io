@@ -102,7 +102,7 @@ openstack-config --set /etc/nova/nova.conf neutron username neutron
 openstack-config --set /etc/nova/nova.conf neutron password NEUTRON_PASS
 openstack-config --set /etc/nova/nova.conf neutron service_metadata_proxy true
 openstack-config --set /etc/nova/nova.conf neutron metadata_proxy_shared_secret METADATA_SECRET
-</code></pre><blockquote><p><a href=/static/img/openstack%3Ev2%3Eexp07/controller%3Enova.conf>控制节点 /etc/nova/nova.conf 参考配置</a></p></blockquote><ol start=23><li>同步 neutron 数据库。</li></ol><pre><code>cd /etc/neutron
+</code></pre><blockquote><p><a href=/static/img/openstack-v2-exp07/controller-nova.conf>控制节点 /etc/nova/nova.conf 参考配置</a></p></blockquote><ol start=23><li>同步 neutron 数据库。</li></ol><pre><code>cd /etc/neutron
 su -s /bin/sh -c &quot;neutron-db-manage --config-file /etc/neutron/neutron.conf \
   --config-file /etc/neutron/plugins/ml2/ml2_conf.ini upgrade head&quot; neutron
 </code></pre><ol start=24><li>启动相应服务。</li></ol><pre><code>systemctl restart openstack-nova-api
@@ -191,9 +191,9 @@ openstack service list |grep -E &quot;ID|neutron&quot;
 </code></pre><ol start=5><li>查询 neutron endpoint，表里应该有3行记录。</li></ol><pre><code>source /etc/keystone/admin-openrc
 openstack endpoint list |grep -E &quot;ID|neutron&quot;
 </code></pre><p>类似结果：</p><pre><code>| ID                               | Region    | Service Name | Service Type | Enabled | Interface | URL                                           |
-| 18e6d76b374447f7884e59ba5526532b | RegionOne | neutron      | network      | True    | internal  | http://controller9999:9696                    |
-| 505902e0531842b3a73782a6c658ecca | RegionOne | neutron      | network      | True    | admin     | http://controller9999:9696                    |
-| 74cc7fa248614259b85e9f97590dd24b | RegionOne | neutron      | network      | True    | public    | http://controller9999:9696                    |
+| 18e6d76b374447f7884e59ba5526532b | RegionOne | neutron      | network      | True    | internal  | http://controller999:9696                    |
+| 505902e0531842b3a73782a6c658ecca | RegionOne | neutron      | network      | True    | admin     | http://controller999:9696                    |
+| 74cc7fa248614259b85e9f97590dd24b | RegionOne | neutron      | network      | True    | public    | http://controller999:9696                    |
 </code></pre><ol start=6><li>查询 neutron user，表里应该有1行记录。</li></ol><pre><code>source /etc/keystone/admin-openrc
 openstack user list |grep -E &quot;ID|neutron&quot;
 </code></pre><p>类似结果：</p><pre><code>| ID                               | Name    |
@@ -209,4 +209,4 @@ new QRCode(document.getElementById("btmQrcode"),{text:getURL(),width:192,height:
 window.onscroll=function(){scrollTop=$(window).scrollTop();if(scrollTop==0){$("#nav_top_icon").hide(200);}else{$("#nav_top_icon").show(200);}}
 $("#nav_top_icon").click(function(){$("body,html").animate({scrollTop:0},500);});$("#list_note_icon").click(function(){$("#popOuterDiv").toggle();$("#popDiv").slideToggle();$("#popCtn").html($("#TableOfContents").html());})
 $("#popOuterDiv").click(function(){$("#popOuterDiv").hide();$("#popDiv").slideUp();})});document.addEventListener('DOMContentLoaded',()=>{hljs.highlightAll();hljs.initLineNumbersOnLoad({singleLine:true});changeSidebarHeight();switchDocToc();$("img").css("cursor:pointer")
-$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});$("ol").each(function(index){if(/\d{1,4}/.test($(this).attr("start"))){let idx=parseInt($(this).attr("start"));let lis=$(this).find("li");if(lis.length>0){lis.each(function(index){$(this).attr("id","step"+(idx+index));});}else{$(this).attr("id","step"+idx);}}});});</script><script src=/static/js/clipboard.min.js></script><script src=/static/js/codecopy.bundle.js?696></script></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text"></p></div></div></footer></body></html>
+$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});$("ol").each(function(index){if(/\d{1,4}/.test($(this).attr("start"))){let idx=parseInt($(this).attr("start"));let lis=$(this).find("li");if(lis.length>0){lis.each(function(index){$(this).attr("id","step"+(idx+index));});}else{$(this).attr("id","step"+idx);}}});});</script><script src=/static/js/clipboard.min.js></script><script src=/static/js/codecopy.bundle.js?537></script></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text"></p></div></div></footer></body></html>
