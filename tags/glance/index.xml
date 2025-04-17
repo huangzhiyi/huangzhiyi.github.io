@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>glance on Heis</title><link>https://huangzhiyi.github.io/tags/glance/</link><description>Recent content in glance on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 02 Mar 2021 16:42:51 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/tags/glance/index.xml" rel="self" type="application/rss+xml"/><item><title>云计算部署实战 Part 4 - 安装 Glance 镜像服务</title><link>https://huangzhiyi.github.io/openstack-exp4/</link><pubDate>Tue, 02 Mar 2021 16:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/openstack-exp4/</guid><description>«返回课程汇总页面
-云计算部署实战 Part 4 - 安装 Glance 镜像服务 【版本】 当前版本号v20210324
-版本 修改说明 v20210324 增加验证步骤 v20210303-3 memcached_servers配置的地址需要加学号后4位 v20210303-2 步骤3增加project service创建 v20210303 运行openstack镜像命令前先设置环境变量 v20210302 初始化版本
-【实验名称】 云计算部署实战 Part 4 - 安装 Glance 镜像服务
-【实验目的】 掌握搭建计算节点软件和环境 熟练掌握Linux命令（vi、tar、mv等等）的使用 掌握VMWare、XShell等客户端的使用 【实验环境】 内存：至少4G 硬盘：至少空余40G 操作系统: 64位 Windows系统。 【实验资源】 XShell CentOS 7.4系统镜像 VMWare WorkStation Pro Openstack源 CirrOS 镜像 【实验步骤】 使用Root用户登录控制节点（Controller）。输出 Hostname ，确认所在节点是控制节点。 hostname
-结果:</description></item></channel></rss>

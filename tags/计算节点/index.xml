@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>计算节点 on Heis</title><link>https://huangzhiyi.github.io/tags/%E8%AE%A1%E7%AE%97%E8%8A%82%E7%82%B9/</link><description>Recent content in 计算节点 on Heis</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 09 Mar 2021 16:42:51 +0800</lastBuildDate><atom:link href="https://huangzhiyi.github.io/tags/%E8%AE%A1%E7%AE%97%E8%8A%82%E7%82%B9/index.xml" rel="self" type="application/rss+xml"/><item><title>云计算部署实战Part9 - 增加一个计算节点</title><link>https://huangzhiyi.github.io/openstack-exp9/</link><pubDate>Tue, 09 Mar 2021 16:42:51 +0800</pubDate><guid>https://huangzhiyi.github.io/openstack-exp9/</guid><description>«返回课程汇总页面
-云计算部署实战 Part9 - 增加一个计算节点 【版本】 当前版本号v20210325
-版本 修改说明 v20210325 修改了步骤17的描述，更为准确 v20210309 初始化版本
-【实验名称】 云计算部署实战Part9 - 增加一个计算节点
-【实验目的】 通过增加一个计算节点，让计算节点组成集群。 【实验环境】 内存：至少4G 硬盘：至少空余40G 操作系统: 64位 Windows系统。 【实验资源】 XShell CentOS 7.4系统镜像 VMWare WorkStation Pro 模板机镜像 【实验步骤】 从模板机克隆出一台新的虚拟机作为新的计算节点。命令可参考之前步骤。以下步骤如果没有特别说明，都在新的计算节点上执行。
-把虚拟机 Hostname 命名为computeB+你学号后4位。注意替换为你的学号。命令可参考之前步骤。
-设置新的计算节点的IP为10.0.0.32。命令可参考之前步骤。
-控制节点和2个计算节点的hosts统一配置为如下文本。命令可参考之前步骤。
-10.</description></item></channel></rss>
