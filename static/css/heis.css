@@ -450,3 +450,15 @@ table.tbl tr:nth-child(even)
 .mcr-bg-red{
 	background-color: #FEDCDC;
 }
+
+.emb-vedio-frame{
+	width:100%;
+	margin:0 auto;
+	height:400px;
+}
+
+p strong{
+	font-size:1.1em;
+	font-weight: bold;
+	color:#FF3826;
+}
