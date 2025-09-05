@@ -1,0 +1,205 @@
+<!doctype html><html lang=zh><meta charset=utf-8><meta name=viewport content="width=device-width"><title>P1 - 搭建 Java EE 开发环境 | Java后台应用项目开发 | Heis</title><meta name=generator content="Hugo Eureka 0.8.4"><link rel=stylesheet href=/css/eureka.min.css><script defer src=/js/eureka.min.js></script><script src=/static/js/jquery-3.6.0.min.js></script><script src=/static/js/heis.js?230321></script><link rel=stylesheet href=/static/css/heis.css?230321 media=all onload="this.media='all';this.onload=null" crossorigin><link rel=stylesheet href=/static/css/print.css?230413 media=print crossorigin><link rel=stylesheet href=/static/css/highlight-css/solarized-light.min.css media=print onload="this.media='all';this.onload=null" crossorigin><script defer src=/static/js/highlight.min.js crossorigin></script><script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script><script defer src=/static/js/highlightjs-line-numbers.min.js></script><link rel=icon type=image/png sizes=32x32 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_32x32_fill_box_center_2.png><link rel=apple-touch-icon sizes=180x180 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_180x180_fill_box_center_2.png><meta name=description content="Java后台应用项目开发 Part 1 - 搭建 Java EE 开发环境"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"系列文章","item":"/docs/"},{"@type":"ListItem","position":2,"name":"Java后台应用项目开发","item":"/docs/javaweb-dev/"},{"@type":"ListItem","position":3,"name":"P1 - 搭建 Java EE 开发环境","item":"/docs/javaweb-dev/javawebdev-01/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/docs/javaweb-dev/javawebdev-01/"},"headline":"P1 - 搭建 Java EE 开发环境 | Java后台应用项目开发 | Heis","datePublished":"2021-08-24T00:44:00+08:00","dateModified":"2021-08-24T00:44:00+08:00","wordCount":3565,"author":{"@type":"Person","name":"heis"},"publisher":{"@type":"Person","name":"C. Wang","logo":{"@type":"ImageObject","url":"/images/icon.png"}},"description":"Java后台应用项目开发 Part 1 - 搭建 Java EE 开发环境"}</script><meta property="og:title" content="P1 - 搭建 Java EE 开发环境 | Java后台应用项目开发 | Heis"><meta property="og:type" content="article"><meta property="og:image" content="/images/icon.png"><meta property="og:url" content="/docs/javaweb-dev/javawebdev-01/"><meta property="og:description" content="Java后台应用项目开发 Part 1 - 搭建 Java EE 开发环境"><meta property="og:locale" content="zh"><meta property="og:site_name" content="Heis"><meta property="article:published_time" content="2021-08-24T00:44:00+08:00"><meta property="article:modified_time" content="2021-08-24T00:44:00+08:00"><meta property="article:section" content="docs"><meta property="article:tag" content="java"><meta property="article:tag" content="web"><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?f58b6a2675cf52000232edb4d109eccc";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><body class="flex flex-col min-h-screen"><header id=headerctn class="fixed flex items-center w-full pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode")
+if(((storageColorScheme=='Auto'||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches)||storageColorScheme=="Dark"){document.getElementsByTagName('html')[0].classList.add('dark')}</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="mr-6 text-primary-text text-xl font-bold">Heis</a>
+<button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+<i class="fas fa-bars"></i></button><div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20"><div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0"><a href=/posts/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">文章</a>
+<a href=/docs/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 selected-menu-item mr-4">系列</a></div><div class=flex><div class="relative pt-4 md:pt-0"><div class="cursor-pointer hover:text-eureka" id=lightDarkMode><i class="fas fa-adjust"></i></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id=is-open></div><div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40" id=lightDarkOptions><span class="px-4 py-1 hover:text-eureka" name=Light>浅色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Dark>深色</span>
+<span class="px-4 py-1 hover:text-eureka" name=Auto>自动</span></div></div></div></div><div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id=is-open-mobile></div></nav><script>let element=document.getElementById('lightDarkMode')
+if(storageColorScheme==null||storageColorScheme=='Auto'){document.addEventListener('DOMContentLoaded',()=>{window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change',switchDarkMode)})}else if(storageColorScheme=="Light"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'sun')
+element.firstElementChild.classList.add('fa-sun')}else if(storageColorScheme=="Dark"){element.firstElementChild.classList.remove('fa-adjust')
+element.firstElementChild.setAttribute("data-icon",'moon')
+element.firstElementChild.classList.add('fa-moon')}
+document.addEventListener('DOMContentLoaded',()=>{getcolorscheme();switchBurger();});</script></div></header><main class="flex-grow pt-16"><div class=pl-scrollbar><div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto"><div id=doc-container class=lg:pt-12><div class="flex flex-col md:flex-row bg-secondary-bg rounded"><div class="md:w-1/4 lg:w-1/5 border-r"><div class="sticky top-16 pt-6"><div id=sidebar-title class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text"><span class=font-semibold>目录</span>
+<i class="fas fa-caret-right ml-1"></i></div><div id=sidebar-toc class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent"><div class="flex flex-wrap ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded"><a class=hover:text-eureka href=/docs/javaweb-dev/>Java后台应用项目开发</a></div><ul class=pl-6><li class=py-2><div><a class="text-eureka hover:text-eureka" href=/docs/javaweb-dev/javawebdev-01/>P1 - 搭建 Java EE 开发环境</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/javaweb-dev/javawebdev-02/>P2 - SpringMVC框架的使用</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/javaweb-dev/javawebdev-03/>P3 - SpringMVC 框架开发</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/javaweb-dev/javawebdev-04/>P4 - MyBatis 框架的使用</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/javaweb-dev/javawebdev-05/>P5 - SSM框架整合和开发</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/javaweb-dev/javawebdev-06/>P6 - 实现用户的注册和登录功能</a></div></li></ul></div></div></div><div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8"><div id=doc-tit class="w-full lg:w-3/4 pl-6 ml-0 mr-auto"><h1 class="font-bold text-3xl text-primary-text">P1 - 搭建 Java EE 开发环境</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i><span>2021-08-24</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i><span>8分钟阅读时长</span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i><a href=/categories/javaweb/ class=hover:text-eureka>javaweb</a></div></div></div><div class=flex><div class="w-full lg:w-3/4 px-6"><div class=content><h2 id=版本>【版本】</h2><p>当前版本号<code>v20210904</code></p><div class=tbl-start></div><table><thead><tr><th>版本</th><th>修改说明</th></tr></thead><tbody><tr><td>v20210904</td><td>优化了HTML实例页面的内容</td></tr><tr><td>v20210824</td><td>初始化版本</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h2 id=任务-11-编写简单的-html-网页>任务 1.1 编写简单的 HTML 网页</h2><h3 id=任务目的>【任务目的】</h3><ul><li>掌握 HTML 网页的编写</li></ul><h3 id=任务环境>【任务环境】</h3><ul><li>内存：至少4G</li><li>硬盘：至少空余10G</li><li>操作系统: 64位 Windows系统。</li></ul><h3 id=任务资源>【任务资源】</h3><ul><li>Edge 浏览器或 Chrome 浏览器</li><li>文本编辑器</li></ul><h3 id=任务要求>【任务要求】</h3><ol><li>以下为一个的html网页实例，它的效果如下图所示。</li></ol><pre><code>&lt;!DOCTYPE html&gt;
+&lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;这是个标题&lt;/h1&gt;
+&lt;p&gt;这是一个段落 &lt;/p&gt;
+
+&lt;h1&gt;表单&lt;/h1&gt;
+&lt;form&gt;
+用户名： &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;br&gt;
+密码： &lt;input type=&quot;password&quot; name=&quot;pwd&quot;&gt;&lt;br&gt;
+性别：&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;male&quot;&gt;男
+&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;female&quot;&gt;女&lt;br&gt;
+爱好：&lt;input type=&quot;checkbox&quot; name=&quot;like&quot; value=&quot;sing&quot;&gt;唱
+&lt;input type=&quot;checkbox&quot; name=&quot;like&quot; value=&quot;dance&quot;&gt;跳
+&lt;input type=&quot;checkbox&quot; name=&quot;like&quot; value=&quot;rap&quot;&gt;Rap
+&lt;input type=&quot;checkbox&quot; name=&quot;like&quot; value=&quot;bskball&quot;&gt;篮球&lt;br&gt;
+&lt;/form&gt;
+
+&lt;h1&gt;图像&lt;/h1&gt;
+&lt;img src=&quot;/static/img/javawebdev_01/Snipaste_2021-08-24_14-01-27.jpg&quot;/&gt;
+
+&lt;h1&gt;表格&lt;/h1&gt;
+&lt;table&gt;
+    &lt;thead&gt;
+  &lt;tr&gt;
+	  &lt;td&gt;学号&lt;/td&gt;
+	  &lt;td&gt;姓名&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+  &lt;tr&gt;
+	  &lt;td&gt;101&lt;/td&gt;
+	  &lt;td&gt;张三&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1&gt;超链接&lt;/h1&gt;
+&lt;a href=&quot;https://heis.gitee.io/&quot;&gt;Heis博客&lt;/a&gt;
+
+&lt;h1&gt;按钮&lt;/h1&gt;
+&lt;button&gt;我是按钮1&lt;/button&gt;
+&lt;input type=&quot;button&quot; value=&quot;我是按钮2&quot;/&gt;
+
+&lt;h1 style=&quot;color:red;background-color:blue;&quot;&gt;这是个加了CSS样式的标题&lt;/h1&gt;
+
+&lt;h1&gt;Javascript&lt;/h1&gt;
+&lt;button onclick=&quot;showMsg('大家好，我是张三')&quot;&gt;调用Javascript打招呼&lt;/button&gt;
+&lt;script&gt;
+function showMsg(msg){
+  alert(msg);
+}
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p><img src=/static/img/javawebdev-01/Snipaste_2021-08-24_14-39-37.jpg alt></p><ol start=2><li>请参考上面的例子和<a href=https://www.runoob.com/html/html-tutorial.html target=_blank>HTML教程</a>教程，按以下要求完成网页的编写。并把网页代码和效果图写入实验报告。</li></ol><p>要求：</p><ul><li><p>(1)编写一个<code>login.html</code>网页，界面如下所示。其中点击<code>登录</code>按钮可以跳转到<code>msg.html</code>网页。
+<img src=/static/img/javawebdev-01/Snipaste_2021-08-24_14-30-50.jpg alt></p></li><li><p>(2)编写一个<code>msg.html</code>网页，界面如下所示。其中点击<code>返回登录页面</code>链接可以跳转到<code>login.html</code>网页。
+<img src=/static/img/javawebdev-01/Snipaste_2021-08-24_14-42-28.jpg alt></p></li></ul><h2 id=任务-12-搭建-java-web-开发环境>任务 1.2 搭建 Java Web 开发环境</h2><h3 id=任务目的-1>【任务目的】</h3><ul><li>掌握 JDK 的安装</li><li>掌握 IDEA 的安装与配置</li><li>掌握 Maven 的安装与配置</li><li>掌握 Tomcat 的安装、配置与使用</li></ul><h3 id=任务环境-1>【任务环境】</h3><ul><li>内存：至少4G</li><li>硬盘：至少空余10G</li><li>操作系统: 64位 Windows系统。</li></ul><h3 id=任务资源-1>【任务资源】</h3><ul><li>浏览器</li><li>文本编辑器</li></ul><h3 id=任务步骤---安装jdk8>【任务步骤 - 安装JDK8】</h3><ol><li>在 Windows 下解压 jdk8.zip，安装过程略。此处以安装到<code>d:\jdk8</code>为例。安装完结束以后目录架构如下：目录架构如下：</li></ol><pre><code>d:\jdk8
+  |-bin/
+  |-lib/
+  |-include/
+  |-jre/            
+  |-legal/
+  |-javafx-src.zip  
+  |-jmc.txt
+  |-src.zip
+  |-COPYRIGHT
+  |-release
+  |-LICENSE
+  |-README.html
+</code></pre><ol start=2><li>进入Windows的环境变量配置界面，配置以下环境变量。如果系统C盘会还原，每次重启电脑都需要配置此环境变量。注意修改 JDK 的安装目录为你实际安装目录。
+<img src=/static/img/javawebdev-01/shuxing.png alt>
+<img src=/static/img/javawebdev-01/hjbl.png alt>
+<img src=/static/img/javawebdev-01/Snipaste_2021-04-02_23-14-11.png alt></li></ol><pre><code>#新增
+JAVA_HOME=D:\jdk8
+CLASSPATH=%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar
+
+#修改PATH，在PATH环境变量原有值后面追加
+;%JAVA_HOME%\bin;
+</code></pre><ol start=3><li>打开Windows 的命令行终端，运行以下命令，测试是否有<code>JDK</code>的版本输出。</li></ol><pre><code>java -version
+</code></pre><h3 id=任务步骤---安装-idea-集成开发环境>【任务步骤 - 安装 IDEA 集成开发环境】</h3><ol start=4><li><p>运行<code>ideaIC-2021.2.exe</code>，指定目录安装 IDEA，这里以<code>d:\idea</code>为例。</p></li><li><p>编辑<code>d:\idea\bin</code>目录下的<code>idea64.exe.vmoptions</code>，在文件末尾加上以下代码，让 IDEA 默认使用UTF8编码。</p></li></ol><pre><code>-Dfile.encoding=UTF-8
+</code></pre><h3 id=任务步骤---安装和配置-maven>【任务步骤 - 安装和配置 Maven】</h3><ol start=6><li>解压<code>maven363-iot.zip</code>，这里以解压到<code>d:\maven363-iot</code>为例。这个 Maven 版本经过老师修改，已经内置了一个 repos 文件夹，作为 jar 包仓库（Repository）。</li></ol><pre><code>d:\maven363
+  |-bin/      
+  |-boot/     
+  |-conf/     
+  |-lib/      
+  |-LICENSE   
+  |-NOTICE    
+  |-README.txt
+  |-repos/       
+</code></pre><ol start=7><li>编辑<code>d:\maven363-iot\conf\settings.xml</code>文件。在约54行修改本地仓库（localRepository）路径配置。这里注意修改为你的 Maven 的实际安装路径。</li></ol><pre><code>&lt;settings ...&gt;
+...
+&lt;localRepository&gt;D:/maven363-iot/repos&lt;/localRepository&gt;
+...
+&lt;/settings&gt;
+</code></pre><ol start=8><li>编辑<code>d:\maven363-iot\conf\settings.xml</code>文件。在约148行<code>&lt;mirrors></code>标签内增加远程仓库镜像地址。开发过程中依赖的 Jar 包可以通过配置从此地址下载。</li></ol><ul><li>如果电脑无法联网，可以修改指向302实验室内网的仓库镜像。</li></ul><pre><code>&lt;!-- 302 实验室局域网 Maven 仓库 --&gt;
+&lt;mirror&gt;
+  &lt;id&gt;maven-public&lt;/id&gt;
+  &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;
+  &lt;name&gt;maven-public&lt;/name&gt;
+  &lt;url&gt;http://192.168.2.10:8081/repository/maven-public&lt;/url&gt;
+&lt;/mirror&gt;
+</code></pre><ul><li>如果电脑无法联网，可以修改指向308实验室内网的仓库镜像。</li></ul><pre><code>&lt;!-- 308 实验室局域网 Maven 仓库 --&gt;
+&lt;mirror&gt;
+  &lt;id&gt;maven-public&lt;/id&gt;
+  &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;
+  &lt;name&gt;maven-public&lt;/name&gt;
+  &lt;url&gt;http://192.168.1.50:8081/repository/maven-public&lt;/url&gt;
+&lt;/mirror&gt;
+</code></pre><ul><li>如果电脑可以联网，可以修改指向阿里云的仓库镜像。</li></ul><pre><code>&lt;mirror&gt;
+  &lt;id&gt;nexus-aliyun&lt;/id&gt;
+  &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;
+  &lt;name&gt;Nexus aliyun&lt;/name&gt;
+  &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;
+&lt;/mirror&gt;
+</code></pre><ol start=9><li>编辑<code>d:\maven363-iot\bin\mvn.cmd</code> 文件，找到第1行，修改JAVA_HOME为你的JDK安装路径。</li></ol><pre><code>set &quot;JAVA_HOME=d:/jdk8&quot;
+</code></pre><ol start=10><li>进入Windows的环境变量配置界面，配置以下环境变量。</li></ol><pre><code>#新增
+MAVEN_HOME=D:\maven363-iot
+
+#修改PATH，在PATH环境变量原有值后面追加
+;%MAVEN_HOME%\bin;
+</code></pre><ol start=11><li>打开Windows 的命令行终端，运行以下命令，测试是否有<code>Maven</code>的版本输出。</li></ol><pre><code>mvn -version
+</code></pre><ol start=12><li>解压<code>repos210902.zip</code>文件到<code>D:/maven363-iot/repos</code>目录下。此压缩包包含了大量的离线jar包。</li></ol><h3 id=任务步骤---安装命令行终端-cmder>【任务步骤 - 安装命令行终端 Cmder】</h3><ol start=13><li>解压<code>cmder_mini-v1.3.18.zip</code> 到一个指定目录下，例如d:\cmder。解压以后目录架构如下。双击运行 Cmder.exe 启动 Cmder 命令行终端。查看是否能看到命令行窗口。</li></ol><pre><code>d:\cmder
+  |-bin/      
+  |-config/     
+  |-icons/     
+  |-vendor/      
+  |-LICENSE   
+  |-Cmder.exe       
+</code></pre><h3 id=任务步骤---安装文本编辑器-notepad>【任务步骤 - 安装文本编辑器 Notepad++】</h3><ol start=14><li>解压<code>npp.7.8.bin.x64.zip</code> 到一个指定目录下，例如d:\npp。运行<code>d:\npp\notepad++.exe</code>查看是否能启动 Notepad++ 编辑器。</li></ol><h3 id=任务步骤---安装-mysql>【任务步骤 - 安装 MySQL】</h3><ol start=15><li>解压<code>mysql-5.7.33-winx64.zip</code> 到一个指定目录下，例如：<code>d:\</code>。解压以后目录架构如下：</li></ol><pre><code>d:\mysql-5.7.33-winx64
+  |-bin/
+  |-data/
+  |-docs/
+  |-include/
+  |-lib/
+  |-share/
+  |-LICENSE
+  |-README
+</code></pre><ol start=16><li>修改目录名称<code>mysql-5.7.33-winx64</code>为<code>mysql57</code>。修改以后目录架构如下：</li></ol><pre><code>d:\mysql57
+  |-bin/
+  |-data/
+  |-docs/
+  |-include/
+  |-lib/
+  |-share/
+  |-LICENSE
+  |-README
+</code></pre><ol start=17><li>使用Notepad++新建一个文本文件，加入以下内容，保存在<code>d:\mysql57</code>下，文件名称为<code>my.ini</code>。这是 MySQL 的默认配置文件。这里注意basedir和datadir 2个配置要根据你的实际 MySQL 安装路径进行修改。</li></ol><pre><code>[mysqld]
+basedir =D:/mysql57
+datadir =D:/mysql57/data
+port=3306
+innodb_buffer_pool_size=256M
+character-set-server=utf8
+character_set_filesystem=utf8
+[client]
+port=3306
+default-character-set=utf8
+[mysqld_safe]
+timezone=&quot;CST&quot;
+[mysql]
+default-character-set=utf8
+</code></pre><ol start=18><li><p>打开 Cmder，新建一个管理员权限命令行运行窗口。
+<img src=/static/img/javawebdev-01/Snipaste_2021-05-09_23-50-22.png alt></p></li><li><p>【Cmder下运行】进入MySQL 安装目录下的<code>bin</code>目录。</p></li></ol><pre><code>cd d:
+cd D:\mysql57\bin
+</code></pre><ol start=20><li>【Cmder下运行】运行 MySQL 的初始化命令，初始化 MySQL 数据库。你可以在命令行最后一行输出看到 MySQL 的 root 的初始化随机密码。请妥善保存此密码。</li></ol><pre><code>mysqld --initialize --user=root --console
+</code></pre><p>初始化root密码展示形式</p><pre><code>2021-05-09T15:53:24.041040Z 1 [Note] A temporary password is generated for root@localhost: xxxxxxxxx
+</code></pre><ol start=21><li>使用 Notepad++ 新建一个文本，内容如下。保存在<code>D:\mysql57\bin\</code>下，名称为<code>0-start-mysql.bat</code>。此脚本为启动 MySQL 的脚本。</li></ol><pre><code>cd d:
+cd %~dp0
+mysqld --console
+</code></pre><ol start=22><li>【Cmder下运行】启动 MySQL。</li></ol><pre><code>cd D:\mysql57\bin
+0-start-mysql.bat
+</code></pre><h3 id=任务步骤---安装数据库客户端-heidisql>【任务步骤 - 安装数据库客户端 HeidiSQL】</h3><ol start=23><li><p>解压<code>HeidiSQL_11.1_64_Portable.zip</code> 到指定目录下，例如<code>d:\heidisql</code>。</p></li><li><p>运行<code>heidisql.exe</code></p></li><li><p>尝试输入<code>IP地址</code>、<code>用户名</code>为root、<code>密码</code>(参考步骤19 root 密码)连接数据库，看是否能够连接成功。
+<img src=/static/img/javawebdev-01/Snipaste_2021-05-10_00-06-08.png alt></p></li><li><p>如果客户端提示你修改密码，可以统一修改为<code>123456</code>方便记忆。</p></li></ol><h3 id=任务步骤---安装tomcat>【任务步骤 - 安装Tomcat】</h3><ol start=27><li><p>解压<code>apache-tomcat-9.0.52-windows-x64.zip</code>到指定目录下，例如<code>d:\apache-tomcat-9.0.52</code>。</p></li><li><p>进入Windows的环境变量配置界面，配置以下环境变量。</p></li></ol><pre><code>#新增
+CATALINA_HOME=d:\apache-tomcat-9.0.52
+</code></pre><ol start=29><li>打开<code>d:\apache-tomcat-9.0.52\conf\logging.properties</code>，大约在51行找到以下代码，把<code>UTF-8</code>修改为<code>GBK</code>。</li></ol><pre><code>java.util.logging.ConsoleHandler.encoding = UTF-8
+</code></pre><ol start=30><li><p>双击<code>d:\apache-tomcat-9.0.52\bin\startup.bat</code> 启动tomcat。</p></li><li><p>访问<a href=http://localhost:8080 target=_blank>http://localhost:8080</a></p></li></ol><p><img src=/static/img/javawebdev-01/Snipaste_2021-09-04_00-24-40.png alt></p><h2 id=任务-13-部署静态网页>任务 1.3 部署静态网页</h2><h3 id=任务目的-2>【任务目的】</h3><ul><li>掌握 Tomcat 静态网页的部署</li></ul><h3 id=任务环境-2>【任务环境】</h3><ul><li>内存：至少4G</li><li>硬盘：至少空余10G</li><li>操作系统: 64位 Windows系统。</li></ul><h3 id=任务资源-2>【任务资源】</h3><ul><li>Tomcat</li></ul><h3 id=任务步骤>【任务步骤】</h3><ol><li><p>在tomcat安装目录下找到<code>webapps</code>目录。</p></li><li><p>在<code>webapps</code>目录下新建<code>exp01</code>目录，并把实验1完成的<code>login.html</code>和<code>msg.html</code>网页放到<code>exp01</code>目录下。目录架构如下所示：</p></li></ol><pre><code>tomcat安装目录
+  |- webapps
+    |- exp01
+      |- login.html
+      |- msg.html
+</code></pre><ol start=3><li>访问<a href=http://localhost:8080/exp01/login.html target=_blank>http://localhost:8080/exp01/login.html</a>，测试是否能够访问到你写的登录页面。</li></ol></div><div class=my-4><a href=/tags/java/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#java</a>
+<a href=/tags/web/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#web</a></div><div class=py-2><div class="flex flex-col md:flex-row items-center my-8"><a href=/authors/heis/ class="w-24 h-24 md:mr-4"><img src=/static/img/authors/heis.png class="w-full bg-primary-bg rounded-full" alt=Avatar></a><div class="w-full md:w-auto mt-4 md:mt-0"><a href=/authors/heis/ class="block font-bold text-lg pb-1 mb-2 border-b">黄老师</a>
+<span class="block pb-2"></span><a href=mailto:heishuangzy@qq.com class=mr-1><i class="fas fa-envelope"></i></a><a href=https://gitee.com/heis/ class=mr-1><i class="fab fa-git"></i></a><a href=http://heis.gitee.io/ class=mr-1><i class="fas fa-blog"></i></a></div></div></div><div id=btmQrcode></div><p style=text-align:center>扫码或长按识别访问</p><script src=/static/js/qrcode.min.js></script><script type=text/javascript>function getURL(){var url=window.location.href;if(window.location.hash!=""){url=url.substring(0,url.indexOf("#"));}
+return url;}
+new QRCode(document.getElementById("btmQrcode"),{text:getURL(),width:192,height:192,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});</script><div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t"><div id=presec></div><div id=nextsec class="md:text-right mt-4 md:mt-0"><span class="block font-bold">下一页</span>
+<a href=/docs/javaweb-dev/javawebdev-02/ class=block>P2 - SpringMVC框架的使用</a></div></div></div><div class="hidden lg:block lg:w-1/4"><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-secondary-bg pt-16 -mt-16"><span class="text-lg font-semibold">本页内容</span></div><div class="sticky-toc hidden lg:block px-6 pb-6 pt-10 -mt-10 border-l"><nav id=TableOfContents><ul><li><a href=#版本>【版本】</a></li><li><a href=#任务-11-编写简单的-html-网页>任务 1.1 编写简单的 HTML 网页</a><ul><li><a href=#任务目的>【任务目的】</a></li><li><a href=#任务环境>【任务环境】</a></li><li><a href=#任务资源>【任务资源】</a></li><li><a href=#任务要求>【任务要求】</a></li></ul></li><li><a href=#任务-12-搭建-java-web-开发环境>任务 1.2 搭建 Java Web 开发环境</a><ul><li><a href=#任务目的-1>【任务目的】</a></li><li><a href=#任务环境-1>【任务环境】</a></li><li><a href=#任务资源-1>【任务资源】</a></li><li><a href=#任务步骤---安装jdk8>【任务步骤 - 安装JDK8】</a></li><li><a href=#任务步骤---安装-idea-集成开发环境>【任务步骤 - 安装 IDEA 集成开发环境】</a></li><li><a href=#任务步骤---安装和配置-maven>【任务步骤 - 安装和配置 Maven】</a></li><li><a href=#任务步骤---安装命令行终端-cmder>【任务步骤 - 安装命令行终端 Cmder】</a></li><li><a href=#任务步骤---安装文本编辑器-notepad>【任务步骤 - 安装文本编辑器 Notepad++】</a></li><li><a href=#任务步骤---安装-mysql>【任务步骤 - 安装 MySQL】</a></li><li><a href=#任务步骤---安装数据库客户端-heidisql>【任务步骤 - 安装数据库客户端 HeidiSQL】</a></li><li><a href=#任务步骤---安装tomcat>【任务步骤 - 安装Tomcat】</a></li></ul></li><li><a href=#任务-13-部署静态网页>任务 1.3 部署静态网页</a><ul><li><a href=#任务目的-2>【任务目的】</a></li><li><a href=#任务环境-2>【任务环境】</a></li><li><a href=#任务资源-2>【任务资源】</a></li><li><a href=#任务步骤>【任务步骤】</a></li></ul></li></ul></nav></div><script>window.addEventListener('DOMContentLoaded',()=>{enableStickyToc();});</script></div></div></div></div></div><div id=outerdiv><div id=innerdiv><img id=bigimg src></div></div><div id=popOuterDiv><div id=popDiv style=display:none><div class=close><span onclick="$('#popDiv').hide();"></span></div><p id=popCtn></p></div></div><div id=nav_top_icon style=display:none></div><div id=list_note_icon></div><script>$(function(){var scrollTop=$(window).scrollTop();if(scrollTop>0){$("#nav_top_icon").show(200);}
+window.onscroll=function(){scrollTop=$(window).scrollTop();if(scrollTop==0){$("#nav_top_icon").hide(200);}else{$("#nav_top_icon").show(200);}}
+$("#nav_top_icon").click(function(){$("body,html").animate({scrollTop:0},500);});$("#list_note_icon").click(function(){$("#popOuterDiv").toggle();$("#popDiv").slideToggle();$("#popCtn").html($("#TableOfContents").html());})
+$("#popOuterDiv").click(function(){$("#popOuterDiv").hide();$("#popDiv").slideUp();})});document.addEventListener('DOMContentLoaded',()=>{hljs.highlightAll();hljs.initLineNumbersOnLoad({singleLine:true});changeSidebarHeight();switchDocToc();$("img").css("cursor:pointer")
+$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});$("ol").each(function(index){if(/\d{1,4}/.test($(this).attr("start"))){let idx=parseInt($(this).attr("start"));let lis=$(this).find("li");if(lis.length>0){lis.each(function(index){$(this).attr("id","step"+(idx+index));});}else{$(this).attr("id","step"+idx);}}});});</script><script src=/static/js/clipboard.min.js></script><script src=/static/js/codecopy.bundle.js?744></script></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text"></p></div></div></footer></body></html>
