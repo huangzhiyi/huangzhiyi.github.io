@@ -1,4 +1,4 @@
-<!doctype html><html lang=zh><meta charset=utf-8><meta name=viewport content="width=device-width"><title>P6 - 开发设备数据可视化 | 物联网移动APP设计及开发 | Heis</title><meta name=generator content="Hugo Eureka 0.8.4"><link rel=stylesheet href=/css/eureka.min.css><script defer src=/js/eureka.min.js></script><script src=/static/js/jquery-3.6.0.min.js></script><script src=/static/js/heis.js?230321></script><link rel=stylesheet href=/static/css/heis.css?230321 media=all onload="this.media='all';this.onload=null" crossorigin><link rel=stylesheet href=/static/css/print.css?230413 media=print crossorigin><link rel=stylesheet href=/static/css/highlight-css/solarized-light.min.css media=print onload="this.media='all';this.onload=null" crossorigin><script defer src=/static/js/highlight.min.js crossorigin></script><script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script><script defer src=/static/js/highlightjs-line-numbers.min.js></script><link rel=icon type=image/png sizes=32x32 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_32x32_fill_box_center_2.png><link rel=apple-touch-icon sizes=180x180 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_180x180_fill_box_center_2.png><meta name=description content="《物联网移动APP设计及开发》Android 可视化图形展示，包括曲线图，柱状图等。"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"系列文章","item":"/docs/"},{"@type":"ListItem","position":2,"name":"物联网移动APP设计及开发","item":"/docs/iot-android/"},{"@type":"ListItem","position":3,"name":"P6 - 开发设备数据可视化","item":"/docs/iot-android/iot-android-06/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/docs/iot-android/iot-android-06/"},"headline":"P6 - 开发设备数据可视化 | 物联网移动APP设计及开发 | Heis","datePublished":"2023-10-06T00:44:00+08:00","dateModified":"2023-10-06T00:44:00+08:00","wordCount":2340,"author":{"@type":"Person","name":"heis"},"publisher":{"@type":"Person","name":"C. Wang","logo":{"@type":"ImageObject","url":"/images/icon.png"}},"description":"《物联网移动APP设计及开发》Android 可视化图形展示，包括曲线图，柱状图等。"}</script><meta property="og:title" content="P6 - 开发设备数据可视化 | 物联网移动APP设计及开发 | Heis"><meta property="og:type" content="article"><meta property="og:image" content="/images/icon.png"><meta property="og:url" content="/docs/iot-android/iot-android-06/"><meta property="og:description" content="《物联网移动APP设计及开发》Android 可视化图形展示，包括曲线图，柱状图等。"><meta property="og:locale" content="zh"><meta property="og:site_name" content="Heis"><meta property="article:published_time" content="2023-10-06T00:44:00+08:00"><meta property="article:modified_time" content="2023-10-06T00:44:00+08:00"><meta property="article:section" content="docs"><meta property="article:tag" content="iot"><meta property="article:tag" content="android"><meta property="article:tag" content="安卓"><meta property="article:tag" content="studio"><meta property="article:tag" content="物联网"><meta property="article:tag" content="可视化"><meta property="og:see_also" content="/docs/iot-android/iot-android-07/"><meta property="og:see_also" content="/docs/iot-android-training/iot-android-training-02/"><meta property="og:see_also" content="/docs/iot-android-training/iot-android-training-03/"><meta property="og:see_also" content="/docs/iot-android-training/iot-android-training-04/"><meta property="og:see_also" content="/docs/iot-android-training/iot-android-training-01/"><meta property="og:see_also" content="/docs/iot-android/iot-android-05/"><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?f58b6a2675cf52000232edb4d109eccc";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><body class="flex flex-col min-h-screen"><header id=headerctn class="fixed flex items-center w-full pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode")
+<!doctype html><html lang=zh><meta charset=utf-8><meta name=viewport content="width=device-width"><title>P6 - APP的设备适配与发布 | 物联网移动APP设计及开发 | Heis</title><meta name=generator content="Hugo Eureka 0.8.4"><link rel=stylesheet href=/css/eureka.min.css><script defer src=/js/eureka.min.js></script><script src=/static/js/jquery-3.6.0.min.js></script><script src=/static/js/heis.js?230321></script><link rel=stylesheet href=/static/css/heis.css?230321 media=all onload="this.media='all';this.onload=null" crossorigin><link rel=stylesheet href=/static/css/print.css?230413 media=print crossorigin><link rel=stylesheet href=/static/css/highlight-css/solarized-light.min.css media=print onload="this.media='all';this.onload=null" crossorigin><script defer src=/static/js/highlight.min.js crossorigin></script><script defer src=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js integrity="sha256-uNYoXefWRqv+PsIF/OflNmwtKM4lStn9yrz2gVl6ymo=" crossorigin></script><script defer src=/static/js/highlightjs-line-numbers.min.js></script><link rel=icon type=image/png sizes=32x32 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_32x32_fill_box_center_2.png><link rel=apple-touch-icon sizes=180x180 href=/images/icon_huddfe7d1590fd89155f46b33625956ea5_4357_180x180_fill_box_center_2.png><meta name=description content="《物联网移动APP设计及开发》Android 的设备适配、打包和发布"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"系列文章","item":"/docs/"},{"@type":"ListItem","position":2,"name":"物联网移动APP设计及开发","item":"/docs/iot-android/"},{"@type":"ListItem","position":3,"name":"P6 - APP的设备适配与发布","item":"/docs/iot-android/iot-android-06/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/docs/iot-android/iot-android-06/"},"headline":"P6 - APP的设备适配与发布 | 物联网移动APP设计及开发 | Heis","datePublished":"2023-10-06T00:44:00+08:00","dateModified":"2023-10-06T00:44:00+08:00","wordCount":681,"author":{"@type":"Person","name":"heis"},"publisher":{"@type":"Person","name":"C. Wang","logo":{"@type":"ImageObject","url":"/images/icon.png"}},"description":"《物联网移动APP设计及开发》Android 的设备适配、打包和发布"}</script><meta property="og:title" content="P6 - APP的设备适配与发布 | 物联网移动APP设计及开发 | Heis"><meta property="og:type" content="article"><meta property="og:image" content="/images/icon.png"><meta property="og:url" content="/docs/iot-android/iot-android-06/"><meta property="og:description" content="《物联网移动APP设计及开发》Android 的设备适配、打包和发布"><meta property="og:locale" content="zh"><meta property="og:site_name" content="Heis"><meta property="article:published_time" content="2023-10-06T00:44:00+08:00"><meta property="article:modified_time" content="2023-10-06T00:44:00+08:00"><meta property="article:section" content="docs"><meta property="article:tag" content="iot"><meta property="article:tag" content="android"><meta property="article:tag" content="安卓"><meta property="article:tag" content="studio"><meta property="article:tag" content="物联网"><meta property="og:see_also" content="/docs/iot-android-training/iot-android-training-02/"><meta property="og:see_also" content="/docs/iot-android-training/iot-android-training-03/"><meta property="og:see_also" content="/docs/iot-android-training/iot-android-training-04/"><meta property="og:see_also" content="/docs/iot-android-training/iot-android-training-01/"><meta property="og:see_also" content="/docs/iot-android/iot-android-05/"><meta property="og:see_also" content="/docs/iot-android/iot-android-04/"><script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?f58b6a2675cf52000232edb4d109eccc";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script><body class="flex flex-col min-h-screen"><header id=headerctn class="fixed flex items-center w-full pl-scrollbar z-50 bg-secondary-bg shadow-sm"><div class="w-full max-w-screen-xl mx-auto"><script>let storageColorScheme=localStorage.getItem("lightDarkMode")
 if(((storageColorScheme=='Auto'||storageColorScheme==null)&&window.matchMedia("(prefers-color-scheme: dark)").matches)||storageColorScheme=="Dark"){document.getElementsByTagName('html')[0].classList.add('dark')}</script><nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0"><a href=/ class="mr-6 text-primary-text text-xl font-bold">Heis</a>
 <button id=navbar-btn class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
 <i class="fas fa-bars"></i></button><div id=target class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20"><div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0"><a href=/posts/ class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2 border-transparent mr-4">文章</a>
@@ -11,328 +11,38 @@ element.firstElementChild.classList.add('fa-sun')}else if(storageColorScheme=="D
 element.firstElementChild.setAttribute("data-icon",'moon')
 element.firstElementChild.classList.add('fa-moon')}
 document.addEventListener('DOMContentLoaded',()=>{getcolorscheme();switchBurger();});</script></div></header><main class="flex-grow pt-16"><div class=pl-scrollbar><div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto"><div id=doc-container class=lg:pt-12><div class="flex flex-col md:flex-row bg-secondary-bg rounded"><div class="md:w-1/4 lg:w-1/5 border-r"><div class="sticky top-16 pt-6"><div id=sidebar-title class="md:hidden mx-4 px-2 pt-4 pb-2 md:border-b text-tertiary-text md:text-primary-text"><span class=font-semibold>目录</span>
-<i class="fas fa-caret-right ml-1"></i></div><div id=sidebar-toc class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent"><div class="flex flex-wrap ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded"><a class=hover:text-eureka href=/docs/iot-android/>物联网移动APP设计及开发</a></div><ul class=pl-6><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-android/resources-download/>资源下载</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-android/iot-android-01/>P1 - 搭建开发环境</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-android/iot-android-02/>P2 - 物联网移动 APP 开发基础</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-android/iot-android-03/>P3 - 物联网移动App架构设计</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-android/iot-android-04/>P4 - 网络层和数据模型的封装</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-android/iot-android-05/>P5 - 安卓数据存储</a></div></li><li class=py-2><div><a class="text-eureka hover:text-eureka" href=/docs/iot-android/iot-android-06/>P6 - 开发设备数据可视化</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-android/iot-android-07/>P7 - APP的设备适配与发布</a></div></li></ul></div></div></div><div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8"><div id=doc-tit class="w-full lg:w-3/4 pl-6 ml-0 mr-auto"><h1 class="font-bold text-3xl text-primary-text">P6 - 开发设备数据可视化</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i><span>2023-10-06</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i><span>5分钟阅读时长</span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i><a href=/categories/iotapp/ class=hover:text-eureka>iotapp</a></div></div></div><div class=flex><div class="w-full lg:w-3/4 px-6"><div class=content><h2 id=版本>【版本】</h2><p>当前版本号<code>v20231006</code></p><div class=tbl-start></div><table><thead><tr><th>版本</th><th>修改说明</th></tr></thead><tbody><tr><td>v20231006</td><td>初始化版本</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h2 id=实验名称-实验61-开发最近气温变化曲线图界面>【实验名称】 实验6.1 开发最近气温变化曲线图界面</h2><h2 id=实验目的>【实验目的】</h2><ul><li>掌握 Android 的可视化界面开发</li><li>掌握 MPAndroidChart 框架</li></ul><h2 id=实验环境>【实验环境】</h2><ul><li>一台运行 64 位版本的 Windows（8、10 或 11）、Linux、macOS（10.14 Mojave 或更高版本）或 Chrome 操作系统的计算机。</li><li>计算机可以访问互联网。</li><li>内存：至少6G</li><li>硬盘：至少空余20G</li><li>JDK 8或以上</li><li>Android Studio</li></ul><h2 id=实验要求>【实验要求】</h2><ul><li>完成以下智能温度采集的气温变化曲线图界面
-<img src=/static/img/iot-android-06/Snipaste_2023-10-07_17-19-18.jpg alt></li></ul><h2 id=实验步骤>【实验步骤】</h2><ol><li>在 settings.gradle下添加以下代码，加入<code>MPAndroidChart</code>包的仓库地址。
-<img src=/static/img/iot-android-06/Snipaste_2023-10-11_09-45-59.jpg alt></li></ol><pre><code>maven { url 'https://jitpack.io' }
-</code></pre><ol start=2><li>在<code>app/build.gradle</code>内 dependencies 加入以下依赖包。</li></ol><pre><code>	
-implementation 'org.litepal.guolindev:core:3.2.3'
-implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
-</code></pre><ol start=3><li><code>ThermometerActivity</code> 参考代码，请自行完成代码。</li></ol><pre><code>package iot.app.smarthome.ui.device;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.components.Description;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.IAxisValueFormatter;
-import com.github.mikephil.charting.formatter.ValueFormatter;
-
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-
-import iot.app.smarthome.R;
-
-public class ThermometerActivity extends AppCompatActivity {
-
-    private final static class TempValueFormatter extends ValueFormatter{
-        @Override
-        public String getFormattedValue(float v) {
-            return (int)v+&quot;\u2103&quot;;
+<i class="fas fa-caret-right ml-1"></i></div><div id=sidebar-toc class="hidden md:block overflow-y-auto mx-6 md:mx-0 pr-6 pt-2 md:max-h-doc-sidebar bg-primary-bg md:bg-transparent"><div class="flex flex-wrap ml-4 -mr-2 p-2 bg-secondary-bg md:bg-primary-bg rounded"><a class=hover:text-eureka href=/docs/iot-android/>物联网移动APP设计及开发</a></div><ul class=pl-6><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-android/iot-android-01/>P1 - 搭建开发环境</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-android/iot-android-02/>P2 - 物联网移动 APP 开发基础</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-android/iot-android-03/>P3 - 物联网移动App架构设计</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-android/iot-android-04/>P4 - 网络层和数据模型的封装</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-android/iot-android-05/>P5 - 安卓数据存储</a></div></li><li class=py-2><div><a class="text-eureka hover:text-eureka" href=/docs/iot-android/iot-android-06/>P6 - APP的设备适配与发布</a></div></li><li class=py-2><div><a class=hover:text-eureka href=/docs/iot-android/resources-download/>资源下载</a></div></li></ul></div></div></div><div class="w-full md:w-3/4 lg:w-4/5 pb-8 pt-2 md:pt-8"><div id=doc-tit class="w-full lg:w-3/4 pl-6 ml-0 mr-auto"><h1 class="font-bold text-3xl text-primary-text">P6 - APP的设备适配与发布</h1><div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text"><div class="mr-6 my-2"><i class="fas fa-calendar mr-1"></i><span>2023-10-06</span></div><div class="mr-6 my-2"><i class="fas fa-clock mr-1"></i><span>2分钟阅读时长</span></div><div class="mr-6 my-2"><i class="fas fa-folder mr-1"></i><a href=/categories/iotapp/ class=hover:text-eureka>iotapp</a></div></div></div><div class=flex><div class="w-full lg:w-3/4 px-6"><div class=content><h2 id=版本>【版本】</h2><p>当前版本号<code>v20231006</code></p><div class=tbl-start></div><table><thead><tr><th>版本</th><th>修改说明</th></tr></thead><tbody><tr><td>v20231006</td><td>初始化版本</td></tr></tbody></table><div class=tbl-end style=height:10px></div><h2 id=任务名称-任务6-打包-smarthome-项目>【任务名称】 任务6 打包 SmartHome 项目</h2><h2 id=任务目的>【任务目的】</h2><ul><li>掌握 Android Studio 的项目打包步骤</li></ul><h2 id=任务环境>【任务环境】</h2><ul><li>一台运行 64 位版本的 Windows（8、10 或 11）、Linux、macOS（10.14 Mojave 或更高版本）或 Chrome 操作系统的计算机。</li><li>计算机可以访问互联网。</li><li>内存：至少6G</li><li>硬盘：至少空余20G</li><li>JDK 8或以上</li><li>Android Studio</li></ul><h2 id=任务要求>【任务要求】</h2><ul><li>完成 SmartHome 项目的 APK 打包。本实验承接<a href=../iot-android-05/#%E5%AE%9E%E9%AA%8C%E5%90%8D%E7%A7%B0-%E5%AE%9E%E9%AA%8C54-smarthome-%E9%A1%B9%E7%9B%AE%E4%BF%9D%E5%AD%98%E5%BD%93%E5%89%8D%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7%E7%9A%84%E5%A4%B4%E5%83%8F%E5%88%B0%E8%AE%BE%E5%A4%87>实验5.4</a></li></ul><h2 id=任务步骤>【任务步骤】</h2><ol><li>打开 SmartHome 项目，打开<code>app/build.gradle</code>，在 android 标签内加入以下打包的apk文件路径。</li></ol><pre><code>android{
+	
+    //加入以下这段自定义打包名称代码
+    android.applicationVariants.all { variant -&gt;
+        variant.outputs.all {
+            outputFileName = &quot;SmartHome_${buildType.name}_v${versionName}.apk&quot;
         }
     }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_thermometer);
-        LineChart lineChart=findViewById(R.id.lineChart);
-
-        List&lt;Entry&gt; list=new ArrayList&lt;&gt;();
-        //其中两个数字对应的分别是 X轴 Y轴
-        list.add(new Entry(7.0F,26F));
-        list.add(new Entry(8.0F,29F));
-        list.add(new Entry(9.0F,30F));
-        list.add(new Entry(10.0F,31F));
-        list.add(new Entry(11.0F,32F));
-
-        //设置图表的数据
-        LineDataSet lineDataSet=new LineDataSet(list,&quot;最近气温变化&quot;);
-        LineData lineData=new LineData(lineDataSet);
-        lineData.setValueFormatter(new TempValueFormatter());
-        lineChart.setData(lineData);
-        //设置图表描述
-        Description description=new Description();
-        description.setText(&quot;最近气温变化&quot;);
-        lineChart.setDescription(description);
-        //获取 X 轴
-        XAxis xAxis=lineChart.getXAxis();
-        //设置 X 轴在底部
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setLabelCount(list.size(), false);// 强制设置标签个数
-        xAxis.setGranularity(1f);//设置X轴刻度间距
-
-        //设置 X 轴的格式化显示内容
-        xAxis.setValueFormatter(new ValueFormatter() {   //X轴自定义坐标
-            @Override
-            public String getFormattedValue(float v) {
-                //TODO:请完善此处代码，返回时间格式 h:mm
-            }
-        });
-        //获取左 Y 轴
-        YAxis yLeftAxis=lineChart.getAxisLeft();
-        //获取左 Y 轴格式化显示内容
-        yLeftAxis.setValueFormatter(new TempValueFormatter());
-        yLeftAxis.setAxisMinimum(23f);//设置最小值
-        yLeftAxis.setGranularity(2f);//设置Y轴刻度间距
-        yLeftAxis.setLabelCount(list.size(), false); // 强制设置标签个数
-        //获取右边的Y轴
-        YAxis yRightAxis=lineChart.getAxisRight();
-        yRightAxis.setEnabled(true);
-        yRightAxis.setValueFormatter(new TempValueFormatter());
-        yRightAxis.setAxisMinimum(23f);//设置最小值
-        yRightAxis.setGranularity(2f);//设置Y轴刻度间距
-        yRightAxis.setLabelCount(list.size(), false); // 强制设置标签个数
-    }
+	
 }
-</code></pre><h2 id=实验名称-实验62-升级最近气温变化曲线图界面选做>【实验名称】 实验6.2 升级最近气温变化曲线图界面（选做）</h2><h2 id=实验目的-1>【实验目的】</h2><ul><li>掌握 LitePal 框架的应用</li><li>掌握 MPAndroidChart 框架</li></ul><h2 id=实验环境-1>【实验环境】</h2><ul><li>一台运行 64 位版本的 Windows（8、10 或 11）、Linux、macOS（10.14 Mojave 或更高版本）或 Chrome 操作系统的计算机。</li><li>计算机可以访问互联网。</li><li>内存：至少6G</li><li>硬盘：至少空余20G</li><li>JDK 8或以上</li><li>Android Studio</li></ul><h2 id=实验要求-1>【实验要求】</h2><ul><li>（1）本实验承接[实验6.1](#【实验名称】 实验6.1 开发最近气温变化曲线图界面)项目</li><li>（2）修改实验6.1 的<code>ThermometerActivity</code>，实现数据从 Sqlite 读取时间和温度数据。</li></ul><h2 id=参考代码>【参考代码】</h2><ul><li><code>TempVo</code> 是使用 Litepal 框架实现的保存时间和温度信息的类。</li></ul><pre><code>package iot.app.smarthome.model.device;
-
-import org.litepal.annotation.Column;
-import org.litepal.crud.LitePalSupport;
-
-public class TempVo extends LitePalSupport {
-    @Column(unique = true)
-    private int dateHour;//默认格式yyyyMMddhh
-    private float degree;
-
-    public int getDateHour() {
-        return dateHour;
-    }
-
-    public float genDateHourF() {
-        return dateHour%100;
-    }
-
-    public void setDateHour(int dateHour) {
-        this.dateHour = dateHour;
-    }
-
-    public float getDegree() {
-        return degree;
-    }
-
-    public void setDegree(float degree) {
-        this.degree = degree;
-    }
-}
-</code></pre><ul><li><code>litepal.xml</code> 配置</li></ul><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;litepal&gt;
-    &lt;dbname value=&quot;SmartHome&quot; /&gt;
-    &lt;version value=&quot;3&quot; /&gt;
-    &lt;list&gt;
-        &lt;mapping class=&quot;iot.app.smarthome.model.device.Device&quot; /&gt;
-        &lt;mapping class=&quot;iot.app.smarthome.model.user.UserInfoVo&quot;  /&gt;
-        &lt;mapping class=&quot;iot.app.smarthome.model.device.TempVo&quot;  /&gt;
-    &lt;/list&gt;
-&lt;/litepal&gt;
-</code></pre><h2 id=实验名称-实验63-实现多种图组合界面选做>【实验名称】 实验6.3 实现多种图组合界面（选做）</h2><h2 id=实验目的-2>【实验目的】</h2><ul><li>掌握 CombinedChart 和 CombinedData 的使用</li><li>掌握 MPAndroidChart 框架</li></ul><h2 id=实验环境-2>【实验环境】</h2><ul><li>一台运行 64 位版本的 Windows（8、10 或 11）、Linux、macOS（10.14 Mojave 或更高版本）或 Chrome 操作系统的计算机。</li><li>计算机可以访问互联网。</li><li>内存：至少6G</li><li>硬盘：至少空余20G</li><li>JDK 8或以上</li><li>Android Studio</li></ul><h2 id=实验要求-2>【实验要求】</h2><ul><li>（1）实现<code>TempHumStatisticActivity</code>，实现柱状图和曲线图组合展示的界面。
-<img src=/static/img/iot-android-06/Snipaste_2023-10-07_17-49-32.jpg alt></li></ul><h2 id=参考代码-1>【参考代码】</h2><ul><li>TempHumStatisticActivity，请完善其中的代码。</li></ul><pre><code>package iot.app.smarthome.ui.device;
-
-import android.graphics.Color;
-import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.github.mikephil.charting.charts.CombinedChart;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.CombinedData;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
-import com.github.mikephil.charting.formatter.ValueFormatter;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import iot.app.smarthome.R;
-
-public class TempHumStatisticActivity extends AppCompatActivity {
-
-    private CombinedChart dataChart;//图表
-    private CombinedData data;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_energy_statistic);
-        dataChart = (CombinedChart) findViewById(R.id.combinedChart);
-        showDataOnChart();
-        Legend legend = dataChart.getLegend();
-        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
-        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
-    }
-
-    /**
-     * 展示数据
-     */
-    private void showDataOnChart() {
-        //绘制图表数据
-        data = new CombinedData();
-        //TODO:设置折线图数据
-        
-        //TODO:设置柱状图数据
-		
-        //TODO:设置横坐标数据
-		
-        //TODO:设置右侧纵坐标数据
-		
-        //TODO:设置左侧纵坐标数据
-		
-        dataChart.setTouchEnabled(false);
-        dataChart.getDescription().setEnabled(false);
-        dataChart.setDrawGridBackground(false);
-        dataChart.setDrawBarShadow(false);
-        dataChart.setHighlightFullBarEnabled(true);
-        dataChart.animateX(2000);
-    }
-
-    /**
-     * 设置横坐标数据
-     */
-    private void setAxisXBottom() {
-        List&lt;String&gt; valuesX = new ArrayList&lt;&gt;();
-        String date[] = {&quot;1月&quot;, &quot;2月&quot;, &quot;3月&quot;, &quot;4月&quot;, &quot;5月&quot;, &quot;6月&quot;, &quot;7月&quot;, &quot;8月&quot;, &quot;9月&quot;, &quot;10月&quot;, &quot;11月&quot;, &quot;12月&quot;};
-        for (int i = 0;i &lt; date.length;i++){
-            valuesX.add(date[i]);
-        }
-        XAxis bottomAxis = dataChart.getXAxis();
-        bottomAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        bottomAxis.setCenterAxisLabels(true);
-        bottomAxis.setValueFormatter(new IndexAxisValueFormatter(valuesX));
-        bottomAxis.setAxisMinimum(data.getXMin());
-        bottomAxis.setAxisMaximum(data.getXMax() + 0.5f);
-        bottomAxis.setLabelCount(date.length);
-        bottomAxis.setAvoidFirstLastClipping(false);
-    }
-
-    /**
-     * 设置右侧纵坐标数据
-     */
-    private void setAxisYRight() {
-        YAxis right = dataChart.getAxisRight();
-        right.setValueFormatter(new ValueFormatter() {
-            @Override
-            public String getFormattedValue(float value) {
-                return value + &quot;℃&quot;;
-            }
-        });
-        right.setDrawGridLines(false);
-    }
-
-    /**
-     * 设置左侧纵坐标数据
-     */
-    private void setAxisYLeft() {
-        YAxis left = dataChart.getAxisLeft();
-        left.setValueFormatter(new ValueFormatter() {
-            @Override
-            public String getFormattedValue(float value) {
-                return value + &quot;ml&quot;;
-            }
-        });
-        left.setDrawGridLines(false);
-    }
-
-    /**
-     * 设置折线图绘制数据
-     * 温度
-     * @return
-     */
-    public LineData getLineData() {
-        LineData lineData = new LineData();
-        List&lt;Entry&gt; customCounts = new ArrayList&lt;&gt;();
-        float[] data = {2.0f, 2.2f, 3.3f, 4.5f, 6.3f, 10.2f, 20.3f, 23.4f, 23.0f, 16.5f, 12.0f, 6.2f};
-        //人数
-        for (int i = 0; i &lt; data.length; i++) {
-            customCounts.add(new Entry(i + 0.5f,data[i]));
-        }
-        LineDataSet lineDataSet = new LineDataSet(customCounts,&quot;平均温度&quot;);
-        lineDataSet.setAxisDependency(YAxis.AxisDependency.RIGHT);
-        lineDataSet.setColor(Color.parseColor(&quot;#66A3AB&quot;));
-        lineDataSet.setCircleColor(Color.parseColor(&quot;#66A3AB&quot;));
-        lineDataSet.setCircleRadius(5);
-        lineDataSet.setLineWidth(3);
-        lineDataSet.setValueTextSize(12);
-        lineDataSet.setValueTextColor(Color.parseColor(&quot;#66A3AB&quot;));
-        lineData.addDataSet(lineDataSet);
-        return lineData;
-    }
-    /**
-     * 设置柱状图绘制数据
-     *
-     * @return
-     */
-    public BarData getBarData() {
-        BarData barData = new BarData();
-        //蒸发量
-        List&lt;BarEntry&gt; amounts = new ArrayList&lt;&gt;();
-        float z[] = {2.0f, 4.9f, 7.0f, 23.2f, 25.6f, 76.7f, 135.6f, 162.2f, 32.6f, 20.0f, 6.4f, 3.3f};
-        //降水量
-        List&lt;BarEntry&gt; averages = new ArrayList&lt;&gt;();
-        float j[] = {2.6f, 5.9f, 9.0f, 26.4f, 28.7f, 70.7f, 175.6f, 182.2f, 48.7f, 18.8f, 6.0f, 2.3f};
-        //添加数据
-        for (int i = 0; i &lt; z.length; i++) {
-            amounts.add(new BarEntry(i,z[i]));
-            averages.add(new BarEntry(i,j[i]));
-        }
-        //设置总数的柱状图
-        BarDataSet amountBar = new BarDataSet(amounts,&quot;蒸发量&quot;);
-        amountBar.setAxisDependency(YAxis.AxisDependency.LEFT);
-        amountBar.setColor(Color.parseColor(&quot;#C23531&quot;));
-        //设置平均的柱状图
-        BarDataSet averageBar = new BarDataSet(averages,&quot;降水量&quot;);
-        averageBar.setAxisDependency(YAxis.AxisDependency.LEFT);
-        averageBar.setColor(Color.parseColor(&quot;#2F4554&quot;));
-        amountBar.setValueTextSize(10);
-        averageBar.setValueTextSize(10);
-        barData.addDataSet(amountBar);
-        barData.addDataSet(averageBar);
-        //设置柱状图显示的大小
-        float groupSpace = 0.06f;
-        float barSpace = 0.02f;
-        float barWidth = 0.45f;
-        barData.setBarWidth(barWidth);
-        barData.groupBars(0, groupSpace, barSpace);
-        return barData;
-    }
-}
-</code></pre></div><div class=my-4><a href=/tags/iot/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#iot</a>
+</code></pre><blockquote><p>其中的变量${buildType.name}是构建类型，一般是release或debug。${versionName}对应的是 build.gradle 文件内配置的版本名称。</p></blockquote><ol start=2><li><p>在 Android Studio 的 Build 菜单下，找到<code>Build Signed Bundle / APK</code>选项。
+<img src=/static/img/iot-android-07/Snipaste_2023-10-08_14-29-09.jpg alt></p></li><li><p>选择 APK 进行打包。
+<img src=/static/img/iot-android-07/Snipaste_2023-10-08_14-37-58.jpg alt></p></li><li><p>为你项目打的包创建一个新的签名文件（jks）。
+<img src=/static/img/iot-android-07/Snipaste_2023-10-08_14-41-14.jpg alt></p></li></ol><blockquote><p>签名文件可以首先确定发布者的身份，其次可以确保应用的完整性，签名会对应用程序中所有文件进行保护，从而确保应用程序中的所有文件不会被替换。</p></blockquote><ol start=5><li>选择一个路径用于存放签名文件。
+<img src=/static/img/iot-android-07/Snipaste_2023-10-08_15-01-16.jpg alt></li></ol><blockquote><p>jks后缀的是一个密钥仓库（keystore）文件。keystore 文件包含了一个或多个密钥。</p></blockquote><ol start=6><li><p>输入签名文件名称。
+<img src=/static/img/iot-android-07/Snipaste_2023-10-08_15-00-17.jpg alt></p></li><li><p>输入相关的签名信息和密码。
+<img src=/static/img/iot-android-07/Snipaste_2023-10-08_11-10-21.jpg alt></p></li></ol><blockquote><p>Key store password 是密钥仓库密码。密钥仓库可以存储多个别名（Alias）密码。
+<img src=/static/img/iot-android-07/ao9Kh.png alt></p></blockquote><ol start=8><li><p>输入相关的密码，点击<code>Next</code>按钮。
+<img src=/static/img/iot-android-07/Snipaste_2023-10-08_15-14-59.jpg alt></p></li><li><p>选择<code>release</code>类型打包，点击<code>Finish</code>开始打包。
+<img src=/static/img/iot-android-07/Snipaste_2023-10-08_15-28-37.jpg alt></p></li><li><p>可以在 Android Studio 的<code>Build</code>窗口查看打包的进度。
+<img src=/static/img/iot-android-07/Snipaste_2023-10-08_11-19-46.jpg alt></p></li><li><p>构建完成的 APK 包完成默认在<code>项目\app\release</code>目录下。
+<img src=/static/img/iot-android-07/Snipaste_2023-10-08_15-56-41.jpg alt></p></li></ol></div><div class=my-4><a href=/tags/iot/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#iot</a>
 <a href=/tags/android/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#android</a>
 <a href=/tags/%E5%AE%89%E5%8D%93/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#安卓</a>
 <a href=/tags/studio/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#studio</a>
-<a href=/tags/%E7%89%A9%E8%81%94%E7%BD%91/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#物联网</a>
-<a href=/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#可视化</a></div><div class=py-2><div class="flex flex-col md:flex-row items-center my-8"><a href=/authors/heis/ class="w-24 h-24 md:mr-4"><img src=/static/img/authors/heis.png class="w-full bg-primary-bg rounded-full" alt=Avatar></a><div class="w-full md:w-auto mt-4 md:mt-0"><a href=/authors/heis/ class="block font-bold text-lg pb-1 mb-2 border-b">黄老师</a>
+<a href=/tags/%E7%89%A9%E8%81%94%E7%BD%91/ class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#物联网</a></div><div class=py-2><div class="flex flex-col md:flex-row items-center my-8"><a href=/authors/heis/ class="w-24 h-24 md:mr-4"><img src=/static/img/authors/heis.png class="w-full bg-primary-bg rounded-full" alt=Avatar></a><div class="w-full md:w-auto mt-4 md:mt-0"><a href=/authors/heis/ class="block font-bold text-lg pb-1 mb-2 border-b">黄老师</a>
 <span class="block pb-2"></span><a href=mailto:heishuangzy@qq.com class=mr-1><i class="fas fa-envelope"></i></a><a href=https://gitee.com/heis/ class=mr-1><i class="fab fa-git"></i></a><a href=http://heis.gitee.io/ class=mr-1><i class="fas fa-blog"></i></a></div></div></div><div id=btmQrcode></div><p style=text-align:center>扫码或长按识别访问</p><script src=/static/js/qrcode.min.js></script><script type=text/javascript>function getURL(){var url=window.location.href;if(window.location.hash!=""){url=url.substring(0,url.indexOf("#"));}
 return url;}
 new QRCode(document.getElementById("btmQrcode"),{text:getURL(),width:192,height:192,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});</script><div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t"><div id=presec><span class="block font-bold">上一页</span>
 <a href=/docs/iot-android/iot-android-05/ class=block>P5 - 安卓数据存储</a></div><div id=nextsec class="md:text-right mt-4 md:mt-0"><span class="block font-bold">下一页</span>
-<a href=/docs/iot-android/iot-android-07/ class=block>P7 - APP的设备适配与发布</a></div></div></div><div class="hidden lg:block lg:w-1/4"><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-secondary-bg pt-16 -mt-16"><span class="text-lg font-semibold">本页内容</span></div><div class="sticky-toc hidden lg:block px-6 pb-6 pt-10 -mt-10 border-l"><nav id=TableOfContents><ul><li><a href=#版本>【版本】</a></li><li><a href=#实验名称-实验61-开发最近气温变化曲线图界面>【实验名称】 实验6.1 开发最近气温变化曲线图界面</a></li><li><a href=#实验目的>【实验目的】</a></li><li><a href=#实验环境>【实验环境】</a></li><li><a href=#实验要求>【实验要求】</a></li><li><a href=#实验步骤>【实验步骤】</a></li><li><a href=#实验名称-实验62-升级最近气温变化曲线图界面选做>【实验名称】 实验6.2 升级最近气温变化曲线图界面（选做）</a></li><li><a href=#实验目的-1>【实验目的】</a></li><li><a href=#实验环境-1>【实验环境】</a></li><li><a href=#实验要求-1>【实验要求】</a></li><li><a href=#参考代码>【参考代码】</a></li><li><a href=#实验名称-实验63-实现多种图组合界面选做>【实验名称】 实验6.3 实现多种图组合界面（选做）</a></li><li><a href=#实验目的-2>【实验目的】</a></li><li><a href=#实验环境-2>【实验环境】</a></li><li><a href=#实验要求-2>【实验要求】</a></li><li><a href=#参考代码-1>【参考代码】</a></li></ul></nav></div><script>window.addEventListener('DOMContentLoaded',()=>{enableStickyToc();});</script></div></div></div></div></div><div id=outerdiv><div id=innerdiv><img id=bigimg src></div></div><div id=popOuterDiv><div id=popDiv style=display:none><div class=close><span onclick="$('#popDiv').hide();"></span></div><p id=popCtn></p></div></div><div id=nav_top_icon style=display:none></div><div id=list_note_icon></div><script>$(function(){var scrollTop=$(window).scrollTop();if(scrollTop>0){$("#nav_top_icon").show(200);}
+<a href=/docs/iot-android/resources-download/ class=block>资源下载</a></div></div></div><div class="hidden lg:block lg:w-1/4"><div class="sticky top-16 z-10 hidden lg:block px-6 py-4 bg-secondary-bg pt-16 -mt-16"><span class="text-lg font-semibold">本页内容</span></div><div class="sticky-toc hidden lg:block px-6 pb-6 pt-10 -mt-10 border-l"><nav id=TableOfContents><ul><li><a href=#版本>【版本】</a></li><li><a href=#任务名称-任务6-打包-smarthome-项目>【任务名称】 任务6 打包 SmartHome 项目</a></li><li><a href=#任务目的>【任务目的】</a></li><li><a href=#任务环境>【任务环境】</a></li><li><a href=#任务要求>【任务要求】</a></li><li><a href=#任务步骤>【任务步骤】</a></li></ul></nav></div><script>window.addEventListener('DOMContentLoaded',()=>{enableStickyToc();});</script></div></div></div></div></div><div id=outerdiv><div id=innerdiv><img id=bigimg src></div></div><div id=popOuterDiv><div id=popDiv style=display:none><div class=close><span onclick="$('#popDiv').hide();"></span></div><p id=popCtn></p></div></div><div id=nav_top_icon style=display:none></div><div id=list_note_icon></div><script>$(function(){var scrollTop=$(window).scrollTop();if(scrollTop>0){$("#nav_top_icon").show(200);}
 window.onscroll=function(){scrollTop=$(window).scrollTop();if(scrollTop==0){$("#nav_top_icon").hide(200);}else{$("#nav_top_icon").show(200);}}
 $("#nav_top_icon").click(function(){$("body,html").animate({scrollTop:0},500);});$("#list_note_icon").click(function(){$("#popOuterDiv").toggle();$("#popDiv").slideToggle();$("#popCtn").html($("#TableOfContents").html());})
 $("#popOuterDiv").click(function(){$("#popOuterDiv").hide();$("#popDiv").slideUp();})});document.addEventListener('DOMContentLoaded',()=>{hljs.highlightAll();hljs.initLineNumbersOnLoad({singleLine:true});changeSidebarHeight();switchDocToc();$("img").css("cursor:pointer")
-$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});$("ol").each(function(index){if(/\d{1,4}/.test($(this).attr("start"))){let idx=parseInt($(this).attr("start"));let lis=$(this).find("li");if(lis.length>0){lis.each(function(index){$(this).attr("id","step"+(idx+index));});}else{$(this).attr("id","step"+idx);}}});});</script><script src=/static/js/clipboard.min.js></script><script src=/static/js/codecopy.bundle.js?997></script></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text"></p></div></div></footer></body></html>
+$("img").click(function(){var _this=$(this);imgShow("#outerdiv","#innerdiv","#bigimg",_this);});$("ol").each(function(index){if(/\d{1,4}/.test($(this).attr("start"))){let idx=parseInt($(this).attr("start"));let lis=$(this).find("li");if(lis.length>0){lis.each(function(index){$(this).attr("id","step"+(idx+index));});}else{$(this).attr("id","step"+idx);}}});});</script><script src=/static/js/clipboard.min.js></script><script src=/static/js/codecopy.bundle.js?477></script></div></div></main><footer class=pl-scrollbar><div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b"><p class="text-sm text-tertiary-text"></p></div></div></footer></body></html>
