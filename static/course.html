@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄老师课程表</title>
+	<script src="js/jquery-3.6.0.min.js"></script>
+	<script src="js/heis.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+		html{
+		  font-size: 62.5%; /* 魔法基准值，1rem=10px */
+		}
+        body {
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .schedule-container {
+            max-width: 1920px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 8px;
+            vertical-align: middle;
+        }
+		tr.db-bot-line{
+		  border-bottom: 3px double #ccc;
+		}
+        /* 周次标题样式 */
+        .week-title {
+            background-color: #fff2cc;
+            font-weight: bold;
+            font-size: 2.5rem;
+            color: #d9534f;
+        }
+		.weekend{
+			display:none;
+		}
+        /* 日期/星期行样式 */
+        th {
+            background-color: #fff;
+            font-weight: normal;
+            font-size: 16px;
+        }
+        .weekday {
+            color: #333;
+            font-weight: bold;
+            margin-top: 4px;
+			font-size: 1.8rem;
+        }
+        /* 时间段列样式 */
+        .time-col {
+            width: 120px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .time-col. {
+            background-color: #fff2cc;
+        }
+        .time-col. {
+            background-color: #fde6cc;
+        }
+        /* 课程单元格样式 */
+        .course-cell {
+            font-size: 1.6rem;
+            line-height: 1.6;
+        }
+        .course-cell. {
+            background-color: #fff2cc;
+        }
+        .course-cell. {
+            background-color: #fde6cc;
+        }
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+			html {
+			  font-size: 62.5%; /* 魔法基准值，1rem=10px */
+			}
+            table {
+                font-size: 12px;
+            }
+            th, td {
+                padding: 6px 4px;
+            }
+            .time-col {
+                width: 80px;
+            }
+        }
+		 .btn-group {
+			 padding: 1rem 0 1rem 0;
+		    display: flex;          /* 开启 Flex 布局 */
+		    gap: 2rem;              /* 按钮之间的间距，比 margin 更好用 */
+		    justify-content: center; /* 可选：让按钮组居中，或者用 flex-start 左对齐 */
+		  }
+		  
+		  /* 基础按钮样式 */
+		  .btn {
+		    display: inline-block;
+		    padding: 8px 16px;
+		    border-radius: 8px;       /* 圆角大小 */
+		    border: none;
+		    font-size: 1.8rem;
+		    font-weight: bold;
+		    text-align: center;
+		    cursor: pointer;
+		    transition: all 0.2s ease;
+		    white-space: nowrap;
+		    user-select: none;
+		  }
+		  
+		  .btn:hover {
+		    opacity: 0.9;
+		    transform: translateY(-1px);
+		  }
+		  
+		  .btn:active {
+		    transform: translateY(0);
+		  }
+		  /* 主色蓝 */
+		  .btn-primary {
+		    background: #1677ff;
+		    color: #fff;
+		  }
+		  
+		  /* 成功绿 */
+		  .btn-success {
+		    background: #00b42a;
+		    color: #fff;
+		  }
+		  
+		  /* 警告橙 */
+		  .btn-warning {
+		    background: #ff7d00;
+		    color: #fff;
+		  }
+		  
+		  /* 危险红 */
+		  .btn-danger {
+		    background: #f53f3f;
+		    color: #fff;
+		  }
+		  
+		  /* 信息浅蓝 */
+		  .btn-info {
+		    background: #40a9ff;
+		    color: #fff;
+		  }
+		  
+		  /* 灰色（默认/次要） */
+		  .btn-default {
+		    background: #f5f5f5;
+		    color: #333;
+		  }
+		  
+		  /* 紫色（优雅） */
+		  .btn-purple {
+		    background: #722ed1;
+		    color: #fff;
+		  }
+		  
+		  /* 浅黄*/
+		  .btn-buff{
+			  background: #FFFAE8;
+			  color: #000;
+		  }
+		  
+		  /* 青色（清爽） */
+		  .btn-cyan {
+		    background: #13c2c2;
+		    color: #fff;
+		  }
+		  .remark {
+			  font-weight: bold;
+			  color: #DC2D00;
+		  }
+		  .option-container{
+			  margin: 0 auto;
+			  width:100%;
+			  text-align:right;
+			  max-width: 1920px;
+			  padding:1rem 0 1rem 0;
+		  }
+    </style>
+</head>
+<body>
+	<div style="margin: 0 auto">
+		<h1 style="text-align: center;">黄老师25-26-2课程表</h1>
+	</div>
+	<div class="option-container">
+		<button id="weekendToggleBtn" class="btn btn-primary" >显示周末课程</button>
+	</div>
+    <div class="schedule-container">
+        <table id="currTable">
+            <!-- 第1周 -->
+            <tr>
+                <th class="week-title" id="weekPanel">第<span id="week"></span>周</th>
+                <th><span id="w1-date"></span><br><span class="weekday">周一</span><span id="w1-rmk" class="remark"></span></th>
+                <th><span id="w2-date"></span><br><span class="weekday">周二</span><span id="w2-rmk" class="remark"></span></th>
+                <th><span id="w3-date"></span><br><span class="weekday">周三</span><span id="w3-rmk" class="remark"></span></th>
+                <th><span id="w4-date"></span><br><span class="weekday">周四</span><span id="w4-rmk" class="remark"></span></th>
+                <th><span id="w5-date"></span><br><span class="weekday">周五</span><span id="w5-rmk" class="remark"></span></th>
+                <th><span id="w6-date"></span><br><span class="weekday">周六</span><span id="w6-rmk" class="remark"></span></th>
+                <th><span id="w7-date"></span><br><span class="weekday">周日</span><span id="w7-rmk" class="remark"></span></th>
+            </tr>
+            <tr>
+                <td class="time-col ">第1-2节<br>8:30-9:15<br>9:20-10:05</td>
+                <td class="course-cell " id="c1-1"></td>
+                <td class="course-cell " id="c2-1"></td>
+                <td class="course-cell " id="c3-1"></td>
+                <td class="course-cell " id="c4-1"></td>
+                <td class="course-cell " id="c5-1"></td>
+                <td class="weekend"      id="c6-1"></td>
+                <td class="weekend"      id="c7-1"></td>
+            </tr>
+            <tr class="db-bot-line">
+                <td class="time-col ">第3-4节<br>10:25-11:10<br>11:15-12:00</td>
+                <td class="course-cell " id="c1-3"></td>
+                <td class="course-cell " id="c2-3"></td>
+                <td class="course-cell " id="c3-3"></td>
+                <td class="course-cell " id="c4-3"></td>
+                <td class="course-cell " id="c5-3"></td>
+                <td class="weekend"      id="c6-3"></td>
+                <td class="weekend"      id="c7-3"></td>
+            </tr>
+            <tr>
+                <td class="time-col ">第5-6节<br>14:00-14:45<br>14:50-15:35</td>
+                <td class="course-cell " id="c1-5"></td>
+                <td class="course-cell " id="c2-5"></td>
+                <td class="course-cell " id="c3-5"></td>
+                <td class="course-cell " id="c4-5"></td>
+                <td class="course-cell " id="c5-5"></td>
+                <td class="weekend"      id="c6-5"></td>
+                <td class="weekend"      id="c7-5"></td>
+            </tr>
+            <tr class="db-bot-line">
+                <td class="time-col ">第7-8节<br>15:55-16:40<br>16:45-17:30</td>
+                <td class="course-cell " id="c1-7"></td>
+                <td class="course-cell " id="c2-7"></td>
+                <td class="course-cell " id="c3-7"></td>
+                <td class="course-cell " id="c4-7"></td>
+                <td class="course-cell " id="c5-7"></td>
+                <td class="weekend"      id="c6-7"></td>
+                <td class="weekend"      id="c7-7"></td>
+            </tr>
+			<tr>
+			    <td class="time-col ">第9-10节<br>19:00-19:45<br>19:50-20:35</td>
+			    <td class="course-cell " id="c1-9"></td>
+			    <td class="course-cell " id="c2-9"></td>
+			    <td class="course-cell " id="c3-9"></td>
+			    <td class="course-cell " id="c4-9"></td>
+			    <td class="course-cell " id="c5-9"></td>
+			    <td class="weekend"      id="c6-9"></td>
+			    <td class="weekend"      id="c7-9"></td>
+			</tr>
+        </table>
+		
+    </div>
+	<div class="btn-group">
+	  <button class="btn btn-primary" id="prevBtn">&LT;上周</button>
+	  <button class="btn btn-buff" id="todayBtn">今天课程</button>
+	  <button class="btn btn-primary" id="nextBtn">下周&GT;</button>
+	</div>
+</body>
+<script>
+	
+	(function($) {
+	  // 扩展jQuery方法
+	  $.fn.hideLastColumns = function(count) {
+	    count = count || 2; // 默认隐藏2列
+	    return this.each(function() {
+	      $(this).find('tr').each(function() {
+	        $(this).find('td, th').slice(-count).hide();
+	      });
+	    });
+	  };
+	  $.fn.showLastColumns = function(count) {
+	    count = count || 2; // 默认隐藏2列
+	    return this.each(function() {
+	      $(this).find('tr').each(function() {
+	        $(this).find('td, th').slice(-count).show();
+	      });
+	    });
+	  };
+	  $.fn.toggleLastColumns = function(count) {
+	    count = count || 2; // 默认隐藏2列
+	    return this.each(function() {
+	      $(this).find('tr').each(function() {
+	        $(this).find('td, th').slice(-count).toggle();
+	      });
+	    });
+	  };
+	  /**
+	   * 切换文本
+	   * @param {Object} val1
+	   * @param {Object} val2
+	   */
+	  $.fn.toggleText = function(val1, val2) {
+	      return this.each(function() {
+	        var $this = $(this);
+	        if ($this.text().trim() === val1) {
+	          $this.text(val2);
+	        } else {
+	          $this.text(val1);
+	        }
+	      });
+	    };
+		/**
+		 * 表格指定列设置背景颜色
+		 * @param {Object} colIndex
+		 * @param {Object} bgColor
+		 */
+	   $.fn.setColumnBg = function (colIndex, bgColor) {
+	      return this.each(function () {
+	        var $table = $(this);
+	        // 设置表头 th
+	        $table.find('tr > th:nth-child(' + colIndex + ')').css('background-color', bgColor);
+	        // 设置单元格 td
+	        $table.find('tr > td:nth-child(' + colIndex + ')').css('background-color', bgColor);
+	      });
+	    };
+	  // 使用方法
+	  $(document).ready(function() {
+	    // 2. 隐藏特定表格的最后3列
+	    $('#currTable').hideLastColumns(2);
+		$('#weekendToggleBtn').click(function(){
+			$('#currTable').toggleLastColumns(2);
+			var $this = $(this);
+			$this.toggleText("隐藏周末课程","显示周末课程");
+		});
+		
+		// 创建 URLSearchParams 对象
+		const urlParams = new URLSearchParams(window.location.search);
+		
+		//获取课程表内容
+		const currname = urlParams.get('currname');
+		//最大显示周数
+		const lastWeek=23;
+		//获取当前周，默认第一周
+		let w = urlParams.get('w')??1;
+		w=Math.min(lastWeek,Math.max(1,w));
+		//学期开始日期
+		let startDate;
+		//课程表数据对象
+		let curriculum;
+		const highlightDate=urlParams.get('d');	
+		/**
+		 * 渲染课程表
+		 * @param {Object} curriculum 课程表内容
+		 * @param {Object} startDate 学期第一周星期一日期
+		 * @param {Object} week 渲染第几周
+		 */
+		let renderCurrWeekViewTable=function(curriculum,startDate,week){
+			const clzSeqArr=[1,3,5,7,9];
+			
+			for(let i=1;i<=5;i++){
+				for(let cs of clzSeqArr){
+					$("#c"+i+"-"+cs).html(curriculum[week+"-"+i+"-"+cs]??'');
+				}
+			}
+			
+			//渲染表头的日期和第几周
+			for(let i=1;i<=7;i++){
+				let dt=formatDate(calDays(startDate,(week-1)*7+i-1));
+				//处理今天着色
+				if(dt===formatDate(new Date())){
+					$('#currTable').setColumnBg(i+1,'#FFFAE8');
+					$('#w'+i+'-rmk').text('（今天）');
+				}else{
+					$('#currTable').setColumnBg(i+1,'#FFFFFF');
+					$('#w'+i+'-rmk').text('');
+				}
+				$('#w'+i+'-date').text(dt);
+			}
+			$("#week").text(week);
+			$("#prevBtn").text("< 第"+Math.max(1,w-1)+"周 ");
+			$("#nextBtn").text(" 第"+Math.min(lastWeek,w+1)+"周 >");
+		}
+		let calWeekWithDate=function(startDate,date){
+			let week=1;
+			if(date>startDate){
+				week=parseInt(getDayDiff(startDate,date)/7+1);
+			}
+			return week;
+		}
+		
+		$("#prevBtn").click(function(){
+			w--;
+			w=Math.max(1,w);
+			renderCurrWeekViewTable(curriculum,startDate,w);
+		});
+		$("#nextBtn").click(function(){
+			w++;
+			w=Math.min(lastWeek,w);
+			renderCurrWeekViewTable(curriculum,startDate,w);
+		});
+		/**
+		 * 今日课程按钮点击
+		 */
+		$("#todayBtn").click(function(){
+			let today=new Date();
+			w=calWeekWithDate(startDate,today);
+			renderCurrWeekViewTable(curriculum,startDate,w);
+			if(today.getDay()>5){
+				$('#currTable').showLastColumns(2);
+				$('#weekendToggleBtn').text("隐藏周末课程");
+			}
+		});
+		$.ajax({
+		    url: '/static/'+filterStr(currname)+".json",
+		    type: 'GET',
+		    dataType: 'json', // 关键设置：告诉 jQuery 期望返回 JSON 格式
+		    success: function(data) {
+				startDate=parseDate(data.startDate)
+				curriculum=data.curriculum;
+				w=calWeekWithDate(startDate,new Date());
+		        renderCurrWeekViewTable(curriculum,startDate,w);
+		    },
+		    error: function(xhr, status, error) {
+		        console.error('请求失败:', error);
+		    }
+		});
+		
+	  });
+	})(jQuery);
+</script>
+</html>
