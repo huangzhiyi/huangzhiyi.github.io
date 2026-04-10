@@ -180,7 +180,7 @@ function calWeekWithDate(startDate, date) {
  */
 function renderCurrWeekViewTable(curriculum, startDate, week) {
 	const clzSeqArr = [1, 3, 5, 7, 9];
-	for (let i = 1; i <= 5; i++) {
+	for (let i = 1; i <= 7; i++) {
 		for (let cs of clzSeqArr) {
 			$("#c" + i + "-" + cs).html(curriculum[week + "-" + i + "-" + cs] ?? '');
 		}
