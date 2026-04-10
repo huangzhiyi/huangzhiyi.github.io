@@ -157,6 +157,7 @@ function addHashParamLegacy(key, value) {
 	}
 
 	window.location.hash = hash;
+	window.location.href = window.location.href;
 }
 
 /**
@@ -337,6 +338,7 @@ function getCurrentWeek(){
 			dataType: 'json', // 关键设置：告诉 jQuery 期望返回 JSON 格式
 			success: function(data) {
 				$("#title").text(data.title);
+				$('title').text(data.title);
 				startDate = parseDate(data.startDate)
 				curriculum = data.curriculum;
 				setCurrentWeek(calWeekWithDate(startDate, new Date()));
