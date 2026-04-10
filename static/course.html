@@ -5,7 +5,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>黄老师课程表</title>
 		<script src="js/jquery-3.6.0.min.js"></script>
-		<script src="js/heis.js"></script>
+		<script src="js/course-min.js?26041009"></script>
+		<!-- <script src="js/course.js?260410"></script> -->
 		<style>
 			* {
 				margin: 0;
@@ -30,7 +31,7 @@
 				border-radius: 8px;
 				box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 				overflow: auto !important;
-				margin-bottom: 500px;
+				margin-bottom: 300px;
 			}
 
 			table {
@@ -192,13 +193,14 @@
 				flex-wrap: wrap;
 				/* 开启 Flex 布局 */
 				row-gap: 0.4rem;
-				column-gap:1rem;
+				column-gap: 1rem;
 				/* 按钮之间的间距，比 margin 更好用 */
 				justify-content: center;
 				/* 可选：让按钮组居中，或者用 flex-start 左对齐 */
 			}
-			.btn-group .break{
-				width:100%;
+
+			.btn-group .break {
+				width: 100%;
 			}
 
 			/* 基础按钮样式 */
@@ -279,14 +281,16 @@
 				background: #13c2c2;
 				color: #fff;
 			}
-			.btn-week{
-				width:3.5rem;
+
+			.btn-week {
+				width: 3.5rem;
 				padding: 0.5rem 0.8rem;
-				margin-bottom:0.5rem;
+				margin-bottom: 0.5rem;
 			}
-			.btn-week-active{
+
+			.btn-week-active {
 				background-color: #fff2cc;
-				color:#d9534f;
+				color: #d9534f;
 			}
 
 			.remark {
@@ -301,35 +305,56 @@
 				max-width: 1920px;
 				padding: 1rem 0 1rem 0;
 			}
-			.bottom-btn-bar {
-			  position: fixed;
-			  left: 50%;
-			  bottom: 1rem;    /* 离底部20px */
-			  transform: translateX(-50%);
-			  z-index: 999;
-			  
-			  display: flex;
-			  flex-wrap: wrap;
-			  justify-content: center;
-			  gap:1rem;
-			  padding: 10px 16px;
-			  width:95%;
-			  max-width:600px;
-			  
-			  /* 极高透明度背景 */
-			  background: rgba(255, 255, 255, 0.01);
-			  backdrop-filter: blur(6px);
-			  border-radius: 40px;
-			  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+			#bottom-btn-bar {
+				position: fixed;
+				left: 50%;
+				bottom: 1rem;
+				/* 离底部20px */
+				transform: translateX(-50%);
+				z-index: 999;
+
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 1rem;
+				padding: 10px 16px;
+				width: 95%;
+				max-width: 600px;
+
+				/* 极高透明度背景 */
+				background: rgba(255, 255, 255, 0.01);
+				backdrop-filter: blur(6px);
+				border-radius: 40px;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 			}
-			#title{
+
+			#title {
 				text-align: center;
 				font-weight: bold;
-				font-size:2.3rem;
-				padding:1rem 0 1rem 0;
+				font-size: 2.3rem;
+				padding: 1rem 0 1rem 0;
 			}
-			#week-btn-bar{
-				display:none;
+
+			#week-btn-bar {
+				display: none;
+			}
+
+			@media print {
+
+				/* 在此处编写仅对打印生效的CSS规则 */
+				.schedule-container {
+					max-width: 1920px;
+					margin: 0 auto;
+					background: #fff;
+					border-radius: 8px;
+					box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+					width: 100%;
+				}
+
+				#bottom-btn-bar {
+					display: none;
+				}
 			}
 		</style>
 	</head>
@@ -408,16 +433,17 @@
 					<td class="weekend" id="c7-9"></td>
 				</tr>
 			</table>
-
 		</div>
-		<div class="bottom-btn-bar">
+		<div id="bottom-btn-bar">
 			<div class="btn-group">
 				<button class="btn btn-primary " id="prevBtn">&LT;上周</button>
-				<div style="font-size:2rem;font-weight:bold;padding:8px 8px;color:#d9534f;">第<span class="current-week"></span>周</div>
+				<div style="font-size:2rem;font-weight:bold;padding:8px 8px;color:#d9534f;">第<span
+						class="current-week"></span>周</div>
 				<button class="btn btn-primary" id="nextBtn">下周&GT;</button>
-			    <div class="break"></div>
+				<div class="break"></div>
 				<button id="weekendToggleBtn" class="btn btn-primary">显示全部课程</button>
 				<button class="btn btn-danger" id="todayBtn">今天课程</button>
+				<button class="btn btn-primary" id="printBtn" onclick="window.print()">打印课程表</button>
 				<div class="break"></div>
 				<div id="week-btn-bar">
 					<button class="btn btn-week">1</button>
@@ -441,181 +467,4 @@
 			</div>
 		</div>
 	</body>
-	<script>
-		(function($) {
-			// 扩展jQuery方法
-			$.fn.hideLastColumns = function(count) {
-				count = count || 2; // 默认隐藏2列
-				return this.each(function() {
-					$(this).find('tr').each(function() {
-						$(this).find('td, th').slice(-count).hide();
-					});
-				});
-			};
-			$.fn.showLastColumns = function(count) {
-				count = count || 2; // 默认隐藏2列
-				return this.each(function() {
-					$(this).find('tr').each(function() {
-						$(this).find('td, th').slice(-count).show();
-					});
-				});
-			};
-			$.fn.toggleLastColumns = function(count) {
-				count = count || 2; // 默认隐藏2列
-				return this.each(function() {
-					$(this).find('tr').each(function() {
-						$(this).find('td, th').slice(-count).toggle();
-					});
-				});
-			};
-			/**
-			 * 切换文本
-			 * @param {Object} val1
-			 * @param {Object} val2
-			 */
-			$.fn.toggleText = function(val1, val2) {
-				return this.each(function() {
-					var $this = $(this);
-					if ($this.text().trim() === val1) {
-						$this.text(val2);
-					} else {
-						$this.text(val1);
-					}
-				});
-			};
-			/**
-			 * 表格指定列设置背景颜色
-			 * @param {Object} colIndex
-			 * @param {Object} bgColor
-			 */
-			$.fn.setColumnBg = function(colIndex, bgColor) {
-				return this.each(function() {
-					var $table = $(this);
-					// 设置表头 th
-					$table.find('tr > th:nth-child(' + colIndex + ')').css('background-color', bgColor);
-					// 设置单元格 td
-					$table.find('tr > td:nth-child(' + colIndex + ')').css('background-color', bgColor);
-				});
-			};
-			// 使用方法
-			$(document).ready(function() {
-				// 2. 隐藏特定表格的最后3列
-				$('#currTable').hideLastColumns(2);
-				$('#night-row').hide();
-				$('#weekendToggleBtn').click(function() {
-					$('#currTable').toggleLastColumns(2);
-					$('#night-row').toggle();
-					var $this = $(this);
-					$this.toggleText("隐藏周末和夜晚课程", "显示全部课程");
-					$("#week-btn-bar").toggle();
-				});
-
-				// 创建 URLSearchParams 对象
-				const urlParams = new URLSearchParams(window.location.search);
-
-				//获取课程表内容
-				const currname = urlParams.get('currname');
-				//最大显示周数
-				const lastWeek = 17;
-				//获取当前周，默认第一周
-				let w = urlParams.get('w') ?? 1;
-				w = Math.min(lastWeek, Math.max(1, w));
-				//学期开始日期
-				let startDate;
-				//课程表数据对象
-				let curriculum;
-				const highlightDate = urlParams.get('d');
-				/**
-				 * 渲染课程表
-				 * @param {Object} curriculum 课程表内容
-				 * @param {Object} startDate 学期第一周星期一日期
-				 * @param {Object} week 渲染第几周
-				 */
-				let renderCurrWeekViewTable = function(curriculum, startDate, week) {
-					const clzSeqArr = [1, 3, 5, 7, 9];
-
-					for (let i = 1; i <= 5; i++) {
-						for (let cs of clzSeqArr) {
-							$("#c" + i + "-" + cs).html(curriculum[week + "-" + i + "-" + cs] ?? '');
-						}
-					}
-
-					//渲染表头的日期和第几周
-					for (let i = 1; i <= 7; i++) {
-						let dt = formatDate(calDays(startDate, (week - 1) * 7 + i - 1));
-						//处理今天着色
-						if (dt === formatDate(new Date())) {
-							$('#currTable').setColumnBg(i + 1, '#FFFAE8');
-							$('#w' + i + '-rmk').text('（今天）');
-						} else {
-							$('#currTable').setColumnBg(i + 1, '#FFFFFF');
-							$('#w' + i + '-rmk').text('');
-						}
-						$('#w' + i + '-date').text(dt);
-					}
-					$(".current-week").text(week);
-					$("#prevBtn").text("< 第" + Math.max(1, week - 1) + "周 ");
-					$("#nextBtn").text(" 第" + Math.min(lastWeek, week + 1) + "周 >");
-					$(".btn-week").each(function(){
-						if(parseInt($(this).text())===week){
-							$(this).addClass("btn-week-active");
-						}else{
-							$(this).removeClass("btn-week-active")
-						}
-					});
-					w=week;
-				}
-				let calWeekWithDate = function(startDate, date) {
-					let week = 1;
-					if (date > startDate) {
-						week = parseInt(getDayDiff(startDate, date) / 7 + 1);
-					}
-					return week;
-				}
-
-				$("#prevBtn").click(function() {
-					w--;
-					w = Math.max(1, w);
-					renderCurrWeekViewTable(curriculum, startDate, w);
-				});
-				$("#nextBtn").click(function() {
-					w++;
-					w = Math.min(lastWeek, w);
-					renderCurrWeekViewTable(curriculum, startDate, w);
-				});
-				/**
-				 * 今日课程按钮点击
-				 */
-				$("#todayBtn").click(function() {
-					let today = new Date();
-					w = calWeekWithDate(startDate, today);
-					renderCurrWeekViewTable(curriculum, startDate, w);
-					if (today.getDay()===6 || today.getDay()===0) {
-						$('#currTable').showLastColumns(2);
-						$('#weekendToggleBtn').text("隐藏周末和夜晚课程");
-						$('#night-row').show();
-					}
-				});
-				$(".btn-week").click(function(){
-					renderCurrWeekViewTable(curriculum, startDate, parseInt($(this).text()));
-				});
-				$.ajax({
-					url: '/static/' + filterStr(currname) + ".json",
-					type: 'GET',
-					dataType: 'json', // 关键设置：告诉 jQuery 期望返回 JSON 格式
-					success: function(data) {
-						$("#title").text(data.title);
-						startDate = parseDate(data.startDate)
-						curriculum = data.curriculum;
-						w = calWeekWithDate(startDate, new Date());
-						renderCurrWeekViewTable(curriculum, startDate, w);
-					},
-					error: function(xhr, status, error) {
-						console.error('请求失败:', error);
-					}
-				});
-
-			});
-		})(jQuery);
-	</script>
 </html>
