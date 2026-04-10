@@ -333,7 +333,7 @@ function getCurrentWeek(){
 			renderCurrWeekViewTable(curriculum, startDate, parseInt($(this).text()));
 		});
 		$.ajax({
-			url: '/static/' + filterStr(currname) + ".json",
+			url: '/static/' + filterStr(currname) + ".json?"+parseInt(Math.random()*10000),
 			type: 'GET',
 			dataType: 'json', // 关键设置：告诉 jQuery 期望返回 JSON 格式
 			success: function(data) {
