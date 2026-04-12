@@ -4,7 +4,7 @@
 const COURSE_G_VAR={
 	firstweek:1,
 	lastweek:17,
-	w:1  
+	w:1
 }
 /**
  * 解析 yyyy-MM-dd或者yyyyMMdd格式字符为日期
@@ -181,8 +181,16 @@ function calWeekWithDate(startDate, date) {
  */
 function renderCurrWeekViewTable(curriculum, startDate, week) {
 	const clzSeqArr = [1, 3, 5, 7, 9];
+	let has9clz=false;//是否有晚上课程
+	let hasWeekendClz=false;//是否有周末课程
 	for (let i = 1; i <= 7; i++) {
 		for (let cs of clzSeqArr) {
+			if(!has9clz && cs===9 && curriculum[week + "-" + i + "-9"]!=null){
+				has9clz=true;
+			}
+			if(!hasWeekendClz && (i===6||i===7) && curriculum[week + "-" + i + "-"+cs]!=null){
+				hasWeekendClz=true;
+			}
 			$("#c" + i + "-" + cs).html(curriculum[week + "-" + i + "-" + cs] ?? '');
 		}
 	}
@@ -190,18 +198,23 @@ function renderCurrWeekViewTable(curriculum, startDate, week) {
 	for (let i = 1; i <= 7; i++) {
 		let dt = formatDate(calDays(startDate, (week - 1) * 7 + i - 1));
 		//处理今天着色
+		
+		if(COURSE_G_VAR['holidays']!=null && COURSE_G_VAR['holidays'][dt]!=null){
+			$('#w' + i + '-rmk').text(COURSE_G_VAR['holidays'][dt]).addClass("red");
+		}else {
+			$('#currTable').setColumnBg(i + 1, '#FFFFFF');
+			$('#w' + i + '-rmk').text('').removeClass("red");
+		}
 		if (dt === formatDate(new Date())) {
 			$('#currTable').setColumnBg(i + 1, '#FFFAE8');
-			$('#w' + i + '-rmk').text('（今天）');
-		} else {
-			$('#currTable').setColumnBg(i + 1, '#FFFFFF');
-			$('#w' + i + '-rmk').text('');
+			$('#w' + i + '-rmk').append(' 今天').addClass("red");
 		}
 		$('#w' + i + '-date').text(dt);
 	}
 	$(".current-week").text(week);
 	$("#prevBtn").text("< 第" + Math.max(1, week - 1) + "周 ");
 	$("#nextBtn").text(" 第" + Math.min(COURSE_G_VAR.lastweek, week + 1) + "周 >");
+	//渲染下排的周按钮
 	$(".btn-week").each(function() {
 		if (parseInt($(this).text()) === week) {
 			$(this).addClass("btn-week-active");
@@ -210,6 +223,30 @@ function renderCurrWeekViewTable(curriculum, startDate, week) {
 		}
 	});
 	setCurrentWeek(week);
+	if(has9clz||hasWeekendClz){
+		showNightWeekendClz();
+	}
+
+}
+
+/**
+ * 隐藏周末和夜晚课程
+ */
+function hideNightWeekendClz(){
+	$('#currTable').hideLastColumns(2);
+	$('#night-row').hide();
+	$('#weekendToggleBtn').text("显示全部课程");
+	$("#week-btn-bar").hide();
+}
+
+/**
+ * 显示周末和夜晚课程
+ */
+function showNightWeekendClz(){
+	$('#currTable').showLastColumns(2);
+	$('#night-row').show();
+	$('#weekendToggleBtn').text("隐藏周末和夜晚课程");
+	$("#week-btn-bar").show();
 }
 
 /**
@@ -332,8 +369,21 @@ function getCurrentWeek(){
 		$(".btn-week").click(function() {
 			renderCurrWeekViewTable(curriculum, startDate, parseInt($(this).text()));
 		});
+		//获取节假日信息
 		$.ajax({
-			url: '/static/' + filterStr(currname) + ".json?"+parseInt(Math.random()*10000),
+			url: '/static/data/holidays.json?'+parseInt(Math.random()*10000),
+			type: 'GET',
+			dataType: 'json', // 关键设置：告诉 jQuery 期望返回 JSON 格式
+			success: function(data) {
+				COURSE_G_VAR['holidays']=data;
+			},
+			error: function(xhr, status, error) {
+				console.error('请求失败:', error);
+			}
+		});
+		//获取课表并进行渲染
+		$.ajax({
+			url: '/static/data/' + filterStr(currname) + ".json?"+parseInt(Math.random()*10000),
 			type: 'GET',
 			dataType: 'json', // 关键设置：告诉 jQuery 期望返回 JSON 格式
 			success: function(data) {

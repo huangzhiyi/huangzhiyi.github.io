@@ -5,8 +5,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title></title>
 		<script src="js/jquery-3.6.0.min.js"></script>
-		<script src="js/course-min.js?26041016"></script>
-		<!-- <script src="js/course.js?260410"></script> -->
+		<script src="js/course-min.js?26041301"></script>
+		<!-- <script src="js/course.js?260413"></script> -->
 		<style>
 			* {
 				margin: 0;
@@ -295,7 +295,23 @@
 
 			.remark {
 				font-weight: bold;
-				color: #DC2D00;
+				
+				display: inline-block;
+				padding: 2px 4px;
+				border-radius: 3px;
+				/* 圆角大小 */
+				border: none;
+				font-size: 1.8rem;
+				font-weight: bold;
+				text-align: center;
+				cursor: pointer;
+				transition: all 0.2s ease;
+				white-space: nowrap;
+				user-select: none;
+			}
+			.red{
+				background: #f53f3f;
+				color: #fff;
 			}
 
 			.option-container {
