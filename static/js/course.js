@@ -3,7 +3,7 @@
  */
 const COURSE_G_VAR={
 	firstweek:1,
-	lastweek:17,
+	lastweek:19,
 	w:1
 }
 /**
@@ -184,7 +184,7 @@ function renderCurrWeekViewTable(curriculum, startDate, week) {
 	let has9clz=false;//是否有晚上课程
 	let hasWeekendClz=false;//是否有周末课程
 	for (let i = 1; i <= 7; i++) {
-		for (let cs of clzSeqArr) {
+		for (let cs of clzSeqArr) {/* 循环迭代课程顺序 */
 			if(!has9clz && cs===9 && curriculum[week + "-" + i + "-9"]!=null){
 				has9clz=true;
 			}
