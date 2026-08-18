@@ -320,6 +320,11 @@ function getCurrentWeek(){
 	};
 	// 使用方法
 	$(document).ready(function() {
+		//渲染 week-btn-bar
+		//Todo:
+		for(let i=1;i<=COURSE_G_VAR.lastweek;i++){
+			$("#week-btn-bar").append('<button class="btn btn-week">'+i+'</button>');
+		}
 		// 2. 隐藏特定表格的最后3列
 		$('#currTable').hideLastColumns(2);
 		$('#night-row').hide();
