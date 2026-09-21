@@ -7,32 +7,51 @@
 		<script src="js/jquery-3.6.0.min.js"></script>
 		<!-- <script src="js/course-min.js?260818"></script> -->
 		<!-- <link rel="stylesheet" type="text/css" href="css/course-min.css?260818"> -->
-		<script src="js/course.js?260818"></script>
+		<script src="js/course.js?26092103"></script>
 		<link rel="stylesheet" type="text/css" href="css/course.css">
 	</head>
 	<body>
-		<div style="margin: 0 auto">
-			<h1 id="title"></h1>
+		<div id="title-panel">
+			<h1><span id="title"></span>-<span class="current-week"></span></h1>
 		</div>
 		<div class="schedule-container">
 			<table id="currTable">
-				<!-- 第1周 -->
 				<tr>
-					<th class="week-title" id="weekPanel">第<span class="current-week"></span>周</th>
-					<th><span id="w1-date"></span><br><span class="weekday">周一</span><span id="w1-rmk"
-							class="remark"></span></th>
-					<th><span id="w2-date"></span><br><span class="weekday">周二</span><span id="w2-rmk"
-							class="remark"></span></th>
-					<th><span id="w3-date"></span><br><span class="weekday">周三</span><span id="w3-rmk"
-							class="remark"></span></th>
-					<th><span id="w4-date"></span><br><span class="weekday">周四</span><span id="w4-rmk"
-							class="remark"></span></th>
-					<th><span id="w5-date"></span><br><span class="weekday">周五</span><span id="w5-rmk"
-							class="remark"></span></th>
-					<th><span id="w6-date"></span><br><span class="weekday">周六</span><span id="w6-rmk"
-							class="remark"></span></th>
-					<th><span id="w7-date"></span><br><span class="weekday">周日</span><span id="w7-rmk"
-							class="remark"></span></th>
+					<th class="week-title" id="weekPanel"><span class="current-week"></span></th>
+					<th>
+						<span id="w1-date"></span>
+					    <span id="w1-rmk" class="remark"></span><br/>
+					    <span class="weekday">一</span>
+					</th>
+					<th>
+						<span id="w2-date"></span>
+					    <span id="w2-rmk" class="remark"></span><br>
+					    <span class="weekday">二</span>
+				    </th>
+					<th><span id="w3-date"></span>
+					    <span id="w3-rmk" class="remark"></span><br>
+						<span class="weekday">三</span>
+					</th>
+					<th>
+						<span id="w4-date"></span>
+						<span id="w4-rmk" class="remark"></span><br>
+						<span class="weekday">四</span>
+					</th>
+					<th>
+						<span id="w5-date"></span>
+					    <span id="w5-rmk" class="remark"></span><br>
+						<span class="weekday">五</span>
+					</th>
+					<th>
+						<span id="w6-date"></span>
+					    <span id="w6-rmk" class="remark"></span><br>
+						<span class="weekday">六</span>
+					</th>
+					<th>
+						<span id="w7-date"></span>
+						<span id="w7-rmk" class="remark"></span><br>
+						<span class="weekday">日</span>
+					</th>
 				</tr>
 				<tr>
 					<td class="time-col ">第1-2节<br>8:30-9:15<br>9:20-10:05</td>
@@ -89,13 +108,13 @@
 		<div id="bottom-btn-bar">
 			<div class="btn-group">
 				<button class="btn btn-primary " id="prevBtn">&LT;上周</button>
-				<div style="font-size:2rem;font-weight:bold;padding:8px 8px;color:#d9534f;">第<span
-						class="current-week"></span>周</div>
+				<div style="font-size:2rem;font-weight:bold;padding:8px 8px;color:#d9534f;"><span
+						class="current-week"></span></div>
 				<button class="btn btn-primary" id="nextBtn">下周&GT;</button>
 				<div class="break"></div>
 				<button id="weekendToggleBtn" class="btn btn-primary">显示全部课程</button>
 				<button class="btn btn-danger" id="todayBtn">今天课程</button>
-				<button class="btn btn-primary" id="printBtn" onclick="window.print()">打印课程表</button>
+				<button class="btn btn-primary" id="printBtn" onclick="window.print()">打印</button>
 				<div class="break"></div>
 				<div id="week-btn-bar"></div>
 			</div>

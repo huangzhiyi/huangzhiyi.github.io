@@ -1,9 +1,9 @@
-* {
+//** {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: "Microsoft YaHei", sans-serif;
-}
+}*
 
 html {
 	font-size: 62.5%;
@@ -41,6 +41,26 @@ tr.db-bot-line {
 	border-bottom: 3px double #ccc;
 }
 
+#title-panel{
+	
+	margin: 0 auto;
+}
+
+#title-panel h1{
+	text-align: center;
+	font-weight: bold;
+	font-size: 2.3rem;
+	padding: 0.5rem 0 0.5rem 0;
+	}
+
+
+#title {
+	text-align: center;
+	font-weight: bold;
+	font-size: 2.3rem;
+	padding: 1rem 0 1rem 0;
+}
+
 /* 周次标题样式 */
 .week-title {
 	background-color: #fff2cc;
@@ -54,10 +74,12 @@ tr.db-bot-line {
 }
 
 /* 日期/星期行样式 */
-th {
-	background-color: #fff;
-	font-weight: normal;
-	font-size: 16px;
+
+th{
+	padding:10px;
+	background-color:#eef2ff;
+	text-align:center;
+	font-weight:normal;
 }
 
 .weekday {
@@ -94,6 +116,90 @@ th {
 
 .course-cell. {
 	background-color: #fde6cc;
+}
+
+/* 节假日列：该列所有 td 的课程文字置为淡灰色 */
+.holiday-col {
+	color: #b9b9b9;
+}
+
+/* ============ 课程定位闪烁（#course=周-星期-节次）============ */
+/* 用 inset 阴影叠在单元格原有背景之上，不影响背景色本身，也不影响文字 */
+@keyframes courseCellFlash {
+
+	0%,
+	36%,
+	72%,
+	100% {
+		box-shadow: inset 0 0 0 100rem rgba(255, 173, 20, 0);
+	}
+
+	18%,
+	54% {
+		box-shadow: inset 0 0 0 100rem rgba(255, 173, 20, .85);
+	}
+}
+
+.course-flash {
+	animation: courseCellFlash 1.8s ease-in-out 1 both;
+}
+
+/* ============ 单元格鼠标经过：渐进着色特效 ============ */
+/* 1) 背景色平滑过渡，鼠标离开时按同样的缓动渐回原来的背景色 */
+#currTable td {
+	position: relative;
+	z-index: 0;
+	overflow: hidden;
+	transition: background-color .45s cubic-bezier(.4, 0, .2, 1);
+}
+
+/* 2) 涟漪层：以鼠标位置为圆心向外扩散的高亮
+      z-index:-1 让它压在单元格背景之上、文字之下，不遮挡课程文字 */
+#currTable td::after {
+	content: "";
+	position: absolute;
+	left: var(--cell-x, 50%);
+	top: var(--cell-y, 50%);
+	width: 260%;
+	height: 260%;
+	transform: translate(-50%, -50%) scale(0);
+	border-radius: 50%;
+	background: radial-gradient(circle closest-side,
+			rgba(255, 183, 77, .55) 0%,
+			rgba(255, 183, 77, .30) 45%,
+			rgba(255, 183, 77, 0) 100%);
+	opacity: 0;
+	pointer-events: none;
+	z-index: -1;
+	transition: transform .55s cubic-bezier(.22, .61, .36, 1), opacity .4s ease;
+}
+
+/* 3) 悬停着色：!important 用于覆盖 JS（setColumnBg）写在行内的背景色 */
+#currTable td:hover {
+	background-color: #ffe4b0 !important;
+}
+
+#currTable td:hover::after {
+	transform: translate(-50%, -50%) scale(1);
+	opacity: 1;
+}
+
+/* 4) 打印 / 减弱动效偏好下关闭特效 */
+@media print {
+	#currTable th::after,
+	#currTable td::after {
+		display: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	#currTable th,
+	#currTable td,
+	#currTable th::after,
+	#currTable td::after {
+		transition: none;
+	}
 }
 
 /* 响应式适配 */
@@ -286,13 +392,12 @@ th {
 
 .remark {
 	font-weight: bold;
-
 	display: inline-block;
 	padding: 2px 4px;
 	border-radius: 3px;
 	/* 圆角大小 */
 	border: none;
-	font-size: 1.8rem;
+	font-size: 1.4rem;
 	font-weight: bold;
 	text-align: center;
 	cursor: pointer;
@@ -301,11 +406,24 @@ th {
 	user-select: none;
 }
 
-.red {
+/** 颜色 start **/
+
+.color-red {
 	background: #f53f3f;
 	color: #fff;
 }
 
+.color-orange {
+	background: #ea580c;
+	color: #fff;
+}
+.color-green{
+	background: #6BD089;
+	color: #fff;
+}
+	
+
+/** 颜色 end**/
 .option-container {
 	margin: 0 auto;
 	width: 100%;
@@ -337,12 +455,6 @@ th {
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-#title {
-	text-align: center;
-	font-weight: bold;
-	font-size: 2.3rem;
-	padding: 1rem 0 1rem 0;
-}
 
 #week-btn-bar {
 	display: none;
@@ -363,3 +475,44 @@ th {
 		display: none;
 	}
 }
+
+/** icon font start **/
+@font-face {
+  font-family: "iconfont"; /* Project id  */
+  src: url('iconfont.ttf?t=1789539340193') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-worker:before {
+  content: "\e65a";
+}
+
+.icon-moon:before {
+  content: "\e647";
+}
+
+.icon-denglong:before {
+  content: "\e61b";
+}
+
+.icon-zongzi:before {
+  content: "\e62c";
+}
+
+.icon-balloon:before {
+  content: "\e661";
+}
+
+.icon-bianpao:before {
+  content: "\e64f";
+}
+
+
+/** icon font end **/
