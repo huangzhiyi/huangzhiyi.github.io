@@ -378,15 +378,16 @@ function renderCurrWeekViewTable(curriculum, startDate, week) {
 		if(COURSE_G_VAR['holidays']!=null){
 			let hday=COURSE_G_VAR['holidays'][dtYmd];
 			if(hday!=null){
-				$('#w' + i + '-rmk').text(hday['val']).addClass('color-'+hday['type']);
+				$('.w' + i + '-rmk').text(hday['val']).addClass('color-'+hday['type']);
 				if(hday['icon']!=null){
-					$('#w' + i + '-rmk').addClass('iconfont icon-'+hday['icon']);
+					//添加节假日图标
+					$('.w' + i + '-rmk').addClass('iconfont icon-'+hday['icon']);
 				}
 				//节假日：该列所有单元格的课程文字置为淡灰色
 				$('#currTable').toggleColumnClass(i + 1, 'holiday-col', true);
 			}else {
 				$('#currTable').setColumnBg(i + 1, '#FFFFFF');
-				$('#w' + i + '-rmk').text('').attr('class', 'remark');
+				$('.w' + i + '-rmk').text('').attr('class', 'w' + i + '-rmk remark');
 				//非节假日：恢复该列文字颜色
 				$('#currTable').toggleColumnClass(i + 1, 'holiday-col', false);
 			}
@@ -394,11 +395,12 @@ function renderCurrWeekViewTable(curriculum, startDate, week) {
 		//处理今天着色
 		if (dtYmd === formatDate(new Date())) {
 			$('#currTable').setColumnBg(i + 1, '#FFFAE8');
-			$('#w' + i + '-rmk').append(' 今天').addClass("color-orange");
+			$('.w' + i + '-rmk').append(' 今天').addClass("color-orange");
 		}else{
-			$('#currTable').removeColumnBg(i + 1);
+			$('#currTable').removeColumnBg(i + 1);//恢复该列背景颜色
+			$('.w' + i + '-rmk').removeClass("color-orange");
 		}
-		$('#w' + i + '-date').text(dtMd);
+		$('.w' + i + '-date').text(dtMd);
 	}
 	$(".current-week").text("第"+week+"周");
 	$("#prevBtn").text("< 第" + Math.max(1, week - 1) + "周 ");

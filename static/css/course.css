@@ -42,23 +42,25 @@ tr.db-bot-line {
 }
 
 #title-panel{
-	
-	margin: 0 auto;
-}
-
-#title-panel h1{
 	text-align: center;
-	font-weight: bold;
-	font-size: 2.3rem;
-	padding: 0.5rem 0 0.5rem 0;
-	}
-
+	margin: 0 auto;
+	padding:0.7rem;
+}
 
 #title {
 	text-align: center;
 	font-weight: bold;
-	font-size: 2.3rem;
 	padding: 1rem 0 1rem 0;
+}
+
+.current-week{
+font-size:2rem;
+font-weight:bold;
+color:#d9534f;
+}
+
+.fontTit{
+	font-size: 2.3rem;
 }
 
 /* 周次标题样式 */
@@ -89,19 +91,58 @@ th{
 	font-size: 1.8rem;
 }
 
+/* ============ 日期行吸顶特效 ============ */
+/* 滚动导致表头日期行被顶部导航遮住后，由 JS 克隆一份日期行固定在导航条正下方，
+   z-index 低于 .topnav(1200)，保证不会挡住头部菜单；日期行重新露出时隐藏，恢复原样。 */
+#date-sticky-bar {
+	position: fixed;
+	/* top 由 JS 按导航条实际高度写入（导航高度随内容/断点变化），这里只是兜底值 */
+	top: 48px;
+	left: 0;
+	right: 0;
+	/* 低于 .topnav(1200)：任何情况下都不会盖住头部菜单 */
+	z-index: 1100;
+	display: none;
+	background: #fff;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+}
+
+#date-sticky-bar.is-visible {
+	display: block;
+}
+
+#date-sticky-bar .date-sticky-inner {
+	max-width: 1920px;
+	margin: 0 auto;
+	overflow: hidden;
+	/* 与 .schedule-container 的横向滚动联动（移动端窄屏） */
+	scrollbar-width: none;
+}
+
+#date-sticky-bar table {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: center;
+	/* 列宽由 JS 按原表实测值写入，固定布局才不会被可用宽度重新分配 */
+	table-layout: fixed;
+}
+
+#date-sticky-bar th {
+	background-color: #eef2ff;
+	text-align: center;
+	font-weight: normal;
+	border: 1px solid #ddd;
+	/* 不在这里写 padding/font-size：base 规则与响应式媒体查询里的 th 样式
+	   已经把内边距算好了，写死会让吸顶行的行高和原表不一致 */
+	/* 页面没有全局 box-sizing 重置，这里必须声明 border-box，
+	   否则 JS 写入的实测列宽（含 padding/边框）会被当成内容宽度，列宽和行高都会走样 */
+	box-sizing: border-box;
+}
+
 /* 时间段列样式 */
 .time-col {
-	width: 120px;
 	font-weight: bold;
-	font-size: 14px;
-}
-
-.time-col. {
-	background-color: #fff2cc;
-}
-
-.time-col. {
-	background-color: #fde6cc;
+	font-size: 1.2rem;
 }
 
 /* 课程单元格样式 */
@@ -220,6 +261,15 @@ th{
 	th,
 	td {
 		padding: 6px 4px;
+		max-width: 15%;
+		width: 2rem;
+	}
+
+	.hide {
+		display: none !important;
+	}
+	.week-title {
+		max-width: 10%;
 	}
 }
 
@@ -270,7 +320,7 @@ th{
 	}
 
 	body {
-		padding: 1%;
+		padding: 0 0.5% 0.5% 1%;
 	}
 
 	table {
@@ -474,6 +524,11 @@ th{
 	#bottom-btn-bar {
 		display: none;
 	}
+
+	/* 打印时隐藏日期吸顶条 */
+	#date-sticky-bar {
+		display: none !important;
+	}
 }
 
 /** icon font start **/
@@ -512,6 +567,421 @@ th{
 
 .icon-bianpao:before {
   content: "\e64f";
+}
+
+/* ==========================================================================
+   顶部自适应多级菜单（course.html）
+   移动端(<=768px)：整条导航折叠为左上角的汉堡按钮，点击后从左侧滑出抽屉，
+                    二/三级菜单以手风琴方式逐级展开；
+   桌面端(>=769px)：横向导航条，二级下拉菜单、三级向右飞出菜单，
+                    支持鼠标悬停与键盘 Tab 聚焦展开。
+   ========================================================================== */
+/* 统一盒模型：这里必须显式声明 border-box。
+   菜单项用的是 width:100% + 左右 padding，默认的 content-box 会让每一项
+   比容器宽 32px，在移动端抽屉里就会撑出横向滚动条。 */
+.topnav,
+.topnav *,
+.topnav *::before,
+.topnav *::after {
+	box-sizing: border-box;
+}
+
+.topnav {
+	position: sticky;
+	top: 0;
+	z-index: 1200;
+	background: #fff;
+	border-bottom: 1px solid #e9edf4;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+}
+
+.topnav-bar {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	max-width: 1920px;
+	margin: 0 auto;
+	padding: 6px 10px;
+	min-height: 48px;
+}
+
+/* 汉堡按钮：移动端固定在最左侧 */
+.topnav-toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	height: 38px;
+	padding: 0 12px;
+	border: 1px solid #dfe4ec;
+	border-radius: 8px;
+	background: #fff;
+	color: #333;
+	font-family: inherit;
+	font-size: 1.6rem;
+	font-weight: 700;
+	cursor: pointer;
+	user-select: none;
+}
+
+.topnav-toggle:active {
+	background: #f2f5fa;
+}
+
+.topnav-toggle-icon {
+	position: relative;
+	display: block;
+	flex: none;
+	width: 18px;
+	height: 12px;
+}
+
+.topnav-toggle-icon span {
+	position: absolute;
+	left: 0;
+	width: 18px;
+	height: 2px;
+	border-radius: 2px;
+	background: #333;
+	transition: transform .22s ease, opacity .18s ease, top .22s ease;
+}
+
+.topnav-toggle-icon span:nth-child(1) {
+	top: 0;
+}
+
+.topnav-toggle-icon span:nth-child(2) {
+	top: 5px;
+}
+
+.topnav-toggle-icon span:nth-child(3) {
+	top: 10px;
+}
+
+/* 展开时汉堡变叉号 */
+.topnav.is-open .topnav-toggle-icon span:nth-child(1) {
+	top: 5px;
+	transform: rotate(45deg);
+}
+
+.topnav.is-open .topnav-toggle-icon span:nth-child(2) {
+	opacity: 0;
+}
+
+.topnav.is-open .topnav-toggle-icon span:nth-child(3) {
+	top: 5px;
+	transform: rotate(-45deg);
+}
+
+.topnav-brand {
+	min-width: 0;
+	overflow: hidden;
+	font-size: 1.8rem;
+	font-weight: 700;
+	color: #1677ff;
+	text-decoration: none;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	transition: color .2s ease, font-size .2s ease;
+}
+
+/* 页面标题被吸顶导航遮住后，品牌位临时改显标题内容 */
+.topnav-brand.is-title-shown {
+	font-size: 1.7rem;
+	color: #d9534f;
+}
+
+.topnav-list,
+.topnav .submenu {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.topnav-link,
+.topnav .submenu-link {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	width: 100%;
+	padding: 12px 16px;
+	border: 0;
+	background: transparent;
+	color: #333;
+	font-family: inherit;
+	font-size: 1.6rem;
+	font-weight: 700;
+	line-height: 1.4;
+	text-align: left;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background-color .15s ease, color .15s ease;
+}
+
+/* 展开指示箭头 */
+.caret {
+	flex: none;
+	width: 0;
+	height: 0;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	border-top: 5px solid currentColor;
+	opacity: .55;
+	transition: transform .2s ease;
+}
+
+/* ---------- 移动端：左侧抽屉 ---------- */
+.topnav-menu {
+	position: fixed;
+	top: 0;
+	right: auto;
+	bottom: 0;
+	left: 0;
+	width: 84%;
+	max-width: 320px;
+	padding: 0 0 20px;
+	background: #fff;
+	box-shadow: 2px 0 18px rgba(0, 0, 0, .2);
+	transform: translateX(-102%);
+	transition: transform .25s ease;
+	/* 只纵向滚动，禁止横向滚动条；同时阻止滚动穿透到页面 */
+	overflow-x: hidden;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	-webkit-overflow-scrolling: touch;
+	z-index: 1210;
+}
+
+.topnav.is-open .topnav-menu {
+	transform: translateX(0);
+}
+
+.topnav-menu-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px 16px;
+	border-bottom: 1px solid #eef1f6;
+}
+
+.topnav-menu-title {
+	font-size: 1.7rem;
+	font-weight: 700;
+	color: #1677ff;
+}
+
+.topnav-close {
+	width: 32px;
+	height: 32px;
+	border: 0;
+	border-radius: 8px;
+	background: #f2f5fa;
+	color: #333;
+	font-size: 2.2rem;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.topnav-backdrop {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0, 0, 0, .35);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity .2s ease, visibility .2s ease;
+	z-index: 1205;
+}
+
+.topnav.is-open .topnav-backdrop {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* 子菜单默认收起，展开方式由下面两套响应式规则分别决定 */
+.topnav .submenu {
+	display: none;
+}
+
+/* ---------- 移动端专属：子菜单内联手风琴展开 ----------
+   注意：整套手风琴样式只在 <=768px 生效，切到桌面端后 .open 不再影响显示，
+   避免窄屏展开的状态被带到宽屏。 */
+@media (max-width: 768px) {
+	.topnav .submenu {
+		background: #fafbfd;
+		border-top: 1px solid #f0f2f6;
+		border-bottom: 1px solid #f0f2f6;
+	}
+
+	.topnav .submenu .submenu {
+		background: #f5f7fb;
+	}
+
+	.topnav .topnav-item.open>.submenu,
+	.topnav .submenu li.open>.submenu {
+		display: block;
+	}
+
+	.topnav .submenu .submenu .submenu-link {
+		padding-left: 30px;
+	}
+
+	.topnav .open>.topnav-link .caret,
+	.topnav .submenu li.open>.submenu-link .caret {
+		transform: rotate(180deg);
+	}
+}
+
+/* 当前课表高亮 */
+.topnav .topnav-item>.topnav-link.is-active,
+.topnav .submenu-link.is-active {
+	background: #fff2cc;
+	color: #d9534f;
+}
+
+/* ---------- 桌面端：横向导航 + 下拉 / 飞出 ---------- */
+@media (min-width: 769px) {
+	.topnav-toggle {
+		display: none;
+	}
+
+	.topnav-menu {
+		position: static;
+		display: block;
+		width: auto;
+		max-width: none;
+		padding: 0;
+		background: transparent;
+		box-shadow: none;
+		transform: none;
+		overflow: visible;
+	}
+
+	.topnav-menu-head {
+		display: none;
+	}
+
+	.topnav-backdrop {
+		display: none;
+	}
+
+	.topnav-list {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+
+	/* 一级项和带有下级的菜单项都要成为定位基准，
+	   否则三级飞出菜单会以整个二级面板为基准，出现错位 */
+	.topnav-item,
+	.topnav .submenu li.has-sub {
+		position: relative;
+	}
+
+	.topnav-link {
+		width: auto;
+		padding: 10px 14px;
+		border-radius: 8px;
+	}
+
+	.topnav .submenu {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		/* 与触发器留出一点间距，避免和导航条底边、阴影糊在一起 */
+		margin-top: 8px;
+		min-width: 200px;
+		padding: 6px;
+		background: #fff;
+		border: 1px solid #e9edf4;
+		border-radius: 10px;
+		box-shadow: 0 10px 28px rgba(0, 0, 0, .14);
+		display: none;
+	}
+
+	/* 透明桥接区：补上面那 8px 空隙，鼠标从触发器移到面板上时不会中断 hover */
+	.topnav .submenu::before {
+		content: "";
+		position: absolute;
+		top: -8px;
+		right: 0;
+		left: 0;
+		height: 8px;
+	}
+
+	/* 三级菜单向右飞出，-7px 用于抵消面板 padding+边框，使其首行与被悬停的那一行对齐 */
+	.topnav .submenu .submenu {
+		top: -7px;
+		left: 100%;
+		margin: 0 0 0 6px;
+		background: #fff;
+	}
+
+	/* 桥接左右 6px 空隙 */
+	.topnav .submenu .submenu::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: -8px;
+		width: 8px;
+	}
+
+	/* 桌面端只认悬停 / 键盘聚焦，不认移动端遗留的 .open，
+	   因此窄屏展开的状态不会在宽屏残留（点击展开由 JS 走 focus-within 实现） */
+	.topnav-item.has-sub:hover>.submenu,
+	.topnav-item.has-sub:focus-within>.submenu,
+	.topnav .submenu li.has-sub:hover>.submenu,
+	.topnav .submenu li.has-sub:focus-within>.submenu {
+		display: block;
+	}
+
+	.topnav .submenu li+li {
+		margin-top: 2px;
+	}
+
+	.topnav .submenu-link {
+		width: 100%;
+		padding: 10px 12px;
+		border-radius: 6px;
+		white-space: nowrap;
+	}
+
+	.topnav .topnav-link:hover,
+	.topnav .submenu-link:hover {
+		background: #eef2ff;
+		color: #1677ff;
+	}
+
+	/* 鼠标进入子面板 / 键盘聚焦时，父级项保持高亮，视觉上才连成一体 */
+	.topnav-item.has-sub:hover>.topnav-link,
+	.topnav-item.has-sub:focus-within>.topnav-link,
+	.topnav .submenu li.has-sub:hover>.submenu-link,
+	.topnav .submenu li.has-sub:focus-within>.submenu-link {
+		background: #eef2ff;
+		color: #1677ff;
+	}
+
+	.topnav .topnav-link:focus-visible,
+	.topnav .submenu-link:focus-visible {
+		outline: 2px solid #1677ff;
+		outline-offset: -2px;
+	}
+
+	/* 桌面端三级菜单箭头朝右 */
+	.topnav .submenu li.has-sub>.submenu-link .caret {
+		transform: rotate(-90deg);
+	}
+
+}
+
+@media print {
+	.topnav {
+		display: none !important;
+	}
 }
 
 
