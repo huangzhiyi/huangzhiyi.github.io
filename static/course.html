@@ -5,10 +5,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title></title>
 		<script src="js/jquery-3.6.0.min.js"></script>
-		<!-- <script src="js/course-min.js?260922"></script>
-		<link rel="stylesheet" type="text/css" href="css/course-min.css?260922"> -->
-		<script src="js/course.js?260922"></script>
-		<link rel="stylesheet" type="text/css" href="css/course.css?260922">
+		<script src="js/course-min.js?260924"></script>
+		<link rel="stylesheet" type="text/css" href="css/course-min.css?260924">
+		<!-- <script src="js/course.js?260922"></script>
+		<link rel="stylesheet" type="text/css" href="css/course.css?260922"> -->
 	</head>
 	<body>
 		<!-- ===== 顶部自适应多级菜单：桌面端横向展开，移动端折叠到左上角 ===== -->
@@ -29,7 +29,7 @@
 						<li class="topnav-item"><a class="topnav-link" href="/">博客</a></li>
 						<li class="topnav-item has-sub">
 							<button type="button" class="topnav-link" aria-haspopup="true"
-								aria-expanded="false">切换课表<span class="caret" aria-hidden="true"></span></button>
+								aria-expanded="false">老师课表<span class="caret" aria-hidden="true"></span></button>
 							<ul class="submenu">
 										<li><a class="submenu-link" href="?currname=czl-26-27-1">陈老师 czl</a></li>
 										<li><a class="submenu-link" href="?currname=fmh-26-27-1">符老师 fmh</a></li>
@@ -42,7 +42,26 @@
 										<li><a class="submenu-link" href="?currname=yzm-26-27-1">余老师 yzm</a></li>
 										<li><a class="submenu-link" href="?currname=zdj-26-27-1">钟老师 zdj</a></li>
 										<li><a class="submenu-link" href="?currname=zjr-26-27-1">郑老师 zjr</a></li>
+										<li><a class="submenu-link" href="?currname=zyl207-26-27-1">致远楼207</a></li>
 							</ul>
+						</li>
+						<li class="topnav-item has-sub">
+							<button type="button" class="topnav-link" aria-haspopup="true"
+								aria-expanded="false">教室课表<span class="caret" aria-hidden="true"></span></button>
+							<ul class="submenu">
+										<li><a class="submenu-link" href="?currname=zyl207-26-27-1">致远楼207（新湖）</a></li>
+										<li><a class="submenu-link" href="?currname=zyl208-26-27-1">致远楼208（新湖）</a></li>
+										<li><a class="submenu-link" href="?currname=zyl209-26-27-1">致远楼209（新湖）</a></li>
+										<li><a class="submenu-link" href="?currname=zyl406-26-27-1">致远楼406（新湖）</a></li>
+										<li><a class="submenu-link" href="?currname=zyl407-26-27-1">致远楼407（新湖）</a></li>
+										<li><a class="submenu-link" href="?currname=zyl408-26-27-1">致远楼408（新湖）</a></li>
+										<li><a class="submenu-link" href="?currname=zyl409-26-27-1">致远楼409（新湖）</a></li>
+										<li><a class="submenu-link" href="?currname=mz-zyl302-26-27-1">知远楼302（麻章）</a></li>
+							</ul>
+						</li>
+						<li class="topnav-item">
+							<button type="button" class="topnav-link" aria-haspopup="true"
+								aria-expanded="false" id="printBtn" onclick="window.print()">打印课表</button>
 						</li>
 					</ul>
 				</nav>
@@ -153,7 +172,6 @@
 				<div class="break"></div>
 				<button id="weekendToggleBtn" class="btn btn-primary">显示全部课程</button>
 				<button class="btn btn-danger" id="todayBtn">今天课程</button>
-				<button class="btn btn-primary" id="printBtn" onclick="window.print()">打印</button>
 				<div class="break"></div>
 				<div id="week-btn-bar"></div>
 			</div>
