@@ -352,7 +352,8 @@ table.tbl tr:nth-child(even)
 		display: block;
 	}
 }
-@media(min-width: 1024px) {
+/* 文档页内联TOC在 xl(1280px) 以上才显示，其余尺寸使用浮动按钮打开目录 */
+@media(min-width: 1280px) {
 	#list_note_icon{
 		display: none;
 	}
@@ -396,8 +397,26 @@ table.tbl tr:nth-child(even)
     position: absolute;
     top:0;
     left: 0; 
-	opacity:0.9 ;
+	opacity:1 ;
 	border-right:1px solid rgb(229, 231, 235) ;
+	box-shadow: 0 0 1rem rgba(0,0,0,.3);
+}
+/* 弹出目录的内容：缩进 + 行距，方便触屏点按 */
+#popCtn{
+	padding: .5rem 1rem 2rem;
+	line-height: 1.6;
+}
+#popCtn ul{
+	padding-left: 1.1rem;
+}
+#popCtn li{
+	margin: .35rem 0;
+}
+#popCtn a{
+	color: #333;
+}
+#popCtn a:hover{
+	color: #00896C;
 }
 #popDiv .close span {
     color: #000;
@@ -423,13 +442,20 @@ table.tbl tr:nth-child(even)
 	position:fixed;
 	top:64px;
 	left:0;
-	background:#fff;
-	opacity: 0.9;
+	background:rgba(0,0,0,0.45);
+	opacity: 1;
 	z-index:8;
 	width:100%;
-	height:100%;
+	height:calc(100% - 64px);
 	display:none;
 	overflow: hidden;
+}
+/* 平板及以上把弹出目录做成侧边抽屉，避免整屏被遮挡 */
+@media(min-width: 768px) {
+	#popDiv{
+		width: 22rem;
+		box-shadow: 0 0 1.5rem rgba(0,0,0,.35);
+	}
 }
 #btmQrcode{
 	text-align:center;

@@ -73,6 +73,8 @@ color:#d9534f;
 
 .weekend {
 	display: none;
+	font-size: 1.6rem;
+	line-height: 1.6;
 }
 
 /* 日期/星期行样式 */

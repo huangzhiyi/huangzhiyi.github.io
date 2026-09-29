@@ -692,3 +692,261 @@ function getCurrentWeek(){
 		
 	});
 })(jQuery);
+
+/* 抽屉开关 + 多级菜单展开 */
+			(function () {
+				var nav = document.getElementById('topnav');
+				if (!nav) { return; }
+				var toggle = document.getElementById('topnavToggle');
+				var closeBtn = document.getElementById('topnavClose');
+				var backdrop = document.getElementById('topnavBackdrop');
+				var mq = window.matchMedia('(max-width: 768px)');
+				function isMobile() { return mq.matches; }
+				function setOpen(open) {
+					nav.classList.toggle('is-open', open);
+					if (toggle) { toggle.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+					document.body.style.overflow = (open && isMobile()) ? 'hidden' : '';
+				}
+				if (toggle) { toggle.addEventListener('click', function () { setOpen(!nav.classList.contains('is-open')); }); }
+				if (closeBtn) { closeBtn.addEventListener('click', function () { setOpen(false); }); }
+				if (backdrop) { backdrop.addEventListener('click', function () { setOpen(false); }); }
+				document.addEventListener('keydown', function (e) { if (e.key === 'Escape' || e.keyCode === 27) { setOpen(false); } });
+
+				function triggerOf(li) {
+					var c = li.firstElementChild;
+					return (c && (c.classList.contains('topnav-link') || c.classList.contains('submenu-link'))) ? c : null;
+				}
+				/* 收起所有子菜单：清掉 .open、aria 状态，并移除焦点，
+				   否则切换回桌面端时 :focus-within 仍会保留展开状态 */
+				function collapseAll() {
+					var items = nav.querySelectorAll('li.has-sub');
+					for (var i = 0; i < items.length; i++) {
+						items[i].classList.remove('open');
+						var t = triggerOf(items[i]);
+						if (t) { t.setAttribute('aria-expanded', 'false'); }
+					}
+					if (document.activeElement && nav.contains(document.activeElement)) { document.activeElement.blur(); }
+				}
+				/* 视口变宽（移动端 -> 桌面端）时：关闭抽屉并复位所有子菜单 */
+				function toDesktop() { setOpen(false); collapseAll(); }
+				window.addEventListener('resize', function () { if (!isMobile()) { toDesktop(); } });
+				if (mq.addEventListener) {
+					mq.addEventListener('change', function (e) { if (!e.matches) { toDesktop(); } });
+				} else if (mq.addListener) {
+					mq.addListener(function (e) { if (!e.matches) { toDesktop(); } });
+				}
+				/* 桌面端：鼠标移出导航、或点击页面空白处，收起展开的子菜单 */
+				nav.addEventListener('mouseleave', function () { if (!isMobile()) { collapseAll(); } });
+				document.addEventListener('click', function (e) {
+					if (!isMobile() && !nav.contains(e.target)) { collapseAll(); }
+				});
+
+				/* 有下级菜单的项：点击展开/收起（同级只展开一个） */
+				var triggers = nav.querySelectorAll('.topnav-link, .submenu-link');
+				for (var i = 0; i < triggers.length; i++) {
+					(function (el) {
+						var li = el.parentNode;
+						if (!li || !li.classList.contains('has-sub')) { return; }
+						el.addEventListener('click', function (e) {
+							e.preventDefault();
+							/* 同级只保留一个展开 */
+							var sibs = li.parentNode.children;
+							for (var j = 0; j < sibs.length; j++) {
+								if (sibs[j] === li) { continue; }
+								sibs[j].classList.remove('open');
+								var t = triggerOf(sibs[j]);
+								if (t) { t.setAttribute('aria-expanded', 'false'); }
+							}
+							if (isMobile()) {
+								/* 移动端：手风琴，靠 .open 控制 */
+								var open = !li.classList.contains('open');
+								li.classList.toggle('open', open);
+								el.setAttribute('aria-expanded', open ? 'true' : 'false');
+							} else {
+								/* 桌面端：展开由 :hover / :focus-within 控制，这里用焦点实现点击切换 */
+								if (li.contains(document.activeElement)) {
+									li.classList.remove('open');
+									el.setAttribute('aria-expanded', 'false');
+									el.blur();
+								} else {
+									li.classList.add('open');
+									el.setAttribute('aria-expanded', 'true');
+									el.focus();
+								}
+							}
+						});
+					})(triggers[i]);
+				}
+				/* 初始化：清除可能残留的展开状态 */
+				collapseAll();
+				/* 点击末级菜单项后，移动端自动收起抽屉 */
+				var leaves = nav.querySelectorAll('a.topnav-link, a.submenu-link, button.submenu-link:not([aria-haspopup])');
+				for (var k = 0; k < leaves.length; k++) {
+					leaves[k].addEventListener('click', function () { if (isMobile()) { setOpen(false); } });
+				}
+				/* 高亮当前课表 */
+				var curr = '';
+				try { curr = new URLSearchParams(window.location.search).get('currname') || ''; } catch (err) { curr = ''; }
+				if (curr) {
+					var links = nav.querySelectorAll('a[href*="currname="]');
+					for (var m = 0; m < links.length; m++) {
+						if (links[m].getAttribute('href').indexOf('currname=' + curr) > -1) {
+							links[m].classList.add('is-active');
+							if (isMobile()) {
+								var p = links[m].parentNode;
+								while (p && p !== nav) { if (p.tagName === 'LI') { p.classList.add('open'); } p = p.parentNode; }
+							}
+						}
+					}
+				}
+			})();
+
+			/* 纵向滚动联动：页面标题被吸顶导航遮住后，把标题内容接到头部菜单的品牌位，
+			   标题重新露出时还原为原来的“课程表” */
+			(function () {
+				var nav = document.getElementById('topnav');
+				var brand = nav && nav.querySelector('.topnav-brand');
+				var panel = document.getElementById('title-panel');
+				var nameEl = document.getElementById('title');
+				if (!nav || !brand || !panel) { return; }
+				var original = brand.textContent;
+				function readTitle() {
+					var name = nameEl ? nameEl.textContent : '';
+					var weekEl = panel.querySelector('.current-week');
+					var week = weekEl ? weekEl.textContent : '';
+					return (name.replace(/\s+/g, ' ').trim() + ' ' + week.replace(/\s+/g, ' ').trim()).trim();
+				}
+				var covered = false;
+				/* 记录标题是否被遮住 */
+				function sync() {
+					/* 标题元素的底边跑到导航条底边之上，即视为被完全遮住 */
+					var hidden = panel.getBoundingClientRect().bottom <= nav.getBoundingClientRect().bottom + 1;
+					var text = hidden ? (readTitle() || original) : original;
+					if (hidden === covered && brand.textContent === text) { return; }
+					covered = hidden;
+					brand.textContent = text;
+					brand.title = text;
+					brand.classList.toggle('is-title-shown', hidden);
+				}
+				var ticking = false;
+				function onScroll() {
+					if (ticking) { return; }
+					ticking = true;
+					(window.requestAnimationFrame || window.setTimeout)(function () { ticking = false; sync(); }, 16);
+				}
+				window.addEventListener('scroll', onScroll, { passive: true });
+				window.addEventListener('resize', onScroll);
+				/* 课表标题是 ajax 回填的，内容变化时同步一次 */
+				if (window.MutationObserver) {
+					new MutationObserver(sync).observe(panel, { childList: true, subtree: true, characterData: true });
+				}
+				sync();
+			})();
+
+			/* 表头日期行吸顶：滚动导致表格第一行日期被吸顶导航遮住后，
+			   克隆一份日期行固定在显示屏顶部（位于导航下方，不挡菜单），
+			   日期行重新露出时隐藏克隆条，恢复原来的样式 */
+			(function () {
+				var nav = document.getElementById('topnav');
+				var container = document.querySelector('.schedule-container');
+				var table = document.getElementById('currTable');
+				var headRow = table ? table.rows[0] : null;
+				if (!nav || !table || !headRow) { return; }
+
+				/* 克隆表头日期行，放进固定定位的吸顶条 */
+				var bar = document.createElement('div');
+				bar.id = 'date-sticky-bar';
+				var inner = document.createElement('div');
+				inner.className = 'date-sticky-inner';
+				var cloneTable = document.createElement('table');
+				var cloneRow = headRow.cloneNode(true);
+				/* 克隆行不带原行/cell 的 id，避免页面出现重复 id */
+				cloneRow.removeAttribute('id');
+				var clonedWithId = cloneRow.querySelectorAll('[id]');
+				for (var r = 0; r < clonedWithId.length; r++) { clonedWithId[r].removeAttribute('id'); }
+				cloneTable.appendChild(cloneRow);
+				inner.appendChild(cloneTable);
+				bar.appendChild(inner);
+				nav.parentNode.insertBefore(bar, nav.nextSibling);
+
+				var shown = false;
+				/* 吸顶条紧贴导航条下缘：导航条是 sticky 的，高度随内容/断点变化，
+				   每次同步时按实际高度重算 top，保证日期行始终显示在头部菜单下方 */
+				function alignTop() {
+					bar.style.top = Math.round(nav.getBoundingClientRect().height) + 'px';
+				}
+				/* 把原表头的内容和列宽同步到克隆行（课表数据是 ajax 回填的） */
+				function syncContent() {
+					var cells = headRow.cells, cloneCells = cloneRow.cells, total = 0;
+					for (var i = 0; i < cells.length && i < cloneCells.length; i++) {
+						/* 类名同步：切换“显示全部课程”时周末列会被隐藏/显示 */
+						if (cloneCells[i].className !== cells[i].className) { cloneCells[i].className = cells[i].className; }
+						if (cloneCells[i].innerHTML !== cells[i].innerHTML) {
+							cloneCells[i].innerHTML = cells[i].innerHTML;
+						}
+						/* 用 getBoundingClientRect 取小数宽度，避免逐列取整累积误差 */
+						var w = cells[i].getBoundingClientRect().width;
+						if (w > 0.5) {
+							cloneCells[i].style.width = w + 'px';
+							total += w;
+						}
+						/* 被隐藏的列（如周末列）在克隆行里也要隐藏 */
+						var disp = getComputedStyle(cells[i]).display;
+						cloneCells[i].style.display = (disp === 'none') ? 'none' : '';
+					}
+					/* 宽度取各列实测宽度之和：窄屏下课程表横向滚动时，
+					   表格实际宽度大于可视宽度，若按可视宽度设会把列挤窄、与原表错位 */
+					if (total) { cloneTable.style.width = total + 'px'; }
+				}
+				/* 水平位置校正：表格可能在测量之后又被重新排布（周末列隐藏、数据回填、
+				   字体加载等），用第一个可见列的实测左边界把克隆行推回原位 */
+				function alignLeft() {
+					var cells = headRow.cells, cloneCells = cloneRow.cells;
+					for (var i = 0; i < cells.length && i < cloneCells.length; i++) {
+						if (!cells[i].offsetWidth) { continue; }
+						var delta = cells[i].getBoundingClientRect().left - cloneCells[i].getBoundingClientRect().left;
+						if (Math.abs(delta) >= 0.5) {
+							var cur = parseFloat(cloneTable.style.marginLeft) || 0;
+							cloneTable.style.marginLeft = (cur + delta) + 'px';
+						}
+						break;
+					}
+				}
+				/* 第一行日期的底边跑到导航条底边之上，即视为被完全遮住 */
+				function sync() {
+					var covered = headRow.getBoundingClientRect().bottom <= nav.getBoundingClientRect().bottom + 1;
+					if (covered === shown) { return; }
+					shown = covered;
+					if (shown) {
+						alignTop(); syncContent(); alignLeft();
+						/* 下一帧再校一次，兜住测量之后才完成的重排 */
+						(window.requestAnimationFrame || window.setTimeout)(function () {
+							if (shown) { syncContent(); alignLeft(); }
+						}, 32);
+					}
+					bar.classList.toggle('is-visible', shown);
+				}
+				var ticking = false;
+				function onScroll() {
+					if (ticking) { return; }
+					ticking = true;
+					(window.requestAnimationFrame || window.setTimeout)(function () { ticking = false; sync(); }, 16);
+				}
+				window.addEventListener('scroll', onScroll, { passive: true });
+				window.addEventListener('resize', function () { if (shown) { alignTop(); syncContent(); alignLeft(); } sync(); });
+				/* 移动端窄屏容器出现横向滚动时，吸顶条跟着横向滚动 */
+				if (container) {
+					container.addEventListener('scroll', function () {
+						if (shown) { inner.scrollLeft = container.scrollLeft; }
+					}, { passive: true });
+				}
+				/* 日期/备注是 ajax 回填的，内容、列宽、列的显示状态变化时
+				   （切周、切换“显示全部课程”等）若吸顶条正在显示则同步一次。
+				   观察整个表格：周末列隐藏是通过 tbody 单元格上的属性/class 改的，
+				   会连带影响表头各列的宽度 */
+				if (window.MutationObserver) {
+					new MutationObserver(function () { if (shown) { syncContent(); alignLeft(); } })
+						.observe(table, { childList: true, subtree: true, characterData: true, attributes: true });
+				}
+				sync();
+			})();
